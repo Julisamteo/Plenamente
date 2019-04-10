@@ -17,7 +17,7 @@ namespace Plenamente.Models
         public Arl Arl { get; set; }
         //ForeignKey ClaseArl
         public int Carl_Id { get; set; }
-        public ClaseArl claseArl { get; set; }
+        public ClaseArl ClaseArl { get; set; }
         public int Empr_Afiarl { get; set; }
         public int Empr_Ttrabaja { get; set; }
         public int Empr_Itrabaja { get; set; }
@@ -30,7 +30,7 @@ namespace Plenamente.Models
         // Permite que SedeCiudad Acceda a la Data
         public ICollection<SedeCiudad> SedeCiudades { get; set; }
         // Permite que Jornada Empresa Acceda a la Data
-        public ICollection<JornadaEmpresa> jornadaEmpresas { get; set; }
+        public ICollection<JornadaEmpresa> JornadaEmpresas { get; set; }
         // Permite que Area Empresa Acceda a la Data
         public ICollection<AreaEmpresa> AreaEmpresas { get; set; }
     }
