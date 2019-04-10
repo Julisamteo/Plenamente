@@ -10,7 +10,7 @@ namespace Plenamente.Models
     {
         [Key]
         public int Empr_Nit { get; set; }
-        public string  Empr_Nom { get; set; }
+        public string Empr_Nom { get; set; }
         public string Empr_Dir { get; set; }
         // ForeignKey ARL
         public int Arl_Id { get; set; }
@@ -22,7 +22,7 @@ namespace Plenamente.Models
         public int Empr_Ttrabaja { get; set; }
         public int Empr_Itrabaja { get; set; }
         public DateTime Empr_Registro { get; set; }
-        
+
         // Permite que Cargo Empresa acceda a la data
         public ICollection<CargoEmpresa> CargoEmpresas { get; set; }
         // Permite que Persona acceda a la Data

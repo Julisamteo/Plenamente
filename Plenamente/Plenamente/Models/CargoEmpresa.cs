@@ -17,6 +17,5 @@ namespace Plenamente.Models
         public DateTime Cemp_Registro { get; set; }
 
         public ICollection<Persona> Personas { get; set; }
-
     }
 }
