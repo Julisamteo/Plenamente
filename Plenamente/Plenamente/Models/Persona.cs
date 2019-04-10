@@ -70,6 +70,6 @@ namespace Plenamente.Models
         public  Empresa Empresa { get; set; }
         [ForeignKey("EstadoPersona")]
         public int Espe_Id { get; set; }
-        public virtual EstadoPersona EstadoPersona { get; set; }
+        public EstadoPersona EstadoPersona { get; set; }
     }
 }
