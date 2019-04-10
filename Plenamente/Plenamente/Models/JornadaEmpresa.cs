@@ -6,15 +6,16 @@ using System.Web;
 
 namespace Plenamente.Models
 {
-    public class CargoEmpresa
+    public class JornadaEmpresa
     {
         [Key]
-        public int Cemp_Id { get; set; }
-        public string Cemp_Nom { get; set; }
+        public int Jemp_Id { get; set; }
+        public string Jemp_Nom { get; set; }
         //Foreign key Para empresa
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
-        public DateTime Cemp_Registro { get; set; }
+        public DateTime Jemp_Registro { get; set; }
+
         //Permite a personas acceder a la Data
         public ICollection<Persona> Personas { get; set; }
     }

@@ -6,13 +6,13 @@ using System.Web;
 
 namespace Plenamente.Models
 {
-    public class EstadoPersona
+    public class Afp
     {
         [Key]
-        public int Stem_Id { get; set; }
-        public string Stem_Nom { get; set; }
-        public DateTime Stem_Registro { get; set; }
-        //Permite a persona acceder a la Data
+        public int Afp_Id { get; set; }
+        public string Afp_Nom { get; set; }
+        public DateTime Afp_Registro { get; set; }
+
         public ICollection<Persona> Personas { get; set; }
     }
 }

@@ -12,7 +12,7 @@ namespace Plenamente.Models
         public int Gene_Id { get; set; }
         public string Gene_Nom { get; set; }
         public DateTime Gene_Registro { get; set; }
-        //Nombre de la colección definido en el prural de Genero <Generos>
-        public ICollection<Genero> Generos { get; set; }
+        //Permite a persona acceder a la Data
+        public ICollection<Persona> Personas { get; set; }
     }
 }

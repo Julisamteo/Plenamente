@@ -58,13 +58,13 @@ namespace Plenamente.Models
         public TipoVinculacion TipoVinculacion { get; set; }
         [ForeignKey("EPS")]
         public int Eps_Id { get; set; }
-        public  EPS EPS { get; set; }
+        public  Eps Eps { get; set; }
         [ForeignKey("AFP")]
         public int Afp_Id { get; set; }
-        public  AFP AFP { get; set; }
+        public  Afp Afp { get; set; }
         [ForeignKey("ARL")]
         public int Arl_Id { get; set; }
-        public  ARL ARL { get; set; }
+        public  Arl Arl { get; set; }
         [ForeignKey("Empresa")]
         public int Empr_Nit { get; set; }
         public  Empresa Empresa { get; set; }

@@ -27,5 +27,11 @@ namespace Plenamente.Models
         public ICollection<CargoEmpresa> CargoEmpresas { get; set; }
         // Permite que Persona acceda a la Data
         public ICollection<Persona> Personas { get; set; }
+        // Permite que SedeCiudad Acceda a la Data
+        public ICollection<SedeCiudad> SedeCiudades { get; set; }
+        // Permite que Jornada Empresa Acceda a la Data
+        public ICollection<JornadaEmpresa> jornadaEmpresas { get; set; }
+        // Permite que Area Empresa Acceda a la Data
+        public ICollection<AreaEmpresa> AreaEmpresas { get; set; }
     }
 }

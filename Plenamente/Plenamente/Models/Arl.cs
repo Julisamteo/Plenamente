@@ -12,7 +12,9 @@ namespace Plenamente.Models
         public int Arl_Id { get; set; }
         public string Arl_Nom { get; set; }
         public DateTime Arl_Registro { get; set; }
-
+        //Permtite que Empresa acceda  a la Data
         public ICollection<Empresa> Empresas { get; set; }
+        //Permite que persona Acceda a la Data
+        public ICollection<Persona> Personas { get; set; }
     }
 }

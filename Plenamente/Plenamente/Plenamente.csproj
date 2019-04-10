@@ -177,14 +177,18 @@
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Migrations\Configuration.cs" />
+    <Compile Include="Models\Afp.cs" />
+    <Compile Include="Models\AreaEmpresa.cs" />
     <Compile Include="Models\Arl.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
     <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\Eps.cs" />
     <Compile Include="Models\EstadoPersona.cs" />
     <Compile Include="Models\Genero.cs" />
+    <Compile Include="Models\JornadaEmpresa.cs" />
     <Compile Include="Models\PlenamenteContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
@@ -193,6 +197,7 @@
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Persona.cs" />
+    <Compile Include="Models\SedeCiudad.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
