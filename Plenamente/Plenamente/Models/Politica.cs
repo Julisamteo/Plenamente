@@ -13,7 +13,7 @@ namespace Plenamente.Models
         public int Poli_Id { get; set; }
         public byte[] Poli_Archivo { get; set; }
         //Foreign Key Empresa
-        [ForeignKey("Id Empresa")]
+        [ForeignKey("Empresa")]
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
         public DateTime Poli_Registro { get; set; }

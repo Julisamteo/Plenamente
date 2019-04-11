@@ -13,7 +13,7 @@ namespace Plenamente.Models
         public int Rhig_Id { get; set; }
         public byte[] Rhig_Archivo { get; set; }
         //Foreign Key Empresa
-        [ForeignKey("Id Empresa")]
+        [ForeignKey("Empresa")]
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
         //Fin Foreign Key
