@@ -191,6 +191,7 @@
     <Compile Include="Models\EstadoPersona.cs" />
     <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\JornadaEmpresa.cs" />
+    <Compile Include="Models\ObjEmpresa.cs" />
     <Compile Include="Models\PlenamenteContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>

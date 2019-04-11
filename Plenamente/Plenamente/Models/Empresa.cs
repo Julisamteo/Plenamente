@@ -41,5 +41,8 @@ namespace Plenamente.Models
         public ICollection<ReglaHigiene> ReglaHigienes { get; set; }
         // Permite a ReglaInterno Aceeder a la data
         public ICollection<ReglaInterno> ReglaInternos { get; set; }
+        // Permite a ObjEmpresa accede a la Data
+        public ICollection<ObjEmpresa> ObjEmpresas { get; set; }
+        
     }
 }
