@@ -74,6 +74,10 @@ namespace Plenamente.Models
 
         // Permite que Resultado acceda a la data
         public ICollection<Resultado> Resultados { get; set; }
+        // Permite que ActiCumplimiento acceda a la data
+        public ICollection<ActiCumplimiento> ActiCumplimientos { get; set; }
+        //Permite a cumplimineto acceder a la Data
+        public ICollection<Cumplimiento> Cumplimientos { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

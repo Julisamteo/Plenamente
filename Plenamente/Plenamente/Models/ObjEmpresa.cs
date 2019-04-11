@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -16,6 +17,10 @@ namespace Plenamente.Models
         // Foreign Key Empresa
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
+        
+        // Permite a ActiCumplimientos acceder a la Data
+       public ICollection<ActiCumplimiento> ActiCumplimientos { get; set; }
+        
 
     }
 }

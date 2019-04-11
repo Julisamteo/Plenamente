@@ -43,6 +43,13 @@ namespace Plenamente.Models
         public ICollection<ReglaInterno> ReglaInternos { get; set; }
         // Permite a ObjEmpresa accede a la Data
         public ICollection<ObjEmpresa> ObjEmpresas { get; set; }
-        
+        // Permite a Encuesta Aceeder a la Data
+        public ICollection<Encuesta> Encuestas { get; set; }
+        // Permit a Acticumplimiento acceder a la Data 
+        public ICollection<ActiCumplimiento> ActiCumplimientos { get; set; }
+        //Permite a cumplimineto acceder a la Data
+        public ICollection<Cumplimiento> Cumplimientos { get; set; }
+        // Permite a Zonaempresa acceder a la Data
+        public ICollection<ZonaEmpresa> ZonaEmpresas { get; set; }
     }
 }

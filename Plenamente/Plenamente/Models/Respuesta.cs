@@ -16,7 +16,7 @@ namespace Plenamente.Models
 
 
         /*Llave Foranea a la tabla Pregunta*/
-        [ForeignKey("idPregunta")]
+        [ForeignKey("Pregunta")]
         public int Preg_Id { get; set; }
         public Pregunta Pregunta { get; set; }
 

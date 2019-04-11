@@ -19,7 +19,7 @@ namespace Plenamente.Models
 
 
         /*Llave Foranea a la tabla Empresa*/
-        [ForeignKey("nitEmpresa")]
+        [ForeignKey("Empresa")]
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
 

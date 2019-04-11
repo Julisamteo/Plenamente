@@ -16,7 +16,7 @@ namespace Plenamente.Models
 
 
         /*Llave Foranea a la tabla Encuesta*/
-        [ForeignKey("idEncuesta")]
+        [ForeignKey("Encuesta")]
         public int Encu_Id { get; set; }
         public Encuesta Encuesta { get; set; }
 
