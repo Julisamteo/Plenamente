@@ -184,7 +184,9 @@
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
+    <Compile Include="Models\EleProteccion.cs" />
     <Compile Include="Models\Empresa.cs" />
+    <Compile Include="Models\EprotEmpresa.cs" />
     <Compile Include="Models\Eps.cs" />
     <Compile Include="Models\EstadoPersona.cs" />
     <Compile Include="Models\Genero.cs" />
@@ -196,6 +198,9 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\Politica.cs" />
+    <Compile Include="Models\ProcactEmpresa.cs" />
+    <Compile Include="Models\ProcesActividad.cs" />
     <Compile Include="Models\SedeCiudad.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />

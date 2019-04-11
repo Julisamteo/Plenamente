@@ -33,5 +33,9 @@ namespace Plenamente.Models
         public ICollection<JornadaEmpresa> JornadaEmpresas { get; set; }
         // Permite que Area Empresa Acceda a la Data
         public ICollection<AreaEmpresa> AreaEmpresas { get; set; }
+        // Permite a Politica Acceder a la Data
+        public ICollection<Politica> Politicas { get; set; }
+        // Permite a proactempresa Acceder a la Data
+        public ICollection<ProcactEmpresa> ProcactEmpresas { get; set; }
     }
 }
