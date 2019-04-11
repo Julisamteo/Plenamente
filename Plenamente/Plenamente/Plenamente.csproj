@@ -201,6 +201,8 @@
     <Compile Include="Models\Politica.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
+    <Compile Include="Models\ReglaHigiene.cs" />
+    <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\SedeCiudad.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />

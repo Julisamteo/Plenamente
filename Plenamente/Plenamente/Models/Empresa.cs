@@ -37,5 +37,9 @@ namespace Plenamente.Models
         public ICollection<Politica> Politicas { get; set; }
         // Permite a proactempresa Acceder a la Data
         public ICollection<ProcactEmpresa> ProcactEmpresas { get; set; }
+        // Permite a ReglaHigiene Acceder a la Data
+        public ICollection<ReglaHigiene> ReglaHigienes { get; set; }
+        // Permite a ReglaInterno Aceeder a la data
+        public ICollection<ReglaInterno> ReglaInternos { get; set; }
     }
 }
