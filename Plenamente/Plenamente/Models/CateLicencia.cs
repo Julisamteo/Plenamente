@@ -13,6 +13,6 @@ namespace Plenamente.Models
         public string Cate_Nom { get; set; }
         public DateTime Cate_Registro { get; set; }
         //Nombre de la colección definido en el prural de CateLicencia <CateLicencias>
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

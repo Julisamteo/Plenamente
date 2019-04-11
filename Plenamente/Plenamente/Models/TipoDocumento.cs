@@ -14,6 +14,6 @@ namespace Plenamente.Models
         public string Tdoc_Nom { get; set; }
         public DateTime Tdoc_Registro { get; set; }
         //Nombre de la colección definido en el prural de TipoDocumento <TipoDocumentos>
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -13,6 +13,6 @@ namespace Plenamente.Models
         public string Afp_Nom { get; set; }
         public DateTime Afp_Registro { get; set; }
 
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

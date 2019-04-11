@@ -19,6 +19,6 @@ namespace Plenamente.Models
         public Empresa Empresa { get; set; }
         public DateTime Sciu_Registro { get; set; }
 
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

@@ -17,6 +17,6 @@ namespace Plenamente.Models
         public DateTime Jemp_Registro { get; set; }
 
         //Permite a personas acceder a la Data
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

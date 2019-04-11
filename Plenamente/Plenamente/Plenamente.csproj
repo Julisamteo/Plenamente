@@ -196,7 +196,6 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
-    <Compile Include="Models\Persona.cs" />
     <Compile Include="Models\SedeCiudad.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />

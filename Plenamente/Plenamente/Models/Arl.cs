@@ -15,6 +15,6 @@ namespace Plenamente.Models
         //Permtite que Empresa acceda  a la Data
         public ICollection<Empresa> Empresas { get; set; }
         //Permite que persona Acceda a la Data
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

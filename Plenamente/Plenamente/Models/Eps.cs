@@ -14,6 +14,6 @@ namespace Plenamente.Models
         public DateTime Eps_Registro { get; set; }
 
 
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

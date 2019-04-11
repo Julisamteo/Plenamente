@@ -10,7 +10,7 @@ namespace Plenamente.DAL
 {
     public class PlenamenteContext : DbContext
     {
-        public DbSet<Persona> Personas { get; set; }
+        public DbSet<ApplicationUser> ApplicationUsers { get; set; }
 
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {

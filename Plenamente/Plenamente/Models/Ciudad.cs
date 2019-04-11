@@ -13,6 +13,6 @@ namespace Plenamente.Models
         public string Ciud_Nom { get; set; }
         public DateTime Ciud_Registro { get; set; }
         //Nombre de la colección definido en el prural de ciudad <Ciudades>
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

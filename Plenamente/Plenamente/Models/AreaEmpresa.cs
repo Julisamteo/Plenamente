@@ -16,6 +16,6 @@ namespace Plenamente.Models
         public Empresa Empresa { get; set; }
         public DateTime Aemp_Registro { get; set; }
         //Permite a personas acceder a la Data
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }

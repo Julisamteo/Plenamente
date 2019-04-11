@@ -13,6 +13,6 @@ namespace Plenamente.Models
         public string Stem_Nom { get; set; }
         public DateTime Stem_Registro { get; set; }
         //Permite a persona acceder a la Data
-        public ICollection<Persona> Personas { get; set; }
+        public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }
 }
