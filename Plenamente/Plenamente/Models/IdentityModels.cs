@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Security.Claims;
@@ -70,6 +71,9 @@ namespace Plenamente.Models
         [ForeignKey("EstadoPersona")]
         public int Espe_Id { get; set; }
         public EstadoPersona EstadoPersona { get; set; }
+
+        // Permite que Resultado acceda a la data
+        public ICollection<Resultado> Resultados { get; set; }
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {

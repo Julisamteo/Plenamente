@@ -39,7 +39,7 @@ namespace Plenamente.Models
         public ICollection<ProcactEmpresa> ProcactEmpresas { get; set; }
         // Permite a ReglaHigiene Acceder a la Data
         public ICollection<ReglaHigiene> ReglaHigienes { get; set; }
-        // Permite a ReglaInterno Aceeder a la data
+        // Permite a ReglaInterno Aceeder a la Data
         public ICollection<ReglaInterno> ReglaInternos { get; set; }
         // Permite a ObjEmpresa accede a la Data
         public ICollection<ObjEmpresa> ObjEmpresas { get; set; }
