@@ -1,0 +1,29 @@
+﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
+using System.Linq;
+using System.Web;
+
+namespace Plenamente.Models
+{
+    public class Encuesta
+    {
+        [Key]
+        public int Encu_Id { get; set; }
+        public DateTime Encu_Creacion { get; set; }
+        public DateTime Encu_Vence { get; set; }
+        public bool Encu_Estado { get; set; }
+        public DateTime Encu_Registro { get; set; }
+
+
+
+        /*Llave Foranea a la tabla Empresa*/
+        [ForeignKey("nitEmpresa")]
+        public int Empr_Nit { get; set; }
+        public Empresa Empresa { get; set; }
+
+        // Permite que Pregunta acceda a la data
+        public ICollection<Pregunta> Preguntas { get; set; }
+    }
+}
