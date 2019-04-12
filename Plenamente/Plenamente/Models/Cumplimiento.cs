@@ -16,14 +16,14 @@ namespace Plenamente.Models
         [ForeignKey("ItemEstandar")]
         public int Iest_Id { get; set; }
         public ItemEstandar ItemEstandar { get; set; }
-        // ForeignKey
-        [ForeignKey("ApplicationUser")]
-        public int Id { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
+        //// ForeignKey
+        //[ForeignKey("ApplicationUser")]
+        //public int Id { get; set; }
+        //public ApplicationUser ApplicationUser { get; set; }
         //ForeignKey
-        [ForeignKey("Empresa")]
-        public int Empr_Id { get; set; }
-        public Empresa Empresa { get; set; }
+       [ForeignKey("Empresa")]
+       public int Empr_Id { get; set; }
+       public Empresa Empresa { get; set; }
         //Foreign Key
         [ForeignKey("TipoDocCarga")]
         public int Tdca_Id { get; set; }

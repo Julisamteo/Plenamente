@@ -13,7 +13,7 @@ namespace Plenamente.Models
         public int Epem_Id { get; set; }
         public int Empr_Nit { get; set; }
         //Foreign Key Tabla EleProteccion
-        [ForeignKey("Id Proteccion")]
+       
         public int Epro_Id { get; set; }
         public EleProteccion EleProteccion { get; set; }
     }

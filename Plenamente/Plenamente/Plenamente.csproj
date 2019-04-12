@@ -177,6 +177,10 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Migrations\201904121555382_CarlosTeniaRazoyLuchoNo.cs" />
+    <Compile Include="Migrations\201904121555382_CarlosTeniaRazoyLuchoNo.Designer.cs">
+      <DependentUpon>201904121555382_CarlosTeniaRazoyLuchoNo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -203,7 +207,6 @@
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Models\ObjEmpresa.cs" />
     <Compile Include="Models\Periodo.cs" />
-    <Compile Include="Models\PlenamenteContext.cs" />
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -299,6 +302,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904121555382_CarlosTeniaRazoyLuchoNo.resx">
+      <DependentUpon>201904121555382_CarlosTeniaRazoyLuchoNo.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

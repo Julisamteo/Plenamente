@@ -5,14 +5,14 @@ namespace Plenamente.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    internal sealed class Configuration : DbMigrationsConfiguration<Plenamente.DAL.PlenamenteContext>
+    internal sealed class Configuration : DbMigrationsConfiguration<Plenamente.Models.ApplicationDbContext>
     {
         public Configuration()
         {
             AutomaticMigrationsEnabled = false;
         }
 
-        protected override void Seed(Plenamente.DAL.PlenamenteContext context)
+        protected override void Seed(Plenamente.Models.ApplicationDbContext context)
         {
             //  This method will be called after migrating to the latest version.
 
