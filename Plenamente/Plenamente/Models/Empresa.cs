@@ -51,5 +51,7 @@ namespace Plenamente.Models
         public ICollection<Cumplimiento> Cumplimientos { get; set; }
         // Permite a Zonaempresa acceder a la Data
         public ICollection<ZonaEmpresa> ZonaEmpresas { get; set; }
+        // Permite a EportEmpresa acceder a la Data
+        public ICollection<EprotEmpresa> EprotEmpresas { get; set; }
     }
 }

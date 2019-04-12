@@ -11,9 +11,10 @@ namespace Plenamente.Models
 	{
         [Key]
         public int Epem_Id { get; set; }
-        public int Empr_Nit { get; set; }
         //Foreign Key Tabla EleProteccion
-       
+        public int Empr_Nit { get; set; }
+        public Empresa Empresa { get; set; }
+        // Otra Foreign Key
         public int Epro_Id { get; set; }
         public EleProteccion EleProteccion { get; set; }
     }

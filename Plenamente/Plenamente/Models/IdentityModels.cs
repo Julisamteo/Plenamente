@@ -29,34 +29,7 @@ namespace Plenamente.Models
         public DateTime Pers_Registro { get; set; }
 
 
-        public int Tdoc_Id { get; set; }
-        public TipoDocumento TipoDocumento { get; set; }
-        public int Sciu_Id { get; set; }
-        public SedeCiudad SedeCiudad { get; set; }
-        public int Ciud_Id { get; set; }
-        public Ciudad Ciudad { get; set; }
-        public int Cemp_Id { get; set; }
-        public CargoEmpresa CargoEmpresa { get; set; }
-        public int Aemp_Id { get; set; }
-        public AreaEmpresa AreaEmpresa { get; set; }
-        public int Cate_Id { get; set; }
-        public CateLicencia CateLicencia { get; set; }
-        public int Gene_Id { get; set; }
-        public Genero Genero { get; set; }
-        public int Jemp_Id { get; set; }
-        public JornadaEmpresa JornadaEmpresa { get; set; }
-        public int Tvin_Id { get; set; }
-        public TipoVinculacion TipoVinculacion { get; set; }
-        public int Eps_Id { get; set; }
-        public Eps Eps { get; set; }
-        public int Afp_Id { get; set; }
-        public Afp Afp { get; set; }
-        public int Arl_Id { get; set; }
-        public Arl Arl { get; set; }
-        //public int Empr_Nit { get; set; }
-        //public Empresa Empresa { get; set; }
-        public int Espe_Id { get; set; }
-        public EstadoPersona EstadoPersona { get; set; }
+        
         public string Jefe_Id { get; set; }
         public ApplicationUser Jefe { get; set; }
 
@@ -130,38 +103,11 @@ namespace Plenamente.Models
             //Llave reflexiva
             modelBuilder.Entity<ApplicationUser>().
                 HasOptional(u => u.Jefe).WithMany().HasForeignKey(x => x.Jefe_Id);
-            //Foraneas obligatorias
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.Afp).WithMany().HasForeignKey(x => x.Afp_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.Arl).WithMany().HasForeignKey(x => x.Arl_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.Eps).WithMany().HasForeignKey(x => x.Eps_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.CargoEmpresa).WithMany().HasForeignKey(x => x.Cemp_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.Ciudad).WithMany().HasForeignKey(x => x.Ciud_Id);
-            //modelBuilder.Entity<ApplicationUser>().
-            //    HasRequired(u => u.Empresa).WithMany().HasForeignKey(x => x.Empr_Nit);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.EstadoPersona).WithMany().HasForeignKey(x => x.Espe_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.Genero).WithMany().HasForeignKey(x => x.Gene_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.TipoDocumento).WithMany().HasForeignKey(x => x.Tdoc_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasRequired(u => u.TipoVinculacion).WithMany().HasForeignKey(x => x.Tvin_Id);
-            //Foraneas no-obligatorias
-            modelBuilder.Entity<ApplicationUser>().
-                HasOptional(u => u.SedeCiudad).WithMany().HasForeignKey(x => x.Sciu_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasOptional(u => u.AreaEmpresa).WithMany().HasForeignKey(x => x.Aemp_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasOptional(u => u.CateLicencia).WithMany().HasForeignKey(x => x.Cate_Id);
-            modelBuilder.Entity<ApplicationUser>().
-                HasOptional(u => u.JornadaEmpresa).WithMany().HasForeignKey(x => x.Jemp_Id);
+ 
 
             base.OnModelCreating(modelBuilder);
         }
+
+        public System.Data.Entity.DbSet<Plenamente.Models.ApplicationUser> ApplicationUsers { get; set; }
     }
 }

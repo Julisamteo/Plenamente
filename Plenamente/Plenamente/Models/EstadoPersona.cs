@@ -9,9 +9,9 @@ namespace Plenamente.Models
     public class EstadoPersona
     {
         [Key]
-        public int Stem_Id { get; set; }
-        public string Stem_Nom { get; set; }
-        public DateTime Stem_Registro { get; set; }
+        public int Espe_Id { get; set; }
+        public string Espe_Nom { get; set; }
+        public DateTime Espe_Registro { get; set; }
         //Permite a persona acceder a la Data
         public ICollection<ApplicationUser> ApplicationUsers { get; set; }
     }

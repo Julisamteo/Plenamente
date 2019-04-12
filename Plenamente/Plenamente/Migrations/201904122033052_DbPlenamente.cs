@@ -3,7 +3,7 @@ namespace Plenamente.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class CarlosTeniaRazoyLuchoNo : DbMigration
+    public partial class DbPlenamente : DbMigration
     {
         public override void Up()
         {
@@ -136,19 +136,6 @@ namespace Plenamente.Migrations
                         Pers_Cemeg = c.String(),
                         Pers_Temeg = c.Int(nullable: false),
                         Pers_Registro = c.DateTime(nullable: false),
-                        Tdoc_Id = c.Int(nullable: false),
-                        Sciu_Id = c.Int(nullable: false),
-                        Ciud_Id = c.Int(nullable: false),
-                        Cemp_Id = c.Int(nullable: false),
-                        Aemp_Id = c.Int(nullable: false),
-                        Cate_Id = c.Int(nullable: false),
-                        Gene_Id = c.Int(nullable: false),
-                        Jemp_Id = c.Int(nullable: false),
-                        Tvin_Id = c.Int(nullable: false),
-                        Eps_Id = c.Int(nullable: false),
-                        Afp_Id = c.Int(nullable: false),
-                        Arl_Id = c.Int(nullable: false),
-                        Espe_Id = c.Int(nullable: false),
                         Jefe_Id = c.String(maxLength: 128),
                         Email = c.String(maxLength: 256),
                         EmailConfirmed = c.Boolean(nullable: false),
@@ -161,133 +148,53 @@ namespace Plenamente.Migrations
                         LockoutEnabled = c.Boolean(nullable: false),
                         AccessFailedCount = c.Int(nullable: false),
                         UserName = c.String(nullable: false, maxLength: 256),
-                        Afp_Afp_Id = c.Int(),
+                        Empresa_Empr_Nit = c.Int(),
+                        AreaEmpresa_Aemp_Id = c.Int(),
                         Arl_Arl_Id = c.Int(),
                         CargoEmpresa_Cemp_Id = c.Int(),
+                        JornadaEmpresa_Jemp_Id = c.Int(),
+                        SedeCiudad_Sciu_Id = c.Int(),
                         Ciudad_Ciud_Id = c.Int(),
+                        Afp_Afp_Id = c.Int(),
+                        CateLicencia_Cate_Id = c.Int(),
                         Eps_Eps_Id = c.Int(),
-                        EstadoPersona_Stem_Id = c.Int(),
+                        EstadoPersona_Espe_Id = c.Int(),
                         Genero_Gene_Id = c.Int(),
                         TipoDocumento_Tdoc_Id = c.Int(),
                         TipoVinculacion_Tvin_Id = c.Int(),
-                        Empresa_Empr_Nit = c.Int(),
                     })
                 .PrimaryKey(t => t.Id)
-                .ForeignKey("dbo.Afps", t => t.Afp_Afp_Id)
-                .ForeignKey("dbo.Afps", t => t.Afp_Id)
-                .ForeignKey("dbo.AreaEmpresas", t => t.Aemp_Id)
-                .ForeignKey("dbo.Arls", t => t.Arl_Arl_Id)
-                .ForeignKey("dbo.Arls", t => t.Arl_Id)
-                .ForeignKey("dbo.CargoEmpresas", t => t.CargoEmpresa_Cemp_Id)
-                .ForeignKey("dbo.CargoEmpresas", t => t.Cemp_Id)
-                .ForeignKey("dbo.CateLicencias", t => t.Cate_Id)
-                .ForeignKey("dbo.Ciudads", t => t.Ciudad_Ciud_Id)
-                .ForeignKey("dbo.Ciudads", t => t.Ciud_Id)
-                .ForeignKey("dbo.Eps", t => t.Eps_Eps_Id)
-                .ForeignKey("dbo.Eps", t => t.Eps_Id)
-                .ForeignKey("dbo.EstadoPersonas", t => t.EstadoPersona_Stem_Id)
-                .ForeignKey("dbo.EstadoPersonas", t => t.Espe_Id)
-                .ForeignKey("dbo.Generoes", t => t.Genero_Gene_Id)
-                .ForeignKey("dbo.Generoes", t => t.Gene_Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.Jefe_Id)
-                .ForeignKey("dbo.JornadaEmpresas", t => t.Jemp_Id)
-                .ForeignKey("dbo.SedeCiudads", t => t.Sciu_Id)
-                .ForeignKey("dbo.TipoDocumentoes", t => t.TipoDocumento_Tdoc_Id)
-                .ForeignKey("dbo.TipoDocumentoes", t => t.Tdoc_Id)
-                .ForeignKey("dbo.TipoVinculacions", t => t.TipoVinculacion_Tvin_Id)
-                .ForeignKey("dbo.TipoVinculacions", t => t.Tvin_Id)
                 .ForeignKey("dbo.Empresas", t => t.Empresa_Empr_Nit)
-                .Index(t => t.Tdoc_Id)
-                .Index(t => t.Sciu_Id)
-                .Index(t => t.Ciud_Id)
-                .Index(t => t.Cemp_Id)
-                .Index(t => t.Aemp_Id)
-                .Index(t => t.Cate_Id)
-                .Index(t => t.Gene_Id)
-                .Index(t => t.Jemp_Id)
-                .Index(t => t.Tvin_Id)
-                .Index(t => t.Eps_Id)
-                .Index(t => t.Afp_Id)
-                .Index(t => t.Arl_Id)
-                .Index(t => t.Espe_Id)
+                .ForeignKey("dbo.AreaEmpresas", t => t.AreaEmpresa_Aemp_Id)
+                .ForeignKey("dbo.Arls", t => t.Arl_Arl_Id)
+                .ForeignKey("dbo.CargoEmpresas", t => t.CargoEmpresa_Cemp_Id)
+                .ForeignKey("dbo.JornadaEmpresas", t => t.JornadaEmpresa_Jemp_Id)
+                .ForeignKey("dbo.SedeCiudads", t => t.SedeCiudad_Sciu_Id)
+                .ForeignKey("dbo.Ciudads", t => t.Ciudad_Ciud_Id)
+                .ForeignKey("dbo.Afps", t => t.Afp_Afp_Id)
+                .ForeignKey("dbo.CateLicencias", t => t.CateLicencia_Cate_Id)
+                .ForeignKey("dbo.Eps", t => t.Eps_Eps_Id)
+                .ForeignKey("dbo.EstadoPersonas", t => t.EstadoPersona_Espe_Id)
+                .ForeignKey("dbo.Generoes", t => t.Genero_Gene_Id)
+                .ForeignKey("dbo.TipoDocumentoes", t => t.TipoDocumento_Tdoc_Id)
+                .ForeignKey("dbo.TipoVinculacions", t => t.TipoVinculacion_Tvin_Id)
                 .Index(t => t.Jefe_Id)
                 .Index(t => t.UserName, unique: true, name: "UserNameIndex")
-                .Index(t => t.Afp_Afp_Id)
+                .Index(t => t.Empresa_Empr_Nit)
+                .Index(t => t.AreaEmpresa_Aemp_Id)
                 .Index(t => t.Arl_Arl_Id)
                 .Index(t => t.CargoEmpresa_Cemp_Id)
+                .Index(t => t.JornadaEmpresa_Jemp_Id)
+                .Index(t => t.SedeCiudad_Sciu_Id)
                 .Index(t => t.Ciudad_Ciud_Id)
+                .Index(t => t.Afp_Afp_Id)
+                .Index(t => t.CateLicencia_Cate_Id)
                 .Index(t => t.Eps_Eps_Id)
-                .Index(t => t.EstadoPersona_Stem_Id)
+                .Index(t => t.EstadoPersona_Espe_Id)
                 .Index(t => t.Genero_Gene_Id)
                 .Index(t => t.TipoDocumento_Tdoc_Id)
-                .Index(t => t.TipoVinculacion_Tvin_Id)
-                .Index(t => t.Empresa_Empr_Nit);
-            
-            CreateTable(
-                "dbo.Afps",
-                c => new
-                    {
-                        Afp_Id = c.Int(nullable: false, identity: true),
-                        Afp_Nom = c.String(),
-                        Afp_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Afp_Id);
-            
-            CreateTable(
-                "dbo.AreaEmpresas",
-                c => new
-                    {
-                        Aemp_Id = c.Int(nullable: false, identity: true),
-                        Aemp_Nom = c.String(),
-                        Empr_Nit = c.Int(nullable: false),
-                        Aemp_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Aemp_Id)
-                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
-                .Index(t => t.Empr_Nit);
-            
-            CreateTable(
-                "dbo.Arls",
-                c => new
-                    {
-                        Arl_Id = c.Int(nullable: false, identity: true),
-                        Arl_Nom = c.String(),
-                        Arl_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Arl_Id);
-            
-            CreateTable(
-                "dbo.CargoEmpresas",
-                c => new
-                    {
-                        Cemp_Id = c.Int(nullable: false, identity: true),
-                        Cemp_Nom = c.String(),
-                        Empr_Nit = c.Int(nullable: false),
-                        Cemp_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Cemp_Id)
-                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
-                .Index(t => t.Empr_Nit);
-            
-            CreateTable(
-                "dbo.CateLicencias",
-                c => new
-                    {
-                        Cate_Id = c.Int(nullable: false, identity: true),
-                        Cate_Nom = c.String(),
-                        Cate_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Cate_Id);
-            
-            CreateTable(
-                "dbo.Ciudads",
-                c => new
-                    {
-                        Ciud_Id = c.Int(nullable: false, identity: true),
-                        Ciud_Nom = c.String(),
-                        Ciud_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Ciud_Id);
+                .Index(t => t.TipoVinculacion_Tvin_Id);
             
             CreateTable(
                 "dbo.AspNetUserClaims",
@@ -301,49 +208,6 @@ namespace Plenamente.Migrations
                 .PrimaryKey(t => t.Id)
                 .ForeignKey("dbo.AspNetUsers", t => t.UserId)
                 .Index(t => t.UserId);
-            
-            CreateTable(
-                "dbo.Eps",
-                c => new
-                    {
-                        Eps_Id = c.Int(nullable: false, identity: true),
-                        Eps_Nom = c.String(),
-                        Eps_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Eps_Id);
-            
-            CreateTable(
-                "dbo.EstadoPersonas",
-                c => new
-                    {
-                        Stem_Id = c.Int(nullable: false, identity: true),
-                        Stem_Nom = c.String(),
-                        Stem_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Stem_Id);
-            
-            CreateTable(
-                "dbo.Generoes",
-                c => new
-                    {
-                        Gene_Id = c.Int(nullable: false, identity: true),
-                        Gene_Nom = c.String(),
-                        Gene_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Gene_Id);
-            
-            CreateTable(
-                "dbo.JornadaEmpresas",
-                c => new
-                    {
-                        Jemp_Id = c.Int(nullable: false, identity: true),
-                        Jemp_Nom = c.String(),
-                        Empr_Nit = c.Int(nullable: false),
-                        Jemp_Registro = c.DateTime(nullable: false),
-                    })
-                .PrimaryKey(t => t.Jemp_Id)
-                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
-                .Index(t => t.Empr_Nit);
             
             CreateTable(
                 "dbo.AspNetUserLogins",
@@ -420,41 +284,40 @@ namespace Plenamente.Migrations
                 .Index(t => t.Preg_Id);
             
             CreateTable(
-                "dbo.SedeCiudads",
+                "dbo.AreaEmpresas",
                 c => new
                     {
-                        Sciu_Id = c.Int(nullable: false, identity: true),
-                        Sciu_Nom = c.String(),
-                        Ciud_Id = c.Int(nullable: false),
-                        Empr_id = c.Int(nullable: false),
-                        Sciu_Registro = c.DateTime(nullable: false),
-                        Empresa_Empr_Nit = c.Int(),
+                        Aemp_Id = c.Int(nullable: false, identity: true),
+                        Aemp_Nom = c.String(),
+                        Empr_Nit = c.Int(nullable: false),
+                        Aemp_Registro = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Sciu_Id)
-                .ForeignKey("dbo.Ciudads", t => t.Ciud_Id)
-                .ForeignKey("dbo.Empresas", t => t.Empresa_Empr_Nit)
-                .Index(t => t.Ciud_Id)
-                .Index(t => t.Empresa_Empr_Nit);
+                .PrimaryKey(t => t.Aemp_Id)
+                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
+                .Index(t => t.Empr_Nit);
             
             CreateTable(
-                "dbo.TipoDocumentoes",
+                "dbo.Arls",
                 c => new
                     {
-                        Tdoc_Id = c.Int(nullable: false, identity: true),
-                        Tdoc_Nom = c.String(),
-                        Tdoc_Registro = c.DateTime(nullable: false),
+                        Arl_Id = c.Int(nullable: false, identity: true),
+                        Arl_Nom = c.String(),
+                        Arl_Registro = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Tdoc_Id);
+                .PrimaryKey(t => t.Arl_Id);
             
             CreateTable(
-                "dbo.TipoVinculacions",
+                "dbo.CargoEmpresas",
                 c => new
                     {
-                        Tvin_Id = c.Int(nullable: false, identity: true),
-                        Tvin_Nom = c.String(),
-                        Tvin_Registro = c.DateTime(nullable: false),
+                        Cemp_Id = c.Int(nullable: false, identity: true),
+                        Cemp_Nom = c.String(),
+                        Empr_Nit = c.Int(nullable: false),
+                        Cemp_Registro = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Tvin_Id);
+                .PrimaryKey(t => t.Cemp_Id)
+                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
+                .Index(t => t.Empr_Nit);
             
             CreateTable(
                 "dbo.ClaseArls",
@@ -465,6 +328,43 @@ namespace Plenamente.Migrations
                         Carl_Registro = c.DateTime(nullable: false),
                     })
                 .PrimaryKey(t => t.Carl_Id);
+            
+            CreateTable(
+                "dbo.EprotEmpresas",
+                c => new
+                    {
+                        Epem_Id = c.Int(nullable: false, identity: true),
+                        Empr_Nit = c.Int(nullable: false),
+                        Epro_Id = c.Int(nullable: false),
+                    })
+                .PrimaryKey(t => t.Epem_Id)
+                .ForeignKey("dbo.EleProteccions", t => t.Epro_Id)
+                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
+                .Index(t => t.Empr_Nit)
+                .Index(t => t.Epro_Id);
+            
+            CreateTable(
+                "dbo.EleProteccions",
+                c => new
+                    {
+                        Epro_Id = c.Int(nullable: false, identity: true),
+                        Epro_Nom = c.String(),
+                        Epro_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Epro_Id);
+            
+            CreateTable(
+                "dbo.JornadaEmpresas",
+                c => new
+                    {
+                        Jemp_Id = c.Int(nullable: false, identity: true),
+                        Jemp_Nom = c.String(),
+                        Empr_Nit = c.Int(nullable: false),
+                        Jemp_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Jemp_Id)
+                .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
+                .Index(t => t.Empr_Nit);
             
             CreateTable(
                 "dbo.ObjEmpresas",
@@ -543,6 +443,33 @@ namespace Plenamente.Migrations
                 .PrimaryKey(t => t.Rint_Id)
                 .ForeignKey("dbo.Empresas", t => t.Empr_Nit)
                 .Index(t => t.Empr_Nit);
+            
+            CreateTable(
+                "dbo.SedeCiudads",
+                c => new
+                    {
+                        Sciu_Id = c.Int(nullable: false, identity: true),
+                        Sciu_Nom = c.String(),
+                        Ciud_Id = c.Int(nullable: false),
+                        Empr_id = c.Int(nullable: false),
+                        Sciu_Registro = c.DateTime(nullable: false),
+                        Empresa_Empr_Nit = c.Int(),
+                    })
+                .PrimaryKey(t => t.Sciu_Id)
+                .ForeignKey("dbo.Ciudads", t => t.Ciud_Id)
+                .ForeignKey("dbo.Empresas", t => t.Empresa_Empr_Nit)
+                .Index(t => t.Ciud_Id)
+                .Index(t => t.Empresa_Empr_Nit);
+            
+            CreateTable(
+                "dbo.Ciudads",
+                c => new
+                    {
+                        Ciud_Id = c.Int(nullable: false, identity: true),
+                        Ciud_Nom = c.String(),
+                        Ciud_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Ciud_Id);
             
             CreateTable(
                 "dbo.ZonaEmpresas",
@@ -644,32 +571,86 @@ namespace Plenamente.Migrations
                 .PrimaryKey(t => t.Peri_Id);
             
             CreateTable(
-                "dbo.EleProteccions",
+                "dbo.Afps",
                 c => new
                     {
-                        Epro_Id = c.Int(nullable: false, identity: true),
-                        Epro_Nom = c.String(),
-                        Epro_Registro = c.DateTime(nullable: false),
+                        Afp_Id = c.Int(nullable: false, identity: true),
+                        Afp_Nom = c.String(),
+                        Afp_Registro = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Epro_Id);
+                .PrimaryKey(t => t.Afp_Id);
             
             CreateTable(
-                "dbo.EprotEmpresas",
+                "dbo.CateLicencias",
                 c => new
                     {
-                        Epem_Id = c.Int(nullable: false, identity: true),
-                        Empr_Nit = c.Int(nullable: false),
-                        Epro_Id = c.Int(nullable: false),
+                        Cate_Id = c.Int(nullable: false, identity: true),
+                        Cate_Nom = c.String(),
+                        Cate_Registro = c.DateTime(nullable: false),
                     })
-                .PrimaryKey(t => t.Epem_Id)
-                .ForeignKey("dbo.EleProteccions", t => t.Epro_Id)
-                .Index(t => t.Epro_Id);
+                .PrimaryKey(t => t.Cate_Id);
+            
+            CreateTable(
+                "dbo.Eps",
+                c => new
+                    {
+                        Eps_Id = c.Int(nullable: false, identity: true),
+                        Eps_Nom = c.String(),
+                        Eps_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Eps_Id);
+            
+            CreateTable(
+                "dbo.EstadoPersonas",
+                c => new
+                    {
+                        Espe_Id = c.Int(nullable: false, identity: true),
+                        Espe_Nom = c.String(),
+                        Espe_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Espe_Id);
+            
+            CreateTable(
+                "dbo.Generoes",
+                c => new
+                    {
+                        Gene_Id = c.Int(nullable: false, identity: true),
+                        Gene_Nom = c.String(),
+                        Gene_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Gene_Id);
+            
+            CreateTable(
+                "dbo.TipoDocumentoes",
+                c => new
+                    {
+                        Tdoc_Id = c.Int(nullable: false, identity: true),
+                        Tdoc_Nom = c.String(),
+                        Tdoc_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Tdoc_Id);
+            
+            CreateTable(
+                "dbo.TipoVinculacions",
+                c => new
+                    {
+                        Tvin_Id = c.Int(nullable: false, identity: true),
+                        Tvin_Nom = c.String(),
+                        Tvin_Registro = c.DateTime(nullable: false),
+                    })
+                .PrimaryKey(t => t.Tvin_Id);
             
         }
         
         public override void Down()
         {
-            DropForeignKey("dbo.EprotEmpresas", "Epro_Id", "dbo.EleProteccions");
+            DropForeignKey("dbo.AspNetUsers", "TipoVinculacion_Tvin_Id", "dbo.TipoVinculacions");
+            DropForeignKey("dbo.AspNetUsers", "TipoDocumento_Tdoc_Id", "dbo.TipoDocumentoes");
+            DropForeignKey("dbo.AspNetUsers", "Genero_Gene_Id", "dbo.Generoes");
+            DropForeignKey("dbo.AspNetUsers", "EstadoPersona_Espe_Id", "dbo.EstadoPersonas");
+            DropForeignKey("dbo.AspNetUsers", "Eps_Eps_Id", "dbo.Eps");
+            DropForeignKey("dbo.AspNetUsers", "CateLicencia_Cate_Id", "dbo.CateLicencias");
+            DropForeignKey("dbo.AspNetUsers", "Afp_Afp_Id", "dbo.Afps");
             DropForeignKey("dbo.ActiCumplimientoes", "Peri_Id", "dbo.Periodoes");
             DropForeignKey("dbo.ActiCumplimientoes", "Oemp_Id", "dbo.ObjEmpresas");
             DropForeignKey("dbo.ActiCumplimientoes", "Frec_Id", "dbo.Frecuencias");
@@ -682,21 +663,28 @@ namespace Plenamente.Migrations
             DropForeignKey("dbo.Estandars", "Crit_Id", "dbo.Criterios");
             DropForeignKey("dbo.Cumplimientoes", "Empr_Id", "dbo.Empresas");
             DropForeignKey("dbo.ZonaEmpresas", "Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.SedeCiudads", "Empresa_Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.SedeCiudads", "Ciud_Id", "dbo.Ciudads");
+            DropForeignKey("dbo.AspNetUsers", "Ciudad_Ciud_Id", "dbo.Ciudads");
+            DropForeignKey("dbo.AspNetUsers", "SedeCiudad_Sciu_Id", "dbo.SedeCiudads");
             DropForeignKey("dbo.ReglaInternoes", "Empr_Nit", "dbo.Empresas");
             DropForeignKey("dbo.ReglaHigienes", "Empr_Nit", "dbo.Empresas");
             DropForeignKey("dbo.ProcactEmpresas", "Pact_Id", "dbo.ProcesActividads");
             DropForeignKey("dbo.ProcactEmpresas", "Empr_Nit", "dbo.Empresas");
             DropForeignKey("dbo.Politicas", "Empr_Nit", "dbo.Empresas");
             DropForeignKey("dbo.ObjEmpresas", "Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.JornadaEmpresas", "Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.AspNetUsers", "JornadaEmpresa_Jemp_Id", "dbo.JornadaEmpresas");
+            DropForeignKey("dbo.EprotEmpresas", "Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.EprotEmpresas", "Epro_Id", "dbo.EleProteccions");
             DropForeignKey("dbo.Empresas", "Carl_Id", "dbo.ClaseArls");
+            DropForeignKey("dbo.CargoEmpresas", "Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.AspNetUsers", "CargoEmpresa_Cemp_Id", "dbo.CargoEmpresas");
+            DropForeignKey("dbo.Empresas", "Arl_Id", "dbo.Arls");
+            DropForeignKey("dbo.AspNetUsers", "Arl_Arl_Id", "dbo.Arls");
+            DropForeignKey("dbo.AreaEmpresas", "Empr_Nit", "dbo.Empresas");
+            DropForeignKey("dbo.AspNetUsers", "AreaEmpresa_Aemp_Id", "dbo.AreaEmpresas");
             DropForeignKey("dbo.AspNetUsers", "Empresa_Empr_Nit", "dbo.Empresas");
-            DropForeignKey("dbo.AspNetUsers", "Tvin_Id", "dbo.TipoVinculacions");
-            DropForeignKey("dbo.AspNetUsers", "TipoVinculacion_Tvin_Id", "dbo.TipoVinculacions");
-            DropForeignKey("dbo.AspNetUsers", "Tdoc_Id", "dbo.TipoDocumentoes");
-            DropForeignKey("dbo.AspNetUsers", "TipoDocumento_Tdoc_Id", "dbo.TipoDocumentoes");
-            DropForeignKey("dbo.SedeCiudads", "Empresa_Empr_Nit", "dbo.Empresas");
-            DropForeignKey("dbo.SedeCiudads", "Ciud_Id", "dbo.Ciudads");
-            DropForeignKey("dbo.AspNetUsers", "Sciu_Id", "dbo.SedeCiudads");
             DropForeignKey("dbo.AspNetUserRoles", "UserId", "dbo.AspNetUsers");
             DropForeignKey("dbo.Resultadoes", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.Resultadoes", "Resp_Id", "dbo.Respuestas");
@@ -706,45 +694,28 @@ namespace Plenamente.Migrations
             DropForeignKey("dbo.Preguntas", "Encu_Id", "dbo.Encuestas");
             DropForeignKey("dbo.Encuestas", "Empr_Nit", "dbo.Empresas");
             DropForeignKey("dbo.AspNetUserLogins", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.JornadaEmpresas", "Empr_Nit", "dbo.Empresas");
-            DropForeignKey("dbo.AspNetUsers", "Jemp_Id", "dbo.JornadaEmpresas");
             DropForeignKey("dbo.AspNetUsers", "Jefe_Id", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "Gene_Id", "dbo.Generoes");
-            DropForeignKey("dbo.AspNetUsers", "Genero_Gene_Id", "dbo.Generoes");
-            DropForeignKey("dbo.AspNetUsers", "Espe_Id", "dbo.EstadoPersonas");
-            DropForeignKey("dbo.AspNetUsers", "EstadoPersona_Stem_Id", "dbo.EstadoPersonas");
-            DropForeignKey("dbo.AspNetUsers", "Eps_Id", "dbo.Eps");
-            DropForeignKey("dbo.AspNetUsers", "Eps_Eps_Id", "dbo.Eps");
             DropForeignKey("dbo.Cumplimientoes", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AspNetUserClaims", "UserId", "dbo.AspNetUsers");
-            DropForeignKey("dbo.AspNetUsers", "Ciud_Id", "dbo.Ciudads");
-            DropForeignKey("dbo.AspNetUsers", "Ciudad_Ciud_Id", "dbo.Ciudads");
-            DropForeignKey("dbo.AspNetUsers", "Cate_Id", "dbo.CateLicencias");
-            DropForeignKey("dbo.AspNetUsers", "Cemp_Id", "dbo.CargoEmpresas");
-            DropForeignKey("dbo.CargoEmpresas", "Empr_Nit", "dbo.Empresas");
-            DropForeignKey("dbo.AspNetUsers", "CargoEmpresa_Cemp_Id", "dbo.CargoEmpresas");
-            DropForeignKey("dbo.AspNetUsers", "Arl_Id", "dbo.Arls");
-            DropForeignKey("dbo.Empresas", "Arl_Id", "dbo.Arls");
-            DropForeignKey("dbo.AspNetUsers", "Arl_Arl_Id", "dbo.Arls");
-            DropForeignKey("dbo.AreaEmpresas", "Empr_Nit", "dbo.Empresas");
-            DropForeignKey("dbo.AspNetUsers", "Aemp_Id", "dbo.AreaEmpresas");
-            DropForeignKey("dbo.AspNetUsers", "Afp_Id", "dbo.Afps");
-            DropForeignKey("dbo.AspNetUsers", "Afp_Afp_Id", "dbo.Afps");
             DropForeignKey("dbo.ActiCumplimientoes", "ApplicationUser_Id", "dbo.AspNetUsers");
             DropForeignKey("dbo.AcumMes", "Acum_Id", "dbo.ActiCumplimientoes");
             DropForeignKey("dbo.AspNetUserRoles", "RoleId", "dbo.AspNetRoles");
-            DropIndex("dbo.EprotEmpresas", new[] { "Epro_Id" });
             DropIndex("dbo.Estandars", new[] { "Crit_Id" });
             DropIndex("dbo.ItemEstandars", new[] { "Esta_Id" });
             DropIndex("dbo.ZonaEmpresas", new[] { "Empr_Nit" });
+            DropIndex("dbo.SedeCiudads", new[] { "Empresa_Empr_Nit" });
+            DropIndex("dbo.SedeCiudads", new[] { "Ciud_Id" });
             DropIndex("dbo.ReglaInternoes", new[] { "Empr_Nit" });
             DropIndex("dbo.ReglaHigienes", new[] { "Empr_Nit" });
             DropIndex("dbo.ProcactEmpresas", new[] { "Pact_Id" });
             DropIndex("dbo.ProcactEmpresas", new[] { "Empr_Nit" });
             DropIndex("dbo.Politicas", new[] { "Empr_Nit" });
             DropIndex("dbo.ObjEmpresas", new[] { "Empr_Nit" });
-            DropIndex("dbo.SedeCiudads", new[] { "Empresa_Empr_Nit" });
-            DropIndex("dbo.SedeCiudads", new[] { "Ciud_Id" });
+            DropIndex("dbo.JornadaEmpresas", new[] { "Empr_Nit" });
+            DropIndex("dbo.EprotEmpresas", new[] { "Epro_Id" });
+            DropIndex("dbo.EprotEmpresas", new[] { "Empr_Nit" });
+            DropIndex("dbo.CargoEmpresas", new[] { "Empr_Nit" });
+            DropIndex("dbo.AreaEmpresas", new[] { "Empr_Nit" });
             DropIndex("dbo.Respuestas", new[] { "Preg_Id" });
             DropIndex("dbo.Preguntas", new[] { "Encu_Id" });
             DropIndex("dbo.Encuestas", new[] { "Empr_Nit" });
@@ -753,35 +724,23 @@ namespace Plenamente.Migrations
             DropIndex("dbo.Resultadoes", new[] { "Resp_Id" });
             DropIndex("dbo.Resultadoes", new[] { "Encu_Id" });
             DropIndex("dbo.AspNetUserLogins", new[] { "UserId" });
-            DropIndex("dbo.JornadaEmpresas", new[] { "Empr_Nit" });
             DropIndex("dbo.AspNetUserClaims", new[] { "UserId" });
-            DropIndex("dbo.CargoEmpresas", new[] { "Empr_Nit" });
-            DropIndex("dbo.AreaEmpresas", new[] { "Empr_Nit" });
-            DropIndex("dbo.AspNetUsers", new[] { "Empresa_Empr_Nit" });
             DropIndex("dbo.AspNetUsers", new[] { "TipoVinculacion_Tvin_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "TipoDocumento_Tdoc_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "Genero_Gene_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "EstadoPersona_Stem_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "EstadoPersona_Espe_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "Eps_Eps_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "CateLicencia_Cate_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "Afp_Afp_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "Ciudad_Ciud_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "SedeCiudad_Sciu_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "JornadaEmpresa_Jemp_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "CargoEmpresa_Cemp_Id" });
             DropIndex("dbo.AspNetUsers", new[] { "Arl_Arl_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Afp_Afp_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "AreaEmpresa_Aemp_Id" });
+            DropIndex("dbo.AspNetUsers", new[] { "Empresa_Empr_Nit" });
             DropIndex("dbo.AspNetUsers", "UserNameIndex");
             DropIndex("dbo.AspNetUsers", new[] { "Jefe_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Espe_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Arl_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Afp_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Eps_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Tvin_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Jemp_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Gene_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Cate_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Aemp_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Cemp_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Ciud_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Sciu_Id" });
-            DropIndex("dbo.AspNetUsers", new[] { "Tdoc_Id" });
             DropIndex("dbo.Empresas", new[] { "Carl_Id" });
             DropIndex("dbo.Empresas", new[] { "Arl_Id" });
             DropIndex("dbo.Cumplimientoes", new[] { "ApplicationUser_Id" });
@@ -799,8 +758,13 @@ namespace Plenamente.Migrations
             DropIndex("dbo.AspNetUserRoles", new[] { "RoleId" });
             DropIndex("dbo.AspNetUserRoles", new[] { "UserId" });
             DropIndex("dbo.AspNetRoles", "RoleNameIndex");
-            DropTable("dbo.EprotEmpresas");
-            DropTable("dbo.EleProteccions");
+            DropTable("dbo.TipoVinculacions");
+            DropTable("dbo.TipoDocumentoes");
+            DropTable("dbo.Generoes");
+            DropTable("dbo.EstadoPersonas");
+            DropTable("dbo.Eps");
+            DropTable("dbo.CateLicencias");
+            DropTable("dbo.Afps");
             DropTable("dbo.Periodoes");
             DropTable("dbo.Frecuencias");
             DropTable("dbo.Mes");
@@ -809,32 +773,27 @@ namespace Plenamente.Migrations
             DropTable("dbo.Estandars");
             DropTable("dbo.ItemEstandars");
             DropTable("dbo.ZonaEmpresas");
+            DropTable("dbo.Ciudads");
+            DropTable("dbo.SedeCiudads");
             DropTable("dbo.ReglaInternoes");
             DropTable("dbo.ReglaHigienes");
             DropTable("dbo.ProcesActividads");
             DropTable("dbo.ProcactEmpresas");
             DropTable("dbo.Politicas");
             DropTable("dbo.ObjEmpresas");
+            DropTable("dbo.JornadaEmpresas");
+            DropTable("dbo.EleProteccions");
+            DropTable("dbo.EprotEmpresas");
             DropTable("dbo.ClaseArls");
-            DropTable("dbo.TipoVinculacions");
-            DropTable("dbo.TipoDocumentoes");
-            DropTable("dbo.SedeCiudads");
+            DropTable("dbo.CargoEmpresas");
+            DropTable("dbo.Arls");
+            DropTable("dbo.AreaEmpresas");
             DropTable("dbo.Respuestas");
             DropTable("dbo.Preguntas");
             DropTable("dbo.Encuestas");
             DropTable("dbo.Resultadoes");
             DropTable("dbo.AspNetUserLogins");
-            DropTable("dbo.JornadaEmpresas");
-            DropTable("dbo.Generoes");
-            DropTable("dbo.EstadoPersonas");
-            DropTable("dbo.Eps");
             DropTable("dbo.AspNetUserClaims");
-            DropTable("dbo.Ciudads");
-            DropTable("dbo.CateLicencias");
-            DropTable("dbo.CargoEmpresas");
-            DropTable("dbo.Arls");
-            DropTable("dbo.AreaEmpresas");
-            DropTable("dbo.Afps");
             DropTable("dbo.AspNetUsers");
             DropTable("dbo.Empresas");
             DropTable("dbo.Cumplimientoes");
