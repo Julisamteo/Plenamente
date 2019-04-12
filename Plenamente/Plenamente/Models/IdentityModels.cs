@@ -26,51 +26,38 @@ namespace Plenamente.Models
         public string Pers_Cemeg { get; set; }
         public int Pers_Temeg { get; set; }
         public DateTime Pers_Registro { get; set; }
-        public string Test { get; set; }
 
 
-        [ForeignKey("TipoDocumento")]
         public int Tdoc_Id { get; set; }
         public TipoDocumento TipoDocumento { get; set; }
-        [ForeignKey("SedeCiudad")]
         public int Sciu_Id { get; set; }
         public SedeCiudad SedeCiudad { get; set; }
-        [ForeignKey("Ciudad")]
         public int Ciud_Id { get; set; }
         public Ciudad Ciudad { get; set; }
-        [ForeignKey("CargoEmpresa")]
         public int Cemp_Id { get; set; }
         public CargoEmpresa CargoEmpresa { get; set; }
-        [ForeignKey("AreaEmpresa")]
         public int Aemp_Id { get; set; }
         public AreaEmpresa AreaEmpresa { get; set; }
-        [ForeignKey("CateLicencia")]
         public int Cate_Id { get; set; }
         public CateLicencia CateLicencia { get; set; }
-        [ForeignKey("Genero")]
         public int Gene_Id { get; set; }
         public Genero Genero { get; set; }
-        [ForeignKey("JornadaEmpresa")]
         public int Jemp_Id { get; set; }
         public JornadaEmpresa JornadaEmpresa { get; set; }
-        [ForeignKey("TipoVinculacion")]
         public int Tvin_Id { get; set; }
         public TipoVinculacion TipoVinculacion { get; set; }
-        [ForeignKey("EPS")]
         public int Eps_Id { get; set; }
         public Eps Eps { get; set; }
-        [ForeignKey("AFP")]
         public int Afp_Id { get; set; }
         public Afp Afp { get; set; }
-        [ForeignKey("ARL")]
         public int Arl_Id { get; set; }
         public Arl Arl { get; set; }
-        [ForeignKey("Empresa")]
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
-        [ForeignKey("EstadoPersona")]
         public int Espe_Id { get; set; }
         public EstadoPersona EstadoPersona { get; set; }
+        public string Jefe_Id { get; set; }
+        public ApplicationUser Jefe { get; set; }
 
         // Permite que Resultado acceda a la data
         public ICollection<Resultado> Resultados { get; set; }
@@ -92,15 +79,72 @@ namespace Plenamente.Models
     {
         public ApplicationDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
-
         {
-           
         }
+        public DbSet<Afp> Tb_Afp { get; set; }
+        public DbSet<AreaEmpresa> Tb_AreaEmpresa { get; set; }
+        public DbSet<Arl> Tb_Arl { get; set; }
+        public DbSet<CargoEmpresa> Tb_CargoEmpresa { get; set; }
+        public DbSet<CateLicencia> Tb_CateLicencia { get; set; }
+        public DbSet<Ciudad> Tb_Ciudad { get; set; }
+        public DbSet<ClaseArl> Tb_ClaseArl { get; set; }
+        public DbSet<EleProteccion> Tb_EleProteccion { get; set; }
+        public DbSet<Empresa> Tb_Empresa { get; set; }
+        public DbSet<EprotEmpresa> Tb_EprotEmpresa { get; set; }
+        public DbSet<Eps> Tb_Eps { get; set; }
+        public DbSet<EstadoPersona> Tb_EstadoPersona { get; set; }
+        public DbSet<Genero> Tb_Genero { get; set; }
+        public DbSet<JornadaEmpresa> Tb_JornadaEmpresa { get; set; }
+        public DbSet<Politica> Tb_politica { get; set; }
+        public DbSet<ProcactEmpresa> Tb_ProcactEmpresa { get; set; }
+        public DbSet<ProcesActividad> Tb_ProcesActividad { get; set; }
+        public DbSet<ReglaHigiene> Tb_ReglaHigiene { get; set; }
+        public DbSet<ReglaInterno> Tb_ReglaInterno { get; set; }
+        public DbSet<SedeCiudad> Tb_SedeCiudad { get; set; }
+        public DbSet<TipoDocumento> Tb_TipoDocumento { get; set; }
+        public DbSet<TipoVinculacion> Tb_TipoVinculacion { get; set; }
 
         public static ApplicationDbContext Create()
         {
-
             return new ApplicationDbContext();
+        }
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            //Llave reflexiva
+            modelBuilder.Entity<ApplicationUser>().
+                HasOptional(u => u.Jefe).WithMany().HasForeignKey(x => x.Jefe_Id);
+            //Foraneas obligatorias
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.Afp).WithMany().HasForeignKey(x => x.Afp_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.Arl).WithMany().HasForeignKey(x => x.Arl_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.Eps).WithMany().HasForeignKey(x => x.Eps_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.CargoEmpresa).WithMany().HasForeignKey(x => x.Cemp_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.Ciudad).WithMany().HasForeignKey(x => x.Ciud_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.Empresa).WithMany().HasForeignKey(x => x.Empr_Nit);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.EstadoPersona).WithMany().HasForeignKey(x => x.Espe_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.Genero).WithMany().HasForeignKey(x => x.Gene_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.TipoDocumento).WithMany().HasForeignKey(x => x.Tdoc_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasRequired(u => u.TipoVinculacion).WithMany().HasForeignKey(x => x.Tvin_Id);
+            //Foraneas no-obligatorias
+            modelBuilder.Entity<ApplicationUser>().
+                HasOptional(u => u.SedeCiudad).WithMany().HasForeignKey(x => x.Sciu_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasOptional(u => u.AreaEmpresa).WithMany().HasForeignKey(x => x.Aemp_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasOptional(u => u.CateLicencia).WithMany().HasForeignKey(x => x.Cate_Id);
+            modelBuilder.Entity<ApplicationUser>().
+                HasOptional(u => u.JornadaEmpresa).WithMany().HasForeignKey(x => x.Jemp_Id);
+
+            base.OnModelCreating(modelBuilder);
         }
     }
 }

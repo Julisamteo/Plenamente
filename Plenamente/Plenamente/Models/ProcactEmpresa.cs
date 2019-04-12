@@ -12,11 +12,11 @@ namespace Plenamente.Models
         [Key]
         public int Paem_Id { get; set; }
         //ForeignkEY Empresa
-        [ForeignKey("Id Emresa")]
+        [ForeignKey("Empresa")]
         public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
         //Foreign key de la tabla Procesactividad 
-        [ForeignKey("Id Proceso Actividad")]
+        [ForeignKey("ProcesActividad")]
         public int Pact_Id { get; set; }
         public ProcesActividad ProcesActividad { get; set; }
         //Fin Foreign Key 
