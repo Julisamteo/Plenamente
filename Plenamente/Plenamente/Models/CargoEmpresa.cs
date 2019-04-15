@@ -9,6 +9,10 @@ namespace Plenamente.Models
 {
     public class CargoEmpresa
     {
+       public CargoEmpresa ()
+            {
+            Cemp_Registro = DateTime.Now;
+        }
         [Key]
         public int Cemp_Id { get; set; }
         public string Cemp_Nom { get; set; }
