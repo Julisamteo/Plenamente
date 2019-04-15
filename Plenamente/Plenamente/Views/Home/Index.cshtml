@@ -2,30 +2,56 @@
     ViewBag.Title = "Home Page";
 }
 
-<div class="jumbotron">
-    <h1>ASP.NET</h1>
-    <p class="lead">ASP.NET is a free web framework for building great Web sites and Web applications using HTML, CSS and JavaScript.</p>
-    <p><a href="https://asp.net" class="btn btn-primary btn-lg">Learn more &raquo;</a></p>
-</div>
+<div class="dobleContenedor">
+    <div class="primerContenedor">
+        <img src="~/Imagenes/brooke-cagle-1181684-unsplash.jpg" />
+    </div>
+    <div class="segundoContenedor">
+        <div class="wrapper fadeInDown">
+            <div id="formContent">
+                <!-- Tabs Titles -->
+                <!-- Icon -->
+                <div class="fadeIn first">
+                    <img class="imagenLogin" src="~/Imagenes/Plenamente2.png" />
+                </div>
 
-<div class="row">
-    <div class="col-md-4">
-        <h2>Getting started</h2>
-        <p>
-            ASP.NET MVC gives you a powerful, patterns-based way to build dynamic websites that
-            enables a clean separation of concerns and gives you full control over markup
-            for enjoyable, agile development.
-        </p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301865">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Get more libraries</h2>
-        <p>NuGet is a free Visual Studio extension that makes it easy to add, remove, and update libraries and tools in Visual Studio projects.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301866">Learn more &raquo;</a></p>
-    </div>
-    <div class="col-md-4">
-        <h2>Web Hosting</h2>
-        <p>You can easily find a web hosting company that offers the right mix of features and price for your applications.</p>
-        <p><a class="btn btn-default" href="https://go.microsoft.com/fwlink/?LinkId=301867">Learn more &raquo;</a></p>
+                <!-- Login Form -->
+                <form asp-controller="Home" asp-action="Index" method="post">
+                    <input type="email" id="login" class="fadeIn second" placeholder="Usuario">
+                    <br />
+                    <input type="password" id="password" class="fadeIn third" placeholder="Contraseña">
+                    <br />
+                    <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
+                </form>
+
+                <!-- Remind Passowrd -->
+                <div id="formFooter">
+                    <a class="underlineHover">¿Olvidó su contraseña?</a>
+                </div>
+            </div>
+        </div>
     </div>
 </div>
+<div class="fotterPrincipal">
+    <div class="textoFotter">
+        <div class="imagenesContacto">
+            <img src="~/Imagenes/marcador-de-posicion.png" />
+            <img src="~/Imagenes/bocadillo.png" />
+            <img src="~/Imagenes/mano-sosteniendo-smartphone.png" />
+        </div>
+        <div class="textoContacto">
+            <a class="underlineHover" href="#">Carrera 16 No 31A-27 <br />Bogotá-Colombia</a>
+            <a class="underlineHover" href="#">contacto@plenamentetrabajando.com</a>
+            <a class="underlineHover" href="#">+57 311 2666 345</a>
+        </div>
+    </div>
+    <div class="redesSociales">
+        <a href="#"><img src="~/Imagenes/Logo_FB.png" /></a>
+        <a href="#"><img src="~/Imagenes/Logo_INT.png" /></a>
+        <a href="#"><img src="~/Imagenes/Logo_TW.png" /></a>
+        <a href="#"><img src="~/Imagenes/Logo_YT.png" /></a>
+    </div>
+</div>
+@*@section Scripts{
+    <partial name="_ValidationScriptsPartial" />
+}*@

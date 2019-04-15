@@ -1,0 +1,114 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>@ViewData["Title"] - PTSST</title>
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+          crossorigin="anonymous">
+    <link href="~/Content/estilosParciales.css" rel="stylesheet" />
+</head>
+<body>
+
+    <div class="contenedorPrincipal">
+        <div class="contenedor-menu">
+            <a href="#" class="btn-menu">Menú<i class="icono fa fa-bars"></i></a>
+            <ul class="menu">
+                <li>
+                    <a href="#">Modulo 1<i class="icono derecha fa fa-chevron-down"></i></a>
+                    <ul class="subMenu">
+                        <li>
+                            <a href="#">Datos Generales<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1">
+                                <li>
+                                    <a asp-area="Admin" asp-controller="Cargos" asp-action="Index"> Cargos empleados<i class="icono derecha fa fa-chevron-down"></i></a>
+                                    @*<ul class="subMenu2">
+                                            <li><a href="#">Item 1</a></li>
+                                        </ul>*@
+                                </li>
+                                <li><a asp-area="Admin" asp-controller="Arealistas" asp-action="Index"><i class="icono derecha"></i>Áreas empresa<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a asp-area="Admin" asp-controller="Zonafisicas" asp-action="Index"><i class="icono derecha"></i>Zonas fisicas<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a asp-area="Admin" asp-controller="Sedeciudades" asp-action="Index"><i class="icono derecha"></i>Centros de trabajo<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a asp-area="Admin" asp-controller="Eleproteccions" asp-action="Index"><i class="icono derecha"></i>Elementos de protección<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a asp-area="Admin" asp-controller="Procesactividades" asp-action="Index"><i class="icono derecha"></i>Procesos y actividades <i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a asp-area="Admin" asp-controller="Personas" asp-action="Index"><i class="icono derecha"></i>Informacíon trabajadores <i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="#"><i class="icono derecha"></i>Politicas de la empresa<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="#"><i class="icono derecha"></i>Reglamento higiene y seguridad<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="#"><i class="icono derecha"></i>Cargue - Reglamento interno<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                            </ul>
+                        <li>
+                            <a href="#">Encuesta Sociodemografica<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1">
+                                @*<li>
+                                        <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                        <ul class="subMenu2">
+                                            <li><a href="">Item 1</a></li>
+                                        </ul>
+                                    </li>*@
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Autoevalución SST<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1">
+                                @*<li>
+                                        <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                        <ul class="subMenu2">
+                                            <li><a href="">Item 1</a></li>
+                                        </ul>
+                                    </li>*@
+                            </ul>
+                        </li>
+                        <li>
+                            <a href="#">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1">
+                                @*<li>
+                                        <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                        <ul class="subMenu2">
+                                            <li><a href="">Item 1</a></li>
+                                        </ul>
+                                    </li>*@
+                            </ul>
+                        </li>
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
+                    <ul class="subMenu">
+                        @*<li>
+                                        <a href="#">Modulo 1<i class="icono derecha fa fa-chevron-down"></i></a>
+                                        <ul class="subMenu1">
+                                            <li><a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        </ul>
+                                    <li>
+                                        <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
+                                        <ul class="subMenu1">
+                                            <li>
+                                                <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                                <ul class="subMenu2">
+                                                    <li><a href="">Item 1</a></li>
+                                                </ul>
+                                            </li>
+                                            <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                            <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        </ul>
+                                    </li>
+                                </ul>
+                            </li>*@
+                    </ul>
+        </div>
+
+    </div>
+
+    <script src="~/Scripts/jquery-1.10.2.min.js"></script>
+    <script src="~/Scripts/bootstrap1.js"></script>
+    <script src="~/Scripts/main1.js"></script>
+    <script src="~/Scripts/main2.js"></script>
+</body>
+</html>
