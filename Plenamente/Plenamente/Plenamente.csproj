@@ -177,9 +177,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904151945064_Db_Plenamenteup.cs" />
-    <Compile Include="Migrations\201904151945064_Db_Plenamenteup.Designer.cs">
-      <DependentUpon>201904151945064_Db_Plenamenteup.cs</DependentUpon>
+    <Compile Include="Migrations\201904152009291_PleanamenteAll.cs" />
+    <Compile Include="Migrations\201904152009291_PleanamenteAll.Designer.cs">
+      <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -309,8 +309,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904151945064_Db_Plenamenteup.resx">
-      <DependentUpon>201904151945064_Db_Plenamenteup.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904152009291_PleanamenteAll.resx">
+      <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
