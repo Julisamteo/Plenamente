@@ -108,6 +108,6 @@ namespace Plenamente.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<Plenamente.Models.ApplicationUser> ApplicationUsers { get; set; }
+        
     }
 }
