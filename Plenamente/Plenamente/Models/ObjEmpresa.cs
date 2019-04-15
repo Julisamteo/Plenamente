@@ -12,6 +12,7 @@ namespace Plenamente.Models
         public int Oemp_Id { get; set; }
         public string Oemp_Nombre { get; set; }
         public string Oemp_Descrip { get; set; }
+        public string Oemp_Meta { get; set; }
         public DateTime Oemp_Registro { get; set; }
 
         // Foreign Key Empresa
