@@ -50,13 +50,17 @@ namespace Plenamente.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
         {
+
             if (ModelState.IsValid)
             {
+             
+
                 db.Tb_ReglaInterno.Add(reglaInterno);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
+            
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
             return View(reglaInterno);
         }
