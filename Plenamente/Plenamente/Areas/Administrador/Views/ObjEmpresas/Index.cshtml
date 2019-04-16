@@ -1,0 +1,58 @@
+﻿@model IEnumerable<Plenamente.Models.ObjEmpresa>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oemp_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oemp_Descrip)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Oemp_Meta)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Oemp_Registro)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oemp_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oemp_Descrip)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Oemp_Meta)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Oemp_Registro)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Oemp_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Oemp_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Oemp_Id })
+        </td>
+    </tr>
+}
+
+</table>

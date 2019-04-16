@@ -1,0 +1,65 @@
+﻿@model Plenamente.Models.ObjEmpresa
+
+@{
+    ViewBag.Title = "Delete";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Delete</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<div>
+    <h4>ObjEmpresa</h4>
+    <hr />
+    <dl class="dl-horizontal">
+        <dt>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Nombre)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Nombre)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Descrip)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Descrip)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Meta)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Meta)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Registro)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Oemp_Registro)
+        </dd>
+
+    </dl>
+
+    @using (Html.BeginForm()) {
+        @Html.AntiForgeryToken()
+
+        <div class="form-actions no-color">
+            <input type="submit" value="Delete" class="btn btn-default" /> |
+            @Html.ActionLink("Back to List", "Index")
+        </div>
+    }
+</div>
