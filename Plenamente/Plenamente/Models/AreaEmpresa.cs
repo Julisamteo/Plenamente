@@ -9,6 +9,10 @@ namespace Plenamente.Models
 {
     public class AreaEmpresa
     {
+        public AreaEmpresa()
+        {
+            Aemp_Registro = DateTime.Now;
+        }
         [Key]
         public int Aemp_Id { get; set; }
         public string Aemp_Nom { get; set; }

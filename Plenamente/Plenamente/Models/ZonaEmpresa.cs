@@ -9,6 +9,10 @@ namespace Plenamente.Models
 {
     public class ZonaEmpresa
     {
+        public ZonaEmpresa ()
+        {
+            Zemp_Registro = DateTime.Now;
+        }
         [Key]
         public int Zemp_Id { get; set; }
         public string Zemp_Nom { get; set; }
