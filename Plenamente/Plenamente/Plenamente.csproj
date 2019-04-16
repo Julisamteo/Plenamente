@@ -177,6 +177,7 @@
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
@@ -336,6 +337,11 @@
     <Content Include="Areas\Administrador\Views\ZonaEmpresas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\ZonaEmpresas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\ZonaEmpresas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
