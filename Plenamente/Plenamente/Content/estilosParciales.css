@@ -487,11 +487,15 @@ a {
 /*Estilos Tablas index*/
 .tablaVista {
     border-collapse: collapse;
-    margin: 0;
+    margin: auto;
     padding: 0;
     width: 100%;
+    max-width:1000px;
     table-layout: fixed;
 }
+    .tablaVista a {
+        color: #6CB52D;
+    }
 
     .tablaVista caption {
         font-size: 1.5em;
@@ -529,14 +533,17 @@ a {
     background-color: #6CB52D;
 }
 
-    .colorVerdeBack h2 {
+    .colorVerdeBack p {
+        padding: 20px;
+        font-size:24px;
         color: #fff;
     }
 
 .centrarContenido {
     display: block;
     width: 50%;
-    margin: 5%;
+    margin: auto;
+    margin-top: 5%;
 }
 
 .contenedorBotones p {
@@ -1454,7 +1461,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset], input[type=file] {
+input[type=button], input[type=submit], input[type=reset], input[type=file]{
     background-color: #6CB52D;
     border: none;
     color: white;
@@ -1480,7 +1487,7 @@ input[type=button], input[type=submit], input[type=reset], input[type=file] {
         background-color: #5AB60B;
     }
 
-    input[type=button]:active, input[type=submit]:active, input[type=reset], input[type=email], input[type=file]:active {
+    input[type=button]:active, input[type=submit]:active, input[type=reset]:active, input[type=email]:active, input[type=file]:active{
         -moz-transform: scale(0.95);
         -webkit-transform: scale(0.95);
         -o-transform: scale(0.95);
@@ -1488,7 +1495,8 @@ input[type=button], input[type=submit], input[type=reset], input[type=file] {
         transform: scale(0.95);
     }
 
-input[type=text], input[type=password], input[type=email] {
+
+input[type=text], input[type=password], input[type=email], .estilosSelect {
     background-color: #f6f6f6;
     border: none;
     color: #0d0d0d;
@@ -1509,7 +1517,7 @@ input[type=text], input[type=password], input[type=email] {
     border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text], input[type=email], input[type=file]:focus {
+input[type=text], input[type=email], input[type=file]:focus, .estilosSelect:focus {
     background-color: #fff;
     border-bottom: 2px solid #6CB52D;
 }

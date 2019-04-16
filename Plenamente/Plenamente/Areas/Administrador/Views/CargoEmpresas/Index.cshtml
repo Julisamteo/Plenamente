@@ -1,47 +1,63 @@
-﻿@model IEnumerable<Plenamente.Models.CargoEmpresa>
+﻿@model PagedList.IPagedList<Plenamente.Models.CargoEmpresa>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
+<div class="colorVerdeBack">
+    <p>Cargos</p>
+</div>
 
-<h2>Index</h2>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="Index" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="Create" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cemp_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Cemp_Registro)
-        </th>
-        <th></th>
-    </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Cemp_Nom)
-        </td>
-        @*Campo Registro Comentado*@
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Cemp_Registro)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Cemp_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Cemp_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Cemp_Id })
-        </td>
-    </tr>
-}
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                @*@Html.DisplayNameFor(model => model.Empresa.Empr_Nom)*@
+                Nombre empresa
+            </th>
+            <th class="colorVerde">
+                @*@Html.DisplayNameFor(model => model.Cemp_Nom)*@
+                Nombre del cargo
+            </th>
+            <th class="colorVerde">
 
+            </th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Cemp_Nom)
+                </td>
+                @*Campo Registro Comentado*@
+                @*<td>
+                        @Html.DisplayFor(modelItem => item.Cemp_Registro)
+                    </td>*@
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Cemp_Id }) |
+                    @*@Html.ActionLink("Details", "Details", new { id = item.Cemp_Id }) |*@
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Cemp_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 </table>
+    
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
