@@ -1,0 +1,268 @@
+﻿@model IEnumerable<Plenamente.Models.ApplicationUser>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Afp.Afp_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AreaEmpresa.Aemp_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Arl.Arl_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CargoEmpresa.Cemp_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.CateLicencia.Cate_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Ciudad.Ciud_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Eps.Eps_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EstadoPersona.Espe_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Genero.Gene_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Jefe.Pers_Nom1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.JornadaEmpresa.Jemp_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SedeCiudad.Sciu_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoDocumento.Tdoc_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TipoVinculacion.Tvin_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Doc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Nom1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Nom2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Apel1)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Apel2)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Licencia)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_LicVence)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Foto)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Ingreso)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Retiro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Dir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Cemeg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Temeg)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pers_Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Email)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.EmailConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PasswordHash)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.SecurityStamp)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.PhoneNumberConfirmed)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.TwoFactorEnabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LockoutEndDateUtc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.LockoutEnabled)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.AccessFailedCount)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.UserName)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afp.Afp_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CargoEmpresa.Cemp_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CateLicencia.Cate_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciudad.Ciud_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eps.Eps_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Genero.Gene_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.JornadaEmpresa.Jemp_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoDocumento.Tdoc_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TipoVinculacion.Tvin_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Doc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Nom1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Nom2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Apel1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Apel2)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Licencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_LicVence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Foto)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Ingreso)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Retiro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Dir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Cemeg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Temeg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.EmailConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PasswordHash)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.SecurityStamp)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumber)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.PhoneNumberConfirmed)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.TwoFactorEnabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LockoutEnabled)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.AccessFailedCount)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.UserName)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
