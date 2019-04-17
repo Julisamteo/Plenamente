@@ -9,10 +9,16 @@ namespace Plenamente.Models
 {
     public class Encuesta
     {
+        public Encuesta()
+        {
+            Encu_Creacion = DateTime.Now;
+            Encu_Registro = DateTime.Now;
+        }
         [Key]
         public int Encu_Id { get; set; }
         public DateTime Encu_Creacion { get; set; }
-        public DateTime Encu_Vence { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Encu_Vence { get; set; } 
         public bool Encu_Estado { get; set; }
         public DateTime Encu_Registro { get; set; }
 

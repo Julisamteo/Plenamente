@@ -1,12 +1,12 @@
-﻿@model PagedList.IPagedList<Plenamente.Models.CargoEmpresa>
-@using PagedList.Mvc;
+﻿@model IEnumerable<Plenamente.Models.Encuesta>
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
+
 <div class="colorVerdeBack">
-    <p>Cargos</p>
+    <p>Encuestas</p>
 </div>
 
 <div class="contenedorBotones">
@@ -17,30 +17,20 @@
         <a href="Create" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
     </form>
 </div>
-<div>
-    <h2>Excel Import</h2>
-    <form method="post" enctype="multipart/form-data">
-        <div>
-            <asp:FileUpload ID="FileUpload1" runat="server" />
-            <asp:Button ID="Button1" OnClick="UploadF" runat="server" Text="Importer" />
-        </div>
-    </form>
-</div>
-
 <table id="tablaVista" class="tablaVista">
     <thead class="cabeceraTabla">
         <tr>
             <th class="colorVerde">
-                @*@Html.DisplayNameFor(model => model.Empresa.Empr_Nom)*@
-                Nombre empresa
+               Empresa
             </th>
             <th class="colorVerde">
-                @*@Html.DisplayNameFor(model => model.Cemp_Nom)*@
-                Nombre del cargo
+                Fecha Vencimiento
             </th>
             <th class="colorVerde">
-
+               Estado 
             </th>
+            
+            <th class="colorVerde"></th>
         </tr>
     </thead>
     <tbody class="cuerpoTabla">
@@ -51,16 +41,15 @@
                     @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Cemp_Nom)
+                    @Html.DisplayFor(modelItem => item.Encu_Vence)
                 </td>
-                @*Campo Registro Comentado*@
-                @*<td>
-                        @Html.DisplayFor(modelItem => item.Cemp_Registro)
-                    </td>*@
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Cemp_Id }) |
-                    @*@Html.ActionLink("Details", "Details", new { id = item.Cemp_Id }) |*@
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Cemp_Id })
+                    @Html.DisplayFor(modelItem => item.Encu_Estado)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Encu_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Encu_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Encu_Id })
                 </td>
             </tr>
         }

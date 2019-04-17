@@ -79,6 +79,10 @@ namespace Plenamente.Models
     public class ApplicationDbContext : IdentityDbContext<ApplicationUser>
     {
         public ApplicationDbContext()
+        {
+        }
+
+        public ApplicationDbContext(string connectionString)
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }

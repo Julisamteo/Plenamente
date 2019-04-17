@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="FileHelpers, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
+      <HintPath>..\packages\FileHelpers.3.4.0\lib\net45\FileHelpers.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -182,6 +185,7 @@
     <Compile Include="Areas\Administrador\AdministradorAreaRegistration.cs" />
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -189,6 +193,10 @@
     <Compile Include="Migrations\201904152009291_PleanamenteAll.cs" />
     <Compile Include="Migrations\201904152009291_PleanamenteAll.Designer.cs">
       <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904171524167_actualizacionTablas.cs" />
+    <Compile Include="Migrations\201904171524167_actualizacionTablas.Designer.cs">
+      <DependentUpon>201904171524167_actualizacionTablas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -331,6 +339,11 @@
     <Content Include="Areas\Administrador\Views\CargoEmpresas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\CargoEmpresas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\CargoEmpresas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -389,6 +402,7 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
+    <Folder Include="Files\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
   <ItemGroup>
@@ -407,6 +421,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904152009291_PleanamenteAll.resx">
       <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904171524167_actualizacionTablas.resx">
+      <DependentUpon>201904171524167_actualizacionTablas.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

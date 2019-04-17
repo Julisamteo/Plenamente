@@ -7,12 +7,21 @@ using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
-using Plenamente.Models;
+using Plenamente.Models;    
+using System.Data.SqlClient;
+using System.Configuration;
+using System.Data.OleDb;
+using System.IO;
+using System.Threading.Tasks;
+using FileHelpers;
+using FileHelpers.DataLink;
+using System.Web.UI;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
     public class CargoEmpresasController : Controller
     {
+       
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/CargoEmpresas
@@ -34,7 +43,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var cargos = from s in db.Tb_CargoEmpresa
-                           select s;
+                         select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 cargos = cargos.Where(s => s.Cemp_Nom.Contains(searchString)
@@ -49,11 +58,11 @@ namespace Plenamente.Areas.Administrador.Controllers
                     cargos = cargos.OrderBy(s => s.Cemp_Nom);
                     break;
             }
-
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(cargos.ToPagedList(pageNumber, pageSize));
         }
+       
 
         // GET: Administrador/CargoEmpresas/Details/5
         public ActionResult Details(int? id)
