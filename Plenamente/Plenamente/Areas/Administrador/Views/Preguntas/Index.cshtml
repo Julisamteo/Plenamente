@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Plenamente.Models.Pregunta>
-
+﻿@model PagedList.IPagedList<Plenamente.Models.Pregunta>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
@@ -43,3 +43,11 @@
         }
     </tbody>
 </table>
+
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+
+
+<div class="contenidoVolver">
+    <a href="../Encuestas/Index" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>

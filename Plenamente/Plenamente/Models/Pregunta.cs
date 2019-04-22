@@ -9,6 +9,11 @@ namespace Plenamente.Models
 {
     public class Pregunta
     {
+        public Pregunta()
+        {
+            Preg_Registro = DateTime.Now;
+        }
+
         [Key]
         public int Preg_Id { get; set; }
         public string Preg_Titulo { get; set; }

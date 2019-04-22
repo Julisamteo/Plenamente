@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Plenamente.Models.Encuesta>
-
+﻿@model PagedList.IPagedList<Plenamente.Models.Encuesta>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
@@ -21,15 +21,15 @@
     <thead class="cabeceraTabla">
         <tr>
             <th class="colorVerde">
-               Empresa
+                Empresa
             </th>
             <th class="colorVerde">
                 Fecha Vencimiento
             </th>
             <th class="colorVerde">
-               Estado 
+                Estado
             </th>
-            
+
             <th class="colorVerde"></th>
         </tr>
     </thead>
@@ -55,3 +55,5 @@
         }
     </tbody>
 </table>
+@Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

@@ -32,25 +32,25 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var cargos = from s in db.Tb_Pregunta
+            var preguntas = from s in db.Tb_Pregunta
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                cargos = cargos.Where(s => s.Preg_Titulo.Contains(searchString)
+                preguntas = preguntas.Where(s => s.Preg_Titulo.Contains(searchString)
                                        || s.Preg_Titulo.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "name_desc":
-                    cargos = cargos.OrderByDescending(s => s.Preg_Titulo);
+                    preguntas = preguntas.OrderByDescending(s => s.Preg_Titulo);
                     break;
                 default:  // Name ascending 
-                    cargos = cargos.OrderBy(s => s.Preg_Titulo);
+                    preguntas = preguntas.OrderBy(s => s.Preg_Titulo);
                     break;
             }
             int pageSize = 5;
             int pageNumber = (page ?? 1);
-            return View(cargos.ToPagedList(pageNumber, pageSize));
+            return View(preguntas.ToPagedList(pageNumber, pageSize));
         }
 
 
