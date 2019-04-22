@@ -162,7 +162,6 @@ namespace Plenamente.Areas.Administrador.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
@@ -171,5 +170,48 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
             base.Dispose(disposing);
         }
+
+        //SqlConnection con = new SqlConnection(ConfigurationManager.ConnectionStrings["con"].ConnectionString);
+        //OleDbConnection Econ;
+        //public ActionResult Index()
+        //{
+        //    return View();
+        //}
+        //[HttpPost]
+        //public ActionResult Index(HttpPostedFileBase file)
+        //{
+        //    string filename = Guid.NewGuid() + Path.GetExtension(file.FileName);
+        //    string filepath = "/excelfolder/" + filename;
+        //    file.SaveAs(Path.Combine(Server.MapPath("/excelfolder"), filename));
+        //    InsertExceldata(filepath, filename);
+        //    return View();
+        //}
+        //private void ExcelConn(string filepath)
+
+        //{
+        //    string constr = string.Format(@"Provider=Microsoft.ACE.OLEDB.12.0;Data Source={0};Extended Properties=""Excel 12.0 Xml;HDR=YES;""", filepath);
+        //    Econ = new OleDbConnection(constr);
+        //}
+        //private void InsertExceldata(string fileepath, string filename)
+        //{
+        //    string fullpath = Server.MapPath("/excelfolder/") + filename;
+        //    ExcelConn(fullpath);
+        //    string query = string.Format("Select * from [{0}]", "Sheet1$");
+        //    OleDbCommand Ecom = new OleDbCommand(query, Econ);
+        //    Econ.Open();
+        //    DataSet ds = new DataSet();
+        //    OleDbDataAdapter oda = new OleDbDataAdapter(query, Econ);
+        //    Econ.Close();
+        //    oda.Fill(ds);
+        //    DataTable dt = ds.Tables[0];
+        //    SqlBulkCopy objbulk = new SqlBulkCopy(con);
+        //    objbulk.DestinationTableName = "Tb_CargoEmpresa";
+        //    objbulk.ColumnMappings.Add("Nombre", "Cemp_Nom");
+        //    objbulk.ColumnMappings.Add("Nit", "Empr_Nit");
+        //    objbulk.ColumnMappings.Add("fecha", "Cemp_Registro");
+        //    con.Open();
+        //    objbulk.WriteToServer(dt);
+        //    con.Close();
+        //}
     }
 }

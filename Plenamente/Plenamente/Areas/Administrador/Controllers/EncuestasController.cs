@@ -42,7 +42,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
             return View();
         }
-
+        
         // POST: Administrador/Encuestas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.

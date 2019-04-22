@@ -401,9 +401,11 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
+    <Folder Include="Areas\Administrador\Views\Preguntas\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Files\" />
     <Folder Include="Views\Encuesta\" />
+    <Folder Include="Views\superEncuesta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />

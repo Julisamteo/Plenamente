@@ -20,20 +20,18 @@
         </div>
         <p>Fecha de vencimiento:</p>
         <br />
-        
-            @Html.EditorFor(model => model.Encu_Vence, new { htmlAttributes = new { @class = "estilosSelect" } })
-    
-            <br />
-            @Html.ValidationMessageFor(model => model.Encu_Vence, "", new { @class = "text-danger" })
 
-            <p>Estado de la encuesta:</p>
-            <br />
+        @Html.EditorFor(model => model.Encu_Vence, new { htmlAttributes = new { @class = "estilosSelect" } })
+
+        <br />
+        @Html.ValidationMessageFor(model => model.Encu_Vence, "", new { @class = "text-danger" })
+
+        <p>Estado de la encuesta:</p>
+        <br />
 
             @Html.EditorFor(model => model.Encu_Estado, new { htmlAttributes = new { @class = "" } })
             @Html.ValidationMessageFor(model => model.Encu_Estado, "", new { @class = "text-danger" })
-            <div class="form-group">
-                <label asp-for="Encuesta">@Html.DisplayFor(Model => Model.Encu_Registro)</label>
-            </div>
+
             <p>Empresa:</p>
             <br />
             @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "estilosSelect" })
