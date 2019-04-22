@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plenamente.Models.Encuesta>
+﻿@model IEnumerable<Plenamente.Models.Pregunta>
 
 @{
     ViewBag.Title = "Index";
@@ -6,7 +6,7 @@
 }
 
 <div class="colorVerdeBack">
-    <p>Encuestas</p>
+    <p>Preguntas</p>
 </div>
 
 <div class="contenedorBotones">
@@ -17,19 +17,13 @@
         <a href="Create" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
     </form>
 </div>
+
 <table id="tablaVista" class="tablaVista">
     <thead class="cabeceraTabla">
         <tr>
             <th class="colorVerde">
-               Empresa
+                Titulo de la pregunta
             </th>
-            <th class="colorVerde">
-                Fecha Vencimiento
-            </th>
-            <th class="colorVerde">
-               Estado 
-            </th>
-            
             <th class="colorVerde"></th>
         </tr>
     </thead>
@@ -38,18 +32,12 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                    @Html.DisplayFor(modelItem => item.Preg_Titulo)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Encu_Vence)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Encu_Estado)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Encu_Id }) |
-                    @Html.ActionLink("Crear Pregunta", "../Preguntas/Index") |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Encu_Id })
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Preg_Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Preg_Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Preg_Id })
                 </td>
             </tr>
         }

@@ -186,6 +186,7 @@
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -197,6 +198,18 @@
     <Compile Include="Migrations\201904171524167_actualizacionTablas.cs" />
     <Compile Include="Migrations\201904171524167_actualizacionTablas.Designer.cs">
       <DependentUpon>201904171524167_actualizacionTablas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904221926326_nuevaMigracion.cs" />
+    <Compile Include="Migrations\201904221926326_nuevaMigracion.Designer.cs">
+      <DependentUpon>201904221926326_nuevaMigracion.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904222003106_nuevaMigracion3.cs" />
+    <Compile Include="Migrations\201904222003106_nuevaMigracion3.Designer.cs">
+      <DependentUpon>201904222003106_nuevaMigracion3.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904222030230_migracion4.cs" />
+    <Compile Include="Migrations\201904222030230_migracion4.Designer.cs">
+      <DependentUpon>201904222030230_migracion4.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -344,6 +357,11 @@
     <Content Include="Areas\Administrador\Views\Encuestas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Encuestas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Encuestas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -401,7 +419,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
-    <Folder Include="Areas\Administrador\Views\Preguntas\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Files\" />
     <Folder Include="Views\Encuesta\" />
@@ -426,6 +443,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904171524167_actualizacionTablas.resx">
       <DependentUpon>201904171524167_actualizacionTablas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904221926326_nuevaMigracion.resx">
+      <DependentUpon>201904221926326_nuevaMigracion.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904222003106_nuevaMigracion3.resx">
+      <DependentUpon>201904222003106_nuevaMigracion3.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904222030230_migracion4.resx">
+      <DependentUpon>201904222030230_migracion4.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -123,6 +123,7 @@ namespace Plenamente.Models
         public DbSet<TipoDocumento> Tb_TipoDocumento { get; set; }
         public DbSet<TipoVinculacion> Tb_TipoVinculacion { get; set; }
         public DbSet<ZonaEmpresa> Tb_ZonaEmpresa {get; set;}
+        public DbSet<Pregunta> Tb_Pregunta { get; set; }
 
         public static ApplicationDbContext Create()
         {
@@ -139,6 +140,5 @@ namespace Plenamente.Models
             base.OnModelCreating(modelBuilder);
         }
 
-        public System.Data.Entity.DbSet<Plenamente.Models.Pregunta> Preguntas { get; set; }
     }
 }

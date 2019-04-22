@@ -20,7 +20,6 @@ namespace Plenamente.Areas.Administrador.Controllers
             var tb_Encuesta = db.Tb_Encuesta.Include(e => e.Empresa);
             return View(tb_Encuesta.ToList());
         }
-
         // GET: Administrador/Encuestas/Details/5
         public ActionResult Details(int? id)
         {
