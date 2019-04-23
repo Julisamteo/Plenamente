@@ -48,12 +48,44 @@
                 </td>
                 <td>
                     @Html.ActionLink("Edit", "Edit", new { id = item.Encu_Id }) |
-                    @Html.ActionLink("Crear Pregunta", "../Preguntas/Index") |
+                    @Html.ActionLink("Ver Preguntas", "../Preguntas/Index", new { id = item.Encu_Id, idEncuesta = item.Encu_Id}) |
                     @Html.ActionLink("Delete", "Delete", new { id = item.Encu_Id })
+
                 </td>
             </tr>
         }
     </tbody>
 </table>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 @Html.PagedListPager(Model, page => Url.Action("Index",
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))

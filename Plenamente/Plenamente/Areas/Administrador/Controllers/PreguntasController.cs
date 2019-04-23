@@ -15,7 +15,7 @@ namespace Plenamente.Areas.Administrador.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page, int id,int idEncuesta)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -33,6 +33,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.CurrentFilter = searchString;
 
             var preguntas = from s in db.Tb_Pregunta
+                            where s.Encu_Id.Equals(idEncuesta)
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
@@ -48,9 +49,12 @@ namespace Plenamente.Areas.Administrador.Controllers
                     preguntas = preguntas.OrderBy(s => s.Preg_Titulo);
                     break;
             }
+           
             int pageSize = 5;
             int pageNumber = (page ?? 1);
             return View(preguntas.ToPagedList(pageNumber, pageSize));
+
+           
         }
 
 
