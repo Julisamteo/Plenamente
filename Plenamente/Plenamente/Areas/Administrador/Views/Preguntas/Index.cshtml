@@ -14,8 +14,8 @@
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
         <a href="Index" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        @*<a href="Create" class="ayudaTitulos"><span>Crear Pregunta individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>*@
-        @Html.ActionLink("Create", "Create")
+        <a href="Create" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+          
     </form>
 </div>
 
@@ -49,7 +49,6 @@
     new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 
-<div class="contenidoVolver">
-    @Html.ActionLink("Administrador", "Index", "Encuestas", new object { },
-new { @class = "AyudaTitulos" })
-</div>
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Index", "Encuestas/Index")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    </div>

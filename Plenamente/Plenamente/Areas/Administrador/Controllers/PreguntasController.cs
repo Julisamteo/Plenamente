@@ -76,7 +76,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Create
-        public ActionResult Create()
+        public ActionResult Create(int id, int idEncuesta)
         {
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id");
             return View();
@@ -87,7 +87,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta)
+        public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int id, int idEncuesta)
         {
             if (ModelState.IsValid)
             {
@@ -134,7 +134,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int idEncuesta)
         {
             if (id == null)
             {
@@ -151,7 +151,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Preguntas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, int idEncuesta)
         {
             Pregunta pregunta = db.Tb_Pregunta.Find(id);
             db.Tb_Pregunta.Remove(pregunta);
