@@ -30,16 +30,21 @@
             <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Preg_Registro)  </label>
         </div>
 
-        <p>Encuesta: </p>
-        @Html.DropDownList("Encu_Id", null, htmlAttributes: new { @class = "estilosSelect" })
-        @Html.ValidationMessageFor(model => model.Encu_Id, "", new { @class = "text-danger" })
-        <input type="submit" value="Create" class="btn btn-default" />
+
+        <div class="form-group">
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.EditorFor(model => model.Encu_Id, new { htmlAttributes = new { @class = "", @Value = @ViewBag.Enci_Id1 } })</label>
+        </div>
+
+
+        @*@Html.DropDownList("Encu_Id", null, htmlAttributes: new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.Encu_Id, "", new { @class = "text-danger", @Value = ViewBag.Enci_Id1 })*@
+        <input type="submit" value="Crear" class="btn btn-default" />
 
     </div>
 }
 
 <div class="contenidoVolver">
-    <a href="@Url.Action("Index", "Preguntas/Index")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    <a href="@Url.Action("Index","Preguntas", new {id=@ViewBag.Enci_Id1, idEnucesta = @ViewBag.Enci_Id1})" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
 
 

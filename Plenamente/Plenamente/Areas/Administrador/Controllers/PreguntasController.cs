@@ -20,6 +20,9 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+            ViewBag.idOriginal = id;
+            ViewBag.idEncuesta1 = idEncuesta;
+
 
             if (searchString != null)
             {
@@ -76,8 +79,9 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Create
-        public ActionResult Create(int id, int idEncuesta)
+        public ActionResult Create(int idEncuesta1)
         {
+            ViewBag.Enci_Id1 = idEncuesta1;
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id");
             return View();
         }
@@ -97,6 +101,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
 
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id", pregunta.Encu_Id);
+            ViewBag.pregId = idEncuesta;
             return View(pregunta);
         }
 
