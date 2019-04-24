@@ -15,12 +15,11 @@ namespace Plenamente.Areas.Administrador.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page, int id,int idEncuesta)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int idEncuesta, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.idOriginal = id;
             ViewBag.idEncuesta1 = idEncuesta;
 
 
@@ -79,7 +78,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Create
-        public ActionResult Create(int idEncuesta1)
+        public ActionResult Create(int ?id, int ?idEncuesta1)
         {
             ViewBag.Enci_Id1 = idEncuesta1;
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id");
@@ -91,7 +90,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int id, int idEncuesta)
+        public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int ?id, int ?idEncuesta)
         {
             if (ModelState.IsValid)
             {
@@ -156,7 +155,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Preguntas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id, int idEncuesta)
+        public ActionResult DeleteConfirmed(int ?id, int idEncuesta)
         {
             Pregunta pregunta = db.Tb_Pregunta.Find(id);
             db.Tb_Pregunta.Remove(pregunta);
