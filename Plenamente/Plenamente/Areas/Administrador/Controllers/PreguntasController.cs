@@ -20,7 +20,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-            ViewBag.idEncuesta1 = idEncuesta;
+            ViewBag.idEncuesta = idEncuesta;
 
 
             if (searchString != null)
@@ -80,9 +80,8 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Create
-        public ActionResult Create(int ?id, int ?idEncuesta1)
+        public ActionResult Create(int ?id, int ?idEncuesta)
         {
-            ViewBag.Enci_Id1 = idEncuesta1;
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id");
             return View();
         }

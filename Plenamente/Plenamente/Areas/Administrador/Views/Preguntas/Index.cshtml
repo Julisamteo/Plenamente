@@ -13,8 +13,8 @@
     <form asp-action="Index" method="get">
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
-        <a href="Index" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "Preguntas", new { @ViewBag.idEncuesta1})" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>  
+        <a href="@Url.Action("Index", "Preguntas", new { @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "Preguntas", new {@ViewBag.id, @ViewBag.Encu_Id})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>  
     </form>
 </div>
 
@@ -49,5 +49,5 @@
 
 
     <div class="contenidoVolver">
-        <a href="@Url.Action("Index", "Encuestas/Index")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+        <a href="@Url.Action("Index", "Encuestas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
     </div>
