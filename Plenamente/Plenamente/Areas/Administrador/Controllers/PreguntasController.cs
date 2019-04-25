@@ -63,8 +63,9 @@ namespace Plenamente.Areas.Administrador.Controllers
 
 
         // GET: Administrador/Preguntas/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Details(int? id, int? idEncuesta)
         {
+            ViewBag.Enci_Id1 = idEncuesta;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -74,6 +75,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 return HttpNotFound();
             }
+
             return View(pregunta);
         }
 

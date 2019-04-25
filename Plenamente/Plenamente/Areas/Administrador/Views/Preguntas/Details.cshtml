@@ -37,7 +37,7 @@
 
     </dl>
 </div>
-<p>
-    @Html.ActionLink("Edit", "Edit", new { id = Model.Preg_Id }) |
-    @Html.ActionLink("Back to List", "Index")
-</p>
+
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index","Preguntas", new {id=@ViewBag.Enci_Id1, idEnucesta = @ViewBag.Enci_Id1})" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
