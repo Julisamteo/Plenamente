@@ -36,7 +36,9 @@
                 </td>
                 <td>
                     @Html.ActionLink("Editar", "Edit", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
-                    @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null)
+                    @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
+                    @Html.ActionLink("Crear Opciones", "Delete", "Preguntas") |
+                    @Html.ActionLink("Ver Opciones", "Delete", "Preguntas")
                 </td>
             </tr>
         }

@@ -5,68 +5,46 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Edit</h2>
+<div class="colorVerdeBack">
+    <p>Editar encuesta</p>
+</div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-    <div class="form-horizontal">
-        <h4>Encuesta</h4>
-        <hr />
+
+    <div class="centrarContenido">
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.HiddenFor(model => model.Encu_Id)
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Encu_Creacion, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Encu_Creacion, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Encu_Creacion, "", new { @class = "text-danger" })
-            </div>
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.EditorFor(model => model.Encu_Creacion, new { htmlAttributes = new { @class = "form-control" } })</label>
+        </div>
+
+        <p>Fecha de vencimiento:</p>
+        <br />
+        @Html.EditorFor(model => model.Encu_Vence, new { htmlAttributes = new { @class = "estilosSelect " } })
+
+
+        <p>Estado de la encuesta:</p>
+        <br />
+        @Html.EditorFor(model => model.Encu_Estado)
+
+
+        <div class="form-group">
+
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.Encu_Registro, new { htmlAttributes = new { @class = "form-control" } })</label>
+
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Encu_Vence, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Encu_Vence, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Encu_Vence, "", new { @class = "text-danger" })
-            </div>
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden> @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })</label>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Encu_Estado, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                <div class="checkbox">
-                    @Html.EditorFor(model => model.Encu_Estado)
-                    @Html.ValidationMessageFor(model => model.Encu_Estado, "", new { @class = "text-danger" })
-                </div>
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Encu_Registro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Encu_Registro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Encu_Registro, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Empr_Nit, "Empr_Nit", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+        <input type="submit" value="Actualizar" class="btn btn-default" />  
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Encuestas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>

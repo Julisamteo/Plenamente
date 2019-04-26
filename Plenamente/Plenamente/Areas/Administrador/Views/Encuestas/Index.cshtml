@@ -13,8 +13,8 @@
     <form asp-action="Index" method="get">
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
-        <a href="Index" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="Create" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+        <a href="@Url.Action("Index", "Encuestas", null)" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "Encuestas", null)" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
     </form>
 </div>
 <table id="tablaVista" class="tablaVista">
@@ -47,10 +47,10 @@
                     @Html.DisplayFor(modelItem => item.Encu_Estado)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Encu_Id }) |
-                    @Html.ActionLink("Ver Preguntas", "Index","Preguntas", new { id = item.Encu_Id, idEncuesta = item.Encu_Id}, null) |
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Encu_Id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Encu_Id }) |
+                    @Html.ActionLink("Ver Preguntas", "Index", "Preguntas", new { id = item.Encu_Id, idEncuesta = item.Encu_Id }, null)
 
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Encu_Id })
 
                 </td>
             </tr>

@@ -106,8 +106,9 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(int? id, int idEncuesta)
         {
+            ViewBag.idEncuesta = idEncuesta;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -128,6 +129,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int ? id, int idEncuesta)
         {
+            ViewBag.idEncuesta = idEncuesta;
             if (ModelState.IsValid)
             {
                 ViewBag.idEncuesta = idEncuesta;
@@ -142,6 +144,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/Preguntas/Delete/5
         public ActionResult Delete(int? id, int idEncuesta)
         {
+            ViewBag.idEncuesta = idEncuesta;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
