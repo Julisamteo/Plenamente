@@ -65,7 +65,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/Preguntas/Details/5
         public ActionResult Details(int? id, int? idEncuesta)
         {
-            ViewBag.Enci_Id1 = idEncuesta;
+            ViewBag.Encu_Id = idEncuesta;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -80,9 +80,10 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Create
-        public ActionResult Create(int ?id, int ?idEncuesta)
+        public ActionResult Create(int ?id, int idEncuesta)
         {
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id");
+            ViewBag.idEncuesta = idEncuesta;
             return View();
         }
 
@@ -91,17 +92,16 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int ?id, int ?idEncuesta)
-        {
+        public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int? id, int idEncuesta)
+        { 
             if (ModelState.IsValid)
             {
+                ViewBag.idEncuesta = idEncuesta;
                 db.Tb_Pregunta.Add(pregunta);
                 db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-
+                return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
+            }      
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id", pregunta.Encu_Id);
-            ViewBag.pregId = idEncuesta;
             return View(pregunta);
         }
 
@@ -126,13 +126,14 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta)
+        public ActionResult Edit([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int ? id, int idEncuesta)
         {
             if (ModelState.IsValid)
             {
+                ViewBag.idEncuesta = idEncuesta;
                 db.Entry(pregunta).State = EntityState.Modified;
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
             }
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id", pregunta.Encu_Id);
             return View(pregunta);
@@ -158,10 +159,11 @@ namespace Plenamente.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int ?id, int idEncuesta)
         {
+            ViewBag.idEncuesta = idEncuesta;
             Pregunta pregunta = db.Tb_Pregunta.Find(id);
             db.Tb_Pregunta.Remove(pregunta);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
         }
 
         protected override void Dispose(bool disposing)

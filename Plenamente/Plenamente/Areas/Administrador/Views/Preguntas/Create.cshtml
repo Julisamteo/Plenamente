@@ -32,7 +32,7 @@
 
 
         <div class="form-group">
-            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.EditorFor(model => model.Encu_Id, new { htmlAttributes = new { @class = "", @Value = @ViewBag.Enci_Id1 } })</label>
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.EditorFor(model => model.Encu_Id, new { htmlAttributes = new { @class = "", @Value = @ViewBag.idEncuesta } })</label>
         </div>
 
 
@@ -44,7 +44,7 @@
 }
 
 <div class="contenidoVolver">
-    <a href="@Url.Action("Index","Preguntas", new {id=@ViewBag.Enci_Id1, idEnucesta = @ViewBag.Enci_Id1})" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    <a href="@Url.Action("Index", "Preguntas", new {id = @ViewBag.idEncuesta , idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
 
 

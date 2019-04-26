@@ -13,8 +13,8 @@
     <form asp-action="Index" method="get">
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
-        <a href="@Url.Action("Index", "Preguntas", new { @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "Preguntas", new {@ViewBag.id, @ViewBag.Encu_Id})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>  
+        <a href="@Url.Action("Index", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>  
     </form>
 </div>
 
@@ -35,9 +35,8 @@
                     @Html.DisplayFor(modelItem => item.Preg_Titulo)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Preg_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Preg_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Preg_Id })
+                    @Html.ActionLink("Editar", "Edit", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
+                    @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null)
                 </td>
             </tr>
         }
