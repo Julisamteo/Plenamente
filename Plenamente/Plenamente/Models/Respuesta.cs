@@ -9,11 +9,16 @@ namespace Plenamente.Models
 {
     public class Respuesta
     {
+        public Respuesta()
+        {
+            Resp_Registro = DateTime.Now;
+        }
         [Key]
         public int  Resp_Id { get; set; }
         public string Resp_Nom { get; set; }
-        public DateTime Resp_Registro { get; set; }
 
+        [DataType(DataType.DateTime)]
+        public DateTime Resp_Registro { get; set; }
 
         /*Llave Foranea a la tabla Pregunta*/
         [ForeignKey("Pregunta")]

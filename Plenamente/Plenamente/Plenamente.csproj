@@ -187,6 +187,7 @@
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\RespuestasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -210,6 +211,10 @@
     <Compile Include="Migrations\201904222030230_migracion4.cs" />
     <Compile Include="Migrations\201904222030230_migracion4.Designer.cs">
       <DependentUpon>201904222030230_migracion4.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904291813334_migracionNuero7.cs" />
+    <Compile Include="Migrations\201904291813334_migracionNuero7.Designer.cs">
+      <DependentUpon>201904291813334_migracionNuero7.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -362,6 +367,11 @@
     <Content Include="Areas\Administrador\Views\Preguntas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Preguntas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Preguntas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -452,6 +462,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904222030230_migracion4.resx">
       <DependentUpon>201904222030230_migracion4.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904291813334_migracionNuero7.resx">
+      <DependentUpon>201904291813334_migracionNuero7.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

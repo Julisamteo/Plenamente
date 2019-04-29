@@ -25,6 +25,7 @@
                 Titulo de la pregunta
             </th>
             <th class="colorVerde"></th>
+            <th class="colorVerde"></th>
         </tr>
     </thead>
     <tbody class="cuerpoTabla">
@@ -35,10 +36,19 @@
                     @Html.DisplayFor(modelItem => item.Preg_Titulo)
                 </td>
                 <td>
+                    @Html.ActionLink("Ver Opciones", "ListarOpciones", new {idPregunta = item.Preg_Id }, null)
+                    <div class="plegable">
+                        <ul>
+                            <li>
+                                @ViewBag.idPregunta
+                            </li>
+                        </ul>
+                    </div>
+                </td>
+                <td>
                     @Html.ActionLink("Editar", "Edit", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
                     @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
-                    @Html.ActionLink("Crear Opciones", "Delete", "Preguntas") |
-                    @Html.ActionLink("Ver Opciones", "Delete", "Preguntas")
+                    @Html.ActionLink("Crear Opciones", "Create", "Respuestas", new { id = item.Preg_Id,  idPregunta = item.Preg_Id }, null) 
                 </td>
             </tr>
         }
@@ -52,3 +62,22 @@
     <div class="contenidoVolver">
         <a href="@Url.Action("Index", "Encuestas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
     </div>
+
+
+
+
+
+
+
+
+<script>
+    $(window).ready(function () {
+    $('h2').click(function () {
+        if ($(this).next().hasClass('desplegado')) {
+            $(this).next().removeClass('desplegado');
+        } else {
+            $(this).next().addClass('desplegado');
+        }
+    })
+})
+</script>

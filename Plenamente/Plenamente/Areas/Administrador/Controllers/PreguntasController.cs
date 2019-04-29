@@ -59,7 +59,12 @@ namespace Plenamente.Areas.Administrador.Controllers
            
         }
 
-
+        public ActionResult ListarOpciones(int idPregunta)
+        {
+            ViewBag.idPregunta = idPregunta;
+            var tb_Respuesta = db.Tb_Respuesta.Include(r => r.Pregunta);
+            return View(tb_Respuesta.ToList());
+        }
 
 
         // GET: Administrador/Preguntas/Details/5
