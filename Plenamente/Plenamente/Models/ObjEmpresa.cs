@@ -8,6 +8,10 @@ namespace Plenamente.Models
 {
     public class ObjEmpresa
     {
+        public ObjEmpresa()
+        {
+            Oemp_Registro = DateTime.Now;
+        }
         [Key]
         public int Oemp_Id { get; set; }
         public string Oemp_Nombre { get; set; }

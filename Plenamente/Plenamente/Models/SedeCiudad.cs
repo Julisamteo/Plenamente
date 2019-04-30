@@ -8,6 +8,10 @@ namespace Plenamente.Models
 {
     public class SedeCiudad
     {
+        public SedeCiudad()
+        {
+            Sciu_Registro = DateTime.Now;
+        }
         [Key]
         public int Sciu_Id { get; set; }
         public string Sciu_Nom { get; set; }

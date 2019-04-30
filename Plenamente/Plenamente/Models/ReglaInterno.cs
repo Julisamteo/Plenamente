@@ -9,6 +9,10 @@ namespace Plenamente.Models
 {
     public class ReglaInterno
     {
+        public ReglaInterno()
+        {
+            Rint_Registro = DateTime.Now;
+        }
         [Key]
         public int Rint_Id { get; set; }
         public byte[] Rint_Archivo { get; set; }

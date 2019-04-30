@@ -34,4 +34,9 @@ namespace Plenamente.Models
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }
     }
+
+    public class ViewCumplimiento
+    {
+        public HttpPostedFileBase Cump_Evidencia { get; set; }
+    }
 }

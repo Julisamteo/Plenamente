@@ -9,6 +9,10 @@ namespace Plenamente.Models
 {
     public class Politica
     {
+        public Politica()
+        {
+            Poli_Registro = DateTime.Now;
+        }
         [Key]
         public int Poli_Id { get; set; }
         public byte[] Poli_Archivo { get; set; }

@@ -45,16 +45,7 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="FileHelpers, Version=3.4.0.0, Culture=neutral, PublicKeyToken=3e0c08d59cc3d657, processorArchitecture=MSIL">
-      <HintPath>..\packages\FileHelpers.3.4.0\lib\net45\FileHelpers.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.CSharp" />
-    <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
-    </Reference>
-    <Reference Include="PagedList.Mvc, Version=4.5.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
-      <HintPath>..\packages\PagedList.Mvc.4.5.0.0\lib\net40\PagedList.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
     <Reference Include="System.Drawing" />
@@ -184,17 +175,29 @@
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administrador\AdministradorAreaRegistration.cs" />
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\AutoEvaluacionController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
-    <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
-    <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
-    <Compile Include="Areas\Administrador\Controllers\RespuestasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\CriteriosController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\CumplimientosController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EncuSociController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EstandarsController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\FileController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ItemEstandarsController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ObjEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ReglaHigienesController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ReglaInternoesController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\SedeCiudadsController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\TipoDocCargasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904301650498_Neccessary.cs" />
-    <Compile Include="Migrations\201904301650498_Neccessary.Designer.cs">
-      <DependentUpon>201904301650498_Neccessary.cs</DependentUpon>
+    <Compile Include="Migrations\201904222020240_Nombre.cs" />
+    <Compile Include="Migrations\201904222020240_Nombre.Designer.cs">
+      <DependentUpon>201904222020240_Nombre.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -202,6 +205,7 @@
     <Compile Include="Models\Afp.cs" />
     <Compile Include="Models\AreaEmpresa.cs" />
     <Compile Include="Models\Arl.cs" />
+    <Compile Include="Models\AutoEvaluacion.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
@@ -237,6 +241,7 @@
     <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Models\Resultado.cs" />
     <Compile Include="Models\SedeCiudad.cs" />
+    <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
@@ -250,7 +255,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilosParciales.css" />
-    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -284,9 +288,6 @@
     <Content Include="Imagenes\Element-8.png" />
     <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
     <Content Include="Imagenes\forgot.png" />
-    <Content Include="Imagenes\graph %281%29.png" />
-    <Content Include="Imagenes\graph %282%29.png" />
-    <Content Include="Imagenes\graph.png" />
     <Content Include="Imagenes\Grey-background.jpg" />
     <Content Include="Imagenes\icon-11.png" />
     <Content Include="Imagenes\icon-12.png" />
@@ -315,7 +316,6 @@
     <Content Include="Imagenes\Logo_YT.png" />
     <Content Include="Imagenes\mano-sosteniendo-smartphone.png" />
     <Content Include="Imagenes\marcador-de-posicion.png" />
-    <Content Include="Imagenes\pie-chart.png" />
     <Content Include="Imagenes\Plenamente2.png" />
     <Content Include="Imagenes\que-hacer.png" />
     <Content Include="Imagenes\Recurso 11.png" />
@@ -341,21 +341,69 @@
     <Content Include="Areas\Administrador\Views\CargoEmpresas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\CargoEmpresas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\CargoEmpresas\Index.cshtml" />
-    <Content Include="Areas\Administrador\Views\Encuestas\Create.cshtml" />
-    <Content Include="Areas\Administrador\Views\Encuestas\Delete.cshtml" />
-    <Content Include="Areas\Administrador\Views\Encuestas\Details.cshtml" />
-    <Content Include="Areas\Administrador\Views\Encuestas\Edit.cshtml" />
-    <Content Include="Areas\Administrador\Views\Encuestas\Index.cshtml" />
-    <Content Include="Areas\Administrador\Views\Preguntas\Create.cshtml" />
-    <Content Include="Areas\Administrador\Views\Preguntas\Delete.cshtml" />
-    <Content Include="Areas\Administrador\Views\Preguntas\Details.cshtml" />
-    <Content Include="Areas\Administrador\Views\Preguntas\Edit.cshtml" />
-    <Content Include="Areas\Administrador\Views\Preguntas\Index.cshtml" />
-    <Content Include="Areas\Administrador\Views\Respuestas\Create.cshtml" />
-    <Content Include="Areas\Administrador\Views\Respuestas\Delete.cshtml" />
-    <Content Include="Areas\Administrador\Views\Respuestas\Details.cshtml" />
-    <Content Include="Areas\Administrador\Views\Respuestas\Edit.cshtml" />
-    <Content Include="Areas\Administrador\Views\Respuestas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\AreaEmpresas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\AreaEmpresas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\AreaEmpresas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\AreaEmpresas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\AreaEmpresas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ZonaEmpresas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ZonaEmpresas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ZonaEmpresas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ZonaEmpresas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ZonaEmpresas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Politicas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaHigienes\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaHigienes\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaHigienes\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaHigienes\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaHigienes\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaInternoes\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaInternoes\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaInternoes\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaInternoes\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ReglaInternoes\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudads\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudads\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudads\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudads\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudads\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ObjEmpresas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ObjEmpresas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ObjEmpresas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ObjEmpresas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ObjEmpresas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\EncuSoci\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\File\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\File\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -413,10 +461,10 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
+    <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
+    <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
-    <Folder Include="Files\" />
     <Folder Include="Views\Encuesta\" />
-    <Folder Include="Views\superEncuesta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -432,8 +480,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904301650498_Neccessary.resx">
-      <DependentUpon>201904301650498_Neccessary.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904222020240_Nombre.resx">
+      <DependentUpon>201904222020240_Nombre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

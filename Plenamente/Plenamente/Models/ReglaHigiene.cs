@@ -9,6 +9,10 @@ namespace Plenamente.Models
 {
     public class ReglaHigiene
     {
+        public ReglaHigiene()
+        {
+            Rhig_Registro = DateTime.Now;
+        }
         [Key]
         public int Rhig_Id { get; set; }
         public byte[] Rhig_Archivo { get; set; }

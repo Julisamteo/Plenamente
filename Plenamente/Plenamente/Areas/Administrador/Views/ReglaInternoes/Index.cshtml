@@ -1,0 +1,46 @@
+﻿@model IEnumerable<Plenamente.Models.ReglaInterno>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Rint_Archivo)
+        </th>
+        @*<th>
+            @Html.DisplayNameFor(model => model.Rint_Registro)
+        </th>*@
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Rint_Archivo)
+        </td>
+        @*<td>
+            @Html.DisplayFor(modelItem => item.Rint_Registro)
+        </td>*@
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Rint_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Rint_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Rint_Id })
+        </td>
+    </tr>
+}
+
+</table>
