@@ -186,14 +186,17 @@
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CriteriosController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CumplimientosController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EncuSociController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\FileController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ItemEstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ObjEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaHigienesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaInternoesController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\RespuestasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\SedeCiudadsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\TipoDocCargasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ZonaEmpresasController.cs" />
@@ -201,6 +204,14 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.cs" />
+    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.Designer.cs">
+      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.cs" />
+    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.Designer.cs">
+      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -236,6 +247,7 @@
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Models\Politica.cs" />
     <Compile Include="Models\Pregunta.cs" />
+    <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
@@ -406,6 +418,21 @@
     <Content Include="Areas\Administrador\Views\TipoDocCargas\Index.cshtml" />
     <Content Include="Areas\Administrador\Views\File\Create.cshtml" />
     <Content Include="Areas\Administrador\Views\File\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Encuestas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Preguntas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Respuestas\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -480,6 +507,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.resx">
+      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.resx">
+      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>

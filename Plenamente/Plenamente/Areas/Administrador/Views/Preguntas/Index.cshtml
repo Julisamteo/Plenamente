@@ -43,30 +43,11 @@
         }
     </tbody>
 </table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
-@Html.PagedListPager(Model, page => Url.Action("Index",
-    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-
-
+</div>
     <div class="contenidoVolver">
         <a href="@Url.Action("Index", "Encuestas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
     </div>
-
-
-
-
-
-
-
-
-<script>
-    $(window).ready(function () {
-    $('h2').click(function () {
-        if ($(this).next().hasClass('desplegado')) {
-            $(this).next().removeClass('desplegado');
-        } else {
-            $(this).next().addClass('desplegado');
-        }
-    })
-})
-</script>

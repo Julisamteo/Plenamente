@@ -112,7 +112,6 @@ namespace Plenamente.Models
         public DbSet<ObjEmpresa> Tb_ObjEmpresa {get; set;}
         public DbSet<Periodo>Tb_Periodo {get; set;}
         public DbSet<Politica> Tb_politica { get; set; }
-        public DbSet<Pregunta> Tb_pregunta { get; set; }
         public DbSet<ProcactEmpresa> Tb_ProcactEmpresa { get; set; }
         public DbSet<ProcesActividad> Tb_ProcesActividad { get; set; }
         public DbSet<ReglaHigiene> Tb_ReglaHigiene { get; set; }

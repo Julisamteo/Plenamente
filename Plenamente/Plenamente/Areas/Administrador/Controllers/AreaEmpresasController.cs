@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -15,10 +16,42 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/AreaEmpresas
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_AreaEmpresa = db.Tb_AreaEmpresa.Include(a => a.Empresa);
-            return View(tb_AreaEmpresa.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var cargos = from s in db.Tb_AreaEmpresa
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                cargos = cargos.Where(s => s.Aemp_Nom.Contains(searchString)
+                                       || s.Aemp_Nom.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    cargos = cargos.OrderByDescending(s => s.Aemp_Nom);
+                    break;
+                default:  // Name ascending 
+                    cargos = cargos.OrderBy(s => s.Aemp_Nom);
+                    break;
+            }
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(cargos.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Administrador/AreaEmpresas/Details/5

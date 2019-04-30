@@ -5,49 +5,34 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Create</h2>
-
-
+    <div class="colorVerdeBack">
+        <p>Crear un nueva área</p>
+    </div>
 @using (Html.BeginForm()) 
 {
     @Html.AntiForgeryToken()
     
-<div class="form-horizontal">
-    <h4>AreaEmpresa</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+<div class="centrarContenido">
+
+
+    @Html.EditorFor(model => model.Aemp_Nom, new { htmlAttributes = new { @placeholder = "Nombre del área" } })
     <div class="form-group">
-        @Html.LabelFor(model => model.Aemp_Nom, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Aemp_Nom, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Aemp_Nom, "", new { @class = "text-danger" })
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })</label>
         </div>
     </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Empr_Nit, "Empr_Nit", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" })
-        </div>
-    </div>
 
     @*Campo de Registro oculto*@
-    <div class="form-group">
-        <label asp-for="AreaRegistro" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Aemp_Registro)</label>
-    </div>
 
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
+        <label asp-for="AreaRegistro" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Aemp_Registro)</label>
+        <input type="submit" value="Guardar" class="btn btn-default" />
 </div>
 }
-
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "AreaEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
+
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
