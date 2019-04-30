@@ -1736,6 +1736,17 @@ label[for="subirArchivo"] {
         background-color: #5AB60B;
     }
 
+    .divPrimerAt {
+        border: solid;
+        border-color: aqua;
+    }
+    .divCriterio{
+        color: black;
+        background-color: grey;
+        width: 50%;
+
+    }
+
 
 
 

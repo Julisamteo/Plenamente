@@ -10,7 +10,7 @@ namespace Plenamente.Models
     {
         [Key]
         public int Crit_Id { get; set; }
-        public int Crit_Nom { get; set; }
+        public string Crit_Nom { get; set; }
         public float Crit_Porcentaje { get; set; }
         public DateTime Crit_Registro { get; set; }
 

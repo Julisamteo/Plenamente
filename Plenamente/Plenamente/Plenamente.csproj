@@ -176,20 +176,28 @@
     <Compile Include="Areas\Administrador\AdministradorAreaRegistration.cs" />
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\AutoEvaluacionController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\CriteriosController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\CumplimientosController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EncuSociController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EstandarsController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\FileController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ItemEstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ObjEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaHigienesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaInternoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\SedeCiudadsController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\TipoDocCargasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904152009291_PleanamenteAll.cs" />
-    <Compile Include="Migrations\201904152009291_PleanamenteAll.Designer.cs">
-      <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
+    <Compile Include="Migrations\201904222020240_Nombre.cs" />
+    <Compile Include="Migrations\201904222020240_Nombre.Designer.cs">
+      <DependentUpon>201904222020240_Nombre.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -197,6 +205,7 @@
     <Compile Include="Models\Afp.cs" />
     <Compile Include="Models\AreaEmpresa.cs" />
     <Compile Include="Models\Arl.cs" />
+    <Compile Include="Models\AutoEvaluacion.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
@@ -232,6 +241,7 @@
     <Compile Include="Models\Respuesta.cs" />
     <Compile Include="Models\Resultado.cs" />
     <Compile Include="Models\SedeCiudad.cs" />
+    <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
@@ -366,6 +376,34 @@
     <Content Include="Areas\Administrador\Views\ObjEmpresas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\ObjEmpresas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\ObjEmpresas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Criterios\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Estandars\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ItemEstandars\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\EncuSoci\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Cumplimientos\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\TipoDocCargas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\File\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\File\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -423,6 +461,8 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
+    <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
+    <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
@@ -440,8 +480,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904152009291_PleanamenteAll.resx">
-      <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904222020240_Nombre.resx">
+      <DependentUpon>201904222020240_Nombre.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

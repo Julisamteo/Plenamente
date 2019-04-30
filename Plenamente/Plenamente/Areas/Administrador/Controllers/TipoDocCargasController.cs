@@ -10,116 +10,107 @@ using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
-    public class ReglaInternoesController : Controller
+    public class TipoDocCargasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Administrador/ReglaInternoes
+        // GET: Administrador/TipoDocCargas
         public ActionResult Index()
         {
-            var tb_ReglaInterno = db.Tb_ReglaInterno.Include(r => r.Empresa);
-            return View(tb_ReglaInterno.ToList());
+            return View(db.Tb_TipoDocCarga.ToList());
         }
 
-        // GET: Administrador/ReglaInternoes/Details/5
+        // GET: Administrador/TipoDocCargas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            if (reglaInterno == null)
+            TipoDocCarga tipoDocCarga = db.Tb_TipoDocCarga.Find(id);
+            if (tipoDocCarga == null)
             {
                 return HttpNotFound();
             }
-            return View(reglaInterno);
+            return View(tipoDocCarga);
         }
 
-        // GET: Administrador/ReglaInternoes/Create
+        // GET: Administrador/TipoDocCargas/Create
         public ActionResult Create()
         {
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
             return View();
         }
 
-        // POST: Administrador/ReglaInternoes/Create
+        // POST: Administrador/TipoDocCargas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
+        public ActionResult Create([Bind(Include = "Tdca_id,Tdca_Nom,Tdca_Registro")] TipoDocCarga tipoDocCarga)
         {
-
             if (ModelState.IsValid)
             {
-             
-
-                db.Tb_ReglaInterno.Add(reglaInterno);
+                db.Tb_TipoDocCarga.Add(tipoDocCarga);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //byte[] uploadedRint_Archivo = new byte[ReglaInterno.Rint_Archivo]
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
-            return View(reglaInterno);
+            return View(tipoDocCarga);
         }
 
-        // GET: Administrador/ReglaInternoes/Edit/5
+        // GET: Administrador/TipoDocCargas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            if (reglaInterno == null)
+            TipoDocCarga tipoDocCarga = db.Tb_TipoDocCarga.Find(id);
+            if (tipoDocCarga == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
-            return View(reglaInterno);
+            return View(tipoDocCarga);
         }
 
-        // POST: Administrador/ReglaInternoes/Edit/5
+        // POST: Administrador/TipoDocCargas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
+        public ActionResult Edit([Bind(Include = "Tdca_id,Tdca_Nom,Tdca_Registro")] TipoDocCarga tipoDocCarga)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(reglaInterno).State = EntityState.Modified;
+                db.Entry(tipoDocCarga).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
-            return View(reglaInterno);
+            return View(tipoDocCarga);
         }
 
-        // GET: Administrador/ReglaInternoes/Delete/5
+        // GET: Administrador/TipoDocCargas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            if (reglaInterno == null)
+            TipoDocCarga tipoDocCarga = db.Tb_TipoDocCarga.Find(id);
+            if (tipoDocCarga == null)
             {
                 return HttpNotFound();
             }
-            return View(reglaInterno);
+            return View(tipoDocCarga);
         }
 
-        // POST: Administrador/ReglaInternoes/Delete/5
+        // POST: Administrador/TipoDocCargas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            db.Tb_ReglaInterno.Remove(reglaInterno);
+            TipoDocCarga tipoDocCarga = db.Tb_TipoDocCarga.Find(id);
+            db.Tb_TipoDocCarga.Remove(tipoDocCarga);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

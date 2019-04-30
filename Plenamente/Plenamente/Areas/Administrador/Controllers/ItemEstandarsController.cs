@@ -10,116 +10,112 @@ using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
-    public class ReglaInternoesController : Controller
+    public class ItemEstandarsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Administrador/ReglaInternoes
+        // GET: Administrador/ItemEstandars
         public ActionResult Index()
         {
-            var tb_ReglaInterno = db.Tb_ReglaInterno.Include(r => r.Empresa);
-            return View(tb_ReglaInterno.ToList());
+            var tb_ItemEstandar = db.Tb_ItemEstandar.Include(i => i.Estandar);
+            return View(tb_ItemEstandar.ToList());
         }
 
-        // GET: Administrador/ReglaInternoes/Details/5
+        // GET: Administrador/ItemEstandars/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            if (reglaInterno == null)
+            ItemEstandar itemEstandar = db.Tb_ItemEstandar.Find(id);
+            if (itemEstandar == null)
             {
                 return HttpNotFound();
             }
-            return View(reglaInterno);
+            return View(itemEstandar);
         }
 
-        // GET: Administrador/ReglaInternoes/Create
+        // GET: Administrador/ItemEstandars/Create
         public ActionResult Create()
         {
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+            ViewBag.Esta_Id = new SelectList(db.Tb_Estandar, "Esta_Id", "Esta_Nom");
             return View();
         }
 
-        // POST: Administrador/ReglaInternoes/Create
+        // POST: Administrador/ItemEstandars/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
+        public ActionResult Create([Bind(Include = "Iest_Id,Iest_Desc,Iest_Verificar,Iest_Porcentaje,Iest_Cumple,Iest_Nocumple,Iest_Justifica,Iest_Nojustifica,Esta_Id,Iest_Peri,Iest_Observa,Iest_Registro")] ItemEstandar itemEstandar)
         {
-
             if (ModelState.IsValid)
             {
-             
-
-                db.Tb_ReglaInterno.Add(reglaInterno);
+                db.Tb_ItemEstandar.Add(itemEstandar);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            //byte[] uploadedRint_Archivo = new byte[ReglaInterno.Rint_Archivo]
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
-            return View(reglaInterno);
+            ViewBag.Esta_Id = new SelectList(db.Tb_Estandar, "Esta_Id", "Esta_Nom", itemEstandar.Esta_Id);
+            return View(itemEstandar);
         }
 
-        // GET: Administrador/ReglaInternoes/Edit/5
+        // GET: Administrador/ItemEstandars/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            if (reglaInterno == null)
+            ItemEstandar itemEstandar = db.Tb_ItemEstandar.Find(id);
+            if (itemEstandar == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
-            return View(reglaInterno);
+            ViewBag.Esta_Id = new SelectList(db.Tb_Estandar, "Esta_Id", "Esta_Nom", itemEstandar.Esta_Id);
+            return View(itemEstandar);
         }
 
-        // POST: Administrador/ReglaInternoes/Edit/5
+        // POST: Administrador/ItemEstandars/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
+        public ActionResult Edit([Bind(Include = "Iest_Id,Iest_Desc,Iest_Verificar,Iest_Porcentaje,Iest_Cumple,Iest_Nocumple,Iest_Justifica,Iest_Nojustifica,Esta_Id,Iest_Peri,Iest_Observa,Iest_Registro")] ItemEstandar itemEstandar)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(reglaInterno).State = EntityState.Modified;
+                db.Entry(itemEstandar).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", reglaInterno.Empr_Nit);
-            return View(reglaInterno);
+            ViewBag.Esta_Id = new SelectList(db.Tb_Estandar, "Esta_Id", "Esta_Nom", itemEstandar.Esta_Id);
+            return View(itemEstandar);
         }
 
-        // GET: Administrador/ReglaInternoes/Delete/5
+        // GET: Administrador/ItemEstandars/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            if (reglaInterno == null)
+            ItemEstandar itemEstandar = db.Tb_ItemEstandar.Find(id);
+            if (itemEstandar == null)
             {
                 return HttpNotFound();
             }
-            return View(reglaInterno);
+            return View(itemEstandar);
         }
 
-        // POST: Administrador/ReglaInternoes/Delete/5
+        // POST: Administrador/ItemEstandars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
-            db.Tb_ReglaInterno.Remove(reglaInterno);
+            ItemEstandar itemEstandar = db.Tb_ItemEstandar.Find(id);
+            db.Tb_ItemEstandar.Remove(itemEstandar);
             db.SaveChanges();
             return RedirectToAction("Index");
         }
