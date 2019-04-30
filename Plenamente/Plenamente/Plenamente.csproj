@@ -192,29 +192,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904152009291_PleanamenteAll.cs" />
-    <Compile Include="Migrations\201904152009291_PleanamenteAll.Designer.cs">
-      <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904171524167_actualizacionTablas.cs" />
-    <Compile Include="Migrations\201904171524167_actualizacionTablas.Designer.cs">
-      <DependentUpon>201904171524167_actualizacionTablas.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904221926326_nuevaMigracion.cs" />
-    <Compile Include="Migrations\201904221926326_nuevaMigracion.Designer.cs">
-      <DependentUpon>201904221926326_nuevaMigracion.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904222003106_nuevaMigracion3.cs" />
-    <Compile Include="Migrations\201904222003106_nuevaMigracion3.Designer.cs">
-      <DependentUpon>201904222003106_nuevaMigracion3.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904222030230_migracion4.cs" />
-    <Compile Include="Migrations\201904222030230_migracion4.Designer.cs">
-      <DependentUpon>201904222030230_migracion4.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904291813334_migracionNuero7.cs" />
-    <Compile Include="Migrations\201904291813334_migracionNuero7.Designer.cs">
-      <DependentUpon>201904291813334_migracionNuero7.cs</DependentUpon>
+    <Compile Include="Migrations\201904301650498_Neccessary.cs" />
+    <Compile Include="Migrations\201904301650498_Neccessary.Designer.cs">
+      <DependentUpon>201904301650498_Neccessary.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -452,23 +432,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904152009291_PleanamenteAll.resx">
-      <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904171524167_actualizacionTablas.resx">
-      <DependentUpon>201904171524167_actualizacionTablas.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904221926326_nuevaMigracion.resx">
-      <DependentUpon>201904221926326_nuevaMigracion.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904222003106_nuevaMigracion3.resx">
-      <DependentUpon>201904222003106_nuevaMigracion3.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904222030230_migracion4.resx">
-      <DependentUpon>201904222030230_migracion4.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904291813334_migracionNuero7.resx">
-      <DependentUpon>201904291813334_migracionNuero7.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201904301650498_Neccessary.resx">
+      <DependentUpon>201904301650498_Neccessary.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

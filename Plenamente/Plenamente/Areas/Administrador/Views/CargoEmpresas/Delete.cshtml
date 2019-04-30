@@ -5,45 +5,46 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>CargoEmpresa</h4>
-    <hr />
-    <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cemp_Nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cemp_Nom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Cemp_Registro)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Cemp_Registro)
-        </dd>
-
-    </dl>
-
-    @using (Html.BeginForm()) {
-        @Html.AntiForgeryToken()
-
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
-    }
+<div class="colorVerdeBack">
+    <p>Eliminar cargo</p>
 </div>
+<dl class="centrarContenido">
+
+    <dt>
+        Nombre Del Cargo:
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Cemp_Nom)
+    </dd>
+
+    <dt>
+        Actualizado por última vez:
+    </dt>
+
+    <dd>
+        @Html.DisplayFor(model => model.Cemp_Registro)
+    </dd>
+    <br />
+    <h2> ¿Está seguro de querer eliminar este dato?  </h2>
+</dl>
+
+
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+
+    <div class="form-actions no-color">
+        <input type="submit" value="Eliminar" class="btn btn-default" />
+    </div>
+}
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "CargoEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}
+

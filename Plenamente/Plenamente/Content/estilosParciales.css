@@ -1089,7 +1089,9 @@ a:link {
 .underlineHover img {
     width: 5%;
 }
-
+a{
+    color: #000;
+}
 
 
 

@@ -1,21 +1,11 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using Plenamente.Models;
 using PagedList;
-using Plenamente.Models;    
-using System.Data.SqlClient;
-using System.Configuration;
-using System.Data.OleDb;
-using System.IO;
-using System.Threading.Tasks;
-using FileHelpers;
-using FileHelpers.DataLink;
-using System.Web.UI;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {

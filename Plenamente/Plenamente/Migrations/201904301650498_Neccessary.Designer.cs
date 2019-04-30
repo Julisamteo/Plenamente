@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class PleanamenteAll : IMigrationMetadata
+    public sealed partial class Neccessary : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(PleanamenteAll));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Neccessary));
         
         string IMigrationMetadata.Id
         {
-            get { return "201904152009291_PleanamenteAll"; }
+            get { return "201904301650498_Neccessary"; }
         }
         
         string IMigrationMetadata.Source
