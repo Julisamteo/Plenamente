@@ -8,37 +8,37 @@
 <div class="colorVerdeBack">
     <p>Eliminar cargo</p>
 </div>
-<dl class="centrarContenido">
+<div class="centrarContenido">
+    <dl>
 
-    <dt>
-        Nombre Del Cargo:
-    </dt>
+        <dt>
+            Nombre Del Cargo:
+        </dt>
+        
+        <dd>
+            @Html.DisplayFor(model => model.Cemp_Nom)
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.Cemp_Nom)
-    </dd>
+        <dt>
+            Actualizado por última vez:
+        </dt>
 
-    <dt>
-        Actualizado por última vez:
-    </dt>
+        <dd>
+            @Html.DisplayFor(model => model.Cemp_Registro)
+        </dd>
 
-    <dd>
-        @Html.DisplayFor(model => model.Cemp_Registro)
-    </dd>
-    <br />
-    <h2> ¿Está seguro de querer eliminar este dato?  </h2>
-</dl>
-
+    </dl>
 
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+    @using (Html.BeginForm())
+    {
+        @Html.AntiForgeryToken()
 
-    <div class="form-actions no-color">
-        <input type="submit" value="Eliminar" class="btn btn-default" />
-    </div>
-}
+        <div class="form-actions no-color">
+            <input type="submit" value="Eliminar" class="btn btn-default" />
+        </div>
+    }
+</div>
 <div class="contenidoVolver">
     <a href="@Url.Action("Index", "CargoEmpresas")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>

@@ -592,6 +592,7 @@ a {
 
 .contenidoVolver {
     display: flex;
+    margin:3%;
     width: 10%;
 }
 
@@ -1089,7 +1090,7 @@ a:link {
 .underlineHover img {
     width: 5%;
 }
-a{
+.underlineHover a {
     color: #000;
 }
 
@@ -1711,6 +1712,9 @@ input[type=password]:placeholder {
 .underlineHover:hover {
     color: #6CB52D;
 }
+.underlineHover {
+    color: #6CB52D;
+}
 
     .underlineHover:hover:after {
         width: 100%;
@@ -1768,7 +1772,9 @@ label[for="subirArchivo"]:hover {
 }
 
 
-
+.paginacionLista{
+    margin: 2.5%;
+}
 
 
 
