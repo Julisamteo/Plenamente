@@ -25,7 +25,6 @@
                 Titulo de la pregunta
             </th>
             <th class="colorVerde"></th>
-            <th class="colorVerde"></th>
         </tr>
     </thead>
     <tbody class="cuerpoTabla">
@@ -36,19 +35,9 @@
                     @Html.DisplayFor(modelItem => item.Preg_Titulo)
                 </td>
                 <td>
-                    @Html.ActionLink("Ver Opciones", "ListarOpciones", new {idPregunta = item.Preg_Id }, null)
-                    <div class="plegable">
-                        <ul>
-                            <li>
-                                @ViewBag.idPregunta
-                            </li>
-                        </ul>
-                    </div>
-                </td>
-                <td>
                     @Html.ActionLink("Editar", "Edit", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
                     @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
-                    @Html.ActionLink("Crear Opciones", "Create", "Respuestas", new { id = item.Preg_Id,  idPregunta = item.Preg_Id }, null) 
+                    @Html.ActionLink("Ver Opciones", "Index", "Respuestas", new { id = item.Preg_Id,  idPregunta = item.Preg_Id }, null) 
                 </td>
             </tr>
         }

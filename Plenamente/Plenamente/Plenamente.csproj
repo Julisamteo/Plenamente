@@ -304,6 +304,9 @@
     <Content Include="Imagenes\Element-8.png" />
     <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
     <Content Include="Imagenes\forgot.png" />
+    <Content Include="Imagenes\graph %281%29.png" />
+    <Content Include="Imagenes\graph %282%29.png" />
+    <Content Include="Imagenes\graph.png" />
     <Content Include="Imagenes\Grey-background.jpg" />
     <Content Include="Imagenes\icon-11.png" />
     <Content Include="Imagenes\icon-12.png" />
@@ -332,6 +335,7 @@
     <Content Include="Imagenes\Logo_YT.png" />
     <Content Include="Imagenes\mano-sosteniendo-smartphone.png" />
     <Content Include="Imagenes\marcador-de-posicion.png" />
+    <Content Include="Imagenes\pie-chart.png" />
     <Content Include="Imagenes\Plenamente2.png" />
     <Content Include="Imagenes\que-hacer.png" />
     <Content Include="Imagenes\Recurso 11.png" />

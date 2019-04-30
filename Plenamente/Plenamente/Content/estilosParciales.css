@@ -24,7 +24,7 @@
 .linkPrincipal {
     display: flex;
     padding: 20px;  
-    margin: 50px 20px 20px 20px;
+    margin: 20px 20px 20px 20px;
     justify-content: center;
     background-color: #6CB52D;
     border-radius: 10px;
@@ -1177,12 +1177,17 @@ a:link {
 }
 
 .tareasDiv {
+    display:inline-block;
     border: 2px solid #6CB52D;
     border-radius: 5px;
     width: 100%;
     height: auto;
     padding: 2%;
     margin: 1% 1% -1% 1%;
+}
+.tareasDiv h5{
+    display:flex;
+    margin:-3% 5% 5% 10%;
 }
 
 .moduloDiv {
@@ -1773,7 +1778,82 @@ label[for="subirArchivo"]:hover {
 
 
 
+input[type=checkbox] {
+    height: 0;
+    width: 0;
+    visibility: hidden;
+}
 
+label[for=switch] {
+    cursor: pointer;
+    text-indent: -9999px;
+    width: 40px;
+    height: 20px;
+    background: grey;
+    display: block;
+    border-radius: 100px;
+    position: relative;
+}
+
+label[for=switch]:after {
+    content: '';
+    position: absolute;
+    top: 1px;
+    left: 2px;
+    width: 18px;
+    height: 18px;
+    background: #fff;
+    border-radius: 90px;
+    transition: 0.3s;
+}
+
+input:checked + label[for=switch] {
+    background: #bada55;
+}
+
+input:checked + label[for=switch]:after {
+    left: calc(100% - 5px);
+    transform: translateX(-100%);
+}
+
+label[for=switch]:active:after {
+    width: 80px;
+}
+
+
+
+
+
+
+
+
+
+
+.graficoA img{
+    display: flex;
+    width:80%;
+    height: auto;
+    padding: 5px;
+}
+.graficoB img {
+    display: flex;
+    width: 80%;
+    height: auto;
+    padding: 5px;
+}
+
+.graficoC img {
+    display: flex;
+    width: 80%;
+    height: auto;
+    padding: 5px;
+}
+.graficoD img {
+    display: flex;
+    width: 80%;
+    height: auto;
+    padding: 5px;
+}
 
 
 
