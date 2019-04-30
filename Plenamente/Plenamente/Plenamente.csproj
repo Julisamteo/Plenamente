@@ -198,6 +198,10 @@
     <Compile Include="Migrations\201904291810334_alter.Designer.cs">
       <DependentUpon>201904291810334_alter.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201904301553340_luisnull.cs" />
+    <Compile Include="Migrations\201904301553340_luisnull.Designer.cs">
+      <DependentUpon>201904301553340_luisnull.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -457,6 +461,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201904291810334_alter.resx">
       <DependentUpon>201904291810334_alter.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904301553340_luisnull.resx">
+      <DependentUpon>201904301553340_luisnull.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
