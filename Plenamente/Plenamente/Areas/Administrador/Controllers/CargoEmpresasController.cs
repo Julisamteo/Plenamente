@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -13,6 +14,7 @@ namespace Plenamente.Areas.Administrador.Controllers
     public class CargoEmpresasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        protected UserManager<ApplicationUser> UserManager { get; set; }
 
         // GET: Administrador/CargoEmpresas
         public ActionResult Index()
@@ -20,6 +22,15 @@ namespace Plenamente.Areas.Administrador.Controllers
             var tb_CargoEmpresa = db.Tb_CargoEmpresa.Include(c => c.Empresa);
             return View(tb_CargoEmpresa.ToList());
         }
+
+        //Ubicar el usuario
+        public ApplicationUser GetActualUserId()
+        {
+            var userId = User.Identity.GetUserId();
+            var user = UserManager.FindById(userId);
+            return user;
+        }
+        //Fin de la funcion
 
         // GET: Administrador/CargoEmpresas/Details/5
         public ActionResult Details(int? id)

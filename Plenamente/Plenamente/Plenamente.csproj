@@ -188,9 +188,15 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Extensions\ICollectionExtensions.cs" />
+    <Compile Include="Extensions\RefletionExtensions.cs" />
     <Compile Include="Migrations\201904152009291_PleanamenteAll.cs" />
     <Compile Include="Migrations\201904152009291_PleanamenteAll.Designer.cs">
       <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201904291810334_alter.cs" />
+    <Compile Include="Migrations\201904291810334_alter.Designer.cs">
+      <DependentUpon>201904291810334_alter.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -448,6 +454,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201904152009291_PleanamenteAll.resx">
       <DependentUpon>201904152009291_PleanamenteAll.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201904291810334_alter.resx">
+      <DependentUpon>201904291810334_alter.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
