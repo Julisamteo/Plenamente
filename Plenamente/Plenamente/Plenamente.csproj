@@ -45,6 +45,9 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Caseiro.Mvc.PagedList, Version=1.0.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Caseiro.Mvc.PagedList.1.0.2\lib\net40\Caseiro.Mvc.PagedList.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -204,13 +207,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.cs" />
-    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.Designer.cs">
-      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.cs" />
-    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.Designer.cs">
-      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
+    <Compile Include="Migrations\201905021358434_AhoraYoLoTengo.cs" />
+    <Compile Include="Migrations\201905021358434_AhoraYoLoTengo.Designer.cs">
+      <DependentUpon>201905021358434_AhoraYoLoTengo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -509,11 +508,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.resx">
-      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.resx">
-      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905021358434_AhoraYoLoTengo.resx">
+      <DependentUpon>201905021358434_AhoraYoLoTengo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
