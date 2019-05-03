@@ -1,11 +1,10 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -13,15 +12,47 @@ namespace Plenamente.Areas.Administrador.Controllers
     public class RespuestasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        // GET: Administrador/Respuestas
-        public ActionResult Index(int idPregunta)
+        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int idPregunta, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.idPregunta = idPregunta;
-            var tb_Respuesta = db.Tb_Respuesta.Include(r => r.Pregunta);
-            return View(tb_Respuesta.ToList());
-        }
 
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var respuestas = from s in db.Tb_Respuesta
+                            where s.Preg_Id.Equals(idPregunta)
+                            select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                respuestas = respuestas.Where(s => s.Resp_Nom.Contains(searchString)
+                                       || s.Resp_Nom.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    respuestas = respuestas.OrderByDescending(s => s.Resp_Nom);
+                    break;
+                default:  // Name ascending 
+                    respuestas = respuestas.OrderBy(s => s.Resp_Nom);
+                    break;
+            }
+
+            int pageSize = 5;
+            int pageNumber = (page ?? 1);
+            return View(respuestas.ToPagedList(pageNumber, pageSize));
+        }
         // GET: Administrador/Respuestas/Details/5
         public ActionResult Details(int? id)
         {
@@ -60,7 +91,6 @@ namespace Plenamente.Areas.Administrador.Controllers
                 return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
 
             }
-
             ViewBag.Preg_Id = new SelectList(db.Tb_Pregunta, "Preg_Id", "Preg_Titulo", respuesta.Preg_Id);
             return View(respuesta);
         }
@@ -99,8 +129,9 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Respuestas/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Delete(int? id, int idPregunta)
         {
+            ViewBag.idPregunta = idPregunta;
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
@@ -116,12 +147,13 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Respuestas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int? id, int idPregunta)
         {
+            ViewBag.idPregunta = idPregunta;
             Respuesta respuesta = db.Tb_Respuesta.Find(id);
             db.Tb_Respuesta.Remove(respuesta);
             db.SaveChanges();
-            return RedirectToAction("Index");
+            return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
         }
 
         protected override void Dispose(bool disposing)

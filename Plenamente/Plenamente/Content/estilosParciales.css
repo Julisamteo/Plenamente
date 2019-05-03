@@ -838,7 +838,6 @@ ul,
 li,
 fieldset,
 form,
-label,
 legend,
 table,
 caption,
@@ -1745,92 +1744,9 @@ input[type=file]#subirArchivo {
     z-index: -1;
 }
 
-label[for="subirArchivo"] {
-    background-color: #6CB52D;
-    border: none;
-    color: white;
-    padding: 15px 80px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    text-transform: uppercase;
-    font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
-label[for="subirArchivo"]:hover {
-    background-color: #5AB60B;
-}
-
-
 .paginacionLista{
     margin: 2.5%;
 }
-
-
-
-
-
-
-
-
-
-
-
-input[type=checkbox] {
-    height: 0;
-    width: 0;
-    visibility: hidden;
-}
-
-label[for=switch] {
-    cursor: pointer;
-    text-indent: -9999px;
-    width: 40px;
-    height: 20px;
-    background: grey;
-    display: block;
-    border-radius: 100px;
-    position: relative;
-}
-
-label[for=switch]:after {
-    content: '';
-    position: absolute;
-    top: 1px;
-    left: 2px;
-    width: 18px;
-    height: 18px;
-    background: #fff;
-    border-radius: 90px;
-    transition: 0.3s;
-}
-
-input:checked + label[for=switch] {
-    background: #bada55;
-}
-
-input:checked + label[for=switch]:after {
-    left: calc(100% - 5px);
-    transform: translateX(-100%);
-}
-
-label[for=switch]:active:after {
-    width: 80px;
-}
-
-
-
-
 
 
 
@@ -1863,27 +1779,17 @@ label[for=switch]:active:after {
     padding: 5px;
 }
 
+.divPrimerAt {
+    border: solid;
+    border-color: aqua;
+}
+.divCriterio{
+    color: black;
+    background-color: grey;
+    width: 50%;
 
+}
 
-
-
-
-
-
-
-
-
-
-    .divPrimerAt {
-        border: solid;
-        border-color: aqua;
-    }
-    .divCriterio{
-        color: black;
-        background-color: grey;
-        width: 50%;
-
-    }
 
 
 

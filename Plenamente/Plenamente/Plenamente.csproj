@@ -204,13 +204,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.cs" />
-    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.Designer.cs">
-      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.cs" />
-    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.Designer.cs">
-      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
+    <Compile Include="Migrations\201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.cs" />
+    <Compile Include="Migrations\201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.Designer.cs">
+      <DependentUpon>201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -269,6 +265,7 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilosParciales.css" />
+    <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
@@ -509,11 +506,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.resx">
-      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.resx">
-      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.resx">
+      <DependentUpon>201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

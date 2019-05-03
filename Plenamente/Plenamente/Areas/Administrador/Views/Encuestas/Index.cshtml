@@ -14,15 +14,12 @@
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" placeholder="Buscar..." />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
         <a href="@Url.Action("Index", "Encuestas", null)" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "Encuestas", null)" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+        <a href="@Url.Action("Create", "Encuestas", null)" class="ayudaTitulos"><span>Crear nueva encuesta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
     </form>
 </div>
 <table id="tablaVista" class="tablaVista">
     <thead class="cabeceraTabla">
         <tr>
-            <th class="colorVerde">
-                Empresa
-            </th>
             <th class="colorVerde">
                 Fecha Vencimiento
             </th>
@@ -37,9 +34,6 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Encu_Vence)
                 </td>

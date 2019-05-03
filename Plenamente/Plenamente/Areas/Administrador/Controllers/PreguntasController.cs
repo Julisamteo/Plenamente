@@ -1,10 +1,8 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
-using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Plenamente.Models;
@@ -15,7 +13,7 @@ namespace Plenamente.Areas.Administrador.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        public ViewResult Index(string sortOrder, string currentFilter, string searchString, int idEncuesta, int? page)
+        public ViewResult Index(string sortOrder, string currentFilter, int idEncuesta, int? page, string searchString)
         {
             ViewBag.CurrentSort = sortOrder;
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
@@ -52,20 +50,10 @@ namespace Plenamente.Areas.Administrador.Controllers
                     break;
             }
            
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
-            return View(preguntas.ToPagedList(pageNumber, pageSize));
-
-           
+            return View(preguntas.ToPagedList( pageNumber, pageSize));   
         }
-
-        public ActionResult ListarOpciones(int idPregunta)
-        {
-            ViewBag.idPregunta = idPregunta;
-            var tb_Respuesta = db.Tb_Respuesta.Include(r => r.Pregunta);
-            return View(tb_Respuesta.ToList());
-        }
-
 
         // GET: Administrador/Preguntas/Details/5
         public ActionResult Details(int? id, int? idEncuesta)

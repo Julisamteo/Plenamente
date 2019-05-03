@@ -5,51 +5,35 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Create</h2>
-
-
+<div class="colorVerdeBack">
+    <p>Crear una nueva respuesta</p>
+</div>
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="form-horizontal">
-        <h4>Respuesta</h4>
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="centrarContenido">
+
+        Respuesta:
+
+        @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { } })
+
+
         <div class="form-group">
-            @Html.LabelFor(model => model.Resp_Nom, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Resp_Nom, "", new { @class = "text-danger" })
-            </div>
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.EditorFor(model => model.Resp_Registro, new { htmlAttributes = new { @class = "form-control" } })</label>
         </div>
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Resp_Registro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Resp_Registro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Resp_Registro, "", new { @class = "text-danger" })
-            </div>
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden> @Html.DropDownList("Preg_Id", null, htmlAttributes: new { @class = "form-control" })</label>
         </div>
 
-        <div class="form-group">
-            @Html.LabelFor(model => model.Preg_Id, "Preg_Id", htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.DropDownList("Preg_Id", null, htmlAttributes: new { @class = "form-control" })
-                @Html.ValidationMessageFor(model => model.Preg_Id, "", new { @class = "text-danger" })
-            </div>
-        </div>
+        <input type="submit" value="Create" class="btn btn-default" />
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
-            </div>
-        </div>
     </div>
 }
 
 <div class="contenidoVolver">
-    <a href="@Url.Action("Index", "Respuestas", new {id = @ViewBag.idPregunta , idPregunta = @ViewBag.idPregunta})" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    <a href="@Url.Action("Index", "Respuestas", new {id = @ViewBag.idPregunta , idPregunta = @ViewBag.idPregunta}, null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
 
 

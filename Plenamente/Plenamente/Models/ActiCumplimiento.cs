@@ -20,9 +20,9 @@ namespace Plenamente.Models
         public int Oemp_Id { get; set; }
         public ObjEmpresa ObjEmpresa { get; set; }
 
-        //[ForeignKey("ApplicationUser")]
-        //public int Id { get; set; }
-        //public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string Id { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
 
         [ForeignKey("Periodo")]
         public int Peri_Id { get; set; }
