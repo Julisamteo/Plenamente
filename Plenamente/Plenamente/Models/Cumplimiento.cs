@@ -12,14 +12,16 @@ namespace Plenamente.Models
         [Key]
         public int Cump_Id { get; set; }
         public byte [] Cump_Evidencia { get; set; }
+        public string Cump_Nombre { get; set; }
+        public string Cump_Aevidencia { get; set; }
         // ForeignKey
         [ForeignKey("ItemEstandar")]
         public int Iest_Id { get; set; }
         public ItemEstandar ItemEstandar { get; set; }
         //// ForeignKey
-        //[ForeignKey("ApplicationUser")]
-        //public int Id { get; set; }
-        //public ApplicationUser ApplicationUser { get; set; }
+        [ForeignKey("ApplicationUser")]
+        public string Id { get; set; }
+        public ApplicationUser ApplicationUser { get; set; }
         //ForeignKey
        [ForeignKey("Empresa")]
        public int Empr_Id { get; set; }
