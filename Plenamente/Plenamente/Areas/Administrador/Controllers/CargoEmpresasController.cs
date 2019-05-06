@@ -48,7 +48,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     cargos = cargos.OrderBy(s => s.Cemp_Nom);
                     break;
             }
-            int pageSize = 5;
+            int pageSize = 10;
             int pageNumber = (page ?? 1);
             return View(cargos.ToPagedList(pageNumber, pageSize));
         }

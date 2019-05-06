@@ -11,11 +11,11 @@ using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
-    public class AreaEmpresasController : Controller
+    public class EleProteccionsController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Administrador/AreaEmpresas
+        // GET: Administrador/EleProteccions
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -33,122 +33,118 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
-            var cargos = from s in db.Tb_AreaEmpresa
+            var proteccion = from s in db.Tb_EleProteccion
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                cargos = cargos.Where(s => s.Aemp_Nom.Contains(searchString)
-                                       || s.Aemp_Nom.Contains(searchString));
+                proteccion = proteccion.Where(s => s.Epro_Nom.Contains(searchString)
+                                       || s.Epro_Nom.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "name_desc":
-                    cargos = cargos.OrderByDescending(s => s.Aemp_Nom);
+                    proteccion = proteccion.OrderByDescending(s => s.Epro_Nom);
                     break;
                 default:  // Name ascending 
-                    cargos = cargos.OrderBy(s => s.Aemp_Nom);
+                    proteccion = proteccion.OrderBy(s => s.Epro_Nom);
                     break;
             }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            return View(cargos.ToPagedList(pageNumber, pageSize));
+            return View(proteccion.ToPagedList(pageNumber, pageSize));
         }
 
-        // GET: Administrador/AreaEmpresas/Details/5
+        // GET: Administrador/EleProteccions/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AreaEmpresa areaEmpresa = db.Tb_AreaEmpresa.Find(id);
-            if (areaEmpresa == null)
+            EleProteccion eleProteccion = db.Tb_EleProteccion.Find(id);
+            if (eleProteccion == null)
             {
                 return HttpNotFound();
             }
-            return View(areaEmpresa);
+            return View(eleProteccion);
         }
 
-        // GET: Administrador/AreaEmpresas/Create
+        // GET: Administrador/EleProteccions/Create
         public ActionResult Create()
         {
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
             return View();
         }
 
-        // POST: Administrador/AreaEmpresas/Create
+        // POST: Administrador/EleProteccions/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Aemp_Id,Aemp_Nom,Empr_Nit,Aemp_Registro")] AreaEmpresa areaEmpresa)
+        public ActionResult Create([Bind(Include = "Epro_Id,Epro_Nom,Epro_Registro")] EleProteccion eleProteccion)
         {
             if (ModelState.IsValid)
             {
-                db.Tb_AreaEmpresa.Add(areaEmpresa);
+                db.Tb_EleProteccion.Add(eleProteccion);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
 
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", areaEmpresa.Empr_Nit);
-            return View(areaEmpresa);
+            return View(eleProteccion);
         }
 
-        // GET: Administrador/AreaEmpresas/Edit/5
+        // GET: Administrador/EleProteccions/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AreaEmpresa areaEmpresa = db.Tb_AreaEmpresa.Find(id);
-            if (areaEmpresa == null)
+            EleProteccion eleProteccion = db.Tb_EleProteccion.Find(id);
+            if (eleProteccion == null)
             {
                 return HttpNotFound();
             }
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", areaEmpresa.Empr_Nit);
-            return View(areaEmpresa);
+            return View(eleProteccion);
         }
 
-        // POST: Administrador/AreaEmpresas/Edit/5
+        // POST: Administrador/EleProteccions/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Aemp_Id,Aemp_Nom,Empr_Nit,Aemp_Registro")] AreaEmpresa areaEmpresa)
+        public ActionResult Edit([Bind(Include = "Epro_Id,Epro_Nom,Epro_Registro")] EleProteccion eleProteccion)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(areaEmpresa).State = EntityState.Modified;
+                db.Entry(eleProteccion).State = EntityState.Modified;
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", areaEmpresa.Empr_Nit);
-            return View(areaEmpresa);
+            return View(eleProteccion);
         }
 
-        // GET: Administrador/AreaEmpresas/Delete/5
+        // GET: Administrador/EleProteccions/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            AreaEmpresa areaEmpresa = db.Tb_AreaEmpresa.Find(id);
-            if (areaEmpresa == null)
+            EleProteccion eleProteccion = db.Tb_EleProteccion.Find(id);
+            if (eleProteccion == null)
             {
                 return HttpNotFound();
             }
-            return View(areaEmpresa);
+            return View(eleProteccion);
         }
 
-        // POST: Administrador/AreaEmpresas/Delete/5
+        // POST: Administrador/EleProteccions/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
         {
-            AreaEmpresa areaEmpresa = db.Tb_AreaEmpresa.Find(id);
-            db.Tb_AreaEmpresa.Remove(areaEmpresa);
+            EleProteccion eleProteccion = db.Tb_EleProteccion.Find(id);
+            db.Tb_EleProteccion.Remove(eleProteccion);
             db.SaveChanges();
             return RedirectToAction("Index");
         }

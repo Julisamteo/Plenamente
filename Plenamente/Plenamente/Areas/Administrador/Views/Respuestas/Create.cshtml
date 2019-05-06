@@ -12,24 +12,25 @@
 {
     @Html.AntiForgeryToken()
 
-    <div class="centrarContenido">
+<div class="centrarContenido">
 
-        Respuesta:
+    Respuesta:
 
-        @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { } })
+    @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { } })
 
 
-        <div class="form-group">
-            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.EditorFor(model => model.Resp_Registro, new { htmlAttributes = new { @class = "form-control" } })</label>
-        </div>
-
-        <div class="form-group">
-            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden> @Html.DropDownList("Preg_Id", null, htmlAttributes: new { @class = "form-control" })</label>
-        </div>
-
-        <input type="submit" value="Create" class="btn btn-default" />
-
+    <div class="form-group">
+        @*Campo de Registro oculto*@
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Resp_Registro)  </label>
     </div>
+
+    <div class="form-group">
+        <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden> @Html.DropDownList("Preg_Id", null, htmlAttributes: new { @class = "form-control" })</label>
+    </div>
+
+    <input type="submit" value="Create" class="btn btn-default" />
+
+</div>
 }
 
 <div class="contenidoVolver">

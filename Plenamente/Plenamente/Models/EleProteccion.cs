@@ -8,6 +8,10 @@ namespace Plenamente.Models
 {
     public class EleProteccion
     {
+        public EleProteccion()
+        {
+            Epro_Registro = DateTime.Now;
+        }
         [Key]
         public int Epro_Id { get; set; }
         public string Epro_Nom { get; set; }

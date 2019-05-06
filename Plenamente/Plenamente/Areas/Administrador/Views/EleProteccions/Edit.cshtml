@@ -1,0 +1,45 @@
+﻿@model Plenamente.Models.EleProteccion
+
+@{
+    ViewBag.Title = "Edit";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+    <div class="colorVerdeBack">
+        <p>Editar Elementos</p>
+    </div>
+
+@using (Html.BeginForm())
+{
+    @Html.AntiForgeryToken()
+    
+    <div class="centrarContenido">
+
+
+        Nombre del Elemento:
+                @Html.EditorFor(model => model.Epro_Nom, new { htmlAttributes = new { @class = "" } })
+
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Epro_Registro, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Epro_Registro, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Epro_Registro, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Save" class="btn btn-default" />
+            </div>
+        </div>
+    </div>
+}
+
+<div>
+    @Html.ActionLink("Back to List", "Index")
+</div>
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

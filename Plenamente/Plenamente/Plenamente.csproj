@@ -186,6 +186,7 @@
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CriteriosController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CumplimientosController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\EleProteccionsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EncuSociController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EstandarsController.cs" />
@@ -197,16 +198,16 @@
     <Compile Include="Areas\Administrador\Controllers\ReglaHigienesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaInternoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\RespuestasController.cs" />
-    <Compile Include="Areas\Administrador\Controllers\SedeCiudadsController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\SedeCiudadesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\TipoDocCargasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.cs" />
-    <Compile Include="Migrations\201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.Designer.cs">
-      <DependentUpon>201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.cs</DependentUpon>
+    <Compile Include="Migrations\201905061443143_Correccion SedeCiudad.cs" />
+    <Compile Include="Migrations\201905061443143_Correccion SedeCiudad.Designer.cs">
+      <DependentUpon>201905061443143_Correccion SedeCiudad.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -377,11 +378,6 @@
     <Content Include="Areas\Administrador\Views\ReglaInternoes\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\ReglaInternoes\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\ReglaInternoes\Index.cshtml" />
-    <Content Include="Areas\Administrador\Views\SedeCiudads\Create.cshtml" />
-    <Content Include="Areas\Administrador\Views\SedeCiudads\Delete.cshtml" />
-    <Content Include="Areas\Administrador\Views\SedeCiudads\Details.cshtml" />
-    <Content Include="Areas\Administrador\Views\SedeCiudads\Edit.cshtml" />
-    <Content Include="Areas\Administrador\Views\SedeCiudads\Index.cshtml" />
     <Content Include="Areas\Administrador\Views\ObjEmpresas\Create.cshtml" />
     <Content Include="Areas\Administrador\Views\ObjEmpresas\Delete.cshtml" />
     <Content Include="Areas\Administrador\Views\ObjEmpresas\Details.cshtml" />
@@ -430,6 +426,16 @@
     <Content Include="Areas\Administrador\Views\Respuestas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Respuestas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Respuestas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudades\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudades\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudades\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudades\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\SedeCiudades\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\EleProteccions\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\EleProteccions\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\EleProteccions\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\EleProteccions\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\EleProteccions\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -506,8 +512,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.resx">
-      <DependentUpon>201905032112147_yaEstoyHastaLaPutaDeTantasMigraciones.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905061443143_Correccion SedeCiudad.resx">
+      <DependentUpon>201905061443143_Correccion SedeCiudad.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
