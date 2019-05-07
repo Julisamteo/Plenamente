@@ -1,0 +1,40 @@
+﻿@model IEnumerable<Plenamente.Models.ProcesActividad>
+
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Pact_Nombre)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Pact_Registro)
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pact_Nombre)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pact_Registro)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Pact_Id }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Pact_Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Pact_Id })
+        </td>
+    </tr>
+}
+
+</table>

@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -15,10 +16,42 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/Politicas
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_politica = db.Tb_politica.Include(p => p.Empresa);
-            return View(tb_politica.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var politicas = from s in db.Tb_politica
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                politicas = politicas.Where(s => s.Poli_Registro.ToString().Contains(searchString)
+                                       || s.Poli_Registro.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    politicas = politicas.OrderByDescending(s => s.Poli_Registro.ToString());
+                    break;
+                default:  // Name ascending 
+                    politicas = politicas.OrderBy(s => s.Poli_Registro.ToString());
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(politicas.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Administrador/Politicas/Details/5

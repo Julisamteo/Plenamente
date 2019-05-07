@@ -195,6 +195,7 @@
     <Compile Include="Areas\Administrador\Controllers\ObjEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ProcesActividadsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaHigienesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaInternoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\RespuestasController.cs" />
@@ -436,6 +437,11 @@
     <Content Include="Areas\Administrador\Views\EleProteccions\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\EleProteccions\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\EleProteccions\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ProcesActividads\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ProcesActividads\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ProcesActividads\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ProcesActividads\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ProcesActividads\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
