@@ -23,6 +23,9 @@
                 Nombre Pregunta:
             </th>
             <th class="colorVerde">
+                Tipo Respuesta:
+            </th>
+            <th class="colorVerde">
                 Nombre Respuesta:
             </th>
             <th class="colorVerde">
@@ -34,22 +37,35 @@
     <tbody class="cuerpoTabla">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pregunta.Preg_Titulo)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Resp_Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Resp_Registro)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Resp_Id }) |
-                    @Html.ActionLink("Eliminar", "Delete", "Respuestas", new { id = item.Resp_Id, idPregunta = item.Preg_Id }, null) 
-                   
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pregunta.Preg_Titulo)
+            </td>
+            <td>
+                @if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "textBox")
+                {
+                    @Html.EditorFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                }
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "checkBox")
+                {
+                    @Html.RadioButtonFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                }
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "radioButton")
+                {
+                    @Html.RadioButtonFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "", @disabled = "disabled" } })
+                }
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resp_Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Resp_Registro)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Resp_Id }) |
+                @Html.ActionLink("Eliminar", "Delete", "Respuestas", new { id = item.Resp_Id, idPregunta = item.Preg_Id }, null)
+            </td>
+        </tr>
         }
     </tbody>
 </table>
