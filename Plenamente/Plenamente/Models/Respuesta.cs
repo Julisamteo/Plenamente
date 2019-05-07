@@ -16,6 +16,7 @@ namespace Plenamente.Models
         [Key]
         public int  Resp_Id { get; set; }
         public string Resp_Nom { get; set; }
+        public string Resp_Tipo { get; set; }
 
         [DataType(DataType.DateTime)]
         public DateTime Resp_Registro { get; set; }

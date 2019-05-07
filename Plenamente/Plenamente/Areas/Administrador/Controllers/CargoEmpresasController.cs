@@ -6,6 +6,7 @@ using System.Net;
 using System.Web.Mvc;
 using Plenamente.Models;
 using PagedList;
+using Microsoft.AspNet.Identity;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -32,7 +33,13 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             ViewBag.CurrentFilter = searchString;
 
+            var userId = User.Identity.GetUserId();
+            var UserCurrent = db.Users.Find(userId);
+            var Empr_Nit = UserCurrent.Empr_Nit;
+
+
             var cargos = from s in db.Tb_CargoEmpresa
+                         where s.Empr_Nit == Empr_Nit
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {

@@ -19,7 +19,7 @@ namespace Plenamente.Models
         public int Ciud_Id { get; set; }
         public Ciudad Ciudad { get; set; }
         // Foreign Key Empresa
-        public int Empr_id { get; set; }
+        public int Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
         public DateTime Sciu_Registro { get; set; }
 

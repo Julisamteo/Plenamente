@@ -183,6 +183,7 @@
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AutoEvaluacionController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\CargaArchivoController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CriteriosController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EncuestasController.cs" />
@@ -204,22 +205,19 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.cs" />
-    <Compile Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.Designer.cs">
-      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
+    <Compile Include="Migrations\201905062119040_Cambios Cumplimientos.cs" />
+    <Compile Include="Migrations\201905062119040_Cambios Cumplimientos.Designer.cs">
+      <DependentUpon>201905062119040_Cambios Cumplimientos.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.cs" />
-    <Compile Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.Designer.cs">
-      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905031548402_meh..cs" />
-    <Compile Include="Migrations\201905031548402_meh..Designer.cs">
-      <DependentUpon>201905031548402_meh..cs</DependentUpon>
+    <Compile Include="Migrations\201905071451231_UpateMiguel.cs" />
+    <Compile Include="Migrations\201905071451231_UpateMiguel.Designer.cs">
+      <DependentUpon>201905071451231_UpateMiguel.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
     <Compile Include="Models\Afp.cs" />
+    <Compile Include="Models\Archivo.cs" />
     <Compile Include="Models\AreaEmpresa.cs" />
     <Compile Include="Models\Arl.cs" />
     <Compile Include="Models\AutoEvaluacion.cs" />
@@ -432,6 +430,7 @@
     <Content Include="Areas\Administrador\Views\Respuestas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Respuestas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Respuestas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\CargaArchivo\Upload.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -490,7 +489,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
-    <Folder Include="Areas\Administrador\Views\Cumplimiento\" />
     <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
@@ -509,14 +507,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201904302133420_tengoElPoderAbsolutoYMeLaPela.resx">
-      <DependentUpon>201904302133420_tengoElPoderAbsolutoYMeLaPela.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905062119040_Cambios Cumplimientos.resx">
+      <DependentUpon>201905062119040_Cambios Cumplimientos.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201904302206295_tengoElPoderAbsolutoYMelaPela2.resx">
-      <DependentUpon>201904302206295_tengoElPoderAbsolutoYMelaPela2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905031548402_meh..resx">
-      <DependentUpon>201905031548402_meh..cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905071451231_UpateMiguel.resx">
+      <DependentUpon>201905071451231_UpateMiguel.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -3,7 +3,7 @@ namespace Plenamente.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class meh : DbMigration
+    public partial class UpateMiguel : DbMigration
     {
         public override void Up()
         {
