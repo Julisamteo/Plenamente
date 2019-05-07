@@ -1,11 +1,11 @@
-﻿using System;
+﻿using PagedList;
+using Plenamente.Models;
+using System;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using PagedList;
-using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -47,7 +47,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     cargos = cargos.OrderBy(s => s.Encu_Vence.ToString());
                     break;
             }
-            int pageSize = 10;
+            int pageSize = 50;
             int pageNumber = (page ?? 1);
             return View(cargos.ToPagedList(pageNumber, pageSize));
         }
@@ -72,7 +72,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
             return View();
         }
-        
+
         // POST: Administrador/Encuestas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -153,6 +153,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         public void GuardarPreguntas()
         {
             var maxEncuesta = db.Tb_Encuesta.Max(x => x.Encu_Id);
+
             var fechaActual = DateTime.Now;
             var fechaFinal = fechaActual.ToString("yyyy-MM-dd h:m:s");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Apellidos y Nombres Completos', '" + fechaFinal + "','" + maxEncuesta + "')");
@@ -160,15 +161,71 @@ namespace Plenamente.Areas.Administrador.Controllers
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Cargo u Ocupación', '" + fechaFinal + "','" + maxEncuesta + "')");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Área de Trabajo', '" + fechaFinal + "','" + maxEncuesta + "')");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Seleccione uno de los rangos a los que corresponde su edad', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('18-27', '" + fechaFinal + "', '" + maxPregunta + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('28-37', '" + fechaFinal + "', '" + maxPregunta + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('38-47', '" + fechaFinal + "', '" + maxPregunta + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('48 o Más', '" + fechaFinal + "', '" + maxPregunta + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Seleccione su Estado Civil', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta1 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Soltero (A)', '" + fechaFinal + "', '" + maxPregunta1 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Casado (A)/ Unión Libre', '" + fechaFinal + "', '" + maxPregunta1 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Separado (A)/ Divorciado', '" + fechaFinal + "', '" + maxPregunta1 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Viudo (A)', '" + fechaFinal + "', '" + maxPregunta1 + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Genero', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta2 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Hombre', '" + fechaFinal + "', '" + maxPregunta2 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Mujer', '" + fechaFinal + "', '" + maxPregunta2 + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Fecha de Nacimiento', '" + fechaFinal + "','" + maxEncuesta + "')");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Numero de Personas a Cargo', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta3 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Ninguna', '" + fechaFinal + "', '" + maxPregunta3 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('1 a 3 Personas', '" + fechaFinal + "', '" + maxPregunta3 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('4 a 6 Personas', '" + fechaFinal + "', '" + maxPregunta3 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Más de 6 Personas', '" + fechaFinal + "', '" + maxPregunta3 + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Numero de Hijos', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta4 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('No tiene Hijos', '" + fechaFinal + "', '" + maxPregunta4 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('1 a 3 Hijos', '" + fechaFinal + "', '" + maxPregunta4 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('4 a 6 Hijos', '" + fechaFinal + "', '" + maxPregunta4 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Más de 6 Hijos', '" + fechaFinal + "', '" + maxPregunta4 + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Seleccione su Nivel de Escolaridad', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta5 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Primaria', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Secundaria', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Técnico Tecnólogo', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Estudiante Universitario', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Profesional', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            //Fin Opcines
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Profesión', '" + fechaFinal + "','" + maxEncuesta + "')");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Tipo de Vivienda', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta6 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Propia', '" + fechaFinal + "', '" + maxPregunta6 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Arrendada', '" + fechaFinal + "', '" + maxPregunta6 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('Familiar', '" + fechaFinal + "', '" + maxPregunta6 + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('¿A qué estrato pertenece?', '" + fechaFinal + "','" + maxEncuesta + "')");
+            var maxPregunta7 = db.Tb_Pregunta.Max(x => x.Preg_Id);
+            //Opciones
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('1', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('2', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('3 Tecnólogo', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('4 Universitario', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('5', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            db.Database.ExecuteSqlCommand("INSERT INTO Respuestas (Resp_Nom, Resp_Registro, Preg_Id) VALUES ('6', '" + fechaFinal + "', '" + maxPregunta5 + "')");
+            //Fin Opciones
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('¿Con qué servicios cuenta su vivienda?', '" + fechaFinal + "','" + maxEncuesta + "')");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('¿En qué utiliza su tiempo libre?', '" + fechaFinal + "','" + maxEncuesta + "')");
             db.Database.ExecuteSqlCommand("INSERT INTO Preguntas (Preg_Titulo, Preg_Registro, Encu_Id) VALUES ('Promedio de Ingresos (S.M.L)', '" + fechaFinal + "','" + maxEncuesta + "')");

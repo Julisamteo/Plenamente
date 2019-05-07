@@ -43,14 +43,14 @@ namespace Plenamente.Areas.Administrador.Controllers
             switch (sortOrder)
             {
                 case "name_desc":
-                    preguntas = preguntas.OrderByDescending(s => s.Preg_Titulo);
+                    preguntas = preguntas.OrderByDescending(s => s.Preg_Id);
                     break;
                 default:  // Name ascending 
-                    preguntas = preguntas.OrderBy(s => s.Preg_Titulo);
+                    preguntas = preguntas.OrderBy(s => s.Preg_Id);
                     break;
             }
            
-            int pageSize = 10;
+            int pageSize = 60;
             int pageNumber = (page ?? 1);
             return View(preguntas.ToPagedList( pageNumber, pageSize));   
         }

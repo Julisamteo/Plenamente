@@ -205,9 +205,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905061443143_Correccion SedeCiudad.cs" />
-    <Compile Include="Migrations\201905061443143_Correccion SedeCiudad.Designer.cs">
-      <DependentUpon>201905061443143_Correccion SedeCiudad.cs</DependentUpon>
+    <Compile Include="Migrations\201905071426576_Me Cago En La Puta.cs" />
+    <Compile Include="Migrations\201905071426576_Me Cago En La Puta.Designer.cs">
+      <DependentUpon>201905071426576_Me Cago En La Puta.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -512,8 +512,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905061443143_Correccion SedeCiudad.resx">
-      <DependentUpon>201905061443143_Correccion SedeCiudad.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905071426576_Me Cago En La Puta.resx">
+      <DependentUpon>201905071426576_Me Cago En La Puta.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

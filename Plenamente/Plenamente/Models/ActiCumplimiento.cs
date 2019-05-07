@@ -15,6 +15,8 @@ namespace Plenamente.Models
         public float Acum_Porcentest { get; set; }
         public string Acum_Ejec { get; set; }
         public DateTime Acum_Registro { get; set; }
+        public DateTime Acum_IniAct { get; set; }
+        public DateTime Acum_FinAct { get; set; }
 
         [ForeignKey("ObjEmpresa")]
         public int Oemp_Id { get; set; }

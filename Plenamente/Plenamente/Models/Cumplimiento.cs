@@ -16,7 +16,7 @@ namespace Plenamente.Models
         public byte[] Cump_Evidencia { get; set; }
         // ForeignKey
         [ForeignKey("ItemEstandar")]
-        public int Iest_Id { get; set; }
+        public int? Iest_Id { get; set; }
         public ItemEstandar ItemEstandar { get; set; }
         //// ForeignKey
         [ForeignKey("ApplicationUser")]
@@ -24,11 +24,11 @@ namespace Plenamente.Models
         public ApplicationUser ApplicationUser { get; set; }
         //ForeignKey
         [ForeignKey("Empresa")]
-        public int Empr_Id { get; set; }
+        public int? Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
         //Foreign Key
         [ForeignKey("TipoDocCarga")]
-        public int Tdca_Id { get; set; }
+        public int? Tdca_Id { get; set; }
         public TipoDocCarga TipoDocCarga { get; set; }
 
         public DateTime Cump_Registro { get; set; }
