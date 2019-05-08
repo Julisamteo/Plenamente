@@ -489,7 +489,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
-    <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>

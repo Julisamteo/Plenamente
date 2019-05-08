@@ -24,6 +24,9 @@ namespace Plenamente.Areas.Administrador.Controllers
             mymodel.itemEstandars1 = db.Tb_ItemEstandar.Where(x => x.Esta_Id == 3).ToList();
             return View(mymodel);
         }
+   
+
+
     }
     //var hola = db.Tb_Criterio.Where(x => x.Crit_Id == '3').ToList();
 }
