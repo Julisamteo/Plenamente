@@ -206,9 +206,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905071426576_Me Cago En La Puta.cs" />
-    <Compile Include="Migrations\201905071426576_Me Cago En La Puta.Designer.cs">
-      <DependentUpon>201905071426576_Me Cago En La Puta.cs</DependentUpon>
+    <Compile Include="Migrations\201905082038572_me la pela este sistema.cs" />
+    <Compile Include="Migrations\201905082038572_me la pela este sistema.Designer.cs">
+      <DependentUpon>201905082038572_me la pela este sistema.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -256,6 +256,7 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
+    <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -279,6 +280,7 @@
     <Content Include="Imagenes\bocadillo.png" />
     <Content Include="Imagenes\brooke-cagle-1181684-unsplash.jpg" />
     <Content Include="Imagenes\carl-heyerdahl-181868-unsplash.jpg" />
+    <Content Include="Imagenes\database.png" />
     <Content Include="Imagenes\Element %2810%29-8.png" />
     <Content Include="Imagenes\Element %2811%29-8.png" />
     <Content Include="Imagenes\Element %2812%29-8.png" />
@@ -501,6 +503,7 @@
     <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
     <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
+    <Folder Include="Areas\Administrador\Views\respuestasQuemadas\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
@@ -518,8 +521,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905071426576_Me Cago En La Puta.resx">
-      <DependentUpon>201905071426576_Me Cago En La Puta.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905082038572_me la pela este sistema.resx">
+      <DependentUpon>201905082038572_me la pela este sistema.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

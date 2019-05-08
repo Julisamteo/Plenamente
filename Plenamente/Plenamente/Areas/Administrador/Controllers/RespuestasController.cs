@@ -9,6 +9,7 @@ using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
+    
     public class RespuestasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -81,8 +82,9 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Resp_Id,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta, int? id, int idPregunta)
+        public ActionResult Create([Bind(Include = "Resp_Id,Resp_Tipo,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta, int? id, int idPregunta)
         {
+           
             if (ModelState.IsValid)
             {
                 ViewBag.idPregunta = idPregunta;
@@ -116,7 +118,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Resp_Id,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta)
+        public ActionResult Edit([Bind(Include = "Resp_Id,Resp_Tipo,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta)
         {
             if (ModelState.IsValid)
             {
@@ -156,6 +158,12 @@ namespace Plenamente.Areas.Administrador.Controllers
             return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
         }
 
+        public ActionResult eliminarRespuestas(int idPregunta)
+        {
+            ViewBag.idPregunta = idPregunta;
+            db.Database.ExecuteSqlCommand("DELETE FROM Respuestas");
+            return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
+        }
         protected override void Dispose(bool disposing)
         {
             if (disposing)

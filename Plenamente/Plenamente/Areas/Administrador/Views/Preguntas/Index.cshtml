@@ -14,7 +14,8 @@
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
         <a href="@Url.Action("Index", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>  
+        <a href="@Url.Action("Create", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+        <a href="@Url.Action("eliminarPreguntas", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Eliminar TODAS las preguntas</span><img src="~/Imagenes/database.png" /><p>Crear</p></a>
     </form>
 </div>
 
@@ -37,7 +38,7 @@
                 <td>
                     @Html.ActionLink("Editar", "Edit", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
                     @Html.ActionLink("Eliminar", "Delete", "Preguntas", new { id = item.Preg_Id, idEncuesta = item.Encu_Id }, null) |
-                    @Html.ActionLink("Ver Opciones", "Index", "Respuestas", new { id = item.Preg_Id,  idPregunta = item.Preg_Id }, null) 
+                    @Html.ActionLink("Ver Opciones", "Index", "Respuestas", new { id = item.Preg_Id, idPregunta = item.Preg_Id }, null)
                 </td>
             </tr>
         }

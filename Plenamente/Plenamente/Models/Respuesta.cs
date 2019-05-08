@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Plenamente.Models
 {
@@ -21,6 +19,9 @@ namespace Plenamente.Models
 
         [DataType(DataType.DateTime)]
         public DateTime Resp_Registro { get; set; }
+
+        public int Quem_Id { get; set; }
+        public TipoRespuesta respuestasQuemadas { get; set; }
 
         /*Llave Foranea a la tabla Pregunta*/
         [ForeignKey("Pregunta")]

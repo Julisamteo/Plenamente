@@ -9,6 +9,7 @@ using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
+    
     public class PreguntasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
@@ -157,11 +158,17 @@ namespace Plenamente.Areas.Administrador.Controllers
         {
             ViewBag.idEncuesta = idEncuesta;
             Pregunta pregunta = db.Tb_Pregunta.Find(id);
-            db.Tb_Pregunta.Remove(pregunta);
-            db.SaveChanges();
+            db.Tb_Pregunta.Remove(pregunta);  
+            db.SaveChanges(); 
+            return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
+           
+        }
+        public ActionResult eliminarPreguntas(int idEncuesta)
+        {
+            ViewBag.idEncuesta = idEncuesta;
+            db.Database.ExecuteSqlCommand("DELETE FROM Preguntas");
             return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

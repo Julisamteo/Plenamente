@@ -17,7 +17,10 @@
     Respuesta:
 
     @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { } })
-
+    Tipo Respuesta:
+    @Html.DropDownList("Resp_Tipo", null, htmlAttributes: new { @class = "estilosSelect" })
+   
+    
 
     <div class="form-group">
         @*Campo de Registro oculto*@
@@ -36,7 +39,6 @@
 <div class="contenidoVolver">
     <a href="@Url.Action("Index", "Respuestas", new {id = @ViewBag.idPregunta , idPregunta = @ViewBag.idPregunta}, null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
-
 
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
