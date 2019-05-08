@@ -35,15 +35,15 @@
                     <label asp-for="Archivo" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Cump_Registro)</label>
                 </div>
                 <br />
-                <label> @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "estilosSelect" }) </label>
+                @*<label> @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "estilosSelect" }) </label>
                 <br />
-                <label> @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" }) </label>
+                <label> @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" }) </label>*@
                 <tr>
                     <td colspan="2" style="text-align:right"> <input type="submit" id="Apply" value="Apply" /> </td>
                 </tr>
             </table>}
     </div>
-    @Html.ActionLink("Click here to download", "DownloadFile", new { })
+    
 
 </body>
 
