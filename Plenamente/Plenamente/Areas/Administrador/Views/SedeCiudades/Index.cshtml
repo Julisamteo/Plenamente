@@ -22,10 +22,7 @@
             <th class="colorVerde">
                 Nombre De La Sede:
             </th>
-            <th class="colorVerde">
-                Fecha de Creación:
-            </th>
-            <th class="colorVerde"></th>
+          <th class="colorVerde"></th>
         </tr>
     </thead>
     <tbody class="cuerpoTabla">
@@ -36,11 +33,8 @@
                     @Html.DisplayFor(modelItem => item.Sciu_Nom)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Sciu_Registro)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Sciu_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Sciu_Id })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Sciu_Id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Sciu_Id })
                 </td>
             </tr>
         }

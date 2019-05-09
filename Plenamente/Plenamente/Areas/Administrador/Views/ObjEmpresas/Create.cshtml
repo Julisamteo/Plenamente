@@ -5,60 +5,60 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Create</h2>
+<div class="colorVerdeBack">
+    <p>Crear un nuevo objetivo </p>
+</div>
 
 
-@using (Html.BeginForm()) 
+
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="form-horizontal">
-    <h4>ObjEmpresa</h4>
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.Oemp_Nombre, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Oemp_Nombre, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Oemp_Nombre, "", new { @class = "text-danger" })
+
+    <div class="centrarContenido">
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form">
+            <div class="col-md-10">
+                Nombre
+                @Html.EditorFor(model => model.Oemp_Nombre, new { htmlAttributes = new { @class = "" } })
+                @Html.ValidationMessageFor(model => model.Oemp_Nombre, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form">
+            <div class="col-md-10">
+                Descripción
+                @Html.EditorFor(model => model.Oemp_Descrip, new { htmlAttributes = new { @class = "" } })
+                @Html.ValidationMessageFor(model => model.Oemp_Descrip, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10" hidden>
+                @Html.EditorFor(model => model.Oemp_Meta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Oemp_Meta, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        @*Campo de Registro oculto*@
+        <div class="form-group">
+            <label asp-for="ObjetivoEmpresa" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Oemp_Registro)</label>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-10" hidden>
+                @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Create" class="btn btn-default" />
+            </div>
         </div>
     </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Oemp_Descrip, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Oemp_Descrip, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Oemp_Descrip, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Oemp_Meta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Oemp_Meta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Oemp_Meta, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    @*Campo de Registro oculto*@
-    <div class="form-group">
-        <label asp-for="ObjetivoEmpresa" class="col-md-4 control-label">@Html.DisplayFor(Model => Model.Oemp_Registro)</label>
-    </div>
-
-    <div class="form-group">
-        @Html.LabelFor(model => model.Empr_Nit, "Empr_Nit", htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Empr_Nit, "", new { @class = "text-danger" })
-        </div>
-    </div>
-
-    <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
-            <input type="submit" value="Create" class="btn btn-default" />
-        </div>
-    </div>
-</div>
 }
 
 <div>

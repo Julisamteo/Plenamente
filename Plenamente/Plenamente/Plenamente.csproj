@@ -210,6 +210,10 @@
     <Compile Include="Migrations\201905071426576_Me Cago En La Puta.Designer.cs">
       <DependentUpon>201905071426576_Me Cago En La Puta.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905091624485_momomo.cs" />
+    <Compile Include="Migrations\201905091624485_momomo.Designer.cs">
+      <DependentUpon>201905091624485_momomo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -248,6 +252,7 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
+    <Compile Include="Models\QuemRespuestas.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -520,6 +525,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905071426576_Me Cago En La Puta.resx">
       <DependentUpon>201905071426576_Me Cago En La Puta.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905091624485_momomo.resx">
+      <DependentUpon>201905091624485_momomo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

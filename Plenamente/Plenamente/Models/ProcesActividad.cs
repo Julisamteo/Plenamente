@@ -8,6 +8,10 @@ namespace Plenamente.Models
 {
     public class ProcesActividad
     {
+        public ProcesActividad()
+        {
+            Pact_Registro = DateTime.Now;
+        }
         [Key]
         public int Pact_Id { get; set; }
         public string Pact_Nombre { get; set; }

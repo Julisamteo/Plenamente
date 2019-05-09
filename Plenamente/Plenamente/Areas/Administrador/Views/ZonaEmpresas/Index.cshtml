@@ -1,46 +1,50 @@
-﻿@model IEnumerable<Plenamente.Models.ZonaEmpresa>
+﻿@model PagedList.IPagedList<Plenamente.Models.ZonaEmpresa>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Index</h2>
+<div class="colorVerdeBack">
+    <p>Zonas de la empresa</p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zemp_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Zemp_Registro)
-        </th>
-        <th></th>
-    </tr>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "zonaEmpresas")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "zonaEmpresas")" class="ayudaTitulos"><span>Crear individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zemp_Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Zemp_Registro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Zemp_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Zemp_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Zemp_Id })
-        </td>
-    </tr>
-}
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+
+        <tr>
+            <th class="colorVerde">
+                Nombre de la zona
+            </th>
+            <th class="colorVerde"></th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Zemp_Nom)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Zemp_Id }) |
+                    @Html.ActionLink("Borrar", "Delete", new { id = item.Zemp_Id })
+                </td>
+            </tr>
+        }
 
 </table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+

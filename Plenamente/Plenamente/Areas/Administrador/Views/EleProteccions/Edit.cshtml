@@ -21,23 +21,15 @@
 
 
         <div class="form-group">
-            @Html.LabelFor(model => model.Epro_Registro, htmlAttributes: new { @class = "control-label col-md-2" })
-            <div class="col-md-10">
-                @Html.EditorFor(model => model.Epro_Registro, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Epro_Registro, "", new { @class = "text-danger" })
-            </div>
+            <label hidden asp-for="EproRegistro" class="col-md-4 control-label" >@Html.DisplayFor(Model => Model.Epro_Registro)  </label>
         </div>
 
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Save" class="btn btn-default" />
-            </div>
-        </div>
+                <input type="submit" value="Guardar" class="btn btn-default" />
     </div>
 }
 
-<div>
-    @Html.ActionLink("Back to List", "Index")
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "EleProteccions")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
 
 @section Scripts {

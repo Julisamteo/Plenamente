@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -15,10 +16,43 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ReglaHigienes
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_ReglaHigiene = db.Tb_ReglaHigiene.Include(r => r.Empresa);
-            return View(tb_ReglaHigiene.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var rHigiene = from s in db.Tb_ReglaHigiene
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                rHigiene = rHigiene.Where(s => s.Rhig_Registro.ToString().Contains(searchString)
+                                       || s.Rhig_Registro.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    rHigiene = rHigiene.OrderByDescending(s => s.Rhig_Registro.ToString());
+                    break;
+                default:  // Name ascending 
+                    rHigiene = rHigiene.OrderBy(s => s.Rhig_Registro.ToString());
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(rHigiene.ToPagedList(pageNumber, pageSize));
+
         }
 
         // GET: Administrador/ReglaHigienes/Details/5

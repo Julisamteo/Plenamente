@@ -5,23 +5,15 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Delete</h2>
+<div class="colorVerdeBack">
+    <p>Eliminar regla</p>
+</div>
 
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>ReglaInterno</h4>
+<div class="centrarContenido">
     <hr />
     <dl class="dl-horizontal">
         <dt>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Rint_Archivo)
+            Archivo
         </dt>
 
         <dd>
@@ -29,7 +21,7 @@
         </dd>
 
         <dt>
-            @Html.DisplayNameFor(model => model.Rint_Registro)
+            Fecha
         </dt>
 
         <dd>
@@ -38,12 +30,18 @@
 
     </dl>
 
-    @using (Html.BeginForm()) {
+    @using (Html.BeginForm())
+    {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+<div class="form-actions no-color">
+    <input type="submit" value="Borrar" class="btn btn-default" /> |
+
+    @Html.ActionLink("Back to List", "Index")
+</div>
     }
 </div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "ReglaHigienes")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
+

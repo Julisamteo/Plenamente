@@ -1,57 +1,45 @@
 ﻿@{
-    ViewBag.Title = "Home Page";
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
-
-<div class="dobleContenedor">
-    <div class="primerContenedor">
-        <img src="~/Imagenes/brooke-cagle-1181684-unsplash.jpg" />
-    </div>
-    <div class="segundoContenedor">
-        <div class="wrapper fadeInDown">
-            <div id="formContent">
-                <!-- Tabs Titles -->
-                <!-- Icon -->
-                <div class="fadeIn first">
-                    <img class="imagenLogin" src="~/Imagenes/Plenamente2.png" />
-                </div>
-
-                <!-- Login Form -->
-                <form asp-controller="Home" asp-action="Index" method="post">
-                    <input type="email" id="login" class="fadeIn second" placeholder="Usuario">
-                    <br />
-                    <input type="password" id="password" class="fadeIn third" placeholder="Contraseña">
-                    <br />
-                    <input type="submit" class="fadeIn fourth" value="Iniciar Sesión">
-                </form>
-
-                <!-- Remind Passowrd -->
-                <div id="formFooter">
-                    <a class="underlineHover">¿Olvidó su contraseña?</a>
-                </div>
+<section class="contenidoSection">
+    <div class="contenidoDiv">
+        @*Seccion de graficos*@
+        <section class="graficosSection">
+            <div class="graficoA">
+                <center><img src="~/Imagenes/graph (1).png" /></center>
             </div>
-        </div>
+            <div class="graficoB">
+                <center><img src="~/Imagenes/graph.png" /></center>
+            </div>
+            <div class="graficoC">
+                <center><img src="~/Imagenes/pie-chart.png" /></center>
+            </div>
+            <div class="graficoD">
+                <center><img src="~/Imagenes/graph (2).png" /></center>
+            </div>
+        </section>
+        @*Tareas + Periodico Virtual y modulos*@
+        <section class="tareasmoduloSection">
+            <div class="tareasDiv">
+                <p><img src="~/Imagenes/que-hacer.png" /> &nbsp; &nbsp;Mis tareas</p>
+                <hr class="claseDivicion" />
+            </div>
+            <div class="moduloDiv">
+                <p class="fadeIn two">Módulo de capacitación y periódico virtual.</p>
+                <img class="fadeIn three" src="~/Imagenes/lineas-de-texto.png" />
+                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir a Modulos</a>
+            </div>
+        </section>
+        @*Tareas + Grafico Global*@
+        <section class="tareasmoduloSection">
+            <div class="tareasDiv">
+                <p><img src="~/Imagenes/que-hacer.png" /> &nbsp; &nbsp;Actividades</p>
+                <hr class="claseDivicion" />
+            </div>
+            <div class="moduloDiv">
+                <h1 style="text-align: center">Espacio para grafico Global</h1>
+            </div>
+        </section>
     </div>
-</div>
-<div class="fotterPrincipal">
-    <div class="textoFotter">
-        <div class="imagenesContacto">
-            <img src="~/Imagenes/marcador-de-posicion.png" />
-            <img src="~/Imagenes/bocadillo.png" />
-            <img src="~/Imagenes/mano-sosteniendo-smartphone.png" />
-        </div>
-        <div class="textoContacto">
-            <a class="underlineHover" href="#">Carrera 16 No 31A-27 <br />Bogotá-Colombia</a>
-            <a class="underlineHover" href="#">contacto@plenamentetrabajando.com</a>
-            <a class="underlineHover" href="#">+57 311 2666 345</a>
-        </div>
-    </div>
-    <div class="redesSociales">
-        <a href="#"><img src="~/Imagenes/Logo_FB.png" /></a>
-        <a href="#"><img src="~/Imagenes/Logo_INT.png" /></a>
-        <a href="#"><img src="~/Imagenes/Logo_TW.png" /></a>
-        <a href="#"><img src="~/Imagenes/Logo_YT.png" /></a>
-    </div>
-</div>
-@*@section Scripts{
-    <partial name="_ValidationScriptsPartial" />
-}*@
+</section>
