@@ -183,6 +183,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administrador\AdministradorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ActiCumplimientoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AutoEvaluacionController.cs" />
@@ -193,8 +194,10 @@
     <Compile Include="Areas\Administrador\Controllers\EncuSociController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\FileController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\FrecuenciasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ItemEstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ObjEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\PeriodoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ReglaHigienesController.cs" />
@@ -207,9 +210,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905021358434_AhoraYoLoTengo.cs" />
-    <Compile Include="Migrations\201905021358434_AhoraYoLoTengo.Designer.cs">
-      <DependentUpon>201905021358434_AhoraYoLoTengo.cs</DependentUpon>
+    <Compile Include="Migrations\201905091930558_otramigra2.cs" />
+    <Compile Include="Migrations\201905091930558_otramigra2.Designer.cs">
+      <DependentUpon>201905091930558_otramigra2.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -249,6 +252,7 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
+    <Compile Include="Models\QuemRespuesta.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -432,6 +436,22 @@
     <Content Include="Areas\Administrador\Views\Respuestas\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Respuestas\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Respuestas\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Tb_ActiCumplimiento\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -508,8 +528,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905021358434_AhoraYoLoTengo.resx">
-      <DependentUpon>201905021358434_AhoraYoLoTengo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905091930558_otramigra2.resx">
+      <DependentUpon>201905091930558_otramigra2.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

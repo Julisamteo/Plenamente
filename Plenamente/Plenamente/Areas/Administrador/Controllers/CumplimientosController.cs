@@ -75,7 +75,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     return RedirectToAction("Index");
                 }
 
-            ViewBag.Empr_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", cumplimiento.Empr_Id);
+            ViewBag.Empr_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", cumplimiento.Empr_Nit);
             ViewBag.Iest_Id = new SelectList(db.Tb_ItemEstandar, "Iest_Id", "Iest_Desc", cumplimiento.Iest_Id);
             ViewBag.Tdca_Id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom", cumplimiento.Tdca_Id);
             return View(cumplimiento);
@@ -93,7 +93,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 return HttpNotFound();
             }
-            ViewBag.Empr_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", cumplimiento.Empr_Id);
+            ViewBag.Empr_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", cumplimiento.Empr_Nit);
             ViewBag.Iest_Id = new SelectList(db.Tb_ItemEstandar, "Iest_Id", "Iest_Desc", cumplimiento.Iest_Id);
             ViewBag.Tdca_Id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom", cumplimiento.Tdca_Id);
             return View(cumplimiento);
@@ -112,7 +112,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            ViewBag.Empr_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", cumplimiento.Empr_Id);
+            ViewBag.Empr_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", cumplimiento.Empr_Nit);
             ViewBag.Iest_Id = new SelectList(db.Tb_ItemEstandar, "Iest_Id", "Iest_Desc", cumplimiento.Iest_Id);
             ViewBag.Tdca_Id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom", cumplimiento.Tdca_Id);
             return View(cumplimiento);

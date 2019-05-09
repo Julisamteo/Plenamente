@@ -8,9 +8,17 @@ namespace Plenamente.Models
 {
     public class Frecuencia
     {
+        public Frecuencia()
+        {
+            Frec_Registro = DateTime.Now;
+        }
         [Key]
         public int Frec_Id { get; set; }
+
+        [Display(Name ="Nombre Frecuencia")]
         public string Frec_Nom { get; set; }
+               
+        [Display(Name = "Fecha de registro")]
         public DateTime Frec_Registro { get; set; }
 
         // Permite a acticumplimiento acceder a la Data

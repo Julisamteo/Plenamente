@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -14,6 +15,7 @@ namespace Plenamente.Models
     public class ApplicationUser : IdentityUser
     {
         public int Pers_Doc { get; set; }
+        [Display(Name = "Nombre")]
         public string Pers_Nom1 { get; set; }
         public string Pers_Nom2 { get; set; }
         public string Pers_Apel1 { get; set; }
@@ -124,6 +126,7 @@ namespace Plenamente.Models
         public DbSet<TipoVinculacion> Tb_TipoVinculacion { get; set; }
         public DbSet<ZonaEmpresa> Tb_ZonaEmpresa {get; set;}
         public DbSet<Pregunta> Tb_Pregunta { get; set; }
+        public DbSet<QuemRespuesta> Tb_QuemRespuestas { get; set; }
 
         public static ApplicationDbContext Create()
         {
