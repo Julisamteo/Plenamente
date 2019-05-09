@@ -117,13 +117,15 @@ namespace Plenamente.Models
         public DbSet<ReglaHigiene> Tb_ReglaHigiene { get; set; }
         public DbSet<ReglaInterno> Tb_ReglaInterno { get; set; }
         public DbSet<Respuesta> Tb_Respuesta {get; set;}
-        public DbSet<Resultado> Tb_Resultado {get; set;}
+        public DbSet<Resultado> Tb_Resultado {get; set;} 
         public DbSet<SedeCiudad> Tb_SedeCiudad { get; set; }
         public DbSet<TipoDocCarga> Tb_TipoDocCarga {get; set;}
         public DbSet<TipoDocumento> Tb_TipoDocumento { get; set; }
         public DbSet<TipoVinculacion> Tb_TipoVinculacion { get; set; }
         public DbSet<ZonaEmpresa> Tb_ZonaEmpresa {get; set;}
         public DbSet<Pregunta> Tb_Pregunta { get; set; }
+        public DbSet<TipoRespuesta> TipoRespuesta { get; set; }
+        public DbSet<ClaseTest> Tb_ClaseTest { get; set; }
 
         public static ApplicationDbContext Create()
         {

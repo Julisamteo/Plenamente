@@ -206,17 +206,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905062119040_Cambios Cumplimientos.cs" />
-    <Compile Include="Migrations\201905062119040_Cambios Cumplimientos.Designer.cs">
-      <DependentUpon>201905062119040_Cambios Cumplimientos.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905081430179_Again.cs" />
-    <Compile Include="Migrations\201905081430179_Again.Designer.cs">
-      <DependentUpon>201905081430179_Again.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905082034090_MeLaReChu.cs" />
-    <Compile Include="Migrations\201905082034090_MeLaReChu.Designer.cs">
-      <DependentUpon>201905082034090_MeLaReChu.cs</DependentUpon>
+    <Compile Include="Migrations\201905092043564_Init.cs" />
+    <Compile Include="Migrations\201905092043564_Init.Designer.cs">
+      <DependentUpon>201905092043564_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -230,6 +222,7 @@
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
+    <Compile Include="Models\ClaseTest.cs" />
     <Compile Include="Models\Criterio.cs" />
     <Compile Include="Models\Cumplimiento.cs" />
     <Compile Include="Models\EleProteccion.cs" />
@@ -265,6 +258,7 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
+    <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
@@ -513,14 +507,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905062119040_Cambios Cumplimientos.resx">
-      <DependentUpon>201905062119040_Cambios Cumplimientos.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905081430179_Again.resx">
-      <DependentUpon>201905081430179_Again.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905082034090_MeLaReChu.resx">
-      <DependentUpon>201905082034090_MeLaReChu.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905092043564_Init.resx">
+      <DependentUpon>201905092043564_Init.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
