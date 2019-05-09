@@ -9,7 +9,7 @@ using System.Web;
 using System.Web.Mvc;
 using Plenamente.Models;
 using System.Data.SqlClient;
-using System.Collections.Generic;
+
 
 namespace Plenamente.Areas.Administrador.Controllers
 {

@@ -206,6 +206,10 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Migrations\201905092108160_NomasQuerCoso.cs" />
+    <Compile Include="Migrations\201905092108160_NomasQuerCoso.Designer.cs">
+      <DependentUpon>201905092108160_NomasQuerCoso.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -456,7 +460,9 @@
     <Content Include="Scripts\main1.js" />
     <Content Include="Scripts\main2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -499,7 +505,6 @@
     <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
     <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
-    <Folder Include="Areas\Administrador\Views\respuestasQuemadas\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
@@ -515,6 +520,11 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905092108160_NomasQuerCoso.resx">
+      <DependentUpon>201905092108160_NomasQuerCoso.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
