@@ -9,8 +9,7 @@ namespace Plenamente.Models
     public class TipoRespuesta
     {
         [Key]
-        public int Quem_Id { get; set; }
-        public string Quem_Nom { get; set; }
-        public ICollection<Respuesta> Respuestas { get; set; }
+        public int Tres_Id { get; set; }
+        public string Tres_Nom { get; set; }
     }
 }
