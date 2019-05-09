@@ -22,9 +22,12 @@ namespace Plenamente.Models
         public DateTime Resp_Registro { get; set; }
 
         /*Llave Foranea a la tabla Pregunta*/
-        [ForeignKey("Pregunta")]
+        //[ForeignKey("Pregunta")]
         public int Preg_Id { get; set; }
         public Pregunta Pregunta { get; set; }
+
+        public int? Tres_Id { get; set; }
+        public TipoRespuesta tipoRespuesta { get; set; }
 
         // Permite que Resultado acceda a la data
         public ICollection<Resultado> Resultados { get; set; }
