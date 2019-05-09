@@ -30,5 +30,6 @@ namespace Plenamente.Models
 
         // Permite que Resultado acceda a la data
         public ICollection<Resultado> Resultados { get; set; }
+        public ICollection<TipoRespuesta> TipoRespuestas { get; set; }
     }
 }

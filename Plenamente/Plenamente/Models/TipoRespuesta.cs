@@ -11,6 +11,6 @@ namespace Plenamente.Models
         [Key]
         public int Quem_Id { get; set; }
         public string Quem_Nom { get; set; }
-        public ICollection<Respuesta> Respuestas { get; set; }
+        
     }
 }
