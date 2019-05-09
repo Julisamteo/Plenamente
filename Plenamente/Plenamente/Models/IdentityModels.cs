@@ -117,7 +117,7 @@ namespace Plenamente.Models
         public DbSet<ReglaHigiene> Tb_ReglaHigiene { get; set; }
         public DbSet<ReglaInterno> Tb_ReglaInterno { get; set; }
         public DbSet<Respuesta> Tb_Respuesta {get; set;}
-        public DbSet<Resultado> Tb_Resultado {get; set;}
+        public DbSet<Resultado> Tb_Resultado {get; set;} 
         public DbSet<SedeCiudad> Tb_SedeCiudad { get; set; }
         public DbSet<TipoDocCarga> Tb_TipoDocCarga {get; set;}
         public DbSet<TipoDocumento> Tb_TipoDocumento { get; set; }

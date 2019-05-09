@@ -8,16 +8,18 @@
 <div>
     <div >
         @{
-            var criterios = Model.Criterios;
-            var estandares = Model.Estandars;
-            var iestandares = Model.ItemEstandars;
+                      var criterios = Model.Criterios;
+                      var estandares = Model.Estandars;
+                      var iestandares = Model.ItemEstandars;
+                     var cumplimientos = Model.Cumplimientos;
 
 
-            foreach (var item in criterios)
-            {
+
+                        foreach (var item in criterios)
+                        {
                 <br />
                     <h2 class="divCriterio">@item.Crit_Nom</h2>
-            }
+                }
             foreach (var item in estandares)
             {
                 <p>*</p>
@@ -31,7 +33,7 @@
                     @itemm.Iest_Porcentaje <br />
                     @itemm.Iest_Cumple
                     @itemm.Iest_Nocumple
-                    @itemm.Iest_Justifica 
+                    @itemm.Iest_Justifica
                     @itemm.Iest_Nojustifica <br />
 
                 }
@@ -82,20 +84,25 @@
                     
             </tr>
 
-
-
+                        foreach (var arch in cumplimientos)
+                        {
             <tr>
                 <td> @itemm.Iest_Cumple </td>
                 <td> @itemm.Iest_Nocumple </td>
                 <td> @itemm.Iest_Justifica  </td>
                 <td> @itemm.Iest_Nojustifica </td>
-                <td> Archivo.eXTENSION </td>
+                <td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>
+                @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
+
+                hjgh
+
             </tr>
 
 
             <tr>
                 <td> Oberservaciones </td>
             </tr>
+                            }
                         }
                     }
                 }
