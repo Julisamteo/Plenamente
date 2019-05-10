@@ -12,8 +12,9 @@ namespace Plenamente.Models
             Resp_Registro = DateTime.Now;
         }
         [Key]
-        public int  Resp_Id { get; set; }
+        public int Resp_Id { get; set; }
         public string Resp_Nom { get; set; }
+
         public string Resp_Tipo { get; set; }
 
 
