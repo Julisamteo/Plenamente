@@ -1,0 +1,118 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.ExpandedUserDTO>
+@using PagedList.Mvc;
+@{
+    ViewBag.Title = "Manageusers";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>Manageusers</h2>
+<br />
+<p>
+    @Html.ActionLink("Create New", "Create", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Edit Roles", "ViewAllRoles", null, new { @class = "btn btn-default" })
+    @Html.ActionLink("Back to Home", "../", "Home", null, new { @class = "btn btn-default" })
+</p>
+<br />
+@using (Html.BeginForm("Index", "Admin", FormMethod.Get))
+{
+
+    <div class="form-group">
+        Search:&nbsp; @Html.TextBox("searchStringUserNameOrEmail", ViewBag.CurrentFilter as string)
+
+        <input type="submit" value="Search" />
+    </div>
+}
+<br />
+
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            Locked Out
+        </th>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellidos
+        </th>
+        <th>
+            Documento
+        </th>
+        <th>
+            Licencia de Conducción
+        </th>
+        <th>
+            Vigencia Licencia
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Contacto Emergencia
+        </th>
+        <th>
+            Telefono Emergencia
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Email)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Nombres)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Apellidos)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Documento)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pers_Licencia)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pers_LicVence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pers_Direccion)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pers_ContactoEmeg)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Pers_TelefonoEmeg)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
+                @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                {
+                    @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                    new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                }
+            </td>
+        </tr>
+    }
+
+
+</table>
+<br />
+Page @(Model.PageCount < Model.PageNumber ? 0 : Model.PageNumber) of @Model.PageCount
+
+@Html.PagedListPager(Model,
+    page => Url.Action("Index",
+    new { page,
+        searchStringUserNameOrEmail = ViewBag.searchStringUserNameOrEmail,
+        currentFilter = ViewBag.CurrentFilter }))
+<hr />
+

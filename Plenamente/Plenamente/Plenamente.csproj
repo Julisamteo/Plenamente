@@ -212,6 +212,14 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
+    <Compile Include="Migrations\201905101759430_RegistroUser.cs" />
+    <Compile Include="Migrations\201905101759430_RegistroUser.Designer.cs">
+      <DependentUpon>201905101759430_RegistroUser.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905101804481_CambiosDatetime2.cs" />
+    <Compile Include="Migrations\201905101804481_CambiosDatetime2.Designer.cs">
+      <DependentUpon>201905101804481_CambiosDatetime2.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -262,6 +270,7 @@
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
+    <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -459,6 +468,12 @@
     <Content Include="Areas\Administrador\Views\Periodoes\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Periodoes\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Periodoes\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\admin\Manageusers.cshtml" />
+    <Content Include="Areas\Administrador\Views\admin\ViewAllRoles.cshtml" />
+    <Content Include="Areas\Administrador\Views\admin\AddRole.cshtml" />
+    <Content Include="Areas\Administrador\Views\admin\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\admin\EditUser.cshtml" />
+    <Content Include="Areas\Administrador\Views\admin\EditRoles.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -540,6 +555,14 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
+  </ItemGroup>
+  <ItemGroup>
+    <EmbeddedResource Include="Migrations\201905101759430_RegistroUser.resx">
+      <DependentUpon>201905101759430_RegistroUser.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905101804481_CambiosDatetime2.resx">
+      <DependentUpon>201905101804481_CambiosDatetime2.cs</DependentUpon>
+    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
