@@ -14,6 +14,7 @@ namespace Plenamente.Models
         [Key]
         public int  Resp_Id { get; set; }
         public string Resp_Nom { get; set; }
+        public string Resp_Tipo { get; set; }
 
         public string Resp_Tipo { get; set; }
 
@@ -27,6 +28,10 @@ namespace Plenamente.Models
         [ForeignKey("Pregunta")]
         public int Preg_Id { get; set; }
         public Pregunta Pregunta { get; set; }
+
+        /*Llave forenea a la tabla QuemRespuesta*/
+        public int Qure_Id { get; set; }
+        public QuemRespuesta QuemRespuesta { get; set; }
 
         // Permite que Resultado acceda a la data
         public ICollection<Resultado> Resultados { get; set; }
