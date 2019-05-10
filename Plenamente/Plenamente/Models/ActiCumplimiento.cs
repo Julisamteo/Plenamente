@@ -11,11 +11,20 @@ namespace Plenamente.Models
     {
         [Key]
         public int Acum_Id { get; set; }
+        [Display(Name = "Descripción")]
         public string Acum_Desc { get; set; }
+        [Display(Name = "Meta")]
         public float Acum_Porcentest { get; set; }
+        [Display(Name = "Cargue Evidencia")]
         public string Acum_Ejec { get; set; }
+        [Display(Name = "Fecha Registro")]
+        [DataType(DataType.Date)]
         public DateTime Acum_Registro { get; set; }
+        [Display(Name = "Incio Actividad")]
+        [DataType(DataType.Date)]
         public DateTime Acum_IniAct { get; set; }
+        [Display(Name = "Finalización de Actividad")]
+        [DataType(DataType.Date)]
         public DateTime Acum_FinAct { get; set; }
 
         [ForeignKey("ObjEmpresa")]
