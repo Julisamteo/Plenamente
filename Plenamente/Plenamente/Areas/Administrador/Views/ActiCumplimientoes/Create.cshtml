@@ -1,7 +1,7 @@
 ﻿@model Plenamente.Models.ActiCumplimiento
 
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "Crear Actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
@@ -23,7 +23,7 @@
     <br />
     <div class="form-row">
         <div class="form-group col-md-6">
-            @Html.LabelFor(model => model.Acum_Desc, "Descripción:", htmlAttributes: new { @class = "control-label col-md-2" })
+            <h5><b> Descripción:</b></h5>
             @Html.EditorFor(model => model.Acum_Desc, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Acum_Desc, "", new { @class = "text-danger" })
         </div>

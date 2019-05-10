@@ -13,7 +13,7 @@ namespace Plenamente.Models
         public int Cump_Id { get; set; }
         public string Cump_Nombre { get; set; }
         public byte [] Cump_Evidencia { get; set; }
-        public string Cump_Contenido { get; set; }
+        
         public string Cump_Aevidencia { get; set; }
         public Guid Cump_Guid { get; set; }
         // ForeignKey

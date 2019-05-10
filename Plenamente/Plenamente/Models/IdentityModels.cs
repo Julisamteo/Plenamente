@@ -126,7 +126,7 @@ namespace Plenamente.Models
         public DbSet<TipoVinculacion> Tb_TipoVinculacion { get; set; }
         public DbSet<ZonaEmpresa> Tb_ZonaEmpresa {get; set;}
         public DbSet<Pregunta> Tb_Pregunta { get; set; }
-        public DbSet<QuemRespuesta> Tb_QuemRespuestas { get; set; }
+        
 
         public static ApplicationDbContext Create()
         {

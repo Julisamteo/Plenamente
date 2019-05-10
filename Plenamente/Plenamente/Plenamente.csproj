@@ -210,9 +210,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905091930558_otramigra2.cs" />
-    <Compile Include="Migrations\201905091930558_otramigra2.Designer.cs">
-      <DependentUpon>201905091930558_otramigra2.cs</DependentUpon>
+    <Compile Include="Migrations\201905101524497_servira.cs" />
+    <Compile Include="Migrations\201905101524497_servira.Designer.cs">
+      <DependentUpon>201905101524497_servira.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -252,7 +252,6 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
-    <Compile Include="Models\QuemRespuesta.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -261,6 +260,7 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
+    <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -528,8 +528,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905091930558_otramigra2.resx">
-      <DependentUpon>201905091930558_otramigra2.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905101524497_servira.resx">
+      <DependentUpon>201905101524497_servira.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

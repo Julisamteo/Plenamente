@@ -6,12 +6,10 @@ using System.Web;
 
 namespace Plenamente.Models
 {
-    public class QuemRespuesta
+    public class TipoRespuesta
     {
         [Key]
-        public int Qure_Id { get; set; }
-        public string Qure_Nom { get; set; }
-
-        public ICollection<Respuesta> Respuestas { get; set; }
+        public int Quem_Id { get; set; }
+        public string Quem_Nom { get; set; }
     }
 }

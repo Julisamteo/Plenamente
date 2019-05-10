@@ -17,7 +17,11 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/ActiCumplimientoes
         public ActionResult Index()
         {
+
+
             var actiCumplimientoes = db.Tb_ActiCumplimiento.Include(a => a.ApplicationUser).Include(a => a.Empresa).Include(a => a.Frecuencia).Include(a => a.ObjEmpresa).Include(a => a.Periodo);
+
+            
             return View(actiCumplimientoes.ToList());
         }
 
@@ -113,27 +117,62 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/ActiCumplimientoes/Delete/5
         public ActionResult Delete(int? id)
         {
+            ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
+            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+            ViewBag.Frec_Id = new SelectList(db.Tb_Frecuencia, "Frec_Id", "Frec_Nom");
+            ViewBag.Oemp_Id = new SelectList(db.Tb_ObjEmpresa, "Oemp_Id", "Oemp_Nombre");
+            ViewBag.Peri_Id = new SelectList(db.Tb_Periodo, "Peri_Id", "Peri_Nom");
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            ActiCumplimiento actiCumplimiento = db.Tb_ActiCumplimiento.Find(id);
-            if (actiCumplimiento == null)
+            else
             {
-                return HttpNotFound();
+                ActiCumplimiento X = db.Tb_ActiCumplimiento.Find(id);
+                if (X == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    return View(X);
+                }
             }
-            return View(actiCumplimiento);
         }
 
         // POST: Administrador/ActiCumplimientoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult DeleteConfirmed(int id, ActiCumplimiento X)
         {
-            ActiCumplimiento actiCumplimiento = db.Tb_ActiCumplimiento.Find(id);
-            db.Tb_ActiCumplimiento.Remove(actiCumplimiento);
-            db.SaveChanges();
-            return RedirectToAction("Index");
+            ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
+            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+            ViewBag.Frec_Id = new SelectList(db.Tb_Frecuencia, "Frec_Id", "Frec_Nom");
+            ViewBag.Oemp_Id = new SelectList(db.Tb_ObjEmpresa, "Oemp_Id", "Oemp_Nombre");
+            ViewBag.Peri_Id = new SelectList(db.Tb_Periodo, "Peri_Id", "Peri_Nom");
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    X = db.Tb_ActiCumplimiento.Find(id);
+
+                    if (X == null)
+                    {
+                        return HttpNotFound();
+                    }
+                    else
+                    {
+                        db.Tb_ActiCumplimiento.Remove(X);
+                        db.SaveChanges();
+                    }
+                    return RedirectToAction("Index");
+                }
+                return View(X);
+            }
+            catch
+            {
+                return View(X);
+            }
         }
 
         protected override void Dispose(bool disposing)
