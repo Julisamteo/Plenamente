@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
@@ -18,14 +19,22 @@ namespace Plenamente.Models
         public string Pers_Nom2 { get; set; }
         public string Pers_Apel1 { get; set; }
         public string Pers_Apel2 { get; set; }
-        public int Pers_Licencia { get; set; }
-        public DateTime Pers_LicVence { get; set; }
+        public int? Pers_Licencia { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        public Nullable<DateTime> Pers_LicVence { get; set; }
         public byte[] Pers_Foto { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Ingreso { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Retiro { get; set; }
         public string Pers_Dir { get; set; }
         public string Pers_Cemeg { get; set; }
         public int Pers_Temeg { get; set; }
+        [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Registro { get; set; }
 
 
@@ -136,8 +145,8 @@ namespace Plenamente.Models
             //Llave reflexiva
             modelBuilder.Entity<ApplicationUser>().
                 HasOptional(u => u.Jefe).WithMany().HasForeignKey(x => x.Jefe_Id);
- 
 
+            modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
             base.OnModelCreating(modelBuilder);
         }
 
