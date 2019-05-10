@@ -1,46 +1,55 @@
-﻿@model IEnumerable<Plenamente.Models.ReglaInterno>
+﻿@model PagedList.IPagedList<Plenamente.Models.ReglaInterno>
+@using PagedList.Mvc;
+
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Index</h2>
+<div class="colorVerdeBack">
+    <p>Reglamento Interno</p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rint_Archivo)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Rint_Registro)
-        </th>*@
-        <th></th>
-    </tr>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "reglainternoes")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "reglainternoes")" class="ayudaTitulos"><span>Crear individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rint_Archivo)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Rint_Registro)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Rint_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Rint_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Rint_Id })
-        </td>
-    </tr>
-}
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Archivo
+            </th>
+            <th class="colorVerde">
+                Registro
+            </th>
+        </tr>
+    </thead>
+
+    @foreach (var item in Model)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rint_Archivo)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Rint_Registro)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.Rint_Id }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.Rint_Id })
+            </td>
+        </tr>
+    }
 
 </table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

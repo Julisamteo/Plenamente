@@ -22,9 +22,7 @@
             <th class="colorVerde">
                 Nombre del Elemento:
             </th>
-            <th class="colorVerde">
-                Fecha de Creación
-            </th>
+
             <th class="colorVerde"></th>
         </tr>
     </thead>
@@ -36,10 +34,9 @@
                     @Html.DisplayFor(modelItem => item.Epro_Nom)
                 </td>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Epro_Registro)
-                </td>
-                <td>
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Epro_Id })
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Epro_Id })|
+
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Epro_Id })
                 </td>
             </tr>
         }

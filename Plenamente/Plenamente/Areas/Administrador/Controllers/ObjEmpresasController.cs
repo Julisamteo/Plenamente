@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -15,11 +16,45 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ObjEmpresas
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_ObjEmpresa = db.Tb_ObjEmpresa.Include(o => o.Empresa);
-            return View(tb_ObjEmpresa.ToList());
+               ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var actividades = from s in db.Tb_ObjEmpresa
+                              select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                actividades = actividades.Where(s => s.Oemp_Nombre.Contains(searchString)
+                                       || s.Oemp_Nombre.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    actividades = actividades.OrderByDescending(s => s.Oemp_Nombre);
+                    break;
+                default:  // Name ascending 
+                    actividades = actividades.OrderBy(s => s.Oemp_Nombre);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(actividades.ToPagedList(pageNumber, pageSize));
         }
+
+        // GET: Administrador/ProcesActividads/Details/
 
         // GET: Administrador/ObjEmpresas/Details/5
         public ActionResult Details(int? id)

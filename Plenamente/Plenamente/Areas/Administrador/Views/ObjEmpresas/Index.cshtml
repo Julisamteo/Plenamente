@@ -1,58 +1,57 @@
-﻿@model IEnumerable<Plenamente.Models.ObjEmpresa>
+﻿@model PagedList.IPagedList<Plenamente.Models.ObjEmpresa>
+@using PagedList.Mvc;
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
-
-<h2>Index</h2>
+<div class="colorVerdeBack">
+    <p>Objetivo de la empresa</p>
+</div>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "objempresas")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "objempresas")" class="ayudaTitulos"><span>Crear una nueva sede</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Oemp_Nombre)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Oemp_Descrip)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Oemp_Meta)
-        </th>
-        @*<th>
-            @Html.DisplayNameFor(model => model.Oemp_Registro)
-        </th>*@
-        <th></th>
-    </tr>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Nombre
+            </th>
+            <th class="colorVerde">
+                Descripciòn
+            </th>
+            <th class="colorVerde">
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Oemp_Nombre)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Oemp_Descrip)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Oemp_Meta)
-        </td>
-        @*<td>
-            @Html.DisplayFor(modelItem => item.Oemp_Registro)
-        </td>*@
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Oemp_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Oemp_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Oemp_Id })
-        </td>
-    </tr>
-}
+            </th>
+        </tr>
+        </thead>
+    <tbody class="cuerpoTabla">
+
+        @foreach (var item in Model)
+        {
+            <tr>
+
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oemp_Nombre)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Oemp_Descrip)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Oemp_Id }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Oemp_Id })
+                </td>
+            </tr>
+        }
+    </tbody>
 
 </table>

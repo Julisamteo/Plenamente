@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -15,10 +16,42 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ZonaEmpresas
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_ZonaEmpresa = db.Tb_ZonaEmpresa.Include(z => z.Empresa);
-            return View(tb_ZonaEmpresa.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var zona = from s in db.Tb_ZonaEmpresa
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                zona = zona.Where(s => s.Zemp_Nom.ToString().Contains(searchString)
+                                       || s.Zemp_Nom.ToString().Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    zona = zona.OrderByDescending(s => s.Zemp_Nom.ToString());
+                    break;
+                default:  // Name ascending 
+                    zona = zona.OrderBy(s => s.Zemp_Nom.ToString());
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(zona.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Administrador/ZonaEmpresas/Details/5

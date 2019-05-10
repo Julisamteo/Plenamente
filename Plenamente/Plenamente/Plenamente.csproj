@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201905101505327_porFavorFuncina.Designer.cs">
       <DependentUpon>201905101505327_porFavorFuncina.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905091624485_momomo.cs" />
+    <Compile Include="Migrations\201905091624485_momomo.Designer.cs">
+      <DependentUpon>201905091624485_momomo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -253,6 +257,7 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
+    <Compile Include="Models\QuemRespuestas.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -500,6 +505,7 @@
     <Content Include="Views\Shared\_IndexMenu.cshtml" />
     <Content Include="Views\Shared\_LayoutAdministrador.cshtml" />
     <Content Include="Views\Shared\_vistaFotter.cshtml" />
+    <Content Include="Views\Home\error.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -524,6 +530,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905101505327_porFavorFuncina.resx">
       <DependentUpon>201905101505327_porFavorFuncina.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905091624485_momomo.resx">
+      <DependentUpon>201905091624485_momomo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

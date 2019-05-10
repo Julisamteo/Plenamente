@@ -9,6 +9,7 @@ namespace Plenamente.Models
 {
     public class ProcactEmpresa
     {
+
         [Key]
         public int Paem_Id { get; set; }
         //ForeignkEY Empresa
