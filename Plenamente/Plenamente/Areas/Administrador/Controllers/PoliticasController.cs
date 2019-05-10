@@ -6,6 +6,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
 using PagedList;
 using Plenamente.Models;
 
@@ -32,9 +33,12 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-
+            var userId = User.Identity.GetUserId();
+            var UserCurrent = db.Users.Find(userId);
+            var Empr_Nit = UserCurrent.Empr_Nit;
             var politicas = from s in db.Tb_politica
-                         select s;
+                            where s.Empr_Nit == Empr_Nit
+                            select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                 politicas = politicas.Where(s => s.Poli_Registro.ToString().Contains(searchString)

@@ -7,6 +7,8 @@ using System.Linq;
 using System.Net;
 using System.Web.Mvc;
 using Plenamente.Controllers;
+using Microsoft.AspNet.Identity;
+
 namespace Plenamente.Areas.Administrador.Controllers
 {
     public class EncuestasController : Controller
@@ -30,8 +32,11 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-
+            var userId = User.Identity.GetUserId();
+            var UserCurrent = db.Users.Find(userId);
+            var Empr_Nit = UserCurrent.Empr_Nit;
             var cargos = from s in db.Tb_Encuesta
+                         where s.Empr_Nit == Empr_Nit
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
