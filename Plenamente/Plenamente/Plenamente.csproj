@@ -459,6 +459,7 @@
     <Content Include="Areas\Administrador\Views\Periodoes\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\Periodoes\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\Periodoes\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\AutoEvaluacion\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -524,7 +525,6 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
-    <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
