@@ -180,6 +180,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Areas\Administrador\AdministradorAreaRegistration.cs" />
+    <Compile Include="Areas\Administrador\Controllers\ActiCumplimientoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AutoEvaluacionController.cs" />
@@ -192,8 +193,10 @@
     <Compile Include="Areas\Administrador\Controllers\EncuSociController.cs" />
     <Compile Include="Areas\Administrador\Controllers\EstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\FileController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\FrecuenciasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ItemEstandarsController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ObjEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\PeriodoesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PoliticasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\PreguntasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ProcesActividadsController.cs" />
@@ -209,10 +212,6 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905101602053_Teest.cs" />
-    <Compile Include="Migrations\201905101602053_Teest.Designer.cs">
-      <DependentUpon>201905101602053_Teest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -445,6 +444,21 @@
     <Content Include="Areas\Administrador\Views\ProcesActividads\Details.cshtml" />
     <Content Include="Areas\Administrador\Views\ProcesActividads\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\ProcesActividads\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\ActiCumplimientoes\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Frecuencias\Index.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Create.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Delete.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Details.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Edit.cshtml" />
+    <Content Include="Areas\Administrador\Views\Periodoes\Index.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -501,6 +515,11 @@
     <Content Include="Views\Shared\_LayoutAdministrador.cshtml" />
     <Content Include="Views\Shared\_vistaFotter.cshtml" />
     <Content Include="Views\Home\error.cshtml" />
+    <Content Include="Views\ApplicationUsers\Create.cshtml" />
+    <Content Include="Views\ApplicationUsers\Delete.cshtml" />
+    <Content Include="Views\ApplicationUsers\Details.cshtml" />
+    <Content Include="Views\ApplicationUsers\Edit.cshtml" />
+    <Content Include="Views\ApplicationUsers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -521,11 +540,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905101602053_Teest.resx">
-      <DependentUpon>201905101602053_Teest.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
