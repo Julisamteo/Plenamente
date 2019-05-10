@@ -36,7 +36,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                         string ruta = file;
                         var cumpl = ApplicationDbContext.Tb_Cumplimiento.Find(model.Cump_Id);
                         cumpl.Cump_Aevidencia = ruta;
-                        cumpl.Cump_Contenido = ext;
+                        //cumpl.Cump_Contenido = ext;
                         ApplicationDbContext.SaveChanges();
                         return RedirectToAction("Upload", new { id = model.Cump_Id });
                     }

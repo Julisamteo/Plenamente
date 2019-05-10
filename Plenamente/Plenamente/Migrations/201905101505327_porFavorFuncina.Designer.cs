@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class HAGALE : IMigrationMetadata
+    public sealed partial class porFavorFuncina : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(HAGALE));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(porFavorFuncina));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905092305100_HAGALE"; }
+            get { return "201905101505327_porFavorFuncina"; }
         }
         
         string IMigrationMetadata.Source

@@ -209,21 +209,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905092043564_Init.cs" />
-    <Compile Include="Migrations\201905092043564_Init.Designer.cs">
-      <DependentUpon>201905092043564_Init.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905092249430_sdwWF.cs" />
-    <Compile Include="Migrations\201905092249430_sdwWF.Designer.cs">
-      <DependentUpon>201905092249430_sdwWF.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905092305100_HAGALE.cs" />
-    <Compile Include="Migrations\201905092305100_HAGALE.Designer.cs">
-      <DependentUpon>201905092305100_HAGALE.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905101406097_salvmeDios.cs" />
-    <Compile Include="Migrations\201905101406097_salvmeDios.Designer.cs">
-      <DependentUpon>201905101406097_salvmeDios.cs</DependentUpon>
+    <Compile Include="Migrations\201905101505327_porFavorFuncina.cs" />
+    <Compile Include="Migrations\201905101505327_porFavorFuncina.Designer.cs">
+      <DependentUpon>201905101505327_porFavorFuncina.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -534,17 +522,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905092043564_Init.resx">
-      <DependentUpon>201905092043564_Init.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905092249430_sdwWF.resx">
-      <DependentUpon>201905092249430_sdwWF.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905092305100_HAGALE.resx">
-      <DependentUpon>201905092305100_HAGALE.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101406097_salvmeDios.resx">
-      <DependentUpon>201905101406097_salvmeDios.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905101505327_porFavorFuncina.resx">
+      <DependentUpon>201905101505327_porFavorFuncina.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
