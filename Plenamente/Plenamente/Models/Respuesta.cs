@@ -28,9 +28,6 @@ namespace Plenamente.Models
         public int Preg_Id { get; set; }
         public Pregunta Pregunta { get; set; }
 
-        public int Qure_Id { get; set; }
-        public QuemRespuesta QuemRespuesta { get; set; }
-
         // Permite que Resultado acceda a la data
         public ICollection<Resultado> Resultados { get; set; }
         public ICollection<TipoRespuesta> TipoRespuestas { get; set; }

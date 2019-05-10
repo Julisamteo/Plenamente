@@ -45,6 +45,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="EntityFramework, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -118,12 +124,6 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.dll</HintPath>
-    </Reference>
-    <Reference Include="EntityFramework.SqlServer">
-      <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.AspNet.Identity.Core">
       <HintPath>..\packages\Microsoft.AspNet.Identity.Core.2.2.2\lib\net45\Microsoft.AspNet.Identity.Core.dll</HintPath>
     </Reference>
@@ -209,13 +209,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905101505327_porFavorFuncina.cs" />
-    <Compile Include="Migrations\201905101505327_porFavorFuncina.Designer.cs">
-      <DependentUpon>201905101505327_porFavorFuncina.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905091624485_momomo.cs" />
-    <Compile Include="Migrations\201905091624485_momomo.Designer.cs">
-      <DependentUpon>201905091624485_momomo.cs</DependentUpon>
+    <Compile Include="Migrations\201905101602053_Teest.cs" />
+    <Compile Include="Migrations\201905101602053_Teest.Designer.cs">
+      <DependentUpon>201905101602053_Teest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -257,7 +253,6 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
-    <Compile Include="Models\QuemRespuestas.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -528,11 +523,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905101505327_porFavorFuncina.resx">
-      <DependentUpon>201905101505327_porFavorFuncina.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905091624485_momomo.resx">
-      <DependentUpon>201905091624485_momomo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905101602053_Teest.resx">
+      <DependentUpon>201905101602053_Teest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
