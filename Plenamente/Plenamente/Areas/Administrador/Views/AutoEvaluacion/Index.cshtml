@@ -1,0 +1,63 @@
+﻿@model Plenamente.Models.AutoEvaluacion
+@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<h2>AutoEvaluacion Del SST</h2>
+<div>
+    <table class="table">
+        <tr>
+            <th>
+                @{
+                    var criterios1 = Model.Criterios1;
+                    var estandares = Model.Estandars11;
+                    var iestandares = Model.ItemEstandars111;
+                    var cumplimientos = Model.Cumplimientos111;
+
+                    foreach (var item in criterios1)
+                    {
+                    
+                        <h2 class="divCriterio">@item.Crit_Nom</h2>
+                    } }
+            </th>
+        </tr>
+        @{ foreach (var item in estandares)
+            {
+
+                <tr>
+                    <th>
+                        @item.Esta_Nom
+                    </th>
+                </tr>
+                foreach (var itemm in iestandares)
+                {
+                    <tr>
+                        <td> @itemm.Iest_Desc   </td>
+                        <td> @itemm.Iest_Verificar </td>
+
+                    </tr>
+
+                    foreach (var arch in cumplimientos)
+                    {
+                        <tr>
+                            <td> @itemm.Iest_Cumple </td>
+                            <td> @itemm.Iest_Nocumple </td>
+                            <td> @itemm.Iest_Justifica  </td>
+                            <td> @itemm.Iest_Nojustifica </td>
+                            <td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>
+                            @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
+                            <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video Explicativo Comprobar</a></td>
+                        </tr>
+
+
+                        <tr>
+                            <td> Oberservaciones </td>
+                        </tr>
+                    }
+                }
+            }
+        }
+    </table>
+ </div>
+
