@@ -128,6 +128,11 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
             else
             {
+                ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
+                ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+                ViewBag.Frec_Id = new SelectList(db.Tb_Frecuencia, "Frec_Id", "Frec_Nom");
+                ViewBag.Oemp_Id = new SelectList(db.Tb_ObjEmpresa, "Oemp_Id", "Oemp_Nombre");
+                ViewBag.Peri_Id = new SelectList(db.Tb_Periodo, "Peri_Id", "Peri_Nom");
                 ActiCumplimiento X = db.Tb_ActiCumplimiento.Find(id);
                 if (X == null)
                 {
@@ -145,15 +150,16 @@ namespace Plenamente.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id, ActiCumplimiento X)
         {
-            ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
-            ViewBag.Frec_Id = new SelectList(db.Tb_Frecuencia, "Frec_Id", "Frec_Nom");
-            ViewBag.Oemp_Id = new SelectList(db.Tb_ObjEmpresa, "Oemp_Id", "Oemp_Nombre");
-            ViewBag.Peri_Id = new SelectList(db.Tb_Periodo, "Peri_Id", "Peri_Nom");
+            
             try
             {
                 if (ModelState.IsValid)
                 {
+                    ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
+                    ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+                    ViewBag.Frec_Id = new SelectList(db.Tb_Frecuencia, "Frec_Id", "Frec_Nom");
+                    ViewBag.Oemp_Id = new SelectList(db.Tb_ObjEmpresa, "Oemp_Id", "Oemp_Nombre");
+                    ViewBag.Peri_Id = new SelectList(db.Tb_Periodo, "Peri_Id", "Peri_Nom");
                     X = db.Tb_ActiCumplimiento.Find(id);
 
                     if (X == null)

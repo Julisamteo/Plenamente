@@ -139,14 +139,15 @@ namespace Plenamente.Models
         {
             return new ApplicationDbContext();
         }
+
         protected override void OnModelCreating(DbModelBuilder modelBuilder)
         {
             modelBuilder.Conventions.Remove<OneToManyCascadeDeleteConvention>();
             //Llave reflexiva
             modelBuilder.Entity<ApplicationUser>().
                 HasOptional(u => u.Jefe).WithMany().HasForeignKey(x => x.Jefe_Id);
-
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
+           
             base.OnModelCreating(modelBuilder);
         }
 
