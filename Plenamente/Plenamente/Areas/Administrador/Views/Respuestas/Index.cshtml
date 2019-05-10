@@ -43,19 +43,19 @@
                 @Html.DisplayFor(modelItem => item.Pregunta.Preg_Titulo)
             </td>
             <td>
-                @if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "textBox")
+                @if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "1")
                 {
-                    @Html.EditorFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
+                    @Html.EditorFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "", @disabled = "disabled", @value = " " } })
                 }
-                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "checkBox")
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "2")
                 {
                     @Html.RadioButtonFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled" } })
                 }
-                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "radioButton")
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "3")
                 {
                     @Html.RadioButtonFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "", @disabled = "disabled" } })
                 }
-                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "fechaTiempo")
+                else if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "4")
                 {
                     @Html.EditorFor(modelItem => item.Resp_Tipo, new { htmlAttributes = new { @class = "form-control", @disabled = "disabled", @type="date", @value="yyyy-MM-dd" } })
                 }

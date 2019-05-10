@@ -183,6 +183,7 @@
     <Compile Include="Areas\Administrador\Controllers\adminController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AreaEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\AutoEvaluacionController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\CargaArchivoController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CargoEmpresasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CriteriosController.cs" />
     <Compile Include="Areas\Administrador\Controllers\CumplimientosController.cs" />
@@ -201,14 +202,16 @@
     <Compile Include="Areas\Administrador\Controllers\RespuestasController.cs" />
     <Compile Include="Areas\Administrador\Controllers\SedeCiudadesController.cs" />
     <Compile Include="Areas\Administrador\Controllers\TipoDocCargasController.cs" />
+    <Compile Include="Areas\Administrador\Controllers\UploadCumpController.cs" />
     <Compile Include="Areas\Administrador\Controllers\ZonaEmpresasController.cs" />
+    <Compile Include="Areas\Administrador\CumplimientoController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905082038572_me la pela este sistema.cs" />
-    <Compile Include="Migrations\201905082038572_me la pela este sistema.Designer.cs">
-      <DependentUpon>201905082038572_me la pela este sistema.cs</DependentUpon>
+    <Compile Include="Migrations\201905092043564_Init.cs" />
+    <Compile Include="Migrations\201905092043564_Init.Designer.cs">
+      <DependentUpon>201905092043564_Init.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201905092249430_sdwWF.cs" />
     <Compile Include="Migrations\201905092249430_sdwWF.Designer.cs">
@@ -226,6 +229,7 @@
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
     <Compile Include="Models\Afp.cs" />
+    <Compile Include="Models\Archivo.cs" />
     <Compile Include="Models\AreaEmpresa.cs" />
     <Compile Include="Models\Arl.cs" />
     <Compile Include="Models\AutoEvaluacion.cs" />
@@ -233,6 +237,7 @@
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
+    <Compile Include="Models\ClaseTest.cs" />
     <Compile Include="Models\Criterio.cs" />
     <Compile Include="Models\Cumplimiento.cs" />
     <Compile Include="Models\EleProteccion.cs" />
@@ -270,6 +275,7 @@
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
+    <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -414,11 +420,6 @@
     <Content Include="Areas\Administrador\Views\ItemEstandars\Edit.cshtml" />
     <Content Include="Areas\Administrador\Views\ItemEstandars\Index.cshtml" />
     <Content Include="Areas\Administrador\Views\EncuSoci\Index.cshtml" />
-    <Content Include="Areas\Administrador\Views\Cumplimientos\Create.cshtml" />
-    <Content Include="Areas\Administrador\Views\Cumplimientos\Delete.cshtml" />
-    <Content Include="Areas\Administrador\Views\Cumplimientos\Details.cshtml" />
-    <Content Include="Areas\Administrador\Views\Cumplimientos\Edit.cshtml" />
-    <Content Include="Areas\Administrador\Views\Cumplimientos\Index.cshtml" />
     <Content Include="Areas\Administrador\Views\TipoDocCargas\Create.cshtml" />
     <Content Include="Areas\Administrador\Views\TipoDocCargas\Delete.cshtml" />
     <Content Include="Areas\Administrador\Views\TipoDocCargas\Details.cshtml" />
@@ -472,7 +473,9 @@
     <Content Include="Scripts\main1.js" />
     <Content Include="Scripts\main2.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
-    <Content Include="Web.config" />
+    <Content Include="Web.config">
+      <SubType>Designer</SubType>
+    </Content>
     <Content Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </Content>
@@ -514,8 +517,6 @@
     <Folder Include="App_Data\" />
     <Folder Include="Areas\Administrador\Models\" />
     <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
-    <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
-    <Folder Include="Areas\Administrador\Views\respuestasQuemadas\" />
     <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
@@ -533,8 +534,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905082038572_me la pela este sistema.resx">
-      <DependentUpon>201905082038572_me la pela este sistema.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905092043564_Init.resx">
+      <DependentUpon>201905092043564_Init.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905092249430_sdwWF.resx">
       <DependentUpon>201905092249430_sdwWF.cs</DependentUpon>

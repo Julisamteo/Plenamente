@@ -7,10 +7,11 @@ namespace Plenamente.Models
 {
     public class AutoEvaluacion
     {
+        public virtual ICollection<Cumplimiento> Cumplimientos { get; set; }
         public IEnumerable<Criterio> Criterios { get; set; }
         public IEnumerable<Estandar> Estandars { get; set; }
         public IEnumerable<ItemEstandar> ItemEstandars { get; set; }
-        public IEnumerable<Cumplimiento> Cumplimientos { get; set; }
+        
 
         public IEnumerable<Criterio> Criterios1 { get; set; }
         public IEnumerable<Estandar> Estandars1 { get; set; }
