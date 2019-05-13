@@ -474,6 +474,7 @@
     <Content Include="Areas\Administrador\Views\admin\Create.cshtml" />
     <Content Include="Areas\Administrador\Views\admin\EditUser.cshtml" />
     <Content Include="Areas\Administrador\Views\admin\EditRoles.cshtml" />
+    <Content Include="Areas\Administrador\Views\CargaArchivo\Upload.cshtml" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
