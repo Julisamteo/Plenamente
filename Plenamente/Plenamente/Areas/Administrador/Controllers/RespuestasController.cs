@@ -72,7 +72,6 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/Respuestas/Create
         public ActionResult Create(int? id, int idPregunta)
         {
-            //ViewBag.Qure_Id = new SelectList(db.Tb_QuemRespuesta, "Qure_Id", "Qure_Nom");
             ViewBag.Preg_Id = new SelectList(db.Tb_Pregunta, "Preg_Id", "Preg_Titulo");
             ViewBag.idPregunta = idPregunta;
             return View();
@@ -162,7 +161,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         public ActionResult eliminarRespuestas(int idPregunta)
         {
             ViewBag.idPregunta = idPregunta;
-            db.Database.ExecuteSqlCommand("DELETE FROM Respuestas");
+            //db.Database.ExecuteSqlCommand("DELETE FROM Respuestas");
             return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
         }
         protected override void Dispose(bool disposing)

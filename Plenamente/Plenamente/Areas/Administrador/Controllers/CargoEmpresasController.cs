@@ -16,38 +16,44 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/CargoEmpresas
+        //Se Agregan Los Parametros sortOrder, currentFilter, searchString, page, para la busqueda y paginacion de la encuesta.
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
+            //Se obtiene sortOrder para el orden de los datos.
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            //De manera asendente o desendente
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
+            //Si el campo esta vacio, la pagina sera igual a 1
             if (searchString != null)
             {
+                //La pagina empieza 1
                 page = 1;
             }
             else
             {
+                //Si el campo esta lleno la busqueda se hara el searchString 
                 searchString = currentFilter;
             }
 
             ViewBag.CurrentFilter = searchString;
-
+            //Se obtiene el parametro
+            //Se realiza una consulta tipo Linq para obtener los datos de acuerdo a la empresa que este logeada
             var userId = User.Identity.GetUserId();
             var UserCurrent = db.Users.Find(userId);
             var Empr_Nit = UserCurrent.Empr_Nit;
-
-
             var cargos = from s in db.Tb_CargoEmpresa
                          where s.Empr_Nit == Empr_Nit
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
+                //Se realiza la busqueda deacuerdo a la cadena de texto que se inserte en el input
                 cargos = cargos.Where(s => s.Cemp_Nom.Contains(searchString)
                                        || s.Cemp_Nom.Contains(searchString));
             }
             switch (sortOrder)
             {
+                //Organzia de manera decendente o asendente
                 case "name_desc":
                     cargos = cargos.OrderByDescending(s => s.Cemp_Nom);
                     break;
@@ -55,8 +61,10 @@ namespace Plenamente.Areas.Administrador.Controllers
                     cargos = cargos.OrderBy(s => s.Cemp_Nom);
                     break;
             }
+            //Se muestran la cantidad de registros
             int pageSize = 10;
             int pageNumber = (page ?? 1);
+            //Retorna la vista      
             return View(cargos.ToPagedList(pageNumber, pageSize));
         }
        
