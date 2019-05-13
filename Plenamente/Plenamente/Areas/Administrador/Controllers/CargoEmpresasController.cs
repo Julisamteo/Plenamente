@@ -20,7 +20,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
-            //Se obtiene sortOrder para el orden de los datos
+            //Se obtiene sortOrder para el orden de los datos.
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             //De manera asendente o desendente
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
