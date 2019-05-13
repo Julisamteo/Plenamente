@@ -16,22 +16,29 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/Encuestas
+        //Se Agregan Los Parametros sortOrder, currentFilter, searchString, page, para la busqueda y paginacion de la encuesta.
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
+            //Se obtiene sortOrder para el orden de los datos
             ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            //De manera asendente o desendente
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
+            //Si el campo esta vacio, la pagina sera igual a 1
             if (searchString != null)
             {
+                //La pagina empieza 1
                 page = 1;
             }
             else
             {
+                //Si el campo esta lleno la busqueda se hara el searchString 
                 searchString = currentFilter;
             }
 
             ViewBag.CurrentFilter = searchString;
+            //Se obtiene el parametro
+            //Se realiza una consulta tipo Linq para obtener los datos de acuerdo a la empresa que este logeada 
             var userId = User.Identity.GetUserId();
             var UserCurrent = db.Users.Find(userId);
             var Empr_Nit = UserCurrent.Empr_Nit;
@@ -40,11 +47,13 @@ namespace Plenamente.Areas.Administrador.Controllers
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
+                //Se realiza la busqueda deacuerdo a la cadena de texto que se inserte en el input
                 cargos = cargos.Where(s => s.Encu_Vence.ToString().Contains(searchString)
                                        || s.Encu_Vence.ToString().Contains(searchString));
             }
             switch (sortOrder)
             {
+                //Organzia de manera decendente o asendente
                 case "name_desc":
                     cargos = cargos.OrderByDescending(s => s.Encu_Vence.ToString());
                     break;
@@ -52,11 +61,14 @@ namespace Plenamente.Areas.Administrador.Controllers
                     cargos = cargos.OrderBy(s => s.Encu_Vence.ToString());
                     break;
             }
+            //Se muestran la cantidad de registros
             int pageSize = 50;
             int pageNumber = (page ?? 1);
+            //Retorna la vista
             return View(cargos.ToPagedList(pageNumber, pageSize));
         }
         // GET: Administrador/Encuestas/Details/5
+        //Metodo para la pagina de detalles
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -72,6 +84,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Encuestas/Create
+        //Metodo para invocarta la pagina de create
         public ActionResult Create()
         {
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
@@ -83,8 +96,10 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        //Metodó guardar con parametro blindado
         public ActionResult Create([Bind(Include = "Encu_Id,Encu_Creacion,Encu_Vence,Encu_Estado,Encu_Registro,Empr_Nit")] Encuesta encuesta)
         {
+            //Si el modelo es valido guarda el registro
             if (ModelState.IsValid)
             {
                 db.Tb_Encuesta.Add(encuesta);
@@ -131,6 +146,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Encuestas/Delete/5
+        //Metodo para la pagina de eliminar
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,13 +164,13 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Encuestas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        //Metodo de elimincacion multi tabla en beta no funcional
         public ActionResult DeleteConfirmed(int id)
         {
-            Encuesta encuesta = db.Tb_Encuesta.Find(id);
-            db.Tb_Encuesta.Remove(encuesta);
-            db.SaveChanges();
+            db.Database.ExecuteSqlCommand("DELETE * Encuesta e INNER JOIN Preguntas p ON e.Encu_Id=p.Encu_Id INNER JOIN Respuestas r ON p.Preg_Id=r.Preg_Id WHERE e.Encu_Id='" + id+"' ");
             return RedirectToAction("Index");
         }
+        //Query de insercion a las tabalas Preguntas y Respuestas de manera estatica.
         public void GuardarPreguntas()
         {
             var maxEncuesta = db.Tb_Encuesta.Max(x => x.Encu_Id);

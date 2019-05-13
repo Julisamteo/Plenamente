@@ -163,7 +163,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
            
         }
-        public ActionResult eliminarPreguntas(int idEncuesta)
+        public ActionResult eliminarPreguntas(int ?id, int idEncuesta)
         {
             ViewBag.idEncuesta = idEncuesta;
             db.Database.ExecuteSqlCommand("DELETE FROM Preguntas");
