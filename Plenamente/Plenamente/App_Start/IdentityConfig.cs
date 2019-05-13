@@ -107,7 +107,8 @@ namespace Plenamente
         }
     }
 
-    // Add ApplicationRoleManager to allow the management of Roles
+    // Agrega el método ApplicationRoleManager que permite la administración de los roles en el sistema
+    // Lo que permite relacionar posteriormente la administración de usuarios
     public class ApplicationRoleManager : RoleManager<IdentityRole>
     {
         public ApplicationRoleManager(IRoleStore<IdentityRole, string> store)

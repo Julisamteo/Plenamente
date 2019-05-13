@@ -19,7 +19,8 @@ namespace Plenamente
             app.CreatePerOwinContext<ApplicationUserManager>(ApplicationUserManager.Create);
             app.CreatePerOwinContext<ApplicationSignInManager>(ApplicationSignInManager.Create);
 
-            // Add Role Manager
+            // Añade al administrador de roles en la ejecución inicial del sistema
+            // El método ApplicationRoleManager se trae de la clase IdentityConfig
             app.CreatePerOwinContext<ApplicationRoleManager>(ApplicationRoleManager.Create);
 
             // Permitir que la aplicación use una cookie para almacenar información para el usuario que inicia sesión

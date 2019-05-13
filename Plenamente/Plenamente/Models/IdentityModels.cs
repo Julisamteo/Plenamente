@@ -14,6 +14,7 @@ namespace Plenamente.Models
     // Para agregar datos de perfil del usuario, agregue más propiedades a su clase ApplicationUser. Visite https://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
     public class ApplicationUser : IdentityUser
     {
+        //Variables que se agregar en la tabla de AspNetUsers 
         public int Pers_Doc { get; set; }
         public string Pers_Nom1 { get; set; }
         public string Pers_Nom2 { get; set; }
@@ -37,7 +38,7 @@ namespace Plenamente.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Registro { get; set; }
 
-
+        //Variables que "instancian" las llaves foraneas del sistema y se crean como campos en la tabla AspNetUsers
         public int? Tdoc_Id { get; set; }
         public TipoDocumento TipoDocumento { get; set; }
         public int? Sciu_Id { get; set; }
@@ -95,6 +96,7 @@ namespace Plenamente.Models
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
+        //Variables que establecen las tablas a crean en la base de datos
         public DbSet <ActiCumplimiento> Tb_ActiCumplimiento {get; set;}
         public DbSet <AcumMes> Tb_Acumes {get; set;}
         public DbSet<Afp> Tb_Afp { get; set; }
@@ -146,6 +148,7 @@ namespace Plenamente.Models
             //Llave reflexiva
             modelBuilder.Entity<ApplicationUser>().
                 HasOptional(u => u.Jefe).WithMany().HasForeignKey(x => x.Jefe_Id);
+            //Convierte los campos tipo datetime en datetime2 para generar la compatibilidad con SQL Server
             modelBuilder.Properties<DateTime>().Configure(c => c.HasColumnType("datetime2"));
            
             base.OnModelCreating(modelBuilder);

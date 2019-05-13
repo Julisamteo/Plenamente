@@ -18,6 +18,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
 
+        //Vista inicial de los usuarios en donde se muestran graficas, notificaciones, etc.
         // GET: Administrador/admin
         public ActionResult Index()
         {
@@ -26,6 +27,9 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // Controllers
 
+        //Vista que permite la administración de los usuarios,
+        //Lista Usuarios y genera los botones de crear usuario, crear rol, editar y eliminar usuarios,
+        //Incluye el paginado de la lista y la busqueda por la cadena de texto ingresada
         // GET: /Admin/
         [Authorize(Roles = "SuperAdmin2")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
@@ -34,7 +38,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             try
             {
                 int intPage = 1;
-                int intPageSize = 5;
+                int intPageSize = 10;
                 int intTotalPageCount = 0;
 
                 if (searchStringUserNameOrEmail != null)
@@ -114,6 +118,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: /Admin/Edit/Create 
         [Authorize(Roles = "SuperAdmin2")]
         #region public ActionResult Create()
+        //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
         public ActionResult Create()
         {
             ExpandedUserDTO objExpandedUserDTO = new ExpandedUserDTO();
@@ -124,6 +129,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
         #endregion
 
+        //Método POST para enviar los campos llenados del formulario 
         // PUT: /Admin/Create
         [Authorize(Roles = "SuperAdmin2")]
         [HttpPost]
@@ -161,10 +167,10 @@ namespace Plenamente.Areas.Administrador.Controllers
                     throw new Exception("No Password");
                 }
 
-                // UserName is LowerCase of the Email
+                // convierte en minusculas el email ingresado
                 UserName = Email.ToLower();
 
-                // Create user
+                // Proceso de creación del usuario
 
                 var objNewAdminUser = new ApplicationUser
                 {
@@ -187,11 +193,11 @@ namespace Plenamente.Areas.Administrador.Controllers
 
                     if (strNewRole != "0")
                     {
-                        // Put user in role
+                        // Le asigna un rol al usuario
                         UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
                     }
 
-                    return Redirect("~/Admintrator/admin/ManageUsers");
+                    return RedirectToAction("Manageusers");
                 }
                 else
                 {

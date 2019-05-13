@@ -6,6 +6,8 @@ using System.Web;
 
 namespace Plenamente.Models
 {
+    //Esta clase adquiere los atributos del IdentityModel para poder referenciar los campos añadidos en 
+    //La tabla AspNetUsers adicionando una IEnumerable de los Roles actuales del sistema
     public class ExpandedUserDTO
     {
         [Key]
@@ -30,6 +32,8 @@ namespace Plenamente.Models
         public IEnumerable<UserRolesDTO> Roles { get; set; }
     }
 
+
+    //Esta clase adquiere los roles actuales en el sistema
     public class UserRolesDTO
     {
         [Key]
@@ -37,6 +41,7 @@ namespace Plenamente.Models
         public string RoleName { get; set; }
     }
 
+    //Esta clase asigna un Rol a un Usuario en especifico
     public class UserRoleDTO
     {
         [Key]
@@ -46,6 +51,7 @@ namespace Plenamente.Models
         public string RoleName { get; set; }
     }
 
+    //Esta clase permite añadir nuevos roles en el sistema identificandolos con su respectivo Id
     public class RoleDTO
     {
         [Key]
@@ -54,6 +60,7 @@ namespace Plenamente.Models
         public string RoleName { get; set; }
     }
 
+    //Clase que trae el nombre del usuario y genera una lista con los roles actuales
     public class UserAndRolesDTO
     {
         [Key]
