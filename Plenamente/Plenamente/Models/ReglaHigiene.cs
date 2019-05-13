@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         public ReglaHigiene()
         {
+            // Llena automaticamente el campo tipo date.
             Rhig_Registro = DateTime.Now;
         }
         [Key]

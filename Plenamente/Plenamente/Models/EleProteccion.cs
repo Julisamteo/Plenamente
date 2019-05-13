@@ -10,6 +10,7 @@ namespace Plenamente.Models
     {
         public EleProteccion()
         {
+            // Genera automaticamente el campo tipo date.
             Epro_Registro = DateTime.Now;
         }
         [Key]

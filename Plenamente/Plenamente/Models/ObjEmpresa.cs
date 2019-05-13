@@ -10,6 +10,7 @@ namespace Plenamente.Models
     {
         public ObjEmpresa()
         {
+            // Llena automaticamente el campo tipo date.
             Oemp_Registro = DateTime.Now;
         }
         [Key]

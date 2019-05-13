@@ -10,6 +10,7 @@ namespace Plenamente.Models
     {
         public ProcesActividad()
         {
+            // Llena automaticamente el campo tipo date.
             Pact_Registro = DateTime.Now;
         }
         [Key]

@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
        public CargoEmpresa ()
             {
+            // Genera automaticamente el campo tipo date.
             Cemp_Registro = DateTime.Now;
         }
         [Key]

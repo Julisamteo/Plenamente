@@ -1,4 +1,6 @@
-﻿@model Plenamente.Models.SocioDemografica
+﻿@*EsTA VISTA ES SOLO DE PRUEBA PARA AUTOEVALUACION*@
+
+@model Plenamente.Models.SocioDemografica
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
@@ -7,19 +9,21 @@
 <h2>AutoEvaluacion SST </h2>
 <div>
     <div >
+        @*Se crean for each para rocrrer automaticamente cada Criterio con sus estandares correspondientes y cada estandar añadirle sus ItEMeSTADAR
+            No sirivio dado que el campo cumplimiento es diferente segun empresa y segun el archivo relacionado por eso se paso a crear modelos, controlador y vistas con nombre "AutoEvaluacion"*@
         @{
-                      var criterios = Model.Criterios;
-                      var estandares = Model.Estandars;
-                      var iestandares = Model.ItemEstandars;
-                     var cumplimientos = Model.Cumplimientos;
+            var criterios = Model.Criterios;
+            var estandares = Model.Estandars;
+            var iestandares = Model.ItemEstandars;
+            var cumplimientos = Model.Cumplimientos;
 
 
 
-                        foreach (var item in criterios)
-                        {
+            foreach (var item in criterios)
+            {
                 <br />
                     <h2 class="divCriterio">@item.Crit_Nom</h2>
-                }
+            }
             foreach (var item in estandares)
             {
                 <p>*</p>
@@ -36,9 +40,9 @@
                     @itemm.Iest_Justifica
                     @itemm.Iest_Nojustifica <br />
 
+                    }
                 }
             }
-        }
     </div>
     <div>
         <h1> Con split </h1>
@@ -56,6 +60,8 @@
         }
      }
     </div>
+
+    
     <div>
         <table class="table">
             <tr>
@@ -93,8 +99,6 @@
                 <td> @itemm.Iest_Nojustifica </td>
                 <td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>
                 @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
-
-                hjgh
 
             </tr>
 

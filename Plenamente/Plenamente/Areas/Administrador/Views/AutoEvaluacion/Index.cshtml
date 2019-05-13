@@ -1,63 +1,104 @@
-﻿@model Plenamente.Models.AutoEvaluacion
+﻿@*Se instancia la clase de AutoEvaluacion*@
+@model Plenamente.Models.AutoEvaluacion
+@* Se invoca a la vista parcial de LayoutAdministrator*@
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>AutoEvaluacion Del SST</h2>
+<h2>AutoEvaluacion SST</h2>
+<div>
+    @*Se instancian las variables correspondientes al modelo para poder utilizarlas en la vista.*@
+    @{
+        var criterios = Model.Criterios1;
+        var estandares = Model.Estandars11;
+        var iestandares = Model.ItemEstandars111;
+        var iestandares112 = Model.ItemEstandars112;
+        var iestandares113 = Model.ItemEstandars113;
+        var iestandares114 = Model.ItemEstandars114;
+        var iestandares115 = Model.ItemEstandars115;
+        var iestandares116 = Model.ItemEstandars116;
+        var iestandares117 = Model.ItemEstandars117;
+        var iestandares118 = Model.ItemEstandars118;
+
+    }
+</div>
 <div>
     <table class="table">
         <tr>
             <th>
                 @{
-                    var criterios1 = Model.Criterios1;
-                    var estandares = Model.Estandars11;
-                    var iestandares = Model.ItemEstandars111;
-                    var cumplimientos = Model.Cumplimientos111;
-
-                    foreach (var item in criterios1)
+                    // Se hace un for each para recorrel los datos dentro de la variable
+                    foreach (var item in criterios)
                     {
-                    
-                        <h2 class="divCriterio">@item.Crit_Nom</h2>
+                        <h2 class="divCriterio">@item.Crit_Nom (10%) </h2>
                     } }
             </th>
         </tr>
+        @*//Se hace un for each para recorrer los datos dentro de la variable*@
         @{ foreach (var item in estandares)
             {
-
                 <tr>
-                    <th>
-                        @item.Esta_Nom
-                    </th>
+                    <td class="aeth"> @item.Esta_Nom (@item.Esta_Porcentaje%) </td>
                 </tr>
+                @*//Se hace un for each para recorrer los datos dentro de la variable*@
                 foreach (var itemm in iestandares)
                 {
                     <tr>
                         <td> @itemm.Iest_Desc   </td>
                         <td> @itemm.Iest_Verificar </td>
-
+                        <td> @itemm.Iest_Porcentaje%</td>
                     </tr>
-
-                    foreach (var arch in cumplimientos)
-                    {
-                        <tr>
-                            <td> @itemm.Iest_Cumple </td>
-                            <td> @itemm.Iest_Nocumple </td>
-                            <td> @itemm.Iest_Justifica  </td>
-                            <td> @itemm.Iest_Nojustifica </td>
-                            <td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>
-                            @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
-                            <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video Explicativo Comprobar</a></td>
-                        </tr>
-
-
-                        <tr>
-                            <td> Oberservaciones </td>
-                        </tr>
-                    }
+                    <tr>
+                        <td> @itemm.Iest_Cumple </td>
+                        <td> @itemm.Iest_Nocumple </td>
+                        <td> @itemm.Iest_Justifica  </td>
+                        <td> @itemm.Iest_Nojustifica </td>
+                        @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
+                        @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
+                        <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>
+                    </tr>
+                    <tr>
+                        <td> Oberservaciones </td>
+                    </tr>
                 }
             }
         }
+        <br />
+        @{
+            foreach (var itemm in iestandares112)
+            {
+                <tr>
+                    <td> @itemm.Iest_Desc   </td>
+                    <td> @itemm.Iest_Verificar </td>
+                    <td> @itemm.Iest_Porcentaje%</td>
+                </tr>
+                <tr>
+                    <td> @itemm.Iest_Cumple </td>
+                    <td> @itemm.Iest_Nocumple </td>
+                    <td> @itemm.Iest_Justifica  </td>
+                    <td> @itemm.Iest_Nojustifica </td>
+                    @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
+                    @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
+                    <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>
+                </tr>
+                <tr> <td> Oberservaciones </td> </tr>
+            }
+        }
+        <tr>
+            <td>ItemEstandar</td>
+            <td>Como se Verifica2</td>
+        </tr>
+        <tr>
+            <td> Cumple </td>
+            <td> No Cumple </td>
+            <td> Justifica </td>
+            <td> NoJustifica </td>
+            <td> Archivo.eXTENSION </td>
+        </tr>
+        <tr>
+            <td> Oberservaciones </td>
+        </tr>
     </table>
- </div>
-
+    }
+</div>

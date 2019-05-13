@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Web;
 
@@ -7,6 +8,11 @@ namespace Plenamente.Models
 {
     public class AutoEvaluacion
     {
+        //Se le da un nombre a cada tipo de campo para poder evocarlo en la vista de autoevaluacion uno por uno. 
+        //Criterio viene de la clase/Tabla criterio y se asigna segun su orden en el formulario. (Solo contiene información)
+        //Estandar viene de la clase/Tabla Estandar y se asigna segun su orden en el formulario. (Solo contiene información)
+        //ItemEstandar viene de la clase/Tabla ItemEstandar y se asigna segun su orden en el formulario. (Contiene información y validación de datos tipo Bool)
+        //Cumplimiento viene de la clase/tabla Cumplimiento y se asigna segun su orden el el formulario. (Contiene la ruta del archivo subido al servidor correspondiente al ItemEstandar)
         public IEnumerable<Criterio> Criterios1 { get; set; }
         public IEnumerable<Estandar> Estandars11 { get; set; }
         public IEnumerable<ItemEstandar> ItemEstandars111 { get; set; }
@@ -112,24 +118,63 @@ namespace Plenamente.Models
         public IEnumerable<ItemEstandar> ItemEstandars336 { get; set; }
         public IEnumerable<Cumplimiento> Cumplimientos336 { get; set; }
 
-
-
-
-
         public IEnumerable<Criterio> Criterios4 { get; set; }
+        public IEnumerable<Estandar> Estandars41 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars411 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos411 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars412 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos412 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars413 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos413 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars414 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos414 { get; set; }
+        public IEnumerable<Estandar> Estandars42 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars421 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos421 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars422 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos422 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars423 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos423 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars424 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos424 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars425 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos425 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars426 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos426 { get; set; }
+
         public IEnumerable<Criterio> Criterios5 { get; set; }
+        public IEnumerable<Estandar> Estandars51 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars511 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos511 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars512 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos512 { get; set; }
+
         public IEnumerable<Criterio> criterios6 { get; set; }
+        public IEnumerable<Estandar> Estandars6 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars611 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos611 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars612 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos612 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars613 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos613 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars614 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos614 { get; set; }
+
         public IEnumerable<Criterio> Criterios7 { get; set; }
-
-
-
+        public IEnumerable<Estandar> Estandars7 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars711 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos711 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars712 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos712 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars713 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos713 { get; set; }
+        public IEnumerable<ItemEstandar> ItemEstandars714 { get; set; }
+        public IEnumerable<Cumplimiento> Cumplimientos714 { get; set; }
 
 
         public virtual ICollection<Cumplimiento> Cumplimientos { get; set; }
         public IEnumerable<Estandar> Estandars { get; set; }
         public IEnumerable<ItemEstandar> ItemEstandars { get; set; }
-        
-
 
     }
 }
