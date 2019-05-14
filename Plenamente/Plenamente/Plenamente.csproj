@@ -361,6 +361,7 @@
     <Content Include="Imagenes\Recurso17.jpg" />
     <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg" />
     <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg" />
+    <Content Include="Scripts\barraprogreso.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
     <Content Include="Areas\Administrador\Views\web.config" />
