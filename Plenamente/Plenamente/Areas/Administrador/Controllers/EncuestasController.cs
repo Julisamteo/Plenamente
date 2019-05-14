@@ -6,7 +6,6 @@ using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web.Mvc;
-using Plenamente.Controllers;
 using Microsoft.AspNet.Identity;
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -167,7 +166,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         //Metodo de elimincacion multi tabla en beta no funcional
         public ActionResult DeleteConfirmed(int id)
         {
-            db.Database.ExecuteSqlCommand("DELETE * Encuesta e INNER JOIN Preguntas p ON e.Encu_Id=p.Encu_Id INNER JOIN Respuestas r ON p.Preg_Id=r.Preg_Id WHERE e.Encu_Id='" + id+"' ");
+            db.Database.ExecuteSqlCommand("DELETE ec FROM Encuestas ec LEFT JOIN  preguntas pt ON ec.Encu_Id = ec.Encu_Id LEFT JOIN respuestas rs ON pt.Preg_Id = pt.Preg_Id WHERE ec.Encu_Id = '"+id+"'");
             return RedirectToAction("Index");
         }
         //Query de insercion a las tabalas Preguntas y Respuestas de manera estatica.

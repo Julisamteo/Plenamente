@@ -51,7 +51,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     break;
             }
            
-            int pageSize = 60;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
             return View(preguntas.ToPagedList( pageNumber, pageSize));   
         }
