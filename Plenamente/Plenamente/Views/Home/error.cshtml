@@ -6,13 +6,66 @@
 <div class="col-lg-3"></div>
 <div class="col-lg-6">
     <h2 class="colorVerde text-center" style="padding:20px">Completa los otros modulos para poder continuar</h2>
+
 </div>
 <div class="col-lg-3"></div>
     </div>
 <div class="row">
     <div class="col-lg-3"></div>
     <div class="col-lg-6">
+        <!--Barra de carrga-->
+        <div class="center">
+
+
+            <div class="progresso">
+                <p>Empresa</p>
+                <progress id="Empresa" max="100" value="91"></progress>
+                <span></span>
+                <p>Comités</p>
+                <progress id="cero" max="100" value="1"></progress>
+                <span></span>
+                <p>Seguimiento y control</p>
+                <progress id="0" max="100" value="0"></progress>
+                <span></span>
+                <p>Reporte e investigacion</p>
+                <progress id="0" max="100" value="0"></progress>
+                <span></span>
+                <p>Medición</p>
+                <progress id="0" max="100" value="0"></progress>
+                <span></span>
+                <p>Administración</p>
+                <progress id="0" max="100" value="0"></progress>
+                <span></span>
+            </div>
+
+            <input type="button" id="boton" value="Reload" />
+        </div>
+
+        <script type="text/javascript">
+
+            window.onload = function () {
+
+                animateprogress("#Empresa", 91);
+                animateprogress("#cero", 0);
+                animateprogress("#cero", 0);
+                animateprogress("#cero", 0);
+                animateprogress("#cero", 0);
+                animateprogress("#cero", 0);
+
+            }
+            document.querySelector("#boton").addEventListener("click", function () {
+                animateprogress("#Empresa", 91);
+                animateprogress("#cero", 0);
+                animateprogress("#cero" , 0);
+                animateprogress("#cero", 0);
+                animateprogress("#cero", 0);
+                animateprogress("#nodejs", 36);
+
+            });
+        </script>
+        <!--Fin Barra-->
         <img src="~/Imagenes/Plenamente2.png" width="100%" />
     </div>
     <div class="col-lg-3"></div>
 </div>
+<script src="~/Scripts/barraprogreso.js"></script>

@@ -5,6 +5,7 @@
     -moz-box-sizing: border-box;
     box-sizing: border-box;
 }
+
 .plegable {
     max-height: 0;
     overflow: hidden;
@@ -14,35 +15,39 @@
     transition: max-height 500ms ease-out;
 }
 
-.plegable.desplegado {
-    max-height: 500px;
-    -webkit-transition: max-height 500ms ease-out;
-    -moz-transition: max-height 500ms ease-out;
-    -o-transition: max-height 500ms ease-out;
-    transition: max-height 500ms ease-out;
-}
+    .plegable.desplegado {
+        max-height: 500px;
+        -webkit-transition: max-height 500ms ease-out;
+        -moz-transition: max-height 500ms ease-out;
+        -o-transition: max-height 500ms ease-out;
+        transition: max-height 500ms ease-out;
+    }
+
 .linkPrincipal {
     display: flex;
-    padding: 20px;  
+    padding: 20px;
     margin: 20px 20px 20px 20px;
     justify-content: center;
     background-color: #6CB52D;
     border-radius: 10px;
 }
+
 .contenidoMenu {
     display: flex;
     justify-content: center;
 }
-.contenidoMenu ul {
-    display:flex;
-    margin-left: 40px;
-}
-.contenidoMenu ul li {
-    font-size: 18px;
-    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
-    display: block;
-    margin: auto;
-}
+
+    .contenidoMenu ul {
+        display: flex;
+        margin-left: 40px;
+    }
+
+        .contenidoMenu ul li {
+            font-size: 18px;
+            font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+            display: block;
+            margin: auto;
+        }
 
 .contenedorPrincipal {
     width: 100%;
@@ -75,14 +80,12 @@
 
 @media screen and (max-width: 1024px) {
     body {
-        padding-top: 80px;
     }
 
     .bannerPrincipal {
         display: flex;
-        background-color: #fff;
+        background-color: #6CB52D;
         width: 100%;
-        height: 125px;
         position: sticky;
         top: 0;
     }
@@ -140,14 +143,12 @@
 
 @media screen and (max-width: 768px) {
     body {
-        padding-top: 80px;
     }
 
     .bannerPrincipal {
         display: flex;
-        background-color: #fff;
+        background-color: #6CB52D;
         width: 100%;
-        height: 125px;
         position: sticky;
         top: 0;
     }
@@ -205,14 +206,12 @@
 
 @media screen and (max-width: 450px) {
     body {
-        padding-top: 80px;
     }
 
     .bannerPrincipal {
         display: flex;
-        background-color: #fff;
+        background-color: #6CB52D;
         width: 100%;
-        height: 125px;
         position: sticky;
         top: 0;
     }
@@ -448,7 +447,6 @@ a {
 
 @media screen and (max-width: 450px) {
     body {
-        padding-top: 80px;
     }
 
     .contenedor-menu {
@@ -471,7 +469,6 @@ a {
 
 @media screen and (max-width: 768px) {
     body {
-        padding-top: 80px;
     }
 
     .contenedor-menu {
@@ -506,9 +503,10 @@ a {
     margin: auto;
     padding: 0;
     width: 100%;
-    max-width:1000px;
+    max-width: 1000px;
     table-layout: fixed;
 }
+
     .tablaVista a {
         color: #6CB52D;
     }
@@ -541,6 +539,12 @@ a {
     background-color: #6CB52D;
 }
 
+.titulosBanner {
+    color: #fff;
+    width: 100%;
+    background-color: #6CB52D;
+}
+
 .colorVerdeBack {
     display: flex;
     justify-content: center;
@@ -551,7 +555,7 @@ a {
 
     .colorVerdeBack p {
         padding: 20px;
-        font-size:24px;
+        font-size: 24px;
         color: #fff;
     }
 
@@ -592,7 +596,7 @@ a {
 
 .contenidoVolver {
     display: flex;
-    margin:3%;
+    margin: 3%;
     width: 10%;
 }
 
@@ -1002,14 +1006,18 @@ a:link {
 
 .bannerPrincipal {
     display: flex;
-    background-color: #fff;
+    background-color: #6CB52D;
     width: 100%;
     height: 50px;
     border-bottom-style: solid;
-    border-bottom-color: #6CB52D;
+    border-bottom-color: #fff;
     border-bottom-width: 2px;
     position: relative;
     top: 0;
+    font-size: 20px;
+    padding-left: 20px;
+    padding-right: 20px;
+    padding-top: 5px;
 }
 
 .dobleContenedor {
@@ -1089,6 +1097,7 @@ a:link {
 .underlineHover img {
     width: 5%;
 }
+
 .underlineHover a {
     color: #000;
 }
@@ -1179,7 +1188,7 @@ a:link {
 }
 
 .tareasDiv {
-    display:inline-block;
+    display: inline-block;
     border: 2px solid #6CB52D;
     border-radius: 5px;
     width: 100%;
@@ -1187,10 +1196,11 @@ a:link {
     padding: 2%;
     margin: 1% 1% -1% 1%;
 }
-.tareasDiv h5{
-    display:flex;
-    margin:-3% 5% 5% 10%;
-}
+
+    .tareasDiv h5 {
+        display: flex;
+        margin: -3% 5% 5% 10%;
+    }
 
 .moduloDiv {
     display: inline-block;
@@ -1249,14 +1259,12 @@ a:link {
 
 @media screen and (max-width: 1024px) {
     body {
-        padding-top: 80px;
     }
 
     .bannerPrincipal {
         display: flex;
-        background-color: #fff;
+        background-color: #6CB52D;
         width: 100%;
-        height: 125px;
         position: relative;
         top: 0;
     }
@@ -1264,14 +1272,12 @@ a:link {
 
 @media screen and (max-width: 768px) {
     body {
-        padding-top: 80px;
     }
 
     .bannerPrincipal {
         display: flex;
-        background-color: #fff;
+        background-color: #6CB52D;
         width: 100%;
-        height: 125px;
         position: relative;
         top: 0;
     }
@@ -1316,13 +1322,12 @@ a:link {
 
 @media screen and (max-width: 450px) {
     body {
-        padding-top: 80px;
     }
 
     .bannerPrincipal {
         display: flex;
         justify-content: center;
-        background-color: #fff;
+        background-color: #6CB52D;
         width: 100%;
         height: 50px;
         position: relative;
@@ -1464,9 +1469,9 @@ a:link {
     justify-content: center;
 }
 
-    #formFooter a {
-        margin: 2.5%;
-    }
+#formFooter a {
+    margin: 2.5%;
+}
 
 
 /* TABS */
@@ -1484,7 +1489,7 @@ h2.active {
 
 /* FORM TYPOGRAPHY*/
 
-input[type=button], input[type=submit], input[type=reset], input[type=file]{
+input[type=button], input[type=submit], input[type=reset], input[type=file] {
     background-color: #6CB52D;
     border: none;
     color: white;
@@ -1510,13 +1515,13 @@ input[type=button], input[type=submit], input[type=reset], input[type=file]{
         background-color: #5AB60B;
     }
 
-    input[type=button]:active, input[type=submit]:active, input[type=reset]:active, input[type=email]:active, input[type=file]:active{
-        -moz-transform: scale(0.95);
-        -webkit-transform: scale(0.95);
-        -o-transform: scale(0.95);
-        -ms-transform: scale(0.95);
-        transform: scale(0.95);
-    }
+        input[type=button]:active, input[type=submit]:active, input[type=reset]:active, input[type=email]:active, input[type=file]:active {
+            -moz-transform: scale(0.95);
+            -webkit-transform: scale(0.95);
+            -o-transform: scale(0.95);
+            -ms-transform: scale(0.95);
+            transform: scale(0.95);
+        }
 
 
 input[type=text], input[type=password], input[type=email], .estilosSelect {
@@ -1540,10 +1545,10 @@ input[type=text], input[type=password], input[type=email], .estilosSelect {
     border-radius: 5px 5px 5px 5px;
 }
 
-input[type=text], input[type=email], input[type=file]:focus, .estilosSelect:focus {
-    background-color: #fff;
-    border-bottom: 2px solid #6CB52D;
-}
+    input[type=text], input[type=email], input[type=file]:focus, .estilosSelect:focus {
+        background-color: #fff;
+        border-bottom: 2px solid #6CB52D;
+    }
 
 input[type=text], input[type=email], input[type=file]:placeholder {
     color: #cccccc;
@@ -1711,6 +1716,7 @@ input[type=password]:placeholder {
 .underlineHover:hover {
     color: #6CB52D;
 }
+
 .underlineHover {
     color: #6CB52D;
 }
@@ -1744,7 +1750,7 @@ input[type=file]#subirArchivo {
     z-index: -1;
 }
 
-.paginacionLista{
+.paginacionLista {
     margin: 2.5%;
 }
 
@@ -1753,12 +1759,13 @@ input[type=file]#subirArchivo {
 
 
 
-.graficoA img{
+.graficoA img {
     display: flex;
-    width:80%;
+    width: 80%;
     height: auto;
     padding: 5px;
 }
+
 .graficoB img {
     display: flex;
     width: 80%;
@@ -1772,6 +1779,7 @@ input[type=file]#subirArchivo {
     height: auto;
     padding: 5px;
 }
+
 .graficoD img {
     display: flex;
     width: 80%;
@@ -1783,21 +1791,35 @@ input[type=file]#subirArchivo {
     border: solid;
     border-color: aqua;
 }
-.divCriterio{
+
+.divCriterio {
     color: black;
     background-color: grey;
     width: 50%;
-
+}
+/*Barra de progreso*/
+progress[value] {
+    /* Elimino la apariencia por defecto */
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    appearance: none;
+    /* Quito el borde que aparece en Firefox */
+    border: none;
+    /* Añado mis propios estilos */
+    width: 90%;
+    height: 30px;
+    overflow: hidden;
+    /*  Estos estilos solo se aplicaran al fondo de la barra en mozilla */
+    border: 1px inset #666;
+    border-radius: 20px;
+}
+progress::-webkit-progress-value {
+    background: #6CB52D;
+    border-radius: 20px;
 }
 
-
-
-
-
-
-
-
-
-
-
-
+progress::-webkit-progress-bar {
+    background-color: #fff;
+    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; /*esta sombra es para simular el borde que he aplicado arriba para Mozilla*/
+    border-radius: 20px;
+}
