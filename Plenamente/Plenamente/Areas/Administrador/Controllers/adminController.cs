@@ -27,87 +27,50 @@ namespace Plenamente.Areas.Administrador.Controllers
         // Controllers
 
         // GET: /Admin/
+        private ApplicationDbContext db = new ApplicationDbContext();
         [Authorize(Roles = "SuperAdmin2")]
-        #region public ActionResult Index(string searchStringUserNameOrEmail)
-        public ActionResult ManageUsers(string searchStringUserNameOrEmail, string currentFilter, int? page)
+        public ActionResult ManageUsers(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            try
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
             {
-                int intPage = 1;
-                int intPageSize = 5;
-                int intTotalPageCount = 0;
-
-                if (searchStringUserNameOrEmail != null)
-                {
-                    intPage = 1;
-                }
-                else
-                {
-                    if (currentFilter != null)
-                    {
-                        searchStringUserNameOrEmail = currentFilter;
-                        intPage = page ?? 1;
-                    }
-                    else
-                    {
-                        searchStringUserNameOrEmail = "";
-                        intPage = page ?? 1;
-                    }
-                }
-
-                ViewBag.CurrentFilter = searchStringUserNameOrEmail;
-
-                List<ExpandedUserDTO> col_UserDTO = new List<ExpandedUserDTO>();
-                int intSkip = (intPage - 1) * intPageSize;
-
-                intTotalPageCount = UserManager.Users
-                    .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
-                    .Count();
-
-                var result = UserManager.Users
-                    .Where(x => x.UserName.Contains(searchStringUserNameOrEmail))
-                    .OrderBy(x => x.UserName)
-                    .Skip(intSkip)
-                    .Take(intPageSize)
-                    .ToList();
-
-                foreach (var item in result)
-                {
-                    ExpandedUserDTO objUserDTO = new ExpandedUserDTO();
-
-                    objUserDTO.UserName = item.UserName;
-                    objUserDTO.Email = item.Email;
-                    objUserDTO.LockoutEndDateUtc = item.LockoutEndDateUtc;
-                    objUserDTO.Nombres = item.Pers_Nom1;
-                    objUserDTO.Apellidos = item.Pers_Apel1;
-                    objUserDTO.Documento = item.Pers_Doc;
-                    objUserDTO.Pers_Licencia = item.Pers_Licencia;
-                    objUserDTO.Pers_LicVence = item.Pers_LicVence;
-                    objUserDTO.Pers_Direccion = item.Pers_Dir;
-                    objUserDTO.Pers_ContactoEmeg = item.Pers_Cemeg;
-                    objUserDTO.Pers_TelefonoEmeg = item.Pers_Temeg;
-
-                    col_UserDTO.Add(objUserDTO);
-                }
-
-                // Set the number of pages
-                var _UserDTOAsIPagedList =
-                    new StaticPagedList<ExpandedUserDTO>
-                    (
-                        col_UserDTO, intPage, intPageSize, intTotalPageCount
-                        );
-
-                return View(_UserDTOAsIPagedList);
+                page = 1;
             }
-            catch (Exception ex)
+            else
             {
-                ModelState.AddModelError(string.Empty, "Error: " + ex);
-                List<ExpandedUserDTO> col_UserDTO = new List<ExpandedUserDTO>();
-
-                return View(col_UserDTO.ToPagedList(1, 25));
+                searchString = currentFilter;
             }
+
+            ViewBag.CurrentFilter = searchString;
+            var userId = User.Identity.GetUserId();
+            var UserCurrent = db.Users.Find(userId);
+            var Empr_Nit = UserCurrent.Empr_Nit;
+
+            var adminPersona = from s in db.Users
+                         where s.Empr_Nit == Empr_Nit
+                         select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                adminPersona = adminPersona.Where(s => s.Pers_Nom1.Contains(searchString)
+                                       || s.Pers_Nom1.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    adminPersona = adminPersona.OrderByDescending(s => s.Pers_Nom1);
+                    break;
+                default:  // Name ascending 
+                    adminPersona = adminPersona.OrderBy(s => s.Pers_Nom1);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(adminPersona.ToPagedList(pageNumber, pageSize));
+
         }
-        #endregion
 
         // Users *****************************
 

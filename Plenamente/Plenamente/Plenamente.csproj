@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201905101804481_CambiosDatetime2.Designer.cs">
       <DependentUpon>201905101804481_CambiosDatetime2.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905141556195_putoJulian.cs" />
+    <Compile Include="Migrations\201905141556195_putoJulian.Designer.cs">
+      <DependentUpon>201905141556195_putoJulian.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -562,6 +566,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905101804481_CambiosDatetime2.resx">
       <DependentUpon>201905101804481_CambiosDatetime2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905141556195_putoJulian.resx">
+      <DependentUpon>201905141556195_putoJulian.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
