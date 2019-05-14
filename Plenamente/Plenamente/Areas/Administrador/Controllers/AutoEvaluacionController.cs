@@ -22,6 +22,7 @@ namespace Plenamente.Areas.Administrador.Controllers
            mymodel.Criterios1=  db.Tb_Criterio.Where(x => x.Crit_Id == 3).ToList();
            mymodel.Estandars11= db.Tb_Estandar.Where(x => x.Crit_Id == 3 && x.Esta_Id == 2).ToList();
            mymodel.ItemEstandars111= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1).ToList();
+            mymodel.Cumplimientos111 = db.Tb_Cumplimiento.Where(x => x.Iest_Id == 1).ToList();
            mymodel.ItemEstandars112= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 5).ToList();
            mymodel.ItemEstandars113= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 6).ToList();
            mymodel.ItemEstandars114= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1002).ToList();
@@ -29,6 +30,7 @@ namespace Plenamente.Areas.Administrador.Controllers
            mymodel.ItemEstandars116= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1004).ToList();
            mymodel.ItemEstandars117= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1005).ToList();
            mymodel.ItemEstandars118= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1006).ToList();
+            //mymodel.Cumplimientos = db.Tb_Cumplimiento.Where(x => x.Iest_Id == mymodel.ItemEstandars118).ToList();  
 
             mymodel.Criterios2 = db.Tb_Criterio.Where(x => x.Crit_Id == 4).ToList();
 

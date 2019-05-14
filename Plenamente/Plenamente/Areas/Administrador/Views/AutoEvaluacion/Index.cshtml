@@ -13,6 +13,7 @@
         var criterios = Model.Criterios1;
         var estandares = Model.Estandars11;
         var iestandares = Model.ItemEstandars111;
+        var cumplimiento = Model.Cumplimientos111;
         var iestandares112 = Model.ItemEstandars112;
         var iestandares113 = Model.ItemEstandars113;
         var iestandares114 = Model.ItemEstandars114;
@@ -23,6 +24,62 @@
 
     }
 </div>
+<section>
+    <div>
+        @{ foreach (var item in criterios)
+            {
+                <h1> Critiero @item.Crit_Nom @item.Crit_Porcentaje% </h1>
+            } }
+        <div>
+            @{ foreach (var itemm in estandares)
+                {
+                    <h2> Estandar @itemm.Esta_Nom @itemm.Esta_Porcentaje% </h2>
+                }
+            }
+                    <div>
+                        @{
+                            foreach (var iest in iestandares)
+                            {
+
+                                <p> Tres Columnas</p>
+                                <div>
+                                    <h4> @iest.Iest_Desc</h4>
+                                </div>
+                                <div>
+                                    <p>  @iest.Iest_Verificar </p>
+                                </div>
+                                <div>
+                                    <p>@iest.Iest_Porcentaje% </p>
+                                </div>
+                            }
+                        }
+                    </div>
+                    <div>
+                        @{  foreach(var cump in cumplimiento)
+                            {
+                                <div>
+                                    <p>  @cump.Cump_Cumple  ||  @cump.Cump_Nocumple || @cump.Cump_Justifica ||  @cump.Cump_Nojustifica </p>
+                                </div>
+                                <div>
+                                    <p> @cump.Cump_Observ</p>
+                                    <p> @cump.Cump_Aevidencia</p>
+                                    <p> <a href="/App_Data/test.txt" download="/App_Data/test.txt" target="_blank"> Descargue el archivo </a></p>
+                                </div>
+
+                            } }
+                    </div>
+        </div>
+    </div>
+        
+</section>
+
+
+
+
+
+
+
+
 <div>
     <table class="table">
         <tr>
@@ -35,32 +92,33 @@
                     } }
             </th>
         </tr>
-        @*//Se hace un for each para recorrer los datos dentro de la variable*@
-        @{ foreach (var item in estandares)
-            {
-                <tr>
-                    <td class="aeth"> @item.Esta_Nom (@item.Esta_Porcentaje%) </td>
-                </tr>
-                @*//Se hace un for each para recorrer los datos dentro de la variable*@
-                foreach (var itemm in iestandares)
+            @*//Se hace un for each para recorrer los datos dentro de la variable*@
+            @{ foreach (var item in estandares)
                 {
                     <tr>
-                        <td> @itemm.Iest_Desc   </td>
-                        <td> @itemm.Iest_Verificar </td>
-                        <td> @itemm.Iest_Porcentaje%</td>
+                        <td class="aeth"> @item.Esta_Nom (@item.Esta_Porcentaje%) </td>
                     </tr>
-                    <tr>
-                        <td> @itemm.Iest_Cumple </td>
+                    @*//Se hace un for each para recorrer los datos dentro de la variable*@
+                    foreach (var itemm in iestandares)
+                    {
+                        <tr>
+                            <td> @itemm.Iest_Desc   </td>
+                            <td> @itemm.Iest_Verificar </td>
+                            <td> @itemm.Iest_Porcentaje%</td>
+                        </tr>
+                        <tr>
+                            @*<td> @itemm.Iest_Cumple </td>
                         <td> @itemm.Iest_Nocumple </td>
                         <td> @itemm.Iest_Justifica  </td>
-                        <td> @itemm.Iest_Nojustifica </td>
-                        @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
-                        @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
-                        <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>
-                    </tr>
-                    <tr>
-                        <td> Oberservaciones </td>
-                    </tr>
+                        <td> @itemm.Iest_Nojustifica </td>*@
+                            @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
+                            @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
+                            <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>
+                        </tr>
+                        <tr>
+                            <td> Oberservaciones </td>
+                        </tr>
+          
                 }
             }
         }
@@ -74,10 +132,10 @@
                     <td> @itemm.Iest_Porcentaje%</td>
                 </tr>
                 <tr>
-                    <td> @itemm.Iest_Cumple </td>
+                    @*<td> @itemm.Iest_Cumple </td>
                     <td> @itemm.Iest_Nocumple </td>
                     <td> @itemm.Iest_Justifica  </td>
-                    <td> @itemm.Iest_Nojustifica </td>
+                    <td> @itemm.Iest_Nojustifica </td>*@
                     @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
                     @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
                     <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>

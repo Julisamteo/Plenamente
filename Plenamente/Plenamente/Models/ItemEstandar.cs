@@ -14,10 +14,6 @@ namespace Plenamente.Models
         public string Iest_Desc { get; set; }
         public string Iest_Verificar { get; set; }
         public float Iest_Porcentaje { get; set; }
-        public bool Iest_Cumple { get; set; }
-        public bool Iest_Nocumple { get; set; }
-        public bool Iest_Justifica { get; set; }
-        public bool Iest_Nojustifica { get; set; }
 
         [ForeignKey("Estandar")]
         public int Esta_Id { get; set; }
