@@ -1817,6 +1817,9 @@ progress::-webkit-progress-value {
     background: #6CB52D;
     border-radius: 20px;
 }
+.aeth{
+    text-align: justify;
+}
 
 progress::-webkit-progress-bar {
     background-color: #fff;

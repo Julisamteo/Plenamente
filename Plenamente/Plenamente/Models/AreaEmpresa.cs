@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         public AreaEmpresa()
         {
+            // Genera automaticamente el campo tipo date.
             Aemp_Registro = DateTime.Now;
         }
         [Key]

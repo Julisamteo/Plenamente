@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         public Politica()
         {
+            // Llena automaticamente el campo tipo date.
             Poli_Registro = DateTime.Now;
         }
         [Key]

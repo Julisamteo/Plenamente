@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-
+//Este modelo es  SOLO DE PRUEBA PARA AUTOEVALUACION
 namespace Plenamente.Models
 {
     public class SocioDemografica

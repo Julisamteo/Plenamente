@@ -9,6 +9,7 @@ namespace Plenamente.Models
     {
         public Archivo()
         {
+            // Genera automaticamente el campo tipo date.
             Cump_Registro = DateTime.Now;
         }
 

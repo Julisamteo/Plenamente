@@ -10,6 +10,7 @@ namespace Plenamente.Models
     {
         public SedeCiudad()
         {
+            // Llena automaticamente el campo tipo date.
             Sciu_Registro = DateTime.Now;
         }
         [Key]

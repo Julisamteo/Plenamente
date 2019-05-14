@@ -10,6 +10,7 @@ namespace Plenamente.Models
     {
         public Periodo()
         {
+            // Llena automaticamente el campo tipo date.
             Peri_Registro = DateTime.Now;
         }
         [Key]

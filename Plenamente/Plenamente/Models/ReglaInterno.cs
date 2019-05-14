@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         public ReglaInterno()
         {
+            // Llena automaticamente el campo tipo date.
             Rint_Registro = DateTime.Now;
         }
         [Key]

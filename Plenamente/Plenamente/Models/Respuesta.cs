@@ -9,6 +9,7 @@ namespace Plenamente.Models
     {
         public Respuesta()
         {
+            // Llena automaticamente el campo tipo date.
             Resp_Registro = DateTime.Now;
         }
         [Key]

@@ -5,6 +5,7 @@ using System.Web;
 using System.Web.Mvc;
 using Plenamente.Models;
 
+//Este controaldor SOLO DE PRUEBA PARA AUTOEVALUACION
 namespace Plenamente.Areas.Administrador.Controllers
 {
     public class EncuSociController : Controller
@@ -24,9 +25,6 @@ namespace Plenamente.Areas.Administrador.Controllers
             mymodel.itemEstandars1 = db.Tb_ItemEstandar.Where(x => x.Esta_Id == 3).ToList();
             return View(mymodel);
         }
-   
-
-
     }
     //var hola = db.Tb_Criterio.Where(x => x.Crit_Id == '3').ToList();
 }

@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         public Encuesta()
         {
+            // Llena automaticamente el campo tipo date.
             Encu_Creacion = DateTime.Now;
             Encu_Registro = DateTime.Now;
         }

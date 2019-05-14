@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         public Pregunta()
         {
+            // Llena automaticamente el campo tipo date.
             Preg_Registro = DateTime.Now;
         }
 
