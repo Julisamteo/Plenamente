@@ -17,10 +17,9 @@ namespace Plenamente.Areas.Administrador.Controllers
         public ViewResult Index(string sortOrder, string currentFilter, int idEncuesta, int? page, string searchString)
         {
             ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.NameSortParm = string.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
             ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
             ViewBag.idEncuesta = idEncuesta;
-
 
             if (searchString != null)
             {
@@ -35,11 +34,11 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             var preguntas = from s in db.Tb_Pregunta
                             where s.Encu_Id.Equals(idEncuesta)
-                         select s;
-            if (!String.IsNullOrEmpty(searchString))
+                            select s;
+            if (!string.IsNullOrEmpty(searchString))
             {
-                preguntas = preguntas.Where(s => s.Preg_Titulo.Contains(searchString)
-                                       || s.Preg_Titulo.Contains(searchString));
+                preguntas = preguntas.Where(s => s.Preg_Titulo.Contains(searchString) && s.Encu_Id.Equals(idEncuesta)
+                                       || s.Preg_Titulo.Contains(searchString) && s.Encu_Id.Equals(idEncuesta));
             }
             switch (sortOrder)
             {

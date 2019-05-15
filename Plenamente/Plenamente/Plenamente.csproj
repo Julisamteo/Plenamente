@@ -212,17 +212,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905101759430_RegistroUser.cs" />
-    <Compile Include="Migrations\201905101759430_RegistroUser.Designer.cs">
-      <DependentUpon>201905101759430_RegistroUser.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905101804481_CambiosDatetime2.cs" />
-    <Compile Include="Migrations\201905101804481_CambiosDatetime2.Designer.cs">
-      <DependentUpon>201905101804481_CambiosDatetime2.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905141556195_putoJulian.cs" />
-    <Compile Include="Migrations\201905141556195_putoJulian.Designer.cs">
-      <DependentUpon>201905141556195_putoJulian.cs</DependentUpon>
+    <Compile Include="Migrations\201905142217146_putojulin.cs" />
+    <Compile Include="Migrations\201905142217146_putojulin.Designer.cs">
+      <DependentUpon>201905142217146_putojulin.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -563,14 +555,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905101759430_RegistroUser.resx">
-      <DependentUpon>201905101759430_RegistroUser.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905101804481_CambiosDatetime2.resx">
-      <DependentUpon>201905101804481_CambiosDatetime2.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905141556195_putoJulian.resx">
-      <DependentUpon>201905141556195_putoJulian.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905142217146_putojulin.resx">
+      <DependentUpon>201905142217146_putojulin.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -21,6 +21,9 @@
     <thead class="cabeceraTabla">
         <tr>
             <th class="colorVerde">
+                Nombre 
+            </th>
+            <th class="colorVerde">
                 Fecha Vencimiento
             </th>
             <th class="colorVerde">
@@ -33,19 +36,22 @@
     <tbody class="cuerpoTabla">
         @foreach (var item in Model)
         {
-            <tr>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Encu_Vence)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Encu_Estado)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Encu_Id }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Encu_Id }) |
-                    @Html.ActionLink("Ver Preguntas", "Index", "Preguntas", new { id = item.Encu_Id, idEncuesta = item.Encu_Id }, null)
-                </td>
-            </tr>
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encu_Nombre)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encu_Vence)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Encu_Estado)
+            </td>
+            <td>
+                @Html.ActionLink("Editar", "Edit", new { id = item.Encu_Id }) |
+                @Html.ActionLink("Eliminar", "Delete", new { id = item.Encu_Id }) |
+                @Html.ActionLink("Ver Preguntas", "Index", "Preguntas", new { id = item.Encu_Id, idEncuesta = item.Encu_Id }, null)
+            </td>
+        </tr>
         }
     </tbody>
 </table>

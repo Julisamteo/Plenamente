@@ -45,7 +45,7 @@
 </table>
 <div class="paginacionLista">
     @Html.PagedListPager(Model, page => Url.Action("Index",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+        new { ViewBag.idEncuesta, page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 
 </div>
     <div class="contenidoVolver">

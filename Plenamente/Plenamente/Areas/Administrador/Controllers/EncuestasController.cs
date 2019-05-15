@@ -61,7 +61,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     break;
             }
             //Se muestran la cantidad de registros
-            int pageSize = 50;
+            int pageSize = 20;
             int pageNumber = (page ?? 1);
             //Retorna la vista
             return View(cargos.ToPagedList(pageNumber, pageSize));
@@ -96,7 +96,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //Metodó guardar con parametro blindado
-        public ActionResult Create([Bind(Include = "Encu_Id,Encu_Creacion,Encu_Vence,Encu_Estado,Encu_Registro,Empr_Nit")] Encuesta encuesta)
+        public ActionResult Create([Bind(Include = "Encu_Id,Encu_Nombre,Encu_Creacion,Encu_Vence,Encu_Estado,Encu_Registro,Empr_Nit")] Encuesta encuesta)
         {
             //Si el modelo es valido guarda el registro
             if (ModelState.IsValid)

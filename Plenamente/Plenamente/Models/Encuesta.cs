@@ -17,6 +17,7 @@ namespace Plenamente.Models
         }
         [Key]
         public int Encu_Id { get; set; }
+        public string Encu_Nombre { get; set; }
         public DateTime Encu_Creacion { get; set; }
         [DataType(DataType.Date)]
         public DateTime Encu_Vence { get; set; } 
