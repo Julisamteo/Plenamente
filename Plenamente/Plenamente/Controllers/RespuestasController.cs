@@ -37,8 +37,8 @@ namespace Plenamente.Areas.Administrador.Controllers
                             select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                respuestas = respuestas.Where(s => s.Resp_Nom.Contains(searchString)
-                                       || s.Resp_Nom.Contains(searchString));
+                respuestas = respuestas.Where(s => s.Resp_Nom.Contains(searchString) && s.Preg_Id.Equals(idPregunta)
+                                       || s.Resp_Nom.Contains(searchString) && s.Preg_Id.Equals(idPregunta));
             }
             switch (sortOrder)
             {
@@ -156,14 +156,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             db.Tb_Respuesta.Remove(respuesta);
             db.SaveChanges();
             return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
-        }
-
-        public ActionResult eliminarRespuestas(int idPregunta)
-        {
-            ViewBag.idPregunta = idPregunta;
-            //db.Database.ExecuteSqlCommand("DELETE FROM Respuestas");
-            return RedirectToAction("Index", "Respuestas", routeValues: new { ViewBag.idPregunta });
-        }
+        }                    
         protected override void Dispose(bool disposing)
         {
             if (disposing)

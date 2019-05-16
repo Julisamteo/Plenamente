@@ -1,4 +1,5 @@
 ﻿@model PagedList.IPagedList<Plenamente.Models.CargoEmpresa>
+@using PagedList;
 @using PagedList.Mvc;
 
 @{
@@ -22,9 +23,9 @@
     <thead class="cabeceraTabla">
         <tr>
             @*<th class="colorVerde">
-                @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-                Nombre empresa
-            </th>*@
+                    @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
+                    Nombre empresa
+                </th>*@
             <th class="colorVerde">
                 @*@Html.DisplayNameFor(model => model.Cemp_Nom)*@
                 Nombre del cargo
@@ -39,8 +40,8 @@
         {
             <tr>
                 @*<td>
-                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-                </td>*@
+                        @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                    </td>*@
                 <td>
                     @Html.DisplayFor(modelItem => item.Cemp_Nom)
                 </td>

@@ -21,9 +21,6 @@
     <thead class="cabeceraTabla">
         <tr>
             <th class="colorVerde">
-                Nombre Pregunta:
-            </th>
-            <th class="colorVerde">
                 Tipo Respuesta:
             </th>
             <th class="colorVerde">
@@ -39,9 +36,6 @@
         @foreach (var item in Model)
         {
         <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Pregunta.Preg_Titulo)
-            </td>
             <td>
                 @if (@Html.DisplayFor(modelItem => item.Resp_Tipo).ToString() == "1")
                 {

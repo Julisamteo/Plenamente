@@ -31,29 +31,29 @@
                                 <li>
                                 <li><a href="@Url.Action("Index", "AreaEmpresas")">Áreas de la empresa </a></li> @*1*@
                                 <li>
-                                <li><a href="/Administrador/CargoEmpresas">Cargos de la empresa </a></li> @*1*@
+                                <li><a href="@Url.Action("Index", "CargoEmpresas")">Cargos de la empresa </a></li> @*1*@
                                 <li>
                                 <li><a href="@Url.Action("Index", "CargoEmpresas")">Información de sus trabajadores</a></li>
                                 <li>
-                                <li><a href="/Administrador/sedeCiudades">Sedes y centros de trabajo</a></li> @*1*@
+                                <li><a href="@Url.Action("Index", "sedeCiudades")">Sedes y centros de trabajo</a></li> @*1*@
                                 <li>
-                                <li><a href="/Administrador/EleProteccions">Elementos de protección </a></li> @*1*@
+                                <li><a href="@Url.Action("Index", "EleProteccions")">Elementos de protección </a></li> @*1*@
                                 <li>
-                                <li><a href="/Administrador/Politicas">Políticas de la empresa </a></li>@*1*@
+                                <li><a href="@Url.Action("Index", "Politicas")">Políticas de la empresa </a></li>@*1*@
                                 <li>
-                                <li><a href="/Administrador/ProcesActividads">Procesos y actividades </a></li>@*1*@
+                                <li><a href=@Url.Action("Index", "ProcesActividads")>Procesos y actividades </a></li>@*1*@
                                 <li>
-                                <li><a href="/Administrador/ReglaHigienes">Reglamento higiene y seguridad </a></li>@*1*@
+                                <li><a href=@Url.Action("Index", "ReglaHigienes")>Reglamento higiene y seguridad </a></li>@*1*@
                                 <li>
-                                <li><a href="/Administrador/ReglaInternoes">Reglamento interno </a></li>@*1*@
+                                <li><a href="@Url.Action("Index", "ReglaInternoes")">Reglamento interno </a></li>@*1*@
                                 <li>
-                                <li><a href="/Administrador/SedeCiudades">Sedes de la empresa </a></li>@*1*@
+                                <li><a href="@Url.Action("Index", "SedeCiudades")">Sedes de la empresa </a></li>@*1*@
                                 <li>
-                                <li><a href="/Administrador/ObjEmpresas">Objetivos de la empresa </a></li>@*1*@
+                                <li><a href="@Url.Action("Index", "ObjEmpresas")">Objetivos de la empresa </a></li>@*1*@
                                 <li>
-                                <li><a href="/Administrador/ZonaEmpresas">Zonas físicas </a></li>
+                                <li><a href="@Url.Action("Index", "ZonaEmpresas")">Zonas físicas </a></li>
                                 <li>
-                                <li><a href="/Administrador/admin/manageusers">Personas</a></li>
+                                <li><a href="@Url.Action("Manageusers", "Admin")">Personas</a></li>
                                 <li>
 
                             </ul>
@@ -61,12 +61,12 @@
                             <a href="#">Encuestas<i class="icono derecha fa fa-chevron-down"></a></i></a>
                             <ul class="subMenu1">
                                 <li>
-                            <a href="/Administrador/encuestas">Encuesta sociodemográfica<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <a href="@Url.Action("Index", "Encuestas")">Encuesta sociodemográfica<i class="icono derecha fa fa-chevron-down"></i></a>
                         </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="/home/error">Autoevalución SST<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <a href="@Url.Action("error", "home")">Autoevalución SST<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 @*<li>
                             <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -77,7 +77,7 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="/home/error">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <a href="@Url.Action("error", "home")">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 @*<li>
                             <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -90,14 +90,14 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/home/error">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                    <a href="@Url.Action("error", "home")">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
                     <ul class="subMenu">
                        <li>
                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
                     <ul class="subMenu1">
-                        <li><a href="/home/error"><i class="icono derecha"></i>COPASST<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="/home/error"><i class="icono derecha"></i>COCOLA<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="/home/error"><i class="icono derecha"></i>Comites personalizados<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>COPASST<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>COCOLA<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Comites personalizados<i class="icono derecha fa fa-chevron-down"></i></a></li>
                     </ul>
                 @*@<li>
                     <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -119,17 +119,17 @@
                     </ul>
                 </li>
                 <li>
-                    <a href="/home/error">Seguimiento y control<i class="icono derecha fa fa-chevron-down"></i></a>
+                    <a href="@Url.Action("error", "home")">Seguimiento y control<i class="icono derecha fa fa-chevron-down"></i></a>
                     <ul class="subMenu">
                         <li>
                             <a href="#">Seguimiento y control<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-                                <li><a href="/home/error">Peligro y riesgos<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error">Requisitos legales<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error">Evaluaciones médicas ocupacionales<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error">Control de EPP<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error">Programas<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error">DocumentacióN<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Peligro y riesgos<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Requisitos legales<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Evaluaciones médicas ocupacionales<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Control de EPP<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Programas<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">DocumentacióN<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                             @* <li>
             <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -156,9 +156,9 @@
                        <li>
                            <a href="#">Reporte e investigación<i class="icono derecha fa fa-chevron-down"></i></a>
                     <ul class="subMenu1">
-                        <li><a href="/home/error"><i class="icono derecha"></i>Reporte un incidente<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="/home/error"><i class="icono derecha"></i>Gestión de eventos<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="/home/error"><i class="icono derecha"></i>Estadísticas de accidentalidad<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Reporte un incidente<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de eventos<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Estadísticas de accidentalidad<i class="icono derecha fa fa-chevron-down"></i></a></li>
                     </ul>
              
                     </ul>
@@ -169,8 +169,8 @@
                         <li>
                             <a href="#">Medición<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-                                <li><a href="/home/error">Resumen de indicadores<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error">Estadísticas del SG-SST<i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Resumen de indicadores<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")">Estadísticas del SG-SST<i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                             @* <li>
             <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -197,9 +197,9 @@
                         <li>
                             <a href="#">Administración<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-                                <li><a href="/home/error"><i class="icono derecha"></i>Gestión de informes<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error"><i class="icono derecha"></i>Gestión de tareas<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="/home/error"><i class="icono derecha"></i>Gestión de planes de acción<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de informes<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de tareas<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de planes de acción<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                             @*<li>
             <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>

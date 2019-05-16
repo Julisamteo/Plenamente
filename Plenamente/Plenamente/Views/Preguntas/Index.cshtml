@@ -11,7 +11,7 @@
 
 <div class="contenedorBotones">
     <form asp-action="Index" method="get">
-        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="text" id="buscarDato" name="idEncuesta" value="@ViewData["CurrentFilter,'"+@ViewBag.idEncuesta+"'"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
         <a href="@Url.Action("Index", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
         <a href="@Url.Action("Create", "Preguntas", new {idEncuesta = @ViewBag.idEncuesta})" class="ayudaTitulos"><span>Crear pregunta</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
