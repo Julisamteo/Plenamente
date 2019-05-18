@@ -12,10 +12,9 @@ using System.Web.Mvc;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
-    [Authorize(Roles = "Administrador")]
     public class adminController : Controller
     {
-        
+
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
 
@@ -94,7 +93,6 @@ namespace Plenamente.Areas.Administrador.Controllers
 
                     col_UserDTO.Add(objUserDTO);
                 }
-
                 // Set the number of pages
                 var _UserDTOAsIPagedList =
                     new StaticPagedList<ExpandedUserDTO>

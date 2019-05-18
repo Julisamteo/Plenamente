@@ -27,11 +27,12 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
             else
             {
+                ViewBag.idEncuesta = idEncuesta;
                 searchString = currentFilter;
             }
 
             ViewBag.CurrentFilter = searchString;
-
+            ViewBag.idEncuesta = idEncuesta;
             var preguntas = from s in db.Tb_Pregunta
                             where s.Encu_Id.Equals(idEncuesta)
                             select s;
@@ -39,6 +40,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 preguntas = preguntas.Where(s => s.Preg_Titulo.Contains(searchString) && s.Encu_Id.Equals(idEncuesta)
                                        || s.Preg_Titulo.Contains(searchString) && s.Encu_Id.Equals(idEncuesta));
+                ViewBag.idEncuesta = idEncuesta;
             }
             switch (sortOrder)
             {
