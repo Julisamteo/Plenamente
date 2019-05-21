@@ -16,5 +16,6 @@ namespace Plenamente.Models
 
         // Permite a Estandar acceder a la Data
         public ICollection<Estandar> Estandars { get; set; }
+
     }
 }

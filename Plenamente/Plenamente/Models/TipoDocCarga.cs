@@ -14,6 +14,6 @@ namespace Plenamente.Models
         public DateTime Tdca_Registro { get; set; }
 
         //Permite a cumplimineto acceder a la Data
-        public ICollection<Cumplimiento> Cumplimientos { get; set; }
+        public ICollection<Evidencia> Evidencias { get; set; }
     }
 }

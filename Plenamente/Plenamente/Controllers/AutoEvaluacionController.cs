@@ -17,7 +17,7 @@ namespace Plenamente.Areas.Administrador.Controllers
        {
 
            // Creo una variable 'mymodel' para asociarla con la clase 'AutoEvaluacion' donde estan multiplez i Collections nombrados
-           var mymodel = new AutoEvaluacion();
+           var mymodel = new AutoEvaluacionn();
            // Se hace el query por variable  para trearla con el ID correspondiente y listarlo.
            mymodel.Criterios1=  db.Tb_Criterio.Where(x => x.Crit_Id == 3).ToList();
            mymodel.Estandars11= db.Tb_Estandar.Where(x => x.Crit_Id == 3 && x.Esta_Id == 2).ToList();
@@ -30,6 +30,13 @@ namespace Plenamente.Areas.Administrador.Controllers
            mymodel.ItemEstandars116= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1004).ToList();
            mymodel.ItemEstandars117= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1005).ToList();
            mymodel.ItemEstandars118= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1006).ToList();
+
+           var query  = (from cump in db.Tb_Cumplimiento join iest in db.Tb_ItemEstandar on cump.Iest_Id equals iest.Iest_Id
+                             join est in db.Tb_Estandar on iest.Esta_Id equals est.Esta_Id
+                             join crit in db.Tb_Criterio on est.Crit_Id equals crit.Crit_Id
+                             where cump.Empr_Nit == '1' && crit.Crit_Id=='3' select cump.Cump_Aevidencia);
+        
+         
             //mymodel.Cumplimientos = db.Tb_Cumplimiento.Where(x => x.Iest_Id == mymodel.ItemEstandars118).ToList();  
 
             mymodel.Criterios2 = db.Tb_Criterio.Where(x => x.Crit_Id == 4).ToList();
@@ -39,8 +46,9 @@ namespace Plenamente.Areas.Administrador.Controllers
            mymodel.Criterios5 = db.Tb_Criterio.Where(x => x.Crit_Id == 7).ToList();
            mymodel.criterios6 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
            mymodel.Criterios7 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
+            
           
-           return View(mymodel);
+           return View(query);
         }
          // Intento De crear subir el  con errores. 
         

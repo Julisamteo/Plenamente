@@ -53,5 +53,7 @@ namespace Plenamente.Models
         public ICollection<ZonaEmpresa> ZonaEmpresas { get; set; }
         // Permite a EportEmpresa acceder a la Data
         public ICollection<EprotEmpresa> EprotEmpresas { get; set; }
+        // Permite a AutoEvaluacion acceder a la Data
+        public ICollection<AutoEvaluacion> AutoEvaluaciones { get; set; }
     }
 }

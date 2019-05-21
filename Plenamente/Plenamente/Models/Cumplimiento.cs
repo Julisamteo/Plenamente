@@ -10,10 +10,6 @@ namespace Plenamente.Models
     {
         [Key]
         public int Cump_Id { get; set; }
-        public string Cump_Nombre { get; set; }
-        public string Cump_Aevidencia { get; set; }
-        public Guid Cump_Guid { get; set; }
-        public byte[] Cump_Evidencia { get; set; }
         public bool Cump_Cumple { get; set; }
         public bool Cump_Nocumple { get; set; }
         public bool Cump_Justifica { get; set; }
@@ -24,23 +20,21 @@ namespace Plenamente.Models
         [ForeignKey("ItemEstandar")]
         public int? Iest_Id { get; set; }
         public ItemEstandar ItemEstandar { get; set; }
-        //// ForeignKey
-        [ForeignKey("ApplicationUser")]
-        public string Id { get; set; }
-        public ApplicationUser ApplicationUser { get; set; }
         //ForeignKey
         [ForeignKey("Empresa")]
         public int? Empr_Nit { get; set; }
         public Empresa Empresa { get; set; }
-        //Foreign Key
-        [ForeignKey("TipoDocCarga")]
-        public int? Tdca_Id { get; set; }
-        public TipoDocCarga TipoDocCarga { get; set; }
+        // Foreign Key
+        [ForeignKey("AutoEvaluacion")]
+        public int Auev_Id { get; set; }
+        public AutoEvaluacion AutoEvaluacion { get; set; }
 
         public DateTime Cump_Registro { get; set; }
 
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }
+        // Permite que Evidencia Acceda a la Data
+        public ICollection<Evidencia> Evidencias { get; set; }
     }
 
 
