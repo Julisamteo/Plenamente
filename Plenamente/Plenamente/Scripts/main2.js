@@ -41,24 +41,6 @@
         }
     });
 
-
-    
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     $('.btn-menu').click(function () {
         $('.contenedor-menu .menu').slideToggle();
     });
