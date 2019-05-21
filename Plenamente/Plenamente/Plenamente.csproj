@@ -217,6 +217,10 @@
     <Compile Include="Migrations\201905211557117_Correccion Foranea.Designer.cs">
       <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905211900078_Iest.cs" />
+    <Compile Include="Migrations\201905211900078_Iest.Designer.cs">
+      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -552,6 +556,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211557117_Correccion Foranea.resx">
       <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905211900078_Iest.resx">
+      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

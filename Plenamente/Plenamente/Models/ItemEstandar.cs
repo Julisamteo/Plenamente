@@ -22,6 +22,9 @@ namespace Plenamente.Models
         public DateTime Iest_Peri { get; set; }
         public string Iest_Observa { get; set; }
         public DateTime Iest_Registro { get; set; }
+        public string Iest_Video { get; set; }
+        public string Iest_Recurso { get; set; }
+        public string Iest_Rescursob { get; set; }
 
         //Permite a cumplimineto acceder a la Data
         public ICollection<Cumplimiento> Cumplimientos { get; set; }
