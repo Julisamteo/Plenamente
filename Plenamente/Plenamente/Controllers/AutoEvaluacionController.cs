@@ -31,10 +31,10 @@ namespace Plenamente.Areas.Administrador.Controllers
            mymodel.ItemEstandars117= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1005).ToList();
            mymodel.ItemEstandars118= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1006).ToList();
 
-           var query  = (from cump in db.Tb_Cumplimiento join iest in db.Tb_ItemEstandar on cump.Iest_Id equals iest.Iest_Id
-                             join est in db.Tb_Estandar on iest.Esta_Id equals est.Esta_Id
-                             join crit in db.Tb_Criterio on est.Crit_Id equals crit.Crit_Id
-                             where cump.Empr_Nit == '1' && crit.Crit_Id=='3' select cump.Cump_Aevidencia);
+           //var query  = (from cump in db.Tb_Cumplimiento join iest in db.Tb_ItemEstandar on cump.Iest_Id equals iest.Iest_Id
+           //                  join est in db.Tb_Estandar on iest.Esta_Id equals est.Esta_Id
+           //                  join crit in db.Tb_Criterio on est.Crit_Id equals crit.Crit_Id
+           //                  where cump.Empr_Nit == '1' && crit.Crit_Id=='3' select cump.Cump_Aevidencia);
         
          
             //mymodel.Cumplimientos = db.Tb_Cumplimiento.Where(x => x.Iest_Id == mymodel.ItemEstandars118).ToList();  
@@ -48,7 +48,7 @@ namespace Plenamente.Areas.Administrador.Controllers
            mymodel.Criterios7 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
             
           
-           return View(query);
+           return View(/*query*/);
         }
          // Intento De crear subir el  con errores. 
         

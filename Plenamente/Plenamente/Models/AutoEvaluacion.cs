@@ -21,6 +21,6 @@ namespace Plenamente.Models
         public Empresa Empresa { get; set; }
 
         //Permite que Cumplimiento acceda a la Data
-        public ICollection<AutoEvaluacion> AutoEvaluaciones { get; set; }
+        public ICollection<Cumplimiento> Cumplimientos { get; set; }
     }
 }

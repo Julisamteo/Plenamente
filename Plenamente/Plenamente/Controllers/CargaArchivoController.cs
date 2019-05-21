@@ -26,8 +26,8 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 var cumplimiento = new Cumplimiento()
                {
-                 Cump_Nombre = archivo.Cump_Nombre,
-                 Cump_Aevidencia = SaveToPhysicalLocation(archivo.Cump_Aevidencia),
+                 //Cump_Nombre = archivo.Cump_Nombre,
+                 //Cump_Aevidencia = SaveToPhysicalLocation(archivo.Cump_Aevidencia),
                  Cump_Registro =archivo.Cump_Registro,
 
           };
