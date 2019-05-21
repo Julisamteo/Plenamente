@@ -12,9 +12,9 @@ using System.Web.Mvc;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
-    public class adminController : Controller
+    public class AdminController : Controller
     {
-
+        private ApplicationDbContext db = new ApplicationDbContext();
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
 
@@ -90,9 +90,25 @@ namespace Plenamente.Areas.Administrador.Controllers
                     objUserDTO.Pers_Direccion = item.Pers_Dir;
                     objUserDTO.Pers_ContactoEmeg = item.Pers_Cemeg;
                     objUserDTO.Pers_TelefonoEmeg = item.Pers_Temeg;
+                    objUserDTO.Tdoc_Id = item.Tdoc_Id;
+                    objUserDTO.Sciu_Id = item.Sciu_Id;
+                    objUserDTO.Ciudad = item.Ciudad;
+                    objUserDTO.Cemp_Id = item.Cemp_Id;
+                    objUserDTO.Aemp_Id = item.Aemp_Id;
+                    objUserDTO.Cate_Id = item.Cate_Id;
+                    objUserDTO.Gene_Id = item.Gene_Id;
+                    objUserDTO.Jemp_Id = item.Jemp_Id;
+                    objUserDTO.Tvin_Id = item.Tvin_Id;
+                    objUserDTO.Eps_Id = item.Eps_Id;
+                    objUserDTO.Afp_Id = item.Afp_Id;
+                    objUserDTO.Arl_Id = item.Arl_Id;
+                    objUserDTO.Empr_Nit = item.Empr_Nit;
+                    objUserDTO.Espe_Id = item.Espe_Id;
+                    objUserDTO.Jefe_Id = item.Jefe_Id;
 
                     col_UserDTO.Add(objUserDTO);
                 }
+
                 // Set the number of pages
                 var _UserDTOAsIPagedList =
                     new StaticPagedList<ExpandedUserDTO>
@@ -120,6 +136,11 @@ namespace Plenamente.Areas.Administrador.Controllers
         //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
         public ActionResult Create()
         {
+            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom");
+            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom");
+            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom");
+            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
+
             ExpandedUserDTO objExpandedUserDTO = new ExpandedUserDTO();
 
             ViewBag.Roles = GetAllRolesAsSelectList();
@@ -136,6 +157,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #region public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
         public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
         {
+           
             try
             {
                 if (paramExpandedUserDTO == null)
@@ -154,6 +176,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var Direccion = paramExpandedUserDTO.Pers_Direccion;
                 var ContactoEme = paramExpandedUserDTO.Pers_ContactoEmeg;
                 var TelefonoEme = paramExpandedUserDTO.Pers_TelefonoEmeg;
+                var TipoDocumento = paramExpandedUserDTO.Tdoc_Id;
 
 
                 if (Email == "")
@@ -182,7 +205,8 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Pers_LicVence = VigLicencia,
                     Pers_Dir = Direccion,
                     Pers_Cemeg = ContactoEme,
-                    Pers_Temeg = TelefonoEme
+                    Pers_Temeg = TelefonoEme,
+                    Tdoc_Id = TipoDocumento
                 };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
 
@@ -295,7 +319,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     DeleteUser(objExpandedUserDTO);
                 }
 
-                return Redirect("~/Admin");
+                return RedirectToAction("Manageusers");
             }
             catch (Exception ex)
             {

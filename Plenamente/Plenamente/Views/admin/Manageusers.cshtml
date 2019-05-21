@@ -8,75 +8,145 @@
 <div class="colorVerdeBack">
     <p>Cargos de la empresa </p>
 </div>
-
 <div class="contenedorBotones">
     <form asp-action="Index" method="get">
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
-        <a href="@Url.Action("Manageusers", "admin")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "admin")" class="ayudaTitulos"><span>Crear una nueva persona</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+        <a href="@Url.Action("Index", "admin")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "admin")" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
     </form>
 </div>
-<table id="tablaVista" class="tablaVista">
-    <thead class="cabeceraTabla">
-        <tr>
-            <th class="colorVerde">
-                Nombres
-            </th>
-            <th class="colorVerde">
-                Apellidos
-            </th>
-            <th class="colorVerde">
-                Documento
-            </th>
-            <th class="colorVerde">
-                Dirección
-            </th>
-            <th class="colorVerde">
-                Contacto
-            </th>
-            <th class="colorVerde">
-                Telefono
-            </th>
-            <th class="colorVerde"></th>
-        </tr>
-    </thead>
-    <tbody class="cuerpoTabla">
-        @foreach (var item in Model)
-        {
-            <tr>    
-                <td>
-                    @Html.DisplayFor(modelItem => item.Nombres)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Apellidos)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Documento)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pers_Direccion)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pers_ContactoEmeg)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Pers_TelefonoEmeg)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
-                    @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
-                    {
-                        @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
-                        new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
-                    }
-                </td>
-            </tr>
-        }
-    </tbody>
+<table class="table">
+    <tr>
+        <th>
+            Email
+        </th>
+        <th>
+            Locked Out
+        </th>
+        <th>
+            Nombres
+        </th>
+        <th>
+            Apellidos
+        </th>
+        <th>
+            Documento
+        </th>
+        <th>
+            Licencia de Conducción
+        </th>
+        <th>
+            Vigencia Licencia
+        </th>
+        <th>
+            Dirección
+        </th>
+        <th>
+            Contacto Emergencia
+        </th>
+        <th>
+            Telefono Emergencia
+        </th>
+        <th>
+            Tipo de Documento
+        </th>
+
+        <th></th>
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.LockoutEndDateUtc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Nombres)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Apellidos)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Documento)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Licencia)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_LicVence)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_Direccion)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_ContactoEmeg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Pers_TelefonoEmeg)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tdoc_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Nit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Afp_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arl_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Sciu_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Ciud_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cemp_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Aemp_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Cate_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Gene_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jemp_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Tvin_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Eps_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Espe_Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Jemp_Id)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
+            @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+            {
+                @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+            }
+        </td>
+    </tr>
+    }
+
+
 </table>
 <div class="paginacionLista">
     @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
-

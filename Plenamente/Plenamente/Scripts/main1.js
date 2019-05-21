@@ -17,6 +17,15 @@ function right(e) {
 document.onmousedown = right;
 
 window.onload = function () {
+    $(window).ready(function () {
+        $('h2').click(function () {
+            if ($(this).next().hasClass('desplegado')) {
+                $(this).next().removeClass('desplegado');
+            } else {
+                $(this).next().addClass('desplegado');
+            }
+        })
+    })
     var myInput = document.getElementById('login');
     var myInput1 = document.getElementById('password');
     myInput.onpaste = function (e) {
