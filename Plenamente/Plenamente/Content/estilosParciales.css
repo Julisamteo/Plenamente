@@ -25,6 +25,13 @@
     -o-transition: max-height 500ms ease-out;
     transition: max-height 500ms ease-out;
 }
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
+    z-index: 3;
+    color: #fff;
+    cursor: default;
+    background-color: #6CB52D;
+    border-color: #6CB52D;
+}
 .colorVerdeBack1 {
     cursor: pointer;
     color: #fff;

@@ -12,6 +12,9 @@
     @Html.AntiForgeryToken()
 
 <div class="centrarContenido">
+    <div class="hidden">
+        @Html.EditorFor(model => model.Empr_Nit, new { htmlAttributes = new { @class = "", @value= ViewBag.Empr_Nit } })
+    </div>
     <h2 class="colorVerdeBack1">Información Básica Del Trabajador</h2>
     <div class="plegable">
         <br />
@@ -31,13 +34,23 @@
         Tipo de documento:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Tdoc_Id, (SelectList)ViewBag.Tdoc_Id, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Tdoc_Id, (SelectList)ViewBag.Tdoc_Id as SelectList, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Tdoc_Id, "", new { @class = "text-danger" })
         <br />
         <br />
         Documento:
         <br />
         <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.EditorFor(model => model.Documento, new { htmlAttributes = new { @class = "estilosSelect" } })
+        @Html.ValidationMessageFor(model => model.Documento, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Genero:
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Gene_Id, (SelectList)ViewBag.Gene_Id, "Genero", htmlAttributes: new { @class = "estilosSelect" })
         <br />
         <br />
         Email:
@@ -52,10 +65,16 @@
         @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @class = "" } })
         <br />
         <br />
-        Tipo de Usuario:
+        Tipo De Usuario:
         <br />
         <br />
         @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
+        <br />
+        <br />
+        Estado Del Trabajador:
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Espe_Id, (SelectList)ViewBag.Espe_Id, "Genero", htmlAttributes: new { @class = "estilosSelect" })
         <br />
         <br />
     </div>
@@ -71,25 +90,31 @@
         @Html.EditorFor(model => model.Pers_Licencia, new { htmlAttributes = new { @class = "estilosSelect" } })
         <br />
         <br />
-        Fecha de vencimiento:
+        Fecha De Vencimiento:
         <br />
         <br />
         @Html.EditorFor(model => model.Pers_LicVence, new { htmlAttributes = new { @class = "estilosSelect" } })
         <br />
         <br />
-        Dirección de residencia:
+        Categoria De La Licencia:
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Cate_Id, (SelectList)ViewBag.Cate_Id as SelectList, "Categoria De La Licencia", htmlAttributes: new { @class = "estilosSelect" })
+        <br />
+        <br />
+        Dirección De Residencia:
         <br />
         <br />
         @Html.EditorFor(model => model.Pers_Direccion, new { htmlAttributes = new { @class = "" } })
         <br />
         <br />
-        Contacto de emergencia:
+        Contacto De Emergencia:
         <br />
         <br />
         @Html.EditorFor(model => model.Pers_ContactoEmeg, new { htmlAttributes = new { @class = "" } })
         <br />
         <br />
-        Número de emergencia:
+        Número De Emergencia:
         <br />
         <br />
         @Html.EditorFor(model => model.Pers_TelefonoEmeg, new { htmlAttributes = new { @class = "estilosSelect" } })
@@ -102,22 +127,85 @@
     <div class="plegable">
         <br />
         <br />
-        Administrador de fondo de pensiones:
+        Administrador De Fondo De Pensiones:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Afp_Id, (SelectList)ViewBag.Afp_Id, "Fondo de pensión", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.DropDownListFor(model => model.Afp_Id, (SelectList)ViewBag.Afp_Id as SelectList, "Fondo de pensión", htmlAttributes: new { @class = "estilosSelect" })
         <br />
         <br />
-        Entidad Administradora de Salud:
+        Entidad Administradora De Salud:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Eps_Id, (SelectList)ViewBag.Eps_Id, "Eps...", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.DropDownListFor(model => model.Eps_Id, (SelectList)ViewBag.Eps_Id as SelectList, "Eps...", htmlAttributes: new { @class = "estilosSelect" })
         <br />
         <br />
-        Entidad Administradora de Riesgos Laborales:
+        Entidad Administradora De Riesgos Laborales:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Arl_Id, (SelectList)ViewBag.Arl_Id, "Arl...", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.DropDownListFor(model => model.Arl_Id, (SelectList)ViewBag.Arl_Id as SelectList, "Arl...", htmlAttributes: new { @class = "estilosSelect" })
+        <br />
+        <br />
+    </div>
+    <br />
+    <br />
+    <h2 class="colorVerdeBack1">Asociaciones De La Empresa</h2>
+    <div class="plegable">
+        <br />
+        <br />
+        Ciudad:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Ciud_Id, (SelectList)ViewBag.Ciud_Id as SelectList, "Ciudad", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Ciud_Id, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Sede:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Sciu_Id, (SelectList)ViewBag.Sciu_Id as SelectList, "Sede...", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Sciu_Id, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Area:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Aemp_Id, (SelectList)ViewBag.Aemp_Id as SelectList, "Area...", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Aemp_Id, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Cargo:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Cemp_Id, (SelectList)ViewBag.Cemp_Id as SelectList, "Cargo...", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Cemp_Id, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Jornada Laboral:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Jemp_Id, (SelectList)ViewBag.Jemp_Id as SelectList, "Jornada Laboral", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Jemp_Id, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Tipo Vinculación:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Tvin_Id, (SelectList)ViewBag.Tvin_Id as SelectList, "Tipo Vinculación", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Tvin_Id, "", new { @class = "text-danger" })
+        <br />
+        <br />
+        Jefe:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Jefe_Id, (SelectList)ViewBag.Jefe_Id as SelectList, "Jefe...", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Jefe_Id, "", new { @class = "text-danger" })
         <br />
         <br />
     </div>

@@ -206,7 +206,6 @@
     <Compile Include="Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\CargoEmpresasController.cs" />
-    <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Migrations\201905211540147_Migracion00.cs" />
