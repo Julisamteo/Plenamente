@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201905211900078_Iest.Designer.cs">
       <DependentUpon>201905211900078_Iest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905221445288_posibleCorrecion.cs" />
+    <Compile Include="Migrations\201905221445288_posibleCorrecion.Designer.cs">
+      <DependentUpon>201905221445288_posibleCorrecion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -558,6 +562,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905211900078_Iest.resx">
       <DependentUpon>201905211900078_Iest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905221445288_posibleCorrecion.resx">
+      <DependentUpon>201905221445288_posibleCorrecion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
