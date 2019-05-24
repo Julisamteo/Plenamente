@@ -13,7 +13,9 @@ namespace Plenamente.Models
         [Key]
         public int Auev_Id { get; set; }
         public string Auev_Nom {get; set;}
+        [DataType(DataType.Date)]
         public DateTime Auev_Inicio {get; set;}
+        [DataType(DataType.Date)]
         public DateTime  Auev_Fin {get; set;}
 
         [ForeignKey("Empresa")]

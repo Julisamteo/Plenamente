@@ -184,11 +184,14 @@
     <Compile Include="Controllers\AreaEmpresasController.cs" />
     <Compile Include="Controllers\AueController.cs" />
     <Compile Include="Controllers\AutoEvaluacionController.cs" />
+    <Compile Include="Controllers\AutoEvaluacionesController.cs" />
     <Compile Include="Controllers\CargaArchivoController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
+    <Compile Include="Controllers\CumplimientoesController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
+    <Compile Include="Controllers\EvidenciasController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FrecuenciasController.cs" />
     <Compile Include="Controllers\ItemEstandarsController.cs" />
@@ -209,17 +212,9 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905211540147_Migracion00.cs" />
-    <Compile Include="Migrations\201905211540147_Migracion00.Designer.cs">
-      <DependentUpon>201905211540147_Migracion00.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211557117_Correccion Foranea.cs" />
-    <Compile Include="Migrations\201905211557117_Correccion Foranea.Designer.cs">
-      <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211900078_Iest.cs" />
-    <Compile Include="Migrations\201905211900078_Iest.Designer.cs">
-      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
+    <Compile Include="Migrations\201905231534236_carl.cs" />
+    <Compile Include="Migrations\201905231534236_carl.Designer.cs">
+      <DependentUpon>201905231534236_carl.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -530,12 +525,29 @@
     <Content Include="Views\ApplicationUsers\Details.cshtml" />
     <Content Include="Views\ApplicationUsers\Edit.cshtml" />
     <Content Include="Views\ApplicationUsers\Index.cshtml" />
-    <Content Include="Views\AutoEvaluacion\Index.cshtml" />
     <Content Include="Views\Aue\Index.cshtml" />
     <Content Include="Views\Aue\Todos.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Create.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Delete.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Details.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
+    <Content Include="Views\Cumplimientoes\Create.cshtml" />
+    <Content Include="Views\Cumplimientoes\Delete.cshtml" />
+    <Content Include="Views\Cumplimientoes\Details.cshtml" />
+    <Content Include="Views\Cumplimientoes\Edit.cshtml" />
+    <Content Include="Views\Cumplimientoes\Index.cshtml" />
+    <Content Include="Views\CargaArchivo\Evidencia.cshtml" />
+    <Content Include="Views\Evidencias\Create.cshtml" />
+    <Content Include="Views\Evidencias\Delete.cshtml" />
+    <Content Include="Views\Evidencias\Details.cshtml" />
+    <Content Include="Views\Evidencias\Edit.cshtml" />
+    <Content Include="Views\Evidencias\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
+    <Folder Include="Views\AutoEvaluacion\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -551,14 +563,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905211540147_Migracion00.resx">
-      <DependentUpon>201905211540147_Migracion00.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211557117_Correccion Foranea.resx">
-      <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211900078_Iest.resx">
-      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905231534236_carl.resx">
+      <DependentUpon>201905231534236_carl.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

@@ -16,27 +16,93 @@ namespace Plenamente.Areas.Administrador.Controllers
         [HttpGet]
         public ActionResult Upload()
         {
-            //ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+            
+            ViewBag.Cump_Id = new SelectList(db.Tb_Cumplimiento, "Cump_Id", "Cump_Observ");
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
+            ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
+
             return View();
         }
        [HttpPost]
-        public ActionResult Upload(Archivo archivo)
+        public ActionResult Upload([Bind(Include = "Evid_Id,Evid_Nombre,Evid_Archivo,Evid_Registro,Cump_Id,Tdca_id,Id")]Archivo archivo)
         {
             using (ApplicationDbContext entity = new ApplicationDbContext())
             {
-                var cumplimiento = new Cumplimiento()
-               {
-                 //Cump_Nombre = archivo.Cump_Nombre,
-                 //Cump_Aevidencia = SaveToPhysicalLocation(archivo.Cump_Aevidencia),
-                 Cump_Registro =archivo.Cump_Registro,
+                //var cumplimiento = new Cumplimiento() 
+                var evidencia = new Evidencia()
+                {
+                    Evid_Nombre = archivo.Evid_Nombre,
+                    Evid_Archivo = SaveToPhysicalLocation(archivo.Evid_Archivo),
+                    Evid_Registro = archivo.Evid_Registro,
+                    
+            };
+                ViewBag.Cump_Id = new SelectList(entity.Tb_Cumplimiento, "Cump_Id", "Cump_Observ", archivo.Cump_Id);
+                ViewBag.Tdca_id = new SelectList(entity.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom", archivo.Tdca_id);
 
-          };
-                entity.Tb_Cumplimiento.Add(cumplimiento);
+                entity.Tb_Evidencia.Add(evidencia);
+                //entity.Tb_Cumplimiento.Add(cumplimiento);
                 entity.SaveChanges();
            }
            return View(archivo);
         }
-       
+
+        //[HttpPost]
+        //[ValidateAntiForgeryToken]
+        //public ActionResult Upload([Bind(Include = "Evid_Id,Evid_Nombre,Evid_Archivo,Evid_Registro,Cump_Id,Tdca_id,Id")] Evidencia evidencia)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        db.Tb_Evidencia.Add(evidencia);
+        //        db.SaveChanges();
+        //    }
+
+        //    ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1", evidencia.Id);
+        //    ViewBag.Cump_Id = new SelectList(db.Tb_Cumplimiento, "Cump_Id", "Cump_Observ", evidencia.Cump_Id);
+        //    ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom", evidencia.Tdca_id);
+        //    return View(evidencia);
+        //}
+
+        [HttpGet]
+        public ActionResult Evidencia()
+        {
+            ApplicationDbContext entity = new ApplicationDbContext();
+
+            List<Cumplimiento> list = entity.Tb_Cumplimiento.ToList();
+            ViewBag.CumplimientoList = new SelectList(list, "Cump_Id", "Cump_Observ");
+            List<TipoDocCarga> listT = entity.Tb_TipoDocCarga.ToList();
+            ViewBag.TipoDocCargaList = new SelectList(listT, "Tdca_id", "Tdca_Nom");
+            List<ApplicationUser> listU =  entity.Users.ToList();
+            ViewBag.UsersList = new SelectList(listU, "Id", "Pers_Nom1");
+
+            return View();
+        }
+        [HttpPost]
+        public ActionResult SaveRecord(Archivo archivo)
+        {
+            try
+            {
+                ApplicationDbContext entity = new ApplicationDbContext();
+                { 
+                    Evidencia evid = new Evidencia();
+                    evid.Evid_Nombre = archivo.Evid_Nombre;
+                    evid.Evid_Archivo = SaveToPhysicalLocation(archivo.Evid_Archivo);
+                    evid.Evid_Registro = archivo.Evid_Registro;
+                    evid.Tdca_id = archivo.Tdca_id;
+                    evid.Cump_Id = archivo.Cump_Id;
+                    evid.Id = archivo.Id;
+
+                    entity.Tb_Evidencia.Add(evid);
+
+                    entity.SaveChanges();
+
+                    int latest = evid.Evid_Id;
+                }
+            } catch (Exception ex)
+            {
+                throw ex;
+            }
+            return RedirectToAction("Evidencia");
+        }
 
         /// <summary>  
         /// Save Posted File in Physical path and return saved path to store in a database  
@@ -48,9 +114,9 @@ namespace Plenamente.Areas.Administrador.Controllers
             if (file.ContentLength > 0)
             {
                 var fileName = Path.GetFileName(file.FileName);
-                var path = Path.Combine(Server.MapPath("~/App_Data"), fileName);
+                var path = Path.Combine(Server.MapPath("~/Files"), fileName);
                 file.SaveAs(path);
-                return path;
+                return fileName;
             }
             return string.Empty;
         }
