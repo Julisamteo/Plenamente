@@ -209,18 +209,6 @@
     <Compile Include="Controllers\EncuestaController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905211540147_Migracion00.cs" />
-    <Compile Include="Migrations\201905211540147_Migracion00.Designer.cs">
-      <DependentUpon>201905211540147_Migracion00.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211557117_Correccion Foranea.cs" />
-    <Compile Include="Migrations\201905211557117_Correccion Foranea.Designer.cs">
-      <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211900078_Iest.cs" />
-    <Compile Include="Migrations\201905211900078_Iest.Designer.cs">
-      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -258,6 +246,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\IdentityModels.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
+    <Compile Include="Models\PlandeTrabajo.cs" />
     <Compile Include="Models\Politica.cs" />
     <Compile Include="Models\Pregunta.cs" />
     <Compile Include="Models\PreguntaRespuesta.cs" />
@@ -274,6 +263,7 @@
     <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
+    <Compile Include="Models\Usersplandetrabajo.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
@@ -549,17 +539,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905211540147_Migracion00.resx">
-      <DependentUpon>201905211540147_Migracion00.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211557117_Correccion Foranea.resx">
-      <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211900078_Iest.resx">
-      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
