@@ -13,10 +13,7 @@ namespace Plenamente.Models
         public int Resu_Id { get; set; }
         public DateTime Resu_Respuesta { get; set; }
 
-        /*Llave Foranea a la tabla Encuesta*/
-        [ForeignKey("Encuesta")]
-        public int Encu_Id { get; set; }
-        public Encuesta Encuesta { get; set; }
+        
         //Llave Foranea a la tabla Persona
         [ForeignKey("ApplicationUser")]
         public string Id { get; set; }

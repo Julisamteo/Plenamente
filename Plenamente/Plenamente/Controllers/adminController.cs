@@ -92,7 +92,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     objUserDTO.Pers_TelefonoEmeg = item.Pers_Temeg;
                     objUserDTO.Tdoc_Id = item.Tdoc_Id;
                     objUserDTO.Sciu_Id = item.Sciu_Id;
-                    objUserDTO.Ciudad = item.Ciudad;
+                    //objUserDTO.Ciudad = item.Ciudad;
                     objUserDTO.Cemp_Id = item.Cemp_Id;
                     objUserDTO.Aemp_Id = item.Aemp_Id;
                     objUserDTO.Cate_Id = item.Cate_Id;

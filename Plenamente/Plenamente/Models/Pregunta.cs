@@ -28,7 +28,6 @@ namespace Plenamente.Models
 
         // Permite que Respuesta acceda a la data
         public ICollection<Respuesta> Respuestas { get; set; }
-        // Permite que Resultado acceda a la data
-        public ICollection<Resultado> Resultados { get; set; }
+        
     }
 }

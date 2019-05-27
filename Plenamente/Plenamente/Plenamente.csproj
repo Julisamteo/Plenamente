@@ -217,6 +217,22 @@
     <Compile Include="Migrations\201905271856599_UserPlantrabajo.Designer.cs">
       <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905271928153_RemoveRelationCiudad.cs" />
+    <Compile Include="Migrations\201905271928153_RemoveRelationCiudad.Designer.cs">
+      <DependentUpon>201905271928153_RemoveRelationCiudad.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271941396_RemoveEncuestaResult.cs" />
+    <Compile Include="Migrations\201905271941396_RemoveEncuestaResult.Designer.cs">
+      <DependentUpon>201905271941396_RemoveEncuestaResult.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271944522_RemoveResultsRelation.cs" />
+    <Compile Include="Migrations\201905271944522_RemoveResultsRelation.Designer.cs">
+      <DependentUpon>201905271944522_RemoveResultsRelation.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271950135_AddURLSpaces.cs" />
+    <Compile Include="Migrations\201905271950135_AddURLSpaces.Designer.cs">
+      <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -559,6 +575,18 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905271856599_UserPlantrabajo.resx">
       <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271928153_RemoveRelationCiudad.resx">
+      <DependentUpon>201905271928153_RemoveRelationCiudad.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271941396_RemoveEncuestaResult.resx">
+      <DependentUpon>201905271941396_RemoveEncuestaResult.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271944522_RemoveResultsRelation.resx">
+      <DependentUpon>201905271944522_RemoveResultsRelation.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271950135_AddURLSpaces.resx">
+      <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
