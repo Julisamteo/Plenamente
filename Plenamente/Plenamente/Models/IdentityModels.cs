@@ -142,6 +142,8 @@ namespace Plenamente.Models
         public DbSet<TipoRespuesta>Tb_TipoRespuesta { get; set; }
         public DbSet<AutoEvaluacion> Tb_AutoEvaluacion { get; set; }
         public DbSet<Evidencia> Tb_Evidencia { get; set; }
+        public DbSet<Evidencia> Tb_PlandeTrabajo { get; set; }
+        public DbSet<Evidencia> Tb_UsersPlandeTrabajo { get; set; }
 
 
         public static ApplicationDbContext Create()
