@@ -49,6 +49,12 @@ namespace Plenamente.Models
         public CargoEmpresa CargoEmpresa { get; set; }
         public int? Aemp_Id { get; set; }
         public AreaEmpresa AreaEmpresa { get; set; }
+
+        internal void Add(ApplicationUser applicationUser)
+        {
+            throw new NotImplementedException();
+        }
+
         public int? Cate_Id { get; set; }
         public CateLicencia CateLicencia { get; set; }
         public int? Gene_Id { get; set; }

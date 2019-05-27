@@ -35,26 +35,26 @@ namespace Plenamente.Areas.Administrador.Controllers
             var UserCurrent = db.Users.Find(userId);
             var Empr_Nit = UserCurrent.Empr_Nit;
 
-            var cargos = from s in db.Tb_AreaEmpresa
+            var Areas = from s in db.Tb_AreaEmpresa
                          where s.Empr_Nit == Empr_Nit
                          select s;
             if (!String.IsNullOrEmpty(searchString))
             {
-                cargos = cargos.Where(s => s.Aemp_Nom.Contains(searchString)
+                Areas = Areas.Where(s => s.Aemp_Nom.Contains(searchString)
                                        || s.Aemp_Nom.Contains(searchString));
             }
             switch (sortOrder)
             {
                 case "name_desc":
-                    cargos = cargos.OrderByDescending(s => s.Aemp_Nom);
+                    Areas = Areas.OrderByDescending(s => s.Aemp_Nom);
                     break;
                 default:  // Name ascending 
-                    cargos = cargos.OrderBy(s => s.Aemp_Nom);
+                    Areas = Areas.OrderBy(s => s.Aemp_Nom);
                     break;
             }
             int pageSize = 10;
             int pageNumber = (page ?? 1);
-            return View(cargos.ToPagedList(pageNumber, pageSize));
+            return View(Areas.ToPagedList(pageNumber, pageSize));
         }
 
         // GET: Administrador/AreaEmpresas/Details/5
