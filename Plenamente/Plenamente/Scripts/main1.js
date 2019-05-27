@@ -1,6 +1,9 @@
 ﻿document.oncontextmenu = function () {
     return false
 }
+
+
+
 function right(e) {
     var msg = "Accion bloqueada";
     if (navigator.appName == 'Netscape' && e.which == 3) {
@@ -53,4 +56,4 @@ jQuery('input[type=file]').change(function () {
     console.log(filename);
     console.log(idname);
     jQuery('span.' + idname).next().find('span').html(filename);
-});
+}); 
