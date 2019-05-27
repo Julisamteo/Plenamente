@@ -82,7 +82,10 @@ namespace Plenamente.Models
         public ICollection<ActiCumplimiento> ActiCumplimientos { get; set; }
         //Permite a Evidencia acceder a la Data
         public ICollection<Evidencia> Evidencias { get; set; }
-        
+        //Permite a Usersplandetrabajo acceder a la Data
+        public ICollection<Usersplandetrabajo> Usersplandetrabajos { get; set; }
+
+
 
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
@@ -144,6 +147,8 @@ namespace Plenamente.Models
         public DbSet<Pregunta> Tb_Pregunta { get; set; }
         public DbSet<AutoEvaluacion> Tb_AutoEvaluacion { get; set; }
         public DbSet<Evidencia> Tb_Evidencia { get; set; }
+        public DbSet<Evidencia> Tb_PlandeTrabajo { get; set; }
+        public DbSet<Evidencia> Tb_UsersPlandeTrabajo { get; set; }
 
 
         public static ApplicationDbContext Create()
