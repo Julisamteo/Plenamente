@@ -209,9 +209,13 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905271445466_estaMigracionNoTieneUnNombresugerente.cs" />
-    <Compile Include="Migrations\201905271445466_estaMigracionNoTieneUnNombresugerente.Designer.cs">
-      <DependentUpon>201905271445466_estaMigracionNoTieneUnNombresugerente.cs</DependentUpon>
+    <Compile Include="Migrations\201905271831141_Notification.cs" />
+    <Compile Include="Migrations\201905271831141_Notification.Designer.cs">
+      <DependentUpon>201905271831141_Notification.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905271856599_UserPlantrabajo.cs" />
+    <Compile Include="Migrations\201905271856599_UserPlantrabajo.Designer.cs">
+      <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -243,6 +247,7 @@
     <Compile Include="Models\ItemEstandar.cs" />
     <Compile Include="Models\JornadaEmpresa.cs" />
     <Compile Include="Models\Mes.cs" />
+    <Compile Include="Models\Notificacion.cs" />
     <Compile Include="Models\ObjEmpresa.cs" />
     <Compile Include="Models\Periodo.cs" />
     <Compile Include="Global.asax.cs">
@@ -268,6 +273,7 @@
     <Compile Include="Models\.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
+    <Compile Include="Models\Usersplandetrabajo.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
@@ -548,8 +554,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905271445466_estaMigracionNoTieneUnNombresugerente.resx">
-      <DependentUpon>201905271445466_estaMigracionNoTieneUnNombresugerente.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905271831141_Notification.resx">
+      <DependentUpon>201905271831141_Notification.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905271856599_UserPlantrabajo.resx">
+      <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
