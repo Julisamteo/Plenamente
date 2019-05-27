@@ -10,15 +10,16 @@ namespace Plenamente.Models
         public Archivo()
         {
             // Genera automaticamente el campo tipo date.
-            Cump_Registro = DateTime.Now;
+            Evid_Registro = DateTime.Now;
         }
 
-        public int Id { get; set; }
-        public string Cump_Nombre { get; set; }
-        public HttpPostedFileBase Cump_Aevidencia { get; set; }
-        public DateTime Cump_Registro { get; set; }
-
-        public int Empr_Nit { get; set; }
-        public Empresa Empresa { get; set; }
+        public string Id { get; set; }
+        public string Evid_Nombre { get; set; } 
+        public HttpPostedFileBase Evid_Archivo { get; set; }
+        public DateTime Evid_Registro { get; set; }
+        public int Cump_Id { get; set; }
+        //public List<Cumplimiento> Cumplimientos { get; set; }
+        public int Tdca_id { get; set; }
+        //public List<TipoDocCarga> TipoDocCargas { get; set; }
     }
 }
