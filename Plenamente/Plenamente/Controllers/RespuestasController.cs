@@ -72,6 +72,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/Respuestas/Create
         public ActionResult Create(int? id, int idPregunta)
         {
+            ViewBag.Resp_Id = new SelectList(db.Tb_Respuesta, "Resp_Id", "Resp_Tipo");
             ViewBag.Preg_Id = new SelectList(db.Tb_Pregunta, "Preg_Id", "Preg_Titulo");
             ViewBag.idPregunta = idPregunta;
             return View();
@@ -84,6 +85,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Resp_Id,Resp_Tipo,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta, int? id, int idPregunta)
         {
+            ViewBag.Resp_Id = new SelectList(db.Tb_Respuesta, "Resp_Id", "Resp_Tipo");
             if (ModelState.IsValid)
             {
                 ViewBag.idPregunta = idPregunta;

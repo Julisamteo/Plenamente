@@ -136,7 +136,6 @@ namespace Plenamente.Models
         public DbSet<TipoVinculacion> Tb_TipoVinculacion { get; set; }
         public DbSet<ZonaEmpresa> Tb_ZonaEmpresa {get; set;}
         public DbSet<Pregunta> Tb_Pregunta { get; set; }
-        public DbSet<TipoRespuesta>Tb_TipoRespuesta { get; set; }
         public DbSet<AutoEvaluacion> Tb_AutoEvaluacion { get; set; }
         public DbSet<Evidencia> Tb_Evidencia { get; set; }
 

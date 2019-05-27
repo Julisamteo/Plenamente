@@ -5,12 +5,10 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Delete</h2>
-
-<h3>Are you sure you want to delete this?</h3>
-<div>
-    <h4>Respuesta</h4>
-    <hr />
+<div class="colorVerdeBack">
+    <p>Eliminar Respuesta</p>
+</div>
+<div class="centrarContenido">
     <dl class="dl-horizontal">
         <dt>
             @Html.DisplayNameFor(model => model.Pregunta.Preg_Titulo)
@@ -41,9 +39,9 @@
     @using (Html.BeginForm()) {
         @Html.AntiForgeryToken()
 
-        <div class="form-actions no-color">
-            <input type="submit" value="Delete" class="btn btn-default" /> |
-            @Html.ActionLink("Back to List", "Index")
-        </div>
+            <input type="submit" value="Delete" class="btn btn-default" /> 
     }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Respuestas", new {id = @ViewBag.idPregunta , idPregunta = @ViewBag.idPregunta}, null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>

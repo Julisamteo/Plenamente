@@ -208,21 +208,9 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905211540147_Migracion00.cs" />
-    <Compile Include="Migrations\201905211540147_Migracion00.Designer.cs">
-      <DependentUpon>201905211540147_Migracion00.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211557117_Correccion Foranea.cs" />
-    <Compile Include="Migrations\201905211557117_Correccion Foranea.Designer.cs">
-      <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905211900078_Iest.cs" />
-    <Compile Include="Migrations\201905211900078_Iest.Designer.cs">
-      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905221445288_posibleCorrecion.cs" />
-    <Compile Include="Migrations\201905221445288_posibleCorrecion.Designer.cs">
-      <DependentUpon>201905221445288_posibleCorrecion.cs</DependentUpon>
+    <Compile Include="Migrations\201905271445466_estaMigracionNoTieneUnNombresugerente.cs" />
+    <Compile Include="Migrations\201905271445466_estaMigracionNoTieneUnNombresugerente.Designer.cs">
+      <DependentUpon>201905271445466_estaMigracionNoTieneUnNombresugerente.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -274,7 +262,7 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
-    <Compile Include="Models\TipoRespuesta.cs" />
+    <Compile Include="Models\.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
@@ -354,6 +342,7 @@
     <Content Include="Imagenes\marcador-de-posicion.png" />
     <Content Include="Imagenes\Plenamente2.png" />
     <Content Include="Imagenes\que-hacer.png" />
+    <Content Include="Imagenes\question.png" />
     <Content Include="Imagenes\Recurso 11.png" />
     <Content Include="Imagenes\Recurso 12.png" />
     <Content Include="Imagenes\Recurso 14.png" />
@@ -539,6 +528,7 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Views\Empleado\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -554,17 +544,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905211540147_Migracion00.resx">
-      <DependentUpon>201905211540147_Migracion00.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211557117_Correccion Foranea.resx">
-      <DependentUpon>201905211557117_Correccion Foranea.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905211900078_Iest.resx">
-      <DependentUpon>201905211900078_Iest.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905221445288_posibleCorrecion.resx">
-      <DependentUpon>201905221445288_posibleCorrecion.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905271445466_estaMigracionNoTieneUnNombresugerente.resx">
+      <DependentUpon>201905271445466_estaMigracionNoTieneUnNombresugerente.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

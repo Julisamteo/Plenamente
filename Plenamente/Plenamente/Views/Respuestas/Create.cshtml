@@ -17,8 +17,11 @@
     Respuesta:
 
     @Html.EditorFor(model => model.Resp_Nom, new { htmlAttributes = new { } })
+    <br />
+    <br />
     Tipo Respuesta:
-    @Html.DropDownList("Qure_Id", null, htmlAttributes: new { @class = "form-control" })
+    <a href="#" class="ayudaTitulos"><span>1 - Area de texto<br />2 - Selección Multiple<br />3 - Selección Unica<br />4 - Fecha</span><img src="~/Imagenes/question.png" /><p></p></a>
+    @Html.EditorFor(model => model.Resp_Tipo, new { htmlAttributes = new { @class = "", @type = "number"} })
 
 
 

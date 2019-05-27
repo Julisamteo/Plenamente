@@ -35,7 +35,7 @@
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Tdoc_Id, (SelectList)ViewBag.Tdoc_Id as SelectList, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.DropDownListFor(model => model.TipoDocumento.Tdoc_Id, (SelectList)ViewBag.Tdoc_Id, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect", data_required = "true" })
         @Html.ValidationMessageFor(model => model.Tdoc_Id, "", new { @class = "text-danger" })
         <br />
         <br />
