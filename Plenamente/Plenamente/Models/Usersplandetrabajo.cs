@@ -11,14 +11,17 @@ namespace Plenamente.Models
     public class Usersplandetrabajo
     {
         [Key]
-        public int UsPl_Id { get; set; }
+        public int Uspl_Id { get; set; }
 
-        [ForeignKey("PlanTrabajo")]
-        public int PlaT_Id { get; set; }
+        //[ForeignKey("PlanTrabajo")]
+        public int Plat_Id { get; set; }
         public PlandeTrabajo PlandeTrabajo { get; set; }
 
-        [ForeignKey("ApplicationUser")]
+        //[ForeignKey("ApplicationUser")]
         public string Id { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
+
+        public int Acum_Id { get; set; }
+        public ActiCumplimiento actiCumplimiento { get; set; }
     }
 }
