@@ -2,12 +2,14 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
 using PagedList;
 using Plenamente.Models;
+using Plenamente.Models.ViewModel;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -73,7 +75,10 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/ReglaInternoes/Create
         public ActionResult Create()
         {
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+            ApplicationDbContext entity = new ApplicationDbContext();
+
+            List<Empresa> listE = entity.Tb_Empresa.ToList();
+            ViewBag.EmpreList = new SelectList(listE, "Empr_Nit", "Empr_Nom");
             return View();
         }
 
@@ -84,11 +89,8 @@ namespace Plenamente.Areas.Administrador.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
         {
-
             if (ModelState.IsValid)
             {
-             
-
                 db.Tb_ReglaInterno.Add(reglaInterno);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -165,6 +167,43 @@ namespace Plenamente.Areas.Administrador.Controllers
                 db.Dispose();
             }
             base.Dispose(disposing);
+        }
+        [HttpPost]
+        public ActionResult SaveRecord(ReglamentoInternoViewModel reglamentointernoviewmodel)
+        {
+            try
+            {
+                ApplicationDbContext entity = new ApplicationDbContext();
+                {
+                    ReglaInterno Rint = new ReglaInterno();
+                    Rint.Rint_Nom = reglamentointernoviewmodel.Rint_Nom;
+                    Rint.Rint_Archivo = SaveToPhysicalLocation(reglamentointernoviewmodel.Rint_Archivo);
+                    Rint.Rint_Registro = reglamentointernoviewmodel.Rint_Registro;
+                    Rint.Empr_Nit = reglamentointernoviewmodel.Empr_Nit;
+
+                    entity.Tb_ReglaInterno.Add(Rint);
+                    entity.SaveChanges();
+
+                    int latest = Rint.Rint_Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return RedirectToAction("Create");
+        }
+        private string SaveToPhysicalLocation(HttpPostedFileBase file)
+        {
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(DateTime.Now.ToString("yyyyMMddHHmmss") + file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Files"), fileName);
+
+                file.SaveAs(path);
+                return fileName;
+            }
+            return string.Empty;
         }
     }
 }
