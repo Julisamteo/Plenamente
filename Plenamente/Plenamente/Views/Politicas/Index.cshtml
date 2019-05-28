@@ -22,6 +22,9 @@
 <table id="tablaVista" class="tablaVista">
     <thead class="cabeceraTabla">
         <tr>
+            <th class="colorVerde">
+                Política
+            </th>
 
             <th class="colorVerde">
                 Archivos de la empresa
@@ -37,7 +40,10 @@
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.Poli_Archivo)
+                    @Html.DisplayFor(modelItem => item.Poli_Nom)
+                </td>
+                <td>
+                    <p> <a href="~/Files/@Html.DisplayFor(modelItem => item.Poli_Archivo)" download="~/Files/@Html.DisplayFor(modelItem => item.Poli_Archivo)" target="_blank"> Descargar Política </a></p>
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.Poli_Registro)

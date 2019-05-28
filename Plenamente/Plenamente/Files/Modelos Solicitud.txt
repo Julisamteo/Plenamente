@@ -1,9 +1,0 @@
-Falata Periodicidad
-Falta Comite 
-Falta Estado Solicitud
-Falta Rol Comite
-Falta Persona Comite
-
-Falta Tipo Solicitud
-Falta Estado Solicitud
-Falta Solicitud

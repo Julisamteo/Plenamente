@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201905271950135_AddURLSpaces.Designer.cs">
       <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905272028153_hhih.cs" />
+    <Compile Include="Migrations\201905272028153_hhih.Designer.cs">
+      <DependentUpon>201905272028153_hhih.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -292,6 +296,8 @@
     <Compile Include="Models\Usersplandetrabajo.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
+    <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
+    <Compile Include="Models\ViewModel\Rhigiene.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />
@@ -401,11 +407,6 @@
     <Content Include="Views\Politicas\Details.cshtml" />
     <Content Include="Views\Politicas\Edit.cshtml" />
     <Content Include="Views\Politicas\Index.cshtml" />
-    <Content Include="Views\ReglaHigienes\Create.cshtml" />
-    <Content Include="Views\ReglaHigienes\Delete.cshtml" />
-    <Content Include="Views\ReglaHigienes\Details.cshtml" />
-    <Content Include="Views\ReglaHigienes\Edit.cshtml" />
-    <Content Include="Views\ReglaHigienes\Index.cshtml" />
     <Content Include="Views\ReglaInternoes\Create.cshtml" />
     <Content Include="Views\ReglaInternoes\Delete.cshtml" />
     <Content Include="Views\ReglaInternoes\Details.cshtml" />
@@ -551,10 +552,33 @@
     <Content Include="Views\Aue\Index.cshtml" />
     <Content Include="Views\Aue\Todos.cshtml" />
     <Content Include="Views\EncuestaPersonas\Index.cshtml" />
+    <Content Include="Views\CargaArchivo\Evidencia.cshtml" />
+    <Content Include="Views\ReglaHigienes\Create.cshtml" />
+    <Content Include="Views\ReglaHigienes\Delete.cshtml" />
+    <Content Include="Views\ReglaHigienes\Details.cshtml" />
+    <Content Include="Views\ReglaHigienes\Edit.cshtml" />
+    <Content Include="Views\ReglaHigienes\Index.cshtml" />
+    <Content Include="Views\Evidencias\Create.cshtml" />
+    <Content Include="Views\Evidencias\Delete.cshtml" />
+    <Content Include="Views\Evidencias\Details.cshtml" />
+    <Content Include="Views\Evidencias\Edit.cshtml" />
+    <Content Include="Views\Evidencias\Index.cshtml" />
+    <Content Include="Views\Cumplimientoes\Create.cshtml" />
+    <Content Include="Views\Cumplimientoes\Delete.cshtml" />
+    <Content Include="Views\Cumplimientoes\Details.cshtml" />
+    <Content Include="Views\Cumplimientoes\Edit.cshtml" />
+    <Content Include="Views\Cumplimientoes\Index.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Create.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Delete.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Details.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
+    <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
+    <Folder Include="Files\" />
     <Folder Include="Views\Empleado\" />
+    <Folder Include="Views\Encuesta\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff2" />
@@ -587,6 +611,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905271950135_AddURLSpaces.resx">
       <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905272028153_hhih.resx">
+      <DependentUpon>201905272028153_hhih.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
