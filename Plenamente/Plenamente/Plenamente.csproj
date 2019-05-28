@@ -209,34 +209,6 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905271831141_Notification.cs" />
-    <Compile Include="Migrations\201905271831141_Notification.Designer.cs">
-      <DependentUpon>201905271831141_Notification.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271856599_UserPlantrabajo.cs" />
-    <Compile Include="Migrations\201905271856599_UserPlantrabajo.Designer.cs">
-      <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271928153_RemoveRelationCiudad.cs" />
-    <Compile Include="Migrations\201905271928153_RemoveRelationCiudad.Designer.cs">
-      <DependentUpon>201905271928153_RemoveRelationCiudad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271941396_RemoveEncuestaResult.cs" />
-    <Compile Include="Migrations\201905271941396_RemoveEncuestaResult.Designer.cs">
-      <DependentUpon>201905271941396_RemoveEncuestaResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271944522_RemoveResultsRelation.cs" />
-    <Compile Include="Migrations\201905271944522_RemoveResultsRelation.Designer.cs">
-      <DependentUpon>201905271944522_RemoveResultsRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271950135_AddURLSpaces.cs" />
-    <Compile Include="Migrations\201905271950135_AddURLSpaces.Designer.cs">
-      <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905272028153_hhih.cs" />
-    <Compile Include="Migrations\201905272028153_hhih.Designer.cs">
-      <DependentUpon>201905272028153_hhih.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -297,6 +269,7 @@
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
+    <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
     <Compile Include="Models\ViewModel\Rhigiene.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -592,29 +565,6 @@
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905271831141_Notification.resx">
-      <DependentUpon>201905271831141_Notification.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271856599_UserPlantrabajo.resx">
-      <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271928153_RemoveRelationCiudad.resx">
-      <DependentUpon>201905271928153_RemoveRelationCiudad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271941396_RemoveEncuestaResult.resx">
-      <DependentUpon>201905271941396_RemoveEncuestaResult.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271944522_RemoveResultsRelation.resx">
-      <DependentUpon>201905271944522_RemoveResultsRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271950135_AddURLSpaces.resx">
-      <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905272028153_hhih.resx">
-      <DependentUpon>201905272028153_hhih.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
