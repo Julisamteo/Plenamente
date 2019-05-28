@@ -115,6 +115,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 var fileName = Path.GetFileName(file.FileName);
                 var path = Path.Combine(Server.MapPath("~/Files"), fileName);
+               
                 file.SaveAs(path);
                 return fileName;
             }

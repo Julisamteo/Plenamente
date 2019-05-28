@@ -1,53 +1,25 @@
-﻿@model Plenamente.Models.ReglaHigiene
-
+﻿@model Plenamente.Models.ViewModel.Rhigiene
 @{
-    ViewBag.Title = "Create";
+    ViewBag.Title = "ArchiRH";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<div class="colorVerdeBack">
-    <p>Crear una regla de higiene</p>
-</div>
+<h2>
+    Cargar Reglamento de Higiene/h2>
+    <div class="container" style="width:40%">
+        @using (Html.BeginForm("SaveRecord", "ReglaHigienes", FormMethod.Post, new { enctype = "multipart/form-data" }))
+        {
+            @Html.DropDownListFor(Model => Model.Empr_Nit, ViewBag.EmpreList as SelectList, "SeleccioneEmpresa", new { @class = "form-control" });
 
-@using (Html.BeginForm())
-{
-    @Html.AntiForgeryToken()
+            @Html.TextBoxFor(Model => Model.Rhig_Nom, new { @class = "form-control", @placeholder = "Nombre Regla de Higiene" })
+            @Html.TextBoxFor(Model => Model.Rhig_Archivo, new { @class = "form-control", @type = "file" })
+            @Html.DisplayFor(Model => Model.Rhig_Registro)
 
-    <div class="centrarContenido">
+            <input type="submit" value="Guardar Reglamento de Higiene" class="btn btn-block btn-primary" />
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            <div class="col-md-10">
-                Archivo
-                @Html.EditorFor(model => model.Rhig_Archivo, new { htmlAttributes = new { @class = "form-control" } })
-                @Html.ValidationMessageFor(model => model.Rhig_Archivo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            <div class="col-md-10">
-                <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>  @Html.DropDownList("Empr_Nit", null, htmlAttributes: new { @class = "form-control" })</label>
-            </div>
-        </div>
-
-
-        <div class="form-group">
-            @*Campo de Registro oculto*@
-            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Rhig_Registro)  </label>
-        </div>
-        <br />
-        <br />
-                <input type="submit" value="Crear" class="btn btn-default" />
-           
+        }
     </div>
-}
 
-<div class="contenidoVolver">
-    <a href="@Url.Action("Index", "ReglaHigienes")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
-</div>
-
-
-@section Scripts {
-    @Scripts.Render("~/bundles/jqueryval")
-}
+    <div>
+        @Html.ActionLink("Back to List", "Index")
+    </div>

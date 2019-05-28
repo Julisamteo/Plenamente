@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -9,6 +10,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using PagedList;
 using Plenamente.Models;
+using Plenamente.Models.ViewModel;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -76,7 +78,10 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/Politicas/Create
         public ActionResult Create()
         {
-            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
+            ApplicationDbContext entity = new ApplicationDbContext();
+
+            List<Empresa> listE = entity.Tb_Empresa.ToList();
+            ViewBag.EmpreList = new SelectList(listE, "Empr_Nit", "Empr_Nom");
             return View();
         }
 
@@ -165,5 +170,45 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
             base.Dispose(disposing);
         }
+
+        [HttpPost]
+        public ActionResult SaveRecord(PoliticasViewModel politicasViewModel)
+        {
+            try
+            {
+                ApplicationDbContext entity = new ApplicationDbContext();
+                {
+                    Politica pol = new Politica();
+                    pol.Poli_Nom = politicasViewModel.Poli_Nom;
+                    pol.Poli_Archivo = SaveToPhysicalLocation(politicasViewModel.Poli_Archivo);
+                    pol.Poli_Registro = politicasViewModel.Poli_Registro;
+                    pol.Empr_Nit = politicasViewModel.Empr_Nit;
+
+                    entity.Tb_politica.Add(pol);
+                    entity.SaveChanges();
+
+                    int latest = pol.Poli_Id;
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return RedirectToAction("Create");
+        }
+        private string SaveToPhysicalLocation(HttpPostedFileBase file)
+        {
+            if (file.ContentLength > 0)
+            {
+                var fileName = Path.GetFileName(DateTime.Now.ToString("yyyyMMddHHmmss") + file.FileName);
+                var path = Path.Combine(Server.MapPath("~/Files"), fileName);
+
+                file.SaveAs(path);
+                return fileName;
+            }
+            return string.Empty;
+        }
+
+
     }
 }
