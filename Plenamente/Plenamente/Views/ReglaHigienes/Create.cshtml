@@ -4,22 +4,46 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>
-    Cargar Reglamento de Higiene/h2>
-    <div class="container" style="width:40%">
-        @using (Html.BeginForm("SaveRecord", "ReglaHigienes", FormMethod.Post, new { enctype = "multipart/form-data" }))
-        {
-            @Html.DropDownListFor(Model => Model.Empr_Nit, ViewBag.EmpreList as SelectList, "SeleccioneEmpresa", new { @class = "form-control" });
+<div class="colorVerdeBack">
+    <p>Agregar nuevo reglamento de higiene </p>
+</div>
 
-            @Html.TextBoxFor(Model => Model.Rhig_Nom, new { @class = "form-control", @placeholder = "Nombre Regla de Higiene" })
-            @Html.TextBoxFor(Model => Model.Rhig_Archivo, new { @class = "form-control", @type = "file" })
-            @Html.DisplayFor(Model => Model.Rhig_Registro)
+@using (Html.BeginForm("SaveRecord", "Politicas", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    @Html.AntiForgeryToken()
 
-            <input type="submit" value="Guardar Reglamento de Higiene" class="btn btn-block btn-primary" />
+    <div class="centrarContenido">
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                Reglamento de higiene
+                @Html.EditorFor(model => model.Rhig_Nom, new { htmlAttributes = new { @class = "form-control" } })
+            </div>
+        </div>
+        <hr />
+        <div class="form-group">
+            <div class="col-md-10">
+                Subir Archivo
+                @Html.TextBoxFor(Model => Model.Rhig_Archivo, new { @class = "form-control", @type = "file" })
+            </div>
+        </div>
+        <div class="form-group">
+            <div class="col-md-10">
+                @Html.DropDownListFor(Model => Model.Empr_Nit, ViewBag.EmpreList as SelectList, "SeleccioneEmpresa", new { @class = "form-control" })
+            </div>
+        </div>
+        <div class="form-group">
+            @*Campo de Registro oculto*@
+            <label asp-for="CargoRegistro" class="col-md-4 control-label" hidden>@Html.DisplayFor(Model => Model.Rhig_Registro)  </label>
+        </div>
+        <input type="submit" value="Create" class="btn btn-default" />
 
-        }
     </div>
+}
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "ReglaHigienes", null)" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+</div>
 
-    <div>
-        @Html.ActionLink("Back to List", "Index")
-    </div>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

@@ -19,11 +19,22 @@ namespace Plenamente.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ReglaHigienes
-        public ActionResult Index()
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_ReglaHigiene = db.Tb_ReglaHigiene.Include(r => r.Empresa);
-            return View(tb_ReglaHigiene.ToList());
-        }
+            //var tb_ReglaHigiene = db.Tb_ReglaHigiene.Include(r => r.Empresa);
+            //return View(tb_ReglaHigiene.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
 
             ViewBag.CurrentFilter = searchString;
             var userId = User.Identity.GetUserId();

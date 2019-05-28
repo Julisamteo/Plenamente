@@ -1,52 +1,65 @@
-﻿@model IEnumerable<Plenamente.Models.ReglaHigiene>
-
+﻿@model PagedList.IPagedList<Plenamente.Models.ReglaHigiene>
+@using PagedList.Mvc;
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>Index</h2>
+<div class="colorVerdeBack">
+    <p>Reglamento de Higiene </p>
+</div>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
-<table class="table">
-    <tr>
-        <th>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rhig_Archivo)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rhig_Nom)
-        </th>
-        <th>
-            @Html.DisplayNameFor(model => model.Rhig_Registro)
-        </th>
-        <th></th>
-    </tr>
+<div class="contenedorBotones">
+    <form asp-action="Index" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Index", "ReglaHigienes")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "ReglaHigienes")" class="ayudaTitulos"><span>Crear reglamento de higiene</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-        </td>
-        <td>
-            <p> <a href="~/Files/@Html.DisplayFor(modelItem => item.Rhig_Archivo)" download="~/Files/@Html.DisplayFor(modelItem => item.Rhig_Archivo)" target="_blank"> Descargar Reglamento </a></p>
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rhig_Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Rhig_Registro)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.Rhig_Id }) |
-            @Html.ActionLink("Details", "Details", new { id=item.Rhig_Id }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.Rhig_Id })
-        </td>
-    </tr>
-}
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Reglamento de Higiene
+            </th>
+
+            <th class="colorVerde">
+                Archivos de la empresa
+            </th>
+            <th class="colorVerde">
+                Fecha de Actualización
+            </th>
+            <th class="colorVerde">
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
+                </td>
+                <td>
+                    <p> <a href="~/Files/@Html.DisplayFor(modelItem => item.Rhig_Archivo)" download="~/Files/@Html.DisplayFor(modelItem => item.Rhig_Archivo)" target="_blank"> Descargar Reglamento </a></p>
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rhig_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Rhig_Registro)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Rhig_Id }) |
+
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Rhig_Id })
+                </td>
+            </tr>
+        }
 
 </table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+    new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
