@@ -11,6 +11,7 @@
     max-height: 0;
     overflow: hidden;
     display: block;
+    justify-content:center;
     margin: auto;
     -webkit-transition: max-height 500ms ease-out;
     -moz-transition: max-height 500ms ease-out;
