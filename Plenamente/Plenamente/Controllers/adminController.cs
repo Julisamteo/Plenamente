@@ -137,20 +137,34 @@ namespace Plenamente.Areas.Administrador.Controllers
         //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
         public ActionResult Create(int? Empr_Nit)
         {
-            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom");
-            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom");
-            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom");
-            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
-            ViewBag.Ciud_Id = new SelectList(db.Tb_Ciudad, "Ciud_Id", "Ciud_Nom");
-            ViewBag.Sciu_id = new SelectList(db.Tb_SedeCiudad, "Sciu_Id", "Sciu_Nom");
-            ViewBag.Cemp_Id = new SelectList(db.Tb_CargoEmpresa, "Cemp_Id", "Cemp_Nom");
-            ViewBag.Aemp_Id = new SelectList(db.Tb_AreaEmpresa, "Aemp_Id", "Aemp_Nom");
-            ViewBag.Cate_Id = new SelectList(db.Tb_CateLicencia, "Cate_Id", "Cate_Nom");
-            ViewBag.Gene_Id = new SelectList(db.Tb_Genero, "Gene_Id", "Gene_Nom");
-            ViewBag.Jemp_Id = new SelectList(db.Tb_JornadaEmpresa, "Jemp_Id", "Jemp_Nom");
-            ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom");
-            ViewBag.Espe_Id = new SelectList(db.Tb_EstadoPersona, "Espe_Id", "Espe_Nom");
-            ViewBag.Jefe_Id = new SelectList(db.Users, "Jefe_Id", "Pers_Nom1");
+            List<TipoDocumento> tipoDocumentoList = db.Tb_TipoDocumento.ToList();
+            ViewBag.Tdoc_Id = new SelectList(tipoDocumentoList, "Tdoc_Id", "Tdoc_Nom");
+            List<Afp> AfpList = db.Tb_Afp.ToList();
+            ViewBag.Afp_Id = new SelectList(AfpList, "Afp_Id", "Afp_Nom");
+            List<Eps> EpsList = db.Tb_Eps.ToList();
+            ViewBag.Eps_Id = new SelectList(EpsList, "Eps_Id", "Eps_Nom");
+            List<Arl> ArlList = db.Tb_Arl.ToList();
+            ViewBag.Arl_Id = new SelectList(ArlList, "Arl_Id", "Arl_Nom");
+            List<Ciudad> CiudadList = db.Tb_Ciudad.ToList();
+            ViewBag.Ciud_Id = new SelectList(CiudadList, "Ciud_Id", "Ciud_Nom");
+            List<SedeCiudad> SedeCiudadList = db.Tb_SedeCiudad.ToList();
+            ViewBag.Sciu_id = new SelectList(SedeCiudadList, "Sciu_Id", "Sciu_Nom");
+            List<CargoEmpresa> CargoEmpresaList = db.Tb_CargoEmpresa.ToList();
+            ViewBag.Cemp_Id = new SelectList(CargoEmpresaList, "Cemp_Id", "Cemp_Nom");
+            List<AreaEmpresa> AreaEmpresaList = db.Tb_AreaEmpresa.ToList();
+            ViewBag.Aemp_Id = new SelectList(AreaEmpresaList, "Aemp_Id", "Aemp_Nom");
+            List<CateLicencia> CateLicenciaList = db.Tb_CateLicencia.ToList();
+            ViewBag.Cate_Id = new SelectList(CateLicenciaList, "Cate_Id", "Cate_Nom");
+            List<Genero> GeneroList = db.Tb_Genero.ToList();
+            ViewBag.Gene_Id = new SelectList(GeneroList, "Gene_Id", "Gene_Nom");
+            List<JornadaEmpresa> JornadaEmpresasList = db.Tb_JornadaEmpresa.ToList();
+            ViewBag.Jemp_Id = new SelectList(JornadaEmpresasList, "Jemp_Id", "Jemp_Nom");
+            List<TipoVinculacion> TipoVinculacionList = db.Tb_TipoVinculacion.ToList();
+            ViewBag.Tvin_Id = new SelectList(TipoVinculacionList, "Tvin_Id", "Tvin_Nom");
+            List<EstadoPersona> EstadoPersonaList = db.Tb_EstadoPersona.ToList();
+            ViewBag.Espe_Id = new SelectList(EstadoPersonaList, "Espe_Id", "Espe_Nom");
+            List<ApplicationUser> IdentityUsersList = db.Users.ToList();
+            ViewBag.Jefe_Id = new SelectList(IdentityUsersList, "Jefe_Id", "Pers_Nom1");
 
             ExpandedUserDTO objExpandedUserDTO = new ExpandedUserDTO();
 
@@ -168,20 +182,6 @@ namespace Plenamente.Areas.Administrador.Controllers
         #region public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
         public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
         {
-            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom");
-            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom");
-            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom");
-            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
-            ViewBag.Ciud_Id = new SelectList(db.Tb_Ciudad, "Ciud_Id", "Ciud_Nom");
-            ViewBag.Sciu_id = new SelectList(db.Tb_SedeCiudad, "Sciu_Id", "Sciu_Nom");
-            ViewBag.Cemp_Id = new SelectList(db.Tb_CargoEmpresa, "Cemp_Id", "Cemp_Nom");
-            ViewBag.Aemp_Id = new SelectList(db.Tb_AreaEmpresa, "Aemp_Id", "Aemp_Nom");
-            ViewBag.Cate_Id = new SelectList(db.Tb_CateLicencia, "Cate_Id", "Cate_Nom");
-            ViewBag.Gene_Id = new SelectList(db.Tb_Genero, "Gene_Id", "Gene_Nom");
-            ViewBag.Jemp_Id = new SelectList(db.Tb_JornadaEmpresa, "Jemp_Id", "Jemp_Nom");
-            ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom");
-            ViewBag.Espe_Id = new SelectList(db.Tb_EstadoPersona, "Espe_Id", "Espe_Nom");
-            ViewBag.Jefe_Id = new SelectList(db.Users, "Jefe_Id", "Pers_Nom1");
             try
             {
                 if (paramExpandedUserDTO == null)
@@ -201,6 +201,19 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var ContactoEme = paramExpandedUserDTO.Pers_ContactoEmeg;
                 var TelefonoEme = paramExpandedUserDTO.Pers_TelefonoEmeg;
                 var TipoDocumento = paramExpandedUserDTO.Tdoc_Id;
+                var Afp = paramExpandedUserDTO.Afp_Id;
+                var Eps = paramExpandedUserDTO.Eps_Id;
+                var Arl = paramExpandedUserDTO.Arl_Id;
+                var Ciudad = paramExpandedUserDTO.Ciud_Id;
+                var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
+                var CargoEmpresa = paramExpandedUserDTO.Cemp_Id;
+                var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
+                var CategoriaLicencia = paramExpandedUserDTO.Cate_Id;
+                var Genero = paramExpandedUserDTO.Gene_Id;
+                var Jornada = paramExpandedUserDTO.Jemp_Id;
+                var TipoVinculacion = paramExpandedUserDTO.Tvin_Id;
+                var EstadoPersona = paramExpandedUserDTO.Espe_Id;
+                var Jefe = paramExpandedUserDTO.Jefe_Id;
 
 
                 if (Email == "")
@@ -230,7 +243,21 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Pers_Dir = Direccion,
                     Pers_Cemeg = ContactoEme,
                     Pers_Temeg = TelefonoEme,
-                    Tdoc_Id = TipoDocumento
+                    Tdoc_Id = TipoDocumento,
+                    Afp_Id = Afp,
+                    Arl_Id = Arl,
+                    Eps_Id = Eps,
+                    Sciu_Id = SedeCiudad,
+                    Cemp_Id = CargoEmpresa,
+                    Aemp_Id = AreaEmpresa,
+                    Cate_Id = CategoriaLicencia,
+                    Gene_Id = Genero,
+                    Jemp_Id = Jornada,
+                    Tvin_Id = TipoVinculacion,
+                    Espe_Id = EstadoPersona,
+                    Jefe_Id = Jefe
+
+
                 };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
 
