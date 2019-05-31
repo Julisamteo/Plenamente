@@ -7,7 +7,7 @@
 <div class="colorVerdeBack">
     <p>Crear un nueva persona</p>
 </div>
-@using (Html.BeginForm("Create", "admin", FormMethod.Post))
+@using (Html.BeginForm("Create", "admin", FormMethod.Post ,  new { enctype = "multipart/form-data" }))
 {
     @Html.AntiForgeryToken()
 
@@ -35,7 +35,7 @@
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Tdoc_Id,ViewBag.Tdoc_Id as SelectList, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect", data_required = "true" })
+        @Html.DropDownListFor(model => model.Tdoc_Id,ViewBag.TdocBag as SelectList, "Tipo De Documento", htmlAttributes: new { @class = "estilosSelect", data_required = "true" })
         @Html.ValidationMessageFor(model => model.Tdoc_Id, "", new { @class = "text-danger" })
         <br />
         <br />
