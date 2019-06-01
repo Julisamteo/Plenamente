@@ -273,6 +273,7 @@
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Models\Usersplandetrabajo.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
+    <Compile Include="Models\ViewModel\CriteriosViewModel.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
     <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
@@ -590,6 +591,7 @@
     <Content Include="Scripts\popper.js.map" />
     <Content Include="Scripts\popper-utils.min.js.map" />
     <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\AutoEvaluacion\AutoevaluacionSST.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

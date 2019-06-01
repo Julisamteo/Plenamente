@@ -1,95 +1,57 @@
-﻿using System;
+﻿using Plenamente.Models;
+using Plenamente.Models.ViewModel;
 using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
-using Plenamente.Models;
-using System.IO;
 
-namespace Plenamente.Areas.Administrador.Controllers
+namespace Plenamente.Controllers
 {
-   public class AutoEvaluacionController : Controller
-   {
-        // Se declara una variable privada para poder acceder al contexto de la DB.
+    public class AutoevaluacionController : Controller
+    {
         private ApplicationDbContext db = new ApplicationDbContext();
-         //GET: Administrador/AutoEvaluacion
+        // GET: Autoevaluacion
         public ActionResult Index()
-       {
-
-           // Creo una variable 'mymodel' para asociarla con la clase 'AutoEvaluacion' donde estan multiplez i Collections nombrados
-           var mymodel = new AutoEvaluacionn();
-           // Se hace el query por variable  para trearla con el ID correspondiente y listarlo.
-           mymodel.Criterios1=  db.Tb_Criterio.Where(x => x.Crit_Id == 3).ToList();
-           mymodel.Estandars11= db.Tb_Estandar.Where(x => x.Crit_Id == 3 && x.Esta_Id == 2).ToList();
-           mymodel.ItemEstandars111= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1).ToList();
-            mymodel.Cumplimientos111 = db.Tb_Cumplimiento.Where(x => x.Iest_Id == 1).ToList();
-           mymodel.ItemEstandars112= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 5).ToList();
-           mymodel.ItemEstandars113= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 6).ToList();
-           mymodel.ItemEstandars114= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1002).ToList();
-           mymodel.ItemEstandars115= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1003).ToList();
-           mymodel.ItemEstandars116= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1004).ToList();
-           mymodel.ItemEstandars117= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1005).ToList();
-           mymodel.ItemEstandars118= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1006).ToList();
-
-           //var query  = (from cump in db.Tb_Cumplimiento join iest in db.Tb_ItemEstandar on cump.Iest_Id equals iest.Iest_Id
-           //                  join est in db.Tb_Estandar on iest.Esta_Id equals est.Esta_Id
-           //                  join crit in db.Tb_Criterio on est.Crit_Id equals crit.Crit_Id
-           //                  where cump.Empr_Nit == '1' && crit.Crit_Id=='3' select cump.Cump_Aevidencia);
-        
-         
-            //mymodel.Cumplimientos = db.Tb_Cumplimiento.Where(x => x.Iest_Id == mymodel.ItemEstandars118).ToList();  
-
-            mymodel.Criterios2 = db.Tb_Criterio.Where(x => x.Crit_Id == 4).ToList();
-
-           mymodel.Criterios3 = db.Tb_Criterio.Where(x => x.Crit_Id == 5).ToList();
-           mymodel.Criterios4 = db.Tb_Criterio.Where(x => x.Crit_Id == 6).ToList();
-           mymodel.Criterios5 = db.Tb_Criterio.Where(x => x.Crit_Id == 7).ToList();
-           mymodel.criterios6 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
-           mymodel.Criterios7 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
-            
-          
-           return View(/*query*/);
+        {
+            return View();
         }
-         // Intento De crear subir el  con errores. 
-        
-//        // Create File
-//        public ActionResult Create()
-//        {
-//            return View();
-//        }
-
-//            [HttpPost]
-//            [ValidateAntiForgeryToken]
-//            public ActionResult Create(AutoEvaluacion autoEvaluacion)
-//            {
-//                if (ModelState.IsValid)
-//                {
-//                List<Cumplimiento> cumplimientos = new List<Cumplimiento>();
-//                    for (int i = 0; i<Request.Files.Count; i++)
-//                    {
-//                    var file = Request.Files[i];
-//                        if (file != null && file.ContentLength>0)
-//                        {
-//                        string cump_Nombre = Path.GetFileName(file.FileName);
-//                            Cumplimiento cumplimiento = new Cumplimiento()
-//                            {
-//                                Cump_Nombre = cump_Nombre,
-//                                Cump_Aevidencia=Path.GetExtension(cump_Nombre),
-//                                Cump_Guid = Guid.NewGuid()
-//                            };
-//                        cumplimientos.Add(cumplimiento);
-
-//                        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), cumplimiento.Cump_Guid + cumplimiento.Cump_Aevidencia);
-//                        file.SaveAs(path);
-//                        }
-//                    }
-//                autoEvaluacion.Cumplimientos = cumplimientos;
-//                db.Tb_Cumplimiento.Add(autoEvaluacion);
-//                db.SaveChanges();
-//                return RedirectToAction("Index");
-//                }
-
-//            return View(autoEvaluacion);
-//            }
+        [Authorize]
+        public ActionResult AutoevaluacionSST()
+        {
+            List<CriteriosViewModel> list =
+                db.Tb_Criterio
+                    .Select(c =>
+                        new CriteriosViewModel
+                        {
+                            Id = c.Crit_Id,
+                            Nombre = c.Crit_Nom,
+                            Porcentaje = c.Crit_Porcentaje,
+                            Registro = c.Crit_Registro,
+                            Estandares =
+                            c.Estandars.Select(e =>
+                                new EstandaresViewModel
+                                {
+                                    Id = e.Esta_Id,
+                                    Nombre = e.Esta_Nom,
+                                    Porcentaje = e.Esta_Porcentaje,
+                                    Registro = e.Esta_Registro,
+                                    Elementos =
+                                        e.itemEstandars.Select(i =>
+                                            new ElementoViewModel
+                                            {
+                                                Id = i.Iest_Id,
+                                                Descripcion = i.Iest_Desc,
+                                                Observaciones = i.Iest_Observa,
+                                                Porcentaje = i.Iest_Porcentaje,
+                                                Recurso = i.Iest_Recurso,
+                                                Registro = i.Iest_Registro,
+                                                Reursob = i.Iest_Rescursob,
+                                                Verificar = i.Iest_Verificar,
+                                                Video = i.Iest_Video,
+                                                Periodo = i.Iest_Peri
+                                            }).ToList()
+                                }).ToList(),
+                        }).ToList();
+            return View(list);
+        }
     }
-   }
+}
