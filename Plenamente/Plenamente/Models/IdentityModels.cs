@@ -150,9 +150,7 @@ namespace Plenamente.Models
         public DbSet<Evidencia> Tb_Evidencia { get; set; }
         public DbSet<PlandeTrabajo> Tb_PlandeTrabajo { get; set; }
         public DbSet<Usersplandetrabajo> Tb_UsersPlandeTrabajo { get; set; }
-        public DbSet<Notificacion> Tb_Notificacion { get; set; }
-        public DbSet<ItemEvidencia>Tb_ItemEvidencias { get; set; }
-        public DbSet<ItemEvidenciaUrl> Tb_ItemEvidenciasUrl { get; set; }
+        public DbSet<Notificacion> Tb_Notificacion { get; set; } 
 
 
         public static ApplicationDbContext Create()

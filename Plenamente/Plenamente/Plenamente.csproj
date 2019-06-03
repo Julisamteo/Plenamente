@@ -216,9 +216,9 @@
     <Compile Include="Migrations\201905281417436_prueba.Designer.cs">
       <DependentUpon>201905281417436_prueba.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906012346104_Evidencia-item.cs" />
-    <Compile Include="Migrations\201906012346104_Evidencia-item.Designer.cs">
-      <DependentUpon>201906012346104_Evidencia-item.cs</DependentUpon>
+    <Compile Include="Migrations\201906031622413_updateDataBase.cs" />
+    <Compile Include="Migrations\201906031622413_updateDataBase.Designer.cs">
+      <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -248,8 +248,6 @@
     <Compile Include="Models\Frecuencia.cs" />
     <Compile Include="Models\Genero.cs" />
     <Compile Include="Models\ItemEstandar.cs" />
-    <Compile Include="Models\ItemEvidencia.cs" />
-    <Compile Include="Models\ItemEvidenciaUrl.cs" />
     <Compile Include="Models\JornadaEmpresa.cs" />
     <Compile Include="Models\Mes.cs" />
     <Compile Include="Models\Notificacion.cs" />
@@ -616,8 +614,8 @@
     <EmbeddedResource Include="Migrations\201905281417436_prueba.resx">
       <DependentUpon>201905281417436_prueba.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906012346104_Evidencia-item.resx">
-      <DependentUpon>201906012346104_Evidencia-item.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906031622413_updateDataBase.resx">
+      <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
