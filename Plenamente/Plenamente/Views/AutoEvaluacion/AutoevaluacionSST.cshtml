@@ -29,7 +29,7 @@
                                 {
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            <a href="@Url.Action("Cumplimiento","AutoEvaluacion", new { id = elemento.Id })">
+                                            <a href="@Url.Action("Cumplimiento","AutoEvaluacion", new { id = elemento.Id, item = estandar.Id })" style="color: darkslategray;">
                                                 @elemento.Descripcion
                                             </a>
                                         </li>

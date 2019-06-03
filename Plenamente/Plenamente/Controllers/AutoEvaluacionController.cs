@@ -1,5 +1,7 @@
-﻿using Plenamente.Models;
+﻿using Plenamente.App_Tool;
+using Plenamente.Models;
 using Plenamente.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
@@ -16,14 +18,74 @@ namespace Plenamente.Controllers
         [Authorize]
         public ActionResult AutoevaluacionSST()
         {
-            List<CriteriosViewModel> list = db.Tb_Criterio.Select(c => new CriteriosViewModel { Criterio = c }).ToList();
+            System.Data.Entity.DbSet<Criterio> criterios = db.Tb_Criterio;
+            List<CriteriosViewModel> list =
+               db.Tb_Criterio
+                   .Select(c =>
+                       new CriteriosViewModel
+                       {
+                           Id = c.Crit_Id,
+                           Nombre = c.Crit_Nom,
+                           Porcentaje = c.Crit_Porcentaje,
+                           Registro = c.Crit_Registro,
+                           Estandares =
+                           c.Estandars.Select(e =>
+                               new EstandaresViewModel
+                               {
+                                   Id = e.Esta_Id,
+                                   Nombre = e.Esta_Nom,
+                                   Porcentaje = e.Esta_Porcentaje,
+                                   Registro = e.Esta_Registro,
+                                   Elementos =
+                                       e.itemEstandars.Select(i =>
+                                           new ElementoViewModel
+                                           {
+                                               Id = i.Iest_Id,
+                                               Descripcion = i.Iest_Desc,
+                                               Observaciones = i.Iest_Observa,
+                                               Porcentaje = i.Iest_Porcentaje,
+                                               Recurso = i.Iest_Recurso,
+                                               Registro = i.Iest_Registro,
+                                               Reursob = i.Iest_Rescursob,
+                                               Verificar = i.Iest_Verificar,
+                                               Video = i.Iest_Video,
+                                               Periodo = i.Iest_Peri
+                                           }).ToList()
+                               }).ToList(),
+                       }).ToList();
+
             return View(list);
         }
         [Authorize]
-        public ActionResult Cumplimiento(int id)
+        public ActionResult Cumplimiento(int id, int item)
         {
             Cumplimiento cumplimiento = db.Tb_Cumplimiento.Find(id);
-            return View(new CumplimientoViewModel { Cumplimiento = cumplimiento });
+            if (cumplimiento == null)
+            {
+                return View(
+                    new CumplimientoViewModel
+                    {
+                        ItemEstandarId = item,
+                        Nit = AccountData.NitEmpresa,
+                        Registro = DateTime.Now
+                    });
+            }
+            return View(
+                new CumplimientoViewModel
+                {
+                    AcumMes = cumplimiento.AcumMes?.ToList(),
+                    AutoEvaluacionId = cumplimiento.Auev_Id,
+                    Cumple = cumplimiento.Cump_Cumple,
+                    Evidencias = cumplimiento.Evidencias?.ToList(),
+                    Id = cumplimiento.Cump_Id,
+                    ItemEstandarId = item,
+                    Justifica = cumplimiento.Cump_Justifica,
+                    Nit = AccountData.NitEmpresa,
+                    Nocumple = cumplimiento.Cump_Nocumple,
+                    Nojustifica = cumplimiento.Cump_Nojustifica,
+                    Observaciones = cumplimiento.Cump_Observ,
+                    Registro = cumplimiento.Cump_Registro
+                });
         }
     }
 }
