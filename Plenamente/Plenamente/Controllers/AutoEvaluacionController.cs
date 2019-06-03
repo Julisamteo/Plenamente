@@ -117,5 +117,44 @@ namespace Plenamente.Controllers
             }
             return View(model);
         }
+        //Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
+        public ActionResult CargaEvidencia()
+        {
+            var usuario = db.Users.Find(AccountData.UsuarioId);
+            var tipoDocumento = db.Tb_TipoDocumento.Find(usuario.Tdoc_Id).Tdoc_Nom;
+            //temporales manual,fecha,registro
+            EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
+            {
+                IdDocumento = usuario.Pers_Doc,
+                TipoDocumento = tipoDocumento,
+                Manual = 1,
+                Fecha = 1,
+                Registro = 1,
+                Responsable = usuario.Pers_Nom1 + " " + usuario.Pers_Apel1,
+                IdCumplimiento = 1
+
+            };
+            return View(evidenciaCumplimientoViewModel);
+        }
+        //faltan varias cosas y dudas sobre el tipo de documento que se sube pues en la vista no esta ese atributo y otros items que no se entiende LUEGO BORRAMOS LOS COMENTARIOS , NO LOS BORRE PUTO
+        [HttpPost]
+        public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,IdDocumento,TipoDocumento,Manual,Fecha,Registro,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
+        {            
+           
+            Evidencia evidencia = new Evidencia
+            {
+                Evid_Nombre = model.Archivo.FileName,
+                Cump_Id = model.IdCumplimiento,
+                Evid_Registro = DateTime.Now,
+                Tdca_id = 2,
+                Evid_Archivo = model.Archivo.FileName + "prueba"
+
+            };
+            evidencia.Id = AccountData.UsuarioId;
+            db.Tb_Evidencia.Add(evidencia);
+            db.SaveChanges();
+            return View(model);
+        }
+
     }
 }
