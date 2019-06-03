@@ -66,6 +66,7 @@ namespace Plenamente.Controllers
                     new CumplimientoViewModel
                     {
                         ItemEstandarId = item,
+                        Cumple = true,
                         Nit = AccountData.NitEmpresa,
                         Registro = DateTime.Now
                     });
@@ -86,6 +87,35 @@ namespace Plenamente.Controllers
                     Observaciones = cumplimiento.Cump_Observ,
                     Registro = cumplimiento.Cump_Registro
                 });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Cumplimiento([Bind(Include = "AutoEvaluacionId,Cumple,Nocumple,Justifica,Nojustifica,Id,Registro,Observaciones,ItemEstandarId,Nit")] CumplimientoViewModel model)
+        {
+            try
+            {
+                db.Tb_Cumplimiento.Add(
+                    new Cumplimiento
+                    {
+                        Cump_Id = model.Id,
+                        Cump_Cumple = model.Cumple,
+                        Cump_Nocumple = model.Nocumple,
+                        Cump_Justifica = model.Justifica,
+                        Cump_Nojustifica = model.Nojustifica,
+                        Cump_Observ = model.Observaciones,
+                        Cump_Registro = DateTime.Now,
+                        Empr_Nit = model.Nit,
+                        Iest_Id = model.ItemEstandarId,
+                        Auev_Id = model.AutoEvaluacionId
+                    });
+                db.SaveChanges();
+            }
+            catch (Exception ex)
+            {
+                ViewBag.TextError = ex.Message;
+            }
+            return View(model);
         }
     }
 }
