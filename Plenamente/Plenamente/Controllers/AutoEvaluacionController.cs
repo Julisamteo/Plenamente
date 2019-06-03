@@ -16,14 +16,14 @@ namespace Plenamente.Controllers
         [Authorize]
         public ActionResult AutoevaluacionSST()
         {
-            List<CriteriosViewModel> list = db.Tb_Criterio.Select(c => new CriteriosViewModel(c)).ToList();
+            List<CriteriosViewModel> list = db.Tb_Criterio.Select(c => new CriteriosViewModel { Criterio = c }).ToList();
             return View(list);
         }
         [Authorize]
         public ActionResult Cumplimiento(int id)
         {
             Cumplimiento cumplimiento = db.Tb_Cumplimiento.Find(id);
-            return View(new CumplimientoViewModel(cumplimiento));
+            return View(new CumplimientoViewModel { Cumplimiento = cumplimiento });
         }
     }
 }

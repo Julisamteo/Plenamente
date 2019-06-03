@@ -4,96 +4,57 @@ using System.Linq;
 
 namespace Plenamente.Models.ViewModel
 {
-    /// <summary></summary>
     public class CriteriosViewModel
     {
-        public CriteriosViewModel(Criterio criterio)
-        {
-            Id = criterio.Crit_Id;
-            Nombre = criterio.Crit_Nom;
-            Porcentaje = criterio.Crit_Porcentaje;
-            Registro = criterio.Crit_Registro;
-            Estandares = criterio.Estandars.Select(e => new EstandaresViewModel(e)).ToList();
-        }
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public float Porcentaje { get; set; }
-        public DateTime Registro { get; set; }
-        public List<EstandaresViewModel> Estandares { get; set; }
+        public Criterio Criterio { get; set; }
+        public CriteriosViewModel() { }
+        public int Id { get => Criterio.Crit_Id; set => Criterio.Crit_Id = value; }
+        public string Nombre { get => Criterio.Crit_Nom; set => Criterio.Crit_Nom = value; }
+        public float Porcentaje { get => Criterio.Crit_Porcentaje; set => Criterio.Crit_Porcentaje = value; }
+        public DateTime Registro { get => Criterio.Crit_Registro; set => Criterio.Crit_Registro = value; }
+        public List<EstandaresViewModel> Estandares => Criterio.Estandars.Select(e => new EstandaresViewModel { Estandar = e }).ToList();
     }
     public class EstandaresViewModel
     {
-        public EstandaresViewModel(Estandar estandar)
-        {
-            Id = estandar.Esta_Id;
-            Nombre = estandar.Esta_Nom;
-            Porcentaje = estandar.Esta_Porcentaje;
-            Registro = estandar.Esta_Registro;
-            Elementos = estandar.itemEstandars.Select(i => new ElementoViewModel(i)).ToList();
-        }
-        public int Id { get; set; }
-        public string Nombre { get; set; }
-        public float Porcentaje { get; set; }
-        public DateTime Registro { get; set; }
-        public List<ElementoViewModel> Elementos { get; set; }
+        public Estandar Estandar { get; set; }
+        public EstandaresViewModel() { }
+        public int Id { get => Estandar.Esta_Id; set => Estandar.Esta_Id = value; }
+        public string Nombre { get => Estandar.Esta_Nom; set => Estandar.Esta_Nom = value; }
+        public float Porcentaje { get => Estandar.Esta_Porcentaje; set => Estandar.Esta_Porcentaje = value; }
+        public DateTime Registro { get => Estandar.Esta_Registro; set => Estandar.Esta_Registro = value; }
+        public List<ElementoViewModel> Elementos => Estandar.itemEstandars.Select(e => new ElementoViewModel { ItemEstandar = e }).ToList();
     }
     public class ElementoViewModel
     {
-        public ElementoViewModel(ItemEstandar item)
-        {
-            Id = item.Iest_Id;
-            Descripcion = item.Iest_Desc;
-            Observaciones = item.Iest_Observa;
-            Porcentaje = item.Iest_Porcentaje;
-            Recurso = item.Iest_Recurso;
-            Registro = item.Iest_Registro;
-            Reursob = item.Iest_Rescursob;
-            Verificar = item.Iest_Verificar;
-            Video = item.Iest_Video;
-            Periodo = item.Iest_Peri;
-            Cumplimientos = item.Cumplimientos.Select(c => new CumplimientoViewModel(c)).ToList();
-        }
-        public int Id { get; set; }
-        public string Descripcion { get; set; }
-        public string Verificar { get; set; }
-        public float Porcentaje { get; set; }
-        public DateTime Periodo { get; set; }
-        public string Observaciones { get; set; }
-        public DateTime Registro { get; set; }
-        public string Video { get; set; }
-        public string Recurso { get; set; }
-        public string Reursob { get; set; }
-        public List<CumplimientoViewModel> Cumplimientos { get; set; }
+        public ItemEstandar ItemEstandar { get; set; }
+        public ElementoViewModel() { }
+        public int Id { get => ItemEstandar.Iest_Id; set => ItemEstandar.Iest_Id = value; }
+        public string Descripcion { get => ItemEstandar.Iest_Desc; set => ItemEstandar.Iest_Desc = value; }
+        public string Verificar { get => ItemEstandar.Iest_Verificar; set => ItemEstandar.Iest_Verificar = value; }
+        public float Porcentaje { get => ItemEstandar.Iest_Porcentaje; set => ItemEstandar.Iest_Porcentaje = value; }
+        public DateTime Periodo { get => ItemEstandar.Iest_Peri; set => ItemEstandar.Iest_Peri = value; }
+        public string Observaciones { get => ItemEstandar.Iest_Observa; set => ItemEstandar.Iest_Observa = value; }
+        public DateTime Registro { get => ItemEstandar.Iest_Registro; set => ItemEstandar.Iest_Registro = value; }
+        public string Video { get => ItemEstandar.Iest_Video; set => ItemEstandar.Iest_Video = value; }
+        public string Recurso { get => ItemEstandar.Iest_Recurso; set => ItemEstandar.Iest_Recurso = value; }
+        public string Reursob { get => ItemEstandar.Iest_Rescursob; set => ItemEstandar.Iest_Rescursob = value; }
+        public List<CumplimientoViewModel> Cumplimientos => ItemEstandar.Cumplimientos.Select(e => new CumplimientoViewModel { Cumplimiento = e }).ToList();
     }
-    /// <summary></summary>
     public class CumplimientoViewModel
     {
-        public CumplimientoViewModel(Cumplimiento cumplimiento)
-        {
-            Id = cumplimiento.Cump_Id;
-            Cumple = cumplimiento.Cump_Cumple;
-            Nocumple = cumplimiento.Cump_Nocumple;
-            Justifica = cumplimiento.Cump_Justifica;
-            Nojustifica = cumplimiento.Cump_Nojustifica;
-            Observaciones = cumplimiento.Cump_Observ;
-            ItemEstandarId = cumplimiento.Iest_Id;
-            Nit = cumplimiento.Empr_Nit;
-            AutoEvaluacionId = cumplimiento.Auev_Id;
-            Registro = cumplimiento.Cump_Registro;
-        }
-        /// <summary>Gets or sets the identifier.</summary>
-        /// <value>The identifier.</value>
-        public int Id { get; set; }
-        public bool Cumple { get; set; }
-        public bool Nocumple { get; set; }
-        public bool Justifica { get; set; }
-        public bool Nojustifica { get; set; }
-        public string Observaciones { get; set; }
-        public int? ItemEstandarId { get; set; }
-        public int? Nit { get; set; }
-        public int AutoEvaluacionId { get; set; }
-        public DateTime Registro { get; set; }
-        public List<AcumMes> AcumMes { get; set; }
-        public List<Evidencia> Evidencias { get; set; }
+        public Cumplimiento Cumplimiento { get; set; }
+        public CumplimientoViewModel() { }
+        public int Id { get => Cumplimiento.Cump_Id; set => Cumplimiento.Cump_Id = value; }
+        public bool Cumple { get => Cumplimiento.Cump_Cumple; set => Cumplimiento.Cump_Cumple = value; }
+        public bool Nocumple { get => Cumplimiento.Cump_Nocumple; set => Cumplimiento.Cump_Nocumple = value; }
+        public bool Justifica { get => Cumplimiento.Cump_Justifica; set => Cumplimiento.Cump_Justifica = value; }
+        public bool Nojustifica { get => Cumplimiento.Cump_Nojustifica; set => Cumplimiento.Cump_Nojustifica = value; }
+        public string Observaciones { get => Cumplimiento.Cump_Observ; set => Cumplimiento.Cump_Observ = value; }
+        public int? ItemEstandarId { get => Cumplimiento.Iest_Id; set => Cumplimiento.Iest_Id = value; }
+        public int? Nit { get => Cumplimiento.Empr_Nit; set => Cumplimiento.Empr_Nit = value; }
+        public int AutoEvaluacionId { get => Cumplimiento.Auev_Id; set => Cumplimiento.Auev_Id = value; }
+        public DateTime Registro { get => Cumplimiento.Cump_Registro; set => Cumplimiento.Cump_Registro = value; }
+        public List<AcumMes> AcumMes => Cumplimiento.AcumMes.ToList();
+        public List<Evidencia> Evidencias => Cumplimiento.Evidencias.ToList();
     }
 }
