@@ -29,8 +29,30 @@
                                 {
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            <span class="badge"><i class="fade fa-check"></i></span>
                                             @elemento.Descripcion
+                                            <br />
+                                         
+                                            <br />
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="Cumple" name="Cumple">
+                                                <label class="custom-control-label" for="Cumple">Cumple</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="NoCumple" name="NoCumple" checked>
+                                                <label class="custom-control-label" for="NoCumple">No cumple</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="Justifica" name="Justifica">
+                                                <label class="custom-control-label" for="Justifica">Justifica</label>
+                                            </div>
+                                            <div class="custom-control custom-radio">
+                                                <input type="radio" class="custom-control-input" id="Nojustifica" name="Nojustifica" checked>
+                                                <label class="custom-control-label" for="Nojustifica">No justifica</label>
+                                            </div>
+                                            <div class="form-group">
+                                                <label for="exampleFormControlTextarea1">Large textarea</label>
+                                                <textarea class="form-control rounded-0" id="exampleFormControlTextarea1" rows="10"></textarea>
+                                            </div>
                                         </li>
                                     </ul>
                                 }
