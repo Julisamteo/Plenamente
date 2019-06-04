@@ -283,7 +283,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: /Admin/Edit/TestUser 
         [Authorize(Roles = "SuperAdmin2")]
         #region public ActionResult EditUser(string UserName)
-        public ActionResult EditUser(string UserName)
+        public ActionResult EditUser(string UserName, string Nombres)
         {
             if (UserName == null)
             {
@@ -319,7 +319,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     return HttpNotFound();
                 }
 
-                return Redirect("~/Admin");
+                return RedirectToAction("Manageusers");
             }
             catch (Exception ex)
             {
@@ -721,12 +721,40 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             // If we could not find the user, throw an exception
             if (result == null) throw new Exception("Could not find the User");
-
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+            }
+            objExpandedUserDTO.Nombres = result.Pers_Nom1;
+            objExpandedUserDTO.Apellidos = result.Pers_Apel1;
+            objExpandedUserDTO.Documento = result.Pers_Doc;
             objExpandedUserDTO.UserName = result.UserName;
             objExpandedUserDTO.Email = result.Email;
             objExpandedUserDTO.LockoutEndDateUtc = result.LockoutEndDateUtc;
             objExpandedUserDTO.AccessFailedCount = result.AccessFailedCount;
             objExpandedUserDTO.PhoneNumber = result.PhoneNumber;
+            objExpandedUserDTO.Pers_Licencia = result.Pers_Licencia;
+            objExpandedUserDTO.Pers_LicVence = result.Pers_LicVence;
+            objExpandedUserDTO.Pers_Direccion = result.Pers_Dir;
+            objExpandedUserDTO.Pers_ContactoEmeg = result.Pers_Cemeg;
+            objExpandedUserDTO.Pers_TelefonoEmeg = result.Pers_Temeg;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+                objExpandedUserDTO.afp = db.Tb_Afp.ToList<Afp>();
+                objExpandedUserDTO.eps = db.Tb_Eps.ToList<Eps>();
+                objExpandedUserDTO.arl = db.Tb_Arl.ToList<Arl>();
+                objExpandedUserDTO.sedeCiudad = db.Tb_SedeCiudad.ToList<SedeCiudad>();
+                objExpandedUserDTO.ciudad = db.Tb_Ciudad.ToList<Ciudad>();
+                objExpandedUserDTO.cargoEmpresa = db.Tb_CargoEmpresa.ToList<CargoEmpresa>();
+                objExpandedUserDTO.areaEmpresa = db.Tb_AreaEmpresa.ToList<AreaEmpresa>();
+                objExpandedUserDTO.cateLicencia = db.Tb_CateLicencia.ToList<CateLicencia>();
+                objExpandedUserDTO.genero = db.Tb_Genero.ToList<Genero>();
+                objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
+                objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
+                objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
+                objExpandedUserDTO.jefe = db.Users.ToList<ApplicationUser>();
+            }
 
             return objExpandedUserDTO;
         }
@@ -735,8 +763,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #region private ExpandedUserDTO UpdateDTOUser(ExpandedUserDTO objExpandedUserDTO)
         private ExpandedUserDTO UpdateDTOUser(ExpandedUserDTO paramExpandedUserDTO)
         {
-            ApplicationUser result =
-                UserManager.FindByName(paramExpandedUserDTO.UserName);
+            ApplicationUser result = UserManager.FindByName(paramExpandedUserDTO.UserName);
 
             // If we could not find the user, throw an exception
             if (result == null)
@@ -745,6 +772,18 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
 
             result.Email = paramExpandedUserDTO.Email;
+            result.Afp_Id = paramExpandedUserDTO.Afp_Id;
+            result.Arl_Id = paramExpandedUserDTO.Arl_Id;
+            result.Eps_Id = paramExpandedUserDTO.Eps_Id;
+            result.Tdoc_Id = paramExpandedUserDTO.Tdoc_Id;
+            result.Gene_Id = paramExpandedUserDTO.Gene_Id;
+            result.Espe_Id = paramExpandedUserDTO.Espe_Id;
+            result.Cate_Id = paramExpandedUserDTO.Cate_Id;
+            result.Sciu_Id = paramExpandedUserDTO.Sciu_Id;
+            result.Aemp_Id = paramExpandedUserDTO.Aemp_Id;
+            result.Cemp_Id = paramExpandedUserDTO.Cemp_Id;
+            result.Jemp_Id = paramExpandedUserDTO.Jemp_Id;
+            result.Tvin_Id = paramExpandedUserDTO.Tvin_Id;
 
             // Lets check if the account needs to be unlocked
             if (UserManager.IsLockedOut(result.Id))

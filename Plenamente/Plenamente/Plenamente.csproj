@@ -233,6 +233,10 @@
     <Compile Include="Migrations\201905271950135_AddURLSpaces.Designer.cs">
       <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905311923385_campoResultado.cs" />
+    <Compile Include="Migrations\201905311923385_campoResultado.Designer.cs">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -607,6 +611,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905271950135_AddURLSpaces.resx">
       <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311923385_campoResultado.resx">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
