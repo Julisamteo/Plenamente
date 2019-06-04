@@ -213,6 +213,10 @@
     <Compile Include="Migrations\201905281417436_prueba.Designer.cs">
       <DependentUpon>201905281417436_prueba.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905311923385_campoResultado.cs" />
+    <Compile Include="Migrations\201905311923385_campoResultado.Designer.cs">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -573,6 +577,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905281417436_prueba.resx">
       <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311923385_campoResultado.resx">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
