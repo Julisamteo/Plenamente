@@ -34,6 +34,7 @@ namespace Plenamente.Models.ViewModel
         public string Recurso { get; set; }
         public string Reursob { get; set; }
         public List<Cumplimiento> Cumplimientos { get; set; }
+        public bool ExisteCumplimiento => Cumplimientos.Count() > 0;
     }
     public class CumplimientoViewModel
     {

@@ -3,6 +3,7 @@ using Plenamente.Models;
 using Plenamente.Models.ViewModel;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -49,7 +50,8 @@ namespace Plenamente.Controllers
                                                Reursob = i.Iest_Rescursob,
                                                Verificar = i.Iest_Verificar,
                                                Video = i.Iest_Video,
-                                               Periodo = i.Iest_Peri
+                                               Periodo = i.Iest_Peri,
+                                               Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa).ToList()
                                            }).ToList()
                                }).ToList(),
                        }).ToList();
@@ -95,7 +97,9 @@ namespace Plenamente.Controllers
         {
             try
             {
-                db.Tb_Cumplimiento.Add(
+                if (model.Id == 0)
+                {
+                    db.Tb_Cumplimiento.Add(
                     new Cumplimiento
                     {
                         Cump_Id = model.Id,
@@ -109,7 +113,14 @@ namespace Plenamente.Controllers
                         Iest_Id = model.ItemEstandarId,
                         Auev_Id = model.AutoEvaluacionId
                     });
-                db.SaveChanges();
+                    db.SaveChanges();
+                }
+                else
+                {
+                    model.Registro = DateTime.Now;
+                    db.Entry(model).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
             }
             catch (Exception ex)
             {
