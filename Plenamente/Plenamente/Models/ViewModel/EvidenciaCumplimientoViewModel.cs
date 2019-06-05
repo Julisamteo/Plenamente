@@ -13,18 +13,15 @@ namespace Plenamente.Models.ViewModel
         {            
             Evidencia = new Evidencia();
         }
-        [Display(Name = "Numero de documento")]
-        public int IdDocumento { get; set; }
+        [Display(Name = "Nombre de documento")]
+        public string NombreDocumento { get; set; }
         [Display(Name = "Tipo de documento")]
         public string TipoDocumento { get; set; }
         [Display(Name = "Responsable")]
         public string Responsable { get; set; }
         [Display(Name = "Fecha")]
-        public int Fecha { get; set; }
-        [Display(Name = "Manual")]
-        public int Manual { get; set; }
-        [Display(Name = "Registro")]
-        public int Registro { get; set; }
+        [DataType(DataType.Date)]
+        public DateTime Fecha { get; set; }       
         [Required]
         [Display(Name = "Archivo")]
         public HttpPostedFileBase Archivo { get; set; }

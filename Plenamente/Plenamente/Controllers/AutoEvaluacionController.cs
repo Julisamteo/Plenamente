@@ -129,35 +129,31 @@ namespace Plenamente.Controllers
             return View(model);
         }
         //Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
-        public ActionResult CargaEvidencia()
-        {
+        public ActionResult CargaEvidencia(int idItem=1)
+        {            
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
             var usuario = db.Users.Find(AccountData.UsuarioId);
             var tipoDocumento = db.Tb_TipoDocumento.Find(usuario.Tdoc_Id).Tdoc_Nom;
+            //falta listado de usuarios que permanezcan a la misma empresa 
             //temporales manual,fecha,registro
             EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
-            {
-                IdDocumento = usuario.Pers_Doc,
-                TipoDocumento = tipoDocumento,
-                Manual = 1,
-                Fecha = 1,
-                Registro = 1,
-                Responsable = usuario.Pers_Nom1 + " " + usuario.Pers_Apel1,
-                IdCumplimiento = 1
+            {                
+                IdCumplimiento = idItem
 
             };
             return View(evidenciaCumplimientoViewModel);
         }
         //faltan varias cosas y dudas sobre el tipo de documento que se sube pues en la vista no esta ese atributo y otros items que no se entiende LUEGO BORRAMOS LOS COMENTARIOS , NO LOS BORRE PUTO
         [HttpPost]
-        public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,IdDocumento,TipoDocumento,Manual,Fecha,Registro,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
-        {            
-           
+        public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
+        {
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
             Evidencia evidencia = new Evidencia
             {
-                Evid_Nombre = model.Archivo.FileName,
+                Evid_Nombre = model.NombreDocumento,
                 Cump_Id = model.IdCumplimiento,
-                Evid_Registro = DateTime.Now,
-                Tdca_id = 2,
+                Evid_Registro = model.Fecha,
+                Tdca_id = Convert.ToInt32(model.TipoDocumento),                
                 Evid_Archivo = model.Archivo.FileName + "prueba"
 
             };
