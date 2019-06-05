@@ -66,10 +66,10 @@ namespace Plenamente.App_Tool
         /// <value>
         /// The nit empresa.
         /// </value>
-        public static int? NitEmpresa
+        public static int NitEmpresa
         {
-            get => Session.GetValue<int?>("Session.NitEmpresa");
-            set => Session.SetValue("Session.NitEmpresa", value);
+            get { return Session.GetValue<int>("Session.NitEmpresa"); }
+            set { Session.SetValue("Session.NitEmpresa", value);  }
         }
         /// <summary>
         /// Closes the session.
