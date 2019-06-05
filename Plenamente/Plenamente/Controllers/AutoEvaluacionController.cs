@@ -154,12 +154,12 @@ namespace Plenamente.Controllers
             //return RedirectToAction("AutoevaluacionSST");
         }
 		//Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
-		public ActionResult CargaEvidencia(int idItem = 1)
+		public ActionResult CargaEvidencia(int idItem=1)
 		{
 			ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
-			var usuario = db.Users.Find(AccountData.UsuarioId);
-			var tipoDocumento = db.Tb_TipoDocumento.Find(usuario.Tdoc_Id).Tdoc_Nom;
-			//falta listado de usuarios que permanezcan a la misma empresa 			
+			var usuario = db.Users.Find(AccountData.UsuarioId);				
+			ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
+
 			EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
 			{
 				IdCumplimiento = idItem
@@ -171,7 +171,9 @@ namespace Plenamente.Controllers
 		[HttpPost]
 		public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
 		{
-			ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
+			var usuario = db.Users.Find(AccountData.UsuarioId);
+			ViewBag.Tdca_id = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Tdca_id", "Tdca_Nom");
+			ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
 			Evidencia evidencia = new Evidencia
 			{
 				Evid_Nombre = model.NombreDocumento,
@@ -184,7 +186,7 @@ namespace Plenamente.Controllers
 			evidencia.Id = AccountData.UsuarioId;
 			db.Tb_Evidencia.Add(evidencia);
 			db.SaveChanges();
-			return View(model);
+			return View(new EvidenciaCumplimientoViewModel());
 		}
 
 	}
