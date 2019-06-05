@@ -144,6 +144,7 @@ namespace Plenamente.Controllers
                     db.Entry(cumplimiento).State = EntityState.Modified;
                     db.SaveChanges();
                 }
+                ViewBag.TextExitoso = "Se guardaron los datos exitosamente";
             }
             catch (Exception ex)
             {

@@ -16,6 +16,7 @@
         <div class="form-horizontal">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <label class="text-danger">@ViewBag.TextError</label>
+            <label class="text-success">@ViewBag.TextExitoso</label>            
             <br />
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.ItemEstandarId)
