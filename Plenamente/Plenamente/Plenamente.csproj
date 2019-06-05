@@ -220,6 +220,10 @@
     <Compile Include="Migrations\201906031622413_updateDataBase.Designer.cs">
       <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.cs" />
+    <Compile Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.Designer.cs">
+      <DependentUpon>201906052037350_addcoltelefonoempresamodidevidencia.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -618,6 +622,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906031622413_updateDataBase.resx">
       <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.resx">
+      <DependentUpon>201906052037350_addcoltelefonoempresamodidevidencia.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>

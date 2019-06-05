@@ -110,9 +110,10 @@ namespace Plenamente.Controllers
                           });
                     db.SaveChanges();
                 }
+                Cumplimiento cumplimiento;
                 if (model.Id == 0)
                 {
-                    db.Tb_Cumplimiento.Add(
+                    cumplimiento =
                         new Cumplimiento
                         {
                             Cump_Id = model.Id,
@@ -125,12 +126,13 @@ namespace Plenamente.Controllers
                             Empr_Nit = model.Nit,
                             Iest_Id = model.ItemEstandarId,
                             Auev_Id = autoevaluacion.Auev_Id
-                        });
+                        };
+                    db.Tb_Cumplimiento.Add(cumplimiento);
                     db.SaveChanges();
                 }
                 else
                 {
-                    Cumplimiento cumplimiento = db.Tb_Cumplimiento.Find(model.Id);
+                    cumplimiento = db.Tb_Cumplimiento.Find(model.Id);
                     cumplimiento.Cump_Id = model.Id;
                     cumplimiento.Cump_Cumple = model.Cumple;
                     cumplimiento.Cump_Nocumple = model.Nocumple;
@@ -153,41 +155,41 @@ namespace Plenamente.Controllers
             return View(model);
             //return RedirectToAction("AutoevaluacionSST");
         }
-		//Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
-		public ActionResult CargaEvidencia(int idItem=1)
-		{
-			ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
-			var usuario = db.Users.Find(AccountData.UsuarioId);				
-			ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
+        //Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
+        public ActionResult CargaEvidencia(int idItem = 1)
+        {
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
 
-			EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
-			{
-				IdCumplimiento = idItem
+            EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
+            {
+                IdCumplimiento = idItem
 
-			};
-			return View(evidenciaCumplimientoViewModel);
-		}
-		//faltan varias cosas y dudas sobre el tipo de documento que se sube pues en la vista no esta ese atributo y otros items que no se entiende LUEGO BORRAMOS LOS COMENTARIOS , NO LOS BORRE PUTO
-		[HttpPost]
-		public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
-		{
-			var usuario = db.Users.Find(AccountData.UsuarioId);
-			ViewBag.Tdca_id = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Tdca_id", "Tdca_Nom");
-			ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
-			Evidencia evidencia = new Evidencia
-			{
-				Evid_Nombre = model.NombreDocumento,
-				Cump_Id = model.IdCumplimiento,
-				Evid_Registro = model.Fecha,
-				Tdca_id = Convert.ToInt32(model.TipoDocumento),
-				Evid_Archivo = model.Archivo.FileName + "prueba"
+            };
+            return View(evidenciaCumplimientoViewModel);
+        }
+        //faltan varias cosas y dudas sobre el tipo de documento que se sube pues en la vista no esta ese atributo y otros items que no se entiende LUEGO BORRAMOS LOS COMENTARIOS , NO LOS BORRE PUTO
+        [HttpPost]
+        public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
+        {
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            ViewBag.Tdca_id = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Tdca_id", "Tdca_Nom");
+            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
+            Evidencia evidencia = new Evidencia
+            {
+                Evid_Nombre = model.NombreDocumento,
+                Cump_Id = model.IdCumplimiento,
+                Evid_Registro = model.Fecha,
+                Tdca_id = Convert.ToInt32(model.TipoDocumento),
+                Evid_Archivo = model.Archivo.FileName + "prueba"
 
-			};
-			evidencia.Id = AccountData.UsuarioId;
-			db.Tb_Evidencia.Add(evidencia);
-			db.SaveChanges();
-			return View(new EvidenciaCumplimientoViewModel());
-		}
+            };
+            evidencia.Responsable = AccountData.UsuarioId;
+            db.Tb_Evidencia.Add(evidencia);
+            db.SaveChanges();
+            return View(new EvidenciaCumplimientoViewModel());
+        }
 
-	}
+    }
 }
