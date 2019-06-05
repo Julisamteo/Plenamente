@@ -44,6 +44,8 @@ namespace Plenamente.Models.ViewModel
         public bool Cumple { get; set; }
         [Display(Name = "No cumple")]
         public bool Nocumple { get; set; }
+        [Display(Name = "No aplica")]
+        public bool NoAplica { get; set; }        
         [Display(Name = "Justifica")]
         public bool Justifica { get; set; }
         [Display(Name = "No justifica")]

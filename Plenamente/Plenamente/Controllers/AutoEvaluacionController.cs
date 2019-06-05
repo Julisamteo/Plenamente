@@ -19,7 +19,6 @@ namespace Plenamente.Controllers
         [Authorize]
         public ActionResult AutoevaluacionSST()
         {
-            System.Data.Entity.DbSet<Criterio> criterios = db.Tb_Criterio;
             List<CriteriosViewModel> list =
                db.Tb_Criterio
                    .Select(c =>
@@ -59,16 +58,17 @@ namespace Plenamente.Controllers
             return View(list);
         }
         [Authorize]
-        public ActionResult Cumplimiento(int id, int item)
+        public ActionResult Cumplimiento(int idItem)
         {
-            Cumplimiento cumplimiento = db.Tb_Cumplimiento.Find(id);
+            Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem);
             if (cumplimiento == null)
             {
                 return View(
                     new CumplimientoViewModel
                     {
-                        ItemEstandarId = item,
+                        ItemEstandarId = idItem,
                         Cumple = true,
+                        Justifica = true,
                         Nit = AccountData.NitEmpresa,
                         Registro = DateTime.Now
                     });
@@ -81,7 +81,7 @@ namespace Plenamente.Controllers
                     Cumple = cumplimiento.Cump_Cumple,
                     Evidencias = cumplimiento.Evidencias?.ToList(),
                     Id = cumplimiento.Cump_Id,
-                    ItemEstandarId = item,
+                    ItemEstandarId = cumplimiento.Iest_Id,
                     Justifica = cumplimiento.Cump_Justifica,
                     Nit = AccountData.NitEmpresa,
                     Nocumple = cumplimiento.Cump_Nocumple,
@@ -97,28 +97,51 @@ namespace Plenamente.Controllers
         {
             try
             {
+                AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa);
+                if (autoevaluacion == null)
+                {
+                    db.Tb_AutoEvaluacion.Add(
+                          new AutoEvaluacion
+                          {
+                              Empr_Nit = AccountData.NitEmpresa,
+                              Auev_Inicio = DateTime.Now,
+                              Auev_Fin = DateTime.Now,
+                              Auev_Nom = "Autoevaluación"
+                          });
+                    db.SaveChanges();
+                }
                 if (model.Id == 0)
                 {
                     db.Tb_Cumplimiento.Add(
-                    new Cumplimiento
-                    {
-                        Cump_Id = model.Id,
-                        Cump_Cumple = model.Cumple,
-                        Cump_Nocumple = model.Nocumple,
-                        Cump_Justifica = model.Justifica,
-                        Cump_Nojustifica = model.Nojustifica,
-                        Cump_Observ = model.Observaciones,
-                        Cump_Registro = DateTime.Now,
-                        Empr_Nit = model.Nit,
-                        Iest_Id = model.ItemEstandarId,
-                        Auev_Id = model.AutoEvaluacionId
-                    });
+                        new Cumplimiento
+                        {
+                            Cump_Id = model.Id,
+                            Cump_Cumple = model.Cumple,
+                            Cump_Nocumple = model.Nocumple,
+                            Cump_Justifica = model.Justifica,
+                            Cump_Nojustifica = model.Nojustifica,
+                            Cump_Observ = model.Observaciones,
+                            Cump_Registro = DateTime.Now,
+                            Empr_Nit = model.Nit,
+                            Iest_Id = model.ItemEstandarId,
+                            Auev_Id = autoevaluacion.Auev_Id
+                        });
                     db.SaveChanges();
                 }
                 else
                 {
-                    model.Registro = DateTime.Now;
-                    db.Entry(model).State = EntityState.Modified;
+                    Cumplimiento cumplimiento = db.Tb_Cumplimiento.Find(model.Id);
+                    cumplimiento.Cump_Id = model.Id;
+                    cumplimiento.Cump_Cumple = model.Cumple;
+                    cumplimiento.Cump_Nocumple = model.Nocumple;
+                    cumplimiento.Cump_Justifica = model.Justifica;
+                    cumplimiento.Cump_Nojustifica = model.Nojustifica;
+                    cumplimiento.Cump_Observ = model.Observaciones;
+                    cumplimiento.Cump_Registro = DateTime.Now;
+                    cumplimiento.Empr_Nit = model.Nit;
+                    cumplimiento.Iest_Id = model.ItemEstandarId;
+                    cumplimiento.Auev_Id = autoevaluacion.Auev_Id;
+                    db.Entry(cumplimiento).State = EntityState.Modified;
                     db.SaveChanges();
                 }
             }
@@ -127,12 +150,13 @@ namespace Plenamente.Controllers
                 ViewBag.TextError = ex.Message;
             }
             return View(model);
+            //return RedirectToAction("AutoevaluacionSST");
         }
         //Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
         public ActionResult CargaEvidencia()
         {
-            var usuario = db.Users.Find(AccountData.UsuarioId);
-            var tipoDocumento = db.Tb_TipoDocumento.Find(usuario.Tdoc_Id).Tdoc_Nom;
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            string tipoDocumento = db.Tb_TipoDocumento.Find(usuario.Tdoc_Id).Tdoc_Nom;
             //temporales manual,fecha,registro
             EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
             {
@@ -150,8 +174,8 @@ namespace Plenamente.Controllers
         //faltan varias cosas y dudas sobre el tipo de documento que se sube pues en la vista no esta ese atributo y otros items que no se entiende LUEGO BORRAMOS LOS COMENTARIOS , NO LOS BORRE PUTO
         [HttpPost]
         public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,IdDocumento,TipoDocumento,Manual,Fecha,Registro,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
-        {            
-           
+        {
+
             Evidencia evidencia = new Evidencia
             {
                 Evid_Nombre = model.Archivo.FileName,

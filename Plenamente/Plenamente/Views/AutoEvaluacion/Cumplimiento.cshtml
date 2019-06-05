@@ -14,15 +14,15 @@
         @Html.AntiForgeryToken()
         <br />
         <div class="form-horizontal">
-            <hr />
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <label class="text-danger">@ViewBag.TextError</label>
+            <br />
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.ItemEstandarId)
             @Html.HiddenFor(model => model.Nit)
             @Html.HiddenFor(model => model.Registro)
             <div class="row">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
                         <div class="checkbox">
@@ -31,7 +31,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
                         <div class="checkbox">
@@ -41,8 +41,8 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="frmJustifica" style="visibility: hidden;">
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+            <div class="row">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
                         <div class="checkbox">
@@ -51,12 +51,21 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
                         <div class="checkbox">
                             @Html.EditorFor(model => model.Nojustifica)
                             @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
+                        <div class="checkbox">
+                            @Html.EditorFor(model => model.NoAplica)
+                            @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
                         </div>
                     </div>
                 </div>
@@ -75,7 +84,7 @@
             </div>
         </div>
     }
-    <div class="row" id="frmEvidencias" style="visibility: hidden;">
+    <div class="row" id="frmEvidencias">
         <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
             Aquí la vista parcial de agregar evidencia.
         </div>
@@ -89,47 +98,49 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
-        var frmJustifica = document.getElementById("frmJustifica");
         var cumple = document.getElementById("Cumple");
         var nocumple = document.getElementById("Nocumple");
         var frmEvidencias = document.getElementById("frmEvidencias");
         var Justifica = document.getElementById("Justifica");
         var Nojustifica = document.getElementById("Nojustifica");
+        var NoAplica = document.getElementById("NoAplica");
         cumple.addEventListener('change', function () {
-            if (this.checked) {
-                frmJustifica.style.visibility = 'hidden';
-                nocumple.checked = false;
-                Nojustifica.checked = false;
-                Justifica.checked = false;
-            } else {
-                frmJustifica.style.visibility = 'visible';
-                nocumple.checked = true;
-            }
+            frmEvidencias.style.visibility = 'visible';
+            Nojustifica.checked = false;
+            Justifica.checked = false;
+            NoAplica.checked = false;
+            nocumple.checked = !this.checked;
         });
         nocumple.addEventListener('change', function () {
-            if (this.checked) {
-                frmJustifica.style.visibility = 'visible';
-                cumple.checked = false;
-            } else {
-                frmJustifica.style.visibility = 'hidden';
-                cumple.checked = true;
-                Nojustifica.checked = false;
-                Justifica.checked = false;
-            }
+            frmEvidencias.style.visibility = 'visible';
+            Nojustifica.checked = false;
+            Justifica.checked = false;
+            NoAplica.checked = false;
+            cumple.checked = !this.checked;
         });
         Justifica.addEventListener('change', function () {
+            frmEvidencias.style.visibility = 'visible';
             if (this.checked) {
-                frmEvidencias.style.visibility = 'visible';
                 Nojustifica.checked = false;
+                NoAplica.checked = false;
             } else {
-                frmEvidencias.style.visibility = 'hidden';
                 Nojustifica.checked = true;
             }
         });
         Nojustifica.addEventListener('change', function () {
+            frmEvidencias.style.visibility = 'visible';
+            if (this.checked) {
+                Justifica.checked = false;
+                NoAplica.checked = false;
+            } else {
+                Justifica.checked = true;
+            }
+        });
+        NoAplica.addEventListener('change', function () {
             if (this.checked) {
                 frmEvidencias.style.visibility = 'hidden';
                 Justifica.checked = false;
+                Nojustifica.checked = false;
             } else {
                 frmEvidencias.style.visibility = 'visible';
                 Justifica.checked = true;

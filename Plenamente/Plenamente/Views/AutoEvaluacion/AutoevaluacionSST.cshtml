@@ -29,8 +29,9 @@
                                 {
                                     <ul class="list-group">
                                         <li class="list-group-item">
-                                            <a href="@Url.Action("Cumplimiento","AutoEvaluacion", new { id = elemento.Id, item = estandar.Id })" title="@elemento.Descripcion" style="color: darkslategray;">
-                                                @elemento.Descripcion
+                                            <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                            <a href="@Url.Action("Cumplimiento","AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                @elemento.Descripcion - @elemento.Porcentaje %
                                             </a>
                                         </li>
                                     </ul>
