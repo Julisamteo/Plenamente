@@ -72,7 +72,7 @@ namespace Plenamente.Controllers
             {
                 case SignInStatus.Success:
                     ApplicationUser UserData = await UserManager.FindByNameAsync(model.Email) ?? UserManager.FindByEmail(model.Email);
-                    AccountData.NitEmpresa = UserData.Empr_Nit;
+                    AccountData.NitEmpresa = UserData.Empr_Nit ?? 0;
                     return RedirectToLocal(returnUrl);
                 case SignInStatus.LockedOut:
                     return View("Lockout");
