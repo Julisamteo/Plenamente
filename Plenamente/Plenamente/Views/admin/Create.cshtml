@@ -156,7 +156,7 @@
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Ciud_Id, (SelectList)ViewBag.Ciud_Id as SelectList, "Ciudad", htmlAttributes: new { @class = "estilosSelect" })
+        @Html.DropDownListFor(model => model.Ciud_Id, new SelectList(Model.ciudad, "Ciud_Id", "Ciud_Nom", "Ciudad"))
         @Html.ValidationMessageFor(model => model.Ciud_Id, "", new { @class = "text-danger" })
         <br />
         <br />*@
@@ -204,7 +204,7 @@
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Jefe_Id, new SelectList(Model.jefe, "jefe_Id", "Pers_Nom1", "jefe Actual"))
+        @Html.DropDownListFor(model => model.Jefe_Id, new SelectList(Model.Jefe, "jefe_Id", "Pers_Nom1", "jefe Actual"))
         @Html.ValidationMessageFor(model => model.Jefe_Id, "", new { @class = "text-danger" })
         <br />
         <br />

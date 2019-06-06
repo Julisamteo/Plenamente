@@ -155,7 +155,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
                 objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
                 objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
-                objExpandedUserDTO.jefe = db.Users.ToList<ApplicationUser>();
+                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
             }
 
                 ViewBag.Roles = GetAllRolesAsSelectList();
@@ -204,7 +204,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var TipoVinculacion = paramExpandedUserDTO.Tvin_Id;
                 var Empresa = paramExpandedUserDTO.Empr_Nit;
                 var EstadoPersona = paramExpandedUserDTO.Espe_Id;
-                var Jefe = paramExpandedUserDTO.Jefe_Id;
+                //var Jefe = paramExpandedUserDTO.Id;
 
 
                 if (Email == "")
@@ -239,6 +239,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Eps_Id = Eps,
                     Arl_Id = Arl,
                     Sciu_Id = SedeCiudad,
+                    Ciud_Id = Ciudad,
                     Cemp_Id = Cargo,
                     Aemp_Id = AreaEmpresa,
                     Cate_Id = Categoria,
@@ -753,7 +754,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
                 objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
                 objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
-                objExpandedUserDTO.jefe = db.Users.ToList<ApplicationUser>();
+                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
             }
 
             return objExpandedUserDTO;
