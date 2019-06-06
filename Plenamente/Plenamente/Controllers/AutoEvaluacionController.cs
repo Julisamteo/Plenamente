@@ -61,6 +61,7 @@ namespace Plenamente.Controllers
         public ActionResult Cumplimiento(int idItem)
         {
             Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem);
+            ItemEstandar item = db.Tb_ItemEstandar.Find(idItem);
             if (cumplimiento == null)
             {
                 return View(
@@ -70,7 +71,21 @@ namespace Plenamente.Controllers
                         Cumple = true,
                         Justifica = true,
                         Nit = AccountData.NitEmpresa,
-                        Registro = DateTime.Now
+                        Registro = DateTime.Now,
+                        ItemEstandar =
+                            new ElementoViewModel
+                            {
+                                Id = item.Iest_Id,
+                                Descripcion = item.Iest_Desc,
+                                Observaciones = item.Iest_Observa,
+                                Porcentaje = item.Iest_Porcentaje,
+                                Recurso = item.Iest_Recurso,
+                                Registro = item.Iest_Registro,
+                                Reursob = item.Iest_Rescursob,
+                                Verificar = item.Iest_Verificar,
+                                Video = item.Iest_Video,
+                                Periodo = item.Iest_Peri
+                            }
                     });
             }
             return View(
@@ -82,6 +97,20 @@ namespace Plenamente.Controllers
                     Evidencias = cumplimiento.Evidencias?.ToList(),
                     Id = cumplimiento.Cump_Id,
                     ItemEstandarId = cumplimiento.Iest_Id,
+                    ItemEstandar =
+                            new ElementoViewModel
+                            {
+                                Id = item.Iest_Id,
+                                Descripcion = item.Iest_Desc,
+                                Observaciones = item.Iest_Observa,
+                                Porcentaje = item.Iest_Porcentaje,
+                                Recurso = item.Iest_Recurso,
+                                Registro = item.Iest_Registro,
+                                Reursob = item.Iest_Rescursob,
+                                Verificar = item.Iest_Verificar,
+                                Video = item.Iest_Video,
+                                Periodo = item.Iest_Peri
+                            },
                     Justifica = cumplimiento.Cump_Justifica,
                     Nit = AccountData.NitEmpresa,
                     Nocumple = cumplimiento.Cump_Nocumple,
@@ -125,7 +154,7 @@ namespace Plenamente.Controllers
                             Cump_Registro = DateTime.Now,
                             Empr_Nit = model.Nit,
                             Iest_Id = model.ItemEstandarId,
-                            Auev_Id = autoevaluacion.Auev_Id
+                            Auev_Id = autoevaluacion.Auev_Id,
                         };
                     db.Tb_Cumplimiento.Add(cumplimiento);
                     db.SaveChanges();
@@ -152,6 +181,21 @@ namespace Plenamente.Controllers
             {
                 ViewBag.TextError = ex.Message;
             }
+            ItemEstandar item = db.Tb_ItemEstandar.Find(model.ItemEstandarId);
+            model.ItemEstandar =
+                new ElementoViewModel
+                {
+                    Id = item.Iest_Id,
+                    Descripcion = item.Iest_Desc,
+                    Observaciones = item.Iest_Observa,
+                    Porcentaje = item.Iest_Porcentaje,
+                    Recurso = item.Iest_Recurso,
+                    Registro = item.Iest_Registro,
+                    Reursob = item.Iest_Rescursob,
+                    Verificar = item.Iest_Verificar,
+                    Video = item.Iest_Video,
+                    Periodo = item.Iest_Peri
+                };
             return View(model);
             //return RedirectToAction("AutoevaluacionSST");
         }

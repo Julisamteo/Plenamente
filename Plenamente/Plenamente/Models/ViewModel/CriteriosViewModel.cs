@@ -55,6 +55,7 @@ namespace Plenamente.Models.ViewModel
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; }
         public int? ItemEstandarId { get; set; }
+        public ElementoViewModel ItemEstandar { get; set; }
         public int? Nit { get; set; }
         public int AutoEvaluacionId { get; set; }
         public DateTime Registro { get; set; }

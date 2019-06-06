@@ -11,7 +11,7 @@
     max-height: 0;
     overflow: hidden;
     display: block;
-    justify-content:center;
+    justify-content: center;
     margin: auto;
     -webkit-transition: max-height 500ms ease-out;
     -moz-transition: max-height 500ms ease-out;
@@ -19,13 +19,14 @@
     transition: max-height 500ms ease-out;
 }
 
-.plegable.desplegado {
-    max-height: 800px;
-    -webkit-transition: max-height 500ms ease-out;
-    -moz-transition: max-height 500ms ease-out;
-    -o-transition: max-height 500ms ease-out;
-    transition: max-height 500ms ease-out;
-}
+    .plegable.desplegado {
+        max-height: 800px;
+        -webkit-transition: max-height 500ms ease-out;
+        -moz-transition: max-height 500ms ease-out;
+        -o-transition: max-height 500ms ease-out;
+        transition: max-height 500ms ease-out;
+    }
+
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
@@ -33,6 +34,7 @@
     background-color: #6CB52D;
     border-color: #6CB52D;
 }
+
 .colorVerdeBack1 {
     cursor: pointer;
     color: #fff;
@@ -44,6 +46,7 @@
     background-color: #6CB52D;
     padding: 20px;
 }
+
 .linkPrincipal {
     display: flex;
     padding: 20px;
@@ -75,6 +78,14 @@
     display: flex;
     height: 100%;
 }
+
+
+.contenidoCuerpo {
+    width: 90%;
+    height: 80vh;
+    margin: 30px 30px 30px 30px;
+}
+
 
 .footerPagina {
     display: flex;
@@ -579,6 +590,7 @@ a {
         font-size: 24px;
         color: #fff;
     }
+
 .centrarContenido {
     display: block;
     width: 50%;
@@ -1570,9 +1582,9 @@ input[type=text], input[type=password], input[type=email], input[type=number], .
         border-bottom: 2px solid #6CB52D;
     }
 
-        input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
-            color: #cccccc;
-        }
+input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
+    color: #cccccc;
+}
 
 input[type=password]:focus {
     background-color: #fff;
@@ -1833,11 +1845,13 @@ progress[value] {
     border: 1px inset #666;
     border-radius: 20px;
 }
+
 progress::-webkit-progress-value {
     background: #6CB52D;
     border-radius: 20px;
 }
-.aeth{
+
+.aeth {
     text-align: justify;
 }
 
