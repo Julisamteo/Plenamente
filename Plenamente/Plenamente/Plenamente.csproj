@@ -228,6 +228,10 @@
     <Compile Include="Migrations\201906061355053_act.Designer.cs">
       <DependentUpon>201906061355053_act.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906061828593_revertColumnError.cs" />
+    <Compile Include="Migrations\201906061828593_revertColumnError.Designer.cs">
+      <DependentUpon>201906061828593_revertColumnError.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -632,6 +636,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906061355053_act.resx">
       <DependentUpon>201906061355053_act.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061828593_revertColumnError.resx">
+      <DependentUpon>201906061828593_revertColumnError.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
