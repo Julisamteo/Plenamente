@@ -4,6 +4,7 @@ using Plenamente.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.IO;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -198,9 +199,8 @@ namespace Plenamente.Controllers
                 };
             return View(model);
             //return RedirectToAction("AutoevaluacionSST");
-        }
-        //Olarte , aca deberia ingeresar el item en id para mantener la referencia de que item se esta relacionando el doc o el cumplimiento , no se aun
-        public ActionResult CargaEvidencia(int idItem = 1)
+        }        
+        public ActionResult CargaEvidencia(int idItem)
         {
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -213,25 +213,44 @@ namespace Plenamente.Controllers
             };
             return View(evidenciaCumplimientoViewModel);
         }
-        //faltan varias cosas y dudas sobre el tipo de documento que se sube pues en la vista no esta ese atributo y otros items que no se entiende LUEGO BORRAMOS LOS COMENTARIOS , NO LOS BORRE PUTO
         [HttpPost]
         public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            ViewBag.Tdca_id = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Tdca_id", "Tdca_Nom");
-            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
-            Evidencia evidencia = new Evidencia
+            var cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(a => a.Cump_Id == model.IdCumplimiento);
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
+            ViewBag.users = new SelectList(db.Users.Where(b => b.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
+            var nombreArchivo = model.NombreDocumento;
+            List<Evidencia> evidencias = db.Tb_Evidencia.Where(f => f.Evid_Nombre == nombreArchivo).ToList();
+            if (evidencias.Count == 0)
             {
-                Evid_Nombre = model.NombreDocumento,
-                Cump_Id = model.IdCumplimiento,
-                Evid_Registro = model.Fecha,
-                Tdca_id = Convert.ToInt32(model.TipoDocumento),
-                Evid_Archivo = model.Archivo.FileName + "prueba"
+                string extensionArchivo = model.Archivo.FileName.Split('.').Last();
 
-            };
-            evidencia.Responsable = AccountData.UsuarioId;
-            db.Tb_Evidencia.Add(evidencia);
-            db.SaveChanges();
+                Evidencia evidencia = new Evidencia
+                {
+                    Evid_Nombre = nombreArchivo,
+                    Cump_Id = model.IdCumplimiento,
+                    Evid_Registro = model.Fecha,
+                    Tdca_id = Convert.ToInt32(model.TipoDocumento),
+                    Evid_Archivo = nombreArchivo + "." + extensionArchivo
+
+                };
+                evidencia.Responsable = AccountData.UsuarioId;
+                db.Tb_Evidencia.Add(evidencia);
+                db.SaveChanges();
+
+                if (model.Archivo.ContentLength > 0)
+                {
+                    var path = Path.Combine(Server.MapPath("~/Files"), nombreArchivo + "." + extensionArchivo);
+                    model.Archivo.SaveAs(path);
+                }
+                ViewBag.exitoso = "Guardado con exito en la ruta";
+            }
+            else
+            {
+                ViewBag.falla = "Ya existe un documento con ese nombre";
+                return View(model);
+            }
             return View(new EvidenciaCumplimientoViewModel());
         }
 
