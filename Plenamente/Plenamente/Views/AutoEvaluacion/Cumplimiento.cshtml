@@ -174,7 +174,10 @@
         });
         NoAplica.addEventListener('change', function () {
             if (this.checked) {
-                btnCumplimiento.style.visibility = 'hidden';
+                if (nocumple.checked)
+                    btnCumplimiento.style.visibility = 'hidden';
+                else
+                    btnCumplimiento.style.visibility = 'visible';
                 Justifica.checked = false;
                 Nojustifica.checked = false;
             } else {
