@@ -1,5 +1,6 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
   <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
@@ -25,6 +26,7 @@
     <UseGlobalApplicationHostFile />
     <NuGetPackageImportStamp>
     </NuGetPackageImportStamp>
+    <TypeScriptToolsVersion>3.3</TypeScriptToolsVersion>
   </PropertyGroup>
   <PropertyGroup Condition=" '$(Configuration)|$(Platform)' == 'Debug|AnyCPU' ">
     <DebugSymbols>true</DebugSymbols>
@@ -179,6 +181,7 @@
     <Compile Include="App_Start\IdentityConfig.cs" />
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
+    <Compile Include="App_Tool\AccountData.cs" />
     <Compile Include="Controllers\ActiCumplimientoesController.cs" />
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\AreaEmpresasController.cs" />
@@ -213,9 +216,13 @@
     <Compile Include="Migrations\201905281417436_prueba.Designer.cs">
       <DependentUpon>201905281417436_prueba.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905311923385_campoResultado.cs" />
-    <Compile Include="Migrations\201905311923385_campoResultado.Designer.cs">
-      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
+    <Compile Include="Migrations\201906031622413_updateDataBase.cs" />
+    <Compile Include="Migrations\201906031622413_updateDataBase.Designer.cs">
+      <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.cs" />
+    <Compile Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.Designer.cs">
+      <DependentUpon>201906052037350_addcoltelefonoempresamodidevidencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -275,7 +282,9 @@
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Models\Usersplandetrabajo.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
+    <Compile Include="Models\ViewModel\CriteriosViewModel.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
+    <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModel.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
     <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
     <Compile Include="Models\ViewModel\Rhigiene.cs" />
@@ -284,14 +293,15 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="Content\bootstrap-theme.css" />
-    <Content Include="Content\bootstrap-theme.min.css" />
+    <Content Include="Content\bootstrap-grid.css" />
+    <Content Include="Content\bootstrap-grid.min.css" />
+    <Content Include="Content\bootstrap-reboot.css" />
+    <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\estilosParciales.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
-    <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
     <Content Include="Imagenes\archivo.png" />
@@ -370,8 +380,22 @@
     <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg" />
     <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg" />
     <Content Include="Scripts\barraprogreso.js" />
+    <Content Include="Scripts\bootstrap.bundle.js" />
+    <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\esm\popper-utils.js" />
+    <Content Include="Scripts\esm\popper-utils.min.js" />
+    <Content Include="Scripts\esm\popper.js" />
+    <Content Include="Scripts\esm\popper.min.js" />
+    <Content Include="Scripts\popper-utils.js" />
+    <Content Include="Scripts\popper-utils.min.js" />
+    <Content Include="Scripts\popper.js" />
+    <Content Include="Scripts\popper.min.js" />
+    <Content Include="Scripts\umd\popper-utils.js" />
+    <Content Include="Scripts\umd\popper-utils.min.js" />
+    <Content Include="Scripts\umd\popper.js" />
+    <Content Include="Scripts\umd\popper.min.js" />
     <Content Include="Views\admin\Index.cshtml" />
     <Content Include="Views\CargoEmpresas\Create.cshtml" />
     <Content Include="Views\CargoEmpresas\Delete.cshtml" />
@@ -468,6 +492,20 @@
     <Content Include="Views\admin\EditUser.cshtml" />
     <Content Include="Views\admin\EditRoles.cshtml" />
     <Content Include="Views\CargaArchivo\Upload.cshtml" />
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map" />
+    <Content Include="Scripts\bootstrap.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
+    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Content\bootstrap.min.css.map" />
+    <Content Include="Content\bootstrap.css.map" />
+    <Content Include="Content\bootstrap-reboot.min.css.map" />
+    <Content Include="Content\bootstrap-reboot.css.map" />
+    <Content Include="Content\bootstrap-grid.min.css.map" />
+    <Content Include="Content\bootstrap-grid.css.map" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -554,6 +592,18 @@
     <Content Include="Views\AutoEvaluaciones\Details.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md" />
+    <Content Include="Scripts\popper.min.js.map" />
+    <Content Include="Scripts\popper.js.map" />
+    <Content Include="Scripts\popper-utils.min.js.map" />
+    <Content Include="Scripts\popper-utils.js.map" />
+    <Content Include="Views\AutoEvaluacion\AutoevaluacionSST.cshtml" />
+    <Content Include="Views\AutoEvaluacion\Cumplimiento.cshtml" />
+    <Content Include="Views\AutoEvaluacion\CargaEvidencia.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -562,14 +612,6 @@
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="fonts\glyphicons-halflings-regular.woff2" />
-    <Content Include="fonts\glyphicons-halflings-regular.woff" />
-    <Content Include="fonts\glyphicons-halflings-regular.ttf" />
-    <Content Include="fonts\glyphicons-halflings-regular.eot" />
-    <Content Include="Content\bootstrap.min.css.map" />
-    <Content Include="Content\bootstrap.css.map" />
-    <Content Include="Content\bootstrap-theme.min.css.map" />
-    <Content Include="Content\bootstrap-theme.css.map" />
     <None Include="packages.config" />
     <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
     <Content Include="Scripts\jquery-3.3.1.min.map" />
@@ -578,15 +620,25 @@
     <EmbeddedResource Include="Migrations\201905281417436_prueba.resx">
       <DependentUpon>201905281417436_prueba.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905311923385_campoResultado.resx">
-      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906031622413_updateDataBase.resx">
+      <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.resx">
+      <DependentUpon>201906052037350_addcoltelefonoempresamodidevidencia.cs</DependentUpon>
+    </EmbeddedResource>
+  </ItemGroup>
+  <ItemGroup>
+    <TypeScriptCompile Include="Scripts\index.d.ts" />
+  </ItemGroup>
+  <ItemGroup>
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
   </PropertyGroup>
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
+  <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.targets')" />
   <Import Project="$(VSToolsPath)\WebApplications\Microsoft.WebApplication.targets" Condition="'$(VSToolsPath)' != ''" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" Condition="false" />
   <Target Name="MvcBuildViews" AfterTargets="AfterBuild" Condition="'$(MvcBuildViews)'=='true'">

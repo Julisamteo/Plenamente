@@ -1,95 +1,263 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
-using System.Web.Mvc;
+﻿using Plenamente.App_Tool;
 using Plenamente.Models;
+using Plenamente.Models.ViewModel;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
 using System.IO;
+using System.Linq;
+using System.Web.Mvc;
 
-namespace Plenamente.Areas.Administrador.Controllers
+namespace Plenamente.Controllers
 {
-   public class AutoEvaluacionController : Controller
-   {
-        // Se declara una variable privada para poder acceder al contexto de la DB.
+    public class AutoevaluacionController : Controller
+    {
         private ApplicationDbContext db = new ApplicationDbContext();
-         //GET: Administrador/AutoEvaluacion
         public ActionResult Index()
-       {
-
-           // Creo una variable 'mymodel' para asociarla con la clase 'AutoEvaluacion' donde estan multiplez i Collections nombrados
-           var mymodel = new AutoEvaluacionn();
-           // Se hace el query por variable  para trearla con el ID correspondiente y listarlo.
-           mymodel.Criterios1=  db.Tb_Criterio.Where(x => x.Crit_Id == 3).ToList();
-           mymodel.Estandars11= db.Tb_Estandar.Where(x => x.Crit_Id == 3 && x.Esta_Id == 2).ToList();
-           mymodel.ItemEstandars111= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1).ToList();
-            mymodel.Cumplimientos111 = db.Tb_Cumplimiento.Where(x => x.Iest_Id == 1).ToList();
-           mymodel.ItemEstandars112= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 5).ToList();
-           mymodel.ItemEstandars113= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 6).ToList();
-           mymodel.ItemEstandars114= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1002).ToList();
-           mymodel.ItemEstandars115= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1003).ToList();
-           mymodel.ItemEstandars116= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1004).ToList();
-           mymodel.ItemEstandars117= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1005).ToList();
-           mymodel.ItemEstandars118= db.Tb_ItemEstandar.Where(x => x.Iest_Id == 1006).ToList();
-
-           //var query  = (from cump in db.Tb_Cumplimiento join iest in db.Tb_ItemEstandar on cump.Iest_Id equals iest.Iest_Id
-           //                  join est in db.Tb_Estandar on iest.Esta_Id equals est.Esta_Id
-           //                  join crit in db.Tb_Criterio on est.Crit_Id equals crit.Crit_Id
-           //                  where cump.Empr_Nit == '1' && crit.Crit_Id=='3' select cump.Cump_Aevidencia);
-        
-         
-            //mymodel.Cumplimientos = db.Tb_Cumplimiento.Where(x => x.Iest_Id == mymodel.ItemEstandars118).ToList();  
-
-            mymodel.Criterios2 = db.Tb_Criterio.Where(x => x.Crit_Id == 4).ToList();
-
-           mymodel.Criterios3 = db.Tb_Criterio.Where(x => x.Crit_Id == 5).ToList();
-           mymodel.Criterios4 = db.Tb_Criterio.Where(x => x.Crit_Id == 6).ToList();
-           mymodel.Criterios5 = db.Tb_Criterio.Where(x => x.Crit_Id == 7).ToList();
-           mymodel.criterios6 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
-           mymodel.Criterios7 = db.Tb_Criterio.Where(x => x.Crit_Id == 8).ToList();
-            
-          
-           return View(/*query*/);
+        {
+            return View();
         }
-         // Intento De crear subir el  con errores. 
-        
-//        // Create File
-//        public ActionResult Create()
-//        {
-//            return View();
-//        }
+        [Authorize]
+        public ActionResult AutoevaluacionSST()
+        {
+            List<CriteriosViewModel> list =
+               db.Tb_Criterio
+                   .Select(c =>
+                       new CriteriosViewModel
+                       {
+                           Id = c.Crit_Id,
+                           Nombre = c.Crit_Nom,
+                           Porcentaje = c.Crit_Porcentaje,
+                           Registro = c.Crit_Registro,
+                           Estandares =
+                           c.Estandars.Select(e =>
+                               new EstandaresViewModel
+                               {
+                                   Id = e.Esta_Id,
+                                   Nombre = e.Esta_Nom,
+                                   Porcentaje = e.Esta_Porcentaje,
+                                   Registro = e.Esta_Registro,
+                                   Elementos =
+                                       e.itemEstandars.Select(i =>
+                                           new ElementoViewModel
+                                           {
+                                               Id = i.Iest_Id,
+                                               Descripcion = i.Iest_Desc,
+                                               Observaciones = i.Iest_Observa,
+                                               Porcentaje = i.Iest_Porcentaje,
+                                               Recurso = i.Iest_Recurso,
+                                               Registro = i.Iest_Registro,
+                                               Reursob = i.Iest_Rescursob,
+                                               Verificar = i.Iest_Verificar,
+                                               Video = i.Iest_Video,
+                                               Periodo = i.Iest_Peri,
+                                               Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa).ToList()
+                                           }).ToList()
+                               }).ToList(),
+                       }).ToList();
 
-//            [HttpPost]
-//            [ValidateAntiForgeryToken]
-//            public ActionResult Create(AutoEvaluacion autoEvaluacion)
-//            {
-//                if (ModelState.IsValid)
-//                {
-//                List<Cumplimiento> cumplimientos = new List<Cumplimiento>();
-//                    for (int i = 0; i<Request.Files.Count; i++)
-//                    {
-//                    var file = Request.Files[i];
-//                        if (file != null && file.ContentLength>0)
-//                        {
-//                        string cump_Nombre = Path.GetFileName(file.FileName);
-//                            Cumplimiento cumplimiento = new Cumplimiento()
-//                            {
-//                                Cump_Nombre = cump_Nombre,
-//                                Cump_Aevidencia=Path.GetExtension(cump_Nombre),
-//                                Cump_Guid = Guid.NewGuid()
-//                            };
-//                        cumplimientos.Add(cumplimiento);
+            return View(list);
+        }
+        [Authorize]
+        public ActionResult Cumplimiento(int idItem)
+        {
+            Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem);
+            ItemEstandar item = db.Tb_ItemEstandar.Find(idItem);
+            if (cumplimiento == null)
+            {
+                return View(
+                    new CumplimientoViewModel
+                    {
+                        ItemEstandarId = idItem,
+                        Cumple = true,
+                        Justifica = true,
+                        Nit = AccountData.NitEmpresa,
+                        Registro = DateTime.Now,
+                        ItemEstandar =
+                            new ElementoViewModel
+                            {
+                                Id = item.Iest_Id,
+                                Descripcion = item.Iest_Desc,
+                                Observaciones = item.Iest_Observa,
+                                Porcentaje = item.Iest_Porcentaje,
+                                Recurso = item.Iest_Recurso,
+                                Registro = item.Iest_Registro,
+                                Reursob = item.Iest_Rescursob,
+                                Verificar = item.Iest_Verificar,
+                                Video = item.Iest_Video,
+                                Periodo = item.Iest_Peri
+                            }
+                    });
+            }
+            return View(
+                new CumplimientoViewModel
+                {
+                    AcumMes = cumplimiento.AcumMes?.ToList(),
+                    AutoEvaluacionId = cumplimiento.Auev_Id,
+                    Cumple = cumplimiento.Cump_Cumple,
+                    Evidencias = cumplimiento.Evidencias?.ToList(),
+                    Id = cumplimiento.Cump_Id,
+                    ItemEstandarId = cumplimiento.Iest_Id,
+                    ItemEstandar =
+                            new ElementoViewModel
+                            {
+                                Id = item.Iest_Id,
+                                Descripcion = item.Iest_Desc,
+                                Observaciones = item.Iest_Observa,
+                                Porcentaje = item.Iest_Porcentaje,
+                                Recurso = item.Iest_Recurso,
+                                Registro = item.Iest_Registro,
+                                Reursob = item.Iest_Rescursob,
+                                Verificar = item.Iest_Verificar,
+                                Video = item.Iest_Video,
+                                Periodo = item.Iest_Peri
+                            },
+                    Justifica = cumplimiento.Cump_Justifica,
+                    Nit = AccountData.NitEmpresa,
+                    Nocumple = cumplimiento.Cump_Nocumple,
+                    Nojustifica = cumplimiento.Cump_Nojustifica,
+                    Observaciones = cumplimiento.Cump_Observ,
+                    Registro = cumplimiento.Cump_Registro
+                });
+        }
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize]
+        public ActionResult Cumplimiento([Bind(Include = "AutoEvaluacionId,Cumple,Nocumple,Justifica,Nojustifica,Id,Registro,Observaciones,ItemEstandarId,Nit")] CumplimientoViewModel model)
+        {
+            try
+            {
+                AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa);
+                if (autoevaluacion == null)
+                {
+                    db.Tb_AutoEvaluacion.Add(
+                          new AutoEvaluacion
+                          {
+                              Empr_Nit = AccountData.NitEmpresa,
+                              Auev_Inicio = DateTime.Now,
+                              Auev_Fin = DateTime.Now,
+                              Auev_Nom = "Autoevaluación"
+                          });
+                    db.SaveChanges();
+                }
+                Cumplimiento cumplimiento;
+                if (model.Id == 0)
+                {
+                    cumplimiento =
+                        new Cumplimiento
+                        {
+                            Cump_Id = model.Id,
+                            Cump_Cumple = model.Cumple,
+                            Cump_Nocumple = model.Nocumple,
+                            Cump_Justifica = model.Justifica,
+                            Cump_Nojustifica = model.Nojustifica,
+                            Cump_Observ = model.Observaciones,
+                            Cump_Registro = DateTime.Now,
+                            Empr_Nit = model.Nit,
+                            Iest_Id = model.ItemEstandarId,
+                            Auev_Id = autoevaluacion.Auev_Id,
+                        };
+                    db.Tb_Cumplimiento.Add(cumplimiento);
+                }
+                else
+                {
+                    cumplimiento = db.Tb_Cumplimiento.Find(model.Id);
+                    cumplimiento.Cump_Id = model.Id;
+                    cumplimiento.Cump_Cumple = model.Cumple;
+                    cumplimiento.Cump_Nocumple = model.Nocumple;
+                    cumplimiento.Cump_Justifica = model.Justifica;
+                    cumplimiento.Cump_Nojustifica = model.Nojustifica;
+                    cumplimiento.Cump_Observ = model.Observaciones;
+                    cumplimiento.Cump_Registro = DateTime.Now;
+                    cumplimiento.Empr_Nit = model.Nit;
+                    cumplimiento.Iest_Id = model.ItemEstandarId;
+                    cumplimiento.Auev_Id = autoevaluacion.Auev_Id;
+                    db.Entry(cumplimiento).State = EntityState.Modified;
+                }
+                db.SaveChanges();
+                model.Id = cumplimiento.Cump_Id;
+                ViewBag.TextExitoso = "Se guardaron los datos exitosamente";
+            }
+            catch (Exception ex)
+            {
+                ViewBag.TextError = ex.Message;
+            }
+            ItemEstandar item = db.Tb_ItemEstandar.Find(model.ItemEstandarId);
+            model.ItemEstandar =
+                new ElementoViewModel
+                {
+                    Id = item.Iest_Id,
+                    Descripcion = item.Iest_Desc,
+                    Observaciones = item.Iest_Observa,
+                    Porcentaje = item.Iest_Porcentaje,
+                    Recurso = item.Iest_Recurso,
+                    Registro = item.Iest_Registro,
+                    Reursob = item.Iest_Rescursob,
+                    Verificar = item.Iest_Verificar,
+                    Video = item.Iest_Video,
+                    Periodo = item.Iest_Peri
+                };
+            return View(model);
+            //return RedirectToAction("AutoevaluacionSST");
+        }
+        public ActionResult CargaEvidencia(int idItem)
+        {
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
 
-//                        var path = Path.Combine(Server.MapPath("~/App_Data/Upload/"), cumplimiento.Cump_Guid + cumplimiento.Cump_Aevidencia);
-//                        file.SaveAs(path);
-//                        }
-//                    }
-//                autoEvaluacion.Cumplimientos = cumplimientos;
-//                db.Tb_Cumplimiento.Add(autoEvaluacion);
-//                db.SaveChanges();
-//                return RedirectToAction("Index");
-//                }
+            EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
+            {
+                IdCumplimiento = idItem
 
-//            return View(autoEvaluacion);
-//            }
+            };
+            return View(evidenciaCumplimientoViewModel);
+        }
+        [HttpPost]
+        public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
+        {
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(a => a.Cump_Id == model.IdCumplimiento);
+            ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
+            ViewBag.users = new SelectList(db.Users.Where(b => b.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
+            string nombreArchivo = model.NombreDocumento;
+            List<Evidencia> evidencias = db.Tb_Evidencia.Where(f => f.Evid_Nombre == nombreArchivo).ToList();
+            if (evidencias.Count == 0)
+            {
+                if (model.Archivo == null)
+                {
+                    ViewBag.falla = "Seleccion un archivo";
+                    return View(model);
+                }
+                string extensionArchivo = model.Archivo.FileName.Split('.').Last();
+
+                Evidencia evidencia = new Evidencia
+                {
+                    Evid_Nombre = nombreArchivo,
+                    Cump_Id = model.IdCumplimiento,
+                    Evid_Registro = model.Fecha,
+                    Tdca_id = Convert.ToInt32(model.TipoDocumento),
+                    Evid_Archivo = nombreArchivo + "." + extensionArchivo
+
+                };
+                evidencia.Responsable = AccountData.UsuarioId;
+                db.Tb_Evidencia.Add(evidencia);
+                db.SaveChanges();
+
+                if (model.Archivo.ContentLength > 0)
+                {
+                    string path = Path.Combine(Server.MapPath("~/Files"), nombreArchivo + "." + extensionArchivo);
+                    model.Archivo.SaveAs(path);
+                }
+                ViewBag.exitoso = "Guardado con exito en la ruta";
+            }
+            else
+            {
+                ViewBag.falla = "Ya existe un documento con ese nombre";
+                return View(model);
+            }
+            return View(new EvidenciaCumplimientoViewModel());
+        }
+
     }
-   }
+}
