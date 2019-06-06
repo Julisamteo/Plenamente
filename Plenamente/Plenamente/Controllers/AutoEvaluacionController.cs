@@ -224,6 +224,11 @@ namespace Plenamente.Controllers
             List<Evidencia> evidencias = db.Tb_Evidencia.Where(f => f.Evid_Nombre == nombreArchivo).ToList();
             if (evidencias.Count == 0)
             {
+                if (model.Archivo==null)
+                {
+                    ViewBag.falla = "Seleccion un archivo";
+                    return View(model);
+                }
                 string extensionArchivo = model.Archivo.FileName.Split('.').Last();
 
                 Evidencia evidencia = new Evidencia
