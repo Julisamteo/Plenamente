@@ -158,7 +158,6 @@ namespace Plenamente.Controllers
                             Auev_Id = autoevaluacion.Auev_Id,
                         };
                     db.Tb_Cumplimiento.Add(cumplimiento);
-                    db.SaveChanges();
                 }
                 else
                 {
@@ -174,8 +173,9 @@ namespace Plenamente.Controllers
                     cumplimiento.Iest_Id = model.ItemEstandarId;
                     cumplimiento.Auev_Id = autoevaluacion.Auev_Id;
                     db.Entry(cumplimiento).State = EntityState.Modified;
-                    db.SaveChanges();
                 }
+                db.SaveChanges();
+                model.Id = cumplimiento.Cump_Id;
                 ViewBag.TextExitoso = "Se guardaron los datos exitosamente";
             }
             catch (Exception ex)
@@ -199,7 +199,7 @@ namespace Plenamente.Controllers
                 };
             return View(model);
             //return RedirectToAction("AutoevaluacionSST");
-        }        
+        }
         public ActionResult CargaEvidencia(int idItem)
         {
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
@@ -217,14 +217,14 @@ namespace Plenamente.Controllers
         public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            var cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(a => a.Cump_Id == model.IdCumplimiento);
+            Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(a => a.Cump_Id == model.IdCumplimiento);
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
             ViewBag.users = new SelectList(db.Users.Where(b => b.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
-            var nombreArchivo = model.NombreDocumento;
+            string nombreArchivo = model.NombreDocumento;
             List<Evidencia> evidencias = db.Tb_Evidencia.Where(f => f.Evid_Nombre == nombreArchivo).ToList();
             if (evidencias.Count == 0)
             {
-                if (model.Archivo==null)
+                if (model.Archivo == null)
                 {
                     ViewBag.falla = "Seleccion un archivo";
                     return View(model);
@@ -246,7 +246,7 @@ namespace Plenamente.Controllers
 
                 if (model.Archivo.ContentLength > 0)
                 {
-                    var path = Path.Combine(Server.MapPath("~/Files"), nombreArchivo + "." + extensionArchivo);
+                    string path = Path.Combine(Server.MapPath("~/Files"), nombreArchivo + "." + extensionArchivo);
                     model.Archivo.SaveAs(path);
                 }
                 ViewBag.exitoso = "Guardado con exito en la ruta";
