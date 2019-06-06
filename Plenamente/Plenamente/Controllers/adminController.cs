@@ -5,10 +5,12 @@ using PagedList;
 using Plenamente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -23,6 +25,20 @@ namespace Plenamente.Areas.Administrador.Controllers
         public ActionResult Index()
         {
             return View();
+        }
+        
+        public ActionResult Users(string searchString)
+        {
+            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona);
+                           // from s in db.Users
+                           //select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                usuarios = usuarios.Where(s => s.Pers_Nom1.Contains(searchString)
+                                       || s.Pers_Apel1.Contains(searchString));
+            } 
+            var userss = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona);
+                return View(usuarios.ToList());
         }
 
         // Controllers
@@ -108,15 +124,13 @@ namespace Plenamente.Areas.Administrador.Controllers
 
                     col_UserDTO.Add(objUserDTO);
                     ViewBag.Empr_Nit = item.Empr_Nit;
+                    
                 }
 
                 // Set the number of pages
                 var _UserDTOAsIPagedList =
                     new StaticPagedList<ExpandedUserDTO>
-                    (
-                        col_UserDTO, intPage, intPageSize, intTotalPageCount
-                        );
-
+                    (col_UserDTO, intPage, intPageSize, intTotalPageCount);
                 return View(_UserDTOAsIPagedList);
             }
             catch (Exception ex)

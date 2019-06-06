@@ -209,9 +209,9 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905281417436_prueba.cs" />
-    <Compile Include="Migrations\201905281417436_prueba.Designer.cs">
-      <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    <Compile Include="Migrations\201906042019109_nombreserio.cs" />
+    <Compile Include="Migrations\201906042019109_nombreserio.Designer.cs">
+      <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -551,6 +551,7 @@
     <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
     <Content Include="Views\admin\TrueUserCreate.cshtml" />
+    <Content Include="Views\admin\Users.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -572,8 +573,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905281417436_prueba.resx">
-      <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906042019109_nombreserio.resx">
+      <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

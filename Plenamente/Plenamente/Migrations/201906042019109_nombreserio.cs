@@ -3,7 +3,7 @@ namespace Plenamente.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class prueba : DbMigration
+    public partial class nombreserio : DbMigration
     {
         public override void Up()
         {
