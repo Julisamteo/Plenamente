@@ -224,6 +224,10 @@
     <Compile Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.Designer.cs">
       <DependentUpon>201906052037350_addcoltelefonoempresamodidevidencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906061340348_Mrge.cs" />
+    <Compile Include="Migrations\201906061340348_Mrge.Designer.cs">
+      <DependentUpon>201906061340348_Mrge.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -625,6 +629,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906052037350_addcoltelefonoempresamodidevidencia.resx">
       <DependentUpon>201906052037350_addcoltelefonoempresamodidevidencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906061340348_Mrge.resx">
+      <DependentUpon>201906061340348_Mrge.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
