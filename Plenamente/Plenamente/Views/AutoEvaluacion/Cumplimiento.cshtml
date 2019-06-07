@@ -25,11 +25,11 @@
                     <br />
                     @if (Model.ItemEstandar.Video != null)
                     {
-                        <video style="width: 100%;" controls>
-                            <source src="@Model.ItemEstandar.Video" type="video/mp4">
-                            <source src="@Model.ItemEstandar.Video" type="video/ogg">
-                            Your browser does not support HTML5 video.
-                        </video>
+                        <iframe style="width: 100%; height: 60vh;"
+                                src="@Model.ItemEstandar.Video"
+                                frameborder="0"
+                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen></iframe>
                     }
                     <hr />
                 </div>
@@ -42,48 +42,38 @@
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
-                        @*<div class="checkbox">*@
                         @Html.EditorFor(model => model.Cumple)
                         @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
-                        @*</div>*@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
-                        @*<div class="checkbox">*@
                         @Html.EditorFor(model => model.Nocumple)
                         @Html.ValidationMessageFor(model => model.Nocumple, "", new { @class = "text-danger" })
-                        @*</div>*@
                     </div>
                 </div>
             </div>
-            <div class="row">
+            <div class="row" id="divJustifica" style="visibility: @(Model.Cumple ? "hidden" : "visible");">
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
-                        @*<div class="checkbox">*@
                         @Html.EditorFor(model => model.Justifica)
                         @Html.ValidationMessageFor(model => model.Justifica, "", new { @class = "text-danger" })
-                        @*</div>*@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
-                        @*<div class="checkbox">*@
                         @Html.EditorFor(model => model.Nojustifica)
                         @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
-                        @*</div>*@
                     </div>
                 </div>
                 <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
                     <div class="form-group">
                         @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
-                        @*<div class="checkbox">*@
                         @Html.EditorFor(model => model.NoAplica)
                         @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
-                        @*</div>*@
                     </div>
                 </div>
             </div>
@@ -104,11 +94,11 @@
                     <input id="btnCumplimiento" type="button" onclick="location.href = '@Url.Action("CargaEvidencia", new { idItem = Model.Id })';" class="btn btn-default" value="Agregar evidencia" style="visibility: @(Model.Id == 0 ? "hidden" : Model.Nocumple && Model.NoAplica ? "hidden" : "visible");" />
                 </div>
             </div>
-            <div class="row">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <label class="text-danger">@ViewBag.TextError</label>
-                <label class="text-success">@ViewBag.TextExitoso</label>
-            </div>
+        </div>
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="text-danger">@ViewBag.TextError</label>
+            <label class="text-success">@ViewBag.TextExitoso</label>
         </div>
     }
 </div>
@@ -127,6 +117,7 @@
         var Nojustifica = document.getElementById("Nojustifica");
         var NoAplica = document.getElementById("NoAplica");
         var btnCumplimiento = document.getElementById("btnCumplimiento");
+        var divJustifica = document.getElementById("divJustifica");
         var Id = document.getElementById("Id");
         cumple.addEventListener('change', function () {
             if (Id.value && Id.value !== "0")
@@ -134,9 +125,13 @@
             else
                 btnCumplimiento.style.visibility = 'hidden';
             Nojustifica.checked = false;
-            Justifica.checked = false;
             NoAplica.checked = false;
             nocumple.checked = !this.checked;
+            if (this.checked)
+                divJustifica.style.visibility = 'hidden';
+            else
+                divJustifica.style.visibility = 'visible';
+            Justifica.checked = cumple.checked;
         });
         nocumple.addEventListener('change', function () {
             if (Id.value && Id.value !== "0")
@@ -144,9 +139,14 @@
             else
                 btnCumplimiento.style.visibility = 'hidden';
             Nojustifica.checked = false;
-            Justifica.checked = false;
             NoAplica.checked = false;
             cumple.checked = !this.checked;
+            cumple.checked = !this.checked;
+            if (this.checked)
+                divJustifica.style.visibility = 'visible';
+            else
+                divJustifica.style.visibility = 'hidden';
+            Justifica.checked = cumple.checked;
         });
         Justifica.addEventListener('change', function () {
             if (Id.value && Id.value !== "0")

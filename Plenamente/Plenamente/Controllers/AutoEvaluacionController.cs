@@ -20,57 +20,77 @@ namespace Plenamente.Controllers
         [Authorize]
         public ActionResult AutoevaluacionSST()
         {
-            var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-            int numeroTrabajadores = empresa.Empr_Itrabaja;
-            TipoEmpresa tipoEmpresa = null;
-            if (numeroTrabajadores > 0)
+            List<CriteriosViewModel> list = new List<CriteriosViewModel>();
+            try
             {
-                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+                AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
+                if (autoevaluacion == null)
+                {
+                    db.Tb_AutoEvaluacion.Add(
+                          new AutoEvaluacion
+                          {
+                              Empr_Nit = AccountData.NitEmpresa,
+                              Auev_Inicio = DateTime.Now,
+                              Auev_Nom = "Autoevaluación"
+                          });
+                    db.SaveChanges();
+                }
+                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+                int numeroTrabajadores = empresa.Empr_Itrabaja;
+                TipoEmpresa tipoEmpresa = new TipoEmpresa();
+                if (numeroTrabajadores > 0)
+                {
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+                }
+                list =
+                   db.Tb_Criterio
+                       .Select(c =>
+                           new CriteriosViewModel
+                           {
+                               Id = c.Crit_Id,
+                               Nombre = c.Crit_Nom,
+                               Porcentaje = c.Crit_Porcentaje,
+                               Registro = c.Crit_Registro,
+                               Estandares =
+                               c.Estandars
+                                .Select(e =>
+                                   new EstandaresViewModel
+                                   {
+                                       Id = e.Esta_Id,
+                                       Nombre = e.Esta_Nom,
+                                       Porcentaje = e.Esta_Porcentaje,
+                                       Registro = e.Esta_Registro,
+                                       Elementos =
+                                           e.itemEstandars
+                                            .Where(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria)
+                                            .Select(i =>
+                                               new ElementoViewModel
+                                               {
+                                                   Id = i.Iest_Id,
+                                                   Descripcion = i.Iest_Desc,
+                                                   Observaciones = i.Iest_Observa,
+                                                   Porcentaje = i.Iest_Porcentaje,
+                                                   Recurso = i.Iest_Recurso,
+                                                   Registro = i.Iest_Registro,
+                                                   Reursob = i.Iest_Rescursob,
+                                                   Verificar = i.Iest_Verificar,
+                                                   Video = i.Iest_Video,
+                                                   Periodo = i.Iest_Peri,
+                                                   Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa && !cu.AutoEvaluacion.Finalizada).ToList()
+                                               }).ToList()
+                                   }).ToList(),
+                           }).ToList();
             }
-            List<CriteriosViewModel> list =
-               db.Tb_Criterio
-                   .Select(c =>
-                       new CriteriosViewModel
-                       {
-                           Id = c.Crit_Id,
-                           Nombre = c.Crit_Nom,
-                           Porcentaje = c.Crit_Porcentaje,
-                           Registro = c.Crit_Registro,
-                           Estandares =
-                           c.Estandars.Select(e =>
-                               new EstandaresViewModel
-                               {
-                                   Id = e.Esta_Id,
-                                   Nombre = e.Esta_Nom,
-                                   Porcentaje = e.Esta_Porcentaje,
-                                   Registro = e.Esta_Registro,
-                                   Elementos =
-                                       e.itemEstandars
-                                        .Where(ie => tipoEmpresa == null || ie.Categoria == tipoEmpresa.Categoria)
-                                        .Select(i =>
-                                           new ElementoViewModel
-                                           {
-                                               Id = i.Iest_Id,
-                                               Descripcion = i.Iest_Desc,
-                                               Observaciones = i.Iest_Observa,
-                                               Porcentaje = i.Iest_Porcentaje,
-                                               Recurso = i.Iest_Recurso,
-                                               Registro = i.Iest_Registro,
-                                               Reursob = i.Iest_Rescursob,
-                                               Verificar = i.Iest_Verificar,
-                                               Video = i.Iest_Video,
-                                               Periodo = i.Iest_Peri,
-                                               Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa).ToList()
-                                           }).ToList()
-                               }).ToList(),
-                       }).ToList();
-
+            catch (Exception ex)
+            {
+                ViewBag.TextError = ex.Message;
+            }
             return View(list);
         }
         [Authorize]
         public ActionResult Cumplimiento(int idItem)
         {
-            Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem);
+            Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem && !c.AutoEvaluacion.Finalizada);
             ItemEstandar item = db.Tb_ItemEstandar.Find(idItem);
 
             if (cumplimiento == null)
@@ -137,19 +157,7 @@ namespace Plenamente.Controllers
         {
             try
             {
-                AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa);
-                if (autoevaluacion == null)
-                {
-                    db.Tb_AutoEvaluacion.Add(
-                          new AutoEvaluacion
-                          {
-                              Empr_Nit = AccountData.NitEmpresa,
-                              Auev_Inicio = DateTime.Now,
-                              Auev_Fin = DateTime.Now,
-                              Auev_Nom = "Autoevaluación"
-                          });
-                    db.SaveChanges();
-                }
+                AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 Cumplimiento cumplimiento;
                 if (model.Id == 0)
                 {
@@ -210,6 +218,28 @@ namespace Plenamente.Controllers
             return View(model);
             //return RedirectToAction("AutoevaluacionSST");
         }
+        [Authorize]
+        public ActionResult GuardarTerminar()
+        {
+            List<CriteriosViewModel> list = new List<CriteriosViewModel>();
+            try
+            {
+                AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
+                if (autoevaluacion != null)
+                {
+                    autoevaluacion.Auev_Fin = DateTime.Now;
+                    autoevaluacion.Finalizada = true;
+                    db.Entry(autoevaluacion).State = EntityState.Modified;
+                    db.SaveChanges();
+                }
+            }
+            catch (Exception ex)
+            {
+                ViewBag.TextError = ex.Message;
+            }
+
+            return RedirectToAction("Index", "Home");
+        }
         public ActionResult CargaEvidencia(int idItem)
         {
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
@@ -268,6 +298,5 @@ namespace Plenamente.Controllers
             }
             return View(new EvidenciaCumplimientoViewModel());
         }
-
     }
 }

@@ -10,17 +10,18 @@
 <div class="contenidoCuerpo">
     @foreach (var criterio in Model)
     {
-        <hr />
-        <div class="panel panel-default">
-            <div class="panel-heading"><h2>@criterio.Nombre</h2></div>
-            <div class="panel-body">
-                <hr />
-                @if (criterio.Estandares != null)
-                {
+        if (criterio.Estandares != null && criterio.Estandares.Count > 0)
+        {
+            <hr />
+            <div class="panel panel-default">
+                <div class="panel-heading"><h2>@criterio.Nombre</h2></div>
+                <div class="panel-body">
+                    <hr />
+
                     <div class="well well-lg" style="padding-left: 30px;">
                         @foreach (var estandar in criterio.Estandares)
                         {
-                            if (estandar.Elementos != null)
+                            if (estandar.Elementos != null && estandar.Elementos.Count > 0)
                             {
                                 <br />
                                 <h3>@estandar.Nombre</h3>
@@ -30,7 +31,7 @@
                                     <ul class="list-group">
                                         <li class="list-group-item">
                                             <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
-                                            <a href="@Url.Action("Cumplimiento","AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                            <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
                                                 @elemento.Descripcion - @elemento.Porcentaje %
                                             </a>
                                         </li>
@@ -39,12 +40,23 @@
                             }
                         }
                     </div>
-                }
+                </div>
+                <div class="panel-footer"></div>
             </div>
-            <div class="panel-footer"></div>
+            }
+        }
+        <hr />
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar y terminar" class="btn btn-default" />
+            </div>
         </div>
-    }
-</div>
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="text-danger">@ViewBag.TextError</label>
+            <label class="text-success">@ViewBag.TextExitoso</label>
+        </div>
+    </div>
 <div class="contenidoVolver">
     <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
         <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
