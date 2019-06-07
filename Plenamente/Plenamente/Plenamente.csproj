@@ -187,6 +187,7 @@
     <Compile Include="Controllers\CargaArchivoController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
@@ -573,6 +574,11 @@
     <Content Include="Views\AutoEvaluaciones\Details.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

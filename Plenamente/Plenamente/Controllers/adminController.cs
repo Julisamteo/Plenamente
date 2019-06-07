@@ -247,8 +247,8 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Jemp_Id = Jornada,
                     Tvin_Id = TipoVinculacion,
                     Empr_Nit = Empresa,
-                    Espe_Id = EstadoPersona,
-                    Jefe_Id = Jefe
+                    Espe_Id = EstadoPersona
+                    //Jefe_Id = Jefe
                 };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
 
