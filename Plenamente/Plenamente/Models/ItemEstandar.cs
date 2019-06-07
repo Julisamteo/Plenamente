@@ -18,6 +18,7 @@ namespace Plenamente.Models
         [ForeignKey("Estandar")]
         public int Esta_Id { get; set; }
         public Estandar Estandar { get; set; }
+        public short Categoria { get; set; }
 
         public DateTime Iest_Peri { get; set; }
         public string Iest_Observa { get; set; }

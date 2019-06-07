@@ -33,6 +33,7 @@ namespace Plenamente.Models.ViewModel
         public string Video { get; set; }
         public string Recurso { get; set; }
         public string Reursob { get; set; }
+        public short Categoria { get; set; }
         public List<Cumplimiento> Cumplimientos { get; set; }
         public bool ExisteCumplimiento => Cumplimientos.Count() > 0;
     }
@@ -45,7 +46,7 @@ namespace Plenamente.Models.ViewModel
         [Display(Name = "No cumple")]
         public bool Nocumple { get; set; }
         [Display(Name = "No aplica")]
-        public bool NoAplica { get; set; }        
+        public bool NoAplica { get; set; }
         [Display(Name = "Justifica")]
         public bool Justifica { get; set; }
         [Display(Name = "No justifica")]

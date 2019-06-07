@@ -129,7 +129,7 @@
         var btnCumplimiento = document.getElementById("btnCumplimiento");
         var Id = document.getElementById("Id");
         cumple.addEventListener('change', function () {
-            if (Id.value && Id.value !== 0)
+            if (Id.value && Id.value !== "0")
                 btnCumplimiento.style.visibility = 'visible';
             else
                 btnCumplimiento.style.visibility = 'hidden';
@@ -139,7 +139,7 @@
             nocumple.checked = !this.checked;
         });
         nocumple.addEventListener('change', function () {
-            if (Id.value && Id.value !== 0)
+            if (Id.value && Id.value !== "0")
                 btnCumplimiento.style.visibility = 'visible';
             else
                 btnCumplimiento.style.visibility = 'hidden';
@@ -149,7 +149,7 @@
             cumple.checked = !this.checked;
         });
         Justifica.addEventListener('change', function () {
-            if (Id.value && Id.value !== 0)
+            if (Id.value && Id.value !== "0")
                 btnCumplimiento.style.visibility = 'visible';
             else
                 btnCumplimiento.style.visibility = 'hidden';
@@ -161,7 +161,7 @@
             }
         });
         Nojustifica.addEventListener('change', function () {
-            if (Id.value && Id.value !== 0)
+            if (Id.value && Id.value !== "0")
                 btnCumplimiento.style.visibility = 'visible';
             else
                 btnCumplimiento.style.visibility = 'hidden';
@@ -176,12 +176,12 @@
             if (this.checked) {
                 if (nocumple.checked)
                     btnCumplimiento.style.visibility = 'hidden';
-                else
+                else if (Id.value && Id.value !== "0")
                     btnCumplimiento.style.visibility = 'visible';
                 Justifica.checked = false;
                 Nojustifica.checked = false;
             } else {
-                if (Id.value && Id.value !== 0)
+                if (Id.value && Id.value !== "0")
                     btnCumplimiento.style.visibility = 'visible';
                 else
                     btnCumplimiento.style.visibility = 'hidden';

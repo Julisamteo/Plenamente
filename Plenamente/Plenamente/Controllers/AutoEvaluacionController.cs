@@ -20,6 +20,13 @@ namespace Plenamente.Controllers
         [Authorize]
         public ActionResult AutoevaluacionSST()
         {
+            var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+            int numeroTrabajadores = empresa.Empr_Itrabaja;
+            TipoEmpresa tipoEmpresa = null;
+            if (numeroTrabajadores > 0)
+            {
+                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+            }
             List<CriteriosViewModel> list =
                db.Tb_Criterio
                    .Select(c =>
@@ -38,7 +45,9 @@ namespace Plenamente.Controllers
                                    Porcentaje = e.Esta_Porcentaje,
                                    Registro = e.Esta_Registro,
                                    Elementos =
-                                       e.itemEstandars.Select(i =>
+                                       e.itemEstandars
+                                        .Where(ie => tipoEmpresa == null || ie.Categoria == tipoEmpresa.Categoria)
+                                        .Select(i =>
                                            new ElementoViewModel
                                            {
                                                Id = i.Iest_Id,
@@ -63,6 +72,7 @@ namespace Plenamente.Controllers
         {
             Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem);
             ItemEstandar item = db.Tb_ItemEstandar.Find(idItem);
+
             if (cumplimiento == null)
             {
                 return View(

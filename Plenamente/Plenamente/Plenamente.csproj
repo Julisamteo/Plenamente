@@ -232,6 +232,10 @@
     <Compile Include="Migrations\201906061828593_revertColumnError.Designer.cs">
       <DependentUpon>201906061828593_revertColumnError.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906070218066_AddTableTipoEmpresaAndCategoriasColumns.cs" />
+    <Compile Include="Migrations\201906070218066_AddTableTipoEmpresaAndCategoriasColumns.Designer.cs">
+      <DependentUpon>201906070218066_AddTableTipoEmpresaAndCategoriasColumns.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -286,6 +290,7 @@
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
     <Compile Include="Models\.cs" />
+    <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
     <Compile Include="Models\Usersplandetrabajo.cs" />
@@ -639,6 +644,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906061828593_revertColumnError.resx">
       <DependentUpon>201906061828593_revertColumnError.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906070218066_AddTableTipoEmpresaAndCategoriasColumns.resx">
+      <DependentUpon>201906070218066_AddTableTipoEmpresaAndCategoriasColumns.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
