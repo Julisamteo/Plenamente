@@ -10,6 +10,7 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
 
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -27,8 +28,23 @@ namespace Plenamente.Areas.Administrador.Controllers
             return View();
         }
         
-        public ActionResult Users(string searchString)
+        public ActionResult Users(string sortOrder, string searchString, string currentFilter, int? page)
         {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
             var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona);
                            // from s in db.Users
                            //select s;
@@ -36,9 +52,19 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 usuarios = usuarios.Where(s => s.Pers_Nom1.Contains(searchString)
                                        || s.Pers_Apel1.Contains(searchString));
-            } 
-            var userss = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona);
-                return View(usuarios.ToList());
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    usuarios = usuarios.OrderByDescending(s => s.Pers_Nom1);
+                    break;
+                default:  // Name ascending 
+                    usuarios = usuarios.OrderBy(s => s.Pers_Nom1);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(usuarios.ToPagedList(pageNumber, pageSize));
         }
 
         // Controllers
