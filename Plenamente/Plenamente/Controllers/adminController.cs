@@ -5,10 +5,13 @@ using PagedList;
 using Plenamente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using PagedList;
+
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -24,6 +27,45 @@ namespace Plenamente.Areas.Administrador.Controllers
         {
             return View();
         }
+        
+        public ActionResult Users(string sortOrder, string searchString, string currentFilter, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona);
+                           // from s in db.Users
+                           //select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                usuarios = usuarios.Where(s => s.Pers_Nom1.Contains(searchString)
+                                       || s.Pers_Apel1.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    usuarios = usuarios.OrderByDescending(s => s.Pers_Nom1);
+                    break;
+                default:  // Name ascending 
+                    usuarios = usuarios.OrderBy(s => s.Pers_Nom1);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(usuarios.ToPagedList(pageNumber, pageSize));
+        }
 
         // Controllers
 
@@ -31,7 +73,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         //Lista Usuarios y genera los botones de crear usuario, crear rol, editar y eliminar usuarios,
         //Incluye el paginado de la lista y la busqueda por la cadena de texto ingresada
         // GET: /Admin/
-        [Authorize(Roles = "SuperAdmin2")]
+        //[Authorize(Roles = "SuperAdmin2")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
         public ActionResult ManageUsers(string searchStringUserNameOrEmail, string currentFilter, int? page)
         {
@@ -108,15 +150,13 @@ namespace Plenamente.Areas.Administrador.Controllers
 
                     col_UserDTO.Add(objUserDTO);
                     ViewBag.Empr_Nit = item.Empr_Nit;
+                    
                 }
 
                 // Set the number of pages
                 var _UserDTOAsIPagedList =
                     new StaticPagedList<ExpandedUserDTO>
-                    (
-                        col_UserDTO, intPage, intPageSize, intTotalPageCount
-                        );
-
+                    (col_UserDTO, intPage, intPageSize, intTotalPageCount);
                 return View(_UserDTOAsIPagedList);
             }
             catch (Exception ex)
@@ -134,7 +174,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
 
         // GET: /Admin/Edit/Create 
-        [Authorize(Roles = "SuperAdmin2")]
+        
         #region public ActionResult Create()
         //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
         public ActionResult Create(int? Empr_Nit)
@@ -166,7 +206,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         //Método POST para enviar los campos llenados del formulario 
         // PUT: /Admin/Create
-        [Authorize(Roles = "SuperAdmin2")]
+       
         [HttpPost]
         [ValidateAntiForgeryToken]
         #region public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
@@ -261,7 +301,8 @@ namespace Plenamente.Areas.Administrador.Controllers
                         // Le asigna un rol al usuario
                         UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
                     }
-
+                    db.Users.Add(objNewAdminUser);
+                    db.SaveChanges();
                     return RedirectToAction("Manageusers");
                 }
                 else
@@ -280,6 +321,80 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
         }
         #endregion
+
+        public ActionResult TrueUserCreate()
+        {
+            ApplicationDbContext db = new ApplicationDbContext();
+            List<TipoDocumento> tipoDocumentoList = db.Tb_TipoDocumento.ToList();
+            ViewBag.TdocBag = new SelectList(tipoDocumentoList, "Tdoc_Id", "Tdoc_Nom");
+            List<Afp> AfpList = db.Tb_Afp.ToList();
+            ViewBag.Afp_Id = new SelectList(AfpList, "Afp_Id", "Afp_Nom");
+            List<Eps> EpsList = db.Tb_Eps.ToList();
+            ViewBag.Eps_Id = new SelectList(EpsList, "Eps_Id", "Eps_Nom");
+            List<Arl> ArlList = db.Tb_Arl.ToList();
+            ViewBag.Arl_Id = new SelectList(ArlList, "Arl_Id", "Arl_Nom");
+            List<Ciudad> CiudadList = db.Tb_Ciudad.ToList();
+            ViewBag.Ciud_Id = new SelectList(CiudadList, "Ciud_Id", "Ciud_Nom");
+            List<SedeCiudad> SedeCiudadList = db.Tb_SedeCiudad.ToList();
+            ViewBag.Sciu_id = new SelectList(SedeCiudadList, "Sciu_Id", "Sciu_Nom");
+            List<CargoEmpresa> CargoEmpresaList = db.Tb_CargoEmpresa.ToList();
+            ViewBag.Cemp_Id = new SelectList(CargoEmpresaList, "Cemp_Id", "Cemp_Nom");
+            List<AreaEmpresa> AreaEmpresaList = db.Tb_AreaEmpresa.ToList();
+            ViewBag.Aemp_Id = new SelectList(AreaEmpresaList, "Aemp_Id", "Aemp_Nom");
+            List<CateLicencia> CateLicenciaList = db.Tb_CateLicencia.ToList();
+            ViewBag.Cate_Id = new SelectList(CateLicenciaList, "Cate_Id", "Cate_Nom");
+            List<Genero> GeneroList = db.Tb_Genero.ToList();
+            ViewBag.Gene_Id = new SelectList(GeneroList, "Gene_Id", "Gene_Nom");
+            List<JornadaEmpresa> JornadaEmpresasList = db.Tb_JornadaEmpresa.ToList();
+            ViewBag.Jemp_Id = new SelectList(JornadaEmpresasList, "Jemp_Id", "Jemp_Nom");
+            List<TipoVinculacion> TipoVinculacionList = db.Tb_TipoVinculacion.ToList();
+            ViewBag.Tvin_Id = new SelectList(TipoVinculacionList, "Tvin_Id", "Tvin_Nom");
+            List<EstadoPersona> EstadoPersonaList = db.Tb_EstadoPersona.ToList();
+            ViewBag.Espe_Id = new SelectList(EstadoPersonaList, "Espe_Id", "Espe_Nom");
+            List<ApplicationUser> IdentityUsersList = db.Users.ToList();
+            ViewBag.Jefe_Id = new SelectList(IdentityUsersList, "Jefe_Id", "Pers_Nom1");
+
+            ViewBag.Roles = GetAllRolesAsSelectList();
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult SaveRecord(ExpandedUserDTO userdto)
+        {
+            try
+            {
+                
+                {
+                    ApplicationUser user = new ApplicationUser();
+                    user.Email = userdto.Email.Trim();
+                    user.UserName = userdto.UserName.Trim();
+                    user.PasswordHash = userdto.Password.Trim();
+                    user.Pers_Nom1 = userdto.Nombres.Trim();
+                    user.Pers_Apel1 = userdto.Apellidos.Trim();
+                    user.Pers_Doc = userdto.Documento;
+                    user.Pers_Licencia = userdto.Pers_Licencia;
+                    user.Pers_LicVence = userdto.Pers_LicVence;
+                    user.Pers_Dir = userdto.Pers_Direccion;
+                    user.Pers_Cemeg = userdto.Pers_ContactoEmeg;
+                    user.Pers_Temeg = userdto.Pers_TelefonoEmeg;
+                    user.Tdoc_Id = userdto.Tdoc_Id;
+                    user.Gene_Id = userdto.Gene_Id;
+                    user.Espe_Id = userdto.Espe_Id;
+                    user.Cate_Id = userdto.Cate_Id;
+
+
+                    db.Users.Add(user);
+                    db.SaveChanges();
+
+                }
+            }
+            catch (Exception ex)
+            {
+                throw ex;
+            }
+            return RedirectToAction("TrueUserCreate");
+        }
 
         // GET: /Admin/Edit/TestUser 
         [Authorize(Roles = "SuperAdmin2")]
