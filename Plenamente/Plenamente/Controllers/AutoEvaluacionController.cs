@@ -36,7 +36,7 @@ namespace Plenamente.Controllers
                     db.SaveChanges();
                 }
                 Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-                int numeroTrabajadores = empresa.Empr_Itrabaja;
+                int numeroTrabajadores = empresa.Empr_Ttrabaja;
                 TipoEmpresa tipoEmpresa = new TipoEmpresa();
                 if (numeroTrabajadores > 0)
                 {
