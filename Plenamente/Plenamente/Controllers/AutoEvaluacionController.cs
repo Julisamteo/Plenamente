@@ -322,13 +322,7 @@ namespace Plenamente.Controllers
 		}
 		[HttpPost]
 		public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
-		{
-			var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-			empresa.Empr_Ttrabaja = model.NumeroEmpleados;
-			db.Entry(empresa).State = EntityState.Modified;
-			db.SaveChanges();
-
-
+		{		
 			return RedirectToAction("AutoevaluacionSST");
 		}
 
@@ -342,28 +336,23 @@ namespace Plenamente.Controllers
 				NumeroEmpleados = numeroEmpleados
 			};
 			return View(model);
-
-			//var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-			//empresa.Empr_Ttrabaja = numeroEmpleados;			
-			//db.Entry(empresa).State = EntityState.Modified;
-			//db.SaveChanges();		
-
-
-
-			//return View();
 		}
 
 		[HttpPost]
 		public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
 		{
 			var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+			if (!ModelState.IsValid)
+			{
+				model.NombreEmpresa = empresa.Empr_Nom;
+				return View(model);
+			}
+			
 			empresa.Empr_Ttrabaja = model.NumeroEmpleados;
 			db.Entry(empresa).State = EntityState.Modified;
 			db.SaveChanges();
 
 			return RedirectToAction("AutoevaluacionSST");
-
-			//return View();
 		}
 	}
 
