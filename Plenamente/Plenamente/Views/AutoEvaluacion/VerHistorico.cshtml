@@ -1,0 +1,57 @@
+﻿@model IEnumerable<Plenamente.Models.ViewModel.AutoEvaluacionViewModel>
+
+@{
+    ViewBag.Title = "Historico Auto Evaluaciones";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+
+<div class="colorVerdeBack">
+    <p>Historico Auto Evaluaciones</p>
+</div>
+<div class="contenidoCuerpo">
+    <table class="table table-bordered text-center justify-content-center">
+        <tr>
+            <th>
+                @Html.DisplayNameFor(model => model.IdentificadorIncremental)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.NameAutoEvaluacion)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auev_Inicio)
+            </th>
+            <th>
+                @Html.DisplayNameFor(model => model.Auev_Fin)
+            </th>
+            <th>
+                Reporte
+            </th>
+        </tr>
+
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.IdentificadorIncremental)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.NameAutoEvaluacion)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auev_Inicio)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Auev_Fin)
+                </td>
+                <td>
+                    <a class="btn btn-success" href="@Url.Action("VerReporte","Reportes", new { id = item.Id })" title="Ver reporte">
+                        Ver
+                    </a>
+
+                </td>
+            </tr>
+        }
+
+    </table>
+
+</div>

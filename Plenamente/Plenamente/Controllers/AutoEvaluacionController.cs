@@ -354,7 +354,34 @@ namespace Plenamente.Controllers
 
 			return RedirectToAction("AutoevaluacionSST");
 		}
-	}
+        public ActionResult VerHistorico()
+        {
+            var EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
+
+            List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
+            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
+
+            foreach (var a in autoEvaluacions)
+            {
+                int identificadorIncremental = 1;
+                AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
+                {
+                    Id = a.Auev_Id,
+                    IdentificadorIncremental = identificadorIncremental,
+                    Auev_Fin = a.Auev_Fin,
+                    AutoEvaluacion = a,
+                    Auev_Inicio = a.Auev_Inicio,
+                    NameAutoEvaluacion = a.Auev_Nom
+                };
+                autoEvaluacionViewModel.Add(autoEvaluacionView);
+                identificadorIncremental++;
+            }
+
+            return View(autoEvaluacionViewModel);
+        }
+
+
+    }
 
 
 }
