@@ -298,5 +298,74 @@ namespace Plenamente.Controllers
             }
             return View(new EvidenciaCumplimientoViewModel());
         }
-    }
+
+		/// <summary>
+		/// 
+		/// </summary>
+		/// <returns></returns>
+		public ActionResult NumeroEmpleados()
+		{
+			ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+			var empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+
+			//Validacion. Existe alguna autoevaluacion en proceso
+			if (db.Tb_AutoEvaluacion.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
+				return RedirectToAction("AutoevaluacionSST");
+
+			EmpresaViewModel model = new EmpresaViewModel
+			{
+				IdEmpresa = empresa.Empr_Nit,
+				NombreEmpresa = empresa.Empr_Nom,
+				NumeroEmpleados = empresa.Empr_Ttrabaja
+			};
+			return View(model);
+		}
+		[HttpPost]
+		public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
+		{
+			var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+			empresa.Empr_Ttrabaja = model.NumeroEmpleados;
+			db.Entry(empresa).State = EntityState.Modified;
+			db.SaveChanges();
+
+
+			return RedirectToAction("AutoevaluacionSST");
+		}
+
+		public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
+		{
+			var empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+			EmpresaViewModel model = new EmpresaViewModel
+			{
+				IdEmpresa = empresa.Empr_Nit,
+				NombreEmpresa = empresa.Empr_Nom,
+				NumeroEmpleados = numeroEmpleados
+			};
+			return View(model);
+
+			//var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+			//empresa.Empr_Ttrabaja = numeroEmpleados;			
+			//db.Entry(empresa).State = EntityState.Modified;
+			//db.SaveChanges();		
+
+
+
+			//return View();
+		}
+
+		[HttpPost]
+		public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
+		{
+			var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+			empresa.Empr_Ttrabaja = model.NumeroEmpleados;
+			db.Entry(empresa).State = EntityState.Modified;
+			db.SaveChanges();
+
+			return RedirectToAction("AutoevaluacionSST");
+
+			//return View();
+		}
+	}
+
+
 }

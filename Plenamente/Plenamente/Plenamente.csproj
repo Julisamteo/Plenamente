@@ -297,6 +297,7 @@
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\CriteriosViewModel.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
+    <Compile Include="Models\ViewModel\EmpresaViewModel.cs" />
     <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModel.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
     <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
@@ -617,6 +618,8 @@
     <Content Include="Views\AutoEvaluacion\AutoevaluacionSST.cshtml" />
     <Content Include="Views\AutoEvaluacion\Cumplimiento.cshtml" />
     <Content Include="Views\AutoEvaluacion\CargaEvidencia.cshtml" />
+    <Content Include="Views\AutoEvaluacion\NumeroEmpleados.cshtml" />
+    <Content Include="Views\AutoEvaluacion\ModificarNumeroEmpleados.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
