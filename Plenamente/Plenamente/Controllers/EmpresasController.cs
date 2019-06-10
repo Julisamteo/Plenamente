@@ -6,6 +6,8 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Microsoft.AspNet.Identity;
+using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Controllers
@@ -15,13 +17,47 @@ namespace Plenamente.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Empresas
-        public ActionResult Index()
+        [Authorize(Roles = "SuperAdmin2")]
+        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
-            var tb_Empresa = db.Tb_Empresa.Include(e => e.Arl).Include(e => e.ClaseArl);
-            return View(tb_Empresa.ToList());
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+            var empresas = from s in db.Tb_Empresa
+                           select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                 empresas = empresas.Where(s => s.Empr_Nom.Contains(searchString)
+                                       || s.Empr_Nom.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    empresas = empresas.OrderByDescending(s => s.Empr_Nom);
+                    break;
+                default:  // Name ascending 
+                    empresas = empresas.OrderBy(s => s.Empr_Nom);
+                    break;
+            }
+            int pageSize = 10;
+            int pageNumber = (page ?? 1);
+            return View(empresas.ToPagedList(pageNumber, pageSize));
         }
 
+
         // GET: Empresas/Details/5
+        [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +73,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: Empresas/Create
+        [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Create()
         {
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
@@ -49,6 +86,7 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_Registro")] Empresa empresa)
         {
             if (ModelState.IsValid)
@@ -64,6 +102,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: Empresas/Edit/5
+        [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -85,6 +124,7 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_Registro")] Empresa empresa)
         {
             if (ModelState.IsValid)
@@ -99,6 +139,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: Empresas/Delete/5
+        [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -114,6 +155,7 @@ namespace Plenamente.Controllers
         }
 
         // POST: Empresas/Delete/5
+        [Authorize(Roles = "SuperAdmin2")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
