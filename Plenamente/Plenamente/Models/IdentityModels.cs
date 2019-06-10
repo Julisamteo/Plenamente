@@ -151,8 +151,7 @@ namespace Plenamente.Models
         public DbSet<PlandeTrabajo> Tb_PlandeTrabajo { get; set; }
         public DbSet<Usersplandetrabajo> Tb_UsersPlandeTrabajo { get; set; }
         public DbSet<Notificacion> Tb_Notificacion { get; set; } 
-        public DbSet<TipoEmpresa> Tb_TipoEmpresa { get; set; }
-        public DbSet<Autoevaluacion_itemEstandar> Tb_Autoevaluacion_itemEstandar { get; set; }
+        public DbSet<TipoEmpresa> Tb_TipoEmpresa { get; set; }        
 
         public static ApplicationDbContext Create()
         {

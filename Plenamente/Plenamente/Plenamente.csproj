@@ -268,6 +268,10 @@
     <Compile Include="Migrations\201906101556155_tablaautoevalaucion_itemestandar.Designer.cs">
       <DependentUpon>201906101556155_tablaautoevalaucion_itemestandar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906102030178_deletetableautoevaluacionitemestandar.cs" />
+    <Compile Include="Migrations\201906102030178_deletetableautoevaluacionitemestandar.Designer.cs">
+      <DependentUpon>201906102030178_deletetableautoevaluacionitemestandar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -277,7 +281,6 @@
     <Compile Include="Models\Arl.cs" />
     <Compile Include="Models\AutoEvaluacion.cs" />
     <Compile Include="Models\AutoEvaluacionn.cs" />
-    <Compile Include="Models\Autoevaluacion_itemEstandar.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
     <Compile Include="Models\Ciudad.cs" />
@@ -706,6 +709,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906101556155_tablaautoevalaucion_itemestandar.resx">
       <DependentUpon>201906101556155_tablaautoevalaucion_itemestandar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906102030178_deletetableautoevaluacionitemestandar.resx">
+      <DependentUpon>201906102030178_deletetableautoevaluacionitemestandar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
