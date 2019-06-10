@@ -18,38 +18,38 @@
 <table id="tablaVista" class="tablaVista">
     <thead class="cabeceraTabla">
         <tr>
-            <th class="colorVerde">
-                Nombre Trabajador
+            <th class="colorVerde" style="width:17%">
+                Nombre
             </th>
-            <th class="colorVerde">
+            <th class="colorVerde" style="width:11%">
                 Documento
             </th>
-            <th class="colorVerde">
+            <th class="colorVerde" style="width:33%">
                 Correo
             </th>
-            <th class="colorVerde">
+            @*<th class="colorVerde">
                 Sede de Trabajo
-            </th>
+            </th>*@
             @*<th class="colorVerde">
                     Ciudad
                 </th>*@
-            <th class="colorVerde">
+            @*<th class="colorVerde">
                 Cargo
-            </th>
+            </th>*@
             @*<th class="colorVerde">
                     Proceso
                 </th>*@
-            <th class="colorVerde">
+            @*<th class="colorVerde">
                 Area de Trabajo
-            </th>
-            <th class="colorVerde">
+            </th>*@
+            <th class="colorVerde" style="width:17%" >
                 Jefe
             </th>
-            <th class="colorVerde">
+            <th class="colorVerde" style="width:10%">
                 Estado
             </th>
-            <th class="colorVerde">
-                Accíones
+            <th class="colorVerde" style="width:14%">
+                Acciones
             </th>
         </tr>
     </thead>
@@ -57,41 +57,41 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                <td style="width:17%">
                     @Html.DisplayFor(modelItem => item.Pers_Nom1) @Html.DisplayFor(modelitem => item.Pers_Apel1)
                 </td>
-                <td>
+                <td style="width:11%">
                     @Html.DisplayFor(modelItem => item.Pers_Doc)
                 </td>
-                <td>
-                     @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
+                <td style="width:33%; text-align:center">
+                    @Html.DisplayFor(modelItem => item.Email)
                 </td>
                 @*<td>
+                    @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
+                </td>
+                <td>
                         Ciudad
-                    </td>*@
+                    </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.CargoEmpresa.Cemp_Nom)
                 </td>
-                @*<td>
+                <td>
                         Proceso
-                    </td>*@
+                </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
+                </td>*@
+                <td style="width:14%">
+                    @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1) @Html.DisplayFor(modelItem => item.Jefe.Pers_Apel1)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1)
+                <td style="width:10%">
+                    @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
                 </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Email)
-                </td>
-                <td>
-                    @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
+                <td style="width:14%">
+                    @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName }) |
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                     {
-                        @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                        @Html.ActionLink("Eliminar", "DeleteUser", new { UserName = item.UserName },
                         new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
                     }
                 </td>

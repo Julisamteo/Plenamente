@@ -225,6 +225,8 @@
     }
 }
 
+
+
 @media screen and (max-width: 450px) {
     body {
     }
@@ -256,6 +258,8 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 13px;
     }
+
+    
 }
 
 
@@ -437,7 +441,7 @@ a {
 
         .contenedor-menu .menu ul li a {
             padding-left: 35px;
-            background: #fff;
+            background: #69BE15;
             color: #000;
         }
 
@@ -1845,4 +1849,8 @@ progress::-webkit-progress-bar {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; /*esta sombra es para simular el borde que he aplicado arriba para Mozilla*/
     border-radius: 20px;
+}
+
+MenuCabezera{
+    background: #65AC1E;
 }
