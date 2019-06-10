@@ -187,6 +187,7 @@
     <Compile Include="Controllers\CargaArchivoController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
@@ -212,6 +213,10 @@
     <Compile Include="Migrations\201906042019109_nombreserio.cs" />
     <Compile Include="Migrations\201906042019109_nombreserio.Designer.cs">
       <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201905311923385_campoResultado.cs" />
+    <Compile Include="Migrations\201905311923385_campoResultado.Designer.cs">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -552,6 +557,11 @@
     <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
     <Content Include="Views\admin\TrueUserCreate.cshtml" />
     <Content Include="Views\admin\Users.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -575,6 +585,9 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201906042019109_nombreserio.resx">
       <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311923385_campoResultado.resx">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>

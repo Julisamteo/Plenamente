@@ -10,7 +10,6 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using PagedList;
 
 
 namespace Plenamente.Areas.Administrador.Controllers
@@ -171,44 +170,34 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // Users *****************************
 
+
+
         // GET: /Admin/Edit/Create 
         
         #region public ActionResult Create()
         //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
         public ActionResult Create(int? Empr_Nit)
         {
-            List<TipoDocumento> tipoDocumentoList = db.Tb_TipoDocumento.ToList();
-            ViewBag.TdocBag = new SelectList(tipoDocumentoList, "Tdoc_Id", "Tdoc_Nom");
-            List<Afp> AfpList = db.Tb_Afp.ToList();
-            ViewBag.Afp_Id = new SelectList(AfpList, "Afp_Id", "Afp_Nom");
-            List<Eps> EpsList = db.Tb_Eps.ToList();
-            ViewBag.Eps_Id = new SelectList(EpsList, "Eps_Id", "Eps_Nom");
-            List<Arl> ArlList = db.Tb_Arl.ToList();
-            ViewBag.Arl_Id = new SelectList(ArlList, "Arl_Id", "Arl_Nom");
-            List<Ciudad> CiudadList = db.Tb_Ciudad.ToList();
-            ViewBag.Ciud_Id = new SelectList(CiudadList, "Ciud_Id", "Ciud_Nom");
-            List<SedeCiudad> SedeCiudadList = db.Tb_SedeCiudad.ToList();
-            ViewBag.Sciu_id = new SelectList(SedeCiudadList, "Sciu_Id", "Sciu_Nom");
-            List<CargoEmpresa> CargoEmpresaList = db.Tb_CargoEmpresa.ToList();
-            ViewBag.Cemp_Id = new SelectList(CargoEmpresaList, "Cemp_Id", "Cemp_Nom");
-            List<AreaEmpresa> AreaEmpresaList = db.Tb_AreaEmpresa.ToList();
-            ViewBag.Aemp_Id = new SelectList(AreaEmpresaList, "Aemp_Id", "Aemp_Nom");
-            List<CateLicencia> CateLicenciaList = db.Tb_CateLicencia.ToList();
-            ViewBag.Cate_Id = new SelectList(CateLicenciaList, "Cate_Id", "Cate_Nom");
-            List<Genero> GeneroList = db.Tb_Genero.ToList();
-            ViewBag.Gene_Id = new SelectList(GeneroList, "Gene_Id", "Gene_Nom");
-            List<JornadaEmpresa> JornadaEmpresasList = db.Tb_JornadaEmpresa.ToList();
-            ViewBag.Jemp_Id = new SelectList(JornadaEmpresasList, "Jemp_Id", "Jemp_Nom");
-            List<TipoVinculacion> TipoVinculacionList = db.Tb_TipoVinculacion.ToList();
-            ViewBag.Tvin_Id = new SelectList(TipoVinculacionList, "Tvin_Id", "Tvin_Nom");
-            List<EstadoPersona> EstadoPersonaList = db.Tb_EstadoPersona.ToList();
-            ViewBag.Espe_Id = new SelectList(EstadoPersonaList, "Espe_Id", "Espe_Nom");
-            List<ApplicationUser> IdentityUsersList = db.Users.ToList();
-            ViewBag.Jefe_Id = new SelectList(IdentityUsersList, "Jefe_Id", "Pers_Nom1");
-
             ExpandedUserDTO objExpandedUserDTO = new ExpandedUserDTO();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+                objExpandedUserDTO.afp = db.Tb_Afp.ToList<Afp>();
+                objExpandedUserDTO.eps = db.Tb_Eps.ToList<Eps>();
+                objExpandedUserDTO.arl = db.Tb_Arl.ToList<Arl>();
+                objExpandedUserDTO.sedeCiudad = db.Tb_SedeCiudad.ToList<SedeCiudad>();
+                objExpandedUserDTO.ciudad = db.Tb_Ciudad.ToList<Ciudad>();
+                objExpandedUserDTO.cargoEmpresa = db.Tb_CargoEmpresa.ToList<CargoEmpresa>();
+                objExpandedUserDTO.areaEmpresa = db.Tb_AreaEmpresa.ToList<AreaEmpresa>();
+                objExpandedUserDTO.cateLicencia = db.Tb_CateLicencia.ToList<CateLicencia>();
+                objExpandedUserDTO.genero = db.Tb_Genero.ToList<Genero>();
+                objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
+                objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
+                objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
+                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
+            }
 
-            ViewBag.Roles = GetAllRolesAsSelectList();
+                ViewBag.Roles = GetAllRolesAsSelectList();
 
             return View(objExpandedUserDTO);
         }
@@ -220,7 +209,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         #region public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
-        public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
+        public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO, ExpandedUserDTO objExpandedUserDTO)
         {
             try
             {
@@ -244,16 +233,17 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var Afp = paramExpandedUserDTO.Afp_Id;
                 var Eps = paramExpandedUserDTO.Eps_Id;
                 var Arl = paramExpandedUserDTO.Arl_Id;
-                var Ciudad = paramExpandedUserDTO.Ciud_Id;
                 var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
-                var CargoEmpresa = paramExpandedUserDTO.Cemp_Id;
+                var Ciudad = paramExpandedUserDTO.Ciud_Id;
+                var Cargo = paramExpandedUserDTO.Cemp_Id;
                 var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
-                var CategoriaLicencia = paramExpandedUserDTO.Cate_Id;
+                var Categoria = paramExpandedUserDTO.Cate_Id;
                 var Genero = paramExpandedUserDTO.Gene_Id;
                 var Jornada = paramExpandedUserDTO.Jemp_Id;
                 var TipoVinculacion = paramExpandedUserDTO.Tvin_Id;
+                var Empresa = paramExpandedUserDTO.Empr_Nit;
                 var EstadoPersona = paramExpandedUserDTO.Espe_Id;
-                var Jefe = paramExpandedUserDTO.Jefe_Id;
+                //var Jefe = paramExpandedUserDTO.Id;
 
 
                 if (Email == "")
@@ -285,19 +275,19 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Pers_Temeg = TelefonoEme,
                     Tdoc_Id = TipoDocumento,
                     Afp_Id = Afp,
-                    Arl_Id = Arl,
                     Eps_Id = Eps,
+                    Arl_Id = Arl,
                     Sciu_Id = SedeCiudad,
-                    Cemp_Id = CargoEmpresa,
+                    Ciud_Id = Ciudad,
+                    Cemp_Id = Cargo,
                     Aemp_Id = AreaEmpresa,
-                    Cate_Id = CategoriaLicencia,
+                    Cate_Id = Categoria,
                     Gene_Id = Genero,
                     Jemp_Id = Jornada,
                     Tvin_Id = TipoVinculacion,
-                    Espe_Id = EstadoPersona,
-                    Jefe_Id = Jefe
-
-
+                    Empr_Nit = Empresa,
+                    Espe_Id = EstadoPersona
+                    //Jefe_Id = Jefe
                 };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
 
@@ -408,7 +398,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: /Admin/Edit/TestUser 
         [Authorize(Roles = "SuperAdmin2")]
         #region public ActionResult EditUser(string UserName)
-        public ActionResult EditUser(string UserName)
+        public ActionResult EditUser(string UserName, string Nombres)
         {
             if (UserName == null)
             {
@@ -444,7 +434,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     return HttpNotFound();
                 }
 
-                return Redirect("~/Admin");
+                return RedirectToAction("Manageusers");
             }
             catch (Exception ex)
             {
@@ -846,12 +836,40 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             // If we could not find the user, throw an exception
             if (result == null) throw new Exception("Could not find the User");
-
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+            }
+            objExpandedUserDTO.Nombres = result.Pers_Nom1;
+            objExpandedUserDTO.Apellidos = result.Pers_Apel1;
+            objExpandedUserDTO.Documento = result.Pers_Doc;
             objExpandedUserDTO.UserName = result.UserName;
             objExpandedUserDTO.Email = result.Email;
             objExpandedUserDTO.LockoutEndDateUtc = result.LockoutEndDateUtc;
             objExpandedUserDTO.AccessFailedCount = result.AccessFailedCount;
             objExpandedUserDTO.PhoneNumber = result.PhoneNumber;
+            objExpandedUserDTO.Pers_Licencia = result.Pers_Licencia;
+            objExpandedUserDTO.Pers_LicVence = result.Pers_LicVence;
+            objExpandedUserDTO.Pers_Direccion = result.Pers_Dir;
+            objExpandedUserDTO.Pers_ContactoEmeg = result.Pers_Cemeg;
+            objExpandedUserDTO.Pers_TelefonoEmeg = result.Pers_Temeg;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+                objExpandedUserDTO.afp = db.Tb_Afp.ToList<Afp>();
+                objExpandedUserDTO.eps = db.Tb_Eps.ToList<Eps>();
+                objExpandedUserDTO.arl = db.Tb_Arl.ToList<Arl>();
+                objExpandedUserDTO.sedeCiudad = db.Tb_SedeCiudad.ToList<SedeCiudad>();
+                objExpandedUserDTO.ciudad = db.Tb_Ciudad.ToList<Ciudad>();
+                objExpandedUserDTO.cargoEmpresa = db.Tb_CargoEmpresa.ToList<CargoEmpresa>();
+                objExpandedUserDTO.areaEmpresa = db.Tb_AreaEmpresa.ToList<AreaEmpresa>();
+                objExpandedUserDTO.cateLicencia = db.Tb_CateLicencia.ToList<CateLicencia>();
+                objExpandedUserDTO.genero = db.Tb_Genero.ToList<Genero>();
+                objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
+                objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
+                objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
+                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
+            }
 
             return objExpandedUserDTO;
         }
@@ -860,8 +878,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #region private ExpandedUserDTO UpdateDTOUser(ExpandedUserDTO objExpandedUserDTO)
         private ExpandedUserDTO UpdateDTOUser(ExpandedUserDTO paramExpandedUserDTO)
         {
-            ApplicationUser result =
-                UserManager.FindByName(paramExpandedUserDTO.UserName);
+            ApplicationUser result = UserManager.FindByName(paramExpandedUserDTO.UserName);
 
             // If we could not find the user, throw an exception
             if (result == null)
@@ -870,6 +887,18 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
 
             result.Email = paramExpandedUserDTO.Email;
+            result.Afp_Id = paramExpandedUserDTO.Afp_Id;
+            result.Arl_Id = paramExpandedUserDTO.Arl_Id;
+            result.Eps_Id = paramExpandedUserDTO.Eps_Id;
+            result.Tdoc_Id = paramExpandedUserDTO.Tdoc_Id;
+            result.Gene_Id = paramExpandedUserDTO.Gene_Id;
+            result.Espe_Id = paramExpandedUserDTO.Espe_Id;
+            result.Cate_Id = paramExpandedUserDTO.Cate_Id;
+            result.Sciu_Id = paramExpandedUserDTO.Sciu_Id;
+            result.Aemp_Id = paramExpandedUserDTO.Aemp_Id;
+            result.Cemp_Id = paramExpandedUserDTO.Cemp_Id;
+            result.Jemp_Id = paramExpandedUserDTO.Jemp_Id;
+            result.Tvin_Id = paramExpandedUserDTO.Tvin_Id;
 
             // Lets check if the account needs to be unlocked
             if (UserManager.IsLockedOut(result.Id))
