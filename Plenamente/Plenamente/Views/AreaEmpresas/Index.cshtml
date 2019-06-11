@@ -51,3 +51,53 @@
     @Html.PagedListPager(Model, page => Url.Action("Index",
         new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
 </div>
+
+@model IEnumerable<Plenamente.Models.ViewModel.CriteriosViewModel>
+@{
+    ViewBag.Title = "Autoevaluación SST";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Autoevaluación SST</p>
+</div>
+<div class="container">
+    @foreach (var criterio in Model)
+    {
+        <hr />
+        <div class="panel panel-default">
+            <div class="panel-heading"><h2>@criterio.Nombre</h2></div>
+            <div class="panel-body">
+                <hr />
+                @if (criterio.Estandares != null)
+                {
+                    <div class="well well-lg" style="padding-left: 30px;">
+                        @foreach (var estandar in criterio.Estandares)
+                        {
+                            if (estandar.Elementos != null)
+                            {
+                                <br />
+                                <h3>@estandar.Nombre</h3>
+                                <br />
+                                foreach (var elemento in estandar.Elementos)
+                                {
+                                    <ul class="list-group">
+                                        <li class="list-group-item">
+                                            <span class="badge"><i class="fade fa-check"></i></span>
+                                            @elemento.Descripcion
+                                        </li>
+                                    </ul>
+                                }
+                            }
+                        }
+                    </div>
+                }
+            </div>
+            <div class="panel-footer"></div>
+        </div>
+    }
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>

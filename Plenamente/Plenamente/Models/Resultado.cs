@@ -12,7 +12,7 @@ namespace Plenamente.Models
         [Key]
         public int Resu_Id { get; set; }
         public DateTime Resu_Respuesta { get; set; }
-
+        public string Resu_Justificacion { get; set; }
         
         //Llave Foranea a la tabla Persona
         [ForeignKey("ApplicationUser")]
@@ -22,5 +22,6 @@ namespace Plenamente.Models
         [ForeignKey("Respuesta")]
         public int Resp_Id { get; set; }
         public Respuesta Respuesta { get; set; }
+
     }
 }

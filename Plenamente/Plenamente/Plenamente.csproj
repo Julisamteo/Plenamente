@@ -51,6 +51,9 @@
     <Reference Include="EntityFramework.SqlServer, Version=6.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <HintPath>..\packages\EntityFramework.6.2.0\lib\net45\EntityFramework.SqlServer.dll</HintPath>
     </Reference>
+    <Reference Include="itextsharp, Version=5.5.13.0, Culture=neutral, PublicKeyToken=8354ae6d2174ddca, processorArchitecture=MSIL">
+      <HintPath>..\packages\iTextSharp.5.5.13\lib\itextsharp.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -189,6 +192,7 @@
     <Compile Include="Controllers\EleProteccionsController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
+    <Compile Include="Controllers\EncuestaUsuariosController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FrecuenciasController.cs" />
@@ -233,6 +237,10 @@
     <Compile Include="Migrations\201905271950135_AddURLSpaces.Designer.cs">
       <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201905311910368_CampoJustificacion.cs" />
+    <Compile Include="Migrations\201905311910368_CampoJustificacion.Designer.cs">
+      <DependentUpon>201905311910368_CampoJustificacion.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -253,6 +261,7 @@
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Encuesta.cs" />
     <Compile Include="Models\EncuestaPersonas.cs" />
+    <Compile Include="Models\EncuestaUsuariosViewModel.cs" />
     <Compile Include="Models\EnvioCorreo.cs" />
     <Compile Include="Models\EprotEmpresa.cs" />
     <Compile Include="Models\Eps.cs" />
@@ -298,6 +307,115 @@
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="bin\Antlr3.Runtime.dll" />
+    <Content Include="bin\Antlr3.Runtime.pdb" />
+    <Content Include="bin\EntityFramework.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.dll" />
+    <Content Include="bin\EntityFramework.SqlServer.xml" />
+    <Content Include="bin\EntityFramework.xml" />
+    <Content Include="bin\es\EntityFramework.resources.dll" />
+    <Content Include="bin\es\EntityFramework.SqlServer.resources.dll" />
+    <Content Include="bin\es\Microsoft.AspNet.Identity.Core.resources.dll" />
+    <Content Include="bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
+    <Content Include="bin\es\Microsoft.AspNet.Identity.Owin.resources.dll" />
+    <Content Include="bin\es\System.Web.Helpers.resources.dll" />
+    <Content Include="bin\es\System.Web.Mvc.resources.dll" />
+    <Content Include="bin\es\System.Web.Optimization.resources.dll" />
+    <Content Include="bin\es\System.Web.Razor.resources.dll" />
+    <Content Include="bin\es\System.Web.WebPages.Deployment.resources.dll" />
+    <Content Include="bin\es\System.Web.WebPages.Razor.resources.dll" />
+    <Content Include="bin\es\System.Web.WebPages.resources.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
+    <Content Include="bin\Microsoft.AspNet.Identity.Owin.xml" />
+    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.dll" />
+    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.xml" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
+    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
+    <Content Include="bin\Microsoft.Owin.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
+    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Cookies.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Facebook.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Google.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
+    <Content Include="bin\Microsoft.Owin.Security.Twitter.xml" />
+    <Content Include="bin\Microsoft.Owin.Security.xml" />
+    <Content Include="bin\Microsoft.Owin.xml" />
+    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
+    <Content Include="bin\Newtonsoft.Json.dll" />
+    <Content Include="bin\Newtonsoft.Json.xml" />
+    <Content Include="bin\Owin.dll" />
+    <Content Include="bin\PagedList.dll" />
+    <Content Include="bin\PagedList.Mvc.dll" />
+    <Content Include="bin\PagedList.Mvc.xml" />
+    <Content Include="bin\PagedList.xml" />
+    <Content Include="bin\Plenamente.dll" />
+    <Content Include="bin\Plenamente.pdb" />
+    <Content Include="bin\roslyn\csc.exe" />
+    <Content Include="bin\roslyn\csi.exe" />
+    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
+    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
+    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
+    <Content Include="bin\roslyn\System.AppContext.dll" />
+    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
+    <Content Include="bin\roslyn\System.Console.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
+    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
+    <Content Include="bin\roslyn\System.IO.Compression.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
+    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
+    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
+    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
+    <Content Include="bin\roslyn\System.Security.Claims.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
+    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
+    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
+    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
+    <Content Include="bin\roslyn\System.ValueTuple.dll" />
+    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
+    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
+    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
+    <Content Include="bin\roslyn\vbc.exe" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe" />
+    <Content Include="bin\System.Diagnostics.DiagnosticSource.dll" />
+    <Content Include="bin\System.Diagnostics.DiagnosticSource.xml" />
+    <Content Include="bin\System.Web.Helpers.dll" />
+    <Content Include="bin\System.Web.Helpers.xml" />
+    <Content Include="bin\System.Web.Mvc.dll" />
+    <Content Include="bin\System.Web.Mvc.xml" />
+    <Content Include="bin\System.Web.Optimization.dll" />
+    <Content Include="bin\System.Web.Optimization.xml" />
+    <Content Include="bin\System.Web.Razor.dll" />
+    <Content Include="bin\System.Web.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
+    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
+    <Content Include="bin\System.Web.WebPages.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.dll" />
+    <Content Include="bin\System.Web.WebPages.Razor.xml" />
+    <Content Include="bin\System.Web.WebPages.xml" />
+    <Content Include="bin\WebGrease.dll" />
     <Content Include="Content\bootstrap-theme.css" />
     <Content Include="Content\bootstrap-theme.min.css" />
     <Content Include="Content\bootstrap.css" />
@@ -305,6 +423,12 @@
     <Content Include="Content\estilosParciales.css" />
     <Content Include="Content\PagedList.css" />
     <Content Include="favicon.ico" />
+    <Content Include="Files\3 %281%29.jpg" />
+    <Content Include="Files\400x204%282%29.png" />
+    <Content Include="Files\600x404.png" />
+    <Content Include="Files\Alfapendiente.txt" />
+    <Content Include="Files\Crud Sencillo.png" />
+    <Content Include="Files\Modelos Solicitud.txt" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
@@ -337,6 +461,7 @@
     <Content Include="Imagenes\Element %289%29-8.png" />
     <Content Include="Imagenes\Element-8.png" />
     <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
+    <Content Include="Imagenes\Fondopng.png" />
     <Content Include="Imagenes\forgot.png" />
     <Content Include="Imagenes\Grey-background.jpg" />
     <Content Include="Imagenes\icon-11.png" />
@@ -359,7 +484,9 @@
     <Content Include="Imagenes\icon-w-18.png" />
     <Content Include="Imagenes\icon-w-19.png" />
     <Content Include="Imagenes\icon-w-20.png" />
+    <Content Include="Imagenes\INGRESA.png" />
     <Content Include="Imagenes\lineas-de-texto.png" />
+    <Content Include="Imagenes\Logoplenamenteblanco.png" />
     <Content Include="Imagenes\Logo_FB.png" />
     <Content Include="Imagenes\Logo_INT.png" />
     <Content Include="Imagenes\Logo_TW.png" />
@@ -381,8 +508,10 @@
     <Content Include="Imagenes\Recurso 8.png" />
     <Content Include="Imagenes\Recurso 9.png" />
     <Content Include="Imagenes\Recurso17.jpg" />
+    <Content Include="Imagenes\security.png" />
     <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg" />
     <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg" />
+    <Content Include="Imagenes\user.png" />
     <Content Include="Scripts\barraprogreso.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
@@ -487,6 +616,23 @@
     <Content Include="Views\admin\EditUser.cshtml" />
     <Content Include="Views\admin\EditRoles.cshtml" />
     <Content Include="Views\CargaArchivo\Upload.cshtml" />
+    <Content Include="bin\Plenamente.dll.config" />
+    <Content Include="bin\roslyn\csc.exe.config" />
+    <Content Include="bin\roslyn\csc.rsp" />
+    <Content Include="bin\roslyn\csi.exe.config" />
+    <Content Include="bin\roslyn\csi.rsp" />
+    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
+    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
+    <Content Include="bin\roslyn\vbc.exe.config" />
+    <Content Include="bin\roslyn\vbc.rsp" />
+    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
+    <Content Include="Files\24997299-318285599.pdf" />
+    <Content Include="Files\afpo2019.xls" />
+    <Content Include="Files\cambios DB.xlsx" />
+    <Content Include="Files\Carta Plan de pagos.docx" />
+    <Content Include="Files\Cine Colombia - Portal Web.pdf" />
+    <Content Include="Files\DbModel.pdf" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -552,8 +698,12 @@
     <Content Include="Views\Aue\Index.cshtml" />
     <Content Include="Views\Aue\Todos.cshtml" />
     <Content Include="Views\EncuestaPersonas\Index.cshtml" />
-    <Content Include="Views\EncuestaPersonas\Prueba.cshtml" />
     <Content Include="Views\EncuestaPersonas\EnviarCorreo.cshtml" />
+    <Content Include="Views\Shared\_LayoutUsuario.cshtml" />
+    <Content Include="Views\Shared\IndexMenuUsuario.cshtml" />
+    <Content Include="Views\Shared\_IndexMenuUsuario.cshtml" />
+    <Content Include="Views\EncuestaUsuarios\Index.cshtml" />
+    <Content Include="Views\EncuestaUsuarios\Encuesta.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -590,6 +740,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905271950135_AddURLSpaces.resx">
       <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201905311910368_CampoJustificacion.resx">
+      <DependentUpon>201905311910368_CampoJustificacion.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
