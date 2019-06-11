@@ -238,6 +238,7 @@
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Encuesta.cs" />
     <Compile Include="Models\EncuestaPersonas.cs" />
+    <Compile Include="Models\EnvioCorreo.cs" />
     <Compile Include="Models\EprotEmpresa.cs" />
     <Compile Include="Models\Eps.cs" />
     <Compile Include="Models\EstadoPersona.cs" />
