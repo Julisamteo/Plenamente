@@ -376,10 +376,9 @@ namespace Plenamente.Controllers
 
             List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
             List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
-
+            int identificadorIncremental = 1;
             foreach (AutoEvaluacion a in autoEvaluacions)
-            {
-                int identificadorIncremental = 1;
+            {                
                 AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
                 {
                     Id = a.Auev_Id,

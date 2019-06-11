@@ -1,4 +1,6 @@
 ﻿using Microsoft.Reporting.WebForms;
+using Plenamente.App_Tool;
+using Plenamente.Models;
 using Plenamente.PlenamenteDataSetTableAdapters;
 using System;
 using System.Collections.Generic;
@@ -12,9 +14,9 @@ namespace Plenamente.Controllers
 {
     public class ReportesController : Controller
     {
-        
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult VerReporte(int id)
-        {
+        {      
             ReportViewer reportViewer =
                     new ReportViewer()
                     {
@@ -23,17 +25,26 @@ namespace Plenamente.Controllers
                         Width = Unit.Percentage(100),
                         Height = Unit.Percentage(100),
                     };
-            PlenamenteDataSet.ResumenAutoEvaluacionDataTable data = new PlenamenteDataSet.ResumenAutoEvaluacionDataTable();
-            ResumenAutoEvaluacionTableAdapter adapter = new ResumenAutoEvaluacionTableAdapter();
-            adapter.Fill(data,id);
-
-
-            if (data != null && data.Rows.Count > 0)
+            PlenamenteDataSet.ResumenCriteriosAutoEvaluacionDataTable data1 = new PlenamenteDataSet.ResumenCriteriosAutoEvaluacionDataTable();
+            ResumenCriteriosAutoEvaluacionTableAdapter adapter1 = new ResumenCriteriosAutoEvaluacionTableAdapter();
+            adapter1.Fill(data1, id, AccountData.NitEmpresa);
+            if (data1 != null && data1.Rows.Count > 0)
             {
-                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DsAutoEvaluacion", data.CopyToDataTable()));
-                reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes\rptAutoEvaluacion.rdlc.";
-                ViewBag.ReportViewer = reportViewer;
+                PlenamenteDataSet.ResumenAutoEvaluacionDataTable data = new PlenamenteDataSet.ResumenAutoEvaluacionDataTable();
+                ResumenAutoEvaluacionTableAdapter adapter = new ResumenAutoEvaluacionTableAdapter();
+                adapter.Fill(data, id);
+
+
+                if (data != null && data.Rows.Count > 0)
+                {
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DsAutoEvaluacion", data.CopyToDataTable()));
+
+                }               
+                reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DsResumenCriterios", data1.CopyToDataTable()));
+                reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes\rptAutoEvaluacion.rdlc.";             
+                ViewBag.ReportViewer = reportViewer;               
             }
+           
             else
             {
                 ViewBag.error("No se encontraron datos para el informe con los filtros utilizados, por favor utilice otros filtros");

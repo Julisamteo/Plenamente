@@ -41,7 +41,7 @@
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Si, es correcto" class="btn btn-default" />
                 @Html.ActionLink("No, quiero corregir", "ModificarNumeroEmpleados", "Autoevaluacion", new { numeroEmpleados = Model.NumeroEmpleados }, new { @class = "btn btn-primary" })
-                @Html.ActionLink("Ver historico", "AutoevaluacionSST", "Autoevaluacion", new { @class = "btn btn-primary" })
+                @Html.ActionLink("Ver historico", "VerHistorico", "Autoevaluacion", new { @class = "btn btn-primary" })
             </div>
             <div class="row">
                 @Html.Label("Es correcta esta informacion?", htmlAttributes: new { @class = "control-label" })
