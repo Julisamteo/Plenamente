@@ -54,8 +54,6 @@ namespace Plenamente.Controllers
             int pageNumber = (page ?? 1);
             return View(empresas.ToPagedList(pageNumber, pageSize));
         }
-
-
         // GET: Empresas/Details/5
         [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Details(int? id)
@@ -71,7 +69,6 @@ namespace Plenamente.Controllers
             }
             return View(empresa);
         }
-
         // GET: Empresas/Create
         [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Create()
@@ -80,7 +77,6 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom");
             return View();
         }
-
         // POST: Empresas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -100,7 +96,6 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom", empresa.Carl_Id);
             return View(empresa);
         }
-
         // GET: Empresas/Edit/5
         [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Edit(int? id)
@@ -118,7 +113,6 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom", empresa.Carl_Id);
             return View(empresa);
         }
-
         // POST: Empresas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
@@ -137,7 +131,6 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom", empresa.Carl_Id);
             return View(empresa);
         }
-
         // GET: Empresas/Delete/5
         [Authorize(Roles = "SuperAdmin2")]
         public ActionResult Delete(int? id)
@@ -153,7 +146,6 @@ namespace Plenamente.Controllers
             }
             return View(empresa);
         }
-
         // POST: Empresas/Delete/5
         [Authorize(Roles = "SuperAdmin2")]
         [HttpPost, ActionName("Delete")]
@@ -165,7 +157,6 @@ namespace Plenamente.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)
