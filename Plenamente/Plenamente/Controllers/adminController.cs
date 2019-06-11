@@ -149,7 +149,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
                     col_UserDTO.Add(objUserDTO);
                     ViewBag.Empr_Nit = item.Empr_Nit;
-                    
+               
                 }
 
                 // Set the number of pages
@@ -398,7 +398,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: /Admin/Edit/TestUser 
         [Authorize(Roles = "SuperAdmin2")]
         #region public ActionResult EditUser(string UserName)
-        public ActionResult EditUser(string UserName, string Nombres)
+        public ActionResult EditUser(string UserName, string Nombres, string id)
         {
             if (UserName == null)
             {
@@ -409,9 +409,29 @@ namespace Plenamente.Areas.Administrador.Controllers
             {
                 return HttpNotFound();
             }
+            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom", objExpandedUserDTO.Tdoc_Id);
             return View(objExpandedUserDTO);
         }
         #endregion
+        // GET: /Admin/Edit/TestUser 
+        [Authorize(Roles = "SuperAdmin2")]
+        #region public ActionResult EditUser(string UserName)
+        public ActionResult EditarUser(string UserName, string Nombres, string id)
+        {
+            if (UserName == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ExpandedUserDTO objExpandedUserDTO = GetUser(UserName);
+            if (objExpandedUserDTO == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom", objExpandedUserDTO.Tdoc_Id);
+            return View(objExpandedUserDTO);
+        }
+        #endregion
+
 
         // PUT: /Admin/EditUser
         [Authorize(Roles = "SuperAdmin2")]
