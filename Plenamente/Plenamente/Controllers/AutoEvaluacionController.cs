@@ -18,11 +18,12 @@ namespace Plenamente.Controllers
             return View();
         }
         [Authorize]
-        public ActionResult AutoevaluacionSST()
+        public ActionResult AutoevaluacionSST(string textError = "")
         {
             List<CriteriosViewModel> list = new List<CriteriosViewModel>();
             try
             {
+                ViewBag.TextError = textError;
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion == null)
                 {
@@ -236,7 +237,7 @@ namespace Plenamente.Controllers
                 int q2 = db.Tb_ItemEstandar.Count(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria);
                 if (q2 > q)
                 {
-                    ViewBag.TextError = "Esta evaluación aún no ha sido finalizada";
+                    return RedirectToAction("AutoevaluacionSST", new { textError = "Esta evaluación aún no ha sido finalizada" });
                 }
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion != null)
@@ -250,6 +251,7 @@ namespace Plenamente.Controllers
             catch (Exception ex)
             {
                 ViewBag.TextError = ex.Message;
+                return RedirectToAction("AutoevaluacionSST");
             }
 
             return RedirectToAction("Index", "Home");
@@ -378,7 +380,7 @@ namespace Plenamente.Controllers
             List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
             int identificadorIncremental = 1;
             foreach (AutoEvaluacion a in autoEvaluacions)
-            {                
+            {
                 AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
                 {
                     Id = a.Auev_Id,
