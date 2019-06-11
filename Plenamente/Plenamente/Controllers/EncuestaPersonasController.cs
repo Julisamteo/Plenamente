@@ -69,7 +69,7 @@ namespace Plenamente.Controllers
             {
                 var id1 = separadas[i];
                 var Correo = db.Users.FirstOrDefault(p => p.Id == id1);
-               if (Correo != null)
+                if (Correo != null)
                 {
                     mensaje.To.Add(Correo.Email);
                 }
