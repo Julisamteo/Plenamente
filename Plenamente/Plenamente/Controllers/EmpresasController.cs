@@ -34,8 +34,9 @@ namespace Plenamente.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-            var empresas = from s in db.Tb_Empresa
-                           select s;
+            var empresas = db.Tb_Empresa.Include(s => s.Arl);
+                           // from s in db.Tb_Empresa
+                           //select s;
             if (!String.IsNullOrEmpty(searchString))
             {
                  empresas = empresas.Where(s => s.Empr_Nom.Contains(searchString)
