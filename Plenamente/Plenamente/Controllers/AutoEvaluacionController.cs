@@ -199,24 +199,25 @@ namespace Plenamente.Controllers
             catch (Exception ex)
             {
                 ViewBag.TextError = ex.Message;
+                ItemEstandar item = db.Tb_ItemEstandar.Find(model.ItemEstandarId);
+                model.ItemEstandar =
+                    new ElementoViewModel
+                    {
+                        Id = item.Iest_Id,
+                        Descripcion = item.Iest_Desc,
+                        Observaciones = item.Iest_Observa,
+                        Porcentaje = item.Iest_Porcentaje,
+                        Recurso = item.Iest_Recurso,
+                        Registro = item.Iest_Registro,
+                        Reursob = item.Iest_Rescursob,
+                        Verificar = item.Iest_Verificar,
+                        Video = item.Iest_Video,
+                        Periodo = item.Iest_Peri
+                    };
+                return View(model);
             }
-            ItemEstandar item = db.Tb_ItemEstandar.Find(model.ItemEstandarId);
-            model.ItemEstandar =
-                new ElementoViewModel
-                {
-                    Id = item.Iest_Id,
-                    Descripcion = item.Iest_Desc,
-                    Observaciones = item.Iest_Observa,
-                    Porcentaje = item.Iest_Porcentaje,
-                    Recurso = item.Iest_Recurso,
-                    Registro = item.Iest_Registro,
-                    Reursob = item.Iest_Rescursob,
-                    Verificar = item.Iest_Verificar,
-                    Video = item.Iest_Video,
-                    Periodo = item.Iest_Peri
-                };
-            return View(model);
-            //return RedirectToAction("AutoevaluacionSST");
+
+            return RedirectToAction("AutoevaluacionSST");
         }
         [Authorize]
         public ActionResult GuardarTerminar()
@@ -224,6 +225,19 @@ namespace Plenamente.Controllers
             List<CriteriosViewModel> list = new List<CriteriosViewModel>();
             try
             {
+                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+                int numeroTrabajadores = empresa.Empr_Ttrabaja;
+                TipoEmpresa tipoEmpresa = new TipoEmpresa();
+                if (numeroTrabajadores > 0)
+                {
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+                }
+                int q = db.Tb_Cumplimiento.Count(c => c.Empr_Nit == AccountData.NitEmpresa && !c.AutoEvaluacion.Finalizada);
+                int q2 = db.Tb_ItemEstandar.Count(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria);
+                if (q2 > q)
+                {
+                    ViewBag.TextError = "Esta evaluación aún no ha sido finalizada";
+                }
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion != null)
                 {
@@ -299,69 +313,71 @@ namespace Plenamente.Controllers
             return View(new EvidenciaCumplimientoViewModel());
         }
 
-		/// <summary>
-		/// 
-		/// </summary>
-		/// <returns></returns>
-		public ActionResult NumeroEmpleados()
-		{
-			ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-			var empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+        /// <summary>
+        /// 
+        /// </summary>
+        /// <returns></returns>
+        public ActionResult NumeroEmpleados()
+        {
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
-			//Validacion. Existe alguna autoevaluacion en proceso
-			if (db.Tb_AutoEvaluacion.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
-				return RedirectToAction("AutoevaluacionSST");
+            //Validacion. Existe alguna autoevaluacion en proceso
+            if (db.Tb_AutoEvaluacion.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
+            {
+                return RedirectToAction("AutoevaluacionSST");
+            }
 
-			EmpresaViewModel model = new EmpresaViewModel
-			{
-				IdEmpresa = empresa.Empr_Nit,
-				NombreEmpresa = empresa.Empr_Nom,
-				NumeroEmpleados = empresa.Empr_Ttrabaja
-			};
-			return View(model);
-		}
-		[HttpPost]
-		public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
-		{		
-			return RedirectToAction("AutoevaluacionSST");
-		}
+            EmpresaViewModel model = new EmpresaViewModel
+            {
+                IdEmpresa = empresa.Empr_Nit,
+                NombreEmpresa = empresa.Empr_Nom,
+                NumeroEmpleados = empresa.Empr_Ttrabaja
+            };
+            return View(model);
+        }
+        [HttpPost]
+        public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
+        {
+            return RedirectToAction("AutoevaluacionSST");
+        }
 
-		public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
-		{
-			var empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
-			EmpresaViewModel model = new EmpresaViewModel
-			{
-				IdEmpresa = empresa.Empr_Nit,
-				NombreEmpresa = empresa.Empr_Nom,
-				NumeroEmpleados = numeroEmpleados
-			};
-			return View(model);
-		}
+        public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
+        {
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            EmpresaViewModel model = new EmpresaViewModel
+            {
+                IdEmpresa = empresa.Empr_Nit,
+                NombreEmpresa = empresa.Empr_Nom,
+                NumeroEmpleados = numeroEmpleados
+            };
+            return View(model);
+        }
 
-		[HttpPost]
-		public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
-		{
-			var empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-			if (!ModelState.IsValid)
-			{
-				model.NombreEmpresa = empresa.Empr_Nom;
-				return View(model);
-			}
-			
-			empresa.Empr_Ttrabaja = model.NumeroEmpleados;
-			db.Entry(empresa).State = EntityState.Modified;
-			db.SaveChanges();
+        [HttpPost]
+        public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
+        {
+            Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+            if (!ModelState.IsValid)
+            {
+                model.NombreEmpresa = empresa.Empr_Nom;
+                return View(model);
+            }
 
-			return RedirectToAction("AutoevaluacionSST");
-		}
+            empresa.Empr_Ttrabaja = model.NumeroEmpleados;
+            db.Entry(empresa).State = EntityState.Modified;
+            db.SaveChanges();
+
+            return RedirectToAction("AutoevaluacionSST");
+        }
         public ActionResult VerHistorico()
         {
-            var EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
+            int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
 
             List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
             List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
 
-            foreach (var a in autoEvaluacions)
+            foreach (AutoEvaluacion a in autoEvaluacions)
             {
                 int identificadorIncremental = 1;
                 AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel

@@ -34,19 +34,41 @@
                     <hr />
                 </div>
             </div>
+            @if (Model.ItemEstandar.Recurso != null || Model.ItemEstandar.Reursob != null)
+            {
+                <div class="row">
+                    @if (Model.ItemEstandar.Recurso != null)
+                    {
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <p class="text-justify">
+                                <a href="@Model.ItemEstandar.Recurso"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo </a>
+                            </p>
+                        </div>
+                    }
+                    @if (Model.ItemEstandar.Reursob != null)
+                    {
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                            <p class="text-justify">
+                                <a href="@Model.ItemEstandar.Reursob"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo</a>
+                            </p>
+                        </div>
+                    }
+                </div>
+            }
+            <hr />
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.ItemEstandarId)
             @Html.HiddenFor(model => model.Nit)
             @Html.HiddenFor(model => model.Registro)
             <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Cumple)
                         @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Nocumple)
@@ -55,21 +77,21 @@
                 </div>
             </div>
             <div class="row" id="divJustifica" style="visibility: @(Model.Cumple ? "hidden" : "visible");">
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Justifica)
                         @Html.ValidationMessageFor(model => model.Justifica, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-2  col-sm-3 col-xs-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Nojustifica)
                         @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-2 col-xs-2">
+                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.NoAplica)
@@ -87,11 +109,12 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
                     <input type="submit" value="Guardar" class="btn btn-default" />
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-                    <input id="btnCumplimiento" type="button" onclick="location.href = '@Url.Action("CargaEvidencia", new { idItem = Model.Id })';" class="btn btn-default" value="Agregar evidencia" style="visibility: @(Model.Id == 0 ? "hidden" : Model.Nocumple && Model.NoAplica ? "hidden" : "visible");" />
+                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                    @*<input id="btnCumplimiento" type="button" onclick="location.href = '@Url.Action("CargaEvidencia", new { idItem = Model.Id })';" class="btn btn-default" value="Agregar evidencia" style="visibility: @(Model.Id == 0 ? "hidden" : Model.Nocumple && Model.NoAplica ? "hidden" : "visible");" />*@
+                    <input id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Más información" style="visibility: hidden;" />
                 </div>
             </div>
         </div>
@@ -99,6 +122,11 @@
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <label class="text-danger">@ViewBag.TextError</label>
             <label class="text-success">@ViewBag.TextExitoso</label>
+        </div>
+        <div class="row" id="divMasInfo" style="visibility: hidden;">
+            <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
+                <label class="custom-control-label"> Aquí información adicional pendiente por definición ......</label>
+            </div>
         </div>
     }
 </div>
@@ -116,14 +144,18 @@
         var Justifica = document.getElementById("Justifica");
         var Nojustifica = document.getElementById("Nojustifica");
         var NoAplica = document.getElementById("NoAplica");
-        var btnCumplimiento = document.getElementById("btnCumplimiento");
+        var btnMasInfo = document.getElementById("btnMasInfo");
         var divJustifica = document.getElementById("divJustifica");
         var Id = document.getElementById("Id");
+        if (nocumple.checked)
+            btnMasInfo.style.visibility = 'visible';
+        else
+            btnMasInfo.style.visibility = 'hidden';
         cumple.addEventListener('change', function () {
-            if (Id.value && Id.value !== "0")
-                btnCumplimiento.style.visibility = 'visible';
+            if (this.checked)
+                btnMasInfo.style.visibility = 'hidden';
             else
-                btnCumplimiento.style.visibility = 'hidden';
+                btnMasInfo.style.visibility = 'visible';
             Nojustifica.checked = false;
             NoAplica.checked = false;
             nocumple.checked = !this.checked;
@@ -134,10 +166,10 @@
             Justifica.checked = cumple.checked;
         });
         nocumple.addEventListener('change', function () {
-            if (Id.value && Id.value !== "0")
-                btnCumplimiento.style.visibility = 'visible';
+            if (this.checked)
+                btnMasInfo.style.visibility = 'visible';
             else
-                btnCumplimiento.style.visibility = 'hidden';
+                btnMasInfo.style.visibility = 'hidden';
             Nojustifica.checked = false;
             NoAplica.checked = false;
             cumple.checked = !this.checked;
@@ -149,10 +181,6 @@
             Justifica.checked = cumple.checked;
         });
         Justifica.addEventListener('change', function () {
-            if (Id.value && Id.value !== "0")
-                btnCumplimiento.style.visibility = 'visible';
-            else
-                btnCumplimiento.style.visibility = 'hidden';
             if (this.checked) {
                 Nojustifica.checked = false;
                 NoAplica.checked = false;
@@ -161,10 +189,6 @@
             }
         });
         Nojustifica.addEventListener('change', function () {
-            if (Id.value && Id.value !== "0")
-                btnCumplimiento.style.visibility = 'visible';
-            else
-                btnCumplimiento.style.visibility = 'hidden';
             if (this.checked) {
                 Justifica.checked = false;
                 NoAplica.checked = false;
@@ -174,17 +198,9 @@
         });
         NoAplica.addEventListener('change', function () {
             if (this.checked) {
-                if (nocumple.checked)
-                    btnCumplimiento.style.visibility = 'hidden';
-                else if (Id.value && Id.value !== "0")
-                    btnCumplimiento.style.visibility = 'visible';
                 Justifica.checked = false;
                 Nojustifica.checked = false;
             } else {
-                if (Id.value && Id.value !== "0")
-                    btnCumplimiento.style.visibility = 'visible';
-                else
-                    btnCumplimiento.style.visibility = 'hidden';
                 Justifica.checked = true;
             }
         });
