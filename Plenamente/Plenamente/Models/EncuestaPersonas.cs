@@ -15,6 +15,5 @@ namespace Plenamente.Models
         public string Cargo { get; set; }
         public string Ciudad { get; set; }
         public string idPersona { get; set; }
-
     }
 }
