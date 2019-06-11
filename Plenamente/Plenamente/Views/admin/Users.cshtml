@@ -88,7 +88,7 @@
                     @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
                 </td>
                 <td style="width:14%">
-                    @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName }) |
+                    @Html.ActionLink("Editar", "EditarUser", new { id = item.Id }) |
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                     {
                         @Html.ActionLink("Eliminar", "DeleteUser", new { UserName = item.UserName },
