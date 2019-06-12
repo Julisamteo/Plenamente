@@ -36,6 +36,7 @@ namespace Plenamente.Models.ViewModel
         public short Categoria { get; set; }
         public List<Cumplimiento> Cumplimientos { get; set; }
         public bool ExisteCumplimiento => Cumplimientos.Count() > 0;
+        public string MasInformacion { get; set; }
     }
     public class CumplimientoViewModel
     {

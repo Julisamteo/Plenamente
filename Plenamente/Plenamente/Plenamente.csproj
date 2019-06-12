@@ -272,6 +272,14 @@
     <Compile Include="Migrations\201906102030178_deletetableautoevaluacionitemestandar.Designer.cs">
       <DependentUpon>201906102030178_deletetableautoevaluacionitemestandar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906112344235_DifferencesMigration.cs" />
+    <Compile Include="Migrations\201906112344235_DifferencesMigration.Designer.cs">
+      <DependentUpon>201906112344235_DifferencesMigration.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.cs" />
+    <Compile Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.Designer.cs">
+      <DependentUpon>201906112358534_AddColumnMasInfoToItemEstandar.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -712,6 +720,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906102030178_deletetableautoevaluacionitemestandar.resx">
       <DependentUpon>201906102030178_deletetableautoevaluacionitemestandar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906112344235_DifferencesMigration.resx">
+      <DependentUpon>201906112344235_DifferencesMigration.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.resx">
+      <DependentUpon>201906112358534_AddColumnMasInfoToItemEstandar.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

@@ -77,6 +77,7 @@ namespace Plenamente.Controllers
                                                    Verificar = i.Iest_Verificar,
                                                    Video = i.Iest_Video,
                                                    Periodo = i.Iest_Peri,
+                                                   MasInformacion = i.Iest_MasInfo,
                                                    Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa && !cu.AutoEvaluacion.Finalizada).ToList()
                                                }).ToList()
                                    }).ToList(),
@@ -116,7 +117,8 @@ namespace Plenamente.Controllers
                                 Reursob = item.Iest_Rescursob,
                                 Verificar = item.Iest_Verificar,
                                 Video = item.Iest_Video,
-                                Periodo = item.Iest_Peri
+                                Periodo = item.Iest_Peri,
+                                MasInformacion = item.Iest_MasInfo
                             }
                     });
             }
@@ -141,7 +143,8 @@ namespace Plenamente.Controllers
                                 Reursob = item.Iest_Rescursob,
                                 Verificar = item.Iest_Verificar,
                                 Video = item.Iest_Video,
-                                Periodo = item.Iest_Peri
+                                Periodo = item.Iest_Peri,
+                                MasInformacion = item.Iest_MasInfo
                             },
                     Justifica = cumplimiento.Cump_Justifica,
                     Nit = AccountData.NitEmpresa,
@@ -213,7 +216,8 @@ namespace Plenamente.Controllers
                         Reursob = item.Iest_Rescursob,
                         Verificar = item.Iest_Verificar,
                         Video = item.Iest_Video,
-                        Periodo = item.Iest_Peri
+                        Periodo = item.Iest_Peri,
+                        MasInformacion = item.Iest_MasInfo
                     };
                 return View(model);
             }
