@@ -238,6 +238,7 @@
     <Compile Include="Models\Empresa.cs" />
     <Compile Include="Models\Encuesta.cs" />
     <Compile Include="Models\EncuestaPersonas.cs" />
+    <Compile Include="Models\EnvioCorreo.cs" />
     <Compile Include="Models\EprotEmpresa.cs" />
     <Compile Include="Models\Eps.cs" />
     <Compile Include="Models\EstadoPersona.cs" />
@@ -302,6 +303,7 @@
     <Content Include="Imagenes\bocadillo.png" />
     <Content Include="Imagenes\brooke-cagle-1181684-unsplash.jpg" />
     <Content Include="Imagenes\carl-heyerdahl-181868-unsplash.jpg" />
+    <Content Include="Imagenes\cerracuenta.png" />
     <Content Include="Imagenes\database.png" />
     <Content Include="Imagenes\Element %2810%29-8.png" />
     <Content Include="Imagenes\Element %2811%29-8.png" />
@@ -346,7 +348,9 @@
     <Content Include="Imagenes\icon-w-18.png" />
     <Content Include="Imagenes\icon-w-19.png" />
     <Content Include="Imagenes\icon-w-20.png" />
+    <Content Include="Imagenes\INGRESA.png" />
     <Content Include="Imagenes\lineas-de-texto.png" />
+    <Content Include="Imagenes\Logoplenamenteblanco.png" />
     <Content Include="Imagenes\Logo_FB.png" />
     <Content Include="Imagenes\Logo_INT.png" />
     <Content Include="Imagenes\Logo_TW.png" />
@@ -370,6 +374,7 @@
     <Content Include="Imagenes\Recurso17.jpg" />
     <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg" />
     <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg" />
+    <Content Include="Imagenes\usuarioblanco.png" />
     <Content Include="Scripts\barraprogreso.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
