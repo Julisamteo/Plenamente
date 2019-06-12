@@ -236,16 +236,16 @@ namespace Plenamente.Controllers
                 if (numeroTrabajadores > 0)
                 {
                     tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
-                }
-                int q = db.Tb_Cumplimiento.Count(c => c.Empr_Nit == AccountData.NitEmpresa && !c.AutoEvaluacion.Finalizada);
-                int q2 = db.Tb_ItemEstandar.Count(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria);
-                if (q2 > q)
-                {
-                    return RedirectToAction("AutoevaluacionSST", new { textError = "Esta evaluación aún no ha sido finalizada" });
-                }
+                }                
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion != null)
                 {
+                    int q = db.Tb_Cumplimiento.Count(c => c.Auev_Id == autoevaluacion.Auev_Id);
+                    int q2 = db.Tb_ItemEstandar.Count(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria);
+                    if (q2 > q)
+                    {
+                        return RedirectToAction("AutoevaluacionSST", new { textError = "Esta evaluación aún no ha sido finalizada" });
+                    }
                     autoevaluacion.Auev_Fin = DateTime.Now;
                     autoevaluacion.Finalizada = true;
                     db.Entry(autoevaluacion).State = EntityState.Modified;
