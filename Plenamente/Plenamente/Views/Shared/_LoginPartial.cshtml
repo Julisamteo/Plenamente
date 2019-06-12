@@ -9,7 +9,7 @@
 
             <div class="row titulosBanner">
                 <div class="col-lg-6 col-sm-6 col-md-6">
-                    @Html.ActionLink("Bienvenido A Plenamente Trabajando " + User.Identity.GetUserName() + "!", "Index", "Manage", routeValues: null, htmlAttributes: new { title = "Manage" })
+                    @Html.ActionLink("Bienvenido A Plenamente Trabajando " + User.Identity.GetUserName() + "!", "Index", "Home", routeValues: null, htmlAttributes: new { title = "Manage" })
                 </div>
                 <div class="col-lg-6 col-sm-6 col-md-6 text-right">
                     <a href="javascript:document.getElementById('logoutForm').submit()">Cerrar sesión</a>
