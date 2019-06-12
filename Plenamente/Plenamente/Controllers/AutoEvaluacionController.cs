@@ -10,8 +10,11 @@ using System.Web.Mvc;
 
 namespace Plenamente.Controllers
 {
+
     public class AutoevaluacionController : Controller
     {
+        private readonly int _RegistrosPorPagina = 10;
+        private PaginadorGenerico<AutoEvaluacionViewModel> _PaginadorCustomers;
         private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
@@ -376,13 +379,18 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("AutoevaluacionSST");
         }
-        public ActionResult VerHistorico()
+        public ActionResult VerHistorico(int pagina = 1)
         {
+            int _TotalRegistros = 0;
             int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
-
-            List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
-            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
             int identificadorIncremental = 1;
+            List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
+            _TotalRegistros = autoEvaluacions.Count();
+            autoEvaluacions=autoEvaluacions.Skip((pagina - 1) * _RegistrosPorPagina)
+                                                 .Take(_RegistrosPorPagina)
+                                                 .ToList();
+            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();          
+            
             foreach (AutoEvaluacion a in autoEvaluacions)
             {
                 AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
@@ -396,9 +404,20 @@ namespace Plenamente.Controllers
                 };
                 autoEvaluacionViewModel.Add(autoEvaluacionView);
                 identificadorIncremental++;
-            }
+            }          
 
-            return View(autoEvaluacionViewModel);
+            var _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+
+            _PaginadorCustomers = new PaginadorGenerico<AutoEvaluacionViewModel>()
+            {
+                RegistrosPorPagina = _RegistrosPorPagina,
+                TotalRegistros = _TotalRegistros,
+                TotalPaginas = _TotalPaginas,
+                PaginaActual = pagina,
+                Resultado = autoEvaluacionViewModel
+            };           
+        
+            return View(_PaginadorCustomers);
         }
 
 
