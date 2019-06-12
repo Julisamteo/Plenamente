@@ -389,8 +389,7 @@ namespace Plenamente.Controllers
             autoEvaluacions=autoEvaluacions.Skip((pagina - 1) * _RegistrosPorPagina)
                                                  .Take(_RegistrosPorPagina)
                                                  .ToList();
-            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();          
-            
+            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();       
             foreach (AutoEvaluacion a in autoEvaluacions)
             {
                 AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
@@ -405,9 +404,7 @@ namespace Plenamente.Controllers
                 autoEvaluacionViewModel.Add(autoEvaluacionView);
                 identificadorIncremental++;
             }          
-
             var _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
-
             _PaginadorCustomers = new PaginadorGenerico<AutoEvaluacionViewModel>()
             {
                 RegistrosPorPagina = _RegistrosPorPagina,
@@ -415,8 +412,7 @@ namespace Plenamente.Controllers
                 TotalPaginas = _TotalPaginas,
                 PaginaActual = pagina,
                 Resultado = autoEvaluacionViewModel
-            };           
-        
+            };         
             return View(_PaginadorCustomers);
         }
 
