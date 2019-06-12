@@ -191,6 +191,7 @@
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
+    <Compile Include="Controllers\ExpandedUserDTOesController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FrecuenciasController.cs" />
     <Compile Include="Controllers\ItemEstandarsController.cs" />
@@ -564,6 +565,11 @@
     <Content Include="Views\Empresas\Edit.cshtml" />
     <Content Include="Views\Empresas\Index.cshtml" />
     <Content Include="Views\admin\EditarUser.cshtml" />
+    <Content Include="Views\ExpandedUserDTOes\Create.cshtml" />
+    <Content Include="Views\ExpandedUserDTOes\Delete.cshtml" />
+    <Content Include="Views\ExpandedUserDTOes\Details.cshtml" />
+    <Content Include="Views\ExpandedUserDTOes\Edit.cshtml" />
+    <Content Include="Views\ExpandedUserDTOes\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

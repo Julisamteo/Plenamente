@@ -38,8 +38,8 @@
             </th>*@
             @*<th class="colorVerde">
                     Proceso
-                </th>*@
-            @*<th class="colorVerde">
+                </th>
+            <th class="colorVerde">
                 Area de Trabajo
             </th>*@
             <th class="colorVerde" style="width:17%" >
@@ -64,7 +64,7 @@
                     @Html.DisplayFor(modelItem => item.Pers_Doc)
                 </td>
                 <td style="width:33%; text-align:center">
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 @*<td>
                     @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
@@ -80,7 +80,7 @@
                 </td>
                 <td>
                     @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
-                </td>*@
+                </td> *@
                 <td style="width:14%">
                     @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1) @Html.DisplayFor(modelItem => item.Jefe.Pers_Apel1)
                 </td>

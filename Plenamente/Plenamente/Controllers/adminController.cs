@@ -6,6 +6,7 @@ using Plenamente.Models;
 using System;
 using System.Collections.Generic;
 using System.Data.Entity;
+using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
 using System.Web;
@@ -430,9 +431,57 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
             ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom", user.Tdoc_Id);
             ViewBag.Gene_Id = new SelectList(db.Tb_Genero, "Gene_Id", "Gene_Nom", user.Gene_Id);
+            ViewBag.Espe_Id = new SelectList(db.Tb_EstadoPersona, "Espe_Id", "Espe_Nom", user.Espe_Id);
+            ViewBag.Cate_Id = new SelectList(db.Tb_CateLicencia, "Cate_Id", "Cate_Nom", user.Cate_Id);
+            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom", user.Afp_Id);
+            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom", user.Eps_Id);
+            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", user.Arl_Id);
+            ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom", user.Tvin_Id);
             return View(user);
         }
         #endregion
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //[Authorize(Roles = "SuperAdmin2")]
+        public ActionResult EditarUser([Bind(Include = "Id,Pers_Nom1,Pers_Apel1,Tdoc_Id,Pers_Doc,Gene_Id,Espe_Id,Pers_Licencia,Pers_LicVence,Cate_Id,Pers_Dir,Pers_Cemeg,Pers_Temeg,Afp_Id,Eps_Id,Arl_Id,Tvin_Id,UserName")] ApplicationUser user)
+        {
+            try
+            {
+
+
+                if (ModelState.IsValid)
+                {
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Users");
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom", user.Tdoc_Id);
+            ViewBag.Gene_Id = new SelectList(db.Tb_Genero, "Gene_Id", "Gene_Nom", user.Gene_Id);
+            ViewBag.Espe_Id = new SelectList(db.Tb_EstadoPersona, "Espe_Id", "Espe_Nom", user.Espe_Id);
+            ViewBag.Cate_Id = new SelectList(db.Tb_CateLicencia, "Cate_Id", "Cate_Nom", user.Cate_Id);
+            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom", user.Afp_Id);
+            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom", user.Eps_Id);
+            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", user.Arl_Id);
+            ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom", user.Tvin_Id);
+            return View(user);
+        }
 
         // PUT: /Admin/EditUser
         [Authorize(Roles = "SuperAdmin2")]

@@ -49,18 +49,95 @@
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            Correo
-            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+            Estado
+            @Html.DropDownList("Espe_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Espe_Id, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
         <div class="col-md-10">
-            Contraseña
-            @Html.EditorFor(model => model.PasswordHash, new { htmlAttributes = new { @class = "" } })
-            @Html.ValidationMessageFor(model => model.PasswordHash, "", new { @class = "text-danger" })
+            No. de licencia de conducir
+            @Html.EditorFor(model => model.Pers_Licencia, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Licencia, "", new { @class = "text-danger" })
         </div>
     </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Fecha de vigencia de la licencia
+            @Html.EditorFor(model => model.Pers_LicVence, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_LicVence, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Categoria Licencia
+            @Html.DropDownList("Cate_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Cate_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Direccíon de Residencia
+            @Html.EditorFor(model => model.Pers_Dir, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Dir, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Contacto de emeregencia
+            @Html.EditorFor(model => model.Pers_Cemeg, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Cemeg, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Teléfono de emergencia
+            @Html.EditorFor(model => model.Pers_Temeg, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Temeg, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Aseguradora de riesgos profesionales
+            @Html.DropDownList("Afp_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Afp_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Empresa promotora de salud
+            @Html.DropDownList("Eps_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Eps_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Aseguradora de riesgos laborales
+            @Html.DropDownList("Arl_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Arl_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Aseguradora de riesgos laborales
+            @Html.DropDownList("Tvin_Id", null, htmlAttributes: new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.Tvin_Id, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        <div class="col-md-10">
+            Direccíon de Residencia
+            @Html.EditorFor(model => model.Pers_Dir, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Pers_Dir, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    @*<label asp-for="Username" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })  </label>
+    <label asp-for="JefeNom" class="col-md-4 control-label"> @Html.EditorFor(model => model.Jefe.Pers_Nom1, new { htmlAttributes = new { @class = "" } })  </label>
+    <label asp-for="JefeApel" class="col-md-4 control-label"> @Html.EditorFor(model => model.Jefe.Pers_Apel1, new { htmlAttributes = new { @class = "" } })  </label>
+    <label asp-for="Area" class="col-md-4 control-label"> @Html.EditorFor(model => model.AreaEmpresa.Aemp_Nom, new { htmlAttributes = new { @class = "" } })  </label>
+    <label asp-for="PW" class="col-md-4 control-label"> @Html.EditorFor(model => model., new { htmlAttributes = new { @class = "" } })  </label>*@
+    <input type="submit" value="Guardar" class="btn btn-default" />
+
 </div>
 }
 
