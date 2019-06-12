@@ -60,7 +60,7 @@ namespace Plenamente.Models
         public int? Espe_Id { get; set; }
         public List<EstadoPersona> estadoPersona { get; set; }
         public string Jefe_Id { get; set; }
-        public List<ApplicationUser> jefe { get; set; }
+        public List<ApplicationUser> Jefe { get; set; }
     }
 
 

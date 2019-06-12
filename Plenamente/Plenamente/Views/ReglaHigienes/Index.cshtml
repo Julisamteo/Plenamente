@@ -38,9 +38,9 @@
         @foreach (var item in Model)
         {
             <tr>
-                <td>
+                @*<td>
                     @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
-                </td>
+                </td>*@
                 <td>
                     <p> <a href="~/Files/@Html.DisplayFor(modelItem => item.Rhig_Archivo)" download="~/Files/@Html.DisplayFor(modelItem => item.Rhig_Archivo)" target="_blank"> Descargar Reglamento </a></p>
                 </td>

@@ -16,6 +16,6 @@ namespace Plenamente.Models.ViewModel
         public HttpPostedFileBase Poli_Archivo { get; set; }
         public string Poli_Nom { get; set; }
         public int Empr_Nit { get; set; }
-       public DateTime Poli_Registro { get; set; }
+        public DateTime Poli_Registro { get; set; }
     }
 }

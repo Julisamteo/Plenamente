@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RemoveResultsRelation : IMigrationMetadata
+    public sealed partial class nombreserio : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RemoveResultsRelation));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(nombreserio));
         
         string IMigrationMetadata.Id
         {
-            get { return "201905271944522_RemoveResultsRelation"; }
+            get { return "201906042019109_nombreserio"; }
         }
         
         string IMigrationMetadata.Source

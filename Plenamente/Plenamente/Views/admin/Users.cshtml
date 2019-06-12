@@ -1,0 +1,106 @@
+﻿@model PagedList.IPagedList<Plenamente.Models.ApplicationUser>
+@using PagedList.Mvc
+@{
+    ViewBag.Title = "Users";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Trabajadores de la empresa </p>
+</div>
+<div class="contenedorBotones">
+    <form asp-action="Users" method="get">
+        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
+        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
+        <a href="@Url.Action("Users", "admin")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
+        <a href="@Url.Action("Create", "admin", new {Empr_Nit = @ViewBag.Empr_Nit})" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+    </form>
+</div>
+<table id="tablaVista" class="tablaVista">
+    <thead class="cabeceraTabla">
+        <tr>
+            <th class="colorVerde">
+                Nombre Trabajador
+            </th>
+            <th class="colorVerde">
+                Documento
+            </th>
+            <th class="colorVerde">
+                Correo
+            </th>
+            <th class="colorVerde">
+                Sede de Trabajo
+            </th>
+            @*<th class="colorVerde">
+                    Ciudad
+                </th>*@
+            <th class="colorVerde">
+                Cargo
+            </th>
+            @*<th class="colorVerde">
+                    Proceso
+                </th>*@
+            <th class="colorVerde">
+                Area de Trabajo
+            </th>
+            <th class="colorVerde">
+                Jefe
+            </th>
+            <th class="colorVerde">
+                Estado
+            </th>
+            <th class="colorVerde">
+                Accíones
+            </th>
+        </tr>
+    </thead>
+    <tbody class="cuerpoTabla">
+        @foreach (var item in Model)
+        {
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pers_Nom1) @Html.DisplayFor(modelitem => item.Pers_Apel1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Pers_Doc)
+                </td>
+                <td>
+                     @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
+                </td>
+                @*<td>
+                        Ciudad
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.CargoEmpresa.Cemp_Nom)
+                </td>
+                @*<td>
+                        Proceso
+                    </td>*@
+                <td>
+                    @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Email)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
+                    @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                    {
+                        @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                        new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
+                    }
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Users",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>
+

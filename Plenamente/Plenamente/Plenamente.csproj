@@ -187,6 +187,7 @@
     <Compile Include="Controllers\CargaArchivoController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
@@ -209,29 +210,13 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905271831141_Notification.cs" />
-    <Compile Include="Migrations\201905271831141_Notification.Designer.cs">
-      <DependentUpon>201905271831141_Notification.cs</DependentUpon>
+    <Compile Include="Migrations\201906042019109_nombreserio.cs" />
+    <Compile Include="Migrations\201906042019109_nombreserio.Designer.cs">
+      <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201905271856599_UserPlantrabajo.cs" />
-    <Compile Include="Migrations\201905271856599_UserPlantrabajo.Designer.cs">
-      <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271928153_RemoveRelationCiudad.cs" />
-    <Compile Include="Migrations\201905271928153_RemoveRelationCiudad.Designer.cs">
-      <DependentUpon>201905271928153_RemoveRelationCiudad.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271941396_RemoveEncuestaResult.cs" />
-    <Compile Include="Migrations\201905271941396_RemoveEncuestaResult.Designer.cs">
-      <DependentUpon>201905271941396_RemoveEncuestaResult.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271944522_RemoveResultsRelation.cs" />
-    <Compile Include="Migrations\201905271944522_RemoveResultsRelation.Designer.cs">
-      <DependentUpon>201905271944522_RemoveResultsRelation.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201905271950135_AddURLSpaces.cs" />
-    <Compile Include="Migrations\201905271950135_AddURLSpaces.Designer.cs">
-      <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
+    <Compile Include="Migrations\201905311923385_campoResultado.cs" />
+    <Compile Include="Migrations\201905311923385_campoResultado.Designer.cs">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -293,6 +278,7 @@
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\DinamicaAu.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
+    <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
     <Compile Include="Models\ViewModel\Rhigiene.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -569,6 +555,13 @@
     <Content Include="Views\AutoEvaluaciones\Details.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
+    <Content Include="Views\admin\TrueUserCreate.cshtml" />
+    <Content Include="Views\admin\Users.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -590,23 +583,11 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905271831141_Notification.resx">
-      <DependentUpon>201905271831141_Notification.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906042019109_nombreserio.resx">
+      <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271856599_UserPlantrabajo.resx">
-      <DependentUpon>201905271856599_UserPlantrabajo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271928153_RemoveRelationCiudad.resx">
-      <DependentUpon>201905271928153_RemoveRelationCiudad.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271941396_RemoveEncuestaResult.resx">
-      <DependentUpon>201905271941396_RemoveEncuestaResult.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271944522_RemoveResultsRelation.resx">
-      <DependentUpon>201905271944522_RemoveResultsRelation.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201905271950135_AddURLSpaces.resx">
-      <DependentUpon>201905271950135_AddURLSpaces.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905311923385_campoResultado.resx">
+      <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <PropertyGroup>
