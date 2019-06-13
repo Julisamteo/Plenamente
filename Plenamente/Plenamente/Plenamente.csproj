@@ -245,10 +245,6 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201906042019109_nombreserio.cs" />
-    <Compile Include="Migrations\201906042019109_nombreserio.Designer.cs">
-      <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201906031622413_updateDataBase.cs" />
     <Compile Include="Migrations\201906031622413_updateDataBase.Designer.cs">
       <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
@@ -284,6 +280,10 @@
     <Compile Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.cs" />
     <Compile Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.Designer.cs">
       <DependentUpon>201906112358534_AddColumnMasInfoToItemEstandar.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906131543042_Test.cs" />
+    <Compile Include="Migrations\201906131543042_Test.Designer.cs">
+      <DependentUpon>201906131543042_Test.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -812,9 +812,6 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201906042019109_nombreserio.resx">
-      <DependentUpon>201906042019109_nombreserio.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201905311923385_campoResultado.resx">
       <DependentUpon>201905311923385_campoResultado.cs</DependentUpon>
     </EmbeddedResource>
@@ -844,6 +841,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.resx">
       <DependentUpon>201906112358534_AddColumnMasInfoToItemEstandar.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906131543042_Test.resx">
+      <DependentUpon>201906131543042_Test.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
