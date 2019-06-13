@@ -49,10 +49,9 @@
 .linkPrincipal {
     display: flex;
     padding: 20px;
-    margin: 20px 20px 20px 20px;
+    margin: 15px 15px 15px 15px;
     justify-content: center;
     background-color: #6CB52D;
-    border-radius: 10px;
 }
 
 .contenidoMenu {
@@ -1227,12 +1226,13 @@ a:link {
 }
 
     .tareasmoduloSection img {
-        width: 10%;
+        width: 5%;
         position: relative;
     }
 
     .tareasmoduloSection p {
-        font-size: 18px;
+        font-size: 22px;
+        font-weight: bolder;
     }
 
 .claseDivicion {
@@ -1247,10 +1247,10 @@ a:link {
     border: 2px solid #6CB52D;
     border-radius: 5px;
     width: 100%;
-    height: auto;
+    height: 350px;
     padding: 2%;
     background: white;
-    margin: 1% 1% -1% 1%;
+    margin: 1% -1% 1%;
 }
 
     .tareasDiv h5 {
@@ -1264,14 +1264,29 @@ a:link {
     border: 2px solid #6CB52D;
     border-radius: 5px;
     width: 60%;
-    height: 300px;
     padding: 2%;
     margin: 1% 1% -1% 1%;
     background: white;
 }
+.moduloDivIzq {
+    display: inline-block;
+    justify-content: center;
+    border: 2px solid #6CB52D;
+    border-radius: 5px;
+    width: 60%;
+    height:300px;
+    padding: 2%;
+    margin: 1% 1% -1% 1%;
+    background: white;
+}
+.tituloModulos{
+    font-size: 25px;
+    font-weight: bold;
+
+}
 
     .moduloDiv img {
-        width: 40%;
+        width: 25%;
         display: block;
         margin: auto;
         position: relative;

@@ -378,12 +378,15 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
+    <Content Include="Imagenes\acompañamiento.jpg" />
     <Content Include="Imagenes\archivo.png" />
     <Content Include="Imagenes\archivom.png" />
     <Content Include="Imagenes\backgroundLogin.png" />
     <Content Include="Imagenes\binoculares.png" />
     <Content Include="Imagenes\bocadillo.png" />
     <Content Include="Imagenes\brooke-cagle-1181684-unsplash.jpg" />
+    <Content Include="Imagenes\capacitacion.JPG" />
+    <Content Include="Imagenes\capacitacion.png" />
     <Content Include="Imagenes\carl-heyerdahl-181868-unsplash.jpg" />
     <Content Include="Imagenes\cerracuenta.png" />
     <Content Include="Imagenes\database.png" />
@@ -410,6 +413,7 @@
     <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
     <Content Include="Imagenes\forgot.png" />
     <Content Include="Imagenes\Grey-background.jpg" />
+    <Content Include="Imagenes\home1.png" />
     <Content Include="Imagenes\icon-11.png" />
     <Content Include="Imagenes\icon-12.png" />
     <Content Include="Imagenes\icon-13.png" />
@@ -432,6 +436,7 @@
     <Content Include="Imagenes\icon-w-20.png" />
     <Content Include="Imagenes\INGRESA.png" />
     <Content Include="Imagenes\lineas-de-texto.png" />
+    <Content Include="Imagenes\list.png" />
     <Content Include="Imagenes\Logoplenamenteblanco.png" />
     <Content Include="Imagenes\Logo_FB.png" />
     <Content Include="Imagenes\Logo_INT.png" />
@@ -454,6 +459,7 @@
     <Content Include="Imagenes\Recurso 8.png" />
     <Content Include="Imagenes\Recurso 9.png" />
     <Content Include="Imagenes\Recurso17.jpg" />
+    <Content Include="Imagenes\seguro.jpg" />
     <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg" />
     <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg" />
     <Content Include="Imagenes\usuarioblanco.png" />

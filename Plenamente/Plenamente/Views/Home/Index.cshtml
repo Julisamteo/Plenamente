@@ -2,44 +2,70 @@
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
+
 <section class="contenidoSection">
     <div class="contenidoDiv">
         @*Seccion de graficos*@
-        <section class="graficosSection">
-            <div class="graficoA">
-                <center><img src="~/Imagenes/graph (1).png" /></center>
-            </div>
-            <div class="graficoB">
-                <center><img src="~/Imagenes/graph.png" /></center>
-            </div>
-            <div class="graficoC">
-                <center><img src="~/Imagenes/pie-chart.png" /></center>
-            </div>
-            <div class="graficoD">
-                <center><img src="~/Imagenes/graph (2).png" /></center>
-            </div>
-        </section>
+        <div style="    border: solid 2px;border-color: #929292;margin: 20px;padding: 40px;">
+            <p style="    font-size: 22px;font-weight: bolder;"><img src="~/Imagenes/home1.png" style="width: 3%;" />Medición del sistema</p>
+            <section class="graficosSection" style="">
+
+
+                <div class="graficoA">
+                    <center>
+                        <p style="font-size: 20px;">Cumplimiento SG-SST</p>
+                        <hr class="claseDivicion" />
+                        <img src="~/Imagenes/graph (1).png" />
+                    </center>
+                </div>
+                <div class="graficoB">
+                    <center>
+                        <p style="font-size: 20px;">Alcance del plan de trabajo anual</p>
+                        <hr class="claseDivicion" />
+                        <img src="~/Imagenes/graph.png" />
+                    </center>
+                </div>
+                <div class="graficoC">
+                    <p style="font-size: 20px;">Medición del sistema</p>
+                    <hr class="claseDivicion" />
+                    <center><img src="~/Imagenes/pie-chart.png" /></center>
+                </div>
+                <div class="graficoD">
+                    <p style="font-size: 20px;">Cumplimiento</p>
+                    <hr class="claseDivicion" />
+                    <center><img src="~/Imagenes/graph (2).png" /></center>
+                </div>
+            </section>
+        </div>
         @*Tareas + Periodico Virtual y modulos*@
         <section class="tareasmoduloSection">
-            <div class="tareasDiv">
-                <p><img src="~/Imagenes/que-hacer.png" /> &nbsp; &nbsp;Mis tareas</p>
-                <hr class="claseDivicion" />
+            <div class="">
+                <div class="tareasDiv">
+                    <p><img src="~/Imagenes/list.png" /> &nbsp; &nbsp;Mis tareas</p>
+                    <hr class="claseDivicion" />
+                </div>
+                <div class="tareasDiv">
+                    <p><img src="~/Imagenes/list.png" /> &nbsp; &nbsp;Tips SST</p>
+                    <hr class="claseDivicion" />
+                </div>
             </div>
             <div class="moduloDiv">
-                <p class="fadeIn two">Módulo de capacitación y periódico virtual.</p>
-                <img class="fadeIn three" src="~/Imagenes/lineas-de-texto.png" />
-                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir a Modulos</a>
-            </div>
-        </section>
-        @*Tareas + Grafico Global*@
-        <section class="tareasmoduloSection">
-            <div class="tareasDiv">
-                <p><img src="~/Imagenes/que-hacer.png" /> &nbsp; &nbsp;Actividades</p>
+                <p class="fadeIn two tituloModulos" style="font-size:25px">Módulo de formación.</p>
                 <hr class="claseDivicion" />
+                <p class="fadeIn two">Sistema de capacitación</p>
+                <br />
+                <img class="fadeIn three" src="~/Imagenes/capacitacion.png" /> @*343134*@
+                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir al Sistema</a>
+                <p class="fadeIn two">Cultura segura</p>
+                <br />
+                <img class="fadeIn three" src="~/Imagenes/seguro.JPG" />
+                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir al Sistema</a>
+                <p class="fadeIn two">Sistema de acompañamiento</p>
+                <br />
+                <img class="fadeIn three" src="~/Imagenes/acompañamiento.jpg" />
+                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir al Sistema</a>
             </div>
-            <div class="moduloDiv">
-                <h1 style="text-align: center">Espacio para grafico Global</h1>
-            </div>
+
         </section>
     </div>
 </section>
