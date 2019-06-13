@@ -208,7 +208,7 @@ namespace Plenamente.Controllers
             if (ModelState.IsValid)
             {
                 var user = await UserManager.FindByNameAsync(model.Email);
-                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Id)))
+                if (user == null || !(await UserManager.IsEmailConfirmedAsync(user.Jefe_Id)))
                 {
                     // No revelar que el usuario no existe o que no está confirmado
                     return View("ForgotPasswordConfirmation");
@@ -259,7 +259,7 @@ namespace Plenamente.Controllers
                 // No revelar que el usuario no existe
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            var result = await UserManager.ResetPasswordAsync(user.Jefe_Id, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -376,7 +376,7 @@ namespace Plenamente.Controllers
                 var result = await UserManager.CreateAsync(user);
                 if (result.Succeeded)
                 {
-                    result = await UserManager.AddLoginAsync(user.Id, info.Login);
+                    result = await UserManager.AddLoginAsync(user.Jefe_Id, info.Login);
                     if (result.Succeeded)
                     {
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
@@ -529,7 +529,7 @@ namespace Plenamente.Controllers
                 var objNewAdminUser = new ApplicationUser { UserName = AdminUserName, Email = AdminUserName };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, AdminPassword);
                 // Put user in Admin role
-                UserManager.AddToRole(objNewAdminUser.Id, "Administrator");
+                UserManager.AddToRole(objNewAdminUser.Jefe_Id, "Administrator");
             }
         }
         #endregion

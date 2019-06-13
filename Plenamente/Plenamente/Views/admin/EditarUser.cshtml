@@ -131,11 +131,14 @@
             @Html.ValidationMessageFor(model => model.Pers_Dir, "", new { @class = "text-danger" })
         </div>
     </div>
-    @*<label asp-for="Username" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })  </label>
-    <label asp-for="JefeNom" class="col-md-4 control-label"> @Html.EditorFor(model => model.Jefe.Pers_Nom1, new { htmlAttributes = new { @class = "" } })  </label>
-    <label asp-for="JefeApel" class="col-md-4 control-label"> @Html.EditorFor(model => model.Jefe.Pers_Apel1, new { htmlAttributes = new { @class = "" } })  </label>
-    <label asp-for="Area" class="col-md-4 control-label"> @Html.EditorFor(model => model.AreaEmpresa.Aemp_Nom, new { htmlAttributes = new { @class = "" } })  </label>
-    <label asp-for="PW" class="col-md-4 control-label"> @Html.EditorFor(model => model., new { htmlAttributes = new { @class = "" } })  </label>*@
+    <div class="form-group">
+        <div class="col-md-10">
+            Email
+            @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
+            @Html.ValidationMessageFor(model => model.Email, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <label asp-for="Username" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })  </label>
     <input type="submit" value="Guardar" class="btn btn-default" />
 
 </div>

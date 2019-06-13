@@ -41,7 +41,7 @@ namespace Plenamente.Controllers
                 model.Email = item.Email;
                 model.Documento = item.Pers_Doc;
                 model.Apellidos = item.Pers_Apel1;
-                model.idPersona = item.Id;
+                model.idPersona = item.Jefe_Id;
 
 
 
@@ -68,7 +68,7 @@ namespace Plenamente.Controllers
             for (int i = 0; i < separadas.Length; i++)
             {
                 var id1 = separadas[i];
-                var Correo = db.Users.FirstOrDefault(p => p.Id == id1);
+                var Correo = db.Users.FirstOrDefault(p => p.Jefe_Id == id1);
                 if (Correo != null)
                 {
                     mensaje.To.Add(Correo.Email);

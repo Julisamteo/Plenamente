@@ -299,7 +299,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     if (strNewRole != "0")
                     {
                         // Le asigna un rol al usuario
-                        UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
+                        UserManager.AddToRole(objNewAdminUser.Jefe_Id, strNewRole);
                     }
                     db.Users.Add(objNewAdminUser);
                     db.SaveChanges();
@@ -605,7 +605,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     ApplicationUser user = UserManager.FindByName(UserName);
 
                     // Put user in role
-                    UserManager.AddToRole(user.Id, strNewRole);
+                    UserManager.AddToRole(user.Jefe_Id, strNewRole);
                 }
 
                 ViewBag.AddRole = new SelectList(RolesUserIsNotIn(UserName));
@@ -655,7 +655,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 // Go get the User
                 ApplicationUser user = UserManager.FindByName(UserName);
                 // Remove User from role
-                UserManager.RemoveFromRoles(user.Id, RoleName);
+                UserManager.RemoveFromRoles(user.Jefe_Id, RoleName);
                 UserManager.Update(user);
 
                 ViewBag.AddRole = new SelectList(RolesUserIsNotIn(UserName));
@@ -971,10 +971,10 @@ namespace Plenamente.Areas.Administrador.Controllers
             result.Tvin_Id = paramExpandedUserDTO.Tvin_Id;
 
             // Lets check if the account needs to be unlocked
-            if (UserManager.IsLockedOut(result.Id))
+            if (UserManager.IsLockedOut(result.Jefe_Id))
             {
                 // Unlock user
-                UserManager.ResetAccessFailedCountAsync(result.Id);
+                UserManager.ResetAccessFailedCountAsync(result.Jefe_Id);
             }
 
             UserManager.Update(result);
@@ -983,13 +983,13 @@ namespace Plenamente.Areas.Administrador.Controllers
             if (!string.IsNullOrEmpty(paramExpandedUserDTO.Password))
             {
                 // Remove current password
-                var removePassword = UserManager.RemovePassword(result.Id);
+                var removePassword = UserManager.RemovePassword(result.Jefe_Id);
                 if (removePassword.Succeeded)
                 {
                     // Add new password
                     var AddPassword =
                         UserManager.AddPassword(
-                            result.Id,
+                            result.Jefe_Id,
                             paramExpandedUserDTO.Password
                             );
 
@@ -1016,7 +1016,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 throw new Exception("Could not find the User");
             }
 
-            UserManager.RemoveFromRoles(user.Id, UserManager.GetRoles(user.Id).ToArray());
+            UserManager.RemoveFromRoles(user.Jefe_Id, UserManager.GetRoles(user.Jefe_Id).ToArray());
             UserManager.Update(user);
             UserManager.Delete(user);
         }
@@ -1029,7 +1029,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             ApplicationUser user = UserManager.FindByName(UserName);
 
             List<UserRoleDTO> colUserRoleDTO =
-                (from objRole in UserManager.GetRoles(user.Id)
+                (from objRole in UserManager.GetRoles(user.Jefe_Id)
                  select new UserRoleDTO
                  {
                      RoleName = objRole,
@@ -1067,7 +1067,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 throw new Exception("Could not find the User");
             }
 
-            var colRolesForUser = UserManager.GetRoles(user.Id).ToList();
+            var colRolesForUser = UserManager.GetRoles(user.Jefe_Id).ToList();
             var colRolesUserInNotIn = (from objRole in colAllRoles
                                        where !colRolesForUser.Contains(objRole)
                                        select objRole).ToList();
