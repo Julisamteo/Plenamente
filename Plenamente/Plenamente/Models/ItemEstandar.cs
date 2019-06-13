@@ -18,6 +18,7 @@ namespace Plenamente.Models
         [ForeignKey("Estandar")]
         public int Esta_Id { get; set; }
         public Estandar Estandar { get; set; }
+        public short Categoria { get; set; }
 
         public DateTime Iest_Peri { get; set; }
         public string Iest_Observa { get; set; }
@@ -25,6 +26,7 @@ namespace Plenamente.Models
         public string Iest_Video { get; set; }
         public string Iest_Recurso { get; set; }
         public string Iest_Rescursob { get; set; }
+        public string Iest_MasInfo   { get; set; }
 
         //Permite a cumplimineto acceder a la Data
         public ICollection<Cumplimiento> Cumplimientos { get; set; }
