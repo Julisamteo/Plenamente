@@ -156,10 +156,10 @@ namespace Plenamente.Areas.Administrador.Controllers
                 objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
                 objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
                 objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
-                objExpandedUserDTO.jefe = db.Users.ToList<ApplicationUser>();
+                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
             }
 
-                ViewBag.Roles = GetAllRolesAsSelectList();
+            ViewBag.Roles = GetAllRolesAsSelectList();
 
             return View(objExpandedUserDTO);
         }
@@ -738,12 +738,37 @@ namespace Plenamente.Areas.Administrador.Controllers
 
             // If we could not find the user, throw an exception
             if (result == null) throw new Exception("Could not find the User");
-
+            
+            objExpandedUserDTO.Nombres = result.Pers_Nom1;
+            objExpandedUserDTO.Apellidos = result.Pers_Apel1;
+            objExpandedUserDTO.Documento = result.Pers_Doc;
             objExpandedUserDTO.UserName = result.UserName;
             objExpandedUserDTO.Email = result.Email;
             objExpandedUserDTO.LockoutEndDateUtc = result.LockoutEndDateUtc;
             objExpandedUserDTO.AccessFailedCount = result.AccessFailedCount;
             objExpandedUserDTO.PhoneNumber = result.PhoneNumber;
+            objExpandedUserDTO.Pers_Licencia = result.Pers_Licencia;
+            objExpandedUserDTO.Pers_LicVence = result.Pers_LicVence;
+            objExpandedUserDTO.Pers_Direccion = result.Pers_Dir;
+            objExpandedUserDTO.Pers_ContactoEmeg = result.Pers_Cemeg;
+            objExpandedUserDTO.Pers_TelefonoEmeg = result.Pers_Temeg;
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+                objExpandedUserDTO.afp = db.Tb_Afp.ToList<Afp>();
+                objExpandedUserDTO.eps = db.Tb_Eps.ToList<Eps>();
+                objExpandedUserDTO.arl = db.Tb_Arl.ToList<Arl>();
+                objExpandedUserDTO.sedeCiudad = db.Tb_SedeCiudad.ToList<SedeCiudad>();
+                objExpandedUserDTO.ciudad = db.Tb_Ciudad.ToList<Ciudad>();
+                objExpandedUserDTO.cargoEmpresa = db.Tb_CargoEmpresa.ToList<CargoEmpresa>();
+                objExpandedUserDTO.areaEmpresa = db.Tb_AreaEmpresa.ToList<AreaEmpresa>();
+                objExpandedUserDTO.cateLicencia = db.Tb_CateLicencia.ToList<CateLicencia>();
+                objExpandedUserDTO.genero = db.Tb_Genero.ToList<Genero>();
+                objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
+                objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
+                objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
+                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
+            }
 
             return objExpandedUserDTO;
         }
