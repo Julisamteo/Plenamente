@@ -56,7 +56,7 @@ namespace Plenamente.Models
         public int? Arl_Id { get; set; }
         public List<Arl> arl { get; set; }
         public int? Empr_Nit { get; set; }
-        public Empresa Empresa { get; set; }
+        public List<Empresa> Empresa { get; set; }
         public int? Espe_Id { get; set; }
         public List<EstadoPersona> estadoPersona { get; set; }
         public string Jefe_Id { get; set; }

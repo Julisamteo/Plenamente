@@ -17,6 +17,7 @@ namespace Plenamente.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: EntrevistPersonas
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
 
@@ -50,11 +51,13 @@ namespace Plenamente.Controllers
 
             return View(encuPerso);
         }
+        [Authorize(Roles = "Administrator")]
         public ActionResult EnviarCorreo()
         {
             return View();
         }
         [HttpPost, ValidateInput(false)]
+        [Authorize(Roles = "Administrator")]
         public ActionResult EnviarCorreo(string id, EnvioCorreo model)
         {
 

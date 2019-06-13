@@ -14,6 +14,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/EleProteccions
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -53,6 +54,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/EleProteccions/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -68,6 +70,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/EleProteccions/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -78,6 +81,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Epro_Id,Epro_Nom,Epro_Registro")] EleProteccion eleProteccion)
         {
             if (ModelState.IsValid)
@@ -91,6 +95,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/EleProteccions/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -110,6 +115,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Epro_Id,Epro_Nom,Epro_Registro")] EleProteccion eleProteccion)
         {
             if (ModelState.IsValid)
@@ -122,6 +128,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/EleProteccions/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -137,6 +144,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // POST: Administrador/EleProteccions/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

@@ -17,7 +17,7 @@ namespace Plenamente.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Empresas
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -56,7 +56,7 @@ namespace Plenamente.Controllers
             return View(empresas.ToPagedList(pageNumber, pageSize));
         }
         // GET: Empresas/Details/5
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -71,7 +71,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
         // GET: Empresas/Create
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
@@ -83,7 +83,7 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_Registro")] Empresa empresa)
         {
             if (ModelState.IsValid)
@@ -98,7 +98,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
         // GET: Empresas/Edit/5
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -119,7 +119,7 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_Registro")] Empresa empresa)
         {
             if (ModelState.IsValid)
@@ -133,7 +133,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
         // GET: Empresas/Delete/5
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -148,7 +148,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
         // POST: Empresas/Delete/5
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

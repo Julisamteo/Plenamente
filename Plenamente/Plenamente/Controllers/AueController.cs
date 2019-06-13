@@ -12,6 +12,7 @@ namespace Plenamente.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Aue
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             DinamicaAu Dau = new DinamicaAu();
@@ -24,6 +25,7 @@ namespace Plenamente.Controllers
 
             return View(query);
         }
+        [Authorize(Roles = "Administrator")]
         public ActionResult Todos()
         {
             var quemado = (from iest in db.Tb_ItemEstandar
