@@ -444,7 +444,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //[Authorize(Roles = "SuperAdmin2")]
-        public ActionResult EditarUser([Bind(Include = "Id,Pers_Nom1,Pers_Apel1,Tdoc_Id,Pers_Doc,Gene_Id,Espe_Id,Pers_Licencia,Pers_LicVence,Cate_Id,Pers_Dir,Pers_Cemeg,Pers_Temeg,Afp_Id,Eps_Id,Arl_Id,Tvin_Id,UserName")] ApplicationUser user)
+        public ActionResult EditarUser([Bind(Include = "Id,Pers_Nom1,Pers_Apel1,Tdoc_Id,Pers_Doc,Gene_Id,Espe_Id,Pers_Licencia,Pers_LicVence,Cate_Id,Pers_Dir,Pers_Cemeg,Pers_Temeg,Afp_Id,Eps_Id,Arl_Id,Tvin_Id,UserName,Email")] ApplicationUser user)
         {
             try
             {
