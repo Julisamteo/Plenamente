@@ -1,9 +1,8 @@
 ﻿<!DOCTYPE html>
-<html lang="en">
+<html>
 <head>
-
     <meta charset="utf-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>@ViewData["Title"] - PTSST</title>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.7.2/css/all.css" integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
           crossorigin="anonymous">
@@ -16,15 +15,13 @@
     </div>
     <div class="contenedorPrincipal">
         <div class="contenedor-menu">
-            @Html.Partial("_IndexMenu")
+            @Html.Partial("_IndexMenuUsuario")
         </div>
         <div class="contenidoSection">
             @RenderBody()
         </div>
     </div>
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
-    <script src="~/Scripts/bootstrap.js"></script>
-    <script src="~/Scripts/popper.min.js"></script>
     <script src="~/Scripts/bootstrap1.js"></script>
     <script src="~/Scripts/main1.js"></script>
     @RenderSection("Scripts", required: false)

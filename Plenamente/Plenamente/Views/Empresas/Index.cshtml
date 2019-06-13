@@ -1,5 +1,5 @@
-﻿@model IEnumerable<Plenamente.Models.Empresa>
-
+﻿@model PagedList.IPagedList<Plenamente.Models.Empresa>
+@using PagedList.Mvc
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
@@ -49,29 +49,33 @@
 
         @foreach (var item in Model)
         {
-        <tr>
+            <tr>
 
-            <td>
-                @Html.DisplayFor(modelItem => item.Empr_Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empr_Dir)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empr_Afiarl)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Empr_Ttrabaja)
-            </td>
-            <td>
-                @Html.ActionLink("Editar", "Edit", new { id = item.Empr_Nit }) |
-                @Html.ActionLink("Eliminar", "Delete", new { id = item.Empr_Nit })
-            </td>
-        </tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empr_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empr_Dir)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Empr_Ttrabaja)
+                </td>
+                <td>
+                    @Html.ActionLink("Editar", "Edit", new { id = item.Empr_Nit }) |
+                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Empr_Nit })
+                </td>
+            </tr>
         }
     </tbody>
 
 </table>
+<div class="paginacionLista">
+    @Html.PagedListPager(Model, page => Url.Action("Index",
+        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
+</div>

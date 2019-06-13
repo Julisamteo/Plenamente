@@ -4,6 +4,8 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
+    background: url("/Imagenes/Fondopng.png");
+    background-size: 100%;
 }
 
 
@@ -11,7 +13,7 @@
     max-height: 0;
     overflow: hidden;
     display: block;
-    justify-content: center;
+    justify-content:center;
     margin: auto;
     -webkit-transition: max-height 500ms ease-out;
     -moz-transition: max-height 500ms ease-out;
@@ -19,14 +21,13 @@
     transition: max-height 500ms ease-out;
 }
 
-    .plegable.desplegado {
-        max-height: 800px;
-        -webkit-transition: max-height 500ms ease-out;
-        -moz-transition: max-height 500ms ease-out;
-        -o-transition: max-height 500ms ease-out;
-        transition: max-height 500ms ease-out;
-    }
-
+.plegable.desplegado {
+    max-height: 800px;
+    -webkit-transition: max-height 500ms ease-out;
+    -moz-transition: max-height 500ms ease-out;
+    -o-transition: max-height 500ms ease-out;
+    transition: max-height 500ms ease-out;
+}
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
@@ -34,7 +35,6 @@
     background-color: #6CB52D;
     border-color: #6CB52D;
 }
-
 .colorVerdeBack1 {
     cursor: pointer;
     color: #fff;
@@ -46,7 +46,6 @@
     background-color: #6CB52D;
     padding: 20px;
 }
-
 .linkPrincipal {
     display: flex;
     padding: 20px;
@@ -79,13 +78,6 @@
     height: 100%;
 }
 
-
-.contenidoCuerpo {
-    width: 90%;
-    margin: 10px 50px 10px 50px;
-}
-
-
 .footerPagina {
     display: flex;
     background-color: #fff;
@@ -108,6 +100,26 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 18px;
 }
+.rowEncuesta {
+    padding: 20px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.rowEncuestaTitle {
+    margin-top: 20px;
+    background: linear-gradient(45deg, #6cb52d, #6cb52d);
+    padding: 30px;
+    COLOR: WHITE;
+    font-size: 25px;
+    margin-left: 0px;
+    margin-right: 0px;
+}
+.estiloEncuPre {
+    font-size: 20px;
+}
+.fondoColumnaPrincipal {
+    background: rgba(110,178,19,0.8);
+}
 
 @media screen and (max-width: 1024px) {
     body {
@@ -115,8 +127,9 @@
 
     .bannerPrincipal {
         display: flex;
-        background-color: #6CB52D;
+        background-color: #8CC63F;
         width: 100%;
+        font-size: 20px;
         position: sticky;
         top: 0;
     }
@@ -170,7 +183,9 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 15px;
     }
+
 }
+
 
 @media screen and (max-width: 768px) {
     body {
@@ -178,7 +193,7 @@
 
     .bannerPrincipal {
         display: flex;
-        background-color: #6CB52D;
+        background-color: #8CC63F;
         width: 100%;
         position: sticky;
         top: 0;
@@ -235,13 +250,15 @@
     }
 }
 
+
+
 @media screen and (max-width: 450px) {
     body {
     }
 
     .bannerPrincipal {
         display: flex;
-        background-color: #6CB52D;
+        background-color: #8CC63F;
         width: 100%;
         position: sticky;
         top: 0;
@@ -266,6 +283,8 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 13px;
     }
+
+    
 }
 
 
@@ -389,7 +408,7 @@ a {
 
 .contenedor-menu {
     position: relative;
-    background-color: #fff;
+    background-color: #8CC63F;
     min-width: 280px;
     display: inline-block;
     font-family: 'Roboto', sans-serif;
@@ -399,30 +418,31 @@ a {
 
     .contenedor-menu .menu {
         width: 100%;
-        border-right-style: solid;
-        border-right-color: #6CB52D;
+        /*border-right-style: solid;
+        border-right-color: #6CB52D;*/
         border-right-width: 2px;
     }
 
     .contenedor-menu ul {
         list-style: none;
-        border-bottom-style: solid;
-        border-bottom-color: #6CB52D;
+        /*border-bottom-style: solid;
+        border-bottom-color: #6CB52D;*/
         border-width: 1px;
     }
 
     .contenedor-menu .menu li a {
-        color: #000;
+        color: #FFF;
         display: block;
+        font-size: 18px;
         padding: 15px 20px;
-        background: #fff;
+        background: #65ac1e;
         border-bottom-style: solid;
         border-bottom-color: #6CB52D;
         border-width: 1px;
     }
 
         .contenedor-menu .menu li a:hover {
-            background: #fff;
+            background: #65ac1e;
             color: #000;
         }
 
@@ -447,14 +467,14 @@ a {
 
         .contenedor-menu .menu ul li a {
             padding-left: 35px;
-            background: #fff;
-            color: #000;
+            background: #69BE15;
+            color: #fff;
         }
 
         .contenedor-menu .menu ul li ul li a {
             padding-left: 45px;
-            background: #fff;
-            color: #000;
+            background: #69be15;
+            color: #fff;
         }
 
         .contenedor-menu .menu ul li ul li ul li a {
@@ -465,12 +485,12 @@ a {
 
             .contenedor-menu .menu ul li ul li ul li a:hover {
                 padding-left: 65px;
-                background: #fff;
+                background: #65ac1e;
                 color: #000;
             }
 
     .contenedor-menu .menu .activado > a {
-        background: #fff;
+        background: #65ac1e;
         color: #000;
     }
 
@@ -573,7 +593,13 @@ a {
 .titulosBanner {
     color: #fff;
     width: 100%;
-    background-color: #6CB52D;
+    background-color: #8CC63F;
+}
+.titulosBannerP {
+    color: #fff;
+    width: 100%;
+    background-color: #8CC63F;
+    padding-top: 12px;
 }
 
 .colorVerdeBack {
@@ -581,7 +607,7 @@ a {
     justify-content: center;
     width: 100%;
     height: auto;
-    background-color: #6CB52D;
+    background-color: #65ac1e;
 }
 
     .colorVerdeBack p {
@@ -589,7 +615,6 @@ a {
         font-size: 24px;
         color: #fff;
     }
-
 .centrarContenido {
     display: block;
     width: 50%;
@@ -1011,7 +1036,10 @@ select {
 /*Reset de los elementos BootsTrap No tocar*/
 body {
     margin: 0px;
+    /*background: url(/imagenes/fondopng.png);*/
+    background: #e2d8d8;
     padding: 0px;
+    background-size: 100%;
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
@@ -1037,11 +1065,11 @@ a:link {
 
 .bannerPrincipal {
     display: flex;
-    background-color: #6CB52D;
+    background-color: #8CC63F;
     width: 100%;
     height: 50px;
     border-bottom-style: solid;
-    border-bottom-color: #fff;
+    border-bottom-color: #8CC63F;
     border-bottom-width: 2px;
     position: relative;
     top: 0;
@@ -1082,12 +1110,10 @@ a:link {
 
 .redesSociales {
     display: inline-block;
-    width: 50%;
-    margin: auto;
 }
 
     .redesSociales img {
-        width: 10%;
+        width: 20px;
         height: auto;
         float: right;
         border-radius: 10px;
@@ -1115,12 +1141,9 @@ a:link {
 .fotterPrincipal {
     display: flex;
     justify-content: center;
-    background-color: #fff;
     width: 100%;
     height: 125px;
     border-top-style: solid;
-    border-top-color: #6CB52D;
-    border-top-width: 2px;
     position: relative;
     top: 0;
 }
@@ -1187,6 +1210,7 @@ a:link {
     border-radius: 5px;
     width: 20%;
     height: auto;
+    background:white;
 }
 
 .graficoContainer {
@@ -1225,6 +1249,7 @@ a:link {
     width: 100%;
     height: auto;
     padding: 2%;
+    background: white;
     margin: 1% 1% -1% 1%;
 }
 
@@ -1242,6 +1267,7 @@ a:link {
     height: 300px;
     padding: 2%;
     margin: 1% 1% -1% 1%;
+    background: white;
 }
 
     .moduloDiv img {
@@ -1294,8 +1320,9 @@ a:link {
 
     .bannerPrincipal {
         display: flex;
-        background-color: #6CB52D;
+        background-color: #8CC63F;
         width: 100%;
+        font-size: 17px;
         position: relative;
         top: 0;
     }
@@ -1307,8 +1334,9 @@ a:link {
 
     .bannerPrincipal {
         display: flex;
-        background-color: #6CB52D;
+        background-color: #8CC63F;
         width: 100%;
+        font-size: 16px;
         position: relative;
         top: 0;
     }
@@ -1358,7 +1386,7 @@ a:link {
     .bannerPrincipal {
         display: flex;
         justify-content: center;
-        background-color: #6CB52D;
+        background-color: #8CC63F;
         width: 100%;
         height: 50px;
         position: relative;
@@ -1542,27 +1570,6 @@ input[type=button], input[type=submit], input[type=reset], input[type=file] {
     transition: all 0.3s ease-in-out;
 }
 
-a[class='btn*'] {
-    border: none;
-    color: white;
-    padding: 15px 80px;
-    text-align: center;
-    text-decoration: none;
-    display: inline-block;
-    text-transform: uppercase;
-    font-size: 13px;
-    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
-    -webkit-border-radius: 5px 5px 5px 5px;
-    border-radius: 5px 5px 5px 5px;
-    margin: 5px 20px 40px 20px;
-    -webkit-transition: all 0.3s ease-in-out;
-    -moz-transition: all 0.3s ease-in-out;
-    -ms-transition: all 0.3s ease-in-out;
-    -o-transition: all 0.3s ease-in-out;
-    transition: all 0.3s ease-in-out;
-}
-
     input[type=button]:hover, input[type=submit]:hover, input[type=reset], input[type=file]:hover {
         background-color: #5AB60B;
     }
@@ -1602,9 +1609,9 @@ input[type=text], input[type=password], input[type=email], input[type=number], .
         border-bottom: 2px solid #6CB52D;
     }
 
-input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
-    color: #cccccc;
-}
+        input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
+            color: #cccccc;
+        }
 
 input[type=password]:focus {
     background-color: #fff;
@@ -1865,13 +1872,11 @@ progress[value] {
     border: 1px inset #666;
     border-radius: 20px;
 }
-
 progress::-webkit-progress-value {
     background: #6CB52D;
     border-radius: 20px;
 }
-
-.aeth {
+.aeth{
     text-align: justify;
 }
 
@@ -1881,6 +1886,6 @@ progress::-webkit-progress-bar {
     border-radius: 20px;
 }
 
-.btn-primary {
-    background-color: dodgerblue !important;
+MenuCabezera{
+    background: #65AC1E;
 }

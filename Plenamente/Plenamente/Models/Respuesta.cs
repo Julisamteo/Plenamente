@@ -25,7 +25,6 @@ namespace Plenamente.Models
         [ForeignKey("Pregunta")]
         public int Preg_Id { get; set; }
         public Pregunta Pregunta { get; set; }
-
-        
+        public object Resp_Nomm { get; internal set; }
     }
 }
