@@ -23,11 +23,11 @@
                             <a href="#">Datos Generales<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 @*<li>
-                <a asp-area="Admin" asp-controller="Cargos" asp-action="Index"> Cargos empleados<i class="icono derecha fa fa-chevron-down"></i></a>
-                <ul class="subMenu2">
-            <li><a href="#">Item 1</a></li>
-        </ul>
-            </li>*@
+                                            <a asp-area="Admin" asp-controller="Cargos" asp-action="Index"> Cargos empleados<i class="icono derecha fa fa-chevron-down"></i></a>
+                                            <ul class="subMenu2">
+                                        <li><a href="#">Item 1</a></li>
+                                    </ul>
+                                        </li>*@
                                 <li>
                                 <li><a href="@Url.Action("Index", "AreaEmpresas")">Áreas de la empresa </a></li> @*1*@
                                 <li>
@@ -58,33 +58,25 @@
 
                             </ul>
                         <li>
-                            <a href="#">Encuestas<i class="icono derecha fa fa-chevron-down"></a></i></a>
+                            <a href="#">Encuestas<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 <li>
-                            <a href="@Url.Action("Index", "Encuestas")">Encuesta sociodemográfica<i class="icono derecha fa fa-chevron-down"></i></a>
-                        </li>
+                                    <a href="@Url.Action("Index", "Encuestas")">Encuesta sociodemográfica<i class="icono derecha fa fa-chevron-down"></i></a>
+                                </li>
                             </ul>
                         </li>
                         <li>
-                            <a href="@Url.Action("error", "home")">Autoevalución SST<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu1">
-                                @*<li>
-                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu2">
-                                <li><a href="">Item 1</a></li>
-                            </ul>
-                        </li>*@
-                            </ul>
+                            <a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución SST <i class="icono derecha fa fa-chevron-down"></i></a>
                         </li>
                         <li>
                             <a href="@Url.Action("error", "home")">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 @*<li>
-                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu2">
-                                <li><a href="">Item 1</a></li>
-                            </ul>
-                        </li>*@
+                                        <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                        <ul class="subMenu2">
+                                            <li><a href="">Item 1</a></li>
+                                        </ul>
+                                    </li>*@
                             </ul>
                         </li>
                     </ul>
@@ -92,30 +84,30 @@
                 <li>
                     <a href="@Url.Action("error", "home")">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
                     <ul class="subMenu">
-                       <li>
-                           <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu1">
-                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>COPASST<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>COCOLA<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Comites personalizados<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                    </ul>
-                @*@<li>
-                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu1">
                         <li>
                             <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu2">
-                                <li><a href="">Item 1</a></li>
+                            <ul class="subMenu1">
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>COPASST<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>COCOLA<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Comites personalizados<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
-                        </li>
-                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                    </ul>
-                </li>*@
+                            @*@<li>
+                                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
+                                    <ul class="subMenu1">
+                                        <li>
+                                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                            <ul class="subMenu2">
+                                                <li><a href="">Item 1</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                    </ul>
+                                </li>*@
                     </ul>
                 </li>
                 <li>
@@ -132,35 +124,35 @@
                                 <li><a href="@Url.Action("error", "home")">DocumentacióN<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                             @* <li>
-            <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
-            <ul class="subMenu1">
-                <li>
-                    <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu2">
-                        <li><a href="">Item 1</a></li>
+                                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
+                                    <ul class="subMenu1">
+                                        <li>
+                                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                            <ul class="subMenu2">
+                                                <li><a href="">Item 1</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                    </ul>
+                                </li>*@
                     </ul>
-                </li>
-                <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-            </ul>
-        </li>*@
-</ul>
                 </li>
                 <li>
                     <a href="#">Reporte e investigación<i class="icono derecha fa fa-chevron-down"></i></a>
                     <ul class="subMenu">
-                       <li>
-                           <a href="#">Reporte e investigación<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu1">
-                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Reporte un incidente<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de eventos<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                        <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Estadísticas de accidentalidad<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                    </ul>
-             
+                        <li>
+                            <a href="#">Reporte e investigación<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1">
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Reporte un incidente<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de eventos<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Estadísticas de accidentalidad<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                            </ul>
+
                     </ul>
                 </li>
                 <li>
@@ -173,23 +165,23 @@
                                 <li><a href="@Url.Action("error", "home")">Estadísticas del SG-SST<i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                             @* <li>
-            <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
-            <ul class="subMenu1">
-                <li>
-                    <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu2">
-                        <li><a href="">Item 1</a></li>
+                                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
+                                    <ul class="subMenu1">
+                                        <li>
+                                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                            <ul class="subMenu2">
+                                                <li><a href="">Item 1</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                    </ul>
+                                </li>*@
                     </ul>
-                </li>
-                <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-            </ul>
-        </li>*@
-</ul>
                 </li>
                 <li>
                     <a href="#">Administración<i class="icono derecha fa fa-chevron-down"></i></a>
@@ -202,25 +194,25 @@
                                 <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de planes de acción<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                             @*<li>
-            <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
-            <ul class="subMenu1">
-                <li>
-                    <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu2">
-                        <li><a href="">Item 1</a></li>
+                                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
+                                    <ul class="subMenu1">
+                                        <li>
+                                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                                            <ul class="subMenu2">
+                                                <li><a href="">Item 1</a></li>
+                                            </ul>
+                                        </li>
+                                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                    </ul>
+                                </li>*@
                     </ul>
                 </li>
-                <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-            </ul>
-        </li>*@
-</ul>
-                </li>
-                
+
             </ul>
 
         </div>

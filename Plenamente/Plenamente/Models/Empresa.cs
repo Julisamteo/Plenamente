@@ -20,7 +20,8 @@ namespace Plenamente.Models
         public ClaseArl ClaseArl { get; set; }
         public int Empr_Afiarl { get; set; }
         public int Empr_Ttrabaja { get; set; }
-        public int Empr_Itrabaja { get; set; }
+        public int Empr_Itrabaja { get; set; }      
+        public string Empr_telefono { get; set; }
         public DateTime Empr_Registro { get; set; }
 
         // Permite que Cargo Empresa acceda a la data

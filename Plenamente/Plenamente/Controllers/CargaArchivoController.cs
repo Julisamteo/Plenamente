@@ -89,7 +89,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     evid.Evid_Registro = archivo.Evid_Registro;
                     evid.Tdca_id = archivo.Tdca_id;
                     evid.Cump_Id = archivo.Cump_Id;
-                    evid.Id = archivo.Id;
+                    evid.Responsable = archivo.Id;
 
                     entity.Tb_Evidencia.Add(evid);
 

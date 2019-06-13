@@ -11,7 +11,7 @@
     max-height: 0;
     overflow: hidden;
     display: block;
-    justify-content:center;
+    justify-content: center;
     margin: auto;
     -webkit-transition: max-height 500ms ease-out;
     -moz-transition: max-height 500ms ease-out;
@@ -19,13 +19,14 @@
     transition: max-height 500ms ease-out;
 }
 
-.plegable.desplegado {
-    max-height: 800px;
-    -webkit-transition: max-height 500ms ease-out;
-    -moz-transition: max-height 500ms ease-out;
-    -o-transition: max-height 500ms ease-out;
-    transition: max-height 500ms ease-out;
-}
+    .plegable.desplegado {
+        max-height: 800px;
+        -webkit-transition: max-height 500ms ease-out;
+        -moz-transition: max-height 500ms ease-out;
+        -o-transition: max-height 500ms ease-out;
+        transition: max-height 500ms ease-out;
+    }
+
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
@@ -33,6 +34,7 @@
     background-color: #6CB52D;
     border-color: #6CB52D;
 }
+
 .colorVerdeBack1 {
     cursor: pointer;
     color: #fff;
@@ -44,6 +46,7 @@
     background-color: #6CB52D;
     padding: 20px;
 }
+
 .linkPrincipal {
     display: flex;
     padding: 20px;
@@ -75,6 +78,13 @@
     display: flex;
     height: 100%;
 }
+
+
+.contenidoCuerpo {
+    width: 90%;
+    margin: 10px 50px 10px 50px;
+}
+
 
 .footerPagina {
     display: flex;
@@ -579,6 +589,7 @@ a {
         font-size: 24px;
         color: #fff;
     }
+
 .centrarContenido {
     display: block;
     width: 50%;
@@ -1531,6 +1542,27 @@ input[type=button], input[type=submit], input[type=reset], input[type=file] {
     transition: all 0.3s ease-in-out;
 }
 
+a[class='btn*'] {
+    border: none;
+    color: white;
+    padding: 15px 80px;
+    text-align: center;
+    text-decoration: none;
+    display: inline-block;
+    text-transform: uppercase;
+    font-size: 13px;
+    -webkit-box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    box-shadow: 0 10px 30px 0 rgba(95,186,233,0.4);
+    -webkit-border-radius: 5px 5px 5px 5px;
+    border-radius: 5px 5px 5px 5px;
+    margin: 5px 20px 40px 20px;
+    -webkit-transition: all 0.3s ease-in-out;
+    -moz-transition: all 0.3s ease-in-out;
+    -ms-transition: all 0.3s ease-in-out;
+    -o-transition: all 0.3s ease-in-out;
+    transition: all 0.3s ease-in-out;
+}
+
     input[type=button]:hover, input[type=submit]:hover, input[type=reset], input[type=file]:hover {
         background-color: #5AB60B;
     }
@@ -1570,9 +1602,9 @@ input[type=text], input[type=password], input[type=email], input[type=number], .
         border-bottom: 2px solid #6CB52D;
     }
 
-        input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
-            color: #cccccc;
-        }
+input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
+    color: #cccccc;
+}
 
 input[type=password]:focus {
     background-color: #fff;
@@ -1833,11 +1865,13 @@ progress[value] {
     border: 1px inset #666;
     border-radius: 20px;
 }
+
 progress::-webkit-progress-value {
     background: #6CB52D;
     border-radius: 20px;
 }
-.aeth{
+
+.aeth {
     text-align: justify;
 }
 
@@ -1845,4 +1879,8 @@ progress::-webkit-progress-bar {
     background-color: #fff;
     box-shadow: 0 2px 5px rgba(0, 0, 0, 0.25) inset; /*esta sombra es para simular el borde que he aplicado arriba para Mozilla*/
     border-radius: 20px;
+}
+
+.btn-primary {
+    background-color: dodgerblue !important;
 }
