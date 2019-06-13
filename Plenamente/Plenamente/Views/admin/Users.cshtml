@@ -43,7 +43,7 @@
                 Area de Trabajo
             </th>*@
             <th class="colorVerde" style="width:17%" >
-                Jefe
+                ARL
             </th>
             <th class="colorVerde" style="width:10%">
                 Estado
@@ -64,7 +64,7 @@
                     @Html.DisplayFor(modelItem => item.Pers_Doc)
                 </td>
                 <td style="width:33%; text-align:center">
-                    @Html.DisplayFor(modelItem => item.Email)
+                    @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 @*<td>
                     @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
@@ -77,18 +77,18 @@
                 </td>
                 <td>
                         Proceso
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
                 </td>*@
                 <td style="width:14%">
-                    @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1) @Html.DisplayFor(modelItem => item.Jefe.Pers_Apel1)
+                    @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
                 </td>
+                @*<td style="width:14%">
+                    @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1) @Html.DisplayFor(modelItem => item.Jefe.Pers_Apel1)
+                </td>*@
                 <td style="width:10%">
                     @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
                 </td>
                 <td style="width:14%">
-                    @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName }) |
+                    @Html.ActionLink("Editar", "EditarUser", new { id = item.Id }) |
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                     {
                         @Html.ActionLink("Eliminar", "DeleteUser", new { UserName = item.UserName },
