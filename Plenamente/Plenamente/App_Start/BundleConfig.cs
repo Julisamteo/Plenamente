@@ -1,5 +1,4 @@
-﻿using System.Web;
-using System.Web.Optimization;
+﻿using System.Web.Optimization;
 
 namespace Plenamente
 {
@@ -21,6 +20,14 @@ namespace Plenamente
 
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
+
+            // Custom Calendar.
+            bundles.Add(new ScriptBundle("~/bundles/Script-calendar").Include(
+                                 "~/Scripts/moment.min.js",
+                                 "~/Scripts/fullcalendar.min.js",
+                                 "~/Scripts/fullcalendar.print.min.css",
+                                 "~/Scripts/locale/es.js",
+                                 "~/Scripts/script-custom-calendar.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
