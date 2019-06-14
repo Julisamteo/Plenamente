@@ -84,54 +84,47 @@ namespace Plenamente.Controllers
 		{
 			var single1 = new SingleSchedule
 			{
-				Name = "Meet Bob for Pint",
+				Name = "Programacion de un unico evento",
 				TimeOfDay = new TimeSpan(19, 30, 0),
-				Date = new DateTime(2012, 5, 8)
+				Date = new DateTime(2019, 6, 13)
 			};
 
 			var single2 = new SingleSchedule
 			{
-				Name = "Confirm Meeting",
+				Name = "Otro ejemplo de unico evento",
 				TimeOfDay = new TimeSpan(9, 30, 0),
-				Date = new DateTime(2012, 5, 12)
+				Date = new DateTime(2019, 6, 13)
 			};
 
 			var simple = new SimpleRepeatingSchedule
 			{
-				Name = "Sprint Planning Meeting",
+				Name = "Planificacion de reunion cada 7 dias",
 				TimeOfDay = new TimeSpan(10, 0, 0),
-				SchedulingRange = new Period(new DateTime(2012, 1, 2), new DateTime(2012, 12, 31)),
+				SchedulingRange = new Period(new DateTime(2019, 1, 2), new DateTime(2019, 12, 31)),
 				DaysBetween = 7
 			};
 
 			var weekly = new WeeklySchedule
 			{
-				Name = "Check Backup Reliability",
+				Name = "Programacion semanal solo lunes,miercoles y viernes ",
 				TimeOfDay = new TimeSpan(8, 0, 0),
-				SchedulingRange = new Period(new DateTime(2012, 5, 28), new DateTime(2012, 6, 8))
+				SchedulingRange = new Period(new DateTime(2019, 5, 28), new DateTime(2019, 6, 8))
 			};
 			weekly.SetDays(new DayOfWeek[] { DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday });
 
 			var monthly = new MonthlySchedule
 			{
-				Name = "Check Wages",
+				Name = "Programacion Mensual fin de mes - Puedes usar otro dia",
 				TimeOfDay = new TimeSpan(18, 0, 0),
 				DayOfMonth = 31,
-				SchedulingRange = new Period(new DateTime(2012, 1, 2), new DateTime(2100, 1, 1))
+				SchedulingRange = new Period(new DateTime(2019, 1, 2), new DateTime(2100, 1, 1))
 			};
 
 			var schedules = new List<Schedule> { single1, single2, simple, weekly, monthly };
 
 			var generator = new CalendarGenerator();
-			var period = new Period(new DateTime(2012, 5, 1), new DateTime(2012, 6, 30));
-			var appointments = generator.GenerateCalendar(period, schedules);
-
-			//foreach (var appointment in appointments)
-			//{
-			//	Console.WriteLine(
-			//		"{0} | {1}", appointment.Time.ToString("yyyy-MM-dd HH:mm"), appointment.Name);
-			//}
-			//Console.ReadKey();
+			var period = new Period(new DateTime(2019, 5, 1), new DateTime(2019, 8, 30));
+			var appointments = generator.GenerateCalendar(period, schedules);			
 
 			return View(appointments);
 		}
