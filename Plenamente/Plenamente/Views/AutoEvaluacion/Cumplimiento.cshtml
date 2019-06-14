@@ -11,115 +11,120 @@
     {
         @Html.AntiForgeryToken()
         <div class="form-horizontal">
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <h2>@Model.ItemEstandar.Descripcion - @Model.ItemEstandar.Porcentaje %</h2>
-                    <br />
-                    <p class="text-justify">
-                        @Model.ItemEstandar.Verificar
-                    </p>
-                    <hr />
-                    @if (Model.ItemEstandar.Video != null)
-                    {
-                        <iframe style="width: 100%; height: 60vh;"
-                                src="@Model.ItemEstandar.Video"
-                                frameborder="0"
-                                allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
-                    }
-                    <hr />
-                </div>
-            </div>
-            @if (Model.ItemEstandar.Recurso != null || Model.ItemEstandar.Reursob != null)
-            {
-                <div class="row">
-                    @if (Model.ItemEstandar.Recurso != null)
-                    {
+            <div class="">
+                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12 colorVerdeBack" style="background: darkgray;border-top: 5px solid white;">
+                    <p>@Model.ItemEstandar.Descripcion - @Model.ItemEstandar.Porcentaje %</p>
+                    </div>
+                    <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <p class="text-justify">
-                                <a href="@Model.ItemEstandar.Recurso"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo </a>
+                            <br />
+                            <p class="text-justify" style="font-size:18px;">
+                                @Model.ItemEstandar.Verificar
                             </p>
                         </div>
-                    }
-                    @if (Model.ItemEstandar.Reursob != null)
-                    {
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <p class="text-justify">
-                                <a href="@Model.ItemEstandar.Reursob"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo</a>
-                            </p>
+                        <hr />
+                        @if (Model.ItemEstandar.Video != null)
+                        {<div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <iframe style="width: 100%; height: 60vh;"
+                                        src="@Model.ItemEstandar.Video"
+                                        frameborder="0"
+                                        allow="accelerometer; encrypted-media; gyroscope; picture-in-picture"
+                                        allowfullscreen></iframe>
+                            </div>
+                        }
+                        <hr />
+                    </div>
+                </div>
+                @if (Model.ItemEstandar.Recurso != null || Model.ItemEstandar.Reursob != null)
+                {
+                    <div class="">
+                        @if (Model.ItemEstandar.Recurso != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Recurso"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo </a>
+                                </p>
+                            </div>
+                        }
+                        @if (Model.ItemEstandar.Reursob != null)
+                        {
+                            <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                                <p class="text-justify">
+                                    <a href="@Model.ItemEstandar.Reursob"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo</a>
+                                </p>
+                            </div>
+                        }
+                    </div>
+                    <hr />
+                }
+                @Html.HiddenFor(model => model.Id)
+                @Html.HiddenFor(model => model.ItemEstandarId)
+                @Html.HiddenFor(model => model.Nit)
+                @Html.HiddenFor(model => model.Registro)
+                    <div class="">
+                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align:center">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Cumple)
+                                @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
+                            </div>
                         </div>
-                    }
-                </div>
-                <hr />
-            }
-            @Html.HiddenFor(model => model.Id)
-            @Html.HiddenFor(model => model.ItemEstandarId)
-            @Html.HiddenFor(model => model.Nit)
-            @Html.HiddenFor(model => model.Registro)
-            <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Cumple)
-                        @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
+                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align:center">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Nocumple)
+                                @Html.ValidationMessageFor(model => model.Nocumple, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Nocumple)
-                        @Html.ValidationMessageFor(model => model.Nocumple, "", new { @class = "text-danger" })
+                    <div class="" id="divJustifica" style="visibility: @(Model.Cumple ? "hidden" : "visible");">
+                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align:center">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Justifica)
+                                @Html.ValidationMessageFor(model => model.Justifica, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align:center">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.Nojustifica)
+                                @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
+                       <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6" style="text-align:center">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
+                                @Html.EditorFor(model => model.NoAplica)
+                                @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </div>
-            <div class="row" id="divJustifica" style="visibility: @(Model.Cumple ? "hidden" : "visible");">
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Justifica)
-                        @Html.ValidationMessageFor(model => model.Justifica, "", new { @class = "text-danger" })
+                    <div class="">
+                        <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12" style="text-align:center">
+                            <div class="form-group">
+                                @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label" })
+                                @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control", required = "required", placeholder = "Aqui las observaciones..." })
+                                @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                            </div>
+                        </div>
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-2  col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Nojustifica)
-                        @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
+                <div class="">
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" >
+                        <input type="submit" value="Guardar" class="btn btn-default" />
                     </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.NoAplica)
-                        @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
-            <div class="row">
-                <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Observaciones, htmlAttributes: new { @class = "control-label" })
-                        @Html.TextAreaFor(model => model.Observaciones, new { @class = "form-control", required = "required", placeholder = "Aqui las observaciones..." })
-                        @Html.ValidationMessageFor(model => model.Observaciones, "", new { @class = "text-danger" })
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6 text-center" >
+                        @*<input id="btnCumplimiento" type="button" onclick="location.href = '@Url.Action("CargaEvidencia", new { idItem = Model.Id })';" class="btn btn-default" value="Agregar evidencia" style="visibility: @(Model.Id == 0 ? "hidden" : Model.Nocumple && Model.NoAplica ? "hidden" : "visible");" />*@
+                        <input id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Más información" style="visibility: hidden;" />
                     </div>
                 </div>
             </div>
-            <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
-                    <input type="submit" value="Guardar" class="btn btn-default" />
-                </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
-                    @*<input id="btnCumplimiento" type="button" onclick="location.href = '@Url.Action("CargaEvidencia", new { idItem = Model.Id })';" class="btn btn-default" value="Agregar evidencia" style="visibility: @(Model.Id == 0 ? "hidden" : Model.Nocumple && Model.NoAplica ? "hidden" : "visible");" />*@
-                    <input id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Más información" style="visibility: hidden;" />
-                </div>
-            </div>
-        </div>
-        <div class="row">
+        <div class="">
             @Html.ValidationSummary(true, "", new { @class = "text-danger" })
             <label class="text-danger">@ViewBag.TextError</label>
             <label class="text-success">@ViewBag.TextExitoso</label>
         </div>
-        <div class="row" id="divMasInfo" style="visibility: hidden;">
+        <div class="" id="divMasInfo" style="visibility: hidden;">
             <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
                 <label class="custom-control-label">
                     @Model.ItemEstandar.MasInformacion
