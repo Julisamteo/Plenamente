@@ -10,18 +10,21 @@ namespace Plenamente.Areas.Administrador.Controllers
     public class FileController : Controller
     {
         // GET: Administrador/File
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             return View();
         }
 
         // GET: Administrador/File/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int id)
         {
             return View();
         }
 
         // GET: Administrador/File/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             return View();
@@ -29,6 +32,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // POST: Administrador/File/Create
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create (FormCollection collection)
         {
             try
@@ -53,6 +57,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/File/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id)
         {
             return View();
@@ -60,6 +65,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // POST: Administrador/File/Edit/5
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int id, FormCollection collection)
         {
             try
@@ -75,6 +81,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/File/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id)
         {
             return View();
@@ -82,6 +89,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // POST: Administrador/File/Delete/5
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int id, FormCollection collection)
         {
             try

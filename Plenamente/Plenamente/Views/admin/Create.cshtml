@@ -7,13 +7,13 @@
 <div class="colorVerdeBack">
     <p>Crear un nueva persona</p>
 </div>
-@using (Html.BeginForm("Create", "admin", FormMethod.Post ,  new { enctype = "multipart/form-data" }))
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
 <div class="centrarContenido">
     <div class="hidden">
-        @Html.EditorFor(model => model.Empr_Nit, new { htmlAttributes = new { @class = "", @value= ViewBag.Empr_Nit } })
+        @Html.DropDownListFor(model => model.Empr_Nit, new SelectList(Model.Empresa, "Empr_Nit", "Empr_Nom", "Tipo de documento"), new { @class = "estilosSelect" })
     </div>
     <h2 class="colorVerdeBack1">Información Básica Del Trabajador</h2>
     <div class="plegable">
@@ -35,7 +35,7 @@
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Tdoc_Id, new SelectList(Model.tipoDocumento, "Tdoc_Id", "Tdoc_Nom", "Tipo de documento"))
+        @Html.DropDownListFor(model => model.Tdoc_Id, new SelectList(Model.tipoDocumento, "Tdoc_Id", "Tdoc_Nom", "Tipo de documento"), new { @class = "estilosSelect" })
         @Html.ValidationMessageFor(model => model.Tdoc_Id, "", new { @class = "text-danger" })
         <br />
         <br />
@@ -50,7 +50,7 @@
         Genero:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Gene_Id, new SelectList(Model.genero, "Gene_Id", "Gene_Nom", "Genero"))
+        @Html.DropDownListFor(model => model.Gene_Id, new SelectList(Model.genero, "Gene_Id", "Gene_Nom", "Genero"), new { @class = "estilosSelect" })
         <br />
         <br />
         Email:
@@ -71,12 +71,12 @@
         @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
         <br />
         <br />
-        Estado Del Trabajador:
+        @*Estado Del Trabajador:
         <br />
         <br />
         @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
         <br />
-        <br />
+        <br />*@
     </div>
     <br />
     <br />
@@ -99,7 +99,7 @@
         Categoria De La Licencia:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Cate_Id, new SelectList(Model.cateLicencia, "Cate_Id", "Cate_Nom", "Categoría de la licencia"))
+        @Html.DropDownListFor(model => model.Cate_Id, new SelectList(Model.cateLicencia, "Cate_Id", "Cate_Nom", "Categoría de la licencia"), new { @class = "estilosSelect" })
         <br />
         <br />
         Dirección De Residencia:
@@ -127,40 +127,48 @@
     <div class="plegable">
         <br />
         <br />
-        Administrador De Fondo De Pensiones:
+        Administrador De Pensiones:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Afp_Id, new SelectList(Model.afp, "Afp_Id", "Afp_Nom", "AFP"))
+        @Html.DropDownListFor(model => model.Afp_Id, new SelectList(Model.afp, "Afp_Id", "Afp_Nom", "AFP"), new { @class = "estilosSelect" })
         <br />
         <br />
-        Entidad Administradora De Salud:
+        Entidad Promotora De Salud:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Eps_Id, new SelectList(Model.eps, "Eps_Id", "Eps_Nom", "EPS"))
+        @Html.DropDownListFor(model => model.Eps_Id, new SelectList(Model.eps, "Eps_Id", "Eps_Nom", "EPS"), new { @class = "estilosSelect" })
         <br />
         <br />
-        Entidad Administradora De Riesgos Laborales:
+        Aseguradora De Riesgos Laborales:
         <br />
         <br />
-        @Html.DropDownListFor(model => model.Arl_Id, new SelectList(Model.arl, "Arl_Id", "Arl_Nom", "ARL"))
+        @Html.DropDownListFor(model => model.Arl_Id, new SelectList(Model.arl, "Arl_Id", "Arl_Nom", "ARL"), new { @class = "estilosSelect" })
+        <br />
+        <br />
+        Tipo Vinculación:
+        <br />
+        <br />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        @Html.DropDownListFor(model => model.Tvin_Id, new SelectList(Model.tipoVinculacion, "Tvin_Id", "Tvin_Nom", "Tipo de contrato"), new { @class = "estilosSelect" })
+        @Html.ValidationMessageFor(model => model.Tvin_Id, "", new { @class = "text-danger" })
         <br />
         <br />
     </div>
     <br />
     <br />
-    <h2 class="colorVerdeBack1">Asociaciones De La Empresa</h2>
-    <div class="plegable">
+    @*<h2 class="colorVerdeBack1">Asociaciones De La Empresa</h2>
+    <div class="plegable">*@
         @*<br />
         <br />
         Ciudad:
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Ciud_Id, new SelectList(Model.ciudad, "Ciud_Id", "Ciud_Nom", "Ciudad"))
+        @Html.DropDownListFor(model => model.Ciud_Id, (SelectList)ViewBag.Ciud_Id as SelectList, "Ciudad", htmlAttributes: new { @class = "estilosSelect" })
         @Html.ValidationMessageFor(model => model.Ciud_Id, "", new { @class = "text-danger" })
         <br />
         <br />*@
-        Sede:
+        @*Sede:
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -183,38 +191,38 @@
         @Html.DropDownListFor(model => model.Cemp_Id, new SelectList(Model.cargoEmpresa, "Cemp_Id", "Cemp_Nom", "Cargo que desempeña"))
         @Html.ValidationMessageFor(model => model.Cemp_Id, "", new { @class = "text-danger" })
         <br />
-        <br />
-        Jornada Laboral:
+        <br />*@
+        @*Jornada Laboral:
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.DropDownListFor(model => model.Jemp_Id, new SelectList(Model.jornadaEmpresa, "Jemp_Id", "Jemp_Nom", "Jornada de trabajo"))
         @Html.ValidationMessageFor(model => model.Jemp_Id, "", new { @class = "text-danger" })
         <br />
-        <br />
-        Tipo Vinculación:
+        <br />*@
+        @*Tipo Vinculación:
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
         @Html.DropDownListFor(model => model.Tvin_Id, new SelectList(Model.tipoVinculacion, "Tvin_Id", "Tvin_Nom", "Tipo de contrato"))
         @Html.ValidationMessageFor(model => model.Tvin_Id, "", new { @class = "text-danger" })
         <br />
-        <br />
-        Jefe:
+        <br />*@
+        @*Jefe:
         <br />
         <br />
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        @Html.DropDownListFor(model => model.Jefe_Id, new SelectList(Model.Jefe, "jefe_Id", "Pers_Nom1", "jefe Actual"))
+        @Html.DropDownListFor(model => model.Jefe_Id, new SelectList(Model.jefe, "jefe_Id", "Pers_Nom1", "jefe Actual"))
         @Html.ValidationMessageFor(model => model.Jefe_Id, "", new { @class = "text-danger" })
         <br />
-        <br />
-    </div>
+        <br />*@
+    @*</div>*@
     <br />
     <br />
     <input type="submit" value="Guardar" class="btn btn-default" />
 </div>
 
 <div class="contenidoVolver">
-    <a href="@Url.Action("Manageusers", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
+    <a href="@Url.Action("Users", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
 </div>
     }

@@ -15,6 +15,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ActiCumplimientoes
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
 
@@ -26,6 +27,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ActiCumplimientoes/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -41,6 +43,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ActiCumplimientoes/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
@@ -56,6 +59,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Acum_Id,Acum_Desc,Acum_Porcentest,Acum_Ejec,Acum_Registro,Acum_IniAct,Acum_FinAct,Oemp_Id,Id,Peri_Id,Empr_Nit,Frec_Id")] ActiCumplimiento actiCumplimiento)
         {
             if (ModelState.IsValid)
@@ -74,6 +78,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ActiCumplimientoes/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -98,6 +103,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Acum_Id,Acum_Desc,Acum_Porcentest,Acum_Ejec,Acum_Registro,Acum_IniAct,Acum_FinAct,Oemp_Id,Id,Peri_Id,Empr_Nit,Frec_Id")] ActiCumplimiento actiCumplimiento)
         {
             if (ModelState.IsValid)
@@ -115,6 +121,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ActiCumplimientoes/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             ViewBag.Id = new SelectList(db.Users, "Id", "Pers_Nom1");
@@ -148,6 +155,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/ActiCumplimientoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id, ActiCumplimiento X)
         {
             

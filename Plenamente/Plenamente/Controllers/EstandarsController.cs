@@ -15,6 +15,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/Estandars
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var tb_Estandar = db.Tb_Estandar.Include(e => e.Criterio);
@@ -22,6 +23,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Estandars/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Estandars/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Crit_Id = new SelectList(db.Tb_Criterio, "Crit_Id", "Crit_Nom");
@@ -48,6 +51,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Esta_Id,Esta_Nom,Esta_Porcentaje,Crit_Id,Esta_Registro")] Estandar estandar)
         {
             if (ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Estandars/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Esta_Id,Esta_Nom,Esta_Porcentaje,Crit_Id,Esta_Registro")] Estandar estandar)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Estandars/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +119,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Estandars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             Estandar estandar = db.Tb_Estandar.Find(id);

@@ -5,6 +5,7 @@ using PagedList;
 using Plenamente.Models;
 using System;
 using System.Collections.Generic;
+using System.Data.Entity;
 using System.Data.Entity.Validation;
 using System.Linq;
 using System.Net;
@@ -25,6 +26,114 @@ namespace Plenamente.Areas.Administrador.Controllers
         {
             return View();
         }
+        [Authorize(Roles = "Administrator")]
+        public ActionResult Users(string sortOrder, string searchString, string currentFilter, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona).Include(u => u.Arl);
+            // from s in db.Users
+            //select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                usuarios = usuarios.Where(s => s.Pers_Nom1.Contains(searchString)
+                                       || s.Pers_Apel1.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    usuarios = usuarios.OrderByDescending(s => s.Pers_Nom1);
+                    break;
+                default:  // Name ascending 
+                    usuarios = usuarios.OrderBy(s => s.Pers_Nom1);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(usuarios.ToPagedList(pageNumber, pageSize));
+        }
+
+        // GET: /Admin/Edit/TestUser
+        [Authorize(Roles = "Administrator")]
+        #region public ActionResult EditUser(string UserName)
+        public ActionResult EditarUser(string id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ApplicationUser user = db.Users.Find(id);
+
+            if (user == null)
+            {
+                return HttpNotFound();
+            }
+            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom", user.Tdoc_Id);
+            ViewBag.Gene_Id = new SelectList(db.Tb_Genero, "Gene_Id", "Gene_Nom", user.Gene_Id);
+            ViewBag.Espe_Id = new SelectList(db.Tb_EstadoPersona, "Espe_Id", "Espe_Nom", user.Espe_Id);
+            ViewBag.Cate_Id = new SelectList(db.Tb_CateLicencia, "Cate_Id", "Cate_Nom", user.Cate_Id);
+            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom", user.Afp_Id);
+            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom", user.Eps_Id);
+            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", user.Arl_Id);
+            ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom", user.Tvin_Id);
+            return View(user);
+        }
+        #endregion
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
+        public ActionResult EditarUser([Bind(Include = "Id,Pers_Nom1,Pers_Apel1,Tdoc_Id,Pers_Doc,Gene_Id,Espe_Id,Pers_Licencia,Pers_LicVence,Cate_Id,Pers_Dir,Pers_Cemeg,Pers_Temeg,Afp_Id,Eps_Id,Arl_Id,Tvin_Id,UserName,Email")] ApplicationUser user)
+        {
+            try
+            {
+                if (ModelState.IsValid)
+                {
+                    db.Entry(user).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Users");
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+            ViewBag.Tdoc_Id = new SelectList(db.Tb_TipoDocumento, "Tdoc_Id", "Tdoc_Nom", user.Tdoc_Id);
+            ViewBag.Gene_Id = new SelectList(db.Tb_Genero, "Gene_Id", "Gene_Nom", user.Gene_Id);
+            ViewBag.Espe_Id = new SelectList(db.Tb_EstadoPersona, "Espe_Id", "Espe_Nom", user.Espe_Id);
+            ViewBag.Cate_Id = new SelectList(db.Tb_CateLicencia, "Cate_Id", "Cate_Nom", user.Cate_Id);
+            ViewBag.Afp_Id = new SelectList(db.Tb_Afp, "Afp_Id", "Afp_Nom", user.Afp_Id);
+            ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom", user.Eps_Id);
+            ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", user.Arl_Id);
+            ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom", user.Tvin_Id);
+            return View(user);
+        }
+
 
         // Controllers
 
@@ -32,7 +141,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         //Lista Usuarios y genera los botones de crear usuario, crear rol, editar y eliminar usuarios,
         //Incluye el paginado de la lista y la busqueda por la cadena de texto ingresada
         // GET: /Admin/
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult Index(string searchStringUserNameOrEmail)
         public ActionResult ManageUsers(string searchStringUserNameOrEmail, string currentFilter, int? page)
         {
@@ -135,7 +244,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
 
         // GET: /Admin/Edit/Create 
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult Create()
         //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
         public ActionResult Create(int? Empr_Nit)
@@ -156,7 +265,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
                 objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
                 objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
-                objExpandedUserDTO.Jefe = db.Users.ToList<ApplicationUser>();
+                objExpandedUserDTO.Empresa = db.Tb_Empresa.ToList<Empresa>();
             }
 
             ViewBag.Roles = GetAllRolesAsSelectList();
@@ -167,7 +276,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         //Método POST para enviar los campos llenados del formulario 
         // PUT: /Admin/Create
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         #region public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
@@ -205,7 +314,6 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var TipoVinculacion = paramExpandedUserDTO.Tvin_Id;
                 var Empresa = paramExpandedUserDTO.Empr_Nit;
                 var EstadoPersona = paramExpandedUserDTO.Espe_Id;
-                var Jefe = paramExpandedUserDTO.Jefe_Id;
 
 
                 if (Email == "")
@@ -247,8 +355,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Jemp_Id = Jornada,
                     Tvin_Id = TipoVinculacion,
                     Empr_Nit = Empresa,
-                    Espe_Id = EstadoPersona,
-                    Jefe_Id = Jefe
+                    Espe_Id = EstadoPersona
                 };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
 
@@ -298,7 +405,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // GET: /Admin/Edit/TestUser 
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult EditUser(string UserName)
         public ActionResult EditUser(string UserName)
         {
@@ -316,7 +423,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // PUT: /Admin/EditUser
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         #region public ActionResult EditUser(ExpandedUserDTO paramExpandedUserDTO)
@@ -347,7 +454,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // DELETE: /Admin/DeleteUser
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult DeleteUser(string UserName)
         public ActionResult DeleteUser(string UserName)
         {
@@ -388,7 +495,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // GET: /Admin/EditRoles/TestUser 
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region ActionResult EditRoles(string UserName)
         public ActionResult EditRoles(string UserName)
         {
@@ -415,7 +522,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // PUT: /Admin/EditRoles/TestUser 
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         #region public ActionResult EditRoles(UserAndRolesDTO paramUserAndRolesDTO)
@@ -456,7 +563,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // DELETE: /Admin/DeleteRole?UserName="TestUser&RoleName=Administrator
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult DeleteRole(string UserName, string RoleName)
         public ActionResult DeleteRole(string UserName, string RoleName)
         {
@@ -511,7 +618,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // Roles *****************************
 
         // GET: /Admin/ViewAllRoles
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult ViewAllRoles()
         public ActionResult ViewAllRoles()
         {
@@ -533,7 +640,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // GET: /Admin/AddRole
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult AddRole()
         public ActionResult AddRole()
         {
@@ -544,7 +651,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // PUT: /Admin/AddRole
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         [HttpPost]
         [ValidateAntiForgeryToken]
         #region public ActionResult AddRole(RoleDTO paramRoleDTO)
@@ -586,7 +693,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // DELETE: /Admin/DeleteUserRole?RoleName=TestRole
-        [Authorize(Roles = "SuperAdmin2")]
+        [Authorize(Roles = "Administrator")]
         #region public ActionResult DeleteUserRole(string RoleName)
         public ActionResult DeleteUserRole(string RoleName)
         {

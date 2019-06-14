@@ -16,11 +16,12 @@ namespace Plenamente.Controllers
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<AutoEvaluacionViewModel> _PaginadorCustomers;
         private ApplicationDbContext db = new ApplicationDbContext();
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult Index()
         {
             return View();
         }
-        [Authorize]
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult AutoevaluacionSST(string textError = "")
         {
             List<CriteriosViewModel> list = new List<CriteriosViewModel>();
@@ -92,7 +93,7 @@ namespace Plenamente.Controllers
             }
             return View(list);
         }
-        [Authorize]
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult Cumplimiento(int idItem)
         {
             Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem && !c.AutoEvaluacion.Finalizada);
@@ -159,7 +160,7 @@ namespace Plenamente.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize]
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult Cumplimiento([Bind(Include = "AutoEvaluacionId,Cumple,Nocumple,Justifica,Nojustifica,Id,Registro,Observaciones,ItemEstandarId,Nit")] CumplimientoViewModel model)
         {
             try
@@ -227,7 +228,7 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("AutoevaluacionSST");
         }
-        [Authorize]
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult GuardarTerminar()
         {
             List<CriteriosViewModel> list = new List<CriteriosViewModel>();
@@ -263,6 +264,7 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        [Authorize/*(Roles = "Administrator")*/]
         public ActionResult CargaEvidencia(int idItem)
         {
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
@@ -277,6 +279,7 @@ namespace Plenamente.Controllers
             return View(evidenciaCumplimientoViewModel);
         }
         [HttpPost]
+        [Authorize/*(Roles = "Administrator")*/]
         public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -326,6 +329,7 @@ namespace Plenamente.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult NumeroEmpleados()
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -346,11 +350,13 @@ namespace Plenamente.Controllers
             return View(model);
         }
         [HttpPost]
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
         {
             return RedirectToAction("AutoevaluacionSST");
         }
 
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
@@ -364,6 +370,7 @@ namespace Plenamente.Controllers
         }
 
         [HttpPost]
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
         {
             Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
@@ -379,6 +386,7 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("AutoevaluacionSST");
         }
+        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult VerHistorico(int pagina = 1)
         {
             int _TotalRegistros = 0;
