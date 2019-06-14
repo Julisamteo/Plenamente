@@ -22,7 +22,7 @@
 }
 
 .plegable.desplegado {
-    max-height: 800px;
+    max-height: 100%;
     -webkit-transition: max-height 500ms ease-out;
     -moz-transition: max-height 500ms ease-out;
     -o-transition: max-height 500ms ease-out;
