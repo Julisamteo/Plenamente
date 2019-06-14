@@ -410,8 +410,12 @@
     <Content Include="Imagenes\Element %288%29-8.png" />
     <Content Include="Imagenes\Element %289%29-8.png" />
     <Content Include="Imagenes\Element-8.png" />
+    <Content Include="Imagenes\engranaje.png" />
     <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
     <Content Include="Imagenes\forgot.png" />
+    <Content Include="Imagenes\grafica1.JPG" />
+    <Content Include="Imagenes\grafica2.JPG" />
+    <Content Include="Imagenes\grafica3.JPG" />
     <Content Include="Imagenes\Grey-background.jpg" />
     <Content Include="Imagenes\home1.png" />
     <Content Include="Imagenes\icon-11.png" />
