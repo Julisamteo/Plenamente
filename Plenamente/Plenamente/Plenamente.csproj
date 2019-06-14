@@ -304,6 +304,10 @@
     <Compile Include="Migrations\201906132130399_actBd.Designer.cs">
       <DependentUpon>201906132130399_actBd.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906142117189_Tt.cs" />
+    <Compile Include="Migrations\201906142117189_Tt.Designer.cs">
+      <DependentUpon>201906142117189_Tt.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -926,6 +930,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906132130399_actBd.resx">
       <DependentUpon>201906132130399_actBd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906142117189_Tt.resx">
+      <DependentUpon>201906142117189_Tt.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
