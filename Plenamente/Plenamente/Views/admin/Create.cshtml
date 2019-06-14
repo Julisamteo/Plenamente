@@ -12,11 +12,17 @@
     @Html.AntiForgeryToken()
 
 <div class="centrarContenido">
-    <div class="hidden">
-        @Html.DropDownListFor(model => model.Empr_Nit, new SelectList(Model.Empresa, "Empr_Nit", "Empr_Nom", "Tipo de documento"), new { @class = "estilosSelect" })
-    </div>
+    
     <h2 class="colorVerdeBack1">Información Básica Del Trabajador</h2>
     <div class="plegable">
+        <br />
+        <br />
+        Empresa:
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Empr_Nit, new SelectList(Model.Empresa, "Empr_Nit", "Empr_Nom", "Tipo de documento"), new { @class = "estilosSelect" })
+        <br />
+        <br />
         <br />
         <br />
         Nombres:
