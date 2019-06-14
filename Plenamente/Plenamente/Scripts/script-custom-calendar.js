@@ -30,19 +30,19 @@
                                 end: data.EndDate,
                                 backgroundColor: data.BackgroundColor,
                                 borderColor: data.BorderColor,
-                                eventClick: function (info) {
-                                    location.href = data.EventRoute; 
-                                    //alert('Event: ' + info.event.title);
-                                    //alert('Coordinates: ' + info.jsEvent.pageX + ',' + info.jsEvent.pageY);
-                                    //alert('View: ' + info.view.type);
-                                    //// change the border color just for fun
-                                    //info.el.style.borderColor = 'red';
-                                }
+                                url: data.EventRoute
                             });
                     });
                     callback(events);
                 }
             });
+        },
+        eventClick: function (info) {
+            info.jsEvent.preventDefault();
+
+            if (info.event.url) {
+                window.open(info.event.url);
+            }
         },
         eventRender: function (event, element) {
             element.qtip(
