@@ -37,7 +37,7 @@
                     {
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="text-justify">
-                                <a href="@Model.ItemEstandar.Recurso"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo </a>
+                                <a href="@Model.ItemEstandar.Recurso" target="_blank" style="color:black;"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo </a>
                             </p>
                         </div>
                     }
@@ -45,7 +45,7 @@
                     {
                         <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                             <p class="text-justify">
-                                <a href="@Model.ItemEstandar.Reursob"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo</a>
+                                <a href="@Model.ItemEstandar.Reursob" target="_blank" style="color:black;"><i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i> Archivo</a>
                             </p>
                         </div>
                     }
@@ -56,22 +56,30 @@
             @Html.HiddenFor(model => model.ItemEstandarId)
             @Html.HiddenFor(model => model.Nit)
             @Html.HiddenFor(model => model.Registro)
-            <div class="row">
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Cumple)
-                        @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
+                <div class="row">
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Cumple, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Cumple)
+                            @Html.ValidationMessageFor(model => model.Cumple, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.Nocumple)
+                            @Html.ValidationMessageFor(model => model.Nocumple, "", new { @class = "text-danger" })
+                        </div>
+                    </div>
+
+                    <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
+                        <div class="form-group">
+                            @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
+                            @Html.EditorFor(model => model.NoAplica)
+                            @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
+                        </div>
                     </div>
                 </div>
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.Nocumple, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.Nocumple)
-                        @Html.ValidationMessageFor(model => model.Nocumple, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-            </div>
             <div class="row" id="divJustifica" style="visibility: @(Model.Cumple ? "hidden" : "visible");">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                     <div class="form-group">
@@ -85,13 +93,6 @@
                         @Html.LabelFor(model => model.Nojustifica, htmlAttributes: new { @class = "control-label" })
                         @Html.EditorFor(model => model.Nojustifica)
                         @Html.ValidationMessageFor(model => model.Nojustifica, "", new { @class = "text-danger" })
-                    </div>
-                </div>
-                <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
-                    <div class="form-group">
-                        @Html.LabelFor(model => model.NoAplica, htmlAttributes: new { @class = "control-label" })
-                        @Html.EditorFor(model => model.NoAplica)
-                        @Html.ValidationMessageFor(model => model.NoAplica, "", new { @class = "text-danger" })
                     </div>
                 </div>
             </div>
