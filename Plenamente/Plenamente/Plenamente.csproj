@@ -294,6 +294,10 @@
     <Compile Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.Designer.cs">
       <DependentUpon>201906112358534_AddColumnMasInfoToItemEstandar.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906132130399_actBd.cs" />
+    <Compile Include="Migrations\201906132130399_actBd.Designer.cs">
+      <DependentUpon>201906132130399_actBd.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -848,6 +852,9 @@
     <EmbeddedResource Include="Migrations\201906112358534_AddColumnMasInfoToItemEstandar.resx">
       <DependentUpon>201906112358534_AddColumnMasInfoToItemEstandar.cs</DependentUpon>
     </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906132130399_actBd.resx">
+      <DependentUpon>201906132130399_actBd.cs</DependentUpon>
+    </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
   <ItemGroup>
@@ -871,7 +878,7 @@
     <VisualStudio>
       <FlavorProperties GUID="{349c5851-65df-11da-9384-00065b846f21}">
         <WebProjectProperties>
-          <UseIIS>True</UseIIS>
+          <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
           <DevelopmentServerPort>51235</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
