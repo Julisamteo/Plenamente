@@ -52,7 +52,7 @@ namespace Plenamente.Models.ViewModel
         public bool Justifica { get; set; }
         [Display(Name = "No justifica")]
         public bool Nojustifica { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Las observaciones son requeridas.")]
         [StringLength(256)]
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; }

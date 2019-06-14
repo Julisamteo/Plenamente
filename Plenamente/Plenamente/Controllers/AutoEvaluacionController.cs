@@ -10,7 +10,6 @@ using System.Web.Mvc;
 
 namespace Plenamente.Controllers
 {
-
     public class AutoevaluacionController : Controller
     {
         private readonly int _RegistrosPorPagina = 10;
@@ -388,15 +387,13 @@ namespace Plenamente.Controllers
         }
         [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult VerHistorico(int pagina = 1)
-        {
-            int _TotalRegistros = 0;
+        {			
+			int _TotalRegistros = 0;
             int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
             int identificadorIncremental = 1;
             List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
             _TotalRegistros = autoEvaluacions.Count();
-            autoEvaluacions=autoEvaluacions.Skip((pagina - 1) * _RegistrosPorPagina)
-                                                 .Take(_RegistrosPorPagina)
-                                                 .ToList();
+            
             List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();       
             foreach (AutoEvaluacion a in autoEvaluacions)
             {
@@ -411,8 +408,11 @@ namespace Plenamente.Controllers
                 };
                 autoEvaluacionViewModel.Add(autoEvaluacionView);
                 identificadorIncremental++;
-            }          
-            var _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+            }
+			autoEvaluacionViewModel = autoEvaluacionViewModel.Skip((pagina - 1) * _RegistrosPorPagina)
+												 .Take(_RegistrosPorPagina)
+												 .ToList();
+			var _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
             _PaginadorCustomers = new PaginadorGenerico<AutoEvaluacionViewModel>()
             {
                 RegistrosPorPagina = _RegistrosPorPagina,
