@@ -23,11 +23,11 @@
                             <a href="#">Datos Generales<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 @*<li>
-                                            <a asp-area="Admin" asp-controller="Cargos" asp-action="Index"> Cargos empleados<i class="icono derecha fa fa-chevron-down"></i></a>
-                                            <ul class="subMenu2">
-                                        <li><a href="#">Item 1</a></li>
-                                    </ul>
-                                        </li>*@
+                        <a asp-area="Admin" asp-controller="Cargos" asp-action="Index"> Cargos empleados<i class="icono derecha fa fa-chevron-down"></i></a>
+                        <ul class="subMenu2">
+                    <li><a href="#">Item 1</a></li>
+                </ul>
+                    </li>*@
                                 <li>
                                 <li><a href="@Url.Action("Index", "AreaEmpresas")">Áreas de la empresa </a></li> @*1*@
                                 <li>
@@ -66,17 +66,25 @@
                             </ul>
                         </li>
                         <li>
-                            <a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución SST <i class="icono derecha fa fa-chevron-down"></i></a>
+                            <a href="#">Autoevalución SST<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1">
+                                <li><a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("Index", "Calendario")">Calendario<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li><a href="@Url.Action("VerHistorico", "Autoevaluacion")">Ver historico<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                            </ul>
                         </li>
+                        @*<li>
+                            <a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución SST <i class="icono derecha fa fa-chevron-down"></i></a>
+                        </li>*@
                         <li>
                             <a href="@Url.Action("error", "home")">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
                                 @*<li>
-                                        <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                                        <ul class="subMenu2">
-                                            <li><a href="">Item 1</a></li>
-                                        </ul>
-                                    </li>*@
+                    <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
+                    <ul class="subMenu2">
+                        <li><a href="">Item 1</a></li>
+                    </ul>
+                </li>*@
                             </ul>
                         </li>
                     </ul>

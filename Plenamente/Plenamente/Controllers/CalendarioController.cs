@@ -55,18 +55,19 @@ namespace Plenamente.Controllers
             try
             {
                 lst =
-                    db.Tb_AutoEvaluacion.Where(a => a.Empr_Nit == AccountData.NitEmpresa).Select(a =>
-                    new EventViewModel
-                    {
-                        Id = a.Auev_Id,
-                        Description = a.Auev_Nom,
-                        Title = a.Auev_Nom,
-                        Start = a.Auev_Inicio,
-                        End = a.Auev_Fin,
-                        BackgroundColor = "#7DDAFF",
-                        BorderColor = "#9FBDC9",
-                        EventRoute = "/Reportes/VerReporte/" + a.Auev_Id
-                    }).ToList();
+                    db.Tb_AutoEvaluacion.Where(a => a.Empr_Nit == AccountData.NitEmpresa)
+                    .Select(a =>
+                        new EventViewModel
+                        {
+                            Id = a.Auev_Id,
+                            Description = a.Auev_Nom,
+                            Title = a.Auev_Nom,
+                            Start = a.Auev_Inicio,
+                            End = a.Auev_Fin,
+                            BackgroundColor = "#7DDAFF",
+                            BorderColor = "#9FBDC9",
+                            EventRoute = "/Reportes/VerReporte/" + a.Auev_Id
+                        }).ToList();
             }
             catch (Exception ex)
             {
