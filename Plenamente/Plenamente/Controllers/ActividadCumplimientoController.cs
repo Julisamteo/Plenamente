@@ -47,9 +47,20 @@ namespace Plenamente.Controllers
         {
             try
             {
-
+                Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+                ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
                 // TODO: Add insert logic here
-
+                ActiCumplimiento actcumplimiento = new ActiCumplimiento
+                {
+                    Acum_Desc = model.NombreActividad,
+                    Acum_IniAct = model.FechaInicial,
+                    Acum_FinAct = model.FechaFinal,
+                    Frec_Id = 1,
+                    Peri_Id = 1
+                };
+                
+                db.Tb_ActiCumplimiento.Add(actcumplimiento);
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
             catch
