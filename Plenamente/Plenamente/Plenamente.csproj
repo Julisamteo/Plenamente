@@ -223,6 +223,7 @@
     <Compile Include="App_Tool\AccountData.cs" />
     <Compile Include="App_Tool\PaginadorGenerico.cs" />
     <Compile Include="Controllers\ActiCumplimientoesController.cs" />
+    <Compile Include="Controllers\ActividadCumplimientoController.cs" />
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\AreaEmpresasController.cs" />
     <Compile Include="Controllers\AueController.cs" />
@@ -860,6 +861,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
+    <Folder Include="Views\ActividadCumplimiento\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
