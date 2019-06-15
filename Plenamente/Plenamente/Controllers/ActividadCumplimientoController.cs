@@ -47,11 +47,7 @@ namespace Plenamente.Controllers
         {
             try
             {
-<<<<<<< HEAD
-
                 // TODO: Add insert logic here
-
-=======
                 Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
                 ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
                 // TODO: Add insert logic here
@@ -66,7 +62,6 @@ namespace Plenamente.Controllers
                 
                 db.Tb_ActiCumplimiento.Add(actcumplimiento);
                 db.SaveChanges();
->>>>>>> 6803b099c3c6332f9350332c05118910bee033b6
                 return RedirectToAction("Index");
             }
             catch

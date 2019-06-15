@@ -848,12 +848,7 @@
     <Content Include="Views\AutoEvaluacion\AutoevaluacionSST.cshtml" />
     <Content Include="Views\AutoEvaluacion\Cumplimiento.cshtml" />
     <Content Include="Views\AutoEvaluacion\CargaEvidencia.cshtml" />
-<<<<<<< HEAD
-<<<<<<< HEAD
     <Content Include="Views\AutoEvaluacion\Index - Copia.cshtml" />
-=======
-=======
->>>>>>> 6803b099c3c6332f9350332c05118910bee033b6
     <Content Include="Views\AutoEvaluacion\NumeroEmpleados.cshtml" />
     <Content Include="Views\AutoEvaluacion\ModificarNumeroEmpleados.cshtml" />
     <Content Include="Views\AutoEvaluacion\VerHistorico.cshtml" />
@@ -867,10 +862,6 @@
     <Content Include="Views\PlandeTrabajo\Edit.cshtml" />
     <Content Include="Views\PlandeTrabajo\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Create.cshtml" />
-<<<<<<< HEAD
->>>>>>> 7c7679fcd07f80321649396410f3653e6937b299
-=======
->>>>>>> 6803b099c3c6332f9350332c05118910bee033b6
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
