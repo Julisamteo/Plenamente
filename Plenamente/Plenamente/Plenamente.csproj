@@ -395,7 +395,8 @@
     <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
-    <Compile Include="Models\Usersplandetrabajo.cs" />
+    <Compile Include="Models\UsuariosPlandetrabajo.cs" />
+    <Compile Include="Models\ViewModel\ActividadesAsignadasPlanDeTrabajoViewModel.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\AutoEvaluacionViewModel.cs" />
     <Compile Include="Models\ViewModel\CriteriosViewModel.cs" />
