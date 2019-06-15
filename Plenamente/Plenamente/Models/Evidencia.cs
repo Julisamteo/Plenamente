@@ -21,7 +21,7 @@ namespace Plenamente.Models
         public int Tdca_id { get; set; }
         public TipoDocCarga TipoDocCarga { get; set; }
         [ForeignKey("ApplicationUser")]
-        public string Id { get; set; }
+        public string Responsable { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
     }
 }

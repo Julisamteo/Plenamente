@@ -1,166 +1,89 @@
-﻿@*Se instancia la clase de AutoEvaluacion*@
-@model Plenamente.Models.AutoEvaluacion
-@* Se invoca a la vista parcial de LayoutAdministrator*@
+﻿@model IEnumerable<Plenamente.Models.Empresa>
 @{
-    ViewBag.Title = "Index";
+    ViewBag.Title = "Autoevaluación SST";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
-
-<h2>AutoEvaluacion SST</h2>
-<div>
-    @*Se instancian las variables correspondientes al modelo para poder utilizarlas en la vista.*@
-    @{
-        var criterios = Model.Criterios1;
-        var estandares = Model.Estandars11;
-        var iestandares = Model.ItemEstandars111;
-        var cumplimiento = Model.Cumplimientos111;
-        var iestandares112 = Model.ItemEstandars112;
-        var iestandares113 = Model.ItemEstandars113;
-        var iestandares114 = Model.ItemEstandars114;
-        var iestandares115 = Model.ItemEstandars115;
-        var iestandares116 = Model.ItemEstandars116;
-        var iestandares117 = Model.ItemEstandars117;
-        var iestandares118 = Model.ItemEstandars118;
-
-    }
+<div class="colorVerdeBack">
+    <p>Autoevaluación SST</p>
 </div>
-<section>
-    <div>
-        @{ foreach (var item in criterios)
-            {
-                <h1> Critiero @item.Crit_Nom @item.Crit_Porcentaje% </h1>
-            } }
-        <div>
-            @{ foreach (var itemm in estandares)
-                {
-                    <h2> Estandar @itemm.Esta_Nom @itemm.Esta_Porcentaje% </h2>
-                }
-            }
-                    <div>
-                        @{
-                            foreach (var iest in iestandares)
-                            {
+<div class="container">
+    <p>
+        @Html.ActionLink("Create New", "Create")
+    </p>
+    <table class="table table-bordered">
+        <tbody>
 
-                                <p> Tres Columnas</p>
-                                <div>
-                                    <h4> @iest.Iest_Desc</h4>
-                                </div>
-                                <div>
-                                    <p>  @iest.Iest_Verificar </p>
-                                </div>
-                                <div>
-                                    <p>@iest.Iest_Porcentaje% </p>
-                                </div>
-                            }
-                        }
-                    </div>
-                    <div>
-                        @{  foreach(var cump in cumplimiento)
-                            {
-                                <div>
-                                    <p>  @cump.Cump_Cumple  ||  @cump.Cump_Nocumple || @cump.Cump_Justifica ||  @cump.Cump_Nojustifica </p>
-                                </div>
-                                <div>
-                                    <p> @cump.Cump_Observ</p>
-                                    <p> @cump.Cump_Aevidencia</p>
-                                    <p> <a href="/App_Data/test.txt" download="/App_Data/test.txt" target="_blank"> Descargue el archivo </a></p>
-                                </div>
-
-                            } }
-                    </div>
-        </div>
-    </div>
-        
-</section>
-
-
-
-<section>
-    <div>
-        @Html.DisplayNameFor(model => model.)
-    </div>
-</section>
-
-
-
-
-<div>
-    <table class="table">
-        <tr>
-            <th>
-                @{
-                    // Se hace un for each para recorrel los datos dentro de la variable
-                    foreach (var item in criterios)
-                    {
-                        <h2 class="divCriterio">@item.Crit_Nom (10%) </h2>
-                    } }
+            @foreach (var item in Model)
+    {
+        <tr scope="row">
+            <th scope="col">
+                Nombre de la Empresa:  (+)
             </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Nom)
+            </td>
+            <th>
+                NIT:   (+)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Nit)
+            </td>
+            <th>
+                Nivel de Riesgo:   (+)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+            </td>
+            <th>
+                Fecha de Evaluación:  (+)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Registro)
+            </td>
         </tr>
-            @*//Se hace un for each para recorrer los datos dentro de la variable*@
-            @{ foreach (var item in estandares)
-                {
-                    <tr>
-                        <td class="aeth"> @item.Esta_Nom (@item.Esta_Porcentaje%) </td>
-                    </tr>
-                    @*//Se hace un for each para recorrer los datos dentro de la variable*@
-                    foreach (var itemm in iestandares)
-                    {
-                        <tr>
-                            <td> @itemm.Iest_Desc   </td>
-                            <td> @itemm.Iest_Verificar </td>
-                            <td> @itemm.Iest_Porcentaje%</td>
-                        </tr>
-                        <tr>
-                            @*<td> @itemm.Iest_Cumple </td>
-                        <td> @itemm.Iest_Nocumple </td>
-                        <td> @itemm.Iest_Justifica  </td>
-                        <td> @itemm.Iest_Nojustifica </td>*@
-                            @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
-                            @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
-                            <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>
-                        </tr>
-                        <tr>
-                            <td> Oberservaciones </td>
-                        </tr>
-          
-                }
-            }
-        }
-        <br />
-        @{
-            foreach (var itemm in iestandares112)
-            {
-                <tr>
-                    <td> @itemm.Iest_Desc   </td>
-                    <td> @itemm.Iest_Verificar </td>
-                    <td> @itemm.Iest_Porcentaje%</td>
-                </tr>
-                <tr>
-                    @*<td> @itemm.Iest_Cumple </td>
-                    <td> @itemm.Iest_Nocumple </td>
-                    <td> @itemm.Iest_Justifica  </td>
-                    <td> @itemm.Iest_Nojustifica </td>*@
-                    @*<td><a href="~/App_Data/@arch.Cump_Aevidencia" download="@arch.Cump_Aevidencia" target="_blank">Click to get file</a></td>*@
-                    @*<a href="~/ResourcesJobs/@item.ResourceJobs.ReJo_Resource" target="_blank" download="@item.ResourceJobs.ReJo_Resource" style="background-color:transparent;color:#f57c00;"> Descargar</a>*@
-                    <td><a href="https://www.youtube.com/watch?v=UGx_d3Ca1Hc">Video SST</a></td>
-                </tr>
-                <tr> <td> Oberservaciones </td> </tr>
-            }
-        }
-        <tr>
-            <td>ItemEstandar</td>
-            <td>Como se Verifica2</td>
+        <tr scope="row">
+            <th scope="col">
+                Dirección:  (+)
+            </th>
+            <td colspan="3">
+                @Html.DisplayFor(modelItem => item.Empr_Nom)
+            </td>
+            <th>
+                Ciudad:  (+)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Nit)
+            </td>
+            <th>
+                Teléfono:  (+)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+            </td>
+
         </tr>
-        <tr>
-            <td> Cumple </td>
-            <td> No Cumple </td>
-            <td> Justifica </td>
-            <td> NoJustifica </td>
-            <td> Archivo.eXTENSION </td>
+        <tr scope="row">
+            <th scope="col">
+                No de Trabajadores:  (+)
+            </th>
+            <td colspan="2">
+                @Html.DisplayFor(modelItem => item.Empr_Nom)
+            </td>
+            <th>
+                No de Centros de Trabajo:  (+)
+            </th>
+            <td colspan="2">
+                @Html.DisplayFor(modelItem => item.Empr_Nit)
+            </td>
+            <th>
+                ARL:  (+)
+            </th>
+            <td>
+                @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+            </td>
+
         </tr>
-        <tr>
-            <td> Oberservaciones </td>
-        </tr>
+}
+<tbody>
     </table>
-    }
-</div>
+    </div>

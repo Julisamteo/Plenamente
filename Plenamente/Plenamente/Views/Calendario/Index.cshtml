@@ -1,0 +1,23 @@
+﻿@{
+    ViewBag.Title = "Index";
+    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
+}
+<div class="colorVerdeBack">
+    <p>Calendario</p>
+</div>
+<div class="contenidoCuerpo">
+    <div class="row">
+        <section class="col-md-12 col-md-push-0">
+            @Html.Partial("_CalendarPartial")
+        </section>
+    </div>
+</div>
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span>
+        <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>
+@section Scripts {
+    @Scripts.Render("~/bundles/Script-calendar")
+}

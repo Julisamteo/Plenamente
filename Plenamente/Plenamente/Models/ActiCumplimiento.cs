@@ -47,10 +47,13 @@ namespace Plenamente.Models
         public int Frec_Id { get; set; }
         public Frecuencia Frecuencia { get; set; }
 
-        // Permite que Acummes acceda a la data
-        public ICollection<AcumMes> AcumMes { get; set; }
 
-        public ICollection<Usersplandetrabajo> Usersplandetrabajo { get; set; }
+     
+        // Permite que Acummes acceda a la data
+        public ICollection<AcumMes> AcumMes { get; set; }      
+        public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
+        public ICollection<ProgamacionTareas> ProgamacionTareas { get; set; }
+
 
     }
 }

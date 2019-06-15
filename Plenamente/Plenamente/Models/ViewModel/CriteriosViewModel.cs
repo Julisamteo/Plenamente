@@ -5,6 +5,13 @@ using System.Linq;
 
 namespace Plenamente.Models.ViewModel
 {
+    public class CicloPHVAViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Description { get; set; }
+        public List<CriteriosViewModel> Criterios { get; set; }
+    }
     public class CriteriosViewModel
     {
         public int Id { get; set; }
@@ -33,8 +40,10 @@ namespace Plenamente.Models.ViewModel
         public string Video { get; set; }
         public string Recurso { get; set; }
         public string Reursob { get; set; }
+        public short Categoria { get; set; }
         public List<Cumplimiento> Cumplimientos { get; set; }
         public bool ExisteCumplimiento => Cumplimientos.Count() > 0;
+        public string MasInformacion { get; set; }
     }
     public class CumplimientoViewModel
     {
@@ -44,15 +53,18 @@ namespace Plenamente.Models.ViewModel
         public bool Cumple { get; set; }
         [Display(Name = "No cumple")]
         public bool Nocumple { get; set; }
+        [Display(Name = "No aplica")]
+        public bool NoAplica { get; set; }
         [Display(Name = "Justifica")]
         public bool Justifica { get; set; }
         [Display(Name = "No justifica")]
         public bool Nojustifica { get; set; }
-        [Required]
+        [Required(ErrorMessage = "Las observaciones son requeridas.")]
         [StringLength(256)]
         [Display(Name = "Observaciones")]
         public string Observaciones { get; set; }
         public int? ItemEstandarId { get; set; }
+        public ElementoViewModel ItemEstandar { get; set; }
         public int? Nit { get; set; }
         public int AutoEvaluacionId { get; set; }
         public DateTime Registro { get; set; }
