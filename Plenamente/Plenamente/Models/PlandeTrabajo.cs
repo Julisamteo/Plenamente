@@ -11,6 +11,7 @@ namespace Plenamente.Models
     {
         [Key]
         public int Plat_Id { get; set; }
+        [Display(Name = "Nombre Plan de trabajo")]
         public string Plat_Nom { get; set; }
          [ForeignKey("empresa")]
         public int Emp_Id { get; set; }

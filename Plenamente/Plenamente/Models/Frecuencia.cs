@@ -15,11 +15,13 @@ namespace Plenamente.Models
         [Key]
         public int Frec_Id { get; set; }
 
-        [Display(Name ="Nombre Frecuencia")]
-        public string Frec_Nom { get; set; }
+        [Display(Name ="Descripcion Frecuencia")]
+        public string Frec_Descripcion { get; set; }
                
         [Display(Name = "Fecha de registro")]
         public DateTime Frec_Registro { get; set; }
+
+        public bool Estado { get; set; }
 
         // Permite a acticumplimiento acceder a la Data
         public ICollection<ActiCumplimiento> ActiCumplimientos { get; set; }

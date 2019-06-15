@@ -239,6 +239,7 @@
     <Compile Include="Controllers\ItemEstandarsController.cs" />
     <Compile Include="Controllers\ObjEmpresasController.cs" />
     <Compile Include="Controllers\PeriodoesController.cs" />
+    <Compile Include="Controllers\PlandeTrabajoController.cs" />
     <Compile Include="Controllers\PoliticasController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\ProcesActividadsController.cs" />
@@ -297,6 +298,18 @@
     <Compile Include="Migrations\201906132130399_actBd.cs" />
     <Compile Include="Migrations\201906132130399_actBd.Designer.cs">
       <DependentUpon>201906132130399_actBd.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150303196_actbd2.cs" />
+    <Compile Include="Migrations\201906150303196_actbd2.Designer.cs">
+      <DependentUpon>201906150303196_actbd2.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150317351_deletetable.cs" />
+    <Compile Include="Migrations\201906150317351_deletetable.Designer.cs">
+      <DependentUpon>201906150317351_deletetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150319297_addestadofrecuencia.cs" />
+    <Compile Include="Migrations\201906150319297_addestadofrecuencia.Designer.cs">
+      <DependentUpon>201906150319297_addestadofrecuencia.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -820,6 +833,11 @@
     <Content Include="Views\Shared\_CalendarPartial.cshtml" />
     <Content Include="Views\Calendario\Index.cshtml" />
     <Content Include="Views\Calendario\generateAppoiment.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Create.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Delete.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Details.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Edit.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -865,6 +883,15 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906132130399_actBd.resx">
       <DependentUpon>201906132130399_actBd.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150303196_actbd2.resx">
+      <DependentUpon>201906150303196_actbd2.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150317351_deletetable.resx">
+      <DependentUpon>201906150317351_deletetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150319297_addestadofrecuencia.resx">
+      <DependentUpon>201906150319297_addestadofrecuencia.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
