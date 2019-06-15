@@ -315,6 +315,10 @@
     <Compile Include="Migrations\201906150335099_AddTableCicloPHVA.Designer.cs">
       <DependentUpon>201906150335099_AddTableCicloPHVA.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs" />
+    <Compile Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.Designer.cs">
+      <DependentUpon>201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -900,6 +904,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906150335099_AddTableCicloPHVA.resx">
       <DependentUpon>201906150335099_AddTableCicloPHVA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.resx">
+      <DependentUpon>201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

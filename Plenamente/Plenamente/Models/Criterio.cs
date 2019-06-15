@@ -18,5 +18,6 @@ namespace Plenamente.Models
         [ForeignKey("CicloPHVA")]
         public int? CicloPHVA_Id { get; set; }
         public CicloPHVA CicloPHVA { get; set; }
+        public short Categoria { get; set; }
     }
 }

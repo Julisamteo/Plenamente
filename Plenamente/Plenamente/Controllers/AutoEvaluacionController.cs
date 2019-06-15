@@ -46,14 +46,16 @@ namespace Plenamente.Controllers
                     tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
                 }
                 list =
-                   db.Tb_CicloPHVA.Select(cp =>
+                   db.Tb_CicloPHVA
+                       .Where(cp => tipoEmpresa.Categoria == 0 || cp.Categoria == 0 || cp.Categoria <= tipoEmpresa.Categoria)
+                       .Select(cp =>
                        new CicloPHVAViewModel
                        {
                            Id = cp.Id,
                            Nombre = cp.Nombre,
                            Description = cp.Description,
                            Criterios = cp.Criterios
-                                .Where(c => cp.Id == c.CicloPHVA_Id)
+                                .Where(c => cp.Id == c.CicloPHVA_Id && tipoEmpresa.Categoria == 0 || c.Categoria == 0 || c.Categoria <= tipoEmpresa.Categoria)
                                 .Select(c =>
                                 new CriteriosViewModel
                                 {
@@ -63,6 +65,7 @@ namespace Plenamente.Controllers
                                     Registro = c.Crit_Registro,
                                     Estandares =
                                     c.Estandars
+                                     .Where(e => tipoEmpresa.Categoria == 0 || e.Categoria == 0 || e.Categoria <= tipoEmpresa.Categoria)
                                      .Select(e =>
                                         new EstandaresViewModel
                                         {
