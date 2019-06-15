@@ -8,19 +8,35 @@ using System.Web;
 using System.Web.Mvc;
 using Plenamente.App_Tool;
 using Plenamente.Models;
+using Plenamente.Models.ViewModel;
 
 namespace Plenamente.Controllers
 {
     public class PlandeTrabajoController : Controller
     {
+        private readonly int _RegistrosPorPagina = 10;
+        private PaginadorGenerico<PlandeTrabajo> _PaginadorCustomers;
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PlandeTrabajo
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
-
+            int _TotalRegistros = 0;
             var tb_PlandeTrabajo = db.Tb_PlandeTrabajo.Where(p => p.Emp_Id==AccountData.NitEmpresa).ToList();
-            return View(tb_PlandeTrabajo);
+            _TotalRegistros = tb_PlandeTrabajo.Count();
+            tb_PlandeTrabajo = tb_PlandeTrabajo.Skip((pagina - 1) * _RegistrosPorPagina)
+                                               .Take(_RegistrosPorPagina)
+                                               .ToList();
+            int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+            _PaginadorCustomers = new PaginadorGenerico<PlandeTrabajo>()
+            {
+                RegistrosPorPagina = _RegistrosPorPagina,
+                TotalRegistros = _TotalRegistros,
+                TotalPaginas = _TotalPaginas,
+                PaginaActual = pagina,
+                Resultado = tb_PlandeTrabajo
+            };
+            return View(_PaginadorCustomers);
         }
 
         // GET: PlandeTrabajo/Details/5
@@ -127,10 +143,16 @@ namespace Plenamente.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ActividadesPlanTrabajo()
+        public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo)
         {
-           
-            return View();
+            var plantrabajo = db.Tb_PlandeTrabajo.Find(IdPlantTrabajo);
+            PlandetrabajoActividadesViewModel plandetrabajoActividades = new PlandetrabajoActividadesViewModel
+            {
+                NombrePlanTrabajo=plantrabajo.Plat_Nom,
+                IdPlantTrabajo=plantrabajo.Plat_Id
+            };
+           // ViewBag.ActividadesDisponibles=
+            return View(plandetrabajoActividades);
         }
 
         protected override void Dispose(bool disposing)

@@ -48,12 +48,12 @@ namespace Plenamente.Models
         public Frecuencia Frecuencia { get; set; }
 
 
-        [ForeignKey("ProgamacionTareas")]
-        public int? ProgamacionTareas_Id { get; set; }
-        public ProgamacionTareas ProgamacionTareas { get; set; }
+     
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }      
         public ICollection<Usersplandetrabajo> Usersplandetrabajo { get; set; }
+        public ICollection<ProgamacionTareas> ProgamacionTareas { get; set; }
+
 
     }
 }
