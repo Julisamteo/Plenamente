@@ -319,6 +319,10 @@
     <Compile Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.Designer.cs">
       <DependentUpon>201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906150429148_AddempresaNitToFrecuencias.cs" />
+    <Compile Include="Migrations\201906150429148_AddempresaNitToFrecuencias.Designer.cs">
+      <DependentUpon>201906150429148_AddempresaNitToFrecuencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -907,6 +911,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.resx">
       <DependentUpon>201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150429148_AddempresaNitToFrecuencias.resx">
+      <DependentUpon>201906150429148_AddempresaNitToFrecuencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
