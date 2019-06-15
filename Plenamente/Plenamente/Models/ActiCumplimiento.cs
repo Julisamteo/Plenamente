@@ -51,7 +51,7 @@ namespace Plenamente.Models
      
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }      
-        public ICollection<Usersplandetrabajo> Usersplandetrabajo { get; set; }
+        public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
         public ICollection<ProgamacionTareas> ProgamacionTareas { get; set; }
 
 

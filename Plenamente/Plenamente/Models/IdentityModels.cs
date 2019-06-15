@@ -82,7 +82,7 @@ namespace Plenamente.Models
         //Permite a Evidencia acceder a la Data
         public ICollection<Evidencia> Evidencias { get; set; }
         //Permite a Usersplandetrabajo acceder a la Data
-        public ICollection<Usersplandetrabajo> Usersplandetrabajos { get; set; }
+        public ICollection<UsuariosPlandetrabajo> Usersplandetrabajos { get; set; }
         //Permite a Notificacion acceder a la Data
         public ICollection<Notificacion> notificaciones { get; set; }
 
@@ -148,7 +148,7 @@ namespace Plenamente.Models
         public DbSet<AutoEvaluacion> Tb_AutoEvaluacion { get; set; }
         public DbSet<Evidencia> Tb_Evidencia { get; set; }
         public DbSet<PlandeTrabajo> Tb_PlandeTrabajo { get; set; }
-        public DbSet<Usersplandetrabajo> Tb_UsersPlandeTrabajo { get; set; }
+        public DbSet<UsuariosPlandetrabajo> Tb_UsersPlandeTrabajo { get; set; }
         public DbSet<Notificacion> Tb_Notificacion { get; set; }
         public DbSet<TipoEmpresa> Tb_TipoEmpresa { get; set; }
         public DbSet<CicloPHVA> Tb_CicloPHVA { get; set; }

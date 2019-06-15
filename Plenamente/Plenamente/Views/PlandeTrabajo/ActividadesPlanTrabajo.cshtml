@@ -17,14 +17,23 @@
                 @Html.AntiForgeryToken()
 
                 <div class="form-horizontal">
-
                     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
                     <div class="form-group justify-content-center">
-                        @Html.LabelFor(model => model.Plat_Nom, htmlAttributes: new { @class = "control-label" })
+                        @Html.LabelFor(model => model.NombrePlanTrabajo, htmlAttributes: new { @class = "control-label" })
                         <div class="col-md-10">
-                            @Html.EditorFor(model => model.Plat_Nom, new { htmlAttributes = new { @class = "form-control" } })
-                            @Html.ValidationMessageFor(model => model.Plat_Nom, "", new { @class = "text-danger" })
+                            @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                            @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
                         </div>
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdActiCumplimiento, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(x => x.IdActiCumplimiento, (SelectList)ViewBag.actividades, "Tipo de documento", new { @class = "form-control ", id = "IdActiCumplimiento" })
+                        @Html.ValidationMessageFor(model => model.IdActiCumplimiento, "", new { @class = "text-danger" })
+                    </div>
+                    <div class="form-group">
+                        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label" })
+                        @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, "Responsable", new { @class = "form-control", id = "IdUser" })
+                        @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
                     </div>
                     <label class="text-danger">@ViewBag.TextError</label>
 
@@ -34,6 +43,32 @@
                         </div>
                     </div>
                 </div>
+                <table class="table table-bordered text-center justify-content-center">
+                    <tr>
+                        <th>
+                            Nombre Plan
+                        </th>
+                        <th>
+                            Actividad
+                        </th>
+                        <th>
+                            Responsable
+                        </th>
+                    </tr>
+
+                    @foreach (var item in @ViewBag.actividadesAsignadas) 
+                    {
+                    <tr>
+                        <td>
+                            @Html.LabelFor(model => item.DescripcionCumplimiento, htmlAttributes: new { @class = "control-label" })
+                        </td>
+                        <td></td>
+                        <td></td>
+                    </tr>
+                    }
+
+                </table>
+
             }
 
         </div>
