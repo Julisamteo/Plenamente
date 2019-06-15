@@ -323,6 +323,10 @@
     <Compile Include="Migrations\201906150429148_AddempresaNitToFrecuencias.Designer.cs">
       <DependentUpon>201906150429148_AddempresaNitToFrecuencias.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.cs" />
+    <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
+      <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -369,6 +373,7 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
+    <Compile Include="Models\ProgamacionTareas.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -914,6 +919,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906150429148_AddempresaNitToFrecuencias.resx">
       <DependentUpon>201906150429148_AddempresaNitToFrecuencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
+      <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

@@ -54,12 +54,17 @@ namespace Plenamente.Controllers
         {
             if (ModelState.IsValid)
             {
+                var nombreplan = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Nom == plandeTrabajo.Plat_Nom).ToList();
+                if (nombreplan.Count>0)
+                {
+                    ViewBag.TextError = "Nombre del plan de trabajo repetido";
+                    return View(plandeTrabajo);
+                }
                 db.Tb_PlandeTrabajo.Add(plandeTrabajo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-
-            ViewBag.Emp_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", plandeTrabajo.Emp_Id);
+           
             return View(plandeTrabajo);
         }
 
@@ -120,6 +125,12 @@ namespace Plenamente.Controllers
             db.Tb_PlandeTrabajo.Remove(plandeTrabajo);
             db.SaveChanges();
             return RedirectToAction("Index");
+        }
+
+        public ActionResult ActividadesPlanTrabajo()
+        {
+           
+            return View();
         }
 
         protected override void Dispose(bool disposing)

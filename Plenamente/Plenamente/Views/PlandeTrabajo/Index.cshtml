@@ -8,34 +8,50 @@
 <div class="colorVerdeBack">
     <p>Planes de trabajo</p>
 </div>
-<div class="contenidoCuerpo">  
-    <p>
-        @Html.ActionLink("Create New", "Create")
-    </p>
-    <table class="table">
+<div class="contenidoCuerpo">
+    <div>
+
+        <a class="btn btn-success" href="@Url.Action("Create")" title="Ver reporte">
+            Crear
+        </a>
+
+    </div>
+    <br />
+    <table class="table table-bordered text-center justify-content-center">
         <tr>
-            <th>
-                @Html.DisplayNameFor(model => model.empresa.Empr_Nom)
-            </th>
             <th>
                 @Html.DisplayNameFor(model => model.Plat_Nom)
             </th>
-            <th></th>
+            <th>
+                Actividades
+            </th>
+            <th>
+                Opciones
+            </th>
         </tr>
 
         @foreach (var item in Model)
         {
             <tr>
                 <td>
-                    @Html.DisplayFor(modelItem => item.empresa.Empr_Nom)
-                </td>
-                <td>
                     @Html.DisplayFor(modelItem => item.Plat_Nom)
                 </td>
                 <td>
-                    @Html.ActionLink("Edit", "Edit", new { id = item.Plat_Id }) |
-                    @Html.ActionLink("Details", "Details", new { id = item.Plat_Id }) |
-                    @Html.ActionLink("Delete", "Delete", new { id = item.Plat_Id })
+                    <a class="btn btn-success" href="@Url.Action("Modificar", "Create")" title="Detalles">
+                        Ver Actividades
+                    </a>
+                </td>
+                <td>
+                    <a class="btn btn-secondary" href="@Url.Action("Modificar", "Create")" title="Detalles">
+                        Detalles
+                    </a>
+                    <a class="btn btn-info" href="@Url.Action("Modificar", "Create")" title="Modificar">
+                        Modificar
+                    </a>
+                    <a class="btn btn-danger" href="@Url.Action("Eliminar", "Create")" title="Eliminar">
+                        Eliminar
+                    </a>
+
                 </td>
             </tr>
         }
@@ -43,5 +59,9 @@
     </table>
 
 </div>
-
+<div class="contenidoVolver">
+    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
+</div>
 
