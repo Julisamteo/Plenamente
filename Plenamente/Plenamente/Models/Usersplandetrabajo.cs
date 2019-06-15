@@ -23,5 +23,10 @@ namespace Plenamente.Models
 
         public int Acum_Id { get; set; }
         public ActiCumplimiento actiCumplimiento { get; set; }
+        [ForeignKey("empresa")] 
+        public int Emp_Id { get; set; }
+        public Empresa empresa { get; set; }
+
+
     }
 }
