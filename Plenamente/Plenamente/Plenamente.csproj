@@ -327,6 +327,14 @@
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906151554412_actplandetrabajo.cs" />
+    <Compile Include="Migrations\201906151554412_actplandetrabajo.Designer.cs">
+      <DependentUpon>201906151554412_actplandetrabajo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906151556230_actplantdetrabajosreferencias.cs" />
+    <Compile Include="Migrations\201906151556230_actplantdetrabajosreferencias.Designer.cs">
+      <DependentUpon>201906151556230_actplantdetrabajosreferencias.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -394,6 +402,7 @@
     <Compile Include="Models\ViewModel\EmpresaViewModel.cs" />
     <Compile Include="Models\ViewModel\EventViewModel.cs" />
     <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModel.cs" />
+    <Compile Include="Models\ViewModel\PlandetrabajoActividadesViewModel.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
     <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
     <Compile Include="Models\ViewModel\Rhigiene.cs" />
@@ -856,6 +865,7 @@
     <Content Include="Views\PlandeTrabajo\Details.cshtml" />
     <Content Include="Views\PlandeTrabajo\Edit.cshtml" />
     <Content Include="Views\PlandeTrabajo\Index.cshtml" />
+    <Content Include="Views\PlandeTrabajo\ActividadesPlanTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -922,6 +932,12 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906151554412_actplandetrabajo.resx">
+      <DependentUpon>201906151554412_actplandetrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906151556230_actplantdetrabajosreferencias.resx">
+      <DependentUpon>201906151556230_actplantdetrabajosreferencias.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
