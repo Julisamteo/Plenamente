@@ -311,6 +311,10 @@
     <Compile Include="Migrations\201906150319297_addestadofrecuencia.Designer.cs">
       <DependentUpon>201906150319297_addestadofrecuencia.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906150335099_AddTableCicloPHVA.cs" />
+    <Compile Include="Migrations\201906150335099_AddTableCicloPHVA.Designer.cs">
+      <DependentUpon>201906150335099_AddTableCicloPHVA.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -322,6 +326,7 @@
     <Compile Include="Models\AutoEvaluacionn.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
+    <Compile Include="Models\CicloPHVA.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
     <Compile Include="Models\ClaseTest.cs" />
@@ -892,6 +897,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906150319297_addestadofrecuencia.resx">
       <DependentUpon>201906150319297_addestadofrecuencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150335099_AddTableCicloPHVA.resx">
+      <DependentUpon>201906150335099_AddTableCicloPHVA.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

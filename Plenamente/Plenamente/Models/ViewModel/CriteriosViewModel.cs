@@ -5,6 +5,13 @@ using System.Linq;
 
 namespace Plenamente.Models.ViewModel
 {
+    public class CicloPHVAViewModel
+    {
+        public int Id { get; set; }
+        public string Nombre { get; set; }
+        public string Description { get; set; }
+        public List<CriteriosViewModel> Criterios { get; set; }
+    }
     public class CriteriosViewModel
     {
         public int Id { get; set; }

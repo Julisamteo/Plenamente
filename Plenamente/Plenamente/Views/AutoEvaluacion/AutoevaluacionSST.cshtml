@@ -1,4 +1,4 @@
-﻿@model IEnumerable<Plenamente.Models.ViewModel.CriteriosViewModel>
+﻿@model IEnumerable<Plenamente.Models.ViewModel.CicloPHVAViewModel>
 
 @{
     ViewBag.Title = "Autoevaluación SST";
@@ -8,55 +8,61 @@
     <p>Autoevaluación SST</p>
 </div>
 <div class="contenidoCuerpo">
-    @foreach (var criterio in Model)
+    @foreach (var ciclo in Model)
     {
-        if (criterio.Estandares != null && criterio.Estandares.Count > 0)
+        if (ciclo.Criterios != null && ciclo.Criterios.Count > 0)
         {
+            <h4>@ciclo.Nombre</h4>
             <hr />
-            <div class="panel panel-default">
-                <div class="panel-heading"><h2>@criterio.Nombre</h2></div>
-                <div class="panel-body">
+            foreach (var criterio in ciclo.Criterios)
+            {
+                if (criterio.Estandares != null && criterio.Estandares.Count > 0)
+                {
                     <hr />
-
-                    <div class="well well-lg" style="padding-left: 30px;">
-                        @foreach (var estandar in criterio.Estandares)
-                        {
-                            if (estandar.Elementos != null && estandar.Elementos.Count > 0)
-                            {
-                                <br />
-                                <h3>@estandar.Nombre</h3>
-                                <br />
-                                foreach (var elemento in estandar.Elementos)
+                    <div class="panel panel-default">
+                        <div class="panel-heading"><h3>@criterio.Nombre</h3></div>
+                        <div class="panel-body">
+                            <hr />
+                            <div class="well well-lg" style="padding-left: 30px;">
+                                @foreach (var estandar in criterio.Estandares)
                                 {
-                                    <ul class="list-group">
-                                        <li class="list-group-item">
-                                            <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
-                                            <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
-                                                @elemento.Descripcion
-                                            </a>
-                                        </li>
-                                    </ul>
+                                    if (estandar.Elementos != null && estandar.Elementos.Count > 0)
+                                    {
+                                        <br />
+                                        <h4>@estandar.Nombre</h4>
+                                        <br />
+                                        foreach (var elemento in estandar.Elementos)
+                                        {
+                                            <ul class="list-group">
+                                                <li class="list-group-item">
+                                                    <i class="fa @(elemento.ExisteCumplimiento ? "fa-check" : "fa-window-minimize")" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");"></i>
+                                                    <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = elemento.Id })" title="@elemento.Descripcion" style="color: @(elemento.ExisteCumplimiento ? "green" : "darkslategray");">
+                                                        @elemento.Descripcion
+                                                    </a>
+                                                </li>
+                                            </ul>
+                                        }
+                                    }
                                 }
-                            }
-                        }
+                            </div>
+                        </div>
+                        <div class="panel-footer"></div>
                     </div>
-                </div>
-                <div class="panel-footer"></div>
-            </div>
+                }
+            }
         }
-    }
-    <hr />
-    <div class="row">
-        <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
-            <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar y terminar" class="btn btn-default" />
+        <hr />
+        <div class="row">
+            <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
+                <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar y terminar" class="btn btn-default" />
+            </div>
+        </div>
+        <div class="row">
+            @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+            <label class="text-danger">@ViewBag.TextError</label>
+            <label class="text-success">@ViewBag.TextExitoso</label>
         </div>
     </div>
-    <div class="row">
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <label class="text-danger">@ViewBag.TextError</label>
-        <label class="text-success">@ViewBag.TextExitoso</label>
-    </div>
-</div>
 <div class="contenidoVolver">
     <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
         <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
