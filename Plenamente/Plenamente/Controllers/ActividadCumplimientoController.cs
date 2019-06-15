@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Plenamente.App_Tool;
+using Plenamente.Models;
+using Plenamente.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +11,15 @@ namespace Plenamente.Controllers
 {
     public class ActividadCumplimientoController : Controller
     {
+        private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ActividadCumplimiento
         public ActionResult Index()
         {
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+
+            
+
             return View();
         }
 
@@ -23,15 +32,22 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Create
         public ActionResult Create()
         {
-            return View();
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+
+            var model = new ViewModelActividadCumplimiento();
+
+            return View(model);
+            
         }
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia")] ViewModelActividadCumplimiento model)
         {
             try
             {
+
                 // TODO: Add insert logic here
 
                 return RedirectToAction("Index");
