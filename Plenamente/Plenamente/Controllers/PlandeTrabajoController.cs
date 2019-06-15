@@ -22,7 +22,7 @@ namespace Plenamente.Controllers
         public ActionResult Index(int pagina = 1)
         {
             int _TotalRegistros = 0;
-            var tb_PlandeTrabajo = db.Tb_PlandeTrabajo.Where(p => p.Emp_Id==AccountData.NitEmpresa).ToList();
+            var tb_PlandeTrabajo = db.Tb_PlandeTrabajo.Where(p => p.Emp_Id == AccountData.NitEmpresa).ToList();
             _TotalRegistros = tb_PlandeTrabajo.Count();
             tb_PlandeTrabajo = tb_PlandeTrabajo.Skip((pagina - 1) * _RegistrosPorPagina)
                                                .Take(_RegistrosPorPagina)
@@ -71,7 +71,7 @@ namespace Plenamente.Controllers
             if (ModelState.IsValid)
             {
                 var nombreplan = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Nom == plandeTrabajo.Plat_Nom).ToList();
-                if (nombreplan.Count>0)
+                if (nombreplan.Count > 0)
                 {
                     ViewBag.TextError = "Nombre del plan de trabajo repetido";
                     return View(plandeTrabajo);
@@ -80,7 +80,7 @@ namespace Plenamente.Controllers
                 db.SaveChanges();
                 return RedirectToAction("Index");
             }
-           
+
             return View(plandeTrabajo);
         }
 
@@ -146,14 +146,70 @@ namespace Plenamente.Controllers
         public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo)
         {
             var plantrabajo = db.Tb_PlandeTrabajo.Find(IdPlantTrabajo);
+            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa), "Id", "Pers_Nom1");
+            var actividadesEmpresa = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
+            List<ActiCumplimiento> actiCumplimientoSinAsignar = new List<ActiCumplimiento>();
+            List<ActividadesAsignadasPlanDeTrabajoViewModel> actiCumplimientoAsignados = new List<ActividadesAsignadasPlanDeTrabajoViewModel>();
+            foreach (var item in actividadesEmpresa)
+            {
+                var useractividadpt = db.Tb_UsersPlandeTrabajo.Where(c => c.Acum_Id == item.Acum_Id).ToList();
+                if (useractividadpt.Count <= 0)
+                {
+                    actiCumplimientoSinAsignar.Add(item);
+                }
+                else
+                {
+                    var user = db.Tb_UsersPlandeTrabajo.First(c => c.Acum_Id == item.Acum_Id).Id;
+                    var nombre = db.Users.Find(user);
+
+                    ActividadesAsignadasPlanDeTrabajoViewModel temp = new ActividadesAsignadasPlanDeTrabajoViewModel
+                    {
+                        NombreUser= nombre.Pers_Nom1+" "+nombre.Pers_Apel1,
+                        IdPlantTrabajo =plantrabajo.Plat_Id,
+                        IdActiCumplimiento=item.Acum_Id,
+                        DescripcionCumplimiento=item.Acum_Desc,
+                        NombrePlanTrabajo=plantrabajo.Plat_Nom
+
+                    };
+                    actiCumplimientoAsignados.Add(temp);
+                }
+            }
+            ViewBag.actividades = new SelectList(actiCumplimientoSinAsignar, "Acum_Id", "Acum_Desc");
             PlandetrabajoActividadesViewModel plandetrabajoActividades = new PlandetrabajoActividadesViewModel
             {
-                NombrePlanTrabajo=plantrabajo.Plat_Nom,
-                IdPlantTrabajo=plantrabajo.Plat_Id
+                NombrePlanTrabajo = plantrabajo.Plat_Nom,
+                IdPlantTrabajo = plantrabajo.Plat_Id
             };
-           // ViewBag.ActividadesDisponibles=
+            ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
+
+
+
+
             return View(plandetrabajoActividades);
         }
+
+        [HttpPost]
+        public ActionResult ActividadesPlanTrabajo([Bind(Include = "IdPlantTrabajo,IdActiCumplimiento,IdUser")]PlandetrabajoActividadesViewModel model)
+        {
+            if (ModelState.IsValid)
+            {
+                
+               UsuariosPlandetrabajo user = new UsuariosPlandetrabajo
+                {
+                    Acum_Id = model.IdActiCumplimiento,
+                    Plat_Id = model.IdPlantTrabajo,
+                    Emp_Id=AccountData.NitEmpresa,
+                    Id = model.IdUser
+                };
+
+                db.Tb_UsersPlandeTrabajo.Add(user);
+                db.SaveChanges();
+
+            }
+
+            return RedirectToAction("ActividadesPlanTrabajo", new { IdPlantTrabajo = model.IdPlantTrabajo });
+        }
+
 
         protected override void Dispose(bool disposing)
         {

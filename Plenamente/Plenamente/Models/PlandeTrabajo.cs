@@ -17,7 +17,7 @@ namespace Plenamente.Models
         public int Emp_Id { get; set; }
 
         // Permite que Acummes acceda a la data
-        public ICollection<Usersplandetrabajo> Usersplandetrabajo { get; set; }
+        public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
         public Empresa empresa { get; set; }
 
     }
