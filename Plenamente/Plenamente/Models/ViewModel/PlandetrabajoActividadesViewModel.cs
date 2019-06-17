@@ -11,10 +11,12 @@ namespace Plenamente.Models.ViewModel
         public int IdPlantTrabajo { get; set; }
         [Display(Name = "Nombre de plan de trabajo")]
         public string NombrePlanTrabajo { get; set; }
+		[Required]
         [Display(Name = "Usuarios")]
         public string IdUser { get; set; }       
         [Display(Name = "Actividad")]
-        public int IdActiCumplimiento { get; set; }
+		[Required]
+		public int IdActiCumplimiento { get; set; }
         [Display(Name = "Descripcion actividad")]
         public string DescripcionCumplimiento { get; set; }
     }

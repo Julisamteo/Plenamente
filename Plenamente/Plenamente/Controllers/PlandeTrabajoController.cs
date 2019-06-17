@@ -188,10 +188,6 @@ namespace Plenamente.Controllers
                 IdPlantTrabajo = plantrabajo.Plat_Id
             };
             ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
-
-
-
-
             return View(plandetrabajoActividades);
         }
 
@@ -211,7 +207,6 @@ namespace Plenamente.Controllers
 
                 db.Tb_UsersPlandeTrabajo.Add(user);
                 db.SaveChanges();
-
             }
 
             return RedirectToAction("ActividadesPlanTrabajo", new { model.IdPlantTrabajo });
@@ -223,7 +218,7 @@ namespace Plenamente.Controllers
             UsuariosPlandetrabajo usuariosPlandetrabajo = db.Tb_UsersPlandeTrabajo.Find(IdUserPlanTrabajo);
             db.Tb_UsersPlandeTrabajo.Remove(usuariosPlandetrabajo);
             db.SaveChanges();            
-            return RedirectToAction("ActividadesPlanTrabajo", new { usuariosPlandetrabajo.Plat_Id });
+            return RedirectToAction("ActividadesPlanTrabajo", new { IdPlantTrabajo=usuariosPlandetrabajo.Plat_Id });
             
         }
 
