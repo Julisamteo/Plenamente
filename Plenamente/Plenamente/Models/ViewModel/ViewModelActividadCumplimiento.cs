@@ -14,9 +14,10 @@ namespace Plenamente.Models.ViewModel
         public string NombreActividad { get; set; }
 
         [Display(Name = "Meta")]
-        public string Meta { get; set; }
+        public float Meta { get; set; }
 
         [Display(Name = "Fecha inicial")]
+
         public DateTime FechaInicial { get; set; }
 
         [Display(Name = "Fecha final")]
@@ -24,7 +25,9 @@ namespace Plenamente.Models.ViewModel
 
         [Display(Name = "Hora")]
         public TimeSpan hora { get; set; }
-
+        [Display(Name = "Objetivo de la Empresa")]
+        [Required]
+        public int idObjetivo { get; set; }
 
 
         [Display(Name = "Frecuencia")]

@@ -32,6 +32,8 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Create
         public ActionResult Create()
         {
+            var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
+            ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
 
@@ -43,31 +45,39 @@ namespace Plenamente.Controllers
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia")] ViewModelActividadCumplimiento model)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo")] ViewModelActividadCumplimiento model)
         {
-            try
-            {
+            
+            
+           /* try
+            {*/
                 // TODO: Add insert logic here
                 Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+
                 ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
                 // TODO: Add insert logic here
                 ActiCumplimiento actcumplimiento = new ActiCumplimiento
                 {
                     Acum_Desc = model.NombreActividad,
+                    Acum_Porcentest = model.Meta,
                     Acum_IniAct = model.FechaInicial,
                     Acum_FinAct = model.FechaFinal,
+                    Oemp_Id = model.idObjetivo,
+                    Acum_Registro = DateTime.Now,
+                    Id=usuario.Id,
                     Frec_Id = 1,
-                    Peri_Id = 1
+                    Peri_Id = 6,
+                    Empr_Nit=empresa.Empr_Nit
                 };
                 
                 db.Tb_ActiCumplimiento.Add(actcumplimiento);
                 db.SaveChanges();
                 return RedirectToAction("Index");
-            }
-            catch
-            {
-                return View();
-            }
+            /*}
+          catch
+           {
+               return View();
+           }*/
         }
 
         // GET: ActividadCumplimiento/Edit/5
