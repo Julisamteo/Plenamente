@@ -40,18 +40,54 @@ namespace Plenamente.Controllers
         }
 
         // GET: PlandeTrabajo/Details/5
-        public ActionResult Details(int? id)
+        public ActionResult Detalles(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(id);
-            if (plandeTrabajo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(plandeTrabajo);
+			var plantrabajo = db.Tb_PlandeTrabajo.Find(id);			
+			var actividadesEmpresa = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
+			List<ActiCumplimiento> actiCumplimientoSinAsignar = new List<ActiCumplimiento>();
+			List<ActividadesAsignadasPlanDeTrabajoViewModel> actiCumplimientoAsignados = new List<ActividadesAsignadasPlanDeTrabajoViewModel>();
+			foreach (var item in actividadesEmpresa)
+			{
+				var useractividadpt = db.Tb_UsersPlandeTrabajo.Where(c => c.Acum_Id == item.Acum_Id).ToList();
+				if (useractividadpt.Count <= 0)
+				{
+					actiCumplimientoSinAsignar.Add(item);
+				}
+				else
+				{
+					var cumplimientoPlanDetrabajo = db.Tb_UsersPlandeTrabajo.Where(c => c.Plat_Id == id && c.Acum_Id == item.Acum_Id).ToList();
+					if (cumplimientoPlanDetrabajo.Count > 0)
+					{
+
+						var user = db.Tb_UsersPlandeTrabajo.First(c => c.Acum_Id == item.Acum_Id);
+						var nombre = db.Users.Find(user.Id);
+
+						ActividadesAsignadasPlanDeTrabajoViewModel temp = new ActividadesAsignadasPlanDeTrabajoViewModel
+						{
+							IdUserPlanDeTrabajoActividad = user.Uspl_Id,
+							NombreUser = nombre.Pers_Nom1 + " " + nombre.Pers_Apel1,
+							IdPlantTrabajo = plantrabajo.Plat_Id,
+							IdActiCumplimiento = item.Acum_Id,
+							DescripcionCumplimiento = item.Acum_Desc,
+							NombrePlanTrabajo = plantrabajo.Plat_Nom
+
+						};
+						actiCumplimientoAsignados.Add(temp);
+					}
+
+				}
+			}			
+			PlandetrabajoActividadesViewModel plandetrabajoActividades = new PlandetrabajoActividadesViewModel
+			{
+				NombrePlanTrabajo = plantrabajo.Plat_Nom,
+				IdPlantTrabajo = plantrabajo.Plat_Id
+			};
+			ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
+			return View(plandetrabajoActividades);			
         }
 
         // GET: PlandeTrabajo/Create
@@ -85,7 +121,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: PlandeTrabajo/Edit/5
-        public ActionResult Edit(int? id)
+        public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -95,8 +131,7 @@ namespace Plenamente.Controllers
             if (plandeTrabajo == null)
             {
                 return HttpNotFound();
-            }
-            ViewBag.Emp_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", plandeTrabajo.Emp_Id);
+            }            
             return View(plandeTrabajo);
         }
 
@@ -105,39 +140,89 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id")] PlandeTrabajo plandeTrabajo)
+        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id")] PlandeTrabajo plandeTrabajo)
         {
             if (ModelState.IsValid)
             {
-                db.Entry(plandeTrabajo).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            ViewBag.Emp_Id = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", plandeTrabajo.Emp_Id);
+				var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa).ToList();
+				if (Planesdetrabajo.Count<=0)
+				{
+					db.Entry(plandeTrabajo).State = EntityState.Modified;
+					db.SaveChanges();
+					return RedirectToAction("Index");
+				}
+				else
+				{
+					return View(plandeTrabajo);
+				}
+                
+                
+            }            
             return View(plandeTrabajo);
         }
 
         // GET: PlandeTrabajo/Delete/5
-        public ActionResult Delete(int? id)
+        public ActionResult Eliminar(int? id)
         {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(id);
-            if (plandeTrabajo == null)
-            {
-                return HttpNotFound();
-            }
-            return View(plandeTrabajo);
-        }
+			if (id == null)
+			{
+				return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+			}
+			var plantrabajo = db.Tb_PlandeTrabajo.Find(id);
+			var actividadesEmpresa = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
+			List<ActiCumplimiento> actiCumplimientoSinAsignar = new List<ActiCumplimiento>();
+			List<ActividadesAsignadasPlanDeTrabajoViewModel> actiCumplimientoAsignados = new List<ActividadesAsignadasPlanDeTrabajoViewModel>();
+			foreach (var item in actividadesEmpresa)
+			{
+				var useractividadpt = db.Tb_UsersPlandeTrabajo.Where(c => c.Acum_Id == item.Acum_Id).ToList();
+				if (useractividadpt.Count <= 0)
+				{
+					actiCumplimientoSinAsignar.Add(item);
+				}
+				else
+				{
+					var cumplimientoPlanDetrabajo = db.Tb_UsersPlandeTrabajo.Where(c => c.Plat_Id == id && c.Acum_Id == item.Acum_Id).ToList();
+					if (cumplimientoPlanDetrabajo.Count > 0)
+					{
+
+						var user = db.Tb_UsersPlandeTrabajo.First(c => c.Acum_Id == item.Acum_Id);
+						var nombre = db.Users.Find(user.Id);
+
+						ActividadesAsignadasPlanDeTrabajoViewModel temp = new ActividadesAsignadasPlanDeTrabajoViewModel
+						{
+							IdUserPlanDeTrabajoActividad = user.Uspl_Id,
+							NombreUser = nombre.Pers_Nom1 + " " + nombre.Pers_Apel1,
+							IdPlantTrabajo = plantrabajo.Plat_Id,
+							IdActiCumplimiento = item.Acum_Id,
+							DescripcionCumplimiento = item.Acum_Desc,
+							NombrePlanTrabajo = plantrabajo.Plat_Nom
+
+						};
+						actiCumplimientoAsignados.Add(temp);
+					}
+
+				}
+			}
+			PlandetrabajoActividadesViewModel plandetrabajoActividades = new PlandetrabajoActividadesViewModel
+			{
+				NombrePlanTrabajo = plantrabajo.Plat_Nom,
+				IdPlantTrabajo = plantrabajo.Plat_Id
+			};
+			ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
+			return View(plandetrabajoActividades);
+		}
 
         // POST: PlandeTrabajo/Delete/5
-        [HttpPost, ActionName("Delete")]
+        [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public ActionResult ElimitarConfirmado(int id)
         {
             PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(id);
+			var usuariosPlandetrabajo = db.Tb_UsersPlandeTrabajo.Where(c=> c.Plat_Id==id && c.Emp_Id==plandeTrabajo.Emp_Id).ToList();
+			foreach(var item in usuariosPlandetrabajo)
+			{
+				db.Tb_UsersPlandeTrabajo.Remove(item);
+			}
             db.Tb_PlandeTrabajo.Remove(plandeTrabajo);
             db.SaveChanges();
             return RedirectToAction("Index");

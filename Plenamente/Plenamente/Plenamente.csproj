@@ -858,11 +858,12 @@
     <Content Include="Views\Calendario\generateAppoiment.cshtml" />
     <Content Include="Views\PlandeTrabajo\Create.cshtml" />
     <Content Include="Views\PlandeTrabajo\Delete.cshtml" />
-    <Content Include="Views\PlandeTrabajo\Details.cshtml" />
-    <Content Include="Views\PlandeTrabajo\Edit.cshtml" />
     <Content Include="Views\PlandeTrabajo\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Create.cshtml" />
     <Content Include="Views\PlandeTrabajo\ActividadesPlanTrabajo.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Detalles.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Editar.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Eliminar.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

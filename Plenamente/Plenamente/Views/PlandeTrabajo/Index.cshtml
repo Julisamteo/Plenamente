@@ -44,13 +44,13 @@
                     </a>
                 </td>
                 <td>
-                    <a class="btn btn-secondary" href="@Url.Action("Modificar", "Create")" title="Detalles">
+                    <a class="btn btn-secondary" href="@Url.Action("Detalles", "PlandeTrabajo", new { id = item.Plat_Id })" title="Detalles">
                         Detalles
                     </a>
-                    <a class="btn btn-info" href="@Url.Action("Modificar", "Create")" title="Modificar">
-                        Modificar
+                    <a class="btn btn-info" href="@Url.Action("Editar", "PlandeTrabajo", new { id = item.Plat_Id })" title="Editar">
+                        Editar
                     </a>
-                    <a class="btn btn-danger" href="@Url.Action("Eliminar", "Create")" title="Eliminar">
+                    <a class="btn btn-danger" href="@Url.Action("Eliminar", "PlandeTrabajo", new { id = item.Plat_Id })" title="Eliminar">
                         Eliminar
                     </a>
 

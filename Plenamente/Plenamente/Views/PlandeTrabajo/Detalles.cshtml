@@ -26,23 +26,6 @@
                         @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
                     </div>
                 </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IdActiCumplimiento, htmlAttributes: new { @class = "control-label" })
-                    @Html.DropDownListFor(x => x.IdActiCumplimiento, (SelectList)ViewBag.actividades, "Actividad", new { @class = "form-control ", id = "IdActiCumplimiento" })
-                    @Html.ValidationMessageFor(model => model.IdActiCumplimiento, "", new { @class = "text-danger" })
-                </div>
-                <div class="form-group">
-                    @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label" })
-                    @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, "Responsable", new { @class = "form-control", id = "IdUser" })
-                    @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
-                </div>
-                <label class="text-danger">@ViewBag.TextError</label>
-
-                <div class="form-group">
-                    <div class="col-md-offset-2 col-md-10">
-                        <input type="submit" value="Crear" class="btn btn-default" />
-                    </div>
-                </div>
             </div>
         }
         <table class="table table-bordered text-center justify-content-center">
@@ -55,14 +38,11 @@
                 </th>
                 <th>
                     Responsable
-                </th>
-                <th>
-                    Opciones
-                </th>
+                </th>               
             </tr>
 
 
-            @foreach (var item in (List<ActividadesAsignadasPlanDeTrabajoViewModel> )ViewBag.actividadesAsignadas)
+            @foreach (var item in (List<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas)
             {
                 <tr>
                     <td>
@@ -73,26 +53,15 @@
                     </td>
                     <td>
                         @item.NombreUser
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href="@Url.Action("EliminarActividadPlanTrabajo","PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
-                            Eliminar
-                        </a>
-
-                    </td>
+                    </td>                   
                 </tr>
             }
 
-        </table>
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Crear Actividad" class="btn btn-default" />
-            </div>
-        </div>
+        </table>      
     </div>
 
 </div>
+
 <div class="contenidoVolver">
     <a href="@Url.Action("Index", "PlandeTrabajo")" class="ayudaTitulos">
         <span>Volver a los planes de trabajo</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
