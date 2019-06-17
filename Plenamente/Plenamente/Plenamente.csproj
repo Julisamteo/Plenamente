@@ -308,6 +308,10 @@
     <Compile Include="Migrations\201906142117189_Tt.Designer.cs">
       <DependentUpon>201906142117189_Tt.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906171340363_update.cs" />
+    <Compile Include="Migrations\201906171340363_update.Designer.cs">
+      <DependentUpon>201906171340363_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -446,6 +450,8 @@
     <Content Include="Imagenes\Element-8.png" />
     <Content Include="Imagenes\engranaje.png" />
     <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
+    <Content Include="Imagenes\fondo.jpg" />
+    <Content Include="Imagenes\fondo.png" />
     <Content Include="Imagenes\forgot.png" />
     <Content Include="Imagenes\grafica1.JPG" />
     <Content Include="Imagenes\grafica2.JPG" />
@@ -943,6 +949,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906142117189_Tt.resx">
       <DependentUpon>201906142117189_Tt.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906171340363_update.resx">
+      <DependentUpon>201906171340363_update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
