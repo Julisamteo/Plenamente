@@ -1,8 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
-using System.Linq;
-using System.Web;
+using System.ComponentModel.DataAnnotations.Schema;
 
 namespace Plenamente.Models
 {
@@ -16,6 +15,9 @@ namespace Plenamente.Models
 
         // Permite a Estandar acceder a la Data
         public ICollection<Estandar> Estandars { get; set; }
-
+        [ForeignKey("CicloPHVA")]
+        public int? CicloPHVA_Id { get; set; }
+        public CicloPHVA CicloPHVA { get; set; }
+        public short Categoria { get; set; }
     }
 }

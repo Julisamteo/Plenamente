@@ -223,6 +223,7 @@
     <Compile Include="App_Tool\AccountData.cs" />
     <Compile Include="App_Tool\PaginadorGenerico.cs" />
     <Compile Include="Controllers\ActiCumplimientoesController.cs" />
+    <Compile Include="Controllers\ActividadCumplimientoController.cs" />
     <Compile Include="Controllers\adminController.cs" />
     <Compile Include="Controllers\AfpController.cs" />
     <Compile Include="Controllers\AreaEmpresasController.cs" />
@@ -247,6 +248,7 @@
     <Compile Include="Controllers\ItemEstandarsController.cs" />
     <Compile Include="Controllers\ObjEmpresasController.cs" />
     <Compile Include="Controllers\PeriodoesController.cs" />
+    <Compile Include="Controllers\PlandeTrabajoController.cs" />
     <Compile Include="Controllers\PoliticasController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\ProcesActividadsController.cs" />
@@ -304,13 +306,33 @@
     <Compile Include="Migrations\201906132130399_actBd.Designer.cs">
       <DependentUpon>201906132130399_actBd.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906142117189_Tt.cs" />
-    <Compile Include="Migrations\201906142117189_Tt.Designer.cs">
-      <DependentUpon>201906142117189_Tt.cs</DependentUpon>
+    <Compile Include="Migrations\201906150303196_actbd2.cs" />
+    <Compile Include="Migrations\201906150303196_actbd2.Designer.cs">
+      <DependentUpon>201906150303196_actbd2.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906171340363_update.cs" />
-    <Compile Include="Migrations\201906171340363_update.Designer.cs">
-      <DependentUpon>201906171340363_update.cs</DependentUpon>
+    <Compile Include="Migrations\201906150317351_deletetable.cs" />
+    <Compile Include="Migrations\201906150317351_deletetable.Designer.cs">
+      <DependentUpon>201906150317351_deletetable.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150319297_addestadofrecuencia.cs" />
+    <Compile Include="Migrations\201906150319297_addestadofrecuencia.Designer.cs">
+      <DependentUpon>201906150319297_addestadofrecuencia.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150335099_AddTableCicloPHVA.cs" />
+    <Compile Include="Migrations\201906150335099_AddTableCicloPHVA.Designer.cs">
+      <DependentUpon>201906150335099_AddTableCicloPHVA.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs" />
+    <Compile Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.Designer.cs">
+      <DependentUpon>201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906150429148_AddempresaNitToFrecuencias.cs" />
+    <Compile Include="Migrations\201906150429148_AddempresaNitToFrecuencias.Designer.cs">
+      <DependentUpon>201906150429148_AddempresaNitToFrecuencias.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.cs" />
+    <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
+      <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -323,6 +345,7 @@
     <Compile Include="Models\AutoEvaluacionn.cs" />
     <Compile Include="Models\CargoEmpresa.cs" />
     <Compile Include="Models\CateLicencia.cs" />
+    <Compile Include="Models\CicloPHVA.cs" />
     <Compile Include="Models\Ciudad.cs" />
     <Compile Include="Models\ClaseArl.cs" />
     <Compile Include="Models\ClaseTest.cs" />
@@ -358,6 +381,7 @@
     <Compile Include="Models\PreguntaRespuesta.cs" />
     <Compile Include="Models\ProcactEmpresa.cs" />
     <Compile Include="Models\ProcesActividad.cs" />
+    <Compile Include="Models\ProgamacionTareas.cs" />
     <Compile Include="Models\ReglaHigiene.cs" />
     <Compile Include="Models\ReglaInterno.cs" />
     <Compile Include="Models\Respuesta.cs" />
@@ -370,7 +394,8 @@
     <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
-    <Compile Include="Models\Usersplandetrabajo.cs" />
+    <Compile Include="Models\UsuariosPlandetrabajo.cs" />
+    <Compile Include="Models\ViewModel\ActividadesAsignadasPlanDeTrabajoViewModel.cs" />
     <Compile Include="Models\ViewModel\ArchivoCumpView.cs" />
     <Compile Include="Models\ViewModel\AutoEvaluacionViewModel.cs" />
     <Compile Include="Models\ViewModel\CriteriosViewModel.cs" />
@@ -378,9 +403,11 @@
     <Compile Include="Models\ViewModel\EmpresaViewModel.cs" />
     <Compile Include="Models\ViewModel\EventViewModel.cs" />
     <Compile Include="Models\ViewModel\EvidenciaCumplimientoViewModel.cs" />
+    <Compile Include="Models\ViewModel\PlandetrabajoActividadesViewModel.cs" />
     <Compile Include="Models\ViewModel\PoliticasViewModel.cs" />
     <Compile Include="Models\ViewModel\ReglamentoInternoViewModel.cs" />
     <Compile Include="Models\ViewModel\Rhigiene.cs" />
+    <Compile Include="Models\ViewModel\ViewModelActividadCumplimiento.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
     <Compile Include="PlenamenteDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
@@ -844,6 +871,7 @@
     <Content Include="Views\AutoEvaluacion\AutoevaluacionSST.cshtml" />
     <Content Include="Views\AutoEvaluacion\Cumplimiento.cshtml" />
     <Content Include="Views\AutoEvaluacion\CargaEvidencia.cshtml" />
+    <Content Include="Views\AutoEvaluacion\Index - Copia.cshtml" />
     <Content Include="Views\AutoEvaluacion\NumeroEmpleados.cshtml" />
     <Content Include="Views\AutoEvaluacion\ModificarNumeroEmpleados.cshtml" />
     <Content Include="Views\AutoEvaluacion\VerHistorico.cshtml" />
@@ -947,11 +975,26 @@
     <EmbeddedResource Include="Migrations\201906132130399_actBd.resx">
       <DependentUpon>201906132130399_actBd.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906142117189_Tt.resx">
-      <DependentUpon>201906142117189_Tt.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906150303196_actbd2.resx">
+      <DependentUpon>201906150303196_actbd2.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906171340363_update.resx">
-      <DependentUpon>201906171340363_update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906150317351_deletetable.resx">
+      <DependentUpon>201906150317351_deletetable.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150319297_addestadofrecuencia.resx">
+      <DependentUpon>201906150319297_addestadofrecuencia.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150335099_AddTableCicloPHVA.resx">
+      <DependentUpon>201906150335099_AddTableCicloPHVA.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150355443_AddCategoriasToCiclosCriteriosEstandares.resx">
+      <DependentUpon>201906150355443_AddCategoriasToCiclosCriteriosEstandares.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906150429148_AddempresaNitToFrecuencias.resx">
+      <DependentUpon>201906150429148_AddempresaNitToFrecuencias.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
+      <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

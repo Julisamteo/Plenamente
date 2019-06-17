@@ -22,5 +22,6 @@ namespace Plenamente.Models
 
         // Permite a ItemStandar
         public ICollection<ItemEstandar> itemEstandars { get; set; }
+        public short Categoria { get; set; }
     }
 }

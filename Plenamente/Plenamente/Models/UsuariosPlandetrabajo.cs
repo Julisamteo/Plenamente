@@ -8,7 +8,7 @@ using System.Web;
 
 namespace Plenamente.Models
 {
-    public class Usersplandetrabajo
+    public class UsuariosPlandetrabajo
     {
         [Key]
         public int Uspl_Id { get; set; }
@@ -23,5 +23,12 @@ namespace Plenamente.Models
 
         public int Acum_Id { get; set; }
         public ActiCumplimiento actiCumplimiento { get; set; }
+        [ForeignKey("empresa")]
+        public int Emp_Id { get; set; }
+        public Empresa empresa { get; set; }
+
+
+
+
     }
 }

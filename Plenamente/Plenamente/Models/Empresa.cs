@@ -10,6 +10,7 @@ namespace Plenamente.Models
     {
         [Key]
         public int Empr_Nit { get; set; }
+        [Display(Name = "Nombre Empresa")]
         public string Empr_Nom { get; set; }
         public string Empr_Dir { get; set; }
         // ForeignKey ARL

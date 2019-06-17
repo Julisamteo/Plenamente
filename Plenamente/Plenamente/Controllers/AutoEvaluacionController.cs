@@ -15,15 +15,33 @@ namespace Plenamente.Controllers
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<AutoEvaluacionViewModel> _PaginadorCustomers;
         private ApplicationDbContext db = new ApplicationDbContext();
-        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult Index()
         {
-            return View();
+            IList<Empresa> listempresa = new List<Empresa>();
+            var numbertrab = from empresa in db.Tb_Empresa where empresa.Empr_Nit == 1 select empresa;
+            var empresas = numbertrab.ToList();
+            foreach (var empre in empresas)
+            {
+                listempresa.Add(new Empresa()
+                {
+                    Empr_Nit = empre.Empr_Nit,
+                    Empr_Nom = empre.Empr_Nom,
+                    Empr_Dir = empre.Empr_Dir,
+                    Empr_Ttrabaja = empre.Empr_Ttrabaja,
+                    Empr_Afiarl = empre.Empr_Afiarl,
+                    
+                    Empr_Registro = DateTime.Now
+
+                    //Empr_
+
+                });
+            }
+            return View(listempresa);
         }
-        [Authorize/*(Roles = "Administrator, Admin")*/]
+        [Authorize]
         public ActionResult AutoevaluacionSST(string textError = "")
         {
-            List<CriteriosViewModel> list = new List<CriteriosViewModel>();
+            List<CicloPHVAViewModel> list = new List<CicloPHVAViewModel>();
             try
             {
                 ViewBag.TextError = textError;
@@ -47,44 +65,55 @@ namespace Plenamente.Controllers
                     tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
                 }
                 list =
-                   db.Tb_Criterio
-                       .Select(c =>
-                           new CriteriosViewModel
-                           {
-                               Id = c.Crit_Id,
-                               Nombre = c.Crit_Nom,
-                               Porcentaje = c.Crit_Porcentaje,
-                               Registro = c.Crit_Registro,
-                               Estandares =
-                               c.Estandars
-                                .Select(e =>
-                                   new EstandaresViewModel
-                                   {
-                                       Id = e.Esta_Id,
-                                       Nombre = e.Esta_Nom,
-                                       Porcentaje = e.Esta_Porcentaje,
-                                       Registro = e.Esta_Registro,
-                                       Elementos =
-                                           e.itemEstandars
-                                            .Where(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria)
-                                            .Select(i =>
-                                               new ElementoViewModel
-                                               {
-                                                   Id = i.Iest_Id,
-                                                   Descripcion = i.Iest_Desc,
-                                                   Observaciones = i.Iest_Observa,
-                                                   Porcentaje = i.Iest_Porcentaje,
-                                                   Recurso = i.Iest_Recurso,
-                                                   Registro = i.Iest_Registro,
-                                                   Reursob = i.Iest_Rescursob,
-                                                   Verificar = i.Iest_Verificar,
-                                                   Video = i.Iest_Video,
-                                                   Periodo = i.Iest_Peri,
-                                                   MasInformacion = i.Iest_MasInfo,
-                                                   Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa && !cu.AutoEvaluacion.Finalizada).ToList()
-                                               }).ToList()
-                                   }).ToList(),
-                           }).ToList();
+                   db.Tb_CicloPHVA
+                       .Where(cp => tipoEmpresa.Categoria == 0 || cp.Categoria == 0 || cp.Categoria <= tipoEmpresa.Categoria)
+                       .Select(cp =>
+                       new CicloPHVAViewModel
+                       {
+                           Id = cp.Id,
+                           Nombre = cp.Nombre,
+                           Description = cp.Description,
+                           Criterios = cp.Criterios
+                                .Where(c => cp.Id == c.CicloPHVA_Id && tipoEmpresa.Categoria == 0 || c.Categoria == 0 || c.Categoria <= tipoEmpresa.Categoria)
+                                .Select(c =>
+                                new CriteriosViewModel
+                                {
+                                    Id = c.Crit_Id,
+                                    Nombre = c.Crit_Nom,
+                                    Porcentaje = c.Crit_Porcentaje,
+                                    Registro = c.Crit_Registro,
+                                    Estandares =
+                                    c.Estandars
+                                     .Where(e => tipoEmpresa.Categoria == 0 || e.Categoria == 0 || e.Categoria <= tipoEmpresa.Categoria)
+                                     .Select(e =>
+                                        new EstandaresViewModel
+                                        {
+                                            Id = e.Esta_Id,
+                                            Nombre = e.Esta_Nom,
+                                            Porcentaje = e.Esta_Porcentaje,
+                                            Registro = e.Esta_Registro,
+                                            Elementos =
+                                                e.itemEstandars
+                                                 .Where(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria)
+                                                 .Select(i =>
+                                                    new ElementoViewModel
+                                                    {
+                                                        Id = i.Iest_Id,
+                                                        Descripcion = i.Iest_Desc,
+                                                        Observaciones = i.Iest_Observa,
+                                                        Porcentaje = i.Iest_Porcentaje,
+                                                        Recurso = i.Iest_Recurso,
+                                                        Registro = i.Iest_Registro,
+                                                        Reursob = i.Iest_Rescursob,
+                                                        Verificar = i.Iest_Verificar,
+                                                        Video = i.Iest_Video,
+                                                        Periodo = i.Iest_Peri,
+                                                        MasInformacion = i.Iest_MasInfo,
+                                                        Cumplimientos = i.Cumplimientos.Where(cu => cu.Empr_Nit == AccountData.NitEmpresa && !cu.AutoEvaluacion.Finalizada).ToList()
+                                                    }).ToList()
+                                        }).ToList()
+                                }).ToList()
+                       }).ToList();
             }
             catch (Exception ex)
             {
@@ -92,7 +121,7 @@ namespace Plenamente.Controllers
             }
             return View(list);
         }
-        [Authorize/*(Roles = "Administrator, Admin")*/]
+        [Authorize]
         public ActionResult Cumplimiento(int idItem)
         {
             Cumplimiento cumplimiento = db.Tb_Cumplimiento.FirstOrDefault(c => c.Empr_Nit == AccountData.NitEmpresa && c.Iest_Id == idItem && !c.AutoEvaluacion.Finalizada);
@@ -159,7 +188,7 @@ namespace Plenamente.Controllers
         }
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize/*(Roles = "Administrator, Admin")*/]
+        [Authorize]
         public ActionResult Cumplimiento([Bind(Include = "AutoEvaluacionId,Cumple,Nocumple,Justifica,Nojustifica,Id,Registro,Observaciones,ItemEstandarId,Nit")] CumplimientoViewModel model)
         {
             try
@@ -227,7 +256,7 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("AutoevaluacionSST");
         }
-        [Authorize/*(Roles = "Administrator, Admin")*/]
+        [Authorize]
         public ActionResult GuardarTerminar()
         {
             List<CriteriosViewModel> list = new List<CriteriosViewModel>();
@@ -239,7 +268,7 @@ namespace Plenamente.Controllers
                 if (numeroTrabajadores > 0)
                 {
                     tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
-                }                
+                }
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion != null)
                 {
@@ -263,12 +292,11 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("Index", "Home");
         }
-        [Authorize/*(Roles = "Administrator")*/]
         public ActionResult CargaEvidencia(int idItem)
         {
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Id", "Pers_Nom1");
+            ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == usuario.Empr_Nit), "Acum_Id", "Acum_Desc");
 
             EvidenciaCumplimientoViewModel evidenciaCumplimientoViewModel = new EvidenciaCumplimientoViewModel
             {
@@ -278,7 +306,6 @@ namespace Plenamente.Controllers
             return View(evidenciaCumplimientoViewModel);
         }
         [HttpPost]
-        [Authorize/*(Roles = "Administrator")*/]
         public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -323,12 +350,10 @@ namespace Plenamente.Controllers
             }
             return View(new EvidenciaCumplimientoViewModel());
         }
-
         /// <summary>
         /// 
         /// </summary>
         /// <returns></returns>
-        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult NumeroEmpleados()
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -339,23 +364,36 @@ namespace Plenamente.Controllers
             {
                 return RedirectToAction("AutoevaluacionSST");
             }
-
-            EmpresaViewModel model = new EmpresaViewModel
-            {
-                IdEmpresa = empresa.Empr_Nit,
-                NombreEmpresa = empresa.Empr_Nom,
-                NumeroEmpleados = empresa.Empr_Ttrabaja
-            };
-            return View(model);
+            return View(new EvidenciaCumplimientoViewModel());
         }
+        ///// <summary>
+        ///// 
+        ///// </summary>
+        ///// <returns></returns>
+        //public ActionResult NumeroEmpleados()
+        //{
+        //    ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+        //    Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+
+        //    //Validacion. Existe alguna autoevaluacion en proceso
+        //    if (db.Tb_AutoEvaluacion.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
+        //    {
+        //        return RedirectToAction("AutoevaluacionSST");
+        //    }
+
+        //    EmpresaViewModel model = new EmpresaViewModel
+        //    {
+        //        IdEmpresa = empresa.Empr_Nit,
+        //        NombreEmpresa = empresa.Empr_Nom,
+        //        NumeroEmpleados = empresa.Empr_Ttrabaja
+        //    };
+        //    return View(model);
+        //}
         [HttpPost]
-        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
         {
             return RedirectToAction("AutoevaluacionSST");
         }
-
-        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
@@ -367,9 +405,23 @@ namespace Plenamente.Controllers
             };
             return View(model);
         }
-
+        //[HttpPost]
+        //public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
+        //{
+        //    return RedirectToAction("AutoevaluacionSST");
+        //}
+        //public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
+        //{
+        //    Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+        //    EmpresaViewModel model = new EmpresaViewModel
+        //    {
+        //        IdEmpresa = empresa.Empr_Nit,
+        //        NombreEmpresa = empresa.Empr_Nom,
+        //        NumeroEmpleados = numeroEmpleados
+        //    };
+        //    return View(model);
+        //}
         [HttpPost]
-        [Authorize/*(Roles = "Administrator, Admin")*/]
         public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
         {
             Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
@@ -378,23 +430,34 @@ namespace Plenamente.Controllers
                 model.NombreEmpresa = empresa.Empr_Nom;
                 return View(model);
             }
-
             empresa.Empr_Ttrabaja = model.NumeroEmpleados;
             db.Entry(empresa).State = EntityState.Modified;
             db.SaveChanges();
 
             return RedirectToAction("AutoevaluacionSST");
         }
-        [Authorize/*(Roles = "Administrator, Admin")*/]
+        //public ActionResult VerHistorico(int pagina = 1)
+        //{
+        //    int _TotalRegistros = 0;
+        //    int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
+        //    int identificadorIncremental = 1;
+        //    List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
+        //    _TotalRegistros = autoEvaluacions.Count();
+
+        //    empresa.Empr_Ttrabaja = model.NumeroEmpleados;
+        //    db.Entry(empresa).State = EntityState.Modified;
+        //    db.SaveChanges();
+
+        //    return RedirectToAction("AutoevaluacionSST");
+        //}
         public ActionResult VerHistorico(int pagina = 1)
-        {			
-			int _TotalRegistros = 0;
+        {
+            int _TotalRegistros = 0;
             int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
             int identificadorIncremental = 1;
             List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
             _TotalRegistros = autoEvaluacions.Count();
-            
-            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();       
+            List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
             foreach (AutoEvaluacion a in autoEvaluacions)
             {
                 AutoEvaluacionViewModel autoEvaluacionView = new AutoEvaluacionViewModel
@@ -409,10 +472,10 @@ namespace Plenamente.Controllers
                 autoEvaluacionViewModel.Add(autoEvaluacionView);
                 identificadorIncremental++;
             }
-			autoEvaluacionViewModel = autoEvaluacionViewModel.Skip((pagina - 1) * _RegistrosPorPagina)
-												 .Take(_RegistrosPorPagina)
-												 .ToList();
-			var _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+            autoEvaluacionViewModel = autoEvaluacionViewModel.Skip((pagina - 1) * _RegistrosPorPagina)
+                                                 .Take(_RegistrosPorPagina)
+                                                 .ToList();
+            int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
             _PaginadorCustomers = new PaginadorGenerico<AutoEvaluacionViewModel>()
             {
                 RegistrosPorPagina = _RegistrosPorPagina,
@@ -420,12 +483,8 @@ namespace Plenamente.Controllers
                 TotalPaginas = _TotalPaginas,
                 PaginaActual = pagina,
                 Resultado = autoEvaluacionViewModel
-            };         
+            };
             return View(_PaginadorCustomers);
         }
-
-
     }
-
-
 }
