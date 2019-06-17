@@ -454,8 +454,11 @@
     <Content Include="Imagenes\fondo.png" />
     <Content Include="Imagenes\forgot.png" />
     <Content Include="Imagenes\grafica1.JPG" />
+    <Content Include="Imagenes\grafica1.png" />
     <Content Include="Imagenes\grafica2.JPG" />
+    <Content Include="Imagenes\grafica2.png" />
     <Content Include="Imagenes\grafica3.JPG" />
+    <Content Include="Imagenes\grafica3.png" />
     <Content Include="Imagenes\Grey-background.jpg" />
     <Content Include="Imagenes\home1.png" />
     <Content Include="Imagenes\icon-11.png" />
