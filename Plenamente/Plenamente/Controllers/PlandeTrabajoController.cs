@@ -159,19 +159,26 @@ namespace Plenamente.Controllers
                 }
                 else
                 {
-                    var user = db.Tb_UsersPlandeTrabajo.First(c => c.Acum_Id == item.Acum_Id).Id;
-                    var nombre = db.Users.Find(user);
-
-                    ActividadesAsignadasPlanDeTrabajoViewModel temp = new ActividadesAsignadasPlanDeTrabajoViewModel
+                    var cumplimientoPlanDetrabajo = db.Tb_UsersPlandeTrabajo.Where(c => c.Plat_Id == IdPlantTrabajo && c.Acum_Id==item.Acum_Id).ToList();
+                    if (cumplimientoPlanDetrabajo.Count>0)
                     {
-                        NombreUser= nombre.Pers_Nom1+" "+nombre.Pers_Apel1,
-                        IdPlantTrabajo =plantrabajo.Plat_Id,
-                        IdActiCumplimiento=item.Acum_Id,
-                        DescripcionCumplimiento=item.Acum_Desc,
-                        NombrePlanTrabajo=plantrabajo.Plat_Nom
+                        
+                        var user = db.Tb_UsersPlandeTrabajo.First(c => c.Acum_Id == item.Acum_Id);
+                        var nombre = db.Users.Find(user.Id);
 
-                    };
-                    actiCumplimientoAsignados.Add(temp);
+                        ActividadesAsignadasPlanDeTrabajoViewModel temp = new ActividadesAsignadasPlanDeTrabajoViewModel
+                        {
+                            IdUserPlanDeTrabajoActividad= user.Uspl_Id,
+                            NombreUser = nombre.Pers_Nom1 + " " + nombre.Pers_Apel1,
+                            IdPlantTrabajo = plantrabajo.Plat_Id,
+                            IdActiCumplimiento = item.Acum_Id,
+                            DescripcionCumplimiento = item.Acum_Desc,
+                            NombrePlanTrabajo = plantrabajo.Plat_Nom
+
+                        };
+                        actiCumplimientoAsignados.Add(temp);
+                    }
+                   
                 }
             }
             ViewBag.actividades = new SelectList(actiCumplimientoSinAsignar, "Acum_Id", "Acum_Desc");
@@ -207,9 +214,18 @@ namespace Plenamente.Controllers
 
             }
 
-            return RedirectToAction("ActividadesPlanTrabajo", new { IdPlantTrabajo = model.IdPlantTrabajo });
-        }
+            return RedirectToAction("ActividadesPlanTrabajo", new { model.IdPlantTrabajo });
+        }     
 
+        public ActionResult EliminarActividadPlanTrabajo(int IdUserPlanTrabajo)
+        {
+
+            UsuariosPlandetrabajo usuariosPlandetrabajo = db.Tb_UsersPlandeTrabajo.Find(IdUserPlanTrabajo);
+            db.Tb_UsersPlandeTrabajo.Remove(usuariosPlandetrabajo);
+            db.SaveChanges();            
+            return RedirectToAction("ActividadesPlanTrabajo", new { usuariosPlandetrabajo.Plat_Id });
+            
+        }
 
         protected override void Dispose(bool disposing)
         {

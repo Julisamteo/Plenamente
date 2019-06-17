@@ -862,6 +862,7 @@
     <Content Include="Views\PlandeTrabajo\Edit.cshtml" />
     <Content Include="Views\PlandeTrabajo\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Create.cshtml" />
+    <Content Include="Views\PlandeTrabajo\ActividadesPlanTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

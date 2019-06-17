@@ -28,7 +28,7 @@
                 </div>
                 <div class="form-group">
                     @Html.LabelFor(model => model.IdActiCumplimiento, htmlAttributes: new { @class = "control-label" })
-                    @Html.DropDownListFor(x => x.IdActiCumplimiento, (SelectList)ViewBag.actividades, "Tipo de documento", new { @class = "form-control ", id = "IdActiCumplimiento" })
+                    @Html.DropDownListFor(x => x.IdActiCumplimiento, (SelectList)ViewBag.actividades, "Actividad", new { @class = "form-control ", id = "IdActiCumplimiento" })
                     @Html.ValidationMessageFor(model => model.IdActiCumplimiento, "", new { @class = "text-danger" })
                 </div>
                 <div class="form-group">
@@ -44,44 +44,61 @@
                     </div>
                 </div>
             </div>
-            <table class="table table-bordered text-center justify-content-center">
-                <tr>
-                    <th>
-                        Nombre Plan
-                    </th>
-                    <th>
-                        Actividad
-                    </th>
-                    <th>
-                        Responsable
-                    </th>
-                </tr>
-
-                @foreach (var item in (List<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas)
-                {
-                    <tr>
-                        <td>
-                            @item.NombrePlanTrabajo
-                        </td>
-                        <td>
-                            @item.DescripcionCumplimiento
-                        </td>
-                        <td>
-                            @item.NombreUser
-                        </td>
-                    </tr>
-                }
-
-            </table>
-
         }
+        <table class="table table-bordered text-center justify-content-center">
+            <tr>
+                <th>
+                    Nombre Plan
+                </th>
+                <th>
+                    Actividad
+                </th>
+                <th>
+                    Responsable
+                </th>
+                <th>
+                    Opciones
+                </th>
+            </tr>
+
+
+            @foreach (var item in (List<ActividadesAsignadasPlanDeTrabajoViewModel> )ViewBag.actividadesAsignadas)
+            {
+                <tr>
+                    <td>
+                        @item.NombrePlanTrabajo
+                    </td>
+                    <td>
+                        @item.DescripcionCumplimiento
+                    </td>
+                    <td>
+                        @item.NombreUser
+                    </td>
+                    <td>
+                        <a class="btn btn-success" href="@Url.Action(" EliminarActividadPlanTrabajo", "PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
+                            Eliminar
+                        </a>
+
+                    </td>
+                </tr>
+            }
+
+        </table>
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input type="submit" value="Crear Actividad" class="btn btn-default" />
+            </div>
+        </div>
+
+
 
     </div>
 
 </div>
 <div class="contenidoVolver">
-    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
-        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    <a href="@Url.Action("Index", "PlandeTrabajo")" class="ayudaTitulos">
+        <span>Volver a los planes de trabajo</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
     </a>
 </div>
 
