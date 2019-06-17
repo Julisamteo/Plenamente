@@ -640,7 +640,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         #endregion
 
         // GET: /Admin/AddRole
-        [Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Administrator")]
         #region public ActionResult AddRole()
         public ActionResult AddRole()
         {
