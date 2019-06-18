@@ -9,7 +9,7 @@ namespace Plenamente.Models.ViewModel
     public class PlandetrabajoActividadesViewModel
     {
         public int IdPlantTrabajo { get; set; }
-        [Display(Name = "Plan de trabajo")]
+        [Display(Name = "Asignación de actividades")]
         public string NombrePlanTrabajo { get; set; }
 		[Required]
         [Display(Name = "Usuarios")]
