@@ -53,6 +53,9 @@
                 Estado
             </th>
             <th class="colorVerde"></th>
+            <th>
+                Modal
+            </th>
         </tr>
     </thead>
     <tbody class="cuerpoTabla">
@@ -71,7 +74,7 @@
             <td>
                 @Html.DisplayFor(modelItem => item.Email)
             </td>
-            <td>
+            @*<td>
                 @Html.DisplayFor(modelItem => item.SedeCiudad.Sciu_Nom)
             </td>
             <td>
@@ -87,18 +90,22 @@
                 @Html.DisplayFor(modelItem => item.AreaEmpresa.Aemp_Nom)
             </td>
             <td>
-                @Html.DisplayFor(modelItem => item.Jefe_Id)
+                @Html.DisplayFor(modelItem => item.Jefe)
             </td>
             <td>
                 @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
-            </td>
+            </td>*@
             <td>
-                @Html.ActionLink("Edit", "EditUser", new { UserName = item.UserName }) |
+                @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName }) |
                 @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                 {
-                    @Html.ActionLink("Delete", "DeleteUser", new { UserName = item.UserName },
+                    @Html.ActionLink("Borrar", "DeleteUser", new { UserName = item.UserName },
                     new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
                 }
+            </td>
+            <td>
+                @Html.ActionLink("Detalles","Correctuser", new { Username = item.UserName })
+
             </td>
         </tr>
         }

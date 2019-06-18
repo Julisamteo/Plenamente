@@ -19,6 +19,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // GET: Administrador/CargoEmpresas
         //Se Agregan Los Parametros sortOrder, currentFilter, searchString, page, para la busqueda y paginacion de la encuesta.
+        [Authorize(Roles = "Administrator")]
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -69,9 +70,10 @@ namespace Plenamente.Areas.Administrador.Controllers
             //Retorna la vista      
             return View(cargos.ToPagedList(pageNumber, pageSize));
         }
-       
+
 
         // GET: Administrador/CargoEmpresas/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -87,6 +89,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/CargoEmpresas/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
@@ -98,6 +101,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Cemp_Id,Cemp_Nom,Empr_Nit,Cemp_Registro")] CargoEmpresa cargoEmpresa)
         {
             if (ModelState.IsValid)
@@ -112,6 +116,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/CargoEmpresas/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -132,6 +137,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Cemp_Id,Cemp_Nom,Empr_Nit,Cemp_Registro")] CargoEmpresa cargoEmpresa)
         {
             if (ModelState.IsValid)
@@ -145,6 +151,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/CargoEmpresas/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -162,6 +169,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/CargoEmpresas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             CargoEmpresa cargoEmpresa = db.Tb_CargoEmpresa.Find(id);

@@ -17,6 +17,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ObjEmpresas
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
                ViewBag.CurrentSort = sortOrder;
@@ -61,6 +62,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/ProcesActividads/Details/
 
         // GET: Administrador/ObjEmpresas/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -76,6 +78,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ObjEmpresas/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
@@ -87,6 +90,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Oemp_Id,Oemp_Nombre,Oemp_Descrip,Oemp_Meta,Oemp_Registro,Empr_Nit")] ObjEmpresa objEmpresa)
         {
             if (ModelState.IsValid)
@@ -101,6 +105,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ObjEmpresas/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -121,6 +126,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Oemp_Id,Oemp_Nombre,Oemp_Descrip,Oemp_Meta,Oemp_Registro,Empr_Nit")] ObjEmpresa objEmpresa)
         {
             if (ModelState.IsValid)
@@ -134,6 +140,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ObjEmpresas/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -149,6 +156,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // POST: Administrador/ObjEmpresas/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

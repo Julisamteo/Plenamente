@@ -14,6 +14,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: Administrador/CargaArchivo
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Upload()
         {
             
@@ -24,6 +25,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             return View();
         }
        [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Upload([Bind(Include = "Evid_Id,Evid_Nombre,Evid_Archivo,Evid_Registro,Cump_Id,Tdca_id,Id")]Archivo archivo)
         {
             using (ApplicationDbContext entity = new ApplicationDbContext())
@@ -63,6 +65,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         //}
 
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Evidencia()
         {
             ApplicationDbContext entity = new ApplicationDbContext();
@@ -77,6 +80,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult SaveRecord(Archivo archivo)
         {
             try

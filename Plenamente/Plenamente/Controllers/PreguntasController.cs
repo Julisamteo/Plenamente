@@ -13,7 +13,7 @@ namespace Plenamente.Areas.Administrador.Controllers
     public class PreguntasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
+        [Authorize(Roles = "Administrator")]
         public ViewResult Index(string sortOrder, string currentFilter, int idEncuesta, int? page, string searchString)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -58,6 +58,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id, int? idEncuesta)
         {
             ViewBag.Encu_Id = idEncuesta;
@@ -75,6 +76,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(int ?id, int idEncuesta)
         {
             ViewBag.Encu_Id = new SelectList(db.Tb_Encuesta, "Encu_Id", "Encu_Id");
@@ -87,6 +89,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int? id, int idEncuesta)
         { 
             if (ModelState.IsValid)
@@ -101,6 +104,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id, int idEncuesta)
         {
             ViewBag.idEncuesta = idEncuesta;
@@ -122,6 +126,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Preg_Id,Preg_Titulo,Preg_Registro,Encu_Id")] Pregunta pregunta, int ? id, int idEncuesta)
         {
             ViewBag.idEncuesta = idEncuesta;
@@ -137,6 +142,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Preguntas/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id, int idEncuesta)
         {
             ViewBag.idEncuesta = idEncuesta;
@@ -155,6 +161,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Preguntas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int ?id, int idEncuesta)
         {
             ViewBag.idEncuesta = idEncuesta;
@@ -164,6 +171,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             return RedirectToAction("Index", "Preguntas", routeValues: new { ViewBag.idEncuesta });
            
         }
+        [Authorize(Roles = "Administrator")]
         public ActionResult eliminarPreguntas(int ?id, int idEncuesta)
         {
             ViewBag.idEncuesta = idEncuesta;
