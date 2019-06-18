@@ -14,7 +14,7 @@ namespace Plenamente.Models.ViewModel
         [Display(Name = "Actividad")]
         public string NombreActividad { get; set; }
 
-        [Display(Name = "Meta")]
+        [Display(Name = "Meta (%)")]
         public float Meta { get; set; }
 
         [Display(Name = "Fecha inicial")]
