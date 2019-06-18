@@ -364,6 +364,10 @@ namespace Plenamente.Controllers
             {
                 return RedirectToAction("AutoevaluacionSST");
             }
+            if (empresa == null)
+            {
+                return RedirectToAction("Account", "Login");
+            }
             return View(new EmpresaViewModel { IdEmpresa = empresa.Empr_Nit, NombreEmpresa = empresa.Empr_Nom, NumeroEmpleados = empresa.Empr_Ttrabaja });
         }
         ///// <summary>

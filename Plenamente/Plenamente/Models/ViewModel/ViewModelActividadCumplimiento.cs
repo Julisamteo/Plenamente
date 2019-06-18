@@ -34,5 +34,8 @@ namespace Plenamente.Models.ViewModel
         [Display(Name = "Periodicidad")]
         public string Frecuencia { get; set; }
 
+        
+        public string retornar { get; set; }
+
     }
 }

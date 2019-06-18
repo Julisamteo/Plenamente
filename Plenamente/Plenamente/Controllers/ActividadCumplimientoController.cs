@@ -21,10 +21,10 @@ namespace Plenamente.Controllers
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa);
-           //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
+            //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
 
 
-
+            ViewBag.ReturnUrl = Request.UrlReferrer;
             return View(list.ToList());
         }
 
@@ -47,14 +47,14 @@ namespace Plenamente.Controllers
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
 
             var model = new ViewModelActividadCumplimiento();
-
+            ViewBag.ReturnUrl = Request.UrlReferrer;
             return View(model);
             
         }
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6")] ViewModelActividadCumplimiento model)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar")] ViewModelActividadCumplimiento model)
         {
             
             
@@ -81,7 +81,9 @@ namespace Plenamente.Controllers
                 
                 db.Tb_ActiCumplimiento.Add(actcumplimiento);
                 db.SaveChanges();
-                return RedirectToAction("Index");
+                var link = model.retornar;
+                return Redirect(link);
+                
             /*}
           catch
            {
