@@ -86,7 +86,7 @@
                     </div>
                 </div>
             </div>
-            <div class="row" id="divJustifica" style="visibility: @(Model.Cumple ? "hidden" : "visible");">
+            <div class="row" id="divJustifica" style="visibility: @(Model.NoAplica ?  "visible" : "hidden");">
                 <div class="col-lg-2 col-md-2 col-sm-3 col-xs-3">
                     <div class="form-group">
                         @Html.LabelFor(model => model.Justifica, htmlAttributes: new { @class = "control-label" })
@@ -184,7 +184,6 @@
         Justifica.addEventListener('change', function () {
             if (this.checked) {
                 Nojustifica.checked = false;
-                NoAplica.checked = false;
             } else {
                 Nojustifica.checked = true;
             }
@@ -192,7 +191,6 @@
         Nojustifica.addEventListener('change', function () {
             if (this.checked) {
                 Justifica.checked = false;
-                NoAplica.checked = false;
             } else {
                 Justifica.checked = true;
             }
