@@ -17,16 +17,22 @@ namespace Plenamente.Controllers
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa);
+           //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
 
-            
 
-            return View();
+
+            return View(list.ToList());
         }
 
         // GET: ActividadCumplimiento/Details/5
         public ActionResult Details(int id)
         {
-            return View();
+
+            var list  = db.Tb_ActiCumplimiento.Find(id);
+            
+            return View(list);
+            
         }
 
         // GET: ActividadCumplimiento/Create

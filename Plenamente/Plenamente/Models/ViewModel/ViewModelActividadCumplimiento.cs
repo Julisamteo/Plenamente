@@ -8,6 +8,7 @@ namespace Plenamente.Models.ViewModel
 {
     public class ViewModelActividadCumplimiento
     {
+        public int IdActiCumplimiento { get; set; }
         public int IdEmpresa { get; set; }
 
         [Display(Name = "Actividad")]
