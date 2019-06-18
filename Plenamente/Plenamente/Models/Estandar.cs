@@ -2,8 +2,6 @@
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
-using System.Linq;
-using System.Web;
 
 namespace Plenamente.Models
 {
@@ -23,5 +21,7 @@ namespace Plenamente.Models
         // Permite a ItemStandar
         public ICollection<ItemEstandar> itemEstandars { get; set; }
         public short Categoria { get; set; }
+        public short CategoriaExcepcion { get; set; }
+
     }
 }

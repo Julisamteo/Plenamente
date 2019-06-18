@@ -74,7 +74,7 @@ namespace Plenamente.Controllers
                            Nombre = cp.Nombre,
                            Description = cp.Description,
                            Criterios = cp.Criterios
-                                .Where(c => cp.Id == c.CicloPHVA_Id && tipoEmpresa.Categoria == 0 || c.Categoria == 0 || c.Categoria <= tipoEmpresa.Categoria)
+                                .Where(c => cp.Id == c.CicloPHVA_Id && tipoEmpresa.Categoria == 0 || c.Categoria == 0 || (c.Categoria <= tipoEmpresa.Categoria && c.CategoriaExcepcion != tipoEmpresa.Categoria))
                                 .Select(c =>
                                 new CriteriosViewModel
                                 {
@@ -84,7 +84,7 @@ namespace Plenamente.Controllers
                                     Registro = c.Crit_Registro,
                                     Estandares =
                                     c.Estandars
-                                     .Where(e => tipoEmpresa.Categoria == 0 || e.Categoria == 0 || e.Categoria <= tipoEmpresa.Categoria)
+                                     .Where(e => tipoEmpresa.Categoria == 0 || e.Categoria == 0 || (e.Categoria <= tipoEmpresa.Categoria && e.CategoriaExcepcion != tipoEmpresa.Categoria))
                                      .Select(e =>
                                         new EstandaresViewModel
                                         {
@@ -94,7 +94,7 @@ namespace Plenamente.Controllers
                                             Registro = e.Esta_Registro,
                                             Elementos =
                                                 e.itemEstandars
-                                                 .Where(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria)
+                                                 .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria))
                                                  .Select(i =>
                                                     new ElementoViewModel
                                                     {
@@ -363,6 +363,10 @@ namespace Plenamente.Controllers
             if (db.Tb_AutoEvaluacion.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
             {
                 return RedirectToAction("AutoevaluacionSST");
+            }
+            if (empresa == null)
+            {
+                return RedirectToAction("Account", "Login");
             }
             return View(new EmpresaViewModel { IdEmpresa = empresa.Empr_Nit, NombreEmpresa = empresa.Empr_Nom, NumeroEmpleados = empresa.Empr_Ttrabaja });
         }
