@@ -1154,7 +1154,7 @@
             <Top>2.28052in</Top>
             <Left>0.11648cm</Left>
             <Height>0.64in</Height>
-            <Width>11.41579in</Width>
+            <Width>11.41576in</Width>
             <Style />
           </Tablix>
           <Tablix Name="Tablix1">
@@ -1606,7 +1606,7 @@
             <Top>4.24065cm</Top>
             <Left>0.11648cm</Left>
             <Height>1.2cm</Height>
-            <Width>28.9961cm</Width>
+            <Width>28.99607cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>

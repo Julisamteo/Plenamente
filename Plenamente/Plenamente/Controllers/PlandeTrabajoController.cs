@@ -106,6 +106,8 @@ namespace Plenamente.Controllers
         {
             if (ModelState.IsValid)
             {
+                plandeTrabajo.FechaCreacion = DateTime.Now;
+                plandeTrabajo.FechaActualizacion = DateTime.Now;
                 var nombreplan = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Nom == plandeTrabajo.Plat_Nom).ToList();
                 if (nombreplan.Count > 0)
                 {
@@ -140,11 +142,12 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id")] PlandeTrabajo plandeTrabajo)
+        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id,FechaCreacion")] PlandeTrabajo plandeTrabajo)
         {
             if (ModelState.IsValid)
             {
-				var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa).ToList();
+                plandeTrabajo.FechaActualizacion = DateTime.Now;
+                var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa).ToList();
 				if (Planesdetrabajo.Count<=0)
 				{
 					db.Entry(plandeTrabajo).State = EntityState.Modified;
@@ -289,7 +292,9 @@ namespace Plenamente.Controllers
                     Emp_Id=AccountData.NitEmpresa,
                     Id = model.IdUser
                 };
-
+                PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(model.IdPlantTrabajo);
+                plandeTrabajo.FechaActualizacion = DateTime.Now;
+                db.Entry(plandeTrabajo).State = EntityState.Modified;                
                 db.Tb_UsersPlandeTrabajo.Add(user);
                 db.SaveChanges();
             }
@@ -302,6 +307,9 @@ namespace Plenamente.Controllers
 
             UsuariosPlandetrabajo usuariosPlandetrabajo = db.Tb_UsersPlandeTrabajo.Find(IdUserPlanTrabajo);
             db.Tb_UsersPlandeTrabajo.Remove(usuariosPlandetrabajo);
+            PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(usuariosPlandetrabajo.Plat_Id);
+            plandeTrabajo.FechaActualizacion = DateTime.Now;
+            db.Entry(plandeTrabajo).State = EntityState.Modified;
             db.SaveChanges();            
             return RedirectToAction("ActividadesPlanTrabajo", new { IdPlantTrabajo=usuariosPlandetrabajo.Plat_Id });
             

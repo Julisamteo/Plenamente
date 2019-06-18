@@ -17,8 +17,10 @@
         {
             <input type="hidden" name="Plat_Id" id="Plat_Id" value="@Model.Plat_Id" />
             <input type="hidden" name="Emp_Id" id="Emp_Id" value="@AccountData.NitEmpresa" />
+            <input type="hidden" name="FechaCreacion" id="FechaCreacion" value="@Model.FechaCreacion" />
+
             @Html.AntiForgeryToken()
-            
+
             <div class="form-horizontal">
 
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
