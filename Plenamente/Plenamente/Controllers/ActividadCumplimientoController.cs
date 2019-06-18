@@ -1,11 +1,14 @@
-﻿using Plenamente.App_Tool;
-using Plenamente.Models;
-using Plenamente.Models.ViewModel;
-using System;
+﻿using System;
 using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
 using System.Linq;
+using System.Net;
 using System.Web;
 using System.Web.Mvc;
+using Plenamente.App_Tool;
+using Plenamente.Models;
+using Plenamente.Models.ViewModel;
 
 namespace Plenamente.Controllers
 {
@@ -89,23 +92,35 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
+            ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+
+            var model = db.Tb_ActiCumplimiento.Find(id); ;
+            ViewData["userid"] = model.Id;
+            return View(model);
         }
 
         // POST: ActividadCumplimiento/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Acum_Id,Acum_Desc,Acum_Porcentest,Acum_IniAct,Acum_FinAct,Oemp_Id,Id,Peri_Id,Empr_Nit,Frec_Id")] ActiCumplimiento actiCumplimiento)
         {
-            try
-            {
-                // TODO: Add update logic here
 
-                return RedirectToAction("Index");
-            }
-            catch
+
+            if (ModelState.IsValid)
             {
-                return View();
+               
+                    db.Entry(actiCumplimiento).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                
+
             }
+            return View(actiCumplimiento);
+
+
         }
 
         // GET: ActividadCumplimiento/Delete/5

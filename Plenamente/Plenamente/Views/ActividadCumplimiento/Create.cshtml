@@ -37,7 +37,7 @@
         @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-8" })
         <div class="col-md-5">
 
-            @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, "Objetivo", new { @class = "form-control" })
+            @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -73,18 +73,19 @@
                 @*@Html.EditorFor(model => model.Frecuencia, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
 
-                <div style="border-bottom: 2px solid #d0d0d0; margin-top:10px; margin-bottom: 10px;"></div>
+
                 <!-- Recurrence section -->
                 <script type="text/javascript" src="@Url.Content("~/Scripts/DayPilot/recurrence.js?v=3")"></script>
-                <label class="control-label col-md-2">Repetir:</label>
+
                 <select class="browser-default custom-select" id="Frecuencia_desc" onchange="ShowSelected();">
                     <option value="norepeat">No repetir</option>
                     <option value="daily">Diaria</option>
                     <option value="weekly">Semanal</option>
                     <option value="monthly">Mensual</option>
                 </select>
-
-                <div  class="label label-default" id="select_norepeat">
+            </div>
+            <div class="form-group">
+                <div class="label label-default" id="select_norepeat">
                     No repetir
                 </div>
             </div>
@@ -94,7 +95,7 @@
             </div>
 
             <div id="select_weekly" style="display:none;" class="label label-default">
-                Repetir cada <input id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();"/> semana(s).
+                Repetir cada <input id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana(s).
                 <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
                 <br />
                 <table>
@@ -112,12 +113,12 @@
             </div>
 
             <div id="select_monthly" style="display:none;" class="label label-default">
-                Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();"/> de cada mes.
+                Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();" /> de cada mes.
                 <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
                 <br />
             </div>
-            <input id="period" type="hidden"  value="" />
-           
+            <input id="period" type="hidden" value="" />
+
 
 
         </div>
