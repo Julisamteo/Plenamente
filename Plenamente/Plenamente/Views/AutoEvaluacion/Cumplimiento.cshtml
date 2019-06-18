@@ -39,7 +39,9 @@
                             <p class="text-justify">
                                 <a href="@Model.ItemEstandar.Recurso" target="_blank">
                                     <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
-                                    <label class="text-center text-black-50">Ver ayuda</label>
+                                    <label class="text-center text-black-50">
+                                        @(Model.ItemEstandar.Recurso.Split('/').Last() ?? "Ver ayuda")
+                                    </label>
                                 </a>
                             </p>
                         </div>
@@ -50,7 +52,9 @@
                             <p class="text-justify">
                                 <a href="@Model.ItemEstandar.Reursob" target="_blank">
                                     <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
-                                    <label class="text-center text-black-50">Ver ayuda</label>
+                                    <label class="text-center text-black-50">
+                                        @(Model.ItemEstandar.Reursob.Split('/').Last() ?? "Ver ayuda")
+                                    </label>
                                 </a>
                             </p>
                         </div>
