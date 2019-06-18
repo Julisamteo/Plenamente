@@ -332,6 +332,7 @@
     <Compile Include="Migrations\201906182109365_excepcionescategoria.cs" />
     <Compile Include="Migrations\201906182109365_excepcionescategoria.Designer.cs">
       <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
