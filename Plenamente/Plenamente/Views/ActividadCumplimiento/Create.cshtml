@@ -34,8 +34,9 @@
     </div>
 
     <div class="form-group">
+        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-8" })
         <div class="col-md-5">
-            @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-4" })
+
             @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, "Objetivo", new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
@@ -75,54 +76,48 @@
                 <div style="border-bottom: 2px solid #d0d0d0; margin-top:10px; margin-bottom: 10px;"></div>
                 <!-- Recurrence section -->
                 <script type="text/javascript" src="@Url.Content("~/Scripts/DayPilot/recurrence.js?v=3")"></script>
-                repetir:
-                <select id="Frecuencia_desc" onchange="ShowSelected();">
+                <label class="control-label col-md-2">Repetir:</label>
+                <select class="browser-default custom-select" id="Frecuencia_desc" onchange="ShowSelected();">
                     <option value="norepeat">No repetir</option>
                     <option value="daily">Diaria</option>
                     <option value="weekly">Semanal</option>
                     <option value="monthly">Mensual</option>
                 </select>
 
-                <div id="select_norepeat">
+                <div  class="label label-default" id="select_norepeat">
                     No repetir
                 </div>
             </div>
 
-            <div id="select_daily" style="display:none;">
+            <div id="select_daily" style="display:none;" class="label label-default">
                 Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
             </div>
 
-            <div id="select_weekly" style="display:none;">
+            <div id="select_weekly" style="display:none;" class="label label-default">
                 Repetir cada <input id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();"/> semana(s).
                 <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
                 <br />
                 <table>
                     <tr>
                         <td>Los dias: </td>
-                        <td><label for="weekly_0"><input type="checkbox" id="weekly_0" onclick="changeweek();"/>Lunes </label></td>
-                        <td><label for="weekly_1"><input type="checkbox" id="weekly_1" onchange="changeweek();"/>Martes </label></td>
-                        <td><label for="weekly_2"><input type="checkbox" id="weekly_2" onchange="changeweek();"/>Miercoles </label></td>
-                        <td><label for="weekly_3"><input type="checkbox" id="weekly_3" onchange="changeweek();"/>Jueves </label></td>
-                        <td><label for="weekly_4"><input type="checkbox" id="weekly_4" onchange="changeweek();"/>Viernes </label></td>
-                        <td><label for="weekly_5"><input type="checkbox" id="weekly_5" onchange="changeweek();"/>Sabado </label></td>
-                        <td><label for="weekly_6"><input type="checkbox" id="weekly_6" onchange="changeweek();"/>Domingo </label></td>
+                        <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" />Lunes </label></td>
+                        <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" />Martes </label></td>
+                        <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" />Miercoles </label></td>
+                        <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" />Jueves </label></td>
+                        <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" />Viernes </label></td>
+                        <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" />Sabado </label></td>
+                        <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" />Domingo </label></td>
                     </tr>
                 </table>
             </div>
 
-            <div id="select_monthly" style="display:none;">
+            <div id="select_monthly" style="display:none;" class="label label-default">
                 Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();"/> de cada mes.
                 <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
                 <br />
             </div>
             <input id="period" type="hidden"  value="" />
-            <input id="day" type="hidden"  value=""/>
-            <input type="hidden" id="weekly1" value="" />
-            <input type="hidden" id="weekly2" value="" />
-            <input type="hidden" id="weekly3" value="" />
-            <input type="hidden" id="weekly4" value=""/>
-            <input type="hidden" id="weekly5" value=""/>
-            <input type="hidden" id="weekly6" value=""/>
+           
 
 
         </div>
