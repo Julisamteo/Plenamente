@@ -76,19 +76,19 @@ namespace Plenamente.Controllers
                 }
 
                 List<EventViewModel> planes =
-                db.Tb_Frecuencia.Where(a => a.Empr_Nit == AccountData.NitEmpresa)
-                    .Select(a =>
-                        new EventViewModel
-                        {
-                            Id = a.Frec_Id,
-                            Description = a.Frec_Descripcion,
-                            Title = "Actividad",
-                            Start = a.Frec_Registro,
-                            End = a.Frec_Registro.AddHours(1),
-                            BackgroundColor = "#17E8A9",
-                            BorderColor = "#44FF19",
-                            EventRoute = "/Frecuencias/Details/" + a.Frec_Id
-                        }).ToList();
+                    db.Tb_ProgamacionTareas.Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa)
+                        .Select(a =>
+                            new EventViewModel
+                            {
+                                Id = a.Id,
+                                Description = a.Descripcion,
+                                Title = "Tarea programada",
+                                Start = a.FechaHora,
+                                End = a.FechaHora.AddHours(1),
+                                BackgroundColor = "#17E8A9",
+                                BorderColor = "#44FF19",
+                                EventRoute = "/Frecuencias/Details/" + a.Id
+                            }).ToList();
 
                 if (planes != null && planes.Count > 0)
                 {
