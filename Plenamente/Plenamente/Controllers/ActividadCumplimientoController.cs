@@ -154,9 +154,9 @@ namespace Plenamente.Controllers
                         FechaHora = app.Time,
                         Estado = true,                    
                     }
-                );
-                db.SaveChanges();
-            }            
+                );                
+            }
+            db.SaveChanges();
         }
 
         // GET: ActividadCumplimiento/Edit/5
