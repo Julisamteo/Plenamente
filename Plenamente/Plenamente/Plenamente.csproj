@@ -882,6 +882,7 @@
     <Content Include="Views\ActividadCumplimiento\Details.cshtml" />
     <Content Include="Views\Indicadores\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Edit.cshtml" />
+    <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

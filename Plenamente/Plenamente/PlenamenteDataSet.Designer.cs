@@ -1514,8 +1514,6 @@ namespace Plenamente {
             
             private global::System.Data.DataColumn columndescripcion;
             
-            private global::System.Data.DataColumn columnperiocidad;
-            
             private global::System.Data.DataColumn columnfrecuencia;
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1625,14 +1623,6 @@ namespace Plenamente {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public global::System.Data.DataColumn periocidadColumn {
-                get {
-                    return this.columnperiocidad;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public global::System.Data.DataColumn frecuenciaColumn {
                 get {
                     return this.columnfrecuencia;
@@ -1676,7 +1666,7 @@ namespace Plenamente {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResumenPlanDeTrabajoRow AddResumenPlanDeTrabajoRow(string NombrePlandeTrabajo, string DescripcionActividad, string nombre, string appelido, float porcentaje, System.DateTime fechaderegistro, System.DateTime fechadeinicio, System.DateTime fechadefin, string descripcion, string periocidad, string frecuencia) {
+            public ResumenPlanDeTrabajoRow AddResumenPlanDeTrabajoRow(string NombrePlandeTrabajo, string DescripcionActividad, string nombre, string appelido, float porcentaje, System.DateTime fechaderegistro, System.DateTime fechadeinicio, System.DateTime fechadefin, string descripcion, string frecuencia) {
                 ResumenPlanDeTrabajoRow rowResumenPlanDeTrabajoRow = ((ResumenPlanDeTrabajoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombrePlandeTrabajo,
@@ -1688,7 +1678,6 @@ namespace Plenamente {
                         fechadeinicio,
                         fechadefin,
                         descripcion,
-                        periocidad,
                         frecuencia};
                 rowResumenPlanDeTrabajoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowResumenPlanDeTrabajoRow);
@@ -1721,7 +1710,6 @@ namespace Plenamente {
                 this.columnfechadeinicio = base.Columns["fechadeinicio"];
                 this.columnfechadefin = base.Columns["fechadefin"];
                 this.columndescripcion = base.Columns["descripcion"];
-                this.columnperiocidad = base.Columns["periocidad"];
                 this.columnfrecuencia = base.Columns["frecuencia"];
             }
             
@@ -1746,8 +1734,6 @@ namespace Plenamente {
                 base.Columns.Add(this.columnfechadefin);
                 this.columndescripcion = new global::System.Data.DataColumn("descripcion", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columndescripcion);
-                this.columnperiocidad = new global::System.Data.DataColumn("periocidad", typeof(string), null, global::System.Data.MappingType.Element);
-                base.Columns.Add(this.columnperiocidad);
                 this.columnfrecuencia = new global::System.Data.DataColumn("frecuencia", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnfrecuencia);
                 this.columnNombrePlandeTrabajo.MaxLength = 2147483647;
@@ -1759,7 +1745,6 @@ namespace Plenamente {
                 this.columnfechadeinicio.AllowDBNull = false;
                 this.columnfechadefin.AllowDBNull = false;
                 this.columndescripcion.MaxLength = 2147483647;
-                this.columnperiocidad.MaxLength = 2147483647;
                 this.columnfrecuencia.MaxLength = 2147483647;
             }
             
@@ -2637,23 +2622,6 @@ namespace Plenamente {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public string periocidad {
-                get {
-                    try {
-                        return ((string)(this[this.tableResumenPlanDeTrabajo.periocidadColumn]));
-                    }
-                    catch (global::System.InvalidCastException e) {
-                        throw new global::System.Data.StrongTypingException("El valor de la columna \'periocidad\' de la tabla \'ResumenPlanDeTrabajo\' es DBNull." +
-                                "", e);
-                    }
-                }
-                set {
-                    this[this.tableResumenPlanDeTrabajo.periocidadColumn] = value;
-                }
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public string frecuencia {
                 get {
                     try {
@@ -2727,18 +2695,6 @@ namespace Plenamente {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetdescripcionNull() {
                 this[this.tableResumenPlanDeTrabajo.descripcionColumn] = global::System.Convert.DBNull;
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public bool IsperiocidadNull() {
-                return this.IsNull(this.tableResumenPlanDeTrabajo.periocidadColumn);
-            }
-            
-            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
-            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public void SetperiocidadNull() {
-                this[this.tableResumenPlanDeTrabajo.periocidadColumn] = global::System.Convert.DBNull;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -3604,7 +3560,6 @@ namespace Plenamente.PlenamenteDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("fechadeinicio", "fechadeinicio");
             tableMapping.ColumnMappings.Add("fechadefin", "fechadefin");
             tableMapping.ColumnMappings.Add("descripcion", "descripcion");
-            tableMapping.ColumnMappings.Add("periocidad", "periocidad");
             tableMapping.ColumnMappings.Add("frecuencia", "frecuencia");
             this._adapter.TableMappings.Add(tableMapping);
         }

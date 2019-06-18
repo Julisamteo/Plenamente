@@ -13,7 +13,6 @@ namespace Plenamente.Models
         public int Acum_Id { get; set; }
         [Display(Name = "Descripción")]
         public string Acum_Desc { get; set; }
-        [Display(Name = "Meta")]
         public float Acum_Porcentest { get; set; }
         [Display(Name = "Cargue Evidencia")]
         public string Acum_Ejec { get; set; }

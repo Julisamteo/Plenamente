@@ -11,7 +11,14 @@
 </div>
 
 <div class="contenidoCuerpo">
+    <div class="form-group justify-content-center">
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+            @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
+        </div>
+    </div>
     <div class="panel panel-default text-center justify-content-center">
+
         <table class="table table-bordered text-center justify-content-center">
             <tr>
                 <th>
@@ -52,6 +59,14 @@
 
         </table>
 
+
+        <div class="form-group">
+            <div class="col-md-offset-2 col-md-10">
+                <input onclick="window.location='../ActividadCumplimiento/Create'" type="submit" value="Crear Actividad" class="btn btn-default" />
+            </div>
+            <hr />
+        </div>
+        @Html.LabelFor(model => model.NombrePlanTrabajo, htmlAttributes: new { @class = "control-label" })
         @using (Html.BeginForm())
         {
             <input type="hidden" name="IdPlantTrabajo" id="IdPlantTrabajo" value=@Model.IdPlantTrabajo />
@@ -59,13 +74,7 @@
 
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group justify-content-center">
-                    @Html.LabelFor(model => model.NombrePlanTrabajo, htmlAttributes: new { @class = "control-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
-                    </div>
-                </div>
+
                 <div class="form-group">
                     @Html.LabelFor(model => model.IdActiCumplimiento, htmlAttributes: new { @class = "control-label" })
                     @Html.DropDownListFor(x => x.IdActiCumplimiento, (SelectList)ViewBag.actividades, "Seleccionar Actividad", new { @class = "form-control ", id = "IdActiCumplimiento" })
@@ -86,12 +95,6 @@
             </div>
         }
 
-
-        <div class="form-group">
-            <div class="col-md-offset-2 col-md-10">
-                <input onclick="window.location='../ActividadCumplimiento/Create'" type="submit" value="Crear Actividad" class="btn btn-default" />
-            </div>
-        </div>
     </div>
 
 </div>
