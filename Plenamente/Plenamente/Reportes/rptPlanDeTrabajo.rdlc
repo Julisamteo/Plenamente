@@ -53,8 +53,8 @@
           <DataField>descripcion</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
-        <Field Name="periocidad">
-          <DataField>periocidad</DataField>
+        <Field Name="frecuencia">
+          <DataField>frecuencia</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
       </Fields>
@@ -520,7 +520,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Periodicidad</Value>
+                                  <Value>Frecuencia</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -783,14 +783,14 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
-                        <Textbox Name="periocidad">
+                        <Textbox Name="frecuencia">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
                           <Paragraphs>
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>=Fields!periocidad.Value</Value>
+                                  <Value>=Fields!frecuencia.Value</Value>
                                   <Style />
                                 </TextRun>
                               </TextRuns>
@@ -799,7 +799,7 @@
                               </Style>
                             </Paragraph>
                           </Paragraphs>
-                          <rd:DefaultName>periocidad</rd:DefaultName>
+                          <rd:DefaultName>frecuencia</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
