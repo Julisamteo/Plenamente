@@ -1,7 +1,9 @@
 ﻿using Plenamente.App_Tool;
 using Plenamente.Models;
 using Plenamente.Models.ViewModel;
+using Plenamente.Scheduler;
 using System;
+using System.Collections.Generic;
 using System.Linq;
 using System.Web.Mvc;
 
@@ -76,12 +78,85 @@ namespace Plenamente.Controllers
 
             db.Tb_ActiCumplimiento.Add(actcumplimiento);
             db.SaveChanges();
+            //Generamos la programacion de tareas en el tiempo.
+            generateAppoiment(model, actcumplimiento.Acum_Id);
+
             return RedirectToAction("Index");
             /*}
           catch
            {
                return View();
            }*/
+        }
+
+        private void generateAppoiment(ViewModelActividadCumplimiento model, int idActcumplimiento)
+        {
+            List<Schedule> schedules = new List<Schedule> ();
+
+            if (model.Frecuencia_desc == "norepeat")
+            {
+                SingleSchedule single1 = new SingleSchedule
+                {
+                    Name = model.NombreActividad,
+                    TimeOfDay = model.hora, //new TimeSpan(19, 30, 0),
+                    Date = model.FechaInicial.Date
+                };
+                schedules.Add(single1);
+            }
+            else if (model.Frecuencia_desc == "daily")
+            {
+                SimpleRepeatingSchedule simple = new SimpleRepeatingSchedule
+                {
+                    Name = model.NombreActividad,
+                    TimeOfDay = model.hora,//new TimeSpan(10, 0, 0),
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                    DaysBetween = model.period
+                };
+                schedules.Add(simple);
+            }
+            else if (model.Frecuencia_desc == "weekly")
+            {
+                WeeklySchedule weekly = new WeeklySchedule
+                {
+                    Name = model.NombreActividad,
+                    TimeOfDay = model.hora,//TimeSpan(8, 0, 0),
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),                    
+                };
+                weekly.SetDays(new DayOfWeek[] { DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday });
+
+                schedules.Add(weekly);
+            }
+            else if (model.Frecuencia_desc == "monthly")
+            {
+                MonthlySchedule monthly = new MonthlySchedule
+                {
+                    Name = model.NombreActividad,
+                    TimeOfDay = model.hora,//TimeSpan(8, 0, 0),
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(monthly);
+            }            
+
+            CalendarGenerator generator = new CalendarGenerator();
+            Period period = new Period(model.FechaInicial.Date, model.FechaFinal.Date);
+            IEnumerable<Appointment> appointments = generator.GenerateCalendar(period, schedules);
+            foreach (var app in appointments)
+            {
+                
+
+                db.Tb_ProgamacionTareas.Add(
+                new ProgamacionTareas
+                    {
+                        ActiCumplimiento_Id = idActcumplimiento,
+                        Descripcion = app.Name,
+                        //FechaHora = new DateTime(model.FechaInicial.Year, model.FechaInicial.Month, model.FechaInicial.Day, model.hora.Hours, model.hora.Minutes, model.hora.Seconds),
+                        FechaHora = app.Time,
+                        Estado = true,                    
+                    }
+                );
+                db.SaveChanges();
+            }            
         }
 
         // GET: ActividadCumplimiento/Edit/5
@@ -126,6 +201,6 @@ namespace Plenamente.Controllers
             {
                 return View();
             }
-        }
+        }      
     }
 }
