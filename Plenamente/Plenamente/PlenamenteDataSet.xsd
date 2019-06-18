@@ -115,6 +115,9 @@
               <Mapping SourceColumn="fechadefin" DataSetColumn="fechadefin" />
               <Mapping SourceColumn="descripcion" DataSetColumn="descripcion" />
               <Mapping SourceColumn="frecuencia" DataSetColumn="frecuencia" />
+              <Mapping SourceColumn="fechaDeCreacion" DataSetColumn="fechaDeCreacion" />
+              <Mapping SourceColumn="fechaDeActualizacion" DataSetColumn="fechaDeActualizacion" />
+              <Mapping SourceColumn="nombreEmpresa" DataSetColumn="nombreEmpresa" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -274,6 +277,15 @@
                 </xs:simpleType>
               </xs:element>
               <xs:element name="frecuencia" msprop:Generator_ColumnVarNameInTable="columnfrecuencia" msprop:Generator_ColumnPropNameInRow="frecuencia" msprop:Generator_ColumnPropNameInTable="frecuenciaColumn" msprop:Generator_UserColumnName="frecuencia" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="fechaDeCreacion" msprop:Generator_ColumnVarNameInTable="columnfechaDeCreacion" msprop:Generator_ColumnPropNameInRow="fechaDeCreacion" msprop:Generator_ColumnPropNameInTable="fechaDeCreacionColumn" msprop:Generator_UserColumnName="fechaDeCreacion" type="xs:dateTime" />
+              <xs:element name="fechaDeActualizacion" msprop:Generator_ColumnVarNameInTable="columnfechaDeActualizacion" msprop:Generator_ColumnPropNameInRow="fechaDeActualizacion" msprop:Generator_ColumnPropNameInTable="fechaDeActualizacionColumn" msprop:Generator_UserColumnName="fechaDeActualizacion" type="xs:dateTime" />
+              <xs:element name="nombreEmpresa" msprop:Generator_ColumnVarNameInTable="columnnombreEmpresa" msprop:Generator_ColumnPropNameInRow="nombreEmpresa" msprop:Generator_ColumnPropNameInTable="nombreEmpresaColumn" msprop:Generator_UserColumnName="nombreEmpresa" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
