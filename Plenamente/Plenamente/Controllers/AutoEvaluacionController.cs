@@ -18,9 +18,9 @@ namespace Plenamente.Controllers
         public ActionResult Index()
         {
             IList<Empresa> listempresa = new List<Empresa>();
-            var numbertrab = from empresa in db.Tb_Empresa where empresa.Empr_Nit == 1 select empresa;
-            var empresas = numbertrab.ToList();
-            foreach (var empre in empresas)
+            IQueryable<Empresa> numbertrab = from empresa in db.Tb_Empresa where empresa.Empr_Nit == 1 select empresa;
+            List<Empresa> empresas = numbertrab.ToList();
+            foreach (Empresa empre in empresas)
             {
                 listempresa.Add(new Empresa()
                 {
@@ -29,7 +29,7 @@ namespace Plenamente.Controllers
                     Empr_Dir = empre.Empr_Dir,
                     Empr_Ttrabaja = empre.Empr_Ttrabaja,
                     Empr_Afiarl = empre.Empr_Afiarl,
-                    
+
                     Empr_Registro = DateTime.Now
 
                     //Empr_
@@ -364,7 +364,7 @@ namespace Plenamente.Controllers
             {
                 return RedirectToAction("AutoevaluacionSST");
             }
-            return View(new EvidenciaCumplimientoViewModel());
+            return View(new EmpresaViewModel { IdEmpresa = empresa.Empr_Nit, NombreEmpresa = empresa.Empr_Nom, NumeroEmpleados = empresa.Empr_Ttrabaja });
         }
         ///// <summary>
         ///// 
