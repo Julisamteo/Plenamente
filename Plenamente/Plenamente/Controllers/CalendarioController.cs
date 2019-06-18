@@ -62,8 +62,8 @@ namespace Plenamente.Controllers
                          new EventViewModel
                          {
                              Id = a.Acum_Id,
-                             Description = a.Acum_Desc,
-                             Title = "Cumplimiento",
+                             Description = "Cumplimiento",
+                             Title = a.Acum_Desc,
                              Start = a.Acum_IniAct,
                              End = a.Acum_FinAct,
                              BackgroundColor = "#BCBFE8",
@@ -83,8 +83,8 @@ namespace Plenamente.Controllers
                             new EventViewModel
                             {
                                 Id = a.Id,
-                                Description = a.Descripcion,
-                                Title = "Tarea programada",
+                                Description = "Tarea programada",
+                                Title = a.Descripcion,
                                 Start = a.FechaHora,
                                 BackgroundColor = "#17E8A9",
                                 BorderColor = "#44FF19",
