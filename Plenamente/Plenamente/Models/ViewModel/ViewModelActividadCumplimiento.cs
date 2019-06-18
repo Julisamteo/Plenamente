@@ -31,8 +31,11 @@ namespace Plenamente.Models.ViewModel
         public int idObjetivo { get; set; }
 
 
-        [Display(Name = "Frecuencia")]
+        [Display(Name = "Periodicidad")]
         public string Frecuencia { get; set; }
+
+        
+        public string retornar { get; set; }
 
     }
 }

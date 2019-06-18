@@ -55,7 +55,7 @@
                     </td>
                     <td>
                         
-                        <a class="btn btn-info" href="@Url.Action("Editar", "ActividadCumplimiento", new { id = item.Acum_Id })" title="Editar">
+                        <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento", new { id = item.Acum_Id })" title="Editar">
                             Editar
                         </a>
                         <a class="btn btn-danger" href="@Url.Action("Delete","ActividadCumplimiento" , new { Id=item.Acum_Id })" title="Eliminar">
@@ -72,8 +72,9 @@
 
 </div>
 <div class="contenidoVolver">
-    <a href="@Url.Action("Index", "AutividadCumplimiento")" class="ayudaTitulos">
-        <span>Volver a los actividades</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
-    </a>
+       
+        <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
+            <span>Volver a los actividades</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+        </a>
 </div>
 

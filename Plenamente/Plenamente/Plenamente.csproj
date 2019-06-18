@@ -329,6 +329,9 @@
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906182109365_excepcionescategoria.cs" />
+    <Compile Include="Migrations\201906182109365_excepcionescategoria.Designer.cs">
+      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -873,6 +876,7 @@
     <Content Include="Views\ActividadCumplimiento\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Details.cshtml" />
     <Content Include="Views\Indicadores\Index.cshtml" />
+    <Content Include="Views\ActividadCumplimiento\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -939,6 +943,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906182109365_excepcionescategoria.resx">
+      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

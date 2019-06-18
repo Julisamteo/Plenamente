@@ -22,9 +22,11 @@ namespace Plenamente.Models
         public DateTime Acum_Registro { get; set; }
         [Display(Name = "Incio Actividad")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Acum_IniAct { get; set; }
         [Display(Name = "Finalización de Actividad")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Acum_FinAct { get; set; }
 
         [ForeignKey("ObjEmpresa")]
