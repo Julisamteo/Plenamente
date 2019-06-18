@@ -75,18 +75,21 @@
                                 <li><a href="@Url.Action("VerHistorico", "Autoevaluacion")">Ver historico<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
                         </li>
-                        @*<li>
-                                <a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución SST <i class="icono derecha fa fa-chevron-down"></i></a>
-                            </li>*@
                         <li>
-                            <a href="@Url.Action("Index", "Plandetrabajo")">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <a href="#">Plan de trabajo anual<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-                                @*<li>
-                                        <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                                        <ul class="subMenu2">
-                                            <li><a href="">Item 1</a></li>
-                                        </ul>
-                                    </li>*@
+                                <li>
+                                    <a href="@Url.Action("Index", "Plandetrabajo")">
+                                        Plan de trabajo
+                                        <i class="icono derecha fa fa-chevron-down"></i>
+                                    </a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("Create", "ActividadCumplimiento")">
+                                        Actividades
+                                        <i class="icono derecha fa fa-chevron-down"></i>
+                                    </a>
+                                </li>
                             </ul>
                         </li>
                     </ul>

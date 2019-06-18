@@ -76,7 +76,8 @@ namespace Plenamente.Controllers
                 }
 
                 List<EventViewModel> planes =
-                    db.Tb_ProgamacionTareas.Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa)
+                    db.Tb_ProgamacionTareas
+                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa)
                         .Select(a =>
                             new EventViewModel
                             {
@@ -87,7 +88,7 @@ namespace Plenamente.Controllers
                                 End = a.FechaHora.AddHours(1),
                                 BackgroundColor = "#17E8A9",
                                 BorderColor = "#44FF19",
-                                EventRoute = "/Frecuencias/Details/" + a.Id
+                                EventRoute = "/ActividadCumplimiento/Create" + a.Id
                             }).ToList();
 
                 if (planes != null && planes.Count > 0)
