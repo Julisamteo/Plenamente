@@ -86,8 +86,8 @@ namespace Plenamente.Controllers
                                 Description = "Tarea programada",
                                 Title = a.Descripcion,
                                 Start = a.FechaHora,
-                                BackgroundColor = "#17E8A9",
-                                BorderColor = "#44FF19",
+                                BackgroundColor = "#7DDAFF",
+                                BorderColor = "#9FBDC9",
                                 EventRoute = "/ActividadCumplimiento/Create/" + a.Id
                             }).ToList();
 
