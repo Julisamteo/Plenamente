@@ -1884,3 +1884,7 @@ progress::-webkit-progress-bar {
 .btn-primary {
     background-color: dodgerblue !important;
 }
+
+.qtip {
+    visibility: hidden;
+}

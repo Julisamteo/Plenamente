@@ -116,11 +116,14 @@
                 </div>
             </div>
             <div class="row">
-                <div class="col-lg-3 col-md-3 col-sm-5 col-xs-5">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <input type="submit" value="Guardar" class="btn btn-default" />
                 </div>
-                <div class="col-lg-3 col-md-3 col-sm-6 col-xs-6">
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
                     <input id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Más información" />
+                </div>
+                <div class="col-lg-4 col-md-4 col-sm-4 col-xs-4">
+                    <input id="btnPlanTrabajo" type="button" onclick="location.href = '@Url.Action("Index", "Plandetrabajo")';" class="btn btn-default" value="Plan de trabajo" style="visibility: hidden;" />
                 </div>
             </div>
         </div>
@@ -151,8 +154,10 @@
         var nocumple = document.getElementById("Nocumple");
         var Justifica = document.getElementById("Justifica");
         var Nojustifica = document.getElementById("Nojustifica");
+        var btnPlanTrabajo = document.getElementById("btnPlanTrabajo");
         var NoAplica = document.getElementById("NoAplica");
         var divJustifica = document.getElementById("divJustifica");
+        
         var Id = document.getElementById("Id");
         cumple.addEventListener('change', function () {
             Nojustifica.checked = false;
@@ -188,15 +193,19 @@
         Justifica.addEventListener('change', function () {
             if (this.checked) {
                 Nojustifica.checked = false;
+                btnPlanTrabajo.style.visibility = 'hidden';
             } else {
                 Nojustifica.checked = true;
+                btnPlanTrabajo.style.visibility = 'visible';
             }
         });
         Nojustifica.addEventListener('change', function () {
             if (this.checked) {
                 Justifica.checked = false;
+                btnPlanTrabajo.style.visibility = 'visible';
             } else {
                 Justifica.checked = true;
+                btnPlanTrabajo.style.visibility = 'hidden';
             }
         });
     </script>
