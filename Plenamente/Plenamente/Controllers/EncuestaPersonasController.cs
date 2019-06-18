@@ -56,39 +56,39 @@ namespace Plenamente.Controllers
         {
             return View();
         }
-        [HttpPost, ValidateInput(false)]
-        [Authorize(Roles = "Administrator")]
-        public ActionResult EnviarCorreo(string id, EnvioCorreo model)
-        {
+        //[HttpPost, ValidateInput(false)]
+        //[Authorize(Roles = "Administrator")]
+        //public ActionResult EnviarCorreo(string id, EnvioCorreo model)
+        //{
 
 
-            string[] separadas;
-            separadas = id.Split('|');
-            ViewBag.id = separadas[0];
-            var mensaje = new MailMessage();
+        //    string[] separadas;
+        //    separadas = id.Split('|');
+        //    ViewBag.id = separadas[0];
+        //    var mensaje = new MailMessage();
 
 
-            for (int i = 0; i < separadas.Length; i++)
-            {
-                var id1 = separadas[i];
-                var Correo = db.Users.FirstOrDefault(p => p.Id == id1);
-                if (Correo != null)
-                {
-                    mensaje.To.Add(Correo.Email);
-                }
-            }
-            mensaje.Subject = model.Asunto;
+        //    for (int i = 0; i < separadas.Length; i++)
+        //    {
+        //        var id1 = separadas[i];
+        //        var Correo = db.Users.FirstOrDefault(p => p.Id == id1);
+        //        if (Correo != null)
+        //        {
+        //            mensaje.To.Add(Correo.Email);
+        //        }
+        //    }
+        //    mensaje.Subject = model.Asunto;
 
-            mensaje.Body = model.Mensaje;
+        //    mensaje.Body = model.Mensaje;
 
-            mensaje.IsBodyHtml = true;
+        //    mensaje.IsBodyHtml = true;
 
-            var smtp = new SmtpClient();
+        //    var smtp = new SmtpClient();
 
-            smtp.Send(mensaje);
+        //    smtp.Send(mensaje);
 
-            return RedirectToAction("Index");
-        }
+        //    return RedirectToAction("Index");
+        //}
 
 
     }

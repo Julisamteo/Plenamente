@@ -17,7 +17,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ObjEmpresas
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
                ViewBag.CurrentSort = sortOrder;
@@ -78,7 +78,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ObjEmpresas/Create
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create()
         {
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
@@ -90,7 +90,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Create([Bind(Include = "Oemp_Id,Oemp_Nombre,Oemp_Descrip,Oemp_Meta,Oemp_Registro,Empr_Nit")] ObjEmpresa objEmpresa)
         {
             if (ModelState.IsValid)

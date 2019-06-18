@@ -232,6 +232,7 @@
     <Compile Include="Controllers\CargaArchivoController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
@@ -256,9 +257,9 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905281417436_prueba.cs" />
-    <Compile Include="Migrations\201905281417436_prueba.Designer.cs">
-      <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    <Compile Include="Migrations\201905311910368_CampoJustificacion.cs" />
+    <Compile Include="Migrations\201905311910368_CampoJustificacion.Designer.cs">
+      <DependentUpon>201905311910368_CampoJustificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201906031622413_updateDataBase.cs" />
     <Compile Include="Migrations\201906031622413_updateDataBase.Designer.cs">
@@ -327,6 +328,10 @@
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.cs" />
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906181956344_teeeest.cs" />
+    <Compile Include="Migrations\201906181956344_teeeest.Designer.cs">
+      <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -878,8 +883,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905281417436_prueba.resx">
-      <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905311910368_CampoJustificacion.resx">
+      <DependentUpon>201905311910368_CampoJustificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906031622413_updateDataBase.resx">
       <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
@@ -931,6 +936,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906181956344_teeeest.resx">
+      <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
