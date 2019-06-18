@@ -2,9 +2,7 @@
 using Plenamente.Models;
 using Plenamente.Models.ViewModel;
 using System;
-using System.Collections.Generic;
 using System.Linq;
-using System.Web;
 using System.Web.Mvc;
 
 namespace Plenamente.Controllers
@@ -17,8 +15,8 @@ namespace Plenamente.Controllers
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa);
-           //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
+            IQueryable<ActiCumplimiento> list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa);
+            //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
 
 
 
@@ -29,10 +27,10 @@ namespace Plenamente.Controllers
         public ActionResult Details(int id)
         {
 
-            var list  = db.Tb_ActiCumplimiento.Find(id);
-            
+            ActiCumplimiento list = db.Tb_ActiCumplimiento.Find(id);
+
             return View(list);
-            
+
         }
 
         // GET: ActividadCumplimiento/Create
@@ -43,42 +41,42 @@ namespace Plenamente.Controllers
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
 
-            var model = new ViewModelActividadCumplimiento();
+            ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
 
             return View(model);
-            
+
         }
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
         public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6")] ViewModelActividadCumplimiento model)
         {
-            
-            
-           /* try
-            {*/
-                // TODO: Add insert logic here
-                Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
-                ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-                // TODO: Add insert logic here
-                ActiCumplimiento actcumplimiento = new ActiCumplimiento
-                {
-                    Acum_Desc = model.NombreActividad,
-                    Acum_Porcentest = model.Meta,
-                    Acum_IniAct = model.FechaInicial,
-                    Acum_FinAct = model.FechaFinal,
-                    Oemp_Id = model.idObjetivo,
-                    Acum_Registro = DateTime.Now,
-                    Id=usuario.Id,
-                    Frec_Id = 1,
-                    Peri_Id = 6,
-                    Empr_Nit=empresa.Empr_Nit
-                };
-                
-                db.Tb_ActiCumplimiento.Add(actcumplimiento);
-                db.SaveChanges();
-                return RedirectToAction("Index");
+
+            /* try
+             {*/
+            // TODO: Add insert logic here
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            // TODO: Add insert logic here
+            ActiCumplimiento actcumplimiento = new ActiCumplimiento
+            {
+                Acum_Desc = model.NombreActividad,
+                Acum_Porcentest = model.Meta,
+                Acum_IniAct = model.FechaInicial,
+                Acum_FinAct = model.FechaFinal,
+                Oemp_Id = model.idObjetivo,
+                Acum_Registro = DateTime.Now,
+                Id = usuario.Id,
+                Frec_Id = 1,
+                Peri_Id = 6,
+                Empr_Nit = empresa.Empr_Nit
+            };
+
+            db.Tb_ActiCumplimiento.Add(actcumplimiento);
+            db.SaveChanges();
+            return RedirectToAction("Index");
             /*}
           catch
            {

@@ -21,13 +21,18 @@ namespace Plenamente
             bundles.Add(new ScriptBundle("~/bundles/bootstrap").Include(
                       "~/Scripts/bootstrap.js"));
 
+            // Custom chartjs
+            bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
+                    "~/Scripts/chartjs/Chart.min.js",
+                    "~/Scripts/chartjs/Chart.bundle.min.js"));
+
             // Custom Calendar.
             bundles.Add(new ScriptBundle("~/bundles/Script-calendar").Include(
-                                 "~/Scripts/moment.min.js",
-                                 "~/Scripts/fullcalendar.min.js",
-                                 "~/Scripts/fullcalendar.print.min.css",
-                                 "~/Scripts/locale/es.js",
-                                 "~/Scripts/script-custom-calendar.js"));
+                               "~/Scripts/moment.min.js",
+                               "~/Scripts/fullcalendar.min.js",
+                               "~/Scripts/fullcalendar.print.min.css",
+                               "~/Scripts/locale/es.js",
+                               "~/Scripts/script-custom-calendar.js"));
 
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",

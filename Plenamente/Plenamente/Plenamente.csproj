@@ -237,6 +237,7 @@
     <Compile Include="Controllers\EstandarsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FrecuenciasController.cs" />
+    <Compile Include="Controllers\IndicadoresController.cs" />
     <Compile Include="Controllers\ItemEstandarsController.cs" />
     <Compile Include="Controllers\ObjEmpresasController.cs" />
     <Compile Include="Controllers\PeriodoesController.cs" />
@@ -383,7 +384,7 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
-    <Compile Include="Models\.cs" />
+    <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
@@ -427,6 +428,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chartjs\Chart.css" />
+    <Content Include="Content\chartjs\Chart.min.css" />
     <Content Include="Content\estilosParciales.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
@@ -517,6 +520,10 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chartjs\Chart.bundle.js" />
+    <Content Include="Scripts\chartjs\Chart.bundle.min.js" />
+    <Content Include="Scripts\chartjs\Chart.js" />
+    <Content Include="Scripts\chartjs\Chart.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -865,6 +872,7 @@
     <Content Include="Views\PlandeTrabajo\Eliminar.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Details.cshtml" />
+    <Content Include="Views\Indicadores\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
