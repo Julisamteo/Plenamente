@@ -30,12 +30,19 @@ namespace Plenamente.Models.ViewModel
         [Required]
         public int idObjetivo { get; set; }
 
-
         [Display(Name = "Periodicidad")]
         public string Frecuencia { get; set; }
-
-        
+                
         public string retornar { get; set; }
 
+        public string Frecuencia_desc { get; set; }
+        public int period { get; set; }
+        public string weekly_0 { get; set; }
+        public string weekly_1 { get; set; }
+        public string weekly_2 { get; set; }
+        public string weekly_3 { get; set; }
+        public string weekly_4 { get; set; }
+        public string weekly_5 { get; set; }
+        public string weekly_6 { get; set; }
     }
 }

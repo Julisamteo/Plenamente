@@ -30,6 +30,7 @@ namespace Plenamente.Models
         public DateTime Acum_FinAct { get; set; }
 
         [ForeignKey("ObjEmpresa")]
+        [Display(Name = "Objetivos empresa")]
         public int Oemp_Id { get; set; }
         public ObjEmpresa ObjEmpresa { get; set; }
 
