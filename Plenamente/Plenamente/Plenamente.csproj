@@ -857,7 +857,6 @@
     <Content Include="Views\Calendario\Index.cshtml" />
     <Content Include="Views\Calendario\generateAppoiment.cshtml" />
     <Content Include="Views\PlandeTrabajo\Create.cshtml" />
-    <Content Include="Views\PlandeTrabajo\Delete.cshtml" />
     <Content Include="Views\PlandeTrabajo\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Create.cshtml" />
     <Content Include="Views\PlandeTrabajo\ActividadesPlanTrabajo.cshtml" />
