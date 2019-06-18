@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201906182128264_addcampofecha.Designer.cs">
       <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs" />
+    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.Designer.cs">
+      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -955,6 +959,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906182128264_addcampofecha.resx">
       <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.resx">
+      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

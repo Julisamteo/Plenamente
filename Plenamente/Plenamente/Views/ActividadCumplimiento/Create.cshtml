@@ -129,7 +129,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -160,7 +160,7 @@
             weekly.style.display = "none";
             monthly.style.display = "none";
             period.value = daily_every;
-            frecuecia.value = 2;
+            frecuencia.value = 2;
 
         } else if (cod == "weekly") {
             dayly.style.display = "none";
@@ -168,18 +168,21 @@
             weekly.style.display = "";
             monthly.style.display = "none";
             period.value = weekly_every;
+            frecuencia.value = 3;
         } else if (cod == "monthly") {
             dayly.style.display = "none";
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "";
             period.value = monthly_every;
+            frecuencia.value = 4;
         } else {
             dayly.style.display = "none";
             norepeat.style.display = "";
             weekly.style.display = "none";
             monthly.style.display = "none";
             period.value = 0;
+            frecuencia.value = 1;
         }
 
     }
