@@ -16,7 +16,9 @@ namespace Plenamente.Controllers
     {
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<PlandeTrabajo> _PaginadorCustomers;
-        private ApplicationDbContext db = new ApplicationDbContext();
+		private readonly int _RegistrosPorPaginaActividades = 5;
+		private PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel> _PaginadorCustomersActividades;
+		private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PlandeTrabajo
         public ActionResult Index(int pagina = 1)
@@ -231,7 +233,7 @@ namespace Plenamente.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo)
+        public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo,int pagina =1)
         {
             var plantrabajo = db.Tb_PlandeTrabajo.Find(IdPlantTrabajo);
             ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa), "Id", "Pers_Nom1");
@@ -275,7 +277,22 @@ namespace Plenamente.Controllers
                 NombrePlanTrabajo = plantrabajo.Plat_Nom,
                 IdPlantTrabajo = plantrabajo.Plat_Id
             };
-            ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
+			int _TotalRegistros = 0;
+			_TotalRegistros = actiCumplimientoAsignados.Count();
+			actiCumplimientoAsignados = actiCumplimientoAsignados.Skip((pagina - 1) * _RegistrosPorPaginaActividades)
+											   .Take(_RegistrosPorPaginaActividades)
+											   .ToList();
+			int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPaginaActividades);
+			_PaginadorCustomersActividades = new PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>()
+			{
+				RegistrosPorPagina = _RegistrosPorPaginaActividades,
+				TotalRegistros = _TotalRegistros,
+				TotalPaginas = _TotalPaginas,
+				PaginaActual = pagina,
+				Resultado = actiCumplimientoAsignados
+			};
+
+			ViewBag.actividadesAsignadas = _PaginadorCustomersActividades;
             return View(plandetrabajoActividades);
         }
 

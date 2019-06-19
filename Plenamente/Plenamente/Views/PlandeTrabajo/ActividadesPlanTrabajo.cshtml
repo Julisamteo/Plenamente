@@ -36,28 +36,81 @@
             </tr>
 
 
-            @foreach (var item in (List<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas)
-            {
-                <tr>
-                    <td>
-                        @item.NombrePlanTrabajo
-                    </td>
-                    <td>
-                        @item.DescripcionCumplimiento
-                    </td>
-                    <td>
-                        @item.NombreUser
-                    </td>
-                    <td>
-                        <a class="btn btn-danger" href="@Url.Action("EliminarActividadPlanTrabajo","PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
-                            Eliminar
-                        </a>
+            @foreach (var item in ((PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas).Resultado)
+            {               
+                    <tr>
+                        <td>
+                            @item.NombrePlanTrabajo
+                        </td>
+                        <td>
+                            @item.DescripcionCumplimiento
+                        </td>
+                        <td>
+                            @item.NombreUser
+                        </td>
+                        <td>
+                            <a class="btn btn-danger" href="@Url.Action("EliminarActividadPlanTrabajo","PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
+                                Eliminar
+                            </a>
 
-                    </td>
-                </tr>
+                        </td>
+                    </tr>                
             }
 
         </table>
+        @*CÓDIGO PARA EL PAGINADOR DE REGISTROS*@
+        @if (((PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas).Resultado.Count() > 0)
+        {
+            <span>
+                <strong>@ViewBag.actividadesAsignadas.TotalRegistros</strong> registros encontrados
+            </span>
+            <span>&nbsp;|&nbsp;</span>
+            <span>
+                Página <strong>@(ViewBag.actividadesAsignadas.PaginaActual)</strong> de
+                <strong>@ViewBag.actividadesAsignadas.TotalPaginas</strong>
+            </span>
+            <span>&nbsp;|&nbsp;</span>
+        }
+        else
+        {
+            <span>No hay resultados para esta búsqueda</span>
+            <span>&nbsp;|&nbsp;</span>
+        }
+
+        @if (ViewBag.actividadesAsignadas.PaginaActual > 1)
+        {
+            @Html.ActionLink("<<", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = 1 },
+                            new { @class = "btn btn-sm btn-default" })
+            <span></span>
+            @Html.ActionLink("Anterior", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.PaginaActual - 1 },
+                            new { @class = "btn btn-sm btn-default" })
+        }
+        else
+        {
+            @Html.ActionLink("<<", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
+                            new { @class = "btn btn-sm btn-default disabled" })
+            <span></span>
+            @Html.ActionLink("Anterior", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
+                            new { @class = "btn btn-sm btn-default disabled" })
+        }
+        <span></span>
+        @if (ViewBag.actividadesAsignadas.PaginaActual < ViewBag.actividadesAsignadas.TotalPaginas)
+        {
+            @Html.ActionLink("Siguiente", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.PaginaActual + 1 },
+                            new { @class = "btn btn-sm btn-default" })
+            <span></span>
+            @Html.ActionLink(">>", "Index", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas },
+                            new { @class = "btn btn-sm btn-default" })
+        }
+        else
+        {
+            @Html.ActionLink("Siguiente", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas - 1 },
+                            new { @class = "btn btn-sm btn-default disabled" })
+            <span></span>
+            @Html.ActionLink(">>", "Index", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.TotalPaginas },
+                            new { @class = "btn btn-sm btn-default disabled" })
+        }
+
 
 
         <div class="form-group">
