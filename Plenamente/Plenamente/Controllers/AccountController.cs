@@ -47,10 +47,17 @@ namespace Plenamente.Controllers
         [AllowAnonymous]
         public ActionResult Login(string returnUrl)
         {
+            if (User.Identity.IsAuthenticated == false) { 
             // Create the Admin account using setting in Web.Config (if needed)
             CreateAdminIfNeeded();
             ViewBag.ReturnUrl = returnUrl;
             return View();
+            }
+            else
+            {
+            return RedirectToAction("Index", "Home");
+
+            }
         }
 
         //

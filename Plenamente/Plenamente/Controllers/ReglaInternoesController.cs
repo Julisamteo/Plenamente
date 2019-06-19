@@ -18,6 +18,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ReglaInternoes
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -58,6 +59,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ReglaInternoes/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -73,6 +75,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ReglaInternoes/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ApplicationDbContext entity = new ApplicationDbContext();
@@ -87,6 +90,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
         {
             if (ModelState.IsValid)
@@ -102,6 +106,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ReglaInternoes/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -122,6 +127,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Rint_Id,Rint_Archivo,Empr_Nit,Rint_Registro")] ReglaInterno reglaInterno)
         {
             if (ModelState.IsValid)
@@ -135,6 +141,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ReglaInternoes/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -152,6 +159,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/ReglaInternoes/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             ReglaInterno reglaInterno = db.Tb_ReglaInterno.Find(id);
@@ -169,6 +177,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             base.Dispose(disposing);
         }
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult SaveRecord(ReglamentoInternoViewModel reglamentointernoviewmodel)
         {
             try

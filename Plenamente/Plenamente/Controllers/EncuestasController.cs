@@ -16,6 +16,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // GET: Administrador/Encuestas
         //Se Agregan Los Parametros sortOrder, currentFilter, searchString, page, para la busqueda y paginacion de la encuesta.
+        [Authorize(Roles = "Administrator")]
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -68,6 +69,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
         // GET: Administrador/Encuestas/Details/5
         //Metodo para la pagina de detalles
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -84,6 +86,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // GET: Administrador/Encuestas/Create
         //Metodo para invocarta la pagina de create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom");
@@ -95,6 +98,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         //Metodó guardar con parametro blindado
         public ActionResult Create([Bind(Include = "Encu_Id,Encu_Nombre,Encu_Creacion,Encu_Vence,Encu_Estado,Encu_Registro,Empr_Nit")] Encuesta encuesta)
         {
@@ -112,6 +116,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Encuestas/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -132,6 +137,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Encu_Id,Encu_Creacion,Encu_Vence,Encu_Estado,Encu_Registro,Empr_Nit")] Encuesta encuesta)
         {
             if (ModelState.IsValid)
@@ -146,6 +152,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         // GET: Administrador/Encuestas/Delete/5
         //Metodo para la pagina de eliminar
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -163,6 +170,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Encuestas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         //Metodo de elimincacion multi tabla en beta no funcional
         public ActionResult DeleteConfirmed(int id)
         {
@@ -170,6 +178,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             return RedirectToAction("Index");
         }
         //Query de insercion a las tabalas Preguntas y Respuestas de manera estatica.
+        [Authorize(Roles = "Administrator")]
         public void GuardarPreguntas()
         {
             var maxEncuesta = db.Tb_Encuesta.Max(x => x.Encu_Id);

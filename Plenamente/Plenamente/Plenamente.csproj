@@ -232,6 +232,7 @@
     <Compile Include="Controllers\CargaArchivoController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
+    <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
@@ -257,9 +258,9 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201905281417436_prueba.cs" />
-    <Compile Include="Migrations\201905281417436_prueba.Designer.cs">
-      <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    <Compile Include="Migrations\201905311910368_CampoJustificacion.cs" />
+    <Compile Include="Migrations\201905311910368_CampoJustificacion.Designer.cs">
+      <DependentUpon>201905311910368_CampoJustificacion.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201906031622413_updateDataBase.cs" />
     <Compile Include="Migrations\201906031622413_updateDataBase.Designer.cs">
@@ -329,21 +330,6 @@
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906182109365_excepcionescategoria.cs" />
-    <Compile Include="Migrations\201906182109365_excepcionescategoria.Designer.cs">
-      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906182128264_addcampofecha.cs" />
-    <Compile Include="Migrations\201906182128264_addcampofecha.Designer.cs">
-      <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs" />
-    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.Designer.cs">
-      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.cs" />
-    <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.Designer.cs">
-      <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -905,8 +891,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201905281417436_prueba.resx">
-      <DependentUpon>201905281417436_prueba.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201905311910368_CampoJustificacion.resx">
+      <DependentUpon>201905311910368_CampoJustificacion.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906031622413_updateDataBase.resx">
       <DependentUpon>201906031622413_updateDataBase.cs</DependentUpon>
@@ -959,19 +945,6 @@
     <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906182109365_excepcionescategoria.resx">
-      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906182128264_addcampofecha.resx">
-      <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.resx">
-      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906190449464_agregarColumnaNoAplica.resx">
-      <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
   <ItemGroup>

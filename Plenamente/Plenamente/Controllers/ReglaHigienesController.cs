@@ -19,6 +19,7 @@ namespace Plenamente.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: ReglaHigienes
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
         {
             //var tb_ReglaHigiene = db.Tb_ReglaHigiene.Include(r => r.Empresa);
@@ -64,6 +65,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: Administrador/ReglaHigienes/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -79,6 +81,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: ReglaHigienes/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ApplicationDbContext entity = new ApplicationDbContext();
@@ -93,6 +96,7 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Rhig_Id,Rhig_Archivo,Rhig_Nom,Empr_Nit,Rhig_Registro")] ReglaHigiene reglaHigiene)
         {
             if (ModelState.IsValid)
@@ -107,6 +111,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: ReglaHigienes/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -127,6 +132,7 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Rhig_Id,Rhig_Archivo,Rhig_Nom,Empr_Nit,Rhig_Registro")] ReglaHigiene reglaHigiene)
         {
             if (ModelState.IsValid)
@@ -140,6 +146,7 @@ namespace Plenamente.Controllers
         }
 
         // GET: ReglaHigienes/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -155,6 +162,7 @@ namespace Plenamente.Controllers
         }
 
         // POST: ReglaHigienes/Delete/5
+        [Authorize(Roles = "Administrator")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -175,6 +183,7 @@ namespace Plenamente.Controllers
         }
 
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult SaveRecord(Rhigiene rhigiene)
         {
             try

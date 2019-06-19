@@ -13,6 +13,7 @@ namespace Plenamente.Areas.Administrador.Controllers
     public class RespuestasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
+        [Authorize(Roles = "Administrator")]
         public ViewResult Index(string sortOrder, string currentFilter, string searchString, int idPregunta, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -55,6 +56,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             return View(respuestas.ToPagedList(pageNumber, pageSize));
         }
         // GET: Administrador/Respuestas/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -70,6 +72,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Respuestas/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create(int? id, int idPregunta)
         {
             ViewBag.Resp_Id = new SelectList(db.Tb_Respuesta, "Resp_Id", "Resp_Tipo");
@@ -83,6 +86,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Resp_Id,Resp_Tipo,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta, int? id, int idPregunta)
         {
             ViewBag.Resp_Id = new SelectList(db.Tb_Respuesta, "Resp_Id", "Resp_Tipo");
@@ -100,6 +104,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Respuestas/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -120,6 +125,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Resp_Id,Resp_Tipo,Resp_Nom,Resp_Registro,Preg_Id")] Respuesta respuesta)
         {
             if (ModelState.IsValid)
@@ -133,6 +139,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/Respuestas/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id, int idPregunta)
         {
             ViewBag.idPregunta = idPregunta;
@@ -151,6 +158,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/Respuestas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int? id, int idPregunta)
         {
             ViewBag.idPregunta = idPregunta;

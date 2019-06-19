@@ -15,6 +15,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: Administrador/ItemEstandars
+        [Authorize(Roles = "Administrator")]
         public ActionResult Index()
         {
             var tb_ItemEstandar = db.Tb_ItemEstandar.Include(i => i.Estandar);
@@ -22,6 +23,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ItemEstandars/Details/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -37,6 +39,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ItemEstandars/Create
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create()
         {
             ViewBag.Esta_Id = new SelectList(db.Tb_Estandar, "Esta_Id", "Esta_Nom");
@@ -48,6 +51,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Create([Bind(Include = "Iest_Id,Iest_Desc,Iest_Verificar,Iest_Porcentaje,Iest_Cumple,Iest_Nocumple,Iest_Justifica,Iest_Nojustifica,Esta_Id,Iest_Peri,Iest_Observa,Iest_Registro")] ItemEstandar itemEstandar)
         {
             if (ModelState.IsValid)
@@ -62,6 +66,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ItemEstandars/Edit/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -82,6 +87,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Edit([Bind(Include = "Iest_Id,Iest_Desc,Iest_Verificar,Iest_Porcentaje,Iest_Cumple,Iest_Nocumple,Iest_Justifica,Iest_Nojustifica,Esta_Id,Iest_Peri,Iest_Observa,Iest_Registro")] ItemEstandar itemEstandar)
         {
             if (ModelState.IsValid)
@@ -95,6 +101,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ItemEstandars/Delete/5
+        [Authorize(Roles = "Administrator")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -112,6 +119,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // POST: Administrador/ItemEstandars/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
+        [Authorize(Roles = "Administrator")]
         public ActionResult DeleteConfirmed(int id)
         {
             ItemEstandar itemEstandar = db.Tb_ItemEstandar.Find(id);
