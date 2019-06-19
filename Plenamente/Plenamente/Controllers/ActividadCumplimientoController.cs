@@ -135,7 +135,53 @@ namespace Plenamente.Controllers
                     TimeOfDay = model.hora,//TimeSpan(8, 0, 0),
                     SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),                    
                 };
-                weekly.SetDays(new DayOfWeek[] { DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday });
+
+                //Seteamos loas dias de la semana seleccionados.
+                int i = 0;
+                List<DayOfWeek> dayOfWeeks = new List<DayOfWeek> ();
+                if (model.weekly_0 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Monday);
+                    i++;
+                }
+
+                if (model.weekly_1 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Tuesday);                    
+                    i++;
+                }
+
+                if (model.weekly_2 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Wednesday);                    
+                    i++;
+                }
+
+                if (model.weekly_3 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Thursday);
+                    i++;
+                }
+
+                if (model.weekly_4 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Friday);
+                    i++;
+                }
+
+                if (model.weekly_5 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Saturday);
+                    i++;
+                }
+
+                if (model.weekly_6 != null)
+                {
+                    dayOfWeeks.Add(DayOfWeek.Sunday);
+                    i++;
+                }
+
+                weekly.SetDays(dayOfWeeks);
 
                 schedules.Add(weekly);
             }
