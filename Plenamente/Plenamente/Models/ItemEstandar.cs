@@ -24,6 +24,10 @@ namespace Plenamente.Models
         public string Iest_Video { get; set; }
         public string Iest_Recurso { get; set; }
         public string Iest_Rescursob { get; set; }
+        public string Iest_Rescursoc { get; set; }
+        public string Iest_Rescursod { get; set; }
+        public string Iest_Rescursoe { get; set; }
+        public string Iest_Rescursof { get; set; }
         public string Iest_MasInfo { get; set; }
 
         //Permite a cumplimineto acceder a la Data
