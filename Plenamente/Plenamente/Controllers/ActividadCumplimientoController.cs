@@ -269,8 +269,51 @@ namespace Plenamente.Controllers
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-
             var model = db.Tb_ActiCumplimiento.Find(id);
+            if (model.DiasSemana != null)
+            {
+                var lunes = model.DiasSemana.Contains("lunes");
+                var martes = model.DiasSemana.Contains("martes");
+                var miercoles = model.DiasSemana.Contains("miercoles");
+                var jueves = model.DiasSemana.Contains("jueves");
+                var viernes = model.DiasSemana.Contains("viernes");
+                var sabado = model.DiasSemana.Contains("sabado");
+                var domingo = model.DiasSemana.Contains("domingo");
+                if (lunes)
+                {
+                    ViewData["lunes"] = "checked";
+                }
+
+                if (martes)
+                {
+                    ViewData["martes"] = "checked";
+                }
+
+                if (miercoles)
+                {
+                    ViewData["miercoles"] = "checked";
+                }
+
+                if (jueves)
+                {
+                    ViewData["jueves"] = "checked";
+                }
+
+                if (viernes)
+                {
+                    ViewData["viernes"] = "checked";
+                }
+
+                if (sabado)
+                {
+                    ViewData["sabado"] = "checked";
+                }
+
+                if (domingo)
+                {
+                    ViewData["domingo"] = "checked";
+                }
+            }
             ViewData["userid"] = model.Id;
             return View(model);
         }
