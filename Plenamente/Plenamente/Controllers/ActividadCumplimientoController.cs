@@ -1,11 +1,16 @@
-﻿using Plenamente.App_Tool;
+﻿using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Net;
+using System.Web;
+using System.Web.Mvc;
+using Plenamente.App_Tool;
+using Plenamente.Scheduler;
 using Plenamente.Models;
 using Plenamente.Models.ViewModel;
-using Plenamente.Scheduler;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web.Mvc;
+
 
 namespace Plenamente.Controllers
 {
@@ -35,6 +40,7 @@ namespace Plenamente.Controllers
                 Resultado = list
             };
             //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
+            ViewBag.ReturnUrl = Request.UrlReferrer;
             return View(_PaginadorCustomers);
         }
 
@@ -57,14 +63,14 @@ namespace Plenamente.Controllers
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
 
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
-
+            ViewBag.ReturnUrl = Request.UrlReferrer;
             return View(model);
 
         }
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6")] ViewModelActividadCumplimiento model)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar")] ViewModelActividadCumplimiento model)
         {
 
 
@@ -84,7 +90,7 @@ namespace Plenamente.Controllers
                 Oemp_Id = model.idObjetivo,
                 Acum_Registro = DateTime.Now,
                 Id = usuario.Id,
-                Frec_Id = 1,
+                Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
                 Empr_Nit = empresa.Empr_Nit
             };
@@ -94,7 +100,8 @@ namespace Plenamente.Controllers
             //Generamos la programacion de tareas en el tiempo.
             generateAppoiment(model, actcumplimiento.Acum_Id);
 
-            return RedirectToAction("Index");
+            var link = model.retornar;
+            return Redirect(link);
             /*}
           catch
            {
@@ -221,27 +228,33 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Edit/5
         public ActionResult Edit(int id)
         {
-            return View();
+            var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
+            ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+
+            var model = db.Tb_ActiCumplimiento.Find(id); ;
+            ViewData["userid"] = model.Id;
+            return View(model);
         }
 
         // POST: ActividadCumplimiento/Edit/5
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit([Bind(Include = "Acum_Id,Acum_Desc,Acum_Porcentest,Acum_IniAct,Acum_FinAct,Oemp_Id,Id,Peri_Id,Empr_Nit,Frec_Id")] ActiCumplimiento actiCumplimiento)
         {
-            try
+            if (ModelState.IsValid)
             {
-                // TODO: Add update logic here
 
+                db.Entry(actiCumplimiento).State = EntityState.Modified;
+                db.SaveChanges();
                 return RedirectToAction("Index");
             }
-            catch
-            {
-                return View();
-            }
+            return View(actiCumplimiento);
         }
 
-        // GET: ActividadCumplimiento/Delete/5
-        public ActionResult Delete(int id)
+            // GET: ActividadCumplimiento/Delete/5
+            public ActionResult Delete(int id)
         {
             return View();
         }
