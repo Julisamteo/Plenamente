@@ -159,6 +159,7 @@ namespace Plenamente.Controllers
                 {
                     AcumMes = cumplimiento.AcumMes?.ToList(),
                     AutoEvaluacionId = cumplimiento.Auev_Id,
+                    NoAplica = cumplimiento.Cump_NoAplica,
                     Cumple = cumplimiento.Cump_Cumple,
                     Evidencias = cumplimiento.Evidencias?.ToList(),
                     Id = cumplimiento.Cump_Id,
@@ -201,6 +202,7 @@ namespace Plenamente.Controllers
                         new Cumplimiento
                         {
                             Cump_Id = model.Id,
+                            Cump_NoAplica = model.NoAplica,
                             Cump_Cumple = model.Cumple,
                             Cump_Nocumple = model.Nocumple,
                             Cump_Justifica = model.Justifica,
@@ -216,6 +218,7 @@ namespace Plenamente.Controllers
                 else
                 {
                     cumplimiento = db.Tb_Cumplimiento.Find(model.Id);
+                    cumplimiento.Cump_NoAplica = model.NoAplica;
                     cumplimiento.Cump_Id = model.Id;
                     cumplimiento.Cump_Cumple = model.Cumple;
                     cumplimiento.Cump_Nocumple = model.Nocumple;
