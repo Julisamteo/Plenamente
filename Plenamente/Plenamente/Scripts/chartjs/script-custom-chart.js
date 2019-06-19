@@ -26,6 +26,13 @@ function generarColores(internalDataLength) {
         hoverColor.push(hoverColors);
     }
 }
+var canvasChart = document.getElementsByClassName("chart-container");
+for (var i = 0; i < canvasChart.length; i++) {
+    var id = canvasChart[i].getAttribute("id");
+    var chartRoute = canvasChart[i].getAttribute("chart-route");
+    var chartType = canvasChart[i].getAttribute("chart-type");
+    Chart_Load(id, chartRoute, chartType);
+}
 function Chart_Load(nameObject, routeMethod, typeChart) {
     $.ajax({
         type: "POST",

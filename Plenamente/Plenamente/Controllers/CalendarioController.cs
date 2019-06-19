@@ -78,7 +78,7 @@ namespace Plenamente.Controllers
 
                 List<EventViewModel> planes =
                     db.Tb_ProgamacionTareas
-                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa)
+                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa && a.Estado && a.ActiCumplimiento.Id != null)
                         .Select(a =>
                             new EventViewModel
                             {
