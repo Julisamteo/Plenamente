@@ -11,18 +11,31 @@ namespace Plenamente.Controllers
 {
     public class ActividadCumplimientoController : Controller
     {
+        private readonly int _RegistrosPorPagina = 10;
+        private PaginadorGenerico<ActiCumplimiento> _PaginadorCustomers;
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ActividadCumplimiento
-        public ActionResult Index()
+        public ActionResult Index(int pagina = 1)
         {
-            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            int _TotalRegistros = 0;
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();            
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            IQueryable<ActiCumplimiento> list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa);
+            var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
+            _TotalRegistros = list.Count();
+            list = list.Skip((pagina - 1) * _RegistrosPorPagina)
+                                               .Take(_RegistrosPorPagina)
+                                               .ToList();
+            int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
+            _PaginadorCustomers = new PaginadorGenerico<ActiCumplimiento>()
+            {
+                RegistrosPorPagina = _RegistrosPorPagina,
+                TotalRegistros = _TotalRegistros,
+                TotalPaginas = _TotalPaginas,
+                PaginaActual = pagina,
+                Resultado = list
+            };
             //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
-
-
-
-            return View(list.ToList());
+            return View(_PaginadorCustomers);
         }
 
         // GET: ActividadCumplimiento/Details/5
