@@ -52,6 +52,7 @@ namespace Plenamente.Models
         public string DiasSemana { get; set; }
         public int Repeticiones { get; set; }
 
+        public TimeSpan HoraAct { get; set; } 
 
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }      

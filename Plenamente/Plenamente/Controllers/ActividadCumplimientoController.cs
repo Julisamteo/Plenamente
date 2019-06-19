@@ -123,7 +123,9 @@ namespace Plenamente.Controllers
                 Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
                 Empr_Nit = empresa.Empr_Nit,
+                Repeticiones=model.period,
                 DiasSemana=dias,
+                HoraAct=model.hora
                 
 
             };
@@ -261,12 +263,14 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Edit/5
         public ActionResult Edit(int id)
         {
+            var listfrec = db.Tb_Frecuencia.Select(o => new { Id = o.Frec_Id , Value = o.Frec_Descripcion }).ToList();
+            ViewBag.frecuenciaEmpresa = new SelectList(listfrec, "Id", "Value");
             var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
 
-            var model = db.Tb_ActiCumplimiento.Find(id); ;
+            var model = db.Tb_ActiCumplimiento.Find(id);
             ViewData["userid"] = model.Id;
             return View(model);
         }

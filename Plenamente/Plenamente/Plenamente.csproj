@@ -345,6 +345,10 @@
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.Designer.cs">
       <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906191719482_AgregadoColumnaHoraAct.cs" />
+    <Compile Include="Migrations\201906191719482_AgregadoColumnaHoraAct.Designer.cs">
+      <DependentUpon>201906191719482_AgregadoColumnaHoraAct.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -970,6 +974,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906190449464_agregarColumnaNoAplica.resx">
       <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906191719482_AgregadoColumnaHoraAct.resx">
+      <DependentUpon>201906191719482_AgregadoColumnaHoraAct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
