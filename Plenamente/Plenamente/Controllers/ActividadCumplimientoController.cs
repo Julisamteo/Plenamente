@@ -80,6 +80,36 @@ namespace Plenamente.Controllers
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            string dias = "";
+            if(model.weekly_0 != null)
+            {
+                dias += "lunes,";
+            }
+            if (model.weekly_1 != null)
+            {
+                dias += "martes,";
+            }
+            if (model.weekly_2 != null)
+            {
+                dias += "miercoles,";
+            }
+            if (model.weekly_3 != null)
+            {
+                dias += "jueves,";
+            }
+            if (model.weekly_4 != null)
+            {
+                dias += "viernes,";
+            }
+            if (model.weekly_5 != null)
+            {
+                dias += "sabado,";
+            }
+            if (model.weekly_5 != null)
+            {
+                dias += "domingo,";
+            }
+
             // TODO: Add insert logic here
             ActiCumplimiento actcumplimiento = new ActiCumplimiento
             {
@@ -92,7 +122,10 @@ namespace Plenamente.Controllers
                 Id = usuario.Id,
                 Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
-                Empr_Nit = empresa.Empr_Nit
+                Empr_Nit = empresa.Empr_Nit,
+                DiasSemana=dias,
+                
+
             };
 
             db.Tb_ActiCumplimiento.Add(actcumplimiento);
