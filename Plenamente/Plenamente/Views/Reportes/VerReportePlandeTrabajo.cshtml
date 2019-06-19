@@ -1,13 +1,13 @@
 ﻿@using ReportViewerForMvc;
 @{
-    ViewBag.Title = "Historico Auto Evaluaciones";
+    ViewBag.Title = "Historico Plan de Trabajo";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 <div class="colorVerdeBack">
-    <p>Historico Auto Evaluaciones</p>
+    <p>Historico Plan de Trabajo</p>
 </div>
 <div class="contenidoCuerpo">
-    <div class="row">        
+    <div class="row">
         <label class="text-danger">@ViewBag.TextError</label>
     </div>
     @if (ViewBag.ReportViewer != null)
@@ -20,7 +20,7 @@
     }
 </div>
 <div class="contenidoVolver">
-    <a href="@Url.Action("VerHistorico","Autoevaluacion")" class="ayudaTitulos">
+    <a href="@Url.Action("Index","Plandetrabajo")" class="ayudaTitulos">
         <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
     </a>
 </div>

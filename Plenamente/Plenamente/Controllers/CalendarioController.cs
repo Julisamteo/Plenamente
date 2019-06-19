@@ -62,8 +62,8 @@ namespace Plenamente.Controllers
                          new EventViewModel
                          {
                              Id = a.Acum_Id,
-                             Description = a.Acum_Desc,
-                             Title = "Cumplimiento",
+                             Description = "Cumplimiento",
+                             Title = a.Acum_Desc,
                              Start = a.Acum_IniAct,
                              End = a.Acum_FinAct,
                              BackgroundColor = "#BCBFE8",
@@ -78,16 +78,16 @@ namespace Plenamente.Controllers
 
                 List<EventViewModel> planes =
                     db.Tb_ProgamacionTareas
-                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa)
+                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa && a.Estado && a.ActiCumplimiento.Id != null)
                         .Select(a =>
                             new EventViewModel
                             {
                                 Id = a.Id,
-                                Description = a.Descripcion,
-                                Title = "Tarea programada",
+                                Description = "Tarea programada",
+                                Title = a.Descripcion,
                                 Start = a.FechaHora,
-                                BackgroundColor = "#17E8A9",
-                                BorderColor = "#44FF19",
+                                BackgroundColor = "#7DDAFF",
+                                BorderColor = "#9FBDC9",
                                 EventRoute = "/ActividadCumplimiento/Create/" + a.Id
                             }).ToList();
 

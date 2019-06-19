@@ -19,5 +19,6 @@ namespace Plenamente.Models
         public int? CicloPHVA_Id { get; set; }
         public CicloPHVA CicloPHVA { get; set; }
         public short Categoria { get; set; }
+        public short CategoriaExcepcion { get; set; }
     }
 }
