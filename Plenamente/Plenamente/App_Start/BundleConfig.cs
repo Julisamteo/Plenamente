@@ -24,7 +24,8 @@ namespace Plenamente
             // Custom chartjs
             bundles.Add(new ScriptBundle("~/bundles/chartjs").Include(
                     "~/Scripts/chartjs/Chart.min.js",
-                    "~/Scripts/chartjs/Chart.bundle.min.js"));
+                    "~/Scripts/chartjs/Chart.bundle.min.js",
+                    "~/Scripts/chartjs/script-custom-chart.js"));
 
             // Custom Calendar.
             bundles.Add(new ScriptBundle("~/bundles/Script-calendar").Include(

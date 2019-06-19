@@ -341,6 +341,10 @@
     <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.Designer.cs">
       <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.cs" />
+    <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.Designer.cs">
+      <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -644,6 +648,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\script-custom-calendar.js" />
+    <Content Include="Scripts\chartjs\script-custom-chart.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -962,6 +967,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.resx">
       <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906190449464_agregarColumnaNoAplica.resx">
+      <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
