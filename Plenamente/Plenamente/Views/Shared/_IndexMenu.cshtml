@@ -10,7 +10,6 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/smoothness/jquery-ui.css">
 </head>
 <body>
-
     <div class="contenedorPrincipal">
         <div class="contenedor-menu" class="activado">
             <a href="#" class="btn-menu">Menú<i class="icono fa fa-bars"></i></a>
@@ -21,32 +20,23 @@
                         <li>
                             <a href="#">Datos Generales<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-
                                 <li>
-                                <li><a href="@Url.Action("Users", "admin")">Información de sus trabajadores</a></li>
-
+                                    <a href="@Url.Action("Users", "admin")">Información de sus trabajadores</a>
+                                </li>
                                 <li>
-                                <li><a href="@Url.Action("Index", "ObjEmpresas")">Objetivos de la empresa </a></li>
-
-
-                                <li>
-
-                            </ul>
-
-                        <li>
-                            <a href="@Url.Action("autoevaluacionsst", "autoevaluacion")">Autoevaluación SST<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu1" style="display: block;">
-                                <li>
-                                    <a href="#">Mis AutoEvaluaciones </a>
-
+                                    <a href="@Url.Action("Index", "ObjEmpresas")">Objetivos de la empresa </a>
                                 </li>
                             </ul>
                         </li>
                         <li>
                             <a href="#">Autoevalución SST<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-                                <li><a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="@Url.Action("VerHistorico", "Autoevaluacion")">Ver historico<i class="icono derecha fa fa-chevron-down"></i></a></li>
+                                <li>
+                                    <a href="@Url.Action("NumeroEmpleados", "Autoevaluacion")">Autoevalución<i class="icono derecha fa fa-chevron-down"></i></a>
+                                </li>
+                                <li>
+                                    <a href="@Url.Action("VerHistorico", "Autoevaluacion")">Ver historico<i class="icono derecha fa fa-chevron-down"></i></a>
+                                </li>
                             </ul>
                         </li>
                         <li>
@@ -142,16 +132,13 @@
                                 <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de eventos<i class="icono derecha fa fa-chevron-down"></i></a></li>
                                 <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Estadísticas de accidentalidad<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
-                            </ul>
-                        </li>
                     </ul>
                 </li>
-
-                <img src="~/Imagenes/Logoplenamenteblanco.png" style="margin-top:100%; padding-left:40px; " />
+                <li>
+                    <img src="~/Imagenes/Logoplenamenteblanco.png" style="margin-top:100%; padding-left:40px;" />
+                </li>
             </ul>
-
         </div>
-
     </div>
 
     <script src="~/Scripts/jquery-1.10.2.min.js"></script>
