@@ -350,9 +350,9 @@
     <Compile Include="Migrations\201906191719482_AgregadoColumnaHoraAct.Designer.cs">
       <DependentUpon>201906191719482_AgregadoColumnaHoraAct.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906192207236_4Columitemstandar.cs" />
-    <Compile Include="Migrations\201906192207236_4Columitemstandar.Designer.cs">
-      <DependentUpon>201906192207236_4Columitemstandar.cs</DependentUpon>
+    <Compile Include="Migrations\201906200206582_actmergeupdate.cs" />
+    <Compile Include="Migrations\201906200206582_actmergeupdate.Designer.cs">
+      <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -983,8 +983,8 @@
     <EmbeddedResource Include="Migrations\201906191719482_AgregadoColumnaHoraAct.resx">
       <DependentUpon>201906191719482_AgregadoColumnaHoraAct.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906192207236_4Columitemstandar.resx">
-      <DependentUpon>201906192207236_4Columitemstandar.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906200206582_actmergeupdate.resx">
+      <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
