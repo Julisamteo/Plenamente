@@ -32,35 +32,35 @@ namespace Plenamente.Models
         public IEnumerable<UserRolesDTO> Roles { get; set; }
 
         public int? Tdoc_Id { get; set; }
-        public TipoDocumento TipoDocumento { get; set; }
+        public List<TipoDocumento> tipoDocumento { get; set; }
         public int? Sciu_Id { get; set; }
-        public SedeCiudad SedeCiudad { get; set; }
+        public List<SedeCiudad> sedeCiudad { get; set; }
         public int? Ciud_Id { get; set; }
-        public Ciudad Ciudad { get; set; }
+        public List<Ciudad> ciudad { get; set; }
         public int? Cemp_Id { get; set; }
-        public CargoEmpresa CargoEmpresa { get; set; }
+        public List<CargoEmpresa> cargoEmpresa { get; set; }
         public int? Aemp_Id { get; set; }
-        public AreaEmpresa AreaEmpresa { get; set; }
+        public List<AreaEmpresa> areaEmpresa { get; set; }
         public int? Cate_Id { get; set; }
-        public CateLicencia CateLicencia { get; set; }
+        public List<CateLicencia> cateLicencia { get; set; }
         public int? Gene_Id { get; set; }
-        public Genero Genero { get; set; }
+        public List<Genero> genero { get; set; }
         public int? Jemp_Id { get; set; }
-        public JornadaEmpresa JornadaEmpresa { get; set; }
+        public List<JornadaEmpresa> jornadaEmpresa { get; set; }
         public int? Tvin_Id { get; set; }
-        public TipoVinculacion TipoVinculacion { get; set; }
+        public List<TipoVinculacion> tipoVinculacion { get; set; }
         public int? Eps_Id { get; set; }
-        public Eps Eps { get; set; }
+        public List<Eps> eps { get; set; }
         public int? Afp_Id { get; set; }
-        public Afp Afp { get; set; }
+        public List<Afp> afp { get; set; }
         public int? Arl_Id { get; set; }
-        public Arl Arl { get; set; }
+        public List<Arl> arl { get; set; }
         public int? Empr_Nit { get; set; }
-        public Empresa Empresa { get; set; }
+        public List<Empresa> Empresa { get; set; }
         public int? Espe_Id { get; set; }
-        public EstadoPersona EstadoPersona { get; set; }
+        public List<EstadoPersona> estadoPersona { get; set; }
         public string Jefe_Id { get; set; }
-        public ApplicationUser Jefe { get; set; }
+        public List<ApplicationUser> Jefe { get; set; }
     }
 
 

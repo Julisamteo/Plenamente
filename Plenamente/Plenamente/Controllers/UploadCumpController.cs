@@ -15,11 +15,13 @@ namespace Plenamente.Areas.Administrador.Controllers
         protected  ApplicationDbContext ApplicationDbContext { get; set; }
         // GET: Administrador/UploadCump
         [HttpGet]
+        [Authorize(Roles = "Administrator")]
         public ActionResult Upload()
         {
             return View();
         }
         [HttpPost]
+        [Authorize(Roles = "Administrator")]
         public ActionResult ResourceUpload(Cumplimiento model, HttpPostedFileBase upload)
         {
             if (upload != null && upload.ContentLength <= (5*1000000))

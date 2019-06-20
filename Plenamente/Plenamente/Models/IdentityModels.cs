@@ -3,6 +3,7 @@ using Microsoft.AspNet.Identity.EntityFramework;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Data.Entity;
 using System.Data.Entity.ModelConfiguration.Conventions;
 using System.Security.Claims;
@@ -42,8 +43,10 @@ namespace Plenamente.Models
         public TipoDocumento TipoDocumento { get; set; }
         public int? Sciu_Id { get; set; }
         public SedeCiudad SedeCiudad { get; set; }
-        //public int? Ciud_Id { get; set; }
-        //public Ciudad Ciudad { get; set; }
+        [NotMapped]
+        public int? Ciud_Id { get; set; }
+        [NotMapped]
+        public Ciudad Ciudad { get; set; }
         public int? Cemp_Id { get; set; }
         public CargoEmpresa CargoEmpresa { get; set; }
         public int? Aemp_Id { get; set; }

@@ -3,75 +3,83 @@
 @{
     ViewBag.Title = "Iniciar sesión";
 }
-<div class="row">
-    <div class="col-md-6 hidden-xs">
-       <img src="~/Imagenes/brooke-cagle-1181684-unsplash.jpg" width="100%"/>
+<style>
+    body {
+        background: url("/Imagenes/Fondopng.png");
+        background-size: 100%;
+    }
+</style>
+<div class="">
+    <div class="col-xs-12 col-md-3 col-sm-3">
+
     </div>
-    <div class="col-md-6 col-sm-6 fadeInDown">
-        <div class="row">
-            <div class="col-md-4 col-xs-4"></div>
-            <div class="col-md-4 col-xs-4">
-                <img src="~/Imagenes/Plenamente2.png" width="100%" />
+    <div class="col-xs-12 col-md-6 fadeInDown" style="padding-top: 30px;">
+        <div class="">
+            <div class="col-xs-4 col-xs-4"></div>
+            <div class="col-xs-4 col-xs-4">
+                <img src="~/Imagenes/Logoplenamenteblanco.png" width="100%" />
             </div>
-            <div class="col-md-4"></div>
+            <div class="col-xs-4"></div>
         </div>
+
         <center>
-            <section id="loginForm">
+            <div class="col-xs-12 col-xs-12" style="padding-top: 30px;">
+                <div class="col-xs-3 col-xs-3"></div>
+                <div class="col-xs-6 col-xs-6">
+                    <img src="~/Imagenes/INGRESA.png" width="100%" />
+                </div>
+            </div>
+            <section id="loginForm fondoColumnaPrincipal">
                 @using (Html.BeginForm("Login", "Account", new { ReturnUrl = ViewBag.ReturnUrl }, FormMethod.Post, new { @class = "form", role = "form" }))
                 {
                     @Html.AntiForgeryToken()
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.TextBoxFor(m => m.Email, new { @class = "", placeholder = "Usuario" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            @Html.PasswordFor(m => m.Password, new { @class = "", placeholder = "Contraseña" })
-                            @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
-                        </div>
-                    </div>
-                    <div class="form-group">
-                        <div class="col-md-12">
-                            <div class="checkbox">
-                                @Html.CheckBoxFor(m => m.RememberMe)
-                                @Html.LabelFor(m => m.RememberMe)
+                    <div class="form-group  ">
+
+                        <div class="col-xs-12 fondoColumnaPrincipal" style="padding-top: 80px; margin-top: -20px; position: inherit;">
+                            <div class="hidden-sm hidden-xs col-xs-2">
+                                <img src="~/Imagenes/user.png" width="90%" />
+                            </div>
+                            <div class="col-sm-12 col-md-10">
+                                @Html.TextBoxFor(m => m.Email, new { @class = "", placeholder = "Usuario", style = "width:100%" })
                             </div>
                         </div>
                     </div>
                     <div class="form-group">
-                        <div class=" col-md-12">
-                            <input type="submit" value="Iniciar sesión" class="btn btn-default centrarContenido" />
+
+                        <div class="col-xs-12 fondoColumnaPrincipal">
+                            <div class="hidden-sm  hidden-xs col-md-2">
+                                <img src="~/Imagenes/security.png" width="90%" />
+                            </div>
+                            <div class="col-sm-12 col-md-10">
+                                @Html.PasswordFor(m => m.Password, new { @class = "", placeholder = "Contraseña", style = "width:100%" })
+                                @Html.ValidationMessageFor(m => m.Password, "", new { @class = "text-danger" })
+                            </div>
                         </div>
                     </div>
-                    <div id="formFooter">
-                        <a class="underlineHover">¿Olvidó su contraseña?</a>
+                    <div class=" fondoColumnaPrincipal col-xs-12" style="padding: 30px;     color: white;font-size: 18px;">
+
                     </div>
+                    <div class="form-group">
+                        <div class=" col-xs-12 fondoColumnaPrincipal">
+                            <input type="submit" value="Iniciar sesión" class="btn btn-default" style="background:#117805" />
+                        </div>
+                    </div>
+
                 }
             </section>
         </center>
     </div>
+
+    <div class="col-xs-12">
+        <div class="col-xs-10"></div>
+        <div class="col-xs-12 col-sm-2 redesSociales">
+            <a href="#"><img src="/Imagenes/Logo_FB.png" width="20px"></a>
+            <a href="#"><img src="/Imagenes/Logo_INT.png" width="20px"></a>
+            <a href="#"><img src="/Imagenes/Logo_TW.png" width="20px"></a>
+            <a href="#"><img src="/Imagenes/Logo_YT.png" width="20px"></a>
         </div>
-<div class="fotterPrincipal">
-    <div class="textoFotter">
-        <div class="imagenesContacto">
-            <img src="/Imagenes/marcador-de-posicion.png">
-            <img src="/Imagenes/bocadillo.png">
-            <img src="/Imagenes/mano-sosteniendo-smartphone.png">
-        </div>
-        <div class="textoContacto">
-            <a class="underlineHover" href="#">Carrera 16 No 31A-27 <br>Bogotá-Colombia</a>
-            <a class="underlineHover" href="#">contacto@plenamentetrabajando.com</a>
-            <a class="underlineHover" href="#">+57 311 2666 345</a>
-        </div>
-    </div>
-    <div class="redesSociales">
-        <a href="#"><img src="/Imagenes/Logo_FB.png"></a>
-        <a href="#"><img src="/Imagenes/Logo_INT.png"></a>
-        <a href="#"><img src="/Imagenes/Logo_TW.png"></a>
-        <a href="#"><img src="/Imagenes/Logo_YT.png"></a>
     </div>
 </div>
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
-    }
+}

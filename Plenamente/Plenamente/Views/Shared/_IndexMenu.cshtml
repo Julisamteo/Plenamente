@@ -1,5 +1,4 @@
-﻿
-<!DOCTYPE html>
+﻿<!DOCTYPE html>
 <html>
 <head>
     <meta charset="utf-8" />
@@ -13,55 +12,33 @@
 <body>
 
     <div class="contenedorPrincipal">
-        <div class="contenedor-menu">
+        <div class="contenedor-menu" class="activado">
             <a href="#" class="btn-menu">Menú<i class="icono fa fa-bars"></i></a>
-            <ul class="menu">
-                <li>
+            <ul class="menu" style="display: block;">
+                <li style="background-color: #65ac1e">
                     <a href="#">Empresa<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu">
+                    <ul class="subMenu" style="display: block;">
                         <li>
                             <a href="#">Datos Generales<i class="icono derecha fa fa-chevron-down"></i></a>
                             <ul class="subMenu1">
-                                @*<li>
-                                            <a asp-area="Admin" asp-controller="Cargos" asp-action="Index"> Cargos empleados<i class="icono derecha fa fa-chevron-down"></i></a>
-                                            <ul class="subMenu2">
-                                        <li><a href="#">Item 1</a></li>
-                                    </ul>
-                                        </li>*@
+
                                 <li>
-                                <li><a href="@Url.Action("Index", "AreaEmpresas")">Áreas de la empresa </a></li> @*1*@
+                                <li><a href="@Url.Action("Users", "admin")">Información de sus trabajadores</a></li>
+
                                 <li>
-                                <li><a href="@Url.Action("Index", "CargoEmpresas")">Cargos de la empresa </a></li> @*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "CargoEmpresas")">Información de sus trabajadores</a></li>
-                                <li>
-                                <li><a href="@Url.Action("Index", "sedeCiudades")">Sedes y centros de trabajo</a></li> @*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "EleProteccions")">Elementos de protección </a></li> @*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "Politicas")">Políticas de la empresa </a></li>@*1*@
-                                <li>
-                                <li><a href=@Url.Action("Index", "ProcesActividads")>Procesos y actividades </a></li>@*1*@
-                                <li>
-                                <li><a href=@Url.Action("Index", "ReglaHigienes")>Reglamento higiene y seguridad </a></li>@*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "ReglaInternoes")">Reglamento interno </a></li>@*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "SedeCiudades")">Sedes de la empresa </a></li>@*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "ObjEmpresas")">Objetivos de la empresa </a></li>@*1*@
-                                <li>
-                                <li><a href="@Url.Action("Index", "ZonaEmpresas")">Zonas físicas </a></li>
-                                <li>
-                                <li><a href="@Url.Action("Manageusers", "Admin")">Personas</a></li>
+                                <li><a href="@Url.Action("Index", "ObjEmpresas")">Objetivos de la empresa </a></li>
+
+
                                 <li>
 
                             </ul>
+
                         <li>
-                            <a href="#">Encuestas<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu1">
+                            <a href="@Url.Action("autoevaluacionsst", "autoevaluacion")">Autoevaluación SST<i class="icono derecha fa fa-chevron-down"></i></a>
+                            <ul class="subMenu1" style="display: block;">
                                 <li>
-                                    <a href="@Url.Action("Index", "Encuestas")">Encuesta sociodemográfica<i class="icono derecha fa fa-chevron-down"></i></a>
+                                    <a href="#">Mis AutoEvaluaciones </a>
+
                                 </li>
                             </ul>
                         </li>
@@ -165,67 +142,12 @@
                                 <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de eventos<i class="icono derecha fa fa-chevron-down"></i></a></li>
                                 <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Estadísticas de accidentalidad<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
-
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Medición<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu">
-                        <li>
-                            <a href="#">Medición<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu1">
-                                <li><a href="@Url.Action("error", "home")">Resumen de indicadores<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="@Url.Action("error", "home")">Estadísticas del SG-SST<i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
                             </ul>
-                            @* <li>
-                                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
-                                    <ul class="subMenu1">
-                                        <li>
-                                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                                            <ul class="subMenu2">
-                                                <li><a href="">Item 1</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>*@
-                    </ul>
-                </li>
-                <li>
-                    <a href="#">Administración<i class="icono derecha fa fa-chevron-down"></i></a>
-                    <ul class="subMenu">
-                        <li>
-                            <a href="#">Administración<i class="icono derecha fa fa-chevron-down"></i></a>
-                            <ul class="subMenu1">
-                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de informes<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de tareas<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                <li><a href="@Url.Action("error", "home")"><i class="icono derecha"></i>Gestión de planes de acción<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                            </ul>
-                            @*<li>
-                                    <a href="#">Modulo 2<i class="icono derecha fa fa-chevron-down"></i></a>
-                                    <ul class="subMenu1">
-                                        <li>
-                                            <a href="#">Comités<i class="icono derecha fa fa-chevron-down"></i></a>
-                                            <ul class="subMenu2">
-                                                <li><a href="">Item 1</a></li>
-                                            </ul>
-                                        </li>
-                                        <li><a href="#"><i class="icono derecha"></i>Seguimiento y Control<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Medición<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Reporte é Investigación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Computación y Participación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Administración<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                        <li><a href="#"><i class="icono derecha"></i>Capacitación y Formación<i class="icono derecha fa fa-chevron-down"></i></a></li>
-                                    </ul>
-                                </li>*@
+                        </li>
                     </ul>
                 </li>
 
+                <img src="~/Imagenes/Logoplenamenteblanco.png" style="margin-top:100%; padding-left:40px; " />
             </ul>
 
         </div>
@@ -238,5 +160,6 @@
     <script src="~/Scripts/main2.js"></script>
     <script src="//code.jquery.com/jquery-1.12.4.js"></script>
     <script src="//code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="~/Scripts/Chart.js"></script>
 </body>
 </html>
