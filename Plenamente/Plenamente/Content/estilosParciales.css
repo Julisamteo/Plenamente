@@ -1905,6 +1905,10 @@ progress::-webkit-progress-bar {
     border-radius: 20px;
 }
 
-MenuCabezera{
-    background: #65AC1E;
+.btn-primary {
+    background-color: dodgerblue !important;
+}
+
+.qtip {
+    visibility: hidden;
 }
