@@ -13,7 +13,7 @@
     max-height: 0;
     overflow: hidden;
     display: block;
-    justify-content:center;
+    justify-content: center;
     margin: auto;
     -webkit-transition: max-height 500ms ease-out;
     -moz-transition: max-height 500ms ease-out;
@@ -21,13 +21,14 @@
     transition: max-height 500ms ease-out;
 }
 
-.plegable.desplegado {
-    max-height: 100%;
-    -webkit-transition: max-height 500ms ease-out;
-    -moz-transition: max-height 500ms ease-out;
-    -o-transition: max-height 500ms ease-out;
-    transition: max-height 500ms ease-out;
-}
+    .plegable.desplegado {
+        max-height: 100%;
+        -webkit-transition: max-height 500ms ease-out;
+        -moz-transition: max-height 500ms ease-out;
+        -o-transition: max-height 500ms ease-out;
+        transition: max-height 500ms ease-out;
+    }
+
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover {
     z-index: 3;
     color: #fff;
@@ -35,6 +36,7 @@
     background-color: #6CB52D;
     border-color: #6CB52D;
 }
+
 .colorVerdeBack1 {
     cursor: pointer;
     color: #fff;
@@ -46,6 +48,7 @@
     background-color: #6CB52D;
     padding: 20px;
 }
+
 .linkPrincipal {
     display: flex;
     padding: 20px;
@@ -99,11 +102,13 @@
     font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
     font-size: 18px;
 }
+
 .rowEncuesta {
     padding: 20px;
     margin-left: 0px;
     margin-right: 0px;
 }
+
 .rowEncuestaTitle {
     margin-top: 20px;
     background: linear-gradient(45deg, #6cb52d, #6cb52d);
@@ -113,9 +118,11 @@
     margin-left: 0px;
     margin-right: 0px;
 }
+
 .estiloEncuPre {
     font-size: 20px;
 }
+
 .fondoColumnaPrincipal {
     background: rgba(110,178,19,0.8);
 }
@@ -182,7 +189,6 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 15px;
     }
-
 }
 
 
@@ -282,8 +288,6 @@
         font-family: Impact, Haettenschweiler, 'Arial Narrow Bold', sans-serif;
         font-size: 13px;
     }
-
-    
 }
 
 
@@ -595,6 +599,7 @@ a {
     width: 100%;
     background-color: #65ac1e;
 }
+
 .titulosBannerP {
     color: #fff;
     width: 100%;
@@ -617,6 +622,7 @@ a {
         font-size: 24px;
         color: #fff;
     }
+
 .centrarContenido {
     display: block;
     width: 50%;
@@ -1057,7 +1063,6 @@ body {
         font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         font-size: 15px;
         text-decoration: none;
-
     }
 
 a:link {
@@ -1270,36 +1275,37 @@ a:link {
     /*margin: 1% 1% -1% 1%;*/
     background: white;
 }
+
 .moduloDivIzq {
     display: inline-block;
     justify-content: center;
     border: 2px solid #6CB52D;
     border-radius: 5px;
     width: 60%;
-    height:300px;
+    height: 300px;
     padding: 2%;
     margin: 1% 1% -1% 1%;
     background: white;
 }
-.tituloModulos{
+
+.tituloModulos {
     font-size: 25px;
     font-weight: bold;
-
 }
 
-    .moduloDiv img {
-        width: 25%;
-        display: block;
-        margin: auto;
-        position: relative;
-    }
+.moduloDiv img {
+    width: 25%;
+    display: block;
+    margin: auto;
+    position: relative;
+}
 
-    .moduloDiv p {
-            text-align: center;
-            font-size: 18px;
-            padding-top: 10px;
-            padding-bottom: 10px;
-    }
+.moduloDiv p {
+    text-align: center;
+    font-size: 18px;
+    padding-top: 10px;
+    padding-bottom: 10px;
+}
 
 .tareasglobalSection {
     display: flex;
@@ -1655,9 +1661,9 @@ input[type=text], input[type=password], input[type=email], input[type=number], .
         border-bottom: 2px solid #6CB52D;
     }
 
-        input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
-            color: #cccccc;
-        }
+input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
+    color: #cccccc;
+}
 
 input[type=password]:focus {
     background-color: #fff;
@@ -1918,11 +1924,13 @@ progress[value] {
     border: 1px inset #666;
     border-radius: 20px;
 }
+
 progress::-webkit-progress-value {
     background: #6CB52D;
     border-radius: 20px;
 }
-.aeth{
+
+.aeth {
     text-align: justify;
 }
 
@@ -1933,7 +1941,7 @@ progress::-webkit-progress-bar {
 }
 
 
-MenuCabezera{
+MenuCabezera {
     background: #65AC1E;
 }
 
@@ -1947,8 +1955,17 @@ MenuCabezera{
 }
 
 .chart-container {
-    border-radius: 5px;
     width: 100%;
     height: 100%;
 }
 
+.marco {
+    border: 2px solid #929292;
+    border-radius: 5px;
+    background-color: white;
+    padding: 20px 20px 20px 20px;
+}
+
+.contenidoCuerpo {
+    margin: 10px 50px 10px 50px;
+}

@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class _4Columitemstandar : IMigrationMetadata
+    public sealed partial class actmergeupdate : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(_4Columitemstandar));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(actmergeupdate));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906192207236_4Columitemstandar"; }
+            get { return "201906200206582_actmergeupdate"; }
         }
         
         string IMigrationMetadata.Source

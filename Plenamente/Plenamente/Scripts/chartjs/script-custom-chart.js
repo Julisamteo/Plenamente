@@ -3,27 +3,12 @@ var graphOutlines = [];
 var hoverColor = [];
 function generarColores(internalDataLength) {
     for (var i = 0; i < internalDataLength; i++) {
-        var randomR = Math.floor((Math.random() * 130) + 100);
-        var randomG = Math.floor((Math.random() * 130) + 100);
-        var randomB = Math.floor((Math.random() * 130) + 100);
-
-        var graphBackground = "rgb("
-            + randomR + ", "
-            + randomG + ", "
-            + randomB + ")";
-        graphColors.push(graphBackground);
-
-        var graphOutline = "rgb("
-            + (randomR - 80) + ", "
-            + (randomG - 80) + ", "
-            + (randomB - 80) + ")";
-        graphOutlines.push(graphOutline);
-
-        var hoverColors = "rgb("
-            + (randomR + 25) + ", "
-            + (randomG + 25) + ", "
-            + (randomB + 25) + ")";
-        hoverColor.push(hoverColors);
+        var R = Math.floor(Math.random() * 230);
+        var G = Math.floor(Math.random() * 230);
+        var B = Math.floor(Math.random() * 230);
+        graphColors.push(`rgb(${R},${G},${B})`);
+        graphOutlines.push(`rgb(${R - 80},${G - 80},${B - 80})`);
+        hoverColor.push(`rgb(${R + 25},${G + 25},${B + 25})`);
     }
 }
 var canvasChart = document.getElementsByClassName("chart-container");
