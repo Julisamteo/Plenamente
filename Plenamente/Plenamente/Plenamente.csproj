@@ -337,6 +337,10 @@
     <Compile Include="Migrations\201906201929336_NewMig.Designer.cs">
       <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906202017096_lasmig.cs" />
+    <Compile Include="Migrations\201906202017096_lasmig.Designer.cs">
+      <DependentUpon>201906202017096_lasmig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -392,7 +396,6 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
-    <Compile Include="Models\.cs" />
     <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
@@ -879,6 +882,12 @@
     <Content Include="Views\admin\Users.cshtml" />
     <Content Include="Views\admin\EditarUser.cshtml" />
     <Content Include="Views\admin\CrearPersona.cshtml" />
+    <Content Include="Views\Empresas\Create.cshtml" />
+    <Content Include="Views\Empresas\Delete.cshtml" />
+    <Content Include="Views\Empresas\Details.cshtml" />
+    <Content Include="Views\Empresas\Edit.cshtml" />
+    <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\admin\UsersSysadmin.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -951,6 +960,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906201929336_NewMig.resx">
       <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906202017096_lasmig.resx">
+      <DependentUpon>201906202017096_lasmig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
