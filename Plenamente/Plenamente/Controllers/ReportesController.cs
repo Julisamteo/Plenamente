@@ -69,5 +69,41 @@ namespace Plenamente.Controllers
 
             return View();
 		}
-	}
+
+        public ActionResult VerReportePlandeTrabajo(int id)
+        {
+            try
+            {
+                ReportViewer reportViewer =
+                    new ReportViewer()
+                    {
+                        ProcessingMode = ProcessingMode.Local,
+                        SizeToReportContent = true,
+                        Width = Unit.Percentage(100),
+                        Height = Unit.Percentage(100),
+                    };
+                PlenamenteDataSet.ResumenPlanDeTrabajoDataTable data1 = new PlenamenteDataSet.ResumenPlanDeTrabajoDataTable();
+                ResumenPlanDeTrabajoTableAdapter adapter1 = new ResumenPlanDeTrabajoTableAdapter();
+                adapter1.Fill(data1, id, AccountData.NitEmpresa);
+                if (data1 != null && data1.Rows.Count > 0)
+                {                 
+                   
+                    reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DsPlanDeTrabajo", data1.CopyToDataTable()));
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes\rptPlanDeTrabajo.rdlc.";
+                    ViewBag.ReportViewer = reportViewer;
+                }
+                else
+                {
+                    ViewBag.TextError = "No hay data valida para esta auto evaluacion";
+                }
+            }
+
+            catch (Exception ex)
+            {
+                ViewBag.TextError = ex.Message;
+            }
+
+            return View();
+        }
+    }
 }
