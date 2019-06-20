@@ -12,26 +12,22 @@
     {
         if (ciclo.Criterios != null && ciclo.Criterios.Count > 0)
         {
-            <h2 class="colorVerdeBack1" style="justify-content: left;background-color: darkgray;">@ciclo.Nombre</h2>
+            <h2 class="colorVerdeBack1 text-capitalize text-left" style="background-color: darkgray;">@ciclo.Nombre</h2>
             <div class="panel panel-default plegable">
-                <br />
                 @foreach (var criterio in ciclo.Criterios)
                 {
                     if (criterio.Estandares != null && criterio.Estandares.Count > 0)
                     {
-                        <hr />
-                        <div class="panel panel-default">
+                        <div class="panel panel-default" style="margin: 10px 10px 10px 10px;">
                             <div class="panel-heading">
                                 <h3>@criterio.Nombre</h3>
                             </div>
                             <div class="panel-body">
-                                <hr />
-                                <div class="well well-lg" style="padding-left: 30px;">
+                                <div class="well well-lg" style="padding-left: 15px;">
                                     @foreach (var estandar in criterio.Estandares)
                                     {
                                         if (estandar.Elementos != null && estandar.Elementos.Count > 0)
                                         {
-                                            <br />
                                             <h4>@estandar.Nombre</h4>
                                             <br />
                                             <ul class="list-group">
@@ -49,14 +45,12 @@
                                     }
                                 </div>
                             </div>
-                            <div class="panel-footer"></div>
                         </div>
                     }
                 }
             </div>
         }
     }
-    <br />
     <div class="row">
         <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
             <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar y terminar" class="btn btn-default" />
@@ -96,7 +90,7 @@
         {
             if (criterio.Estandares != null && criterio.Estandares.Count > 0)
             {
-                <hr />
+
                 <h2 class="colorVerdeBack1">@criterio.Nombre</h2>
                 <div class="panel panel-default plegable">
                     <div class="panel-body" style="background: #e2d8d8;">
@@ -108,9 +102,9 @@
                             {
                                 if (estandar.Elementos != null && estandar.Elementos.Count > 0)
                                 {
-                                    <br />
+
                                     <h3>@estandar.Nombre</h3>
-                                    <br />
+
                                     foreach (var elemento in estandar.Elementos)
                                     {
                                         <ul class="list-group">
@@ -133,7 +127,7 @@
                 </div>
             }
         }
-        <hr />
+
         <div class="row">
             <div class="col-lg-3 col-md-3 col-sm-3 col-xs-3">
                 <input type="button" onclick="location.href = '@Url.Action("GuardarTerminar")';" value="Guardar y terminar" class="btn btn-default" />
