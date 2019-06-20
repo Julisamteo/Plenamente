@@ -16,7 +16,9 @@ namespace Plenamente.Controllers
     {
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<PlandeTrabajo> _PaginadorCustomers;
-        private ApplicationDbContext db = new ApplicationDbContext();
+		private readonly int _RegistrosPorPaginaActividades = 5;
+		private PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel> _PaginadorCustomersActividades;
+		private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PlandeTrabajo
         public ActionResult Index(int pagina = 1)
@@ -106,6 +108,8 @@ namespace Plenamente.Controllers
         {
             if (ModelState.IsValid)
             {
+                plandeTrabajo.FechaCreacion = DateTime.Now;
+                plandeTrabajo.FechaActualizacion = DateTime.Now;
                 var nombreplan = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Nom == plandeTrabajo.Plat_Nom).ToList();
                 if (nombreplan.Count > 0)
                 {
@@ -140,11 +144,12 @@ namespace Plenamente.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id")] PlandeTrabajo plandeTrabajo)
+        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id,FechaCreacion")] PlandeTrabajo plandeTrabajo)
         {
             if (ModelState.IsValid)
             {
-				var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa).ToList();
+                plandeTrabajo.FechaActualizacion = DateTime.Now;
+                var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa).ToList();
 				if (Planesdetrabajo.Count<=0)
 				{
 					db.Entry(plandeTrabajo).State = EntityState.Modified;
@@ -228,7 +233,7 @@ namespace Plenamente.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo)
+        public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo,int pagina =1)
         {
             var plantrabajo = db.Tb_PlandeTrabajo.Find(IdPlantTrabajo);
             ViewBag.users = new SelectList(db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa), "Id", "Pers_Nom1");
@@ -272,7 +277,22 @@ namespace Plenamente.Controllers
                 NombrePlanTrabajo = plantrabajo.Plat_Nom,
                 IdPlantTrabajo = plantrabajo.Plat_Id
             };
-            ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
+			int _TotalRegistros = 0;
+			_TotalRegistros = actiCumplimientoAsignados.Count();
+			actiCumplimientoAsignados = actiCumplimientoAsignados.Skip((pagina - 1) * _RegistrosPorPaginaActividades)
+											   .Take(_RegistrosPorPaginaActividades)
+											   .ToList();
+			int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPaginaActividades);
+			_PaginadorCustomersActividades = new PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>()
+			{
+				RegistrosPorPagina = _RegistrosPorPaginaActividades,
+				TotalRegistros = _TotalRegistros,
+				TotalPaginas = _TotalPaginas,
+				PaginaActual = pagina,
+				Resultado = actiCumplimientoAsignados
+			};
+
+			ViewBag.actividadesAsignadas = _PaginadorCustomersActividades;
             return View(plandetrabajoActividades);
         }
 
@@ -289,7 +309,9 @@ namespace Plenamente.Controllers
                     Emp_Id=AccountData.NitEmpresa,
                     Id = model.IdUser
                 };
-
+                PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(model.IdPlantTrabajo);
+                plandeTrabajo.FechaActualizacion = DateTime.Now;
+                db.Entry(plandeTrabajo).State = EntityState.Modified;                
                 db.Tb_UsersPlandeTrabajo.Add(user);
                 db.SaveChanges();
             }
@@ -302,6 +324,9 @@ namespace Plenamente.Controllers
 
             UsuariosPlandetrabajo usuariosPlandetrabajo = db.Tb_UsersPlandeTrabajo.Find(IdUserPlanTrabajo);
             db.Tb_UsersPlandeTrabajo.Remove(usuariosPlandetrabajo);
+            PlandeTrabajo plandeTrabajo = db.Tb_PlandeTrabajo.Find(usuariosPlandetrabajo.Plat_Id);
+            plandeTrabajo.FechaActualizacion = DateTime.Now;
+            db.Entry(plandeTrabajo).State = EntityState.Modified;
             db.SaveChanges();            
             return RedirectToAction("ActividadesPlanTrabajo", new { IdPlantTrabajo=usuariosPlandetrabajo.Plat_Id });
             

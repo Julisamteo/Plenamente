@@ -15,7 +15,8 @@ namespace Plenamente.Models
         public string Plat_Nom { get; set; }
          [ForeignKey("empresa")]
         public int Emp_Id { get; set; }
-
+        public DateTime FechaCreacion { get; set; }
+        public DateTime FechaActualizacion { get; set; }
         // Permite que Acummes acceda a la data
         public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
         public Empresa empresa { get; set; }

@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
+using Plenamente.Models.ViewModel;
 
 namespace Plenamente.App_Tool
 {
@@ -12,5 +13,6 @@ namespace Plenamente.App_Tool
         public int TotalRegistros { get; set; }
         public int TotalPaginas { get; set; }
         public IEnumerable<T> Resultado { get; set; }
-    }
+		
+	}
 }

@@ -53,7 +53,9 @@
                     <a class="btn btn-danger" href="@Url.Action("Eliminar", "PlandeTrabajo", new { id = item.Plat_Id })" title="Eliminar">
                         Eliminar
                     </a>
-
+                    <a class="btn btn-success" href="@Url.Action("VerReportePlandeTrabajo", "Reportes", new { id = item.Plat_Id })" title="Reporte">
+                        Ver Reporte
+                    </a>
                 </td>
             </tr>
         }

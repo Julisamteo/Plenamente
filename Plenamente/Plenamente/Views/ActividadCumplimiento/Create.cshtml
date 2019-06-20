@@ -9,38 +9,39 @@
     <p>Crear actividades</p>
 </div>
 
-@using (Html.BeginForm()) 
+@using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
-<div class="contenidoCuerpo">
 
-    <hr />
-    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    <div class="form-group">
-        @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
+    <div class="contenidoCuerpo">
+        <input type="hidden" value="@ViewBag.ReturnUrl" id="retornar" name="retornar" />
+
+        <hr />
+        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
-            @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
+        <div class="form-group">
+            @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
-    <div class="form-group">
-        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-8" })
-        <div class="col-md-5">
+        <div class="form-group">
+            @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-8" })
+            <div class="col-md-5">
 
-            @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, "Objetivo", new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
+                @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "form-control" })
+                @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
+            </div>
         </div>
-    </div>
 
         <div class="form-group">
             @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-2" })
@@ -71,20 +72,21 @@
             @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-2" })
             <div class="col-md-10">
                 @*@Html.EditorFor(model => model.Frecuencia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
+                    @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
 
-                <div style="border-bottom: 2px solid #d0d0d0; margin-top:10px; margin-bottom: 10px;"></div>
+
                 <!-- Recurrence section -->
                 <script type="text/javascript" src="@Url.Content("~/Scripts/DayPilot/recurrence.js?v=3")"></script>
-                <label class="control-label col-md-2">Repetir:</label>
-                <select class="browser-default custom-select" id="Frecuencia_desc" onchange="ShowSelected();">
+
+                <select class="browser-default custom-select" id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
                     <option value="norepeat">No repetir</option>
                     <option value="daily">Diaria</option>
                     <option value="weekly">Semanal</option>
                     <option value="monthly">Mensual</option>
                 </select>
-
-                <div  class="label label-default" id="select_norepeat">
+            </div>
+            <div class="form-group">
+                <div class="label label-default" id="select_norepeat">
                     No repetir
                 </div>
             </div>
@@ -94,30 +96,31 @@
             </div>
 
             <div id="select_weekly" style="display:none;" class="label label-default">
-                Repetir cada <input id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();"/> semana(s).
+                Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana.
                 <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
                 <br />
                 <table>
                     <tr>
                         <td>Los dias: </td>
-                        <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" />Lunes </label></td>
-                        <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" />Martes </label></td>
-                        <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" />Miercoles </label></td>
-                        <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" />Jueves </label></td>
-                        <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" />Viernes </label></td>
-                        <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" />Sabado </label></td>
-                        <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" />Domingo </label></td>
+                        <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" name="weekly_0" />Lunes </label></td>
+                        <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" name="weekly_1" />Martes </label></td>
+                        <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" name="weekly_2" />Miercoles </label></td>
+                        <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" name="weekly_3" />Jueves </label></td>
+                        <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" name="weekly_4" />Viernes </label></td>
+                        <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" name="weekly_5" />Sabado </label></td>
+                        <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" name="weekly_6" />Domingo </label></td>
                     </tr>
                 </table>
             </div>
 
             <div id="select_monthly" style="display:none;" class="label label-default">
-                Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();"/> de cada mes.
+                Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();" /> de cada mes.
                 <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
                 <br />
             </div>
-            <input id="period" type="hidden"  value="" />
-           
+            <input id="period" name="period" type="hidden" value="" />
+            <input id="Frecuencia" name="Frecuencia" type="hidden" value="" />
+
 
 
         </div>
@@ -126,7 +129,7 @@
 
         <div class="form-group">
             <div class="col-md-offset-2 col-md-10">
-                <input type="submit" value="Create" class="btn btn-default" />
+                <input type="submit" value="Crear" class="btn btn-default" />
             </div>
         </div>
     </div>
@@ -136,94 +139,97 @@
     @Html.ActionLink("Back to List", "Index")
 </div>
 
-    <script type="text/javascript">
-        
-        function ShowSelected()
-        {
-            var cod = document.getElementById("Frecuencia_desc").value;
-            var period = document.getElementById("period");
-            var daily_every = document.getElementById("daily_every").value;
-            var weekly_every = document.getElementById("weekly_every").value;
-            var monthly_every = document.getElementById("monthly_every").value;
-            var dayly = document.getElementById("select_daily");
-            var weekly = document.getElementById("select_weekly");
-            var monthly = document.getElementById("select_monthly");
-            var norepeat = document.getElementById("select_norepeat");
-            var period = document.getElementById("period");
-            
-           
-            if (cod == "daily") {
-                dayly.style.display = "";
-                norepeat.style.display = "none";
-                weekly.style.display = "none";
-                monthly.style.display = "none";
-                period.value = daily_every;
+<script type="text/javascript">
 
-            } else if (cod == "weekly") {
-                dayly.style.display = "none";
-                norepeat.style.display = "none";
-                weekly.style.display = "";
-                monthly.style.display = "none";
-                period.value = weekly_every;
-            } else if (cod == "monthly") {
-                dayly.style.display = "none";
-                norepeat.style.display = "none";
-                weekly.style.display = "none";
-                monthly.style.display = "";
-                period.value = monthly_every;
-            } else {
-                dayly.style.display = "none";
-                norepeat.style.display = "";
-                weekly.style.display = "none";
-                monthly.style.display = "none";
-                period.value = 0;
-            }
+    function ShowSelected() {
+        var cod = document.getElementById("Frecuencia_desc").value;
+        var period = document.getElementById("period");
+        var daily_every = document.getElementById("daily_every").value;
+        var weekly_every = document.getElementById("weekly_every").value;
+        var monthly_every = document.getElementById("monthly_every").value;
+        var dayly = document.getElementById("select_daily");
+        var weekly = document.getElementById("select_weekly");
+        var monthly = document.getElementById("select_monthly");
+        var norepeat = document.getElementById("select_norepeat");
+        var period = document.getElementById("period");
+        var frecuencia = document.getElementById("Frecuencia");
 
-        }
-        function changeday() {
-            var daily_every = document.getElementById("daily_every").value;
-            var period = document.getElementById("period");
+        if (cod == "daily") {
+            dayly.style.display = "";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
             period.value = daily_every;
+            frecuencia.value = 2;
 
-        }
-        function changeweek() {
-
-            var day = document.getElementById("day").value;
-            var weekly1 = document.getElementById("weekly1");
-            var weekly2 = document.getElementById("weekly2");
-            var weekly3 = document.getElementById("weekly3");
-            var weekly4 = document.getElementById("weekly4");
-            var weekly5 = document.getElementById("weekly5");
-            var weekly6 = document.getElementById("weekly6");
-            var weekly_0 = document.getElementById("weekly_0");
-            var weekly_1 = document.getElementById("weekly_1").value;
-            var weekly_2 = document.getElementById("weekly_2").value;
-            var weekly_3 = document.getElementById("weekly_3").value;
-            var weekly_4 = document.getElementById("weekly_4").value;
-            var weekly_5 = document.getElementById("weekly_5").value;
-            var weekly_6 = document.getElementById("weekly_6").value;
-            var period = document.getElementById("period");
-            var weekly_every = document.getElementById("weekly_every").value;
-            day = weekly_every;
-            console.log(day);
-            console.log(weekly_every);
+        } else if (cod == "weekly") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "";
+            monthly.style.display = "none";
             period.value = weekly_every;
-           
-            if (weekly_0.checked == true) {
-                day0 = weekly_every;
-            }
-            weekly1 = weekly_1;
-            weekly2 = weekly_2;
-            weekly3 = weekly_3;
-            weekly4 = weekly_4;
-            weekly5 = weekly_5;
-            weekly6 = weekly_6;
-
-        }
-        function changemonth() {
-            var period = document.getElementById("period");
-            var monthly_every = document.getElementById("monthly_every").value;
+            frecuencia.value = 3;
+        } else if (cod == "monthly") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "";
             period.value = monthly_every;
-
+            frecuencia.value = 4;
+        } else {
+            dayly.style.display = "none";
+            norepeat.style.display = "";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 1;
         }
+
+    }
+    function changeday() {
+        var daily_every = document.getElementById("daily_every").value;
+        var period = document.getElementById("period");
+        period.value = daily_every;
+
+    }
+    function changeweek() {
+
+        var day = document.getElementById("day").value;
+        var weekly1 = document.getElementById("weekly1");
+        var weekly2 = document.getElementById("weekly2");
+        var weekly3 = document.getElementById("weekly3");
+        var weekly4 = document.getElementById("weekly4");
+        var weekly5 = document.getElementById("weekly5");
+        var weekly6 = document.getElementById("weekly6");
+        var weekly_0 = document.getElementById("weekly_0");
+        var weekly_1 = document.getElementById("weekly_1").value;
+        var weekly_2 = document.getElementById("weekly_2").value;
+        var weekly_3 = document.getElementById("weekly_3").value;
+        var weekly_4 = document.getElementById("weekly_4").value;
+        var weekly_5 = document.getElementById("weekly_5").value;
+        var weekly_6 = document.getElementById("weekly_6").value;
+        var period = document.getElementById("period");
+        var weekly_every = document.getElementById("weekly_every").value;
+        day = weekly_every;
+        console.log(day);
+        console.log(weekly_every);
+        period.value = weekly_every;
+
+        if (weekly_0.checked == true) {
+            day0 = weekly_every;
+        }
+        weekly1 = weekly_1;
+        weekly2 = weekly_2;
+        weekly3 = weekly_3;
+        weekly4 = weekly_4;
+        weekly5 = weekly_5;
+        weekly6 = weekly_6;
+
+    }
+    function changemonth() {
+        var period = document.getElementById("period");
+        var monthly_every = document.getElementById("monthly_every").value;
+        period.value = monthly_every;
+
+    }
 </script>

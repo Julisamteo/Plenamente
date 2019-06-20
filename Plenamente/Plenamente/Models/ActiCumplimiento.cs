@@ -13,7 +13,7 @@ namespace Plenamente.Models
         public int Acum_Id { get; set; }
         [Display(Name = "Descripción")]
         public string Acum_Desc { get; set; }
-        [Display(Name = "Meta")]
+        [Display(Name = "Meta (%)")]
         public float Acum_Porcentest { get; set; }
         [Display(Name = "Cargue Evidencia")]
         public string Acum_Ejec { get; set; }
@@ -22,12 +22,15 @@ namespace Plenamente.Models
         public DateTime Acum_Registro { get; set; }
         [Display(Name = "Incio Actividad")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Acum_IniAct { get; set; }
         [Display(Name = "Finalización de Actividad")]
         [DataType(DataType.Date)]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Acum_FinAct { get; set; }
 
         [ForeignKey("ObjEmpresa")]
+        [Display(Name = "Objetivos empresa")]
         public int Oemp_Id { get; set; }
         public ObjEmpresa ObjEmpresa { get; set; }
 
@@ -46,9 +49,11 @@ namespace Plenamente.Models
         [ForeignKey("Frecuencia")]
         public int Frec_Id { get; set; }
         public Frecuencia Frecuencia { get; set; }
+        public string DiasSemana { get; set; }
+        public int Repeticiones { get; set; }
 
+        public TimeSpan HoraAct { get; set; } 
 
-     
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }      
         public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
