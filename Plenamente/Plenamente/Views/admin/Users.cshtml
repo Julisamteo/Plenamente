@@ -12,7 +12,7 @@
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
         <a href="@Url.Action("Users", "admin")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "admin", new {Empr_Nit = @ViewBag.Empr_Nit})" class="ayudaTitulos"><span>Crear cargo individual</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
+        <a href="@Url.Action("CrearPersona", "admin", new {Empr_Nit = @ViewBag.Empr_Nit})" class="ayudaTitulos"><span>Crear Trabajador</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
     </form>
 </div>
 <table id="tablaVista" class="tablaVista">
@@ -24,7 +24,7 @@
             <th class="colorVerde" style="width:11%">
                 Documento
             </th>
-            <th class="colorVerde" style="width:33%">
+            <th class="colorVerde" style="width:30%">
                 Correo
             </th>
             @*<th class="colorVerde">
@@ -42,11 +42,11 @@
             @*<th class="colorVerde">
                 Area de Trabajo
             </th>*@
-            <th class="colorVerde" style="width:17%" >
+            <th class="colorVerde" style="width:10%" >
                 ARL
             </th>
-            <th class="colorVerde" style="width:10%">
-                Estado
+            <th class="colorVerde" style="width:18%">
+                Empresa
             </th>
             <th class="colorVerde" style="width:14%">
                 Acciones
@@ -63,7 +63,7 @@
                 <td style="width:11%">
                     @Html.DisplayFor(modelItem => item.Pers_Doc)
                 </td>
-                <td style="width:33%; text-align:center">
+                <td style="width:30%; text-align:center">
                     @Html.DisplayFor(modelItem => item.UserName)
                 </td>
                 @*<td>
@@ -78,17 +78,21 @@
                 <td>
                         Proceso
                 </td>*@
-                <td style="width:14%">
+                <td style="width:10%">
                     @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
                 </td>
                 @*<td style="width:14%">
                     @Html.DisplayFor(modelItem => item.Jefe.Pers_Nom1) @Html.DisplayFor(modelItem => item.Jefe.Pers_Apel1)
                 </td>*@
-                <td style="width:10%">
-                    @Html.DisplayFor(modelItem => item.EstadoPersona.Espe_Nom)
+                <td style="width:18%">
+                    @Html.DisplayFor(modelItem => item.Empresa.Empr_Nom)
                 </td>
                 <td style="width:14%">
-                    @Html.ActionLink("Editar", "EditarUser", new { id = item.Id }) |
+                    @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
+                    {
+                        @Html.ActionLink("Editar", "EditarUser", new { id = item.Id })
+                    }
+                    |
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                     {
                         @Html.ActionLink("Eliminar", "DeleteUser", new { UserName = item.UserName },

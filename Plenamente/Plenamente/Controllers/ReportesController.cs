@@ -15,8 +15,8 @@ namespace Plenamente.Controllers
 	public class ReportesController : Controller
 	{
 		private ApplicationDbContext db = new ApplicationDbContext();
-        [Authorize(Roles = "Administrator")]
-        [Authorize(Roles = "Admin")]
+        //[Authorize(Roles = "Administrator")]
+        //[Authorize(Roles = "Admin")]
         public ActionResult VerReporte(int id)
 		{
             try

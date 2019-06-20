@@ -354,6 +354,7 @@ namespace Plenamente.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
+        [Authorize(Roles = "Administrator,Admin")]
         public ActionResult NumeroEmpleados()
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);

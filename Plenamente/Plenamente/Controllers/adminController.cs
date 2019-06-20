@@ -22,11 +22,12 @@ namespace Plenamente.Areas.Administrador.Controllers
 
         //Vista inicial de los usuarios en donde se muestran graficas, notificaciones, etc.
         // GET: Administrador/admin
+        [Authorize(Roles = "Administrator,Admin")]
         public ActionResult Index()
         {
             return View();
         }
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Users(string sortOrder, string searchString, string currentFilter, int? page)
         {
             ViewBag.CurrentSort = sortOrder;
@@ -43,8 +44,10 @@ namespace Plenamente.Areas.Administrador.Controllers
             }
 
             ViewBag.CurrentFilter = searchString;
-
-            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona).Include(u => u.Arl);
+            var userId = User.Identity.GetUserId();
+            var UserCurrent = db.Users.Find(userId);
+            var Empr = UserCurrent.Empr_Nit;
+            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona).Include(u => u.Arl).Include(u => u.Empresa).Where(e => e.Empr_Nit == Empr);
             // from s in db.Users
             //select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -67,7 +70,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: /Admin/Edit/TestUser
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         #region public ActionResult EditUser(string UserName)
         public ActionResult EditarUser(string id)
         {
@@ -89,14 +92,15 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom", user.Eps_Id);
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", user.Arl_Id);
             ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom", user.Tvin_Id);
+            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", user.Empr_Nit);
             return View(user);
         }
         #endregion
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
-        public ActionResult EditarUser([Bind(Include = "Id,Pers_Nom1,Pers_Apel1,Tdoc_Id,Pers_Doc,Gene_Id,Espe_Id,Pers_Licencia,Pers_LicVence,Cate_Id,Pers_Dir,Pers_Cemeg,Pers_Temeg,Afp_Id,Eps_Id,Arl_Id,Tvin_Id,UserName,Email")] ApplicationUser user)
+        [Authorize(Roles = "Admin")]
+        public ActionResult EditarUser([Bind(Include = "Id,Pers_Nom1,Pers_Apel1,Tdoc_Id,Pers_Doc,Gene_Id,Espe_Id,Pers_Licencia,Pers_LicVence,Cate_Id,Pers_Dir,Pers_Cemeg,Pers_Temeg,Afp_Id,Eps_Id,Arl_Id,Tvin_Id,Empr_Nit,UserName,Email")] ApplicationUser user)
         {
             try
             {
@@ -131,11 +135,216 @@ namespace Plenamente.Areas.Administrador.Controllers
             ViewBag.Eps_Id = new SelectList(db.Tb_Eps, "Eps_Id", "Eps_Nom", user.Eps_Id);
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", user.Arl_Id);
             ViewBag.Tvin_Id = new SelectList(db.Tb_TipoVinculacion, "Tvin_Id", "Tvin_Nom", user.Tvin_Id);
+            ViewBag.Empr_Nit = new SelectList(db.Tb_Empresa, "Empr_Nit", "Empr_Nom", user.Empr_Nit);
             return View(user);
         }
 
+        // GET: /Admin/Edit/Create 
+        [Authorize(Roles = "Admin")]
+        #region public ActionResult Create()
+        //Función que permite obtener los campos de creación del usuario generado en el modelo UserRolesDTO en la clase ExpandedUserDTO
+        public ActionResult CrearPersona(int? Empr_Nit)
+        {
+            ExpandedUserDTO objExpandedUserDTO = new ExpandedUserDTO();
+            using (ApplicationDbContext db = new ApplicationDbContext())
+            {
+                objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
+                objExpandedUserDTO.afp = db.Tb_Afp.ToList<Afp>();
+                objExpandedUserDTO.eps = db.Tb_Eps.ToList<Eps>();
+                objExpandedUserDTO.arl = db.Tb_Arl.ToList<Arl>();
+                objExpandedUserDTO.sedeCiudad = db.Tb_SedeCiudad.ToList<SedeCiudad>();
+                objExpandedUserDTO.ciudad = db.Tb_Ciudad.ToList<Ciudad>();
+                objExpandedUserDTO.cargoEmpresa = db.Tb_CargoEmpresa.ToList<CargoEmpresa>();
+                objExpandedUserDTO.areaEmpresa = db.Tb_AreaEmpresa.ToList<AreaEmpresa>();
+                objExpandedUserDTO.cateLicencia = db.Tb_CateLicencia.ToList<CateLicencia>();
+                objExpandedUserDTO.genero = db.Tb_Genero.ToList<Genero>();
+                objExpandedUserDTO.jornadaEmpresa = db.Tb_JornadaEmpresa.ToList<JornadaEmpresa>();
+                objExpandedUserDTO.tipoVinculacion = db.Tb_TipoVinculacion.ToList<TipoVinculacion>();
+                objExpandedUserDTO.estadoPersona = db.Tb_EstadoPersona.ToList<EstadoPersona>();
+                objExpandedUserDTO.Empresa = db.Tb_Empresa.ToList<Empresa>();
+            }
 
-        // Controllers
+            ViewBag.Roles = GetAllRolesAsSelectList();
+
+            return View(objExpandedUserDTO);
+        }
+        #endregion
+    
+
+        //Método POST para enviar los campos llenados del formulario 
+        // PUT: /Admin/Create
+        [Authorize(Roles = "Admin")]
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        #region public ActionResult Create(ExpandedUserDTO paramExpandedUserDTO)
+        public ActionResult CrearPersona(ExpandedUserDTO paramExpandedUserDTO, ExpandedUserDTO objExpandedUserDTO)
+        {
+            try
+            {
+                if (paramExpandedUserDTO == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                var userId = User.Identity.GetUserId();
+                var UserCurrent = db.Users.Find(userId);
+                var Empr_Nit = UserCurrent.Empr_Nit.ToString();
+                int Empr_NitI = int.Parse(Empr_Nit);
+ 
+
+                var Email = paramExpandedUserDTO.Email.Trim();
+                var UserName = paramExpandedUserDTO.Email.Trim();
+                var Password = "Detu8123113!";
+                var Nombre = paramExpandedUserDTO.Nombres.Trim();
+                var Apellido = paramExpandedUserDTO.Apellidos.Trim();
+                var Documento = paramExpandedUserDTO.Documento;
+                var Licencia = paramExpandedUserDTO.Pers_Licencia;
+                var VigLicencia = paramExpandedUserDTO.Pers_LicVence;
+                var Direccion = paramExpandedUserDTO.Pers_Direccion;
+                var ContactoEme = paramExpandedUserDTO.Pers_ContactoEmeg;
+                var TelefonoEme = paramExpandedUserDTO.Pers_TelefonoEmeg;
+                var TipoDocumento = paramExpandedUserDTO.Tdoc_Id;
+                var Afp = paramExpandedUserDTO.Afp_Id;
+                var Eps = paramExpandedUserDTO.Eps_Id;
+                var Arl = paramExpandedUserDTO.Arl_Id;
+                var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
+                var Ciudad = paramExpandedUserDTO.Ciud_Id;
+                var Cargo = paramExpandedUserDTO.Cemp_Id;
+                var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
+                var Categoria = paramExpandedUserDTO.Cate_Id;
+                var Genero = paramExpandedUserDTO.Gene_Id;
+                var Jornada = paramExpandedUserDTO.Jemp_Id;
+                var TipoVinculacion = paramExpandedUserDTO.Tvin_Id;
+                int Empresa = Empr_NitI;
+                var EstadoPersona = paramExpandedUserDTO.Espe_Id;
+
+
+                if (Email == "")
+                {
+                    throw new Exception("No Email");
+                }
+
+                if (Password == "")
+                {
+                    throw new Exception("No Password");
+                }
+
+                // convierte en minusculas el email ingresado
+                UserName = Email.ToLower();
+
+                // Proceso de creación del usuario
+
+                var objNewAdminUser = new ApplicationUser
+                {
+                    UserName = UserName,
+                    Email = Email,
+                    Pers_Nom1 = Nombre,
+                    Pers_Apel1 = Apellido,
+                    Pers_Doc = Documento,
+                    Pers_Licencia = Licencia,
+                    Pers_LicVence = VigLicencia,
+                    Pers_Dir = Direccion,
+                    Pers_Cemeg = ContactoEme,
+                    Pers_Temeg = TelefonoEme,
+                    Tdoc_Id = TipoDocumento,
+                    Afp_Id = Afp,
+                    Eps_Id = Eps,
+                    Arl_Id = Arl,
+                    Sciu_Id = SedeCiudad,
+                    Cemp_Id = Cargo,
+                    Aemp_Id = AreaEmpresa,
+                    Cate_Id = Categoria,
+                    Gene_Id = Genero,
+                    Jemp_Id = Jornada,
+                    Tvin_Id = TipoVinculacion,
+                    Empr_Nit = Empresa,
+                    Espe_Id = EstadoPersona
+                };
+                var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
+
+                if (AdminUserCreateResult.Succeeded == true)
+                {
+                    string strNewRole = Convert.ToString(Request.Form["Roles"]);
+
+                    if (strNewRole != "0")
+                    {
+                        // Le asigna un rol al usuario
+                        UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
+                    }
+
+                    return RedirectToAction("Users");
+                }
+                else
+                {
+                    ViewBag.Roles = GetAllRolesAsSelectList();
+                    ModelState.AddModelError(string.Empty,
+                        "Error: Failed to create the user. Check password requirements.");
+                    return View(paramExpandedUserDTO);
+                }
+            }
+            catch (DbEntityValidationException ex)
+            {
+                // Retrieve the error messages as a list of strings.
+                var errorMessages = ex.EntityValidationErrors
+                        .SelectMany(x => x.ValidationErrors)
+                        .Select(x => x.ErrorMessage);
+
+                // Join the list to a single string.
+                var fullErrorMessage = string.Join("; ", errorMessages);
+
+                // Combine the original exception message with the new one.
+                var exceptionMessage = string.Concat(ex.Message, " The validation errors are: ", fullErrorMessage);
+
+                // Throw a new DbEntityValidationException with the improved exception message.
+                throw new DbEntityValidationException(exceptionMessage, ex.EntityValidationErrors);
+            }
+            //catch (Exception ex)
+            //{
+            //    ViewBag.Roles = GetAllRolesAsSelectList();
+            //    ModelState.AddModelError(string.Empty, "Error: " + ex);
+            //    return View("Create");
+            //}
+        }
+        #endregion
+        // Controllers SysAdmin.
+        [Authorize(Roles = "Administrator")]
+        public ActionResult UsersSysadmin(string sortOrder, string searchString, string currentFilter, int? page)
+        {
+            ViewBag.CurrentSort = sortOrder;
+            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
+            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
+
+            if (searchString != null)
+            {
+                page = 1;
+            }
+            else
+            {
+                searchString = currentFilter;
+            }
+
+            ViewBag.CurrentFilter = searchString;
+
+            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona).Include(u => u.Arl).Include(u => u.Empresa);
+            // from s in db.Users
+            //select s;
+            if (!String.IsNullOrEmpty(searchString))
+            {
+                usuarios = usuarios.Where(s => s.Pers_Nom1.Contains(searchString)
+                                       || s.Pers_Apel1.Contains(searchString));
+            }
+            switch (sortOrder)
+            {
+                case "name_desc":
+                    usuarios = usuarios.OrderByDescending(s => s.Pers_Nom1);
+                    break;
+                default:  // Name ascending 
+                    usuarios = usuarios.OrderBy(s => s.Pers_Nom1);
+                    break;
+            }
+            int pageSize = 8;
+            int pageNumber = (page ?? 1);
+            return View(usuarios.ToPagedList(pageNumber, pageSize));
+        }
 
         //Vista que permite la administración de los usuarios,
         //Lista Usuarios y genera los botones de crear usuario, crear rol, editar y eliminar usuarios,
@@ -273,6 +482,8 @@ namespace Plenamente.Areas.Administrador.Controllers
             return View(objExpandedUserDTO);
         }
         #endregion
+
+
 
         //Método POST para enviar los campos llenados del formulario 
         // PUT: /Admin/Create

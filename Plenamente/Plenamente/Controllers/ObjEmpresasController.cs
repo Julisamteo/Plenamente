@@ -9,6 +9,7 @@ using System.Web.Mvc;
 using Microsoft.AspNet.Identity;
 using PagedList;
 using Plenamente.Models;
+using Plenamente.App_Tool;
 
 namespace Plenamente.Areas.Administrador.Controllers
 {
@@ -62,7 +63,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // GET: Administrador/ProcesActividads/Details/
 
         // GET: Administrador/ObjEmpresas/Details/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -95,6 +96,11 @@ namespace Plenamente.Areas.Administrador.Controllers
         {
             if (ModelState.IsValid)
             {
+                var userId = User.Identity.GetUserId();
+                var UserCurrent = db.Users.Find(userId);
+                var Empr_Nit = UserCurrent.Empr_Nit.ToString();
+                int Empr_NitI = int.Parse(Empr_Nit);
+                objEmpresa.Empr_Nit = Empr_NitI;
                 db.Tb_ObjEmpresa.Add(objEmpresa);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -105,7 +111,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ObjEmpresas/Edit/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -126,7 +132,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit([Bind(Include = "Oemp_Id,Oemp_Nombre,Oemp_Descrip,Oemp_Meta,Oemp_Registro,Empr_Nit")] ObjEmpresa objEmpresa)
         {
             if (ModelState.IsValid)
@@ -140,7 +146,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // GET: Administrador/ObjEmpresas/Delete/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -156,7 +162,7 @@ namespace Plenamente.Areas.Administrador.Controllers
         }
 
         // POST: Administrador/ObjEmpresas/Delete/5
-        [Authorize(Roles = "Administrator")]
+        [Authorize(Roles = "Admin")]
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

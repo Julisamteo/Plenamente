@@ -755,6 +755,7 @@
     <Content Include="PlenamenteDataSet.xss">
       <DependentUpon>PlenamenteDataSet.xsd</DependentUpon>
     </Content>
+    <Content Include="Reports\rptAutoEvaluacion.rdlc" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -870,6 +871,10 @@
     <Content Include="Views\PlandeTrabajo\Eliminar.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Details.cshtml" />
+    <Content Include="Views\Account\Deslogged.cshtml" />
+    <Content Include="Views\admin\Users.cshtml" />
+    <Content Include="Views\admin\EditarUser.cshtml" />
+    <Content Include="Views\admin\CrearPersona.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

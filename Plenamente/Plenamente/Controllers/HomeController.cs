@@ -8,6 +8,7 @@ namespace Plenamente.Controllers
 {
     public class HomeController : Controller
     {
+        [Authorize(Roles = "Administrator,Admin")]
         public ActionResult Index()
         {
             return View();
