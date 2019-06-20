@@ -354,6 +354,10 @@
     <Compile Include="Migrations\201906200206582_actmergeupdate.Designer.cs">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906202159057_campoasigrecursos.cs" />
+    <Compile Include="Migrations\201906202159057_campoasigrecursos.Designer.cs">
+      <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -985,6 +989,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906200206582_actmergeupdate.resx">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906202159057_campoasigrecursos.resx">
+      <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

@@ -47,17 +47,21 @@ namespace Plenamente.Models
         public Empresa Empresa { get; set; }
 
         [ForeignKey("Frecuencia")]
+        [Display(Name = "Periodicidad")]
         public int Frec_Id { get; set; }
         public Frecuencia Frecuencia { get; set; }
         public string DiasSemana { get; set; }
         public int Repeticiones { get; set; }
 
-        public TimeSpan HoraAct { get; set; } 
+        public TimeSpan HoraAct { get; set; }
+        public string asigrecursos { get; set; }
 
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }      
         public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
         public ICollection<ProgamacionTareas> ProgamacionTareas { get; set; }
+        
+        
 
 
     }
