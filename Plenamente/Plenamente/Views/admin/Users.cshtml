@@ -95,7 +95,7 @@
                     |
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                     {
-                        @Html.ActionLink("Eliminar", "DeleteUser", new { UserName = item.UserName },
+                        @Html.ActionLink("Eliminar", "EliminarTrabajador", new { UserName = item.UserName },
                         new { onclick = "return confirm('Are you sure you wish to delete this user?');" })
                     }
                 </td>

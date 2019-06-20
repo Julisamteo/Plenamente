@@ -333,6 +333,10 @@
     <Compile Include="Migrations\201906181956344_teeeest.Designer.cs">
       <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906201929336_NewMig.cs" />
+    <Compile Include="Migrations\201906201929336_NewMig.Designer.cs">
+      <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -944,6 +948,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906181956344_teeeest.resx">
       <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906201929336_NewMig.resx">
+      <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

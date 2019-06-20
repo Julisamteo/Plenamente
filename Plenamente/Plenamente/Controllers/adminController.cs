@@ -263,7 +263,7 @@ namespace Plenamente.Areas.Administrador.Controllers
 
                 if (AdminUserCreateResult.Succeeded == true)
                 {
-                    string strNewRole = Convert.ToString(Request.Form["Roles"]);
+                    string strNewRole = "Usuario";
 
                     if (strNewRole != "0")
                     {
@@ -305,6 +305,48 @@ namespace Plenamente.Areas.Administrador.Controllers
             //}
         }
         #endregion
+
+        // DELETE: /Admin/ElimarTrabajador
+        [Authorize(Roles = "Admin")]
+        #region public ActionResult DeleteUser(string UserName)
+        public ActionResult EliminarTrabajador(string UserName)
+        {
+            try
+            {
+                if (UserName == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+
+                if (UserName.ToLower() == this.User.Identity.Name.ToLower())
+                {
+                    ModelState.AddModelError(
+                        string.Empty, "Error: Cannot delete the current user");
+
+                    return View("EditarUser");
+                }
+
+                ExpandedUserDTO objExpandedUserDTO = GetUser(UserName);
+
+                if (objExpandedUserDTO == null)
+                {
+                    return HttpNotFound();
+                }
+                else
+                {
+                    DeleteUser(objExpandedUserDTO);
+                }
+
+                return RedirectToAction("Users");
+            }
+            catch (Exception ex)
+            {
+                ModelState.AddModelError(string.Empty, "Error: " + ex);
+                return View("EditUser", GetUser(UserName));
+            }
+        }
+        #endregion
+
         // Controllers SysAdmin.
         [Authorize(Roles = "Administrator")]
         public ActionResult UsersSysadmin(string sortOrder, string searchString, string currentFilter, int? page)

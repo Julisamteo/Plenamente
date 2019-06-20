@@ -15,13 +15,9 @@
 
         <h2 class="colorVerdeBack1">Información Básica Del Trabajador</h2>
         <div class="plegable">
-            <br />
-            <br />
             @*Empresa*@
             @Html.DropDownListFor(model => model.Empr_Nit, new SelectList(Model.Empresa, "Empr_Nit", "Empr_Nom", "Tipo de documento"), new { @class = "hidden" })
-            <br />
-            <br />
-            <br />
+
             <br />
             Nombres:
             <br />
@@ -62,15 +58,16 @@
             <br />
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
             
-            @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @style = "display: none" } })
-            <br />
-            <br />
-            Tipo De Usuario:
-            <br />
-            <br />
-            @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
-            <br />
-            <br />
+            <div hidden>
+                @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @style = "display: none" } })
+                <br />
+                <br />
+                Tipo De Usuario:
+                <br />
+                <br />
+                @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
+            </div>
+           
             @*Estado Del Trabajador:
                 <br />
                 <br />
