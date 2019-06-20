@@ -348,10 +348,6 @@
     <Compile Include="Migrations\201906201929336_NewMig.Designer.cs">
       <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906202017096_lasmig.cs" />
-    <Compile Include="Migrations\201906202017096_lasmig.Designer.cs">
-      <DependentUpon>201906202017096_lasmig.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.cs" />
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.Designer.cs">
       <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
@@ -363,6 +359,10 @@
     <Compile Include="Migrations\201906200206582_actmergeupdate.cs" />
     <Compile Include="Migrations\201906200206582_actmergeupdate.Designer.cs">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906202112569_Unique.cs" />
+    <Compile Include="Migrations\201906202112569_Unique.Designer.cs">
+      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -1034,6 +1034,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906200206582_actmergeupdate.resx">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906202112569_Unique.resx">
+      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>

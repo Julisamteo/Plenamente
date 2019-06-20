@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class lasmig : IMigrationMetadata
+    public sealed partial class Unique : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(lasmig));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(Unique));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906202017096_lasmig"; }
+            get { return "201906202112569_Unique"; }
         }
         
         string IMigrationMetadata.Source
