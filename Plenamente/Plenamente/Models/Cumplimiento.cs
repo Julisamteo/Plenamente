@@ -35,6 +35,7 @@ namespace Plenamente.Models
         public ICollection<AcumMes> AcumMes { get; set; }
         // Permite que Evidencia Acceda a la Data
         public ICollection<Evidencia> Evidencias { get; set; }
+        public bool Cump_NoAplica { get; set; }
     }
 
 
