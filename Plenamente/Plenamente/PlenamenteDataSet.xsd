@@ -91,7 +91,7 @@
           </TableAdapter>
           <TableAdapter BaseClass="System.ComponentModel.Component" DataAccessorModifier="AutoLayout, AnsiClass, Class, Public" DataAccessorName="ResumenPlanDeTrabajoTableAdapter" GeneratorDataComponentClassName="ResumenPlanDeTrabajoTableAdapter" Name="ResumenPlanDeTrabajo" UserDataComponentName="ResumenPlanDeTrabajoTableAdapter">
             <MainSource>
-              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="Plenamente.dbo.ResumenPlanDeTrabajo" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
+              <DbSource ConnectionRef="DefaultConnection (Web.config)" DbObjectName="BackupPlenamente.dbo.ResumenPlanDeTrabajo" DbObjectType="StoredProcedure" FillMethodModifier="Public" FillMethodName="Fill" GenerateMethods="Both" GenerateShortCommands="false" GeneratorGetMethodName="GetData" GeneratorSourceName="Fill" GetMethodModifier="Public" GetMethodName="GetData" QueryType="Rowset" ScalarCallRetval="System.Object, mscorlib, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089" UseOptimisticConcurrency="false" UserGetMethodName="GetData" UserSourceName="Fill">
                 <SelectCommand>
                   <DbCommand CommandType="StoredProcedure" ModifiedByUser="false">
                     <CommandText>dbo.ResumenPlanDeTrabajo</CommandText>
@@ -118,6 +118,7 @@
               <Mapping SourceColumn="fechaDeCreacion" DataSetColumn="fechaDeCreacion" />
               <Mapping SourceColumn="fechaDeActualizacion" DataSetColumn="fechaDeActualizacion" />
               <Mapping SourceColumn="nombreEmpresa" DataSetColumn="nombreEmpresa" />
+              <Mapping SourceColumn="recursos" DataSetColumn="recursos" />
             </Mappings>
             <Sources />
           </TableAdapter>
@@ -129,7 +130,7 @@
   <xs:element name="PlenamenteDataSet" msdata:IsDataSet="true" msdata:UseCurrentLocale="true" msprop:EnableTableAdapterManager="true" msprop:Generator_DataSetName="PlenamenteDataSet" msprop:Generator_UserDSName="PlenamenteDataSet">
     <xs:complexType>
       <xs:choice minOccurs="0" maxOccurs="unbounded">
-        <xs:element name="ResumenCriteriosAutoEvaluacion" msprop:Generator_TableClassName="ResumenCriteriosAutoEvaluacionDataTable" msprop:Generator_TableVarName="tableResumenCriteriosAutoEvaluacion" msprop:Generator_RowChangedName="ResumenCriteriosAutoEvaluacionRowChanged" msprop:Generator_TablePropName="ResumenCriteriosAutoEvaluacion" msprop:Generator_RowDeletingName="ResumenCriteriosAutoEvaluacionRowDeleting" msprop:Generator_RowChangingName="ResumenCriteriosAutoEvaluacionRowChanging" msprop:Generator_RowEvHandlerName="ResumenCriteriosAutoEvaluacionRowChangeEventHandler" msprop:Generator_RowDeletedName="ResumenCriteriosAutoEvaluacionRowDeleted" msprop:Generator_RowClassName="ResumenCriteriosAutoEvaluacionRow" msprop:Generator_UserTableName="ResumenCriteriosAutoEvaluacion" msprop:Generator_RowEvArgName="ResumenCriteriosAutoEvaluacionRowChangeEvent">
+        <xs:element name="ResumenCriteriosAutoEvaluacion" msprop:Generator_TableClassName="ResumenCriteriosAutoEvaluacionDataTable" msprop:Generator_TableVarName="tableResumenCriteriosAutoEvaluacion" msprop:Generator_TablePropName="ResumenCriteriosAutoEvaluacion" msprop:Generator_RowDeletingName="ResumenCriteriosAutoEvaluacionRowDeleting" msprop:Generator_RowChangingName="ResumenCriteriosAutoEvaluacionRowChanging" msprop:Generator_RowEvHandlerName="ResumenCriteriosAutoEvaluacionRowChangeEventHandler" msprop:Generator_RowDeletedName="ResumenCriteriosAutoEvaluacionRowDeleted" msprop:Generator_UserTableName="ResumenCriteriosAutoEvaluacion" msprop:Generator_RowChangedName="ResumenCriteriosAutoEvaluacionRowChanged" msprop:Generator_RowEvArgName="ResumenCriteriosAutoEvaluacionRowChangeEvent" msprop:Generator_RowClassName="ResumenCriteriosAutoEvaluacionRow">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Crit_Nom" msprop:Generator_ColumnVarNameInTable="columnCrit_Nom" msprop:Generator_ColumnPropNameInRow="Crit_Nom" msprop:Generator_ColumnPropNameInTable="Crit_NomColumn" msprop:Generator_UserColumnName="Crit_Nom" minOccurs="0">
@@ -147,7 +148,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ResumenEmpresa" msprop:Generator_TableClassName="ResumenEmpresaDataTable" msprop:Generator_TableVarName="tableResumenEmpresa" msprop:Generator_TablePropName="ResumenEmpresa" msprop:Generator_RowDeletingName="ResumenEmpresaRowDeleting" msprop:Generator_RowChangingName="ResumenEmpresaRowChanging" msprop:Generator_RowEvHandlerName="ResumenEmpresaRowChangeEventHandler" msprop:Generator_RowDeletedName="ResumenEmpresaRowDeleted" msprop:Generator_UserTableName="ResumenEmpresa" msprop:Generator_RowChangedName="ResumenEmpresaRowChanged" msprop:Generator_RowEvArgName="ResumenEmpresaRowChangeEvent" msprop:Generator_RowClassName="ResumenEmpresaRow">
+        <xs:element name="ResumenEmpresa" msprop:Generator_TableClassName="ResumenEmpresaDataTable" msprop:Generator_TableVarName="tableResumenEmpresa" msprop:Generator_RowChangedName="ResumenEmpresaRowChanged" msprop:Generator_TablePropName="ResumenEmpresa" msprop:Generator_RowDeletingName="ResumenEmpresaRowDeleting" msprop:Generator_RowChangingName="ResumenEmpresaRowChanging" msprop:Generator_RowEvHandlerName="ResumenEmpresaRowChangeEventHandler" msprop:Generator_RowDeletedName="ResumenEmpresaRowDeleted" msprop:Generator_RowClassName="ResumenEmpresaRow" msprop:Generator_UserTableName="ResumenEmpresa" msprop:Generator_RowEvArgName="ResumenEmpresaRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="Nombre_Empresa" msprop:Generator_ColumnVarNameInTable="columnNombre_Empresa" msprop:Generator_ColumnPropNameInRow="Nombre_Empresa" msprop:Generator_ColumnPropNameInTable="Nombre_EmpresaColumn" msprop:Generator_UserColumnName="Nombre_Empresa" minOccurs="0">
@@ -192,7 +193,7 @@
             </xs:sequence>
           </xs:complexType>
         </xs:element>
-        <xs:element name="ResumenAutoEvaluacion" msprop:Generator_TableClassName="ResumenAutoEvaluacionDataTable" msprop:Generator_TableVarName="tableResumenAutoEvaluacion" msprop:Generator_TablePropName="ResumenAutoEvaluacion" msprop:Generator_RowDeletingName="ResumenAutoEvaluacionRowDeleting" msprop:Generator_RowChangingName="ResumenAutoEvaluacionRowChanging" msprop:Generator_RowEvHandlerName="ResumenAutoEvaluacionRowChangeEventHandler" msprop:Generator_RowDeletedName="ResumenAutoEvaluacionRowDeleted" msprop:Generator_UserTableName="ResumenAutoEvaluacion" msprop:Generator_RowChangedName="ResumenAutoEvaluacionRowChanged" msprop:Generator_RowEvArgName="ResumenAutoEvaluacionRowChangeEvent" msprop:Generator_RowClassName="ResumenAutoEvaluacionRow">
+        <xs:element name="ResumenAutoEvaluacion" msprop:Generator_TableClassName="ResumenAutoEvaluacionDataTable" msprop:Generator_TableVarName="tableResumenAutoEvaluacion" msprop:Generator_RowChangedName="ResumenAutoEvaluacionRowChanged" msprop:Generator_TablePropName="ResumenAutoEvaluacion" msprop:Generator_RowDeletingName="ResumenAutoEvaluacionRowDeleting" msprop:Generator_RowChangingName="ResumenAutoEvaluacionRowChanging" msprop:Generator_RowEvHandlerName="ResumenAutoEvaluacionRowChangeEventHandler" msprop:Generator_RowDeletedName="ResumenAutoEvaluacionRowDeleted" msprop:Generator_RowClassName="ResumenAutoEvaluacionRow" msprop:Generator_UserTableName="ResumenAutoEvaluacion" msprop:Generator_RowEvArgName="ResumenAutoEvaluacionRowChangeEvent">
           <xs:complexType>
             <xs:sequence>
               <xs:element name="CriterioNombre" msprop:Generator_ColumnVarNameInTable="columnCriterioNombre" msprop:Generator_ColumnPropNameInRow="CriterioNombre" msprop:Generator_ColumnPropNameInTable="CriterioNombreColumn" msprop:Generator_UserColumnName="CriterioNombre" minOccurs="0">
@@ -286,6 +287,13 @@
               <xs:element name="fechaDeCreacion" msprop:Generator_ColumnVarNameInTable="columnfechaDeCreacion" msprop:Generator_ColumnPropNameInRow="fechaDeCreacion" msprop:Generator_ColumnPropNameInTable="fechaDeCreacionColumn" msprop:Generator_UserColumnName="fechaDeCreacion" type="xs:dateTime" />
               <xs:element name="fechaDeActualizacion" msprop:Generator_ColumnVarNameInTable="columnfechaDeActualizacion" msprop:Generator_ColumnPropNameInRow="fechaDeActualizacion" msprop:Generator_ColumnPropNameInTable="fechaDeActualizacionColumn" msprop:Generator_UserColumnName="fechaDeActualizacion" type="xs:dateTime" />
               <xs:element name="nombreEmpresa" msprop:Generator_ColumnVarNameInTable="columnnombreEmpresa" msprop:Generator_ColumnPropNameInRow="nombreEmpresa" msprop:Generator_ColumnPropNameInTable="nombreEmpresaColumn" msprop:Generator_UserColumnName="nombreEmpresa" minOccurs="0">
+                <xs:simpleType>
+                  <xs:restriction base="xs:string">
+                    <xs:maxLength value="2147483647" />
+                  </xs:restriction>
+                </xs:simpleType>
+              </xs:element>
+              <xs:element name="recursos" msprop:Generator_ColumnVarNameInTable="columnrecursos" msprop:Generator_ColumnPropNameInRow="recursos" msprop:Generator_ColumnPropNameInTable="recursosColumn" msprop:Generator_UserColumnName="recursos" minOccurs="0">
                 <xs:simpleType>
                   <xs:restriction base="xs:string">
                     <xs:maxLength value="2147483647" />
