@@ -57,7 +57,7 @@
             <br />
             <br />
             @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "" } })
-            
+
             <div hidden>
                 @Html.PasswordFor(model => model.Password, new { htmlAttributes = new { @style = "display: none" } })
                 <br />
@@ -67,13 +67,19 @@
                 <br />
                 @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
             </div>
-           
+            Cargo:
+            <br />
+            <br />
+            @Html.EditorFor(model => model.Pers_Cargo, new { htmlAttributes = new { @class = "" } })
+            <br />
+            <br />
+
             @*Estado Del Trabajador:
-                <br />
-                <br />
-                @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
-                <br />
-                <br />*@
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
+        <br />
+        <br />*@
         </div>
         <br />
         <br />

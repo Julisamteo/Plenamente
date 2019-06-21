@@ -208,7 +208,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var Arl = paramExpandedUserDTO.Arl_Id;
                 var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
                 var Ciudad = paramExpandedUserDTO.Ciud_Id;
-                var Cargo = paramExpandedUserDTO.Cemp_Id;
+                var Cargo = paramExpandedUserDTO.Pers_Cargo;
                 var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
                 var Categoria = paramExpandedUserDTO.Cate_Id;
                 var Genero = paramExpandedUserDTO.Gene_Id;
@@ -250,7 +250,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Eps_Id = Eps,
                     Arl_Id = Arl,
                     Sciu_Id = SedeCiudad,
-                    Cemp_Id = Cargo,
+                    Pers_Cargo = Cargo,
                     Aemp_Id = AreaEmpresa,
                     Cate_Id = Categoria,
                     Gene_Id = Genero,
@@ -559,7 +559,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var Arl = paramExpandedUserDTO.Arl_Id;
                 var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
                 var Ciudad = paramExpandedUserDTO.Ciud_Id;
-                var Cargo = paramExpandedUserDTO.Cemp_Id;
+                var Cargo = paramExpandedUserDTO.Pers_Cargo;
                 var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
                 var Categoria = paramExpandedUserDTO.Cate_Id;
                 var Genero = paramExpandedUserDTO.Gene_Id;
@@ -601,7 +601,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Eps_Id = Eps,
                     Arl_Id = Arl,
                     Sciu_Id = SedeCiudad,
-                    Cemp_Id = Cargo,
+                    Pers_Cargo = Cargo,
                     Aemp_Id = AreaEmpresa,
                     Cate_Id = Categoria,
                     Gene_Id = Genero,

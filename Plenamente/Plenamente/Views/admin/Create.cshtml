@@ -77,6 +77,12 @@
         @Html.DropDownList("Roles", null, htmlAttributes: new { @class = "estilosSelect" })
         <br />
         <br />
+        Cargo:
+        <br />
+        <br />
+        @Html.EditorFor(model => model.Pers_Cargo, new { htmlAttributes = new { @class = "" } })
+        <br />
+        <br />
         @*Estado Del Trabajador:
         <br />
         <br />
