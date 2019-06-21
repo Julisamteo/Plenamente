@@ -105,7 +105,7 @@ namespace Plenamente.Controllers
             {
                 dias += "sabado,";
             }
-            if (model.weekly_5 != null)
+            if (model.weekly_6 != null)
             {
                 dias += "domingo,";
             }
@@ -342,12 +342,14 @@ namespace Plenamente.Controllers
         // POST: ActividadCumplimiento/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada")] ViewModelActividadCumplimiento model)
+        public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada")] ViewModelActividadCumplimiento model)
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             string dias = "";
+            string periodo = model.Frecuencia;
+            string frecuenciadesc = "";
             if (model.weekly_0 != null)
             {
                 dias += "lunes,";
@@ -372,10 +374,27 @@ namespace Plenamente.Controllers
             {
                 dias += "sabado,";
             }
-            if (model.weekly_5 != null)
+            if (model.weekly_6 != null)
             {
                 dias += "domingo,";
             }
+            
+            if (periodo == "1")
+            {
+                frecuenciadesc = "norepeat";
+            }else if (periodo == "2")
+            {
+                frecuenciadesc = "daily";
+            }
+            else if (periodo == "3")
+            {
+                frecuenciadesc = "weekly";
+            }
+            else if (periodo == "4")
+            {
+                frecuenciadesc = "monthly";
+            }
+            model.Frecuencia_desc = frecuenciadesc;
 
             // TODO: Add insert logic here
             ActiCumplimiento actcumplimiento = new ActiCumplimiento
@@ -401,16 +420,28 @@ namespace Plenamente.Controllers
 
 
             };
-
+            
+            //var model2 = db.Tb_ActiCumplimiento.Find(actcumplimiento.Acum_Id);
             db.Entry(actcumplimiento).State = EntityState.Modified;
             db.SaveChanges();
-            //Generamos la programacion de tareas en el tiempo.
-            var model2 = db.Tb_ActiCumplimiento.Find(model.IdActiCumplimiento);
-            //string diassem = model.weekly_0 + "," + model.weekly_1 + "," + model.weekly_2 + "," + "," + model.weekly_3 + "," + "," + model.weekly_4 + "," + "," + model.weekly_5 + "," + "," + model.weekly_6 + ",";
-            if ((model.FechaFinal != model2.Acum_FinAct) || (model.FechaInicial != model2.Acum_IniAct) || (model.period != model2.Repeticiones) || (model2.DiasSemana != dias) || (model2.Frec_Id != Convert.ToInt32(model.Frecuencia)))
-            {
+            /*if ((model.FechaFinal != model2.Acum_FinAct) || (model.FechaInicial != model2.Acum_IniAct) || (model.period != model2.Repeticiones) || (model2.DiasSemana != dias) || (model2.Frec_Id != Convert.ToInt32(model.Frecuencia)))
+            {*/
+            var prog = db.Tb_ProgamacionTareas.Where(e => e.ActiCumplimiento_Id == actcumplimiento.Acum_Id).ToList();
+                
+                foreach (var program in prog)
+                {
+                    program.Estado = false;
+                }
+
+                db.SaveChanges();
                 generateAppoiment(model, actcumplimiento.Acum_Id);
-            }
+           // }
+            
+            
+            //Generamos la programacion de tareas en el tiempo.
+            
+            //string diassem = model.weekly_0 + "," + model.weekly_1 + "," + model.weekly_2 + "," + "," + model.weekly_3 + "," + "," + model.weekly_4 + "," + "," + model.weekly_5 + "," + "," + model.weekly_6 + ",";
+            
             return RedirectToAction("Index");
         }
 
