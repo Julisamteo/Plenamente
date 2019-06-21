@@ -70,7 +70,7 @@ namespace Plenamente.Controllers
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar")] ViewModelActividadCumplimiento model)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos")] ViewModelActividadCumplimiento model)
         {
 
 
@@ -105,7 +105,7 @@ namespace Plenamente.Controllers
             {
                 dias += "sabado,";
             }
-            if (model.weekly_5 != null)
+            if (model.weekly_6 != null)
             {
                 dias += "domingo,";
             }
@@ -125,7 +125,10 @@ namespace Plenamente.Controllers
                 Empr_Nit = empresa.Empr_Nit,
                 Repeticiones=model.period,
                 DiasSemana=dias,
-                HoraAct=model.hora
+                HoraAct=model.hora,
+                Finalizada=false,
+                asigrecursos=model.asigrecursos
+                
                 
 
             };
@@ -269,16 +272,34 @@ namespace Plenamente.Controllers
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            var model = db.Tb_ActiCumplimiento.Find(id);
-            if (model.DiasSemana != null)
+            
+            var model2 = db.Tb_ActiCumplimiento.Find(id);
+            ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento
             {
-                var lunes = model.DiasSemana.Contains("lunes");
-                var martes = model.DiasSemana.Contains("martes");
-                var miercoles = model.DiasSemana.Contains("miercoles");
-                var jueves = model.DiasSemana.Contains("jueves");
-                var viernes = model.DiasSemana.Contains("viernes");
-                var sabado = model.DiasSemana.Contains("sabado");
-                var domingo = model.DiasSemana.Contains("domingo");
+                IdActiCumplimiento=model2.Acum_Id,
+                IdEmpresa=model2.Empr_Nit,
+                NombreActividad=model2.Acum_Desc,
+                Meta=model2.Acum_Porcentest,
+                idObjetivo=model2.Oemp_Id,
+                FechaInicial=model2.Acum_IniAct,
+                FechaFinal=model2.Acum_FinAct,
+                hora=model2.HoraAct,
+                Frecuencia = Convert.ToString(model2.Frec_Id),
+                period=model2.Repeticiones,
+                Finalizada=model2.Finalizada,
+                asigrecursos=model2.asigrecursos
+
+
+            };
+            if (model2.DiasSemana != null)
+            {
+                var lunes = model2.DiasSemana.Contains("lunes");
+                var martes = model2.DiasSemana.Contains("martes");
+                var miercoles = model2.DiasSemana.Contains("miercoles");
+                var jueves = model2.DiasSemana.Contains("jueves");
+                var viernes = model2.DiasSemana.Contains("viernes");
+                var sabado = model2.DiasSemana.Contains("sabado");
+                var domingo = model2.DiasSemana.Contains("domingo");
                 if (lunes)
                 {
                     ViewData["lunes"] = "checked";
@@ -314,23 +335,114 @@ namespace Plenamente.Controllers
                     ViewData["domingo"] = "checked";
                 }
             }
-            ViewData["userid"] = model.Id;
+            ViewData["userid"] = model2.Id;
             return View(model);
         }
 
         // POST: ActividadCumplimiento/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Acum_Id,Acum_Desc,Acum_Porcentest,Acum_IniAct,Acum_FinAct,Oemp_Id,Id,Peri_Id,Empr_Nit,Frec_Id")] ActiCumplimiento actiCumplimiento)
+        public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada")] ViewModelActividadCumplimiento model)
         {
-            if (ModelState.IsValid)
-            {
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
-                db.Entry(actiCumplimiento).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            string dias = "";
+            string periodo = model.Frecuencia;
+            string frecuenciadesc = "";
+            if (model.weekly_0 != null)
+            {
+                dias += "lunes,";
             }
-            return View(actiCumplimiento);
+            if (model.weekly_1 != null)
+            {
+                dias += "martes,";
+            }
+            if (model.weekly_2 != null)
+            {
+                dias += "miercoles,";
+            }
+            if (model.weekly_3 != null)
+            {
+                dias += "jueves,";
+            }
+            if (model.weekly_4 != null)
+            {
+                dias += "viernes,";
+            }
+            if (model.weekly_5 != null)
+            {
+                dias += "sabado,";
+            }
+            if (model.weekly_6 != null)
+            {
+                dias += "domingo,";
+            }
+            
+            if (periodo == "1")
+            {
+                frecuenciadesc = "norepeat";
+            }else if (periodo == "2")
+            {
+                frecuenciadesc = "daily";
+            }
+            else if (periodo == "3")
+            {
+                frecuenciadesc = "weekly";
+            }
+            else if (periodo == "4")
+            {
+                frecuenciadesc = "monthly";
+            }
+            model.Frecuencia_desc = frecuenciadesc;
+
+            // TODO: Add insert logic here
+            ActiCumplimiento actcumplimiento = new ActiCumplimiento
+            {
+                Acum_Id=model.IdActiCumplimiento,
+                Acum_Ejec=null,
+                Acum_Desc = model.NombreActividad,
+                Acum_Porcentest = model.Meta,
+                Acum_IniAct = model.FechaInicial,
+                Acum_FinAct = model.FechaFinal,
+                Oemp_Id = model.idObjetivo,
+                Acum_Registro = DateTime.Now,
+                Id = usuario.Id,
+                Frec_Id = Convert.ToInt32(model.Frecuencia),
+                Peri_Id = 6,
+                Empr_Nit = empresa.Empr_Nit,
+                Repeticiones = model.period,
+                DiasSemana = dias,
+                HoraAct = model.hora,
+                asigrecursos=model.asigrecursos,
+                Finalizada=model.Finalizada
+
+
+
+            };
+            
+            //var model2 = db.Tb_ActiCumplimiento.Find(actcumplimiento.Acum_Id);
+            db.Entry(actcumplimiento).State = EntityState.Modified;
+            db.SaveChanges();
+            /*if ((model.FechaFinal != model2.Acum_FinAct) || (model.FechaInicial != model2.Acum_IniAct) || (model.period != model2.Repeticiones) || (model2.DiasSemana != dias) || (model2.Frec_Id != Convert.ToInt32(model.Frecuencia)))
+            {*/
+            var prog = db.Tb_ProgamacionTareas.Where(e => e.ActiCumplimiento_Id == actcumplimiento.Acum_Id).ToList();
+                
+                foreach (var program in prog)
+                {
+                    program.Estado = false;
+                }
+
+                db.SaveChanges();
+                generateAppoiment(model, actcumplimiento.Acum_Id);
+           // }
+            
+            
+            //Generamos la programacion de tareas en el tiempo.
+            
+            //string diassem = model.weekly_0 + "," + model.weekly_1 + "," + model.weekly_2 + "," + "," + model.weekly_3 + "," + "," + model.weekly_4 + "," + "," + model.weekly_5 + "," + "," + model.weekly_6 + ",";
+            
+            return RedirectToAction("Index");
         }
 
             // GET: ActividadCumplimiento/Delete/5

@@ -1522,6 +1522,8 @@ namespace Plenamente {
             
             private global::System.Data.DataColumn columnnombreEmpresa;
             
+            private global::System.Data.DataColumn columnrecursos;
+            
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public ResumenPlanDeTrabajoDataTable() {
@@ -1661,6 +1663,14 @@ namespace Plenamente {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public global::System.Data.DataColumn recursosColumn {
+                get {
+                    return this.columnrecursos;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             [global::System.ComponentModel.Browsable(false)]
             public int Count {
                 get {
@@ -1696,7 +1706,7 @@ namespace Plenamente {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
-            public ResumenPlanDeTrabajoRow AddResumenPlanDeTrabajoRow(string NombrePlandeTrabajo, string DescripcionActividad, string nombre, string appelido, float porcentaje, System.DateTime fechaderegistro, System.DateTime fechadeinicio, System.DateTime fechadefin, string descripcion, string frecuencia, System.DateTime fechaDeCreacion, System.DateTime fechaDeActualizacion, string nombreEmpresa) {
+            public ResumenPlanDeTrabajoRow AddResumenPlanDeTrabajoRow(string NombrePlandeTrabajo, string DescripcionActividad, string nombre, string appelido, float porcentaje, System.DateTime fechaderegistro, System.DateTime fechadeinicio, System.DateTime fechadefin, string descripcion, string frecuencia, System.DateTime fechaDeCreacion, System.DateTime fechaDeActualizacion, string nombreEmpresa, string recursos) {
                 ResumenPlanDeTrabajoRow rowResumenPlanDeTrabajoRow = ((ResumenPlanDeTrabajoRow)(this.NewRow()));
                 object[] columnValuesArray = new object[] {
                         NombrePlandeTrabajo,
@@ -1711,7 +1721,8 @@ namespace Plenamente {
                         frecuencia,
                         fechaDeCreacion,
                         fechaDeActualizacion,
-                        nombreEmpresa};
+                        nombreEmpresa,
+                        recursos};
                 rowResumenPlanDeTrabajoRow.ItemArray = columnValuesArray;
                 this.Rows.Add(rowResumenPlanDeTrabajoRow);
                 return rowResumenPlanDeTrabajoRow;
@@ -1747,6 +1758,7 @@ namespace Plenamente {
                 this.columnfechaDeCreacion = base.Columns["fechaDeCreacion"];
                 this.columnfechaDeActualizacion = base.Columns["fechaDeActualizacion"];
                 this.columnnombreEmpresa = base.Columns["nombreEmpresa"];
+                this.columnrecursos = base.Columns["recursos"];
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -1778,6 +1790,8 @@ namespace Plenamente {
                 base.Columns.Add(this.columnfechaDeActualizacion);
                 this.columnnombreEmpresa = new global::System.Data.DataColumn("nombreEmpresa", typeof(string), null, global::System.Data.MappingType.Element);
                 base.Columns.Add(this.columnnombreEmpresa);
+                this.columnrecursos = new global::System.Data.DataColumn("recursos", typeof(string), null, global::System.Data.MappingType.Element);
+                base.Columns.Add(this.columnrecursos);
                 this.columnNombrePlandeTrabajo.MaxLength = 2147483647;
                 this.columnDescripcionActividad.MaxLength = 2147483647;
                 this.columnnombre.MaxLength = 2147483647;
@@ -1791,6 +1805,7 @@ namespace Plenamente {
                 this.columnfechaDeCreacion.AllowDBNull = false;
                 this.columnfechaDeActualizacion.AllowDBNull = false;
                 this.columnnombreEmpresa.MaxLength = 2147483647;
+                this.columnrecursos.MaxLength = 2147483647;
             }
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
@@ -2723,6 +2738,22 @@ namespace Plenamente {
             
             [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public string recursos {
+                get {
+                    try {
+                        return ((string)(this[this.tableResumenPlanDeTrabajo.recursosColumn]));
+                    }
+                    catch (global::System.InvalidCastException e) {
+                        throw new global::System.Data.StrongTypingException("El valor de la columna \'recursos\' de la tabla \'ResumenPlanDeTrabajo\' es DBNull.", e);
+                    }
+                }
+                set {
+                    this[this.tableResumenPlanDeTrabajo.recursosColumn] = value;
+                }
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public bool IsNombrePlandeTrabajoNull() {
                 return this.IsNull(this.tableResumenPlanDeTrabajo.NombrePlandeTrabajoColumn);
             }
@@ -2803,6 +2834,18 @@ namespace Plenamente {
             [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
             public void SetnombreEmpresaNull() {
                 this[this.tableResumenPlanDeTrabajo.nombreEmpresaColumn] = global::System.Convert.DBNull;
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public bool IsrecursosNull() {
+                return this.IsNull(this.tableResumenPlanDeTrabajo.recursosColumn);
+            }
+            
+            [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+            [global::System.CodeDom.Compiler.GeneratedCodeAttribute("System.Data.Design.TypedDataSetGenerator", "15.0.0.0")]
+            public void SetrecursosNull() {
+                this[this.tableResumenPlanDeTrabajo.recursosColumn] = global::System.Convert.DBNull;
             }
         }
         
@@ -3660,6 +3703,7 @@ namespace Plenamente.PlenamenteDataSetTableAdapters {
             tableMapping.ColumnMappings.Add("fechaDeCreacion", "fechaDeCreacion");
             tableMapping.ColumnMappings.Add("fechaDeActualizacion", "fechaDeActualizacion");
             tableMapping.ColumnMappings.Add("nombreEmpresa", "nombreEmpresa");
+            tableMapping.ColumnMappings.Add("recursos", "recursos");
             this._adapter.TableMappings.Add(tableMapping);
         }
         
