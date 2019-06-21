@@ -1,4 +1,4 @@
-﻿@model Plenamente.Models.ActiCumplimiento
+﻿@model Plenamente.Models.ViewModel.ViewModelActividadCumplimiento
 
 @{
     var norepeat = "";
@@ -22,94 +22,94 @@
 
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-    @Html.HiddenFor(model => model.Acum_Id)
-    @Html.HiddenFor(model => model.Acum_Ejec)
-    @Html.HiddenFor(model => model.Acum_Registro)
+    @Html.HiddenFor(model => model.IdActiCumplimiento)
+    
+    
     <input type="hidden" value="@ViewData["userid"]" id="Id" name="Id" />
-    @Html.HiddenFor(model => model.Peri_Id)
-    @Html.HiddenFor(model => model.Empr_Nit)
+   
+    @Html.HiddenFor(model => model.IdEmpresa)
     
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Acum_Desc, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Acum_Desc, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Acum_Desc, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.NombreActividad , new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Acum_Porcentest, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-10">
-            @Html.EditorFor(model => model.Acum_Porcentest, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Acum_Porcentest, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
         </div>
     </div>
 
 
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Oemp_Id, htmlAttributes: new { @class = "control-label col-md-8" })
+        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-8" })
         <div class="col-md-5">
 
-            @Html.DropDownListFor(x => x.Oemp_Id, (SelectList)ViewBag.objetivosEmpresa, new { @class = "form-control" })
-            @Html.ValidationMessageFor(model => model.Oemp_Id, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "form-control" })
+            @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Acum_IniAct, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.EditorFor(model => model.Acum_IniAct, new { htmlAttributes = new { @class = "form-control", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
-            @Html.ValidationMessageFor(model => model.Acum_IniAct, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "form-control", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Acum_FinAct, htmlAttributes: new { @class = "control-label col-md-2" })
+        @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.EditorFor(model => model.Acum_FinAct, new { htmlAttributes = new { @class = "form-control", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
-            @Html.ValidationMessageFor(model => model.Acum_FinAct, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "form-control", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
     </div>
-    <div class="form-group">
-        @Html.LabelFor(model => model.HoraAct, htmlAttributes: new { @class = "control-label col-md-2" })
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
         <div class="col-md-5">
-            @Html.EditorFor(model => model.HoraAct, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
-            @Html.ValidationMessageFor(model => model.HoraAct, "", new { @class = "text-danger" })
+            @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+            @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.Frec_Id, htmlAttributes: new { @class = "control-label col-md-8" })
+        @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-8" })
         <div class="col-md-5">
 
-            @Html.DropDownListFor(x => x.Frec_Id, (SelectList)ViewBag.frecuenciaEmpresa, new { @class = "form-control", @onchange = "ShowSelected();" })
-            @Html.ValidationMessageFor(model => model.Frec_Id, "", new { @class = "text-danger" })
+            @Html.DropDownListFor(x => x.Frecuencia, (SelectList)ViewBag.frecuenciaEmpresa, new { @class = "form-control", @onchange = "ShowSelected();" })
+            @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })
 
         </div>
-        @if (Model.Frec_Id == 1)
+        @if (Model.Frecuencia == "1")
         {
         norepeat = "style=display:;";
         daily = "style=display:none;";
         weekly = "style=display:none;";
         monthly = "style=display:none;";
         }else
-        if (Model.Frec_Id == 2)
+        if (Model.Frecuencia == "2")
         {
         norepeat = "style=display:none;";
         daily = "style=display:; ";
         weekly = "style=display:none;";
         monthly = "style=display:none;";
         }else
-        if (Model.Frec_Id == 3)
+        if (Model.Frecuencia == "3")
         {
         norepeat = "style=display:none;";
         daily = "style=display:none;";
         weekly = "style=display:;";
         monthly = "style=display:none;";
         }else
-        if (Model.Frec_Id == 4)
+        if (Model.Frecuencia == "4")
         {
         norepeat = "style=display:none;";
         daily = "style='display:none;";
@@ -175,7 +175,7 @@
 <script type="text/javascript">
 
     function ShowSelected() {
-        var cod = document.getElementById("Frec_Id").value;
+        var cod = document.getElementById("Frecuencia").value;
         var period = document.getElementById("period");
         var daily_every = document.getElementById("daily_every").value;
         var weekly_every = document.getElementById("weekly_every").value;

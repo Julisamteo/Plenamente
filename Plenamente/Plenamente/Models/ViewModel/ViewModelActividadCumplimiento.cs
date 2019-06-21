@@ -44,5 +44,7 @@ namespace Plenamente.Models.ViewModel
         public string weekly_4 { get; set; }
         public string weekly_5 { get; set; }
         public string weekly_6 { get; set; }
+        [Display(Name = "Asignación de recursos")]
+        public string asigrecursos { get; set; }
     }
 }
