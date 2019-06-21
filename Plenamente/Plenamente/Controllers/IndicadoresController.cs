@@ -25,12 +25,13 @@ namespace Plenamente.Controllers
             ChartDataViewModel datos =
                new ChartDataViewModel
                {
+                   title = "Promedio autoevaluaciones",
                    labels = db.Tb_CicloPHVA.Select(a => a.Nombre).ToArray(),
                    datasets =
                    new List<ChartDatasetsViewModel>{
                         new ChartDatasetsViewModel
                         {
-                            label = "Promedio autoevaluaciones",
+                            label = "Avance",
                             data = db.Tb_CicloPHVA.Select(a => a.Id > 0 ? 1 : 0).ToArray(),
                             fill = false,
                             borderWidth = 1
@@ -45,7 +46,8 @@ namespace Plenamente.Controllers
             List<ActiCumplimiento> lst = new List<ActiCumplimiento>();
             try
             {
-                var cumplimientos = db.Tb_ActiCumplimiento.Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)).ToList();
+                var cumplimientos =
+                    db.Tb_ActiCumplimiento.Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)).ToList();
                 if (cumplimientos != null && cumplimientos.Count > 0)
                 {
                     lst.AddRange(cumplimientos);
@@ -85,15 +87,27 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
         {
+            var date = DateTime.Now;
+            var start = date.AddDays(-date.Day);
+            var end = start.AddMonths(1);
+            List<ActiCumplimiento> lst =
+                   db.Tb_ActiCumplimiento.Where(
+                       a => a.Empr_Nit == AccountData.NitEmpresa
+                       && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)
+                       && a.Acum_IniAct >= start
+                       && a.Acum_IniAct < end).ToList();
+            var total = lst.Count();
+            var ended = lst.Where(a => !a.Finalizada).Count();
             ChartDataViewModel datos =
               new ChartDataViewModel
               {
-                  labels = db.Tb_ItemEstandar.Select(a => a.Esta_Id.ToString()).ToArray(),
+                  title = "Estado GS-SST",
+                  labels = new string[2] { "Finalizadas", "En ejecución" },
                   datasets =
                   new List<ChartDatasetsViewModel>{
                       new ChartDatasetsViewModel{
-                          label = "Última autoevaluación",
-                          data = db.Tb_ItemEstandar.Select(a => a.Cumplimientos.Any(c => c.Cump_Cumple || c.Cump_Justifica || c.Cump_NoAplica) ? a.Iest_Porcentaje : 0).ToArray(),//db.Tb_Cumplimiento.Where(a => a.Cump_Cumple || a.Cump_Justifica || a.Cump_NoAplica ? 1 : 0).Select(a => a.Criterios.Sum(c => c.Crit_Porcentaje)).ToArray(),
+                          label = "Estado actividades",
+                          data = new int[2]{ ended, total-ended  },
                           fill = false,
                           borderWidth = 1
                       }},

@@ -1,16 +1,5 @@
-﻿var graphColors = [];
-var graphOutlines = [];
-var hoverColor = [];
-function generarColores(internalDataLength) {
-    for (var i = 0; i < internalDataLength; i++) {
-        var R = Math.floor(Math.random() * 230);
-        var G = Math.floor(Math.random() * 230);
-        var B = Math.floor(Math.random() * 230);
-        graphColors.push(`rgb(${R},${G},${B})`);
-        graphOutlines.push(`rgb(${R - 80},${G - 80},${B - 80})`);
-        hoverColor.push(`rgb(${R + 25},${G + 25},${B + 25})`);
-    }
-}
+﻿
+
 var canvasChart = document.getElementsByClassName("chart-container");
 for (var i = 0; i < canvasChart.length; i++) {
     var id = canvasChart[i].getAttribute("id");
@@ -27,9 +16,20 @@ function Chart_Load(nameObject, routeMethod, typeChart) {
         success: function (chData) {
             var datasets = [];
             for (var i = 0; i < chData.datasets.length; i++) {
+                var graphColors = [];
+                var graphOutlines = [];
+                var hoverColor = [];
+                for (var j = 0; j < chData.labels.length; j++) {
+                    var R = Math.floor(Math.random() * 230);
+                    var G = Math.floor(Math.random() * 230);
+                    var B = Math.floor(Math.random() * 230);
+                    graphColors.push(`rgb(${R},${G},${B})`);
+                    graphOutlines.push(`rgb(${R - 80},${G - 80},${B - 80})`);
+                    hoverColor.push(`rgb(${R + 25},${G + 25},${B + 25})`);
+                }
                 datasets.push({
                     label: chData.datasets[i].label,
-                    data: chData.dataset[i].data ? chData.dataset[i].data : {},
+                    data: chData.datasets[i].data ? chData.datasets[i].data : {},
                     fill: chData.datasets[i].fill,
                     backgroundColor: chData.datasets[i].backgroundColor ? chData.datasets[i].backgroundColor : graphColors,
                     borderColor: chData.datasets[i].borderColor ? chData.datasets[i].borderColor : graphOutlines,
@@ -37,7 +37,6 @@ function Chart_Load(nameObject, routeMethod, typeChart) {
                     borderWidth: chData.datasets[i].borderWidth
                 });
             }
-            generarColores(chData.labels.length);
             var ctx = document.getElementById(nameObject).getContext('2d');
             new Chart(ctx, {
                 type: typeChart ? typeChart : 'bar',
