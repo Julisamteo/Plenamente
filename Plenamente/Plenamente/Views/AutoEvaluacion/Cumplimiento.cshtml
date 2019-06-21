@@ -30,36 +30,88 @@
                     <hr />
                 </div>
             </div>
-            @if (Model.ItemEstandar.Recurso != null || Model.ItemEstandar.Reursob != null)
+            @if (Model.ItemEstandar.Recurso != null || Model.ItemEstandar.Reursob != null || Model.ItemEstandar.Reursoc != null || Model.ItemEstandar.Reursod != null || Model.ItemEstandar.Reursoe != null || Model.ItemEstandar.Reursof != null)
             {
-                <div class="row">
-                    @if (Model.ItemEstandar.Recurso != null)
-                    {
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <p class="text-justify">
-                                <a href="@Model.ItemEstandar.Recurso" target="_blank">
-                                    <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
-                                    <label class="text-center text-black-50 text-dark">
-                                        @(Model.ItemEstandar.Recurso.Split('/').Last() ?? "Ver ayuda")
-                                    </label>
-                                </a>
-                            </p>
-                        </div>
-                    }
-                    @if (Model.ItemEstandar.Reursob != null)
-                    {
-                        <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
-                            <p class="text-justify">
-                                <a href="@Model.ItemEstandar.Reursob" target="_blank">
-                                    <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
-                                    <label class="text-center text-black-50">
-                                        @(Model.ItemEstandar.Reursob.Split('/').Last() ?? "Ver ayuda")
-                                    </label>
-                                </a>
-                            </p>
-                        </div>
-                    }
+            <div class="row">
+                @if (Model.ItemEstandar.Recurso != null)
+                {
+                <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                    <p class="text-justify">
+                        <a href="@Model.ItemEstandar.Recurso" target="_blank">
+                            <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
+                            <label class="text-center text-black-50 text-dark">
+                                @(Model.ItemEstandar.Recurso.Split('/').Last() ?? "Ver ayuda")
+                            </label>
+                        </a>
+                    </p>
                 </div>
+                }
+                @if (Model.ItemEstandar.Reursob != null)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p class="text-justify">
+                            <a href="@Model.ItemEstandar.Reursob" target="_blank">
+                                <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
+                                <label class="text-center text-black-50">
+                                    @(Model.ItemEstandar.Reursob.Split('/').Last() ?? "Ver ayuda")
+                                </label>
+                            </a>
+                        </p>
+                    </div>
+                }
+                @if (Model.ItemEstandar.Reursoc != null)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p class="text-justify">
+                            <a href="@Model.ItemEstandar.Reursoc" target="_blank">
+                                <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
+                                <label class="text-center text-black-50 text-dark">
+                                    @(Model.ItemEstandar.Reursoc.Split('/').Last() ?? "Ver ayuda")
+                                </label>
+                            </a>
+                        </p>
+                    </div>
+                }
+                @if (Model.ItemEstandar.Reursod != null)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p class="text-justify">
+                            <a href="@Model.ItemEstandar.Reursod" target="_blank">
+                                <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
+                                <label class="text-center text-black-50">
+                                    @(Model.ItemEstandar.Reursod.Split('/').Last() ?? "Ver ayuda")
+                                </label>
+                            </a>
+                        </p>
+                    </div>
+                }
+                @if (Model.ItemEstandar.Reursoe != null)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p class="text-justify">
+                            <a href="@Model.ItemEstandar.Reursoe" target="_blank">
+                                <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
+                                <label class="text-center text-black-50 text-dark">
+                                    @(Model.ItemEstandar.Reursoe.Split('/').Last() ?? "Ver ayuda")
+                                </label>
+                            </a>
+                        </p>
+                    </div>
+                }
+                @if (Model.ItemEstandar.Reursof != null)
+                {
+                    <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
+                        <p class="text-justify">
+                            <a href="@Model.ItemEstandar.Reursof" target="_blank">
+                                <i class="fa fa-file" style="font-size: 50px; color: lightgray;"></i>
+                                <label class="text-center text-black-50">
+                                    @(Model.ItemEstandar.Reursof.Split('/').Last() ?? "Ver ayuda")
+                                </label>
+                            </a>
+                        </p>
+                    </div>
+                }
+            </div>
                 <hr />
             }
             @Html.HiddenFor(model => model.Id)

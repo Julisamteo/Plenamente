@@ -15,6 +15,7 @@ namespace Plenamente.Models
     public class ApplicationUser : IdentityUser
     {
         //Variables que se agregar en la tabla de AspNetUsers 
+        [Index(IsUnique = true)]
         public int Pers_Doc { get; set; }
         public string Pers_Nom1 { get; set; }
         public string Pers_Nom2 { get; set; }

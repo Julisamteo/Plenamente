@@ -622,7 +622,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                         UserManager.AddToRole(objNewAdminUser.Id, strNewRole);
                     }
 
-                    return RedirectToAction("Manageusers");
+                    return RedirectToAction("UsersSysadmin");
                 }
                 else
                 {

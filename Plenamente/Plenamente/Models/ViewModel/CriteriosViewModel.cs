@@ -40,6 +40,11 @@ namespace Plenamente.Models.ViewModel
         public string Video { get; set; }
         public string Recurso { get; set; }
         public string Reursob { get; set; }
+        public string Reursoc { get; set; }
+        public string Reursod { get; set; }
+        public string Reursoe { get; set; }
+        public string Reursof { get; set; }
+
         public short Categoria { get; set; }
         public List<Cumplimiento> Cumplimientos { get; set; }
         public bool ExisteCumplimiento => Cumplimientos.Count() > 0;
