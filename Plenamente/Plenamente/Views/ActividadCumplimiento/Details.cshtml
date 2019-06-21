@@ -119,5 +119,7 @@
     <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento", new { id = Model.Acum_Id })" title="Editar">
         Editar
     </a>
-    @Html.ActionLink("Back to List", "Index")
+    <a href="@Url.Action("Index", "ActividadCumplimiento")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
 </p>

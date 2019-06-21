@@ -20,7 +20,7 @@ namespace Plenamente.Models
         [Display(Name = "Fecha Registro")]
         [DataType(DataType.Date)]
         public DateTime Acum_Registro { get; set; }
-        [Display(Name = "Incio Actividad")]
+        [Display(Name = "Fecha de Ejecucion")]
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Acum_IniAct { get; set; }

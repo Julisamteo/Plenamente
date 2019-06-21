@@ -17,8 +17,8 @@ namespace Plenamente.Scheduler
             }
             set
             {
-                if (value <= 0) throw new ArgumentException(
-                    "The days between appointments must be at least one.");
+                /*if (value <= 0) throw new ArgumentException(
+                    "The days between appointments must be at least one.");*/
 
                 _daysBetween = value;
             }

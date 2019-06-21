@@ -60,12 +60,14 @@ namespace Plenamente.Controllers
         }
 
         // GET: ActividadCumplimiento/Create
-        public ActionResult Create()
+        public ActionResult Create(int idPlanDeTrabajo)
         {
             var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            var listusers =db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
+            ViewBag.users= new SelectList(listusers, "Id", "Value");
 
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
             ViewBag.ReturnUrl = Request.UrlReferrer;
@@ -75,7 +77,7 @@ namespace Plenamente.Controllers
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos")] ViewModelActividadCumplimiento model)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,IdUser")] ViewModelActividadCumplimiento model)
         {
 
 
@@ -121,10 +123,10 @@ namespace Plenamente.Controllers
                 Acum_Desc = model.NombreActividad,
                 Acum_Porcentest = model.Meta,
                 Acum_IniAct = model.FechaInicial,
-                Acum_FinAct = model.FechaFinal,
+                Acum_FinAct = model.FechaInicial,
                 Oemp_Id = model.idObjetivo,
                 Acum_Registro = DateTime.Now,
-                Id = usuario.Id,
+                Id = model.IdUser,
                 Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
                 Empr_Nit = empresa.Empr_Nit,
@@ -154,6 +156,8 @@ namespace Plenamente.Controllers
 
         private void generateAppoiment(ViewModelActividadCumplimiento model, int idActcumplimiento)
         {
+            //// se asigna fecha inicial a la fecha final para tener solo una fecha de ejecucion
+            model.FechaFinal = model.FechaInicial;
             List<Schedule> schedules = new List<Schedule> ();
 
             if (model.Frecuencia_desc == "norepeat")
@@ -173,7 +177,7 @@ namespace Plenamente.Controllers
                     Name = model.NombreActividad,
                     TimeOfDay = model.hora,//new TimeSpan(10, 0, 0),
                     SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
-                    DaysBetween = model.period
+                    //DaysBetween = model.period
                 };
                 schedules.Add(simple);
             }
@@ -277,7 +281,8 @@ namespace Plenamente.Controllers
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            
+            var listusers = db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
+            ViewBag.users = new SelectList(listusers, "Id", "Value");
             var model2 = db.Tb_ActiCumplimiento.Find(id);
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento
             {
@@ -287,12 +292,13 @@ namespace Plenamente.Controllers
                 Meta=model2.Acum_Porcentest,
                 idObjetivo=model2.Oemp_Id,
                 FechaInicial=model2.Acum_IniAct,
-                FechaFinal=model2.Acum_FinAct,
+                FechaFinal=model2.Acum_IniAct,
                 hora=model2.HoraAct,
                 Frecuencia = Convert.ToString(model2.Frec_Id),
                 period=model2.Repeticiones,
                 Finalizada=model2.Finalizada,
-                asigrecursos=model2.asigrecursos
+                asigrecursos=model2.asigrecursos,
+                IdUser=model2.Id
 
 
             };
@@ -347,7 +353,7 @@ namespace Plenamente.Controllers
         // POST: ActividadCumplimiento/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada")] ViewModelActividadCumplimiento model)
+        public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada,IdUser")] ViewModelActividadCumplimiento model)
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
@@ -409,10 +415,10 @@ namespace Plenamente.Controllers
                 Acum_Desc = model.NombreActividad,
                 Acum_Porcentest = model.Meta,
                 Acum_IniAct = model.FechaInicial,
-                Acum_FinAct = model.FechaFinal,
+                Acum_FinAct = model.FechaInicial,
                 Oemp_Id = model.idObjetivo,
                 Acum_Registro = DateTime.Now,
-                Id = usuario.Id,
+                Id = model.IdUser,
                 Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
                 Empr_Nit = empresa.Empr_Nit,
