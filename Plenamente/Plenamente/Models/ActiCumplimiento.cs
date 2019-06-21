@@ -57,12 +57,9 @@ namespace Plenamente.Models
         public string asigrecursos { get; set; }
 
         // Permite que Acummes acceda a la data
-        public ICollection<AcumMes> AcumMes { get; set; }      
+        public ICollection<AcumMes> AcumMes { get; set; }
         public ICollection<UsuariosPlandetrabajo> Usersplandetrabajo { get; set; }
         public ICollection<ProgamacionTareas> ProgamacionTareas { get; set; }
-        
-        
-
-
+        public bool Finalizada { get; set; }
     }
 }
