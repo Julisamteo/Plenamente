@@ -49,7 +49,12 @@ namespace Plenamente.Controllers
         {
 
             ActiCumplimiento list = db.Tb_ActiCumplimiento.Find(id);
-
+            ObjEmpresa objetivo = db.Tb_ObjEmpresa.Where(obj => obj.Oemp_Id == list.Oemp_Id).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(list.Id);
+            Frecuencia frec = db.Tb_Frecuencia.Find(list.Frec_Id);
+            ViewData["obj_name"] = objetivo.Oemp_Nombre;
+            ViewData["username"] = usuario.Pers_Nom1 + "" + usuario.Pers_Nom2 + "" +usuario.Pers_Apel1 + "" + usuario.Pers_Apel2;
+            ViewData["frec_name"] = frec.Frec_Descripcion;
             return View(list);
 
         }
