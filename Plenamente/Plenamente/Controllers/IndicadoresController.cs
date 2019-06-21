@@ -25,7 +25,7 @@ namespace Plenamente.Controllers
             ChartDataViewModel datos =
                new ChartDataViewModel
                {
-                   title = "Promedio autoevaluaciones",
+                   title = "Medición del ciclo PHVA",
                    labels = db.Tb_CicloPHVA.Select(a => a.Nombre).ToArray(),
                    datasets =
                    new List<ChartDatasetsViewModel>{
@@ -101,7 +101,7 @@ namespace Plenamente.Controllers
             ChartDataViewModel datos =
               new ChartDataViewModel
               {
-                  title = "Estado GS-SST",
+                  title = "Cumplimiento SG-SST",
                   labels = new string[2] { "Finalizadas", "En ejecución" },
                   datasets =
                   new List<ChartDatasetsViewModel>{
