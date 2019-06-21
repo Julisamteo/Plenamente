@@ -18,10 +18,11 @@ namespace Plenamente.Models.ViewModel
         public float Meta { get; set; }
 
         [Display(Name = "Fecha inicial")]
-
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaInicial { get; set; }
 
         [Display(Name = "Fecha final")]
+        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaFinal { get; set; }
 
         [Display(Name = "Hora")]
@@ -46,5 +47,7 @@ namespace Plenamente.Models.ViewModel
         public string weekly_6 { get; set; }
         [Display(Name = "Asignación de recursos")]
         public string asigrecursos { get; set; }
+        [Display(Name = "Finalizar actividad")]
+        public bool Finalizada { get; set; }
     }
 }
