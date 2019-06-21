@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
+using System.ComponentModel.DataAnnotations.Schema;
 using System.Linq;
 using System.Web;
 
@@ -24,6 +25,14 @@ namespace Plenamente.Models
         public int Empr_Itrabaja { get; set; }      
         public string Empr_telefono { get; set; }
         public DateTime Empr_Registro { get; set; }
+        //Index(IsUnique = true)]
+        public int Empr_NewNit { get; set; }
+        public string Empr_RepresentanteLegal { get; set; }
+        public string Empr_CargoRepresentante { get; set; }
+        public int Empre_RepresentanteDoc { get; set; }
+        public string Empr_ResponsableSST { get; set; }
+        public int Empre_ResponsableDoc { get; set; }
+
 
         // Permite que Cargo Empresa acceda a la data
         public ICollection<CargoEmpresa> CargoEmpresas { get; set; }
