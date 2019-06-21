@@ -35,6 +35,7 @@ namespace Plenamente.Models
         public ObjEmpresa ObjEmpresa { get; set; }
 
         [ForeignKey("ApplicationUser")]
+        [Display(Name = "Nombre del usuario")]
         public string Id { get; set; }
         public ApplicationUser ApplicationUser { get; set; }
 
@@ -50,10 +51,13 @@ namespace Plenamente.Models
         [Display(Name = "Periodicidad")]
         public int Frec_Id { get; set; }
         public Frecuencia Frecuencia { get; set; }
+        [Display(Name = "Dias en que se ejecuta la actividad")]
         public string DiasSemana { get; set; }
+        [Display(Name = "Cantidad de dias en que se ejecuta la actividad")]
         public int Repeticiones { get; set; }
 
         public TimeSpan HoraAct { get; set; }
+        [Display(Name = "Asignación de recursos")]
         public string asigrecursos { get; set; }
 
         // Permite que Acummes acceda a la data
