@@ -23,7 +23,8 @@ namespace Plenamente.Controllers
         public ActionResult Index(int pagina = 1)
         {
             int _TotalRegistros = 0;
-            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();            
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            PlandeTrabajo PT = db.Tb_PlandeTrabajo.Where(e => e.Emp_Id == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
             _TotalRegistros = list.Count();
@@ -41,6 +42,7 @@ namespace Plenamente.Controllers
             };
             //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
             ViewBag.ReturnUrl = Request.UrlReferrer;
+            //ViewBag.idptrab = PT.Plat_Id;
             return View(_PaginadorCustomers);
         }
 
@@ -68,9 +70,10 @@ namespace Plenamente.Controllers
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var listusers =db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
             ViewBag.users= new SelectList(listusers, "Id", "Value");
-
+            
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
             ViewBag.ReturnUrl = Request.UrlReferrer;
+            
             return View(model);
 
         }
