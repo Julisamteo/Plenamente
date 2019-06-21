@@ -9,29 +9,40 @@
         <div style="    border: solid 2px;border-color: #929292;margin: 20px;padding: 40px;">
             <p style="    font-size: 22px;font-weight: bolder;"><img src="~/Imagenes/home1.png" style="width: 3%;" />Medición del sistema</p>
             <section class="graficosSection" style="">
+                <div class="row">
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <canvas id="chartPromedio" class="chart-container marco" chart-route="/Indicadores/PromedioAutoevaluaciones" chart-type="horizontalBar"></canvas>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <canvas id="chartAvance" class="chart-container marco" chart-route="/Indicadores/AvanceAutoevaluaciones" chart-type="line"></canvas>
+                    </div>
+                    <div class="col-lg-4 col-md-4 col-sm-12 col-xs-12">
+                        <canvas id="chartUltima" class="chart-container marco" chart-route="/Indicadores/UltimaAutoevaluacion" chart-type="pie"></canvas>
+                    </div>
 
+                </div>
 
-                <div class="graficoA">
-                    <center>
-                        <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Medición del ciclo PHVA</p>
-                        <img src="~/Imagenes/grafica3.png" />
-                    </center>
-                </div>
-                <div class="graficoB">
-                    <center>
-                        <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Alcance del plan de trabajo anual</p>
-                        <img src="~/Imagenes/grafica2.png" />
-                    </center>
-                </div>
-                <div class="graficoC">
-                    <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Cumplimiento SG-SST</p>
-                    <center><img src="~/Imagenes/grafica1.png" /></center>
-                </div>
+                @*<div class="graficoA">
+                        <center>
+                            <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Medición del ciclo PHVA</p>
+                            <img src="~/Imagenes/grafica3.png" />
+                        </center>
+                    </div>
+                    <div class="graficoB">
+                        <center>
+                            <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Alcance del plan de trabajo anual</p>
+                            <img src="~/Imagenes/grafica2.png" />
+                        </center>
+                    </div>
+                    <div class="graficoC">
+                        <p style="text-align:left;font-size: 18px;font-weight: 600;padding: 5px 1px 14px 5px;">Cumplimiento SG-SST</p>
+                        <center><img src="~/Imagenes/grafica1.png" /></center>
+                    </div>*@
                 @*<div class="graficoD">
-                    <p style="text-align:center;font-size: 18px;font-weight: 600;">Cumplimiento</p>
-                    <hr class="claseDivicion" />
-                    <center><img src="~/Imagenes/graph (2).png" /></center>
-                </div>*@
+                        <p style="text-align:center;font-size: 18px;font-weight: 600;">Cumplimiento</p>
+                        <hr class="claseDivicion" />
+                        <center><img src="~/Imagenes/graph (2).png" /></center>
+                    </div>*@
             </section>
         </div>
         @*Tareas + Periodico Virtual y modulos*@
@@ -79,3 +90,7 @@
         </section>
     </div>
 </section>
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+    @Scripts.Render("~/bundles/chartjs")
+}

@@ -69,6 +69,10 @@
           <DataField>nombreEmpresa</DataField>
           <rd:TypeName>System.String</rd:TypeName>
         </Field>
+        <Field Name="recursos">
+          <DataField>recursos</DataField>
+          <rd:TypeName>System.String</rd:TypeName>
+        </Field>
       </Fields>
       <rd:DataSetInfo>
         <rd:DataSetName>PlenamenteDataSet</rd:DataSetName>
@@ -290,28 +294,31 @@
             <TablixBody>
               <TablixColumns>
                 <TablixColumn>
-                  <Width>2.25961cm</Width>
+                  <Width>1.98183cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>9.07801cm</Width>
+                  <Width>8.80023cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>10.64434cm</Width>
+                  <Width>10.36656cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>8.45148cm</Width>
+                  <Width>8.1737cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>4.04881cm</Width>
+                  <Width>2.22222cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.64851cm</Width>
+                  <Width>3.77103cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.64851cm</Width>
+                  <Width>2.37073cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>2.64851cm</Width>
+                  <Width>2.37073cm</Width>
+                </TablixColumn>
+                <TablixColumn>
+                  <Width>2.37073cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -445,6 +452,41 @@
                             </Paragraph>
                           </Paragraphs>
                           <rd:DefaultName>Textbox44</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
+                        <Textbox Name="Textbox1">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>Recursos</Value>
+                                  <Style>
+                                    <FontFamily />
+                                    <FontSize>11pt</FontSize>
+                                    <FontWeight>Bold</FontWeight>
+                                    <Color>#666666</Color>
+                                  </Style>
+                                </TextRun>
+                              </TextRuns>
+                              <Style />
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>Textbox1</rd:DefaultName>
                           <Style>
                             <Border>
                               <Color>LightGrey</Color>
@@ -733,6 +775,38 @@
                     </TablixCell>
                     <TablixCell>
                       <CellContents>
+                        <Textbox Name="recursos">
+                          <CanGrow>true</CanGrow>
+                          <KeepTogether>true</KeepTogether>
+                          <Paragraphs>
+                            <Paragraph>
+                              <TextRuns>
+                                <TextRun>
+                                  <Value>=Fields!recursos.Value</Value>
+                                  <Style />
+                                </TextRun>
+                              </TextRuns>
+                              <Style>
+                                <TextAlign>Left</TextAlign>
+                              </Style>
+                            </Paragraph>
+                          </Paragraphs>
+                          <rd:DefaultName>recursos</rd:DefaultName>
+                          <Style>
+                            <Border>
+                              <Color>LightGrey</Color>
+                              <Style>Solid</Style>
+                            </Border>
+                            <PaddingLeft>2pt</PaddingLeft>
+                            <PaddingRight>2pt</PaddingRight>
+                            <PaddingTop>2pt</PaddingTop>
+                            <PaddingBottom>2pt</PaddingBottom>
+                          </Style>
+                        </Textbox>
+                      </CellContents>
+                    </TablixCell>
+                    <TablixCell>
+                      <CellContents>
                         <Textbox Name="porcentaje">
                           <CanGrow>true</CanGrow>
                           <KeepTogether>true</KeepTogether>
@@ -873,6 +947,7 @@
                 <TablixMember />
                 <TablixMember />
                 <TablixMember />
+                <TablixMember />
               </TablixMembers>
             </TablixColumnHierarchy>
             <TablixRowHierarchy>
@@ -888,7 +963,7 @@
             <DataSetName>DsPlanDeTrabajo</DataSetName>
             <Top>2.01825cm</Top>
             <Height>1.2cm</Height>
-            <Width>42.42778cm</Width>
+            <Width>42.42776cm</Width>
             <ZIndex>9</ZIndex>
             <Style>
               <Border>
@@ -980,7 +1055,6 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox18</rd:DefaultName>
-            <Top>0cm</Top>
             <Left>6.83737cm</Left>
             <Height>0.6cm</Height>
             <Width>4.88125cm</Width>
@@ -1015,7 +1089,6 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
-            <Top>0cm</Top>
             <Left>2.40724cm</Left>
             <Height>0.6cm</Height>
             <Width>4.25374cm</Width>
@@ -1101,7 +1174,7 @@
         <Height>3.05in</Height>
         <Style />
       </Body>
-      <Width>16.70385in</Width>
+      <Width>16.72977in</Width>
       <Page>
         <PageHeader>
           <Height>3.49779cm</Height>

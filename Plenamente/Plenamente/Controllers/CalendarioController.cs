@@ -55,9 +55,9 @@ namespace Plenamente.Controllers
             List<EventViewModel> lst = new List<EventViewModel>();
             try
             {
-
                 List<EventViewModel> cumplimientos =
-                 db.Tb_ActiCumplimiento.Where(a => a.Empr_Nit == AccountData.NitEmpresa)
+                 db.Tb_ActiCumplimiento
+                    .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null))
                      .Select(a =>
                          new EventViewModel
                          {
@@ -66,8 +66,8 @@ namespace Plenamente.Controllers
                              Title = a.Acum_Desc,
                              Start = a.Acum_IniAct,
                              End = a.Acum_FinAct,
-                             BackgroundColor = "#BCBFE8",
-                             BorderColor = "#D1BCE8",
+                             BackgroundColor = a.Finalizada ? "#BCBFE8" : "#9493BF",
+                             BorderColor = a.Finalizada ? "#D1BCE8" : "#636280",
                              EventRoute = "/ActividadCumplimiento/Details/" + a.Acum_Id
                          }).ToList();
 
@@ -78,7 +78,9 @@ namespace Plenamente.Controllers
 
                 List<EventViewModel> planes =
                     db.Tb_ProgamacionTareas
-                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa && a.Estado && a.ActiCumplimiento.Id != null)
+                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
+                                && a.Estado
+                                && a.ActiCumplimiento.Usersplandetrabajo.Count > 0)
                         .Select(a =>
                             new EventViewModel
                             {
