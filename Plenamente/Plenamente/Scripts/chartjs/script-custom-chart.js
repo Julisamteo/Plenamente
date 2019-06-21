@@ -25,23 +25,31 @@ function Chart_Load(nameObject, routeMethod, typeChart) {
         contentType: "application/json; charset=utf-8",
         dataType: "json",
         success: function (chData) {
+            var datasets = [];
+            for (var i = 0; i < chData.datasets.length; i++) {
+                datasets.push({
+                    label: chData.datasets[i].label,
+                    data: chData.dataset[i].data ? chData.dataset[i].data : {},
+                    fill: chData.datasets[i].fill,
+                    backgroundColor: chData.datasets[i].backgroundColor ? chData.datasets[i].backgroundColor : graphColors,
+                    borderColor: chData.datasets[i].borderColor ? chData.datasets[i].borderColor : graphOutlines,
+                    hoverBackgroundColor: hoverColor,
+                    borderWidth: chData.datasets[i].borderWidth
+                });
+            }
             generarColores(chData.labels.length);
             var ctx = document.getElementById(nameObject).getContext('2d');
             new Chart(ctx, {
                 type: typeChart ? typeChart : 'bar',
                 data: {
                     labels: chData.labels,
-                    datasets: [{
-                        label: chData.label,
-                        data: chData.data,
-                        fill: chData.fill,
-                        backgroundColor: chData.backgroundColor ? chData.backgroundColor : graphColors,
-                        borderColor: chData.borderColor ? chData.borderColor : graphOutlines,
-                        hoverBackgroundColor: hoverColor,
-                        borderWidth: chData.borderWidth
-                    }]
+                    datasets: datasets
                 },
                 options: {
+                    title: {
+                        display: true,
+                        text: chData.title
+                    },
                     scales: {
                         yAxes: [{
                             ticks: {

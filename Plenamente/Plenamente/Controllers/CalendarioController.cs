@@ -66,8 +66,8 @@ namespace Plenamente.Controllers
                              Title = a.Acum_Desc,
                              Start = a.Acum_IniAct,
                              End = a.Acum_FinAct,
-                             BackgroundColor = "#BCBFE8",
-                             BorderColor = "#D1BCE8",
+                             BackgroundColor = a.Finalizada ? "#BCBFE8" : "#9493BF",
+                             BorderColor = a.Finalizada ? "#D1BCE8" : "#636280",
                              EventRoute = "/ActividadCumplimiento/Details/" + a.Acum_Id
                          }).ToList();
 
