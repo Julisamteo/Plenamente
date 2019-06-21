@@ -237,7 +237,7 @@
     <Compile Include="Controllers\ClaseArlController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
-    <Compile Include="Controllers\EmpresasController.cs" />
+    <Compile Include="Controllers\EmpresaController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
     <Compile Include="Controllers\EpsController.cs" />
@@ -921,11 +921,6 @@
     <Content Include="Views\admin\Users.cshtml" />
     <Content Include="Views\admin\EditarUser.cshtml" />
     <Content Include="Views\admin\CrearPersona.cshtml" />
-    <Content Include="Views\Empresas\Create.cshtml" />
-    <Content Include="Views\Empresas\Delete.cshtml" />
-    <Content Include="Views\Empresas\Details.cshtml" />
-    <Content Include="Views\Empresas\Edit.cshtml" />
-    <Content Include="Views\Empresas\Index.cshtml" />
     <Content Include="Views\admin\UsersSysadmin.cshtml" />
     <Content Include="Views\Afp\Create.cshtml" />
     <Content Include="Views\Afp\Delete.cshtml" />
@@ -974,6 +969,11 @@
     <Content Include="Views\TVin\Edit.cshtml" />
     <Content Include="Views\TVin\Index.cshtml" />
     <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
+    <Content Include="Views\Empresa\Create.cshtml" />
+    <Content Include="Views\Empresa\Delete.cshtml" />
+    <Content Include="Views\Empresa\Details.cshtml" />
+    <Content Include="Views\Empresa\Edit.cshtml" />
+    <Content Include="Views\Empresa\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

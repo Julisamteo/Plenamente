@@ -6,57 +6,22 @@ using System.Linq;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
-using PagedList;
 using Plenamente.Models;
 
 namespace Plenamente.Controllers
 {
-    public class EmpresasController : Controller
+    public class EmpresaController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Empresas
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Index(string sortOrder, string currentFilter, string searchString, int? page)
+        // GET: Empresa
+        public ActionResult Index()
         {
-            ViewBag.CurrentSort = sortOrder;
-            ViewBag.NameSortParm = String.IsNullOrEmpty(sortOrder) ? "name_desc" : "";
-            ViewBag.DateSortParm = sortOrder == "Date" ? "date_desc" : "Date";
-
-            if (searchString != null)
-            {
-                page = 1;
-            }
-            else
-            {
-                searchString = currentFilter;
-            }
-
-            ViewBag.CurrentFilter = searchString;
-            var empresas = db.Tb_Empresa.Include(s => s.Arl);
-                           // from s in db.Tb_Empresa
-                           //select s;
-            if (!String.IsNullOrEmpty(searchString))
-            {
-                 empresas = empresas.Where(s => s.Empr_Nom.Contains(searchString)
-                                       || s.Empr_Nom.Contains(searchString));
-            }
-            switch (sortOrder)
-            {
-                case "name_desc":
-                    empresas = empresas.OrderByDescending(s => s.Empr_Nom);
-                    break;
-                default:  // Name ascending 
-                    empresas = empresas.OrderBy(s => s.Empr_Nom);
-                    break;
-            }
-            int pageSize = 10;
-            int pageNumber = (page ?? 1);
-            return View(empresas.ToPagedList(pageNumber, pageSize));
+            var tb_Empresa = db.Tb_Empresa.Include(e => e.Arl).Include(e => e.ClaseArl);
+            return View(tb_Empresa.ToList());
         }
-        // GET: Empresas/Details/5
-        [Authorize(Roles = "Administrator")]
+
+        // GET: Empresa/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -70,21 +35,21 @@ namespace Plenamente.Controllers
             }
             return View(empresa);
         }
-        // GET: Empresas/Create
-        [Authorize(Roles = "Administrator")]
+
+        // GET: Empresa/Create
         public ActionResult Create()
         {
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom");
             return View();
         }
-        // POST: Empresas/Create
+
+        // POST: Empresa/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_Registro")] Empresa empresa)
+        public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
@@ -97,8 +62,8 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom", empresa.Carl_Id);
             return View(empresa);
         }
-        // GET: Empresas/Edit/5
-        [Authorize(Roles = "Administrator")]
+
+        // GET: Empresa/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -114,13 +79,13 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom", empresa.Carl_Id);
             return View(empresa);
         }
-        // POST: Empresas/Edit/5
+
+        // POST: Empresa/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        [Authorize(Roles = "Administrator")]
-        public ActionResult Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_Registro")] Empresa empresa)
+        public ActionResult Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
@@ -132,8 +97,8 @@ namespace Plenamente.Controllers
             ViewBag.Carl_Id = new SelectList(db.Tb_ClaseArl, "Carl_Id", "Carl_Nom", empresa.Carl_Id);
             return View(empresa);
         }
-        // GET: Empresas/Delete/5
-        [Authorize(Roles = "Administrator")]
+
+        // GET: Empresa/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -147,8 +112,8 @@ namespace Plenamente.Controllers
             }
             return View(empresa);
         }
-        // POST: Empresas/Delete/5
-        [Authorize(Roles = "Administrator")]
+
+        // POST: Empresa/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)
@@ -158,6 +123,7 @@ namespace Plenamente.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
+
         protected override void Dispose(bool disposing)
         {
             if (disposing)
