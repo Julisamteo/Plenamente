@@ -36,15 +36,15 @@
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-8" })
-        <div class="col-md-5">
+        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-10" })
+        <div class="col-md-10">
 
             @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-8" })
+        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-10" })
         <div class="col-md-5">
 
             @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "form-control" })
