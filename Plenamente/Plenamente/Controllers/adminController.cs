@@ -47,7 +47,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             var userId = User.Identity.GetUserId();
             var UserCurrent = db.Users.Find(userId);
             var Empr = UserCurrent.Empr_Nit;
-            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona).Include(u => u.Arl).Include(u => u.Empresa).Where(e => e.Empr_Nit == Empr);
+            var usuarios = db.Users.Include(u => u.SedeCiudad).Include(u => u.CargoEmpresa).Include(u => u.AreaEmpresa).Include(u => u.Jefe).Include(u => u.EstadoPersona).Include(u => u.Arl).Include(u => u.Empresa).Include(u => u.Eps).Where(e => e.Empr_Nit == Empr);
             // from s in db.Users
             //select s;
             if (!String.IsNullOrEmpty(searchString))
@@ -208,7 +208,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var Arl = paramExpandedUserDTO.Arl_Id;
                 var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
                 var Ciudad = paramExpandedUserDTO.Ciud_Id;
-                var Cargo = paramExpandedUserDTO.Cemp_Id;
+                var Cargo = paramExpandedUserDTO.Pers_Cargo;
                 var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
                 var Categoria = paramExpandedUserDTO.Cate_Id;
                 var Genero = paramExpandedUserDTO.Gene_Id;
@@ -250,7 +250,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Eps_Id = Eps,
                     Arl_Id = Arl,
                     Sciu_Id = SedeCiudad,
-                    Cemp_Id = Cargo,
+                    Pers_Cargo = Cargo,
                     Aemp_Id = AreaEmpresa,
                     Cate_Id = Categoria,
                     Gene_Id = Genero,
@@ -559,7 +559,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var Arl = paramExpandedUserDTO.Arl_Id;
                 var SedeCiudad = paramExpandedUserDTO.Sciu_Id;
                 var Ciudad = paramExpandedUserDTO.Ciud_Id;
-                var Cargo = paramExpandedUserDTO.Cemp_Id;
+                var Cargo = paramExpandedUserDTO.Pers_Cargo;
                 var AreaEmpresa = paramExpandedUserDTO.Aemp_Id;
                 var Categoria = paramExpandedUserDTO.Cate_Id;
                 var Genero = paramExpandedUserDTO.Gene_Id;
@@ -601,7 +601,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Eps_Id = Eps,
                     Arl_Id = Arl,
                     Sciu_Id = SedeCiudad,
-                    Cemp_Id = Cargo,
+                    Pers_Cargo = Cargo,
                     Aemp_Id = AreaEmpresa,
                     Cate_Id = Categoria,
                     Gene_Id = Genero,

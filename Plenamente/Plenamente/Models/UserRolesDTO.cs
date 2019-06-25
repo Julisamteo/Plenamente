@@ -19,6 +19,7 @@ namespace Plenamente.Models
         public string Nombres { get; set; }
         public string Apellidos { get; set; }
         public int? Pers_Licencia { get; set; }
+        public string Pers_Cargo { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public Nullable<DateTime> Pers_LicVence { get; set; }
