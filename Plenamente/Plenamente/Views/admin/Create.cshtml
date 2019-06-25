@@ -159,6 +159,12 @@
         @Html.ValidationMessageFor(model => model.Tvin_Id, "", new { @class = "text-danger" })
         <br />
         <br />
+        Cargo del trabajador
+        <br />
+        <br />
+        @Html.EditorFor(model => model.Pers_Cargo, new { htmlAttributes = new { @class = "estilosSelect" } })
+        <br />
+        <br />
     </div>
     <br />
     <br />
