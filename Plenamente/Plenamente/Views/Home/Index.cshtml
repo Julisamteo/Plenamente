@@ -1,4 +1,6 @@
-﻿@{
+﻿@model  IEnumerable<Plenamente.Models.ViewModel.EventViewModel>
+
+@{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
@@ -48,9 +50,21 @@
         @*Tareas + Periodico Virtual y modulos*@
         <section class="tareasmoduloSection">
             <div class="">
-                <div class="tareasDiv">
+                <div class="tareasDiv" style=" overflow: scroll;">
                     <p><img src="~/Imagenes/list.png" /> &nbsp; &nbsp;Mis tareas</p>
                     <hr class="claseDivicion" />
+                    <ul class="list-group">
+                        @foreach (var item in Model)
+                        {
+                            <li class="list-group-item">
+                                <i style="color: @item.BorderColor;"></i>
+                                <a href="@Url.Action("Cumplimiento", "AutoEvaluacion", new { idItem = item.Id })" title="@item.Description">
+                                    <span style="color: @item.BorderColor;">@item.Title </span> - 
+                                    <span style="color: darkgray;">@item.StartDate</span>
+                                </a>
+                            </li>
+                        }
+                    </ul>
                 </div>
                 <div class="tareasDiv">
                     <p><img src="~/Imagenes/list.png" /> &nbsp; &nbsp;Tips SST</p>
