@@ -13,24 +13,25 @@ namespace Plenamente.Scheduler
         {
             get
             {
-                return _daysBetween;
+                return _daysBetween=1;
             }
             set
             {
-                if (value <= 0) throw new ArgumentException(
-                    "The days between appointments must be at least one.");
+                /*if (value <= 0) throw new ArgumentException(
+                    "The days between appointments must be at least one.");*/
 
-                _daysBetween = value;
+                //_daysBetween = value;
+                _daysBetween = 1;
             }
         }
 
         public override bool OccursOnDate(DateTime date)
         {
-            if (DateIsInPeriod(date))
-            {
+            /*if (DateIsInPeriod(date))
+            {*/
                 return DateIsValidForSchedule(date);
-            }
-            return false;
+           // }
+            //return false;
         }
 
         private bool DateIsValidForSchedule(DateTime date)

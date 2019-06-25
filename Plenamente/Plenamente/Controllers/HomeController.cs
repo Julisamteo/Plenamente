@@ -1,4 +1,7 @@
-﻿using System;
+﻿using Plenamente.App_Tool;
+using Plenamente.Models;
+using Plenamente.Models.ViewModel;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,10 +11,34 @@ namespace Plenamente.Controllers
 {
     public class HomeController : Controller
     {
-        [Authorize(Roles = "Administrator,Admin")]
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ActionResult Index()
         {
-            return View();
+            List<EventViewModel> lst = new List<EventViewModel>();
+            try
+            {
+                lst =
+                    db.Tb_ProgamacionTareas
+                        .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
+                                && a.Estado
+                                && a.ActiCumplimiento.Usersplandetrabajo.Count > 0)
+                        .Select(a =>
+                            new EventViewModel
+                            {
+                                Id = a.Id,
+                                Description = "Tarea programada",
+                                Title = a.Descripcion,
+                                Start = a.FechaHora,
+                                BackgroundColor = "#7DDAFF",
+                                BorderColor = "#9FBDC9",
+                                EventRoute = "/ActividadCumplimiento/Create/" + a.Id
+                            }).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+            return View(lst);
         }
 
         public ActionResult About()

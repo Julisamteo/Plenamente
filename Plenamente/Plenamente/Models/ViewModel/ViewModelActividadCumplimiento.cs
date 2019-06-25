@@ -10,6 +10,8 @@ namespace Plenamente.Models.ViewModel
     {
         public int IdActiCumplimiento { get; set; }
         public int IdEmpresa { get; set; }
+        [Display(Name = "Usuarios")]
+        public string IdUser { get; set; }
 
         [Display(Name = "Actividad")]
         public string NombreActividad { get; set; }
@@ -17,7 +19,7 @@ namespace Plenamente.Models.ViewModel
         [Display(Name = "Meta (%)")]
         public float Meta { get; set; }
 
-        [Display(Name = "Fecha inicial")]
+        [Display(Name = "Fecha de ejecución")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaInicial { get; set; }
 
@@ -49,5 +51,6 @@ namespace Plenamente.Models.ViewModel
         public string asigrecursos { get; set; }
         [Display(Name = "Finalizar actividad")]
         public bool Finalizada { get; set; }
+        public int idPlanDeTrabajo { get; set; }
     }
 }

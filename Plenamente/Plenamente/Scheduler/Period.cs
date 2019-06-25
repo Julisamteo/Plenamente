@@ -16,10 +16,10 @@ namespace Plenamente.Scheduler
             Start = start.Date;
             End = end.Date;
 
-            if (Start > End)
+            /*if (Start > End)
             {
                 throw new ArgumentException("The start date may not be after the end date.");
-            }
+            }*/
         }
     }
 }

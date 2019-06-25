@@ -23,7 +23,8 @@ namespace Plenamente.Controllers
         public ActionResult Index(int pagina = 1)
         {
             int _TotalRegistros = 0;
-            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();            
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            PlandeTrabajo PT = db.Tb_PlandeTrabajo.Where(e => e.Emp_Id == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
             _TotalRegistros = list.Count();
@@ -41,6 +42,7 @@ namespace Plenamente.Controllers
             };
             //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
             ViewBag.ReturnUrl = Request.UrlReferrer;
+            //ViewBag.idptrab = PT.Plat_Id;
             return View(_PaginadorCustomers);
         }
 
@@ -49,28 +51,36 @@ namespace Plenamente.Controllers
         {
 
             ActiCumplimiento list = db.Tb_ActiCumplimiento.Find(id);
-
+            ObjEmpresa objetivo = db.Tb_ObjEmpresa.Where(obj => obj.Oemp_Id == list.Oemp_Id).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(list.Id);
+            Frecuencia frec = db.Tb_Frecuencia.Find(list.Frec_Id);
+            ViewData["obj_name"] = objetivo.Oemp_Nombre;
+            ViewData["username"] = usuario.Pers_Nom1 + "" + usuario.Pers_Nom2 + "" +usuario.Pers_Apel1 + "" + usuario.Pers_Apel2;
+            ViewData["frec_name"] = frec.Frec_Descripcion;
             return View(list);
 
         }
 
         // GET: ActividadCumplimiento/Create
-        public ActionResult Create()
+        public ActionResult Create(int idPlanDeTrabajo)
         {
             var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-
+            var listusers =db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
+            ViewBag.users= new SelectList(listusers, "Id", "Value");
+            
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
             ViewBag.ReturnUrl = Request.UrlReferrer;
+            ViewBag.idptrab = idPlanDeTrabajo;
             return View(model);
 
         }
 
         // POST: ActividadCumplimiento/Create
         [HttpPost]
-        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos")] ViewModelActividadCumplimiento model)
+        public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,IdUser,idPlanDeTrabajo")] ViewModelActividadCumplimiento model)
         {
 
 
@@ -116,10 +126,10 @@ namespace Plenamente.Controllers
                 Acum_Desc = model.NombreActividad,
                 Acum_Porcentest = model.Meta,
                 Acum_IniAct = model.FechaInicial,
-                Acum_FinAct = model.FechaFinal,
+                Acum_FinAct = model.FechaInicial,
                 Oemp_Id = model.idObjetivo,
                 Acum_Registro = DateTime.Now,
-                Id = usuario.Id,
+                Id = model.IdUser,
                 Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
                 Empr_Nit = empresa.Empr_Nit,
@@ -134,6 +144,16 @@ namespace Plenamente.Controllers
             };
 
             db.Tb_ActiCumplimiento.Add(actcumplimiento);
+           
+            db.SaveChanges();
+            UsuariosPlandetrabajo user = new UsuariosPlandetrabajo
+            {
+                Acum_Id = actcumplimiento.Acum_Id,
+                Plat_Id = model.idPlanDeTrabajo,
+                Emp_Id = AccountData.NitEmpresa,
+                Id = model.IdUser
+            };
+            db.Tb_UsersPlandeTrabajo.Add(user);
             db.SaveChanges();
             //Generamos la programacion de tareas en el tiempo.
             generateAppoiment(model, actcumplimiento.Acum_Id);
@@ -149,6 +169,8 @@ namespace Plenamente.Controllers
 
         private void generateAppoiment(ViewModelActividadCumplimiento model, int idActcumplimiento)
         {
+            //// se asigna fecha inicial a la fecha final para tener solo una fecha de ejecucion
+            model.FechaFinal = model.FechaInicial;
             List<Schedule> schedules = new List<Schedule> ();
 
             if (model.Frecuencia_desc == "norepeat")
@@ -168,7 +190,7 @@ namespace Plenamente.Controllers
                     Name = model.NombreActividad,
                     TimeOfDay = model.hora,//new TimeSpan(10, 0, 0),
                     SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
-                    DaysBetween = model.period
+                    //DaysBetween = model.period
                 };
                 schedules.Add(simple);
             }
@@ -266,13 +288,14 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Edit/5
         public ActionResult Edit(int id)
         {
-            var listfrec = db.Tb_Frecuencia.Select(o => new { Id = o.Frec_Id , Value = o.Frec_Descripcion }).ToList();
+            var listfrec = db.Tb_Frecuencia.Where(f => f.Frec_Id != 3).Select(o => new { Id = o.Frec_Id , Value = o.Frec_Descripcion }).ToList();
             ViewBag.frecuenciaEmpresa = new SelectList(listfrec, "Id", "Value");
             var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            
+            var listusers = db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
+            ViewBag.users = new SelectList(listusers, "Id", "Value");
             var model2 = db.Tb_ActiCumplimiento.Find(id);
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento
             {
@@ -282,12 +305,13 @@ namespace Plenamente.Controllers
                 Meta=model2.Acum_Porcentest,
                 idObjetivo=model2.Oemp_Id,
                 FechaInicial=model2.Acum_IniAct,
-                FechaFinal=model2.Acum_FinAct,
+                FechaFinal=model2.Acum_IniAct,
                 hora=model2.HoraAct,
                 Frecuencia = Convert.ToString(model2.Frec_Id),
                 period=model2.Repeticiones,
                 Finalizada=model2.Finalizada,
-                asigrecursos=model2.asigrecursos
+                asigrecursos=model2.asigrecursos,
+                IdUser=model2.Id
 
 
             };
@@ -342,8 +366,9 @@ namespace Plenamente.Controllers
         // POST: ActividadCumplimiento/Edit/5
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada")] ViewModelActividadCumplimiento model)
+        public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada,IdUser")] ViewModelActividadCumplimiento model)
         {
+            UsuariosPlandetrabajo uplant = db.Tb_UsersPlandeTrabajo.Where(e => e.Acum_Id == model.IdActiCumplimiento).FirstOrDefault();
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
 
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -404,10 +429,10 @@ namespace Plenamente.Controllers
                 Acum_Desc = model.NombreActividad,
                 Acum_Porcentest = model.Meta,
                 Acum_IniAct = model.FechaInicial,
-                Acum_FinAct = model.FechaFinal,
+                Acum_FinAct = model.FechaInicial,
                 Oemp_Id = model.idObjetivo,
                 Acum_Registro = DateTime.Now,
-                Id = usuario.Id,
+                Id = model.IdUser,
                 Frec_Id = Convert.ToInt32(model.Frecuencia),
                 Peri_Id = 6,
                 Empr_Nit = empresa.Empr_Nit,
@@ -424,6 +449,17 @@ namespace Plenamente.Controllers
             //var model2 = db.Tb_ActiCumplimiento.Find(actcumplimiento.Acum_Id);
             db.Entry(actcumplimiento).State = EntityState.Modified;
             db.SaveChanges();
+            /*UsuariosPlandetrabajo user = new UsuariosPlandetrabajo
+            {
+
+                Uspl_Id=uplant.Uspl_Id,
+                Acum_Id=uplant.Acum_Id,
+                Plat_Id = uplant.Plat_Id,
+                Emp_Id = AccountData.NitEmpresa,
+                Id = model.IdUser
+            };
+            db.Entry(user).State = EntityState.Modified;
+            db.SaveChanges();*/
             /*if ((model.FechaFinal != model2.Acum_FinAct) || (model.FechaInicial != model2.Acum_IniAct) || (model.period != model2.Repeticiones) || (model2.DiasSemana != dias) || (model2.Frec_Id != Convert.ToInt32(model.Frecuencia)))
             {*/
             var prog = db.Tb_ProgamacionTareas.Where(e => e.ActiCumplimiento_Id == actcumplimiento.Acum_Id).ToList();

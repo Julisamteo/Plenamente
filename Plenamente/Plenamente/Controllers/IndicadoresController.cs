@@ -1,6 +1,5 @@
 ﻿using Plenamente.App_Tool;
 using Plenamente.Models;
-using Plenamente.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -46,14 +45,14 @@ namespace Plenamente.Controllers
             List<ActiCumplimiento> lst = new List<ActiCumplimiento>();
             try
             {
-                var cumplimientos =
+                List<ActiCumplimiento> cumplimientos =
                     db.Tb_ActiCumplimiento.Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)).ToList();
                 if (cumplimientos != null && cumplimientos.Count > 0)
                 {
                     lst.AddRange(cumplimientos);
                 }
 
-                var ci = new CultureInfo("es-CO");
+                CultureInfo ci = new CultureInfo("es-CO");
                 ChartDataViewModel datos =
                   new ChartDataViewModel
                   {
@@ -87,21 +86,21 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
         {
-            var date = DateTime.Now;
-            var start = date.AddDays(-date.Day);
-            var end = start.AddMonths(1);
+            DateTime date = DateTime.Now;
+            DateTime start = date.AddDays(-date.Day);
+            DateTime end = start.AddMonths(1);
             List<ActiCumplimiento> lst =
                    db.Tb_ActiCumplimiento.Where(
                        a => a.Empr_Nit == AccountData.NitEmpresa
                        && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)
                        && a.Acum_IniAct >= start
                        && a.Acum_IniAct < end).ToList();
-            var total = lst.Count();
-            var ended = lst.Where(a => !a.Finalizada).Count();
+            int total = lst.Count();
+            int ended = lst.Where(a => !a.Finalizada).Count();
             ChartDataViewModel datos =
               new ChartDataViewModel
               {
-                  title = "Cumplimiento SG-SST",
+                  title = $"Cumplimiento SG-SST {total} Actividades",
                   labels = new string[2] { "Finalizadas", "En ejecución" },
                   datasets =
                   new List<ChartDatasetsViewModel>{
@@ -109,6 +108,8 @@ namespace Plenamente.Controllers
                           label = "Estado actividades",
                           data = new int[2]{ ended, total-ended  },
                           fill = false,
+                          backgroundColor = new string[2] { "#FF1F17", "#6CB52D" },
+                          borderColor = new string[2] { "#FF6963", "#65ac1e" },
                           borderWidth = 1
                       }},
               };

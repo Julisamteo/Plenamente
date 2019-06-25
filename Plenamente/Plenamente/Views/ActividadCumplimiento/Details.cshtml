@@ -1,55 +1,17 @@
 ﻿@model Plenamente.Models.ActiCumplimiento
 
 @{
-    ViewBag.Title = "View";
+    ViewBag.Title = "Detalle de la actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-<h2>View</h2>
+<div class="colorVerdeBack">
+    <p>Detalle de la actividad</p>
+</div>
 
 <div>
-    <h4>ActiCumplimiento</h4>
-    <hr />
+    
     <dl class="dl-horizontal">
-        <dt>
-            @Html.DisplayNameFor(model => model.ApplicationUser.Pers_Nom1)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ApplicationUser.Pers_Nom1)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Empresa.Empr_Nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Empresa.Empr_Nom)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Frecuencia.Frec_Descripcion)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Frecuencia.Frec_Descripcion)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.ObjEmpresa.Oemp_Nombre)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.ObjEmpresa.Oemp_Nombre)
-        </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Periodo.Peri_Nom)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Periodo.Peri_Nom)
-        </dd>
 
         <dt>
             @Html.DisplayNameFor(model => model.Acum_Desc)
@@ -58,7 +20,6 @@
         <dd>
             @Html.DisplayFor(model => model.Acum_Desc)
         </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Acum_Porcentest)
         </dt>
@@ -66,15 +27,6 @@
         <dd>
             @Html.DisplayFor(model => model.Acum_Porcentest)
         </dd>
-
-        <dt>
-            @Html.DisplayNameFor(model => model.Acum_Ejec)
-        </dt>
-
-        <dd>
-            @Html.DisplayFor(model => model.Acum_Ejec)
-        </dd>
-
         <dt>
             @Html.DisplayNameFor(model => model.Acum_Registro)
         </dt>
@@ -98,10 +50,76 @@
         <dd>
             @Html.DisplayFor(model => model.Acum_FinAct)
         </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.asigrecursos)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.asigrecursos)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Finalizada)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Finalizada)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Oemp_Id)
+        </dt>
+
+        <dd>
+            @ViewData["obj_name"]
+        </dd>
+        <dt>
+            @Html.DisplayNameFor(model => model.Frec_Id)
+        </dt>
+
+        <dd>
+            @ViewData["frec_name"]
+        </dd>
+        @if (Model.Frec_Id == 2 || Model.Frec_Id == 4)
+        {
+        <dt>
+            @Html.DisplayNameFor(model => model.Repeticiones)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Repeticiones)
+        </dd>
+        }
+         @if (Model.Frec_Id == 3)
+        {
+        <dt>
+            @Html.DisplayNameFor(model => model.DiasSemana)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.DiasSemana)
+        </dd>
+        }
+        <dt>
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+
+        <dd>
+            @ViewData["username"]
+        </dd>
+
+
+
+
+
 
     </dl>
 </div>
 <p>
-    
-    @Html.ActionLink("Back to List", "Index")
+    <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento", new { id = Model.Acum_Id })" title="Editar">
+        Editar
+    </a>
+    <a href="@Url.Action("Index", "ActividadCumplimiento")" class="ayudaTitulos">
+        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+    </a>
 </p>
