@@ -15,6 +15,7 @@
 
 <div class="contenidoCuerpo">
     <input type="hidden" value="@ViewBag.ReturnUrl" id="retornar" name="retornar" />
+    <input type="hidden" value="@ViewBag.idptrab" id="retornar" name="retornar" />
 
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
@@ -94,7 +95,7 @@
             <select class="browser-default custom-select" id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
                 <option value="norepeat">No repetir</option>
                 <option value="daily">Diaria</option>
-                <option value="weekly">Semanal</option>
+                <option value="weekly" style="display:none;">Semanal</option>
                 <option value="monthly">Mensual</option>
             </select>
         </div>

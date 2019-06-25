@@ -51,5 +51,6 @@ namespace Plenamente.Models.ViewModel
         public string asigrecursos { get; set; }
         [Display(Name = "Finalizar actividad")]
         public bool Finalizada { get; set; }
+        public int idPlanDeTrabajo { get; set; }
     }
 }
