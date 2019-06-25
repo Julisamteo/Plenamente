@@ -20,71 +20,72 @@
     <hr />
     @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     <div class="form-group">
-        @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-10" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
 
             @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
     </div>
+    <br />
     <div class="form-group">
-        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-10" })
-        <div class="col-md-5">
+        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-12">
 
             @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "form-control" })
             @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-5">
+        @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
             @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group" style="display:none;">
-        @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-5">
+        @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
     </div>
     <div class="form-group">
-        @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "form-control" } })
             @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
         </div>
     </div>
     <div class="form-group" style="display:none;">
-        @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-5">
+        @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
             @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
         </div>
     </div>
 
     <div class="form-group">
-        @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-2" })
-        <div class="col-md-10">
+        @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
             @*@Html.EditorFor(model => model.Frecuencia, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
 
@@ -99,11 +100,11 @@
                 <option value="monthly">Mensual</option>
             </select>
         </div>
-        <div class="form-group">
+        @*<div class="form-group">
             <div class="label label-default" id="select_norepeat">
                 No repetir
             </div>
-        </div>
+        </div>*@
 
         <div id="select_daily" style="display:none;" class="label label-default">
             Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
@@ -142,7 +143,7 @@
 
 
     <div class="form-group">
-        <div class="col-md-offset-2 col-md-10">
+        <div class="col-md-offset-2 col-md-12">
             <input type="submit" value="Crear" class="btn btn-default" />
         </div>
     </div>

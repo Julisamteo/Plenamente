@@ -100,7 +100,7 @@ namespace Plenamente.Controllers
             ChartDataViewModel datos =
               new ChartDataViewModel
               {
-                  title = $"Cumplimiento SG-SST {total} Actividades",
+                  title = $"Cumplimiento SG-SST", /*{total} Actividades",*/
                   labels = new string[2] { "Finalizadas", "En ejecución" },
                   datasets =
                   new List<ChartDatasetsViewModel>{
