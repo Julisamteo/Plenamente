@@ -87,30 +87,36 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
         {
-            var date = DateTime.Now;
-            var start = date.AddDays(-date.Day);
-            var end = start.AddMonths(1);
-            List<ActiCumplimiento> lst =
-                   db.Tb_ActiCumplimiento.Where(
-                       a => a.Empr_Nit == AccountData.NitEmpresa
-                       && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)
-                       && a.Acum_IniAct >= start
-                       && a.Acum_IniAct < end).ToList();
-            var total = lst.Count();
-            var ended = lst.Where(a => !a.Finalizada).Count();
+            int total = db.Tb_ItemEstandar.Count();
+            int terminadas = 0;
+            if (AccountData.NitEmpresa > 0)
+            {
+                AutoEvaluacion evaluacion =
+                    db.Tb_AutoEvaluacion
+                        .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0)
+                        .OrderByDescending(a => a.Auev_Inicio)
+                        .FirstOrDefault();
+
+                terminadas =
+                      db.Tb_Cumplimiento
+                        .Count(a => a.Auev_Id == evaluacion.Auev_Id && (a.Cump_Cumple || a.Cump_Justifica || a.Cump_NoAplica));
+            }
+
             ChartDataViewModel datos =
               new ChartDataViewModel
               {
                   title = "Cumplimiento SG-SST",
-                  labels = new string[2] { "Finalizadas", "En ejecución" },
+                  labels = new string[2] { "Cumplido", "No cumplido" },
                   datasets =
                   new List<ChartDatasetsViewModel>{
                       new ChartDatasetsViewModel{
                           label = "Estado actividades",
-                          data = new int[2]{ ended, total-ended  },
-                          fill = false,
-                          borderWidth = 1
-                      }},
+                          data = new int[2]{ terminadas, total-terminadas  },
+                          fill = true,
+                          borderWidth = 1,
+                          backgroundColor = new string[2] { "#6DB52D", "#AE2429" },
+                          borderColor = new string[2] { "#6DB52D", "#AE2429" }
+                      }}
               };
             return Json(datos, JsonRequestBehavior.AllowGet);
         }
