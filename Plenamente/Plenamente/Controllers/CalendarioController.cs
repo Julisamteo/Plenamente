@@ -66,8 +66,8 @@ namespace Plenamente.Controllers
                              Title = a.Acum_Desc,
                              Start = a.Acum_IniAct,
                              End = a.Acum_FinAct,
-                             BackgroundColor = a.Finalizada ? "#FF1F17" : "#6CB52D",
-                             BorderColor = a.Finalizada ? "#FF6963" : "#65ac1e",
+                             BackgroundColor = a.Finalizada ? "#BCBFE8" : "#9493BF",
+                             BorderColor = a.Finalizada ? "#D1BCE8" : "#636280",
                              EventRoute = "/ActividadCumplimiento/Details/" + a.Acum_Id
                          }).ToList();
 
@@ -88,8 +88,8 @@ namespace Plenamente.Controllers
                                 Description = "Tarea programada",
                                 Title = a.Descripcion,
                                 Start = a.FechaHora,
-                                BackgroundColor = "#478064",
-                                BorderColor = "#218052",
+                                BackgroundColor = "#7DDAFF",
+                                BorderColor = "#9FBDC9",
                                 EventRoute = "/ActividadCumplimiento/Create/" + a.Id
                             }).ToList();
 

@@ -1,5 +1,6 @@
 ﻿using Plenamente.App_Tool;
 using Plenamente.Models;
+using Plenamente.Models.ViewModel;
 using System;
 using System.Collections.Generic;
 using System.Globalization;
@@ -31,7 +32,7 @@ namespace Plenamente.Controllers
                         new ChartDatasetsViewModel
                         {
                             label = "Avance",
-                            data = db.Tb_CicloPHVA.Select(a => a.Id > 0 ? 1 : 0).ToArray(),
+                            data = db.Tb_CicloPHVA.Select(a => a.Id > 0 ? 100 : 0).ToArray(),
                             fill = false,
                             borderWidth = 1
                         }},
@@ -45,14 +46,14 @@ namespace Plenamente.Controllers
             List<ActiCumplimiento> lst = new List<ActiCumplimiento>();
             try
             {
-                List<ActiCumplimiento> cumplimientos =
+                var cumplimientos =
                     db.Tb_ActiCumplimiento.Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)).ToList();
                 if (cumplimientos != null && cumplimientos.Count > 0)
                 {
                     lst.AddRange(cumplimientos);
                 }
 
-                CultureInfo ci = new CultureInfo("es-CO");
+                var ci = new CultureInfo("es-CO");
                 ChartDataViewModel datos =
                   new ChartDataViewModel
                   {
@@ -86,32 +87,49 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
         {
-            DateTime date = DateTime.Now;
-            DateTime start = date.AddDays(-date.Day);
-            DateTime end = start.AddMonths(1);
-            List<ActiCumplimiento> lst =
-                   db.Tb_ActiCumplimiento.Where(
-                       a => a.Empr_Nit == AccountData.NitEmpresa
-                       && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null)
-                       && a.Acum_IniAct >= start
-                       && a.Acum_IniAct < end).ToList();
-            int total = lst.Count();
-            int ended = lst.Where(a => !a.Finalizada).Count();
+            Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+            int numeroTrabajadores = empresa.Empr_Ttrabaja;
+            TipoEmpresa tipoEmpresa = new TipoEmpresa();
+            if (numeroTrabajadores > 0)
+            {
+                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+            }
+            int total =
+                db.Tb_ItemEstandar
+                    .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria)).Count();
+            int terminadas = 0;
+            if (AccountData.NitEmpresa > 0)
+            {
+                AutoEvaluacion evaluacion =
+                    db.Tb_AutoEvaluacion
+                        .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0)
+                        .OrderByDescending(a => a.Auev_Inicio)
+                        .FirstOrDefault();
+
+                if (evaluacion != null)
+                {
+                    terminadas =
+                     db.Tb_Cumplimiento
+                       .Count(a => a.Auev_Id == evaluacion.Auev_Id && (a.Cump_Cumple || a.Cump_Justifica));
+                }
+
+            }
+
             ChartDataViewModel datos =
               new ChartDataViewModel
               {
-                  title = $"Cumplimiento SG-SST {total} Actividades",
-                  labels = new string[2] { "Finalizadas", "En ejecución" },
+                  title = "Cumplimiento SG-SST",
+                  labels = new string[2] { "Cumplido", "No cumplido" },
                   datasets =
                   new List<ChartDatasetsViewModel>{
                       new ChartDatasetsViewModel{
                           label = "Estado actividades",
-                          data = new int[2]{ ended, total-ended  },
-                          fill = false,
-                          backgroundColor = new string[2] { "#FF1F17", "#6CB52D" },
-                          borderColor = new string[2] { "#FF6963", "#65ac1e" },
-                          borderWidth = 1
-                      }},
+                          data = new int[2]{ terminadas, total-terminadas  },
+                          fill = true,
+                          borderWidth = 1,
+                          backgroundColor = new string[2] { "#6DB52D", "#AE2429" },
+                          borderColor = new string[2] { "#6DB52D", "#AE2429" }
+                      }}
               };
             return Json(datos, JsonRequestBehavior.AllowGet);
         }
