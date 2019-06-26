@@ -11,115 +11,119 @@
 
 <div>
     
-    <dl class="dl-horizontal">
+    <div class="col-md-12" style="margin-top: 3%;">
 
-        <dt>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Acum_Desc)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Acum_Desc)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Acum_Porcentest)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Acum_Porcentest)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Acum_Registro)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Acum_Registro)
-        </dd>
+        </div>
 
-        <dt>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Acum_IniAct)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Acum_IniAct)
-        </dd>
+        </div>
 
-        <dt>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Acum_FinAct)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Acum_FinAct)
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.asigrecursos)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.asigrecursos)
-        </dd>
+        </div>
 
-        <dt>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Finalizada)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Finalizada)
-        </dd>
+        </div>
 
-        <dt>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Oemp_Id)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @ViewData["obj_name"]
-        </dd>
-        <dt>
+        </div>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Frec_Id)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @ViewData["frec_name"]
-        </dd>
+        </div>
         @if (Model.Frec_Id == 2 || Model.Frec_Id == 4)
         {
-        <dt>
-            @Html.DisplayNameFor(model => model.Repeticiones)
-        </dt>
+            <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
+                @Html.DisplayNameFor(model => model.Repeticiones)
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.Repeticiones)
-        </dd>
+            <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
+                @Html.DisplayFor(model => model.Repeticiones)
+            </div>
         }
-         @if (Model.Frec_Id == 3)
+        @if (Model.Frec_Id == 3)
         {
-        <dt>
-            @Html.DisplayNameFor(model => model.DiasSemana)
-        </dt>
+            <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
+                @Html.DisplayNameFor(model => model.DiasSemana)
+            </div>
 
-        <dd>
-            @Html.DisplayFor(model => model.DiasSemana)
-        </dd>
+            <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
+                @Html.DisplayFor(model => model.DiasSemana)
+            </div>
         }
-        <dt>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Id)
-        </dt>
+        </div>
 
-        <dd>
+        <div class="col-md-6 "style="padding: 10px;background: white;border: 1px gray solid;">
             @ViewData["username"]
-        </dd>
+        </div>
 
 
 
 
 
 
-    </dl>
-</div>
-<p>
-    <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento", new { id = Model.Acum_Id })" title="Editar">
-        Editar
-    </a>
-    <a href="@Url.Action("Index", "ActividadCumplimiento")" class="ayudaTitulos">
-        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
-    </a>
-</p>
+        </dl>
+    </div>
+    <p>
+        <div class="col-md-6" style="margin-top: 3%;">
+        <a href="@Url.Action("Index", "ActividadCumplimiento")" class="ayudaTitulos">
+            <span>Volver al inicio</span> <img style="width:10%;" src="~/Imagenes/flecha-hacia-la-izquierda.png" />
+        </a>
+        </div>
+        <div class="col-md-6" style="margin-top: 3%;">
+            <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento", new { id = Model.Acum_Id })" title="Editar">
+                Editar
+            </a>
+        </div>
+    </p>

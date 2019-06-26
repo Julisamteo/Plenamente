@@ -383,7 +383,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     usuarios = usuarios.OrderBy(s => s.Pers_Nom1);
                     break;
             }
-            int pageSize = 8;
+            int pageSize = 50;
             int pageNumber = (page ?? 1);
             return View(usuarios.ToPagedList(pageNumber, pageSize));
         }
