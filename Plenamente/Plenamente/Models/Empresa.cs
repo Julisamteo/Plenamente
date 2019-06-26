@@ -59,8 +59,8 @@ namespace Plenamente.Models
         // Permite a AutoEvaluacion acceder a la Data
         public ICollection<AutoEvaluacion> AutoEvaluaciones { get; set; }
 
-        [DefaultValue(1)]
-        public short? TipoEmpresa_Id { get; set; }
-        public TipoEmpresa TipoEmpresa { get; set; }
+        //[DefaultValue(1)]
+        //public short? TipoEmpresa_Id { get; set; }
+        public virtual TipoEmpresa TipoEmpresa { get; set; }
     }
 }
