@@ -56,7 +56,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12">
-                @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+                @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
                 @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
             </div>
         </div>
@@ -64,7 +64,7 @@
         <div class="form-group" style="display:none;">
             @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12">
-                @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "form-control", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+                @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
                 @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
             </div>
 
@@ -72,7 +72,7 @@
         <div class="form-group">
             @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
             <div class="col-md-12">
-                @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "form-control" } })
+                @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "text-box single-line" } })
                 @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
             </div>
         </div>
