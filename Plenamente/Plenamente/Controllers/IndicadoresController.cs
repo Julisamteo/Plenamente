@@ -88,11 +88,10 @@ namespace Plenamente.Controllers
         public JsonResult UltimaAutoevaluacion()
         {
             Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-            int numeroTrabajadores = empresa.Empr_Ttrabaja;
-            TipoEmpresa tipoEmpresa = new TipoEmpresa();
-            if (numeroTrabajadores > 0)
+            TipoEmpresa tipoEmpresa = empresa.TipoEmpresa;
+            if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
             {
-                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
             }
             int total =
                 db.Tb_ItemEstandar

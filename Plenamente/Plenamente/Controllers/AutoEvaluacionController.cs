@@ -44,7 +44,13 @@ namespace Plenamente.Controllers
             List<CicloPHVAViewModel> list = new List<CicloPHVAViewModel>();
             try
             {
-                ViewBag.TextError = textError;
+                ViewBag.TextError = textError;             
+                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+                TipoEmpresa tipoEmpresa = empresa.TipoEmpresa;
+                if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
+                {
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
+                }
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion == null)
                 {
@@ -56,13 +62,6 @@ namespace Plenamente.Controllers
                               Auev_Nom = "Autoevaluación"
                           });
                     db.SaveChanges();
-                }
-                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-                int numeroTrabajadores = empresa.Empr_Ttrabaja;
-                TipoEmpresa tipoEmpresa = new TipoEmpresa();
-                if (numeroTrabajadores > 0)
-                {
-                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
                 }
                 list =
                    db.Tb_CicloPHVA
