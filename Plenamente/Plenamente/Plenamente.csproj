@@ -978,6 +978,7 @@
     <Content Include="Views\TVin\Edit.cshtml" />
     <Content Include="Views\TVin\Index.cshtml" />
     <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
+    <Content Include="Views\ActividadCumplimiento\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
