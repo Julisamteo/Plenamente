@@ -95,7 +95,7 @@ namespace Plenamente.Controllers
             }
             int total =
                 db.Tb_ItemEstandar
-                    .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria)).Count();
+                    .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria)).Count();
             int terminadas = 0;
             if (AccountData.NitEmpresa > 0)
             {
