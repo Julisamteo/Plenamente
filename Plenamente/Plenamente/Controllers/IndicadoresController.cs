@@ -32,7 +32,7 @@ namespace Plenamente.Controllers
                         new ChartDatasetsViewModel
                         {
                             label = "Avance",
-                            data = db.Tb_CicloPHVA.Select(a => a.Id > 0 ? 1 : 0).ToArray(),
+                            data = db.Tb_CicloPHVA.Select(a => a.Id > 0 ? 100 : 0).ToArray(),
                             fill = false,
                             borderWidth = 1
                         }},
@@ -87,7 +87,16 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
         {
-            int total = db.Tb_ItemEstandar.Count();
+            Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+            int numeroTrabajadores = empresa.Empr_Ttrabaja;
+            TipoEmpresa tipoEmpresa = new TipoEmpresa();
+            if (numeroTrabajadores > 0)
+            {
+                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+            }
+            int total =
+                db.Tb_ItemEstandar
+                    .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria)).Count();
             int terminadas = 0;
             if (AccountData.NitEmpresa > 0)
             {
@@ -97,9 +106,13 @@ namespace Plenamente.Controllers
                         .OrderByDescending(a => a.Auev_Inicio)
                         .FirstOrDefault();
 
-                terminadas =
-                      db.Tb_Cumplimiento
-                        .Count(a => a.Auev_Id == evaluacion.Auev_Id && (a.Cump_Cumple || a.Cump_Justifica || a.Cump_NoAplica));
+                if (evaluacion != null)
+                {
+                    terminadas =
+                     db.Tb_Cumplimiento
+                       .Count(a => a.Auev_Id == evaluacion.Auev_Id && (a.Cump_Cumple || a.Cump_Justifica));
+                }
+
             }
 
             ChartDataViewModel datos =
