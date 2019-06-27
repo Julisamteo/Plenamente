@@ -22,20 +22,60 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult PromedioAutoevaluaciones()
         {
+            TipoEmpresa tipoEmpresa = new TipoEmpresa();
+            if (AccountData.NitEmpresa != 0)
+            {
+                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+                tipoEmpresa = empresa.TipoEmpresa;
+                if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
+                {
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
+                }
+            }
+            AutoEvaluacion evaluacion =
+                db.Tb_AutoEvaluacion
+                    .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0)
+                    .OrderByDescending(a => a.Auev_Inicio)
+                    .FirstOrDefault();
+            decimal[] lst = new decimal[0];
+            string[] labels = new string[0];
+            if (evaluacion != null)
+            {
+                var values =
+                   db.Tb_ItemEstandar
+                          .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria))
+                          .GroupBy(a => a.Estandar.Criterio.CicloPHVA).Select(a => new { key = a.Key.Id, value = (decimal)a.Count(), name = a.Key.Nombre })
+                          .ToArray();
+                labels = values.Select(v => v.name).ToArray();
+                var temp =
+                      db.Tb_Cumplimiento
+                          .Where(a => a.Auev_Id == evaluacion.Auev_Id && (a.Cump_Cumple || a.Cump_Justifica))
+                          .GroupBy(a => a.ItemEstandar.Estandar.Criterio.CicloPHVA).Select(a => new { key = a.Key.Id, value = (decimal)a.Where(e => e.Cump_Cumple || e.Cump_Justifica).Count() })
+                          .ToArray();
+                lst = new decimal[values.Length];
+                for (int i = 0; i < values.Length; i++)
+                {
+                    var val = temp.FirstOrDefault(v => v.key == values[i].key);
+                    if (val != null)
+                    {
+                        lst[i] = (val.value * 100 / values[i].value);
+                    }
+                }
+            }
             ChartDataViewModel datos =
                new ChartDataViewModel
                {
                    title = "Medición del ciclo PHVA",
-                   labels = db.Tb_CicloPHVA.Select(a => a.Nombre).ToArray(),
+                   labels = labels,
                    datasets =
-                   new List<ChartDatasetsViewModel>{
-                        new ChartDatasetsViewModel
-                        {
-                            label = "Avance",
-                            data = db.Tb_CicloPHVA.Select(a => a.Id > 0 ? 100 : 0).ToArray(),
-                            fill = false,
-                            borderWidth = 1
-                        }},
+                       new List<ChartDatasetsViewModel>{
+                            new ChartDatasetsViewModel
+                            {
+                                label = "Avance",
+                                data = lst,
+                                fill = false,
+                                borderWidth = 1
+                            }},
                };
             return Json(datos, JsonRequestBehavior.AllowGet);
         }
@@ -87,11 +127,15 @@ namespace Plenamente.Controllers
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
         {
-            Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-            TipoEmpresa tipoEmpresa = empresa.TipoEmpresa;
-            if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
+            TipoEmpresa tipoEmpresa = new TipoEmpresa();
+            if (AccountData.NitEmpresa != 0)
             {
-                tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
+                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+                tipoEmpresa = empresa.TipoEmpresa;
+                if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
+                {
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
+                }
             }
             int total =
                 db.Tb_ItemEstandar
@@ -111,7 +155,6 @@ namespace Plenamente.Controllers
                      db.Tb_Cumplimiento
                        .Count(a => a.Auev_Id == evaluacion.Auev_Id && (a.Cump_Cumple || a.Cump_Justifica));
                 }
-
             }
 
             ChartDataViewModel datos =
