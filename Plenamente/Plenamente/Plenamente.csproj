@@ -251,7 +251,6 @@
     <Compile Include="Controllers\ObjEmpresasController.cs" />
     <Compile Include="Controllers\PeriodoesController.cs" />
     <Compile Include="Controllers\PlandeTrabajoController.cs" />
-    <Compile Include="Controllers\PoliticasapiController.cs" />
     <Compile Include="Controllers\PoliticasController.cs" />
     <Compile Include="Controllers\PreguntasController.cs" />
     <Compile Include="Controllers\ProcesActividadsController.cs" />
