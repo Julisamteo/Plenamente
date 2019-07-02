@@ -225,27 +225,19 @@
     <Compile Include="Controllers\ActiCumplimientoesController.cs" />
     <Compile Include="Controllers\ActividadCumplimientoController.cs" />
     <Compile Include="Controllers\adminController.cs" />
-    <Compile Include="Controllers\AfpController.cs" />
-    <Compile Include="Controllers\ApplicationBaseController.cs" />
     <Compile Include="Controllers\AreaEmpresasController.cs" />
-    <Compile Include="Controllers\ArlController.cs" />
     <Compile Include="Controllers\AueController.cs" />
     <Compile Include="Controllers\AutoEvaluacionController.cs" />
     <Compile Include="Controllers\CalendarioController.cs" />
     <Compile Include="Controllers\CargaArchivoController.cs" />
-    <Compile Include="Controllers\CateLicenciaController.cs" />
-    <Compile Include="Controllers\ClaseArlController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
-    <Compile Include="Controllers\EpsController.cs" />
-    <Compile Include="Controllers\EstadoPersonaController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FrecuenciasController.cs" />
-    <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\IndicadoresController.cs" />
     <Compile Include="Controllers\ItemEstandarsController.cs" />
     <Compile Include="Controllers\ObjEmpresasController.cs" />
@@ -259,9 +251,7 @@
     <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\RespuestasController.cs" />
     <Compile Include="Controllers\SedeCiudadesController.cs" />
-    <Compile Include="Controllers\TDocController.cs" />
     <Compile Include="Controllers\TipoDocCargasController.cs" />
-    <Compile Include="Controllers\TVinController.cs" />
     <Compile Include="Controllers\UploadCumpController.cs" />
     <Compile Include="Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -340,13 +330,17 @@
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906181956344_teeeest.cs" />
-    <Compile Include="Migrations\201906181956344_teeeest.Designer.cs">
-      <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
+    <Compile Include="Migrations\201906182109365_excepcionescategoria.cs" />
+    <Compile Include="Migrations\201906182109365_excepcionescategoria.Designer.cs">
+      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906201929336_NewMig.cs" />
-    <Compile Include="Migrations\201906201929336_NewMig.Designer.cs">
-      <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
+    <Compile Include="Migrations\201906182128264_addcampofecha.cs" />
+    <Compile Include="Migrations\201906182128264_addcampofecha.Designer.cs">
+      <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs" />
+    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.Designer.cs">
+      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.cs" />
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.Designer.cs">
@@ -360,10 +354,6 @@
     <Compile Include="Migrations\201906200206582_actmergeupdate.Designer.cs">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906202112569_Unique.cs" />
-    <Compile Include="Migrations\201906202112569_Unique.Designer.cs">
-      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201906202159057_campoasigrecursos.cs" />
     <Compile Include="Migrations\201906202159057_campoasigrecursos.Designer.cs">
       <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
@@ -372,17 +362,9 @@
     <Compile Include="Migrations\201906210202064_agregadocolumnafinalizada.Designer.cs">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906211217564_Update.cs" />
-    <Compile Include="Migrations\201906211217564_Update.Designer.cs">
-      <DependentUpon>201906211217564_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211459250_EmpresaandUserCargo.cs" />
-    <Compile Include="Migrations\201906211459250_EmpresaandUserCargo.Designer.cs">
-      <DependentUpon>201906211459250_EmpresaandUserCargo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211541272_qeww.cs" />
-    <Compile Include="Migrations\201906211541272_qeww.Designer.cs">
-      <DependentUpon>201906211541272_qeww.cs</DependentUpon>
+    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.cs" />
+    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.Designer.cs">
+      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -439,6 +421,7 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
+    <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
@@ -482,6 +465,8 @@
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
+    <Content Include="Content\chartjs\Chart.css" />
+    <Content Include="Content\chartjs\Chart.min.css" />
     <Content Include="Content\estilosParciales.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
@@ -572,6 +557,10 @@
     <Content Include="Scripts\bootstrap.bundle.min.js" />
     <Content Include="Scripts\bootstrap.js" />
     <Content Include="Scripts\bootstrap.min.js" />
+    <Content Include="Scripts\chartjs\Chart.bundle.js" />
+    <Content Include="Scripts\chartjs\Chart.bundle.min.js" />
+    <Content Include="Scripts\chartjs\Chart.js" />
+    <Content Include="Scripts\chartjs\Chart.min.js" />
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
@@ -680,6 +669,7 @@
     <Content Include="Scripts\popper.js" />
     <Content Include="Scripts\popper.min.js" />
     <Content Include="Scripts\script-custom-calendar.js" />
+    <Content Include="Scripts\chartjs\script-custom-chart.js" />
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
@@ -805,7 +795,6 @@
     <Content Include="PlenamenteDataSet.xss">
       <DependentUpon>PlenamenteDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="Reports\rptAutoEvaluacion.rdlc" />
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
     <Content Include="Scripts\bootstrap1.js" />
     <Content Include="Scripts\jquery-1.10.2.min.js" />
@@ -921,65 +910,9 @@
     <Content Include="Views\PlandeTrabajo\Eliminar.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Details.cshtml" />
-    <Content Include="Views\Account\Deslogged.cshtml" />
-    <Content Include="Views\admin\Users.cshtml" />
-    <Content Include="Views\admin\EditarUser.cshtml" />
-    <Content Include="Views\admin\CrearPersona.cshtml" />
-    <Content Include="Views\Empresas\Create.cshtml" />
-    <Content Include="Views\Empresas\Delete.cshtml" />
-    <Content Include="Views\Empresas\Details.cshtml" />
-    <Content Include="Views\Empresas\Edit.cshtml" />
-    <Content Include="Views\Empresas\Index.cshtml" />
-    <Content Include="Views\admin\UsersSysadmin.cshtml" />
-    <Content Include="Views\Afp\Create.cshtml" />
-    <Content Include="Views\Afp\Delete.cshtml" />
-    <Content Include="Views\Afp\Details.cshtml" />
-    <Content Include="Views\Afp\Edit.cshtml" />
-    <Content Include="Views\Afp\Index.cshtml" />
-    <Content Include="Views\Arl\Create.cshtml" />
-    <Content Include="Views\Arl\Delete.cshtml" />
-    <Content Include="Views\Arl\Details.cshtml" />
-    <Content Include="Views\Arl\Edit.cshtml" />
-    <Content Include="Views\Arl\Index.cshtml" />
-    <Content Include="Views\CateLicencia\Create.cshtml" />
-    <Content Include="Views\CateLicencia\Delete.cshtml" />
-    <Content Include="Views\CateLicencia\Details.cshtml" />
-    <Content Include="Views\CateLicencia\Edit.cshtml" />
-    <Content Include="Views\CateLicencia\Index.cshtml" />
-    <Content Include="Views\ClaseArl\Create.cshtml" />
-    <Content Include="Views\ClaseArl\Delete.cshtml" />
-    <Content Include="Views\ClaseArl\Details.cshtml" />
-    <Content Include="Views\ClaseArl\Edit.cshtml" />
-    <Content Include="Views\ClaseArl\Index.cshtml" />
-    <Content Include="Views\Eps\Create.cshtml" />
-    <Content Include="Views\Eps\Delete.cshtml" />
-    <Content Include="Views\Eps\Details.cshtml" />
-    <Content Include="Views\Eps\Edit.cshtml" />
-    <Content Include="Views\Eps\Index.cshtml" />
-    <Content Include="Views\EstadoPersona\Create.cshtml" />
-    <Content Include="Views\EstadoPersona\Delete.cshtml" />
-    <Content Include="Views\EstadoPersona\Details.cshtml" />
-    <Content Include="Views\EstadoPersona\Edit.cshtml" />
-    <Content Include="Views\EstadoPersona\Index.cshtml" />
-    <Content Include="Views\Genero\Create.cshtml" />
-    <Content Include="Views\Genero\Delete.cshtml" />
-    <Content Include="Views\Genero\Details.cshtml" />
-    <Content Include="Views\Genero\Edit.cshtml" />
-    <Content Include="Views\Genero\Index.cshtml" />
     <Content Include="Views\Indicadores\Index.cshtml" />
-    <Content Include="Views\TDoc\Create.cshtml" />
-    <Content Include="Views\TDoc\Delete.cshtml" />
-    <Content Include="Views\TDoc\Details.cshtml" />
-    <Content Include="Views\TDoc\Edit.cshtml" />
-    <Content Include="Views\TDoc\Index.cshtml" />
-    <Content Include="Views\TVin\Create.cshtml" />
-    <Content Include="Views\TVin\Delete.cshtml" />
-    <Content Include="Views\TVin\Details.cshtml" />
-    <Content Include="Views\TVin\Edit.cshtml" />
-    <Content Include="Views\TVin\Index.cshtml" />
-    <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Edit.cshtml" />
-    <Content Include="Views\TipoDocCargas\Index.cshtml" />
+    <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1047,17 +980,23 @@
     <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906181956344_teeeest.resx">
-      <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906182109365_excepcionescategoria.resx">
+      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906201929336_NewMig.resx">
-      <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906182128264_addcampofecha.resx">
+      <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.resx">
+      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906190449464_agregarColumnaNoAplica.resx">
+      <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906191719482_AgregadoColumnaHoraAct.resx">
+      <DependentUpon>201906191719482_AgregadoColumnaHoraAct.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906200206582_actmergeupdate.resx">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906202112569_Unique.resx">
-      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906202159057_campoasigrecursos.resx">
       <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
@@ -1065,14 +1004,8 @@
     <EmbeddedResource Include="Migrations\201906210202064_agregadocolumnafinalizada.resx">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211217564_Update.resx">
-      <DependentUpon>201906211217564_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211459250_EmpresaandUserCargo.resx">
-      <DependentUpon>201906211459250_EmpresaandUserCargo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211541272_qeww.resx">
-      <DependentUpon>201906211541272_qeww.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.resx">
+      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
