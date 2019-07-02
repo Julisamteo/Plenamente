@@ -130,5 +130,25 @@ namespace Plenamente.Controllers
             public short borderWidth { get; set; }
             public bool fill { get; set; }
         };
+        public JsonResult PromedioAutoevaluacionesa()
+        {
+            ChartDataViewModel datos =
+               new ChartDataViewModel
+               {
+                   title = "Medición del ciclo PHVA",
+                   labels = db.Tb_Genero.Select(a => a.Gene_Nom).ToArray(),
+                   datasets =
+                   new List<ChartDatasetsViewModel>{
+                        new ChartDatasetsViewModel
+                        {
+                            label = "Avance",
+                            data = db.Users.GroupBy(a => a.Genero).Select(a => a.Count()).ToArray(),
+                            //data = db.Users.Select(a=> a.Empresa).ToArray(),
+                            fill = false,
+                            borderWidth = 1
+                        }},
+               };
+            return Json(datos, JsonRequestBehavior.AllowGet);
+        }
     }
 }
