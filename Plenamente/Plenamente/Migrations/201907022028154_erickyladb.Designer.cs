@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class addcampofecha : IMigrationMetadata
+    public sealed partial class erickyladb : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(addcampofecha));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(erickyladb));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906182128264_addcampofecha"; }
+            get { return "201907022028154_erickyladb"; }
         }
         
         string IMigrationMetadata.Source

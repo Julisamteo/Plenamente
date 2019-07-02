@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Data;
 using System.Data.Entity;
 using System.Linq;
+using System.Threading.Tasks;
 using System.Net;
 using System.Web;
 using System.Web.Mvc;
@@ -10,25 +11,25 @@ using Plenamente.Models;
 
 namespace Plenamente.Controllers
 {
-    public class EmpresaController : Controller
+    public class EmpresasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Empresa
-        public ActionResult Index()
+        // GET: Empresas
+        public async Task<ActionResult> Index()
         {
             var tb_Empresa = db.Tb_Empresa.Include(e => e.Arl).Include(e => e.ClaseArl);
-            return View(tb_Empresa.ToList());
+            return View(await tb_Empresa.ToListAsync());
         }
 
-        // GET: Empresa/Details/5
-        public ActionResult Details(int? id)
+        // GET: Empresas/Details/5
+        public async Task<ActionResult> Details(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empresa empresa = db.Tb_Empresa.Find(id);
+            Empresa empresa = await db.Tb_Empresa.FindAsync(id);
             if (empresa == null)
             {
                 return HttpNotFound();
@@ -36,7 +37,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // GET: Empresa/Create
+        // GET: Empresas/Create
         public ActionResult Create()
         {
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
@@ -44,17 +45,17 @@ namespace Plenamente.Controllers
             return View();
         }
 
-        // POST: Empresa/Create
+        // POST: Empresas/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
+        public async Task<ActionResult> Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
                 db.Tb_Empresa.Add(empresa);
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
 
@@ -63,14 +64,14 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // GET: Empresa/Edit/5
-        public ActionResult Edit(int? id)
+        // GET: Empresas/Edit/5
+        public async Task<ActionResult> Edit(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empresa empresa = db.Tb_Empresa.Find(id);
+            Empresa empresa = await db.Tb_Empresa.FindAsync(id);
             if (empresa == null)
             {
                 return HttpNotFound();
@@ -80,17 +81,17 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // POST: Empresa/Edit/5
+        // POST: Empresas/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
+        public async Task<ActionResult> Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
         {
             if (ModelState.IsValid)
             {
                 db.Entry(empresa).State = EntityState.Modified;
-                db.SaveChanges();
+                await db.SaveChangesAsync();
                 return RedirectToAction("Index");
             }
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom", empresa.Arl_Id);
@@ -98,14 +99,14 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // GET: Empresa/Delete/5
-        public ActionResult Delete(int? id)
+        // GET: Empresas/Delete/5
+        public async Task<ActionResult> Delete(int? id)
         {
             if (id == null)
             {
                 return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
             }
-            Empresa empresa = db.Tb_Empresa.Find(id);
+            Empresa empresa = await db.Tb_Empresa.FindAsync(id);
             if (empresa == null)
             {
                 return HttpNotFound();
@@ -113,14 +114,14 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // POST: Empresa/Delete/5
+        // POST: Empresas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
+        public async Task<ActionResult> DeleteConfirmed(int id)
         {
-            Empresa empresa = db.Tb_Empresa.Find(id);
+            Empresa empresa = await db.Tb_Empresa.FindAsync(id);
             db.Tb_Empresa.Remove(empresa);
-            db.SaveChanges();
+            await db.SaveChangesAsync();
             return RedirectToAction("Index");
         }
 
