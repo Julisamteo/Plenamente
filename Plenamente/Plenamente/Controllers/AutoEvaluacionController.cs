@@ -44,7 +44,13 @@ namespace Plenamente.Controllers
             List<CicloPHVAViewModel> list = new List<CicloPHVAViewModel>();
             try
             {
-                ViewBag.TextError = textError;
+                ViewBag.TextError = textError;             
+                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
+                TipoEmpresa tipoEmpresa = empresa.TipoEmpresa;
+                if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
+                {
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
+                }
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion == null)
                 {
@@ -56,13 +62,6 @@ namespace Plenamente.Controllers
                               Auev_Nom = "Autoevaluación"
                           });
                     db.SaveChanges();
-                }
-                Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-                int numeroTrabajadores = empresa.Empr_Ttrabaja;
-                TipoEmpresa tipoEmpresa = new TipoEmpresa();
-                if (numeroTrabajadores > 0)
-                {
-                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
                 }
                 list =
                    db.Tb_CicloPHVA
@@ -105,10 +104,6 @@ namespace Plenamente.Controllers
                                                         Recurso = i.Iest_Recurso,
                                                         Registro = i.Iest_Registro,
                                                         Reursob = i.Iest_Rescursob,
-                                                        Reursoc = i.Iest_Rescursoc,
-                                                        Reursod = i.Iest_Rescursod,
-                                                        Reursoe = i.Iest_Rescursoe,
-                                                        Reursof = i.Iest_Rescursof,
                                                         Verificar = i.Iest_Verificar,
                                                         Video = i.Iest_Video,
                                                         Periodo = i.Iest_Peri,
@@ -151,10 +146,6 @@ namespace Plenamente.Controllers
                                 Recurso = item.Iest_Recurso,
                                 Registro = item.Iest_Registro,
                                 Reursob = item.Iest_Rescursob,
-                                Reursoc = item.Iest_Rescursoc,
-                                Reursod = item.Iest_Rescursod,
-                                Reursoe = item.Iest_Rescursoe,
-                                Reursof = item.Iest_Rescursof,
                                 Verificar = item.Iest_Verificar,
                                 Video = item.Iest_Video,
                                 Periodo = item.Iest_Peri,
@@ -182,10 +173,6 @@ namespace Plenamente.Controllers
                                 Recurso = item.Iest_Recurso,
                                 Registro = item.Iest_Registro,
                                 Reursob = item.Iest_Rescursob,
-                                Reursoc = item.Iest_Rescursoc,
-                                Reursod = item.Iest_Rescursod,
-                                Reursoe = item.Iest_Rescursoe,
-                                Reursof = item.Iest_Rescursof,
                                 Verificar = item.Iest_Verificar,
                                 Video = item.Iest_Video,
                                 Periodo = item.Iest_Peri,
@@ -261,10 +248,6 @@ namespace Plenamente.Controllers
                         Recurso = item.Iest_Recurso,
                         Registro = item.Iest_Registro,
                         Reursob = item.Iest_Rescursob,
-                        Reursoc = item.Iest_Rescursoc,
-                        Reursod = item.Iest_Rescursod,
-                        Reursoe = item.Iest_Rescursoe,
-                        Reursof = item.Iest_Rescursof,
                         Verificar = item.Iest_Verificar,
                         Video = item.Iest_Video,
                         Periodo = item.Iest_Peri,
@@ -282,17 +265,16 @@ namespace Plenamente.Controllers
             try
             {
                 Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
-                int numeroTrabajadores = empresa.Empr_Ttrabaja;
-                TipoEmpresa tipoEmpresa = new TipoEmpresa();
-                if (numeroTrabajadores > 0)
+                TipoEmpresa tipoEmpresa = empresa.TipoEmpresa;
+                if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
                 {
-                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= numeroTrabajadores && t.RangoMaximoTrabajadores >= numeroTrabajadores);
+                    tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
                 }
                 AutoEvaluacion autoevaluacion = db.Tb_AutoEvaluacion.FirstOrDefault(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada);
                 if (autoevaluacion != null)
                 {
                     int q = db.Tb_Cumplimiento.Count(c => c.Auev_Id == autoevaluacion.Auev_Id);
-                    int q2 = db.Tb_ItemEstandar.Count(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria);
+                    int q2 = db.Tb_ItemEstandar.Count(ie => tipoEmpresa.Categoria == 0 || ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria);
                     if (q2 > q)
                     {
                         return RedirectToAction("AutoevaluacionSST", new { textError = "Esta evaluación aún no ha sido finalizada" });
@@ -373,7 +355,6 @@ namespace Plenamente.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles = "Administrator,Admin")]
         public ActionResult NumeroEmpleados()
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);

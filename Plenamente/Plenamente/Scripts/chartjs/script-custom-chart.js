@@ -51,6 +51,13 @@ function Chart_Load(nameObject, routeMethod, typeChart) {
                     },
                     scales: {
                         yAxes: [{
+                            stacked: true,
+                            ticks: {
+                                beginAtZero: true
+                            }
+                        }],
+                        xAxes: [{
+                            stacked: true,
                             ticks: {
                                 beginAtZero: true
                             }
