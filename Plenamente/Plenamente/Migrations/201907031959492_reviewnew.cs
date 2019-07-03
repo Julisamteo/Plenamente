@@ -3,11 +3,12 @@ namespace Plenamente.Migrations
     using System;
     using System.Data.Entity.Migrations;
     
-    public partial class RequiredColumns : DbMigration
+    public partial class reviewnew : DbMigration
     {
         public override void Up()
         {
             DropIndex("dbo.AspNetUsers", new[] { "Tdoc_Id" });
+            AddColumn("dbo.Empresas", "TipoEmpresa_Id", c => c.Short());
             AlterColumn("dbo.Empresas", "Empr_Nom", c => c.String(nullable: false));
             AlterColumn("dbo.Empresas", "Empr_Dir", c => c.String(nullable: false));
             AlterColumn("dbo.Empresas", "Empr_telefono", c => c.String(nullable: false));
@@ -18,12 +19,16 @@ namespace Plenamente.Migrations
             AlterColumn("dbo.AspNetUsers", "Pers_Dir", c => c.String(nullable: false));
             AlterColumn("dbo.AspNetUsers", "Pers_Cemeg", c => c.String(nullable: false));
             AlterColumn("dbo.AspNetUsers", "Tdoc_Id", c => c.Int(nullable: false));
+            CreateIndex("dbo.Empresas", "TipoEmpresa_Id");
             CreateIndex("dbo.AspNetUsers", "Tdoc_Id");
+            AddForeignKey("dbo.Empresas", "TipoEmpresa_Id", "dbo.TipoEmpresas", "Id");
         }
         
         public override void Down()
         {
+            DropForeignKey("dbo.Empresas", "TipoEmpresa_Id", "dbo.TipoEmpresas");
             DropIndex("dbo.AspNetUsers", new[] { "Tdoc_Id" });
+            DropIndex("dbo.Empresas", new[] { "TipoEmpresa_Id" });
             AlterColumn("dbo.AspNetUsers", "Tdoc_Id", c => c.Int());
             AlterColumn("dbo.AspNetUsers", "Pers_Cemeg", c => c.String());
             AlterColumn("dbo.AspNetUsers", "Pers_Dir", c => c.String());
@@ -34,6 +39,7 @@ namespace Plenamente.Migrations
             AlterColumn("dbo.Empresas", "Empr_telefono", c => c.String());
             AlterColumn("dbo.Empresas", "Empr_Dir", c => c.String());
             AlterColumn("dbo.Empresas", "Empr_Nom", c => c.String());
+            DropColumn("dbo.Empresas", "TipoEmpresa_Id");
             CreateIndex("dbo.AspNetUsers", "Tdoc_Id");
         }
     }

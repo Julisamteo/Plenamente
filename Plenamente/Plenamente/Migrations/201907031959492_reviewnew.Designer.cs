@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class RequiredColumns : IMigrationMetadata
+    public sealed partial class reviewnew : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(RequiredColumns));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(reviewnew));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907022128371_RequiredColumns"; }
+            get { return "201907031959492_reviewnew"; }
         }
         
         string IMigrationMetadata.Source

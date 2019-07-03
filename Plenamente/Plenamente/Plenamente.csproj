@@ -155,6 +155,9 @@
     <Reference Include="Newtonsoft.Json">
       <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
+    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
+    </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
       <HintPath>..\packages\WebGrease.1.6.0\lib\WebGrease.dll</HintPath>
@@ -362,9 +365,9 @@
     <Compile Include="Migrations\201906210202064_agregadocolumnafinalizada.Designer.cs">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907022128371_RequiredColumns.cs" />
-    <Compile Include="Migrations\201907022128371_RequiredColumns.Designer.cs">
-      <DependentUpon>201907022128371_RequiredColumns.cs</DependentUpon>
+    <Compile Include="Migrations\201907031959492_reviewnew.cs" />
+    <Compile Include="Migrations\201907031959492_reviewnew.Designer.cs">
+      <DependentUpon>201907031959492_reviewnew.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -1265,8 +1268,8 @@
     <EmbeddedResource Include="Migrations\201906210202064_agregadocolumnafinalizada.resx">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907022128371_RequiredColumns.resx">
-      <DependentUpon>201907022128371_RequiredColumns.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907031959492_reviewnew.resx">
+      <DependentUpon>201907031959492_reviewnew.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
