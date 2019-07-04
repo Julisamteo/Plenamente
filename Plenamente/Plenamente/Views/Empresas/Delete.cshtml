@@ -2,7 +2,6 @@
 
 @{
     ViewBag.Title = "Delete";
-    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
 <h2>Delete</h2>
@@ -69,11 +68,67 @@
         </dd>
 
         <dt>
+            @Html.DisplayNameFor(model => model.Empr_telefono)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_telefono)
+        </dd>
+
+        <dt>
             @Html.DisplayNameFor(model => model.Empr_Registro)
         </dt>
 
         <dd>
             @Html.DisplayFor(model => model.Empr_Registro)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_NewNit)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_NewNit)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_RepresentanteLegal)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_RepresentanteLegal)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_CargoRepresentante)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_CargoRepresentante)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empre_RepresentanteDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empre_RepresentanteDoc)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empr_ResponsableSST)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empr_ResponsableSST)
+        </dd>
+
+        <dt>
+            @Html.DisplayNameFor(model => model.Empre_ResponsableDoc)
+        </dt>
+
+        <dd>
+            @Html.DisplayFor(model => model.Empre_ResponsableDoc)
         </dd>
 
     </dl>

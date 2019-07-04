@@ -5,7 +5,7 @@
     <DataSource Name="PlenamenteDataSet">
       <ConnectionProperties>
         <DataProvider>System.Data.DataSet</DataProvider>
-        <ConnectString>/* Local Connection */</ConnectString>
+        <ConnectString>/* Local Conexion */</ConnectString>
       </ConnectionProperties>
       <rd:DataSourceID>1be6a095-6860-4c34-acd5-5343a35ee622</rd:DataSourceID>
     </DataSource>

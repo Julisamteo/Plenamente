@@ -51,7 +51,7 @@ namespace Plenamente.Controllers
 
                     }
                     reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DsResumenCriterios", data1.CopyToDataTable()));
-                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes\rptAutoEvaluacion.rdlc.";
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reportes\rptAutoEvaluacion.rdlc.";
                     ViewBag.ReportViewer = reportViewer;
                 }
                 else
@@ -87,7 +87,7 @@ namespace Plenamente.Controllers
                 {                 
                    
                     reportViewer.LocalReport.DataSources.Add(new ReportDataSource("DsPlanDeTrabajo", data1.CopyToDataTable()));
-                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"Reportes\rptPlanDeTrabajo.rdlc.";
+                    reportViewer.LocalReport.ReportPath = Request.MapPath(Request.ApplicationPath) + @"\Reportes\rptPlanDeTrabajo.rdlc.";
                     ViewBag.ReportViewer = reportViewer;
                 }
                 else

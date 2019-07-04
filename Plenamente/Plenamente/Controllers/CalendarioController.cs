@@ -68,7 +68,7 @@ namespace Plenamente.Controllers
                              End = a.Acum_FinAct,
                              BackgroundColor = a.Finalizada ? "#FF1F17" : "#6CB52D",
                              BorderColor = a.Finalizada ? "#FF6963" : "#65ac1e",
-                             EventRoute = "/ActividadCumplimiento/Details/" + a.Acum_Id
+                             EventRoute = "../ActividadCumplimiento/Details/" + a.Acum_Id
                          }).ToList();
 
                 if (cumplimientos != null && cumplimientos.Count > 0)
@@ -90,7 +90,8 @@ namespace Plenamente.Controllers
                                 Start = a.FechaHora,
                                 BackgroundColor = "#478064",
                                 BorderColor = "#218052",
-                                EventRoute = "/ActividadCumplimiento/Create/" + a.Id
+                                EventRoute = ""
+                                //EventRoute = "/ActividadCumplimiento/Create/" + a.Id
                             }).ToList();
 
                 if (planes != null && planes.Count > 0)

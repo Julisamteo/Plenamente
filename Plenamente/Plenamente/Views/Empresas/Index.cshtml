@@ -1,81 +1,117 @@
-﻿@model PagedList.IPagedList<Plenamente.Models.Empresa>
-@using PagedList.Mvc
+﻿@model IEnumerable<Plenamente.Models.Empresa>
+
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 
-
-<div class="colorVerdeBack">
-    <p>Empresa</p>
-</div>
-<div class="contenedorBotones">
-    <form asp-action="Index" method="get">
-        <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
-        <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
-        <a href="@Url.Action("Index", "Empresas")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "Empresas")" class="ayudaTitulos"><span>Crear Empresa</span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>
-    </form>
-</div>
+<h2>Index</h2>
 
 <p>
     @Html.ActionLink("Create New", "Create")
 </p>
+<table class="table">
+    <tr>
+        <th>
+            @Html.DisplayNameFor(model => model.Arl.Arl_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.ClaseArl.Carl_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Nom)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Dir)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Afiarl)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Ttrabaja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Itrabaja)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_telefono)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_Registro)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_NewNit)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_RepresentanteLegal)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_CargoRepresentante)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empre_RepresentanteDoc)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empr_ResponsableSST)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Empre_ResponsableDoc)
+        </th>
+        <th></th>
+    </tr>
 
-<table id="tablaVista" class="tablaVista">
-    <thead class="cabeceraTabla">
-        <tr>
-            <th class="colorVerde">
-                Empresa
-            </th>
-            <th class="colorVerde">
-                Dirección
-            </th>
-            <th class="colorVerde">
-                ARL
-            </th>
-            <th class="colorVerde">
-                Afiliación ARL
-            </th>
-            <th class="colorVerde">
-                Total Trabajadores
-            </th>
-            <th class="colorVerde">
-
-            </th>
-        </tr>
-    </thead>
-    <tbody class="cuerpoTabla">
-
-        @foreach (var item in Model)
-        {
-            <tr>
-
-                <td>
-                    @Html.DisplayFor(modelItem => item.Empr_Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Empr_Dir)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Empr_Afiarl)
-                </td>
-                <td>
-                    @Html.DisplayFor(modelItem => item.Empr_Ttrabaja)
-                </td>
-                <td>
-                    @Html.ActionLink("Editar", "Edit", new { id = item.Empr_Nit }) |
-                    @Html.ActionLink("Eliminar", "Delete", new { id = item.Empr_Nit })
-                </td>
-            </tr>
-        }
-    </tbody>
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Arl.Arl_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ClaseArl.Carl_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Nom)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Dir)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Afiarl)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Ttrabaja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Itrabaja)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_telefono)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_Registro)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_NewNit)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_RepresentanteLegal)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_CargoRepresentante)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empre_RepresentanteDoc)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empr_ResponsableSST)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Empre_ResponsableDoc)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Empr_Nit }) |
+            @Html.ActionLink("Details", "Details", new { id=item.Empr_Nit }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Empr_Nit })
+        </td>
+    </tr>
+}
 
 </table>
-<div class="paginacionLista">
-    @Html.PagedListPager(Model, page => Url.Action("Index",
-        new { page, sortOrder = ViewBag.CurrentSort, currentFilter = ViewBag.CurrentFilter }))
-</div>

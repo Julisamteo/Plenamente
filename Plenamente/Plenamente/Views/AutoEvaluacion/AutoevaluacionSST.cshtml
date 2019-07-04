@@ -5,7 +5,11 @@
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
 <div class="colorVerdeBack">
-    <p>Autoevaluación SST</p>
+    <p>
+        Autoevaluación SST 
+        <a href="#" class="ayudaTitulos"><span>Aquí podras desplegar los campos y clickearlos para que se puedan diligenciar. </span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+    </p>
+    <br />
 </div>
 <div class="contenidoCuerpo">
     @foreach (var ciclo in Model)

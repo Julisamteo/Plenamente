@@ -22,7 +22,7 @@ namespace Plenamente.Models
         public ClaseArl ClaseArl { get; set; }
         public int Empr_Afiarl { get; set; }
         public int Empr_Ttrabaja { get; set; }
-        public int Empr_Itrabaja { get; set; }      
+        public int Empr_Itrabaja { get; set; }
         public string Empr_telefono { get; set; }
         public DateTime Empr_Registro { get; set; }
         //Index(IsUnique = true)]
@@ -66,5 +66,9 @@ namespace Plenamente.Models
         public ICollection<EprotEmpresa> EprotEmpresas { get; set; }
         // Permite a AutoEvaluacion acceder a la Data
         public ICollection<AutoEvaluacion> AutoEvaluaciones { get; set; }
+
+        //[DefaultValue(1)]
+        //public short? TipoEmpresa_Id { get; set; }
+        public virtual TipoEmpresa TipoEmpresa { get; set; }
     }
 }

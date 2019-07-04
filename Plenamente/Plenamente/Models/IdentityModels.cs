@@ -157,7 +157,7 @@ namespace Plenamente.Models
         public DbSet<Notificacion> Tb_Notificacion { get; set; }
         public DbSet<TipoEmpresa> Tb_TipoEmpresa { get; set; }
         public DbSet<CicloPHVA> Tb_CicloPHVA { get; set; }
-        public DbSet<ProgamacionTareas> Tb_ProgamacionTareas { get; set; }        
+        public DbSet<ProgamacionTareas> Tb_ProgamacionTareas { get; set; }
 
         public static ApplicationDbContext Create()
         {

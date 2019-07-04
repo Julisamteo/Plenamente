@@ -13,7 +13,12 @@
 
 <div class="centrarContenido">
 
-    <h2 class="colorVerdeBack1">Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5%" /></h2>
+    <h2 class="colorVerdeBack1">
+        Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5% ; margin-right:5%" />
+        <a href="#" class="ayudaTitulos"><span>Aquí podras colocar los datos basicos de tus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png"  style="max-height:18px; max-width:18px;"/><p></p></a>
+
+    </h2>
+
     <div class="plegable">
         @*Empresa*@
         @Html.DropDownListFor(model => model.Empr_Nit, new SelectList(Model.Empresa, "Empr_Nit", "Empr_Nom", "Tipo de documento"), new { @class = "hidden" })
@@ -77,7 +82,10 @@
     </div>
     <br />
     <br />
-    <h2 class="colorVerdeBack1">Información personal del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:2%" /></h2>
+    <h2 class="colorVerdeBack1">
+        Información personal del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:2%; margin-right:4%" />
+        <a href="#" class="ayudaTitulos"><span>Aquí podras colocar los datos basicos de tus trabajadores como el numero de contacto, la licencia entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
+    </h2>
     <div class="plegable">
         <br />
         <br />
@@ -120,7 +128,10 @@
     </div>
     <br />
     <br />
-    <h2 class="colorVerdeBack1">Otra información del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:7%"/></h2> 
+    <h2 class="colorVerdeBack1">Otra información del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:7%; margin-right:5%" />
+            <a href="#" class="ayudaTitulos"><span>Aquí podras colocar los datos de tus trabajadores como el fondo de pensión, Arl, Eps, entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
+
+    </h2>
     <div class="plegable">
         <br />
         <br />
