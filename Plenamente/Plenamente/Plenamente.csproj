@@ -262,6 +262,14 @@
     <Compile Include="Migrations\201907022028154_erickyladb.Designer.cs">
       <DependentUpon>201907022028154_erickyladb.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907031926199_testeoafterchanges.cs" />
+    <Compile Include="Migrations\201907031926199_testeoafterchanges.Designer.cs">
+      <DependentUpon>201907031926199_testeoafterchanges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907031931196_checked.cs" />
+    <Compile Include="Migrations\201907031931196_checked.Designer.cs">
+      <DependentUpon>201907031931196_checked.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1085,6 +1093,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201907022028154_erickyladb.resx">
       <DependentUpon>201907022028154_erickyladb.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907031926199_testeoafterchanges.resx">
+      <DependentUpon>201907031926199_testeoafterchanges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907031931196_checked.resx">
+      <DependentUpon>201907031931196_checked.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

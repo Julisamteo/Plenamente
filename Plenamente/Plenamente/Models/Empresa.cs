@@ -13,25 +13,37 @@ namespace Plenamente.Models
         [Key]
         public int Empr_Nit { get; set; }
         [Display(Name = "Nombre Empresa")]
+        [Required]
         public string Empr_Nom { get; set; }
+        [Required]
         public string Empr_Dir { get; set; }
         // ForeignKey ARL
+        [Required]
         public int Arl_Id { get; set; }
         public Arl Arl { get; set; }
         //ForeignKey ClaseArl
+        [Required]
         public int Carl_Id { get; set; }
         public ClaseArl ClaseArl { get; set; }
+        [Required]
         public int Empr_Afiarl { get; set; }
+        [Required]
         public int Empr_Ttrabaja { get; set; }
         public int Empr_Itrabaja { get; set; }
+        [Required]
         public string Empr_telefono { get; set; }
         public DateTime Empr_Registro { get; set; }
         //Index(IsUnique = true)]
+        [Required]
         public int Empr_NewNit { get; set; }
+        [Required]
         public string Empr_RepresentanteLegal { get; set; }
         public string Empr_CargoRepresentante { get; set; }
+        [Required]
         public int Empre_RepresentanteDoc { get; set; }
+        [Required]
         public string Empr_ResponsableSST { get; set; }
+        [Required]
         public int Empre_ResponsableDoc { get; set; }
 
 
