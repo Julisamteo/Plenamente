@@ -1044,7 +1044,7 @@ select {
 /*Reset de los elementos BootsTrap No tocar*/
 body {
     margin: 0px;
-    background: url(/imagenes/fondo.jpg);
+    background: url(../imagenes/fondo.jpg);
     padding: 0px;
     background-size: 100%;
     -webkit-box-sizing: border-box;

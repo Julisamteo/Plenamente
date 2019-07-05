@@ -104,10 +104,6 @@ namespace Plenamente.Controllers
                                                         Recurso = i.Iest_Recurso,
                                                         Registro = i.Iest_Registro,
                                                         Reursob = i.Iest_Rescursob,
-                                                        Reursoc = i.Iest_Rescursoc,
-                                                        Reursod = i.Iest_Rescursod,
-                                                        Reursoe = i.Iest_Rescursoe,
-                                                        Reursof = i.Iest_Rescursof,
                                                         Verificar = i.Iest_Verificar,
                                                         Video = i.Iest_Video,
                                                         Periodo = i.Iest_Peri,
@@ -150,10 +146,6 @@ namespace Plenamente.Controllers
                                 Recurso = item.Iest_Recurso,
                                 Registro = item.Iest_Registro,
                                 Reursob = item.Iest_Rescursob,
-                                Reursoc = item.Iest_Rescursoc,
-                                Reursod = item.Iest_Rescursod,
-                                Reursoe = item.Iest_Rescursoe,
-                                Reursof = item.Iest_Rescursof,
                                 Verificar = item.Iest_Verificar,
                                 Video = item.Iest_Video,
                                 Periodo = item.Iest_Peri,
@@ -181,10 +173,6 @@ namespace Plenamente.Controllers
                                 Recurso = item.Iest_Recurso,
                                 Registro = item.Iest_Registro,
                                 Reursob = item.Iest_Rescursob,
-                                Reursoc = item.Iest_Rescursoc,
-                                Reursod = item.Iest_Rescursod,
-                                Reursoe = item.Iest_Rescursoe,
-                                Reursof = item.Iest_Rescursof,
                                 Verificar = item.Iest_Verificar,
                                 Video = item.Iest_Video,
                                 Periodo = item.Iest_Peri,
@@ -260,10 +248,6 @@ namespace Plenamente.Controllers
                         Recurso = item.Iest_Recurso,
                         Registro = item.Iest_Registro,
                         Reursob = item.Iest_Rescursob,
-                        Reursoc = item.Iest_Rescursoc,
-                        Reursod = item.Iest_Rescursod,
-                        Reursoe = item.Iest_Rescursoe,
-                        Reursof = item.Iest_Rescursof,
                         Verificar = item.Iest_Verificar,
                         Video = item.Iest_Video,
                         Periodo = item.Iest_Peri,
@@ -371,7 +355,6 @@ namespace Plenamente.Controllers
         /// 
         /// </summary>
         /// <returns></returns>
-        [Authorize(Roles = "Administrator,Admin")]
         public ActionResult NumeroEmpleados()
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);

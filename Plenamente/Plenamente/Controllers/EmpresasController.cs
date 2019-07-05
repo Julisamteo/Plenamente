@@ -10,18 +10,18 @@ using Plenamente.Models;
 
 namespace Plenamente.Controllers
 {
-    public class EmpresaController : Controller
+    public class EmpresasController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-        // GET: Empresa
+        // GET: Empresas
         public ActionResult Index()
         {
             var tb_Empresa = db.Tb_Empresa.Include(e => e.Arl).Include(e => e.ClaseArl);
             return View(tb_Empresa.ToList());
         }
 
-        // GET: Empresa/Details/5
+        // GET: Empresas/Details/5
         public ActionResult Details(int? id)
         {
             if (id == null)
@@ -36,7 +36,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // GET: Empresa/Create
+        // GET: Empresas/Create
         public ActionResult Create()
         {
             ViewBag.Arl_Id = new SelectList(db.Tb_Arl, "Arl_Id", "Arl_Nom");
@@ -44,9 +44,9 @@ namespace Plenamente.Controllers
             return View();
         }
 
-        // POST: Empresa/Create
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Empresas/Create
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
@@ -63,7 +63,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // GET: Empresa/Edit/5
+        // GET: Empresas/Edit/5
         public ActionResult Edit(int? id)
         {
             if (id == null)
@@ -80,9 +80,9 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // POST: Empresa/Edit/5
-        // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
-        // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        // POST: Empresas/Edit/5
+        // To protect from overposting attacks, please enable the specific properties you want to bind to, for 
+        // more details see https://go.microsoft.com/fwlink/?LinkId=317598.
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "Empr_Nit,Empr_Nom,Empr_Dir,Arl_Id,Carl_Id,Empr_Afiarl,Empr_Ttrabaja,Empr_Itrabaja,Empr_telefono,Empr_Registro,Empr_NewNit,Empr_RepresentanteLegal,Empr_CargoRepresentante,Empre_RepresentanteDoc,Empr_ResponsableSST,Empre_ResponsableDoc")] Empresa empresa)
@@ -98,7 +98,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // GET: Empresa/Delete/5
+        // GET: Empresas/Delete/5
         public ActionResult Delete(int? id)
         {
             if (id == null)
@@ -113,7 +113,7 @@ namespace Plenamente.Controllers
             return View(empresa);
         }
 
-        // POST: Empresa/Delete/5
+        // POST: Empresas/Delete/5
         [HttpPost, ActionName("Delete")]
         [ValidateAntiForgeryToken]
         public ActionResult DeleteConfirmed(int id)

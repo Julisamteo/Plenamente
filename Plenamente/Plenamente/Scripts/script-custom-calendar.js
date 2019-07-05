@@ -15,7 +15,7 @@
         },
         events: function (start, end, timezone, callback) {
             $.ajax({
-                url: '/Calendario/GetCalendarData',
+                url: '../Calendario/GetCalendarData',
                 type: "GET",
                 dataType: "JSON",
                 success: function (result) {

@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="15.0" DefaultTargets="Build" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props" Condition="Exists('$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)\TypeScript\Microsoft.TypeScript.Default.props')" />
-  <Import Project="..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props" Condition="Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" />
   <Import Project="$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props" Condition="Exists('$(MSBuildExtensionsPath)\$(MSBuildToolsVersion)\Microsoft.Common.props')" />
   <PropertyGroup>
     <Configuration Condition=" '$(Configuration)' == '' ">Debug</Configuration>
@@ -56,30 +56,79 @@
     <Reference Include="FullCalendar.MVC5, Version=1.0.7.0, Culture=neutral, processorArchitecture=MSIL">
       <HintPath>..\packages\FullCalendar.MVC5.1.0.7\lib\net45\FullCalendar.MVC5.dll</HintPath>
     </Reference>
+    <Reference Include="Microsoft.AI.Agent.Intercept, Version=2.4.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Agent.Intercept.2.4.0\lib\net45\Microsoft.AI.Agent.Intercept.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.DependencyCollector, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0\lib\net45\Microsoft.AI.DependencyCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.PerfCounterCollector, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0\lib\net45\Microsoft.AI.PerfCounterCollector.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.ServerTelemetryChannel, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0\lib\net45\Microsoft.AI.ServerTelemetryChannel.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.Web, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.Web.2.10.0\lib\net45\Microsoft.AI.Web.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AI.WindowsServer, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0\lib\net45\Microsoft.AI.WindowsServer.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.ApplicationInsights, Version=2.10.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.ApplicationInsights.2.10.0\lib\net46\Microsoft.ApplicationInsights.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.AspNet.TelemetryCorrelation, Version=1.0.5.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.5\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform, Version=2.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.CSharp" />
+    <Reference Include="Microsoft.Owin, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.4.0.1\lib\net45\Microsoft.Owin.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Host.SystemWeb, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.1\lib\net45\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.4.0.1\lib\net45\Microsoft.Owin.Security.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Cookies, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.1\lib\net45\Microsoft.Owin.Security.Cookies.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Facebook, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.1\lib\net45\Microsoft.Owin.Security.Facebook.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Google, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.1\lib\net45\Microsoft.Owin.Security.Google.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.1\lib\net45\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.OAuth, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.1\lib\net45\Microsoft.Owin.Security.OAuth.dll</HintPath>
+    </Reference>
+    <Reference Include="Microsoft.Owin.Security.Twitter, Version=4.0.1.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.1\lib\net45\Microsoft.Owin.Security.Twitter.dll</HintPath>
+    </Reference>
     <Reference Include="Microsoft.ReportViewer.Common, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.DataVisualization, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.DataVisualization.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.Design, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.Design.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.ProcessingObjectModel, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.ProcessingObjectModel.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.ReportViewer.WebDesign, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WebDesign.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.Common.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WebForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.900.148\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.WebForms.150.1357.0\lib\net40\Microsoft.ReportViewer.WebForms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.ReportViewer.WinForms, Version=15.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.900.148\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <HintPath>..\packages\Microsoft.ReportingServices.ReportViewerControl.Winforms.150.1357.0\lib\net40\Microsoft.ReportViewer.WinForms.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="Microsoft.SqlServer.Types, Version=14.0.0.0, Culture=neutral, PublicKeyToken=89845dcd8080cc91, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.314.76\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <HintPath>..\packages\Microsoft.SqlServer.Types.14.0.1016.290\lib\net40\Microsoft.SqlServer.Types.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Newtonsoft.Json, Version=12.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\packages\Newtonsoft.Json.12.0.2\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="PagedList, Version=1.17.0.0, Culture=neutral, PublicKeyToken=abbb863e9397c5e1, processorArchitecture=MSIL">
       <HintPath>..\packages\PagedList.1.17.0.0\lib\net40\PagedList.dll</HintPath>
@@ -92,21 +141,49 @@
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Data" />
-    <Reference Include="System.Drawing" />
-    <Reference Include="System.Net.Http.Formatting, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.3\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    <Reference Include="System.Diagnostics.DiagnosticSource, Version=4.0.3.1, Culture=neutral, PublicKeyToken=cc7b13ffcd2ddd51, processorArchitecture=MSIL">
+      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.5.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
     </Reference>
+    <Reference Include="System.Drawing" />
+    <Reference Include="System.Management" />
+    <Reference Include="System.Net.Http.Formatting, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Client.5.2.7\lib\net45\System.Net.Http.Formatting.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Runtime.Caching" />
     <Reference Include="System.Web.DynamicData" />
     <Reference Include="System.Web.Entity" />
     <Reference Include="System.Web.ApplicationServices" />
     <Reference Include="System.ComponentModel.DataAnnotations" />
     <Reference Include="System.Core" />
     <Reference Include="System.Data.DataSetExtensions" />
-    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.3\lib\net45\System.Web.Http.dll</HintPath>
+    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.Helpers.dll</HintPath>
+      <Private>True</Private>
     </Reference>
-    <Reference Include="System.Web.Http.WebHost, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.3\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    <Reference Include="System.Web.Http, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.Core.5.2.7\lib\net45\System.Web.Http.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Http.WebHost, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebApi.WebHost.5.2.7\lib\net45\System.Web.Http.WebHost.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Mvc, Version=5.2.7.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.7\lib\net45\System.Web.Mvc.dll</HintPath>
+    </Reference>
+    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.7\lib\net45\System.Web.Razor.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.7\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Web" />
@@ -125,38 +202,8 @@
     </Reference>
     <Reference Include="System.Net.Http.WebRequest">
     </Reference>
-    <Reference Include="System.Web.Helpers, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.Helpers.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Mvc, Version=5.2.4.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Mvc.5.2.4\lib\net45\System.Web.Mvc.dll</HintPath>
-    </Reference>
     <Reference Include="System.Web.Optimization">
       <HintPath>..\packages\Microsoft.AspNet.Web.Optimization.1.1.3\lib\net40\System.Web.Optimization.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.Razor.3.2.4\lib\net45\System.Web.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Deployment, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Deployment.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Web.WebPages.Razor, Version=3.0.0.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
-      <Private>True</Private>
-      <HintPath>..\packages\Microsoft.AspNet.WebPages.3.2.4\lib\net45\System.Web.WebPages.Razor.dll</HintPath>
-    </Reference>
-    <Reference Include="Newtonsoft.Json">
-      <HintPath>..\packages\Newtonsoft.Json.11.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-    </Reference>
-    <Reference Include="WebDriver, Version=3.141.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\Selenium.WebDriver.3.141.0\lib\net45\WebDriver.dll</HintPath>
     </Reference>
     <Reference Include="WebGrease">
       <Private>True</Private>
@@ -180,41 +227,8 @@
     <Reference Include="Owin">
       <HintPath>..\packages\Owin.1.0\lib\net40\Owin.dll</HintPath>
     </Reference>
-    <Reference Include="Microsoft.Owin">
-      <HintPath>..\packages\Microsoft.Owin.4.0.0\lib\net451\Microsoft.Owin.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Host.SystemWeb">
-      <HintPath>..\packages\Microsoft.Owin.Host.SystemWeb.4.0.0\lib\net451\Microsoft.Owin.Host.SystemWeb.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security">
-      <HintPath>..\packages\Microsoft.Owin.Security.4.0.0\lib\net451\Microsoft.Owin.Security.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Cookies">
-      <HintPath>..\packages\Microsoft.Owin.Security.Facebook.4.0.0\lib\net451\Microsoft.Owin.Security.Facebook.dll</HintPath>
-    </Reference>
     <Reference Include="Microsoft.Owin.Security.Cookies">
       <HintPath>..\packages\Microsoft.Owin.Security.Cookies.4.0.0\lib\net451\Microsoft.Owin.Security.Cookies.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Google">
-      <HintPath>..\packages\Microsoft.Owin.Security.Google.4.0.0\lib\net451\Microsoft.Owin.Security.Google.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.Twitter">
-      <HintPath>..\packages\Microsoft.Owin.Security.Twitter.4.0.0\lib\net451\Microsoft.Owin.Security.Twitter.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.MicrosoftAccount">
-      <HintPath>..\packages\Microsoft.Owin.Security.MicrosoftAccount.4.0.0\lib\net451\Microsoft.Owin.Security.MicrosoftAccount.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.Owin.Security.OAuth">
-      <HintPath>..\packages\Microsoft.Owin.Security.OAuth.4.0.0\lib\net451\Microsoft.Owin.Security.OAuth.dll</HintPath>
-    </Reference>
-    <Reference Include="System.Diagnostics.DiagnosticSource">
-      <HintPath>..\packages\System.Diagnostics.DiagnosticSource.4.4.1\lib\net46\System.Diagnostics.DiagnosticSource.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.AspNet.TelemetryCorrelation">
-      <HintPath>..\packages\Microsoft.AspNet.TelemetryCorrelation.1.0.0\lib\net45\Microsoft.AspNet.TelemetryCorrelation.dll</HintPath>
-    </Reference>
-    <Reference Include="Microsoft.CodeDom.Providers.DotNetCompilerPlatform">
-      <HintPath>..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\lib\net45\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll</HintPath>
     </Reference>
   </ItemGroup>
   <ItemGroup>
@@ -228,19 +242,27 @@
     <Compile Include="Controllers\ActiCumplimientoesController.cs" />
     <Compile Include="Controllers\ActividadCumplimientoController.cs" />
     <Compile Include="Controllers\adminController.cs" />
+    <Compile Include="Controllers\AfpController.cs" />
+    <Compile Include="Controllers\ApplicationBaseController.cs" />
     <Compile Include="Controllers\AreaEmpresasController.cs" />
+    <Compile Include="Controllers\ArlController.cs" />
     <Compile Include="Controllers\AueController.cs" />
     <Compile Include="Controllers\AutoEvaluacionController.cs" />
     <Compile Include="Controllers\CalendarioController.cs" />
     <Compile Include="Controllers\CargaArchivoController.cs" />
+    <Compile Include="Controllers\CateLicenciaController.cs" />
+    <Compile Include="Controllers\ClaseArlController.cs" />
     <Compile Include="Controllers\CriteriosController.cs" />
     <Compile Include="Controllers\EleProteccionsController.cs" />
     <Compile Include="Controllers\EmpresasController.cs" />
     <Compile Include="Controllers\EncuestasController.cs" />
     <Compile Include="Controllers\EncuestaPersonasController.cs" />
+    <Compile Include="Controllers\EpsController.cs" />
+    <Compile Include="Controllers\EstadoPersonaController.cs" />
     <Compile Include="Controllers\EstandarsController.cs" />
     <Compile Include="Controllers\FileController.cs" />
     <Compile Include="Controllers\FrecuenciasController.cs" />
+    <Compile Include="Controllers\GeneroController.cs" />
     <Compile Include="Controllers\IndicadoresController.cs" />
     <Compile Include="Controllers\ItemEstandarsController.cs" />
     <Compile Include="Controllers\ObjEmpresasController.cs" />
@@ -254,7 +276,9 @@
     <Compile Include="Controllers\ReportesController.cs" />
     <Compile Include="Controllers\RespuestasController.cs" />
     <Compile Include="Controllers\SedeCiudadesController.cs" />
+    <Compile Include="Controllers\TDocController.cs" />
     <Compile Include="Controllers\TipoDocCargasController.cs" />
+    <Compile Include="Controllers\TVinController.cs" />
     <Compile Include="Controllers\UploadCumpController.cs" />
     <Compile Include="Controllers\ZonaEmpresasController.cs" />
     <Compile Include="Controllers\AccountController.cs" />
@@ -333,17 +357,13 @@
     <Compile Include="Migrations\201906151427494_tablaProgramacionTareas.Designer.cs">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906182109365_excepcionescategoria.cs" />
-    <Compile Include="Migrations\201906182109365_excepcionescategoria.Designer.cs">
-      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
+    <Compile Include="Migrations\201906181956344_teeeest.cs" />
+    <Compile Include="Migrations\201906181956344_teeeest.Designer.cs">
+      <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906182128264_addcampofecha.cs" />
-    <Compile Include="Migrations\201906182128264_addcampofecha.Designer.cs">
-      <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs" />
-    <Compile Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.Designer.cs">
-      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
+    <Compile Include="Migrations\201906201929336_NewMig.cs" />
+    <Compile Include="Migrations\201906201929336_NewMig.Designer.cs">
+      <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.cs" />
     <Compile Include="Migrations\201906190449464_agregarColumnaNoAplica.Designer.cs">
@@ -357,6 +377,10 @@
     <Compile Include="Migrations\201906200206582_actmergeupdate.Designer.cs">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201906202112569_Unique.cs" />
+    <Compile Include="Migrations\201906202112569_Unique.Designer.cs">
+      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\201906202159057_campoasigrecursos.cs" />
     <Compile Include="Migrations\201906202159057_campoasigrecursos.Designer.cs">
       <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
@@ -365,9 +389,25 @@
     <Compile Include="Migrations\201906210202064_agregadocolumnafinalizada.Designer.cs">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907051833536_Update.cs" />
-    <Compile Include="Migrations\201907051833536_Update.Designer.cs">
-      <DependentUpon>201907051833536_Update.cs</DependentUpon>
+    <Compile Include="Migrations\201906211217564_Update.cs" />
+    <Compile Include="Migrations\201906211217564_Update.Designer.cs">
+      <DependentUpon>201906211217564_Update.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906211459250_EmpresaandUserCargo.cs" />
+    <Compile Include="Migrations\201906211459250_EmpresaandUserCargo.Designer.cs">
+      <DependentUpon>201906211459250_EmpresaandUserCargo.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907030409214_test.cs" />
+    <Compile Include="Migrations\201907030409214_test.Designer.cs">
+      <DependentUpon>201907030409214_test.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907032138519_graficasmi.cs" />
+    <Compile Include="Migrations\201907032138519_graficasmi.Designer.cs">
+      <DependentUpon>201907032138519_graficasmi.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.cs" />
+    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.Designer.cs">
+      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -424,7 +464,6 @@
     <Compile Include="Models\SocioDemografica.cs" />
     <Compile Include="Models\TipoDocCarga.cs" />
     <Compile Include="Models\TipoDocumento.cs" />
-    <Compile Include="Models\TipoRespuesta.cs" />
     <Compile Include="Models\TipoEmpresa.cs" />
     <Compile Include="Models\TipoVinculacion.cs" />
     <Compile Include="Models\UserRolesDTO.cs" />
@@ -443,9 +482,6 @@
     <Compile Include="Models\ViewModel\Rhigiene.cs" />
     <Compile Include="Models\ViewModel\ViewModelActividadCumplimiento.cs" />
     <Compile Include="Models\ZonaEmpresa.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_036C0B5B-1481-4323-8D20-8F5ADCB23D92.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_5937a670-0e60-4077-877b-f7221da3dda1.cs" />
-    <Compile Include="obj\Debug\TemporaryGeneratedFile_E7A71F73-0F8D-4B9B-B56E-8E70B10BC5D3.cs" />
     <Compile Include="PlenamenteDataSet.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -462,248 +498,22 @@
     <Compile Include="Scheduler\SimpleRepeatingSchedule.cs" />
     <Compile Include="Scheduler\SingleSchedule.cs" />
     <Compile Include="Scheduler\WeeklySchedule.cs" />
+    <Compile Include="SqlServerTypes\Loader.cs" />
     <Compile Include="Startup.cs" />
   </ItemGroup>
   <ItemGroup>
-    <Content Include="bin\Antlr3.Runtime.dll" />
-    <Content Include="bin\Antlr3.Runtime.pdb" />
-    <Content Include="bin\de\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\de\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\de\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\de\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\de\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\de\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\EntityFramework.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.dll" />
-    <Content Include="bin\EntityFramework.SqlServer.xml" />
-    <Content Include="bin\EntityFramework.xml" />
-    <Content Include="bin\EnvDTE.dll" />
-    <Content Include="bin\EnvDTE80.dll" />
-    <Content Include="bin\es\EntityFramework.resources.dll" />
-    <Content Include="bin\es\EntityFramework.SqlServer.resources.dll" />
-    <Content Include="bin\es\Microsoft.AspNet.Identity.Core.resources.dll" />
-    <Content Include="bin\es\Microsoft.AspNet.Identity.EntityFramework.resources.dll" />
-    <Content Include="bin\es\Microsoft.AspNet.Identity.Owin.resources.dll" />
-    <Content Include="bin\es\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\es\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\es\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\es\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\es\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\es\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\es\Microsoft.VisualStudio.Data.Core.resources.dll" />
-    <Content Include="bin\es\Microsoft.VisualStudio.Data.Services.resources.dll" />
-    <Content Include="bin\es\System.Web.Helpers.resources.dll" />
-    <Content Include="bin\es\System.Web.Mvc.resources.dll" />
-    <Content Include="bin\es\System.Web.Optimization.resources.dll" />
-    <Content Include="bin\es\System.Web.Razor.resources.dll" />
-    <Content Include="bin\es\System.Web.WebPages.Deployment.resources.dll" />
-    <Content Include="bin\es\System.Web.WebPages.Razor.resources.dll" />
-    <Content Include="bin\es\System.Web.WebPages.resources.dll" />
-    <Content Include="bin\fr\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\fr\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\fr\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\fr\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\fr\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\fr\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\FullCalendar.MVC5.dll" />
-    <Content Include="bin\FullCalendar.MVC5.xml" />
-    <Content Include="bin\it\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\it\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\it\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\it\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\it\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\it\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\ja\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\ja\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\ja\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\ja\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\ja\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\ja\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\ko\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\ko\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\ko\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\ko\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\ko\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\ko\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\Microsoft.AspNet.Identity.Core.dll" />
-    <Content Include="bin\Microsoft.AspNet.Identity.Core.xml" />
-    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.dll" />
-    <Content Include="bin\Microsoft.AspNet.Identity.EntityFramework.xml" />
-    <Content Include="bin\Microsoft.AspNet.Identity.Owin.dll" />
-    <Content Include="bin\Microsoft.AspNet.Identity.Owin.xml" />
-    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.dll" />
-    <Content Include="bin\Microsoft.AspNet.TelemetryCorrelation.xml" />
-    <Content Include="bin\Microsoft.Build.Framework.dll" />
-    <Content Include="bin\Microsoft.Build.Tasks.Core.dll" />
-    <Content Include="bin\Microsoft.Build.Utilities.Core.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.dll" />
-    <Content Include="bin\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.xml" />
-    <Content Include="bin\Microsoft.MSXML.dll" />
-    <Content Include="bin\Microsoft.Owin.dll" />
-    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.dll" />
-    <Content Include="bin\Microsoft.Owin.Host.SystemWeb.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.Cookies.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.Cookies.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.Facebook.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.Facebook.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.Google.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.Google.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.MicrosoftAccount.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.OAuth.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.OAuth.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.Twitter.dll" />
-    <Content Include="bin\Microsoft.Owin.Security.Twitter.xml" />
-    <Content Include="bin\Microsoft.Owin.Security.xml" />
-    <Content Include="bin\Microsoft.Owin.xml" />
-    <Content Include="bin\Microsoft.ReportViewer.Common.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.DataVisualization.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.Design.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.ProcessingObjectModel.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.WebDesign.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.WebForms.dll" />
-    <Content Include="bin\Microsoft.ReportViewer.WinForms.dll" />
-    <Content Include="bin\Microsoft.SqlServer.Types.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.ComponentModelHost.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Data.Core.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Data.Services.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Debugger.Interop.11.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Debugger.InteropA.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Designer.Interfaces.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Designer.Interfaces.xml" />
-    <Content Include="bin\Microsoft.VisualStudio.GraphModel.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.ManagedInterfaces.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.OLE.Interop.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.ProjectAggregator.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.10.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.10.0.xml" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.11.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.11.0.xml" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.12.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.12.0.xml" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.14.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Immutable.14.0.xml" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Interop.10.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Interop.11.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Interop.8.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Interop.9.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.Shell.Interop.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.TemplateWizardInterface.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.TemplateWizardInterface.xml" />
-    <Content Include="bin\Microsoft.VisualStudio.TextManager.Interop.10.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.TextManager.Interop.8.0.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.TextManager.Interop.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.VSHelp.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.WCFReference.Interop.dll" />
-    <Content Include="bin\Microsoft.VisualStudio.WCFReference.Interop.xml" />
-    <Content Include="bin\Microsoft.Web.Infrastructure.dll" />
-    <Content Include="bin\Newtonsoft.Json.dll" />
-    <Content Include="bin\Newtonsoft.Json.xml" />
-    <Content Include="bin\Owin.dll" />
-    <Content Include="bin\PagedList.dll" />
-    <Content Include="bin\PagedList.Mvc.dll" />
-    <Content Include="bin\PagedList.Mvc.xml" />
-    <Content Include="bin\PagedList.xml" />
-    <Content Include="bin\Plenamente.dll" />
-    <Content Include="bin\Plenamente.pdb" />
-    <Content Include="bin\pt\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\pt\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\pt\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\pt\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\pt\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\pt\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\ReportViewerForMvc.dll" />
-    <Content Include="bin\roslyn\csc.exe" />
-    <Content Include="bin\roslyn\csi.exe" />
-    <Content Include="bin\roslyn\Microsoft.Build.Tasks.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.CSharp.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.Scripting.dll" />
-    <Content Include="bin\roslyn\Microsoft.CodeAnalysis.VisualBasic.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.amd64.dll" />
-    <Content Include="bin\roslyn\Microsoft.DiaSymReader.Native.x86.dll" />
-    <Content Include="bin\roslyn\System.AppContext.dll" />
-    <Content Include="bin\roslyn\System.Collections.Immutable.dll" />
-    <Content Include="bin\roslyn\System.Console.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.FileVersionInfo.dll" />
-    <Content Include="bin\roslyn\System.Diagnostics.StackTrace.dll" />
-    <Content Include="bin\roslyn\System.IO.Compression.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.dll" />
-    <Content Include="bin\roslyn\System.IO.FileSystem.Primitives.dll" />
-    <Content Include="bin\roslyn\System.IO.Pipes.AccessControl.dll" />
-    <Content Include="bin\roslyn\System.IO.Pipes.dll" />
-    <Content Include="bin\roslyn\System.Reflection.Metadata.dll" />
-    <Content Include="bin\roslyn\System.Security.AccessControl.dll" />
-    <Content Include="bin\roslyn\System.Security.Claims.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Algorithms.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Encoding.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.Primitives.dll" />
-    <Content Include="bin\roslyn\System.Security.Cryptography.X509Certificates.dll" />
-    <Content Include="bin\roslyn\System.Security.Principal.Windows.dll" />
-    <Content Include="bin\roslyn\System.Text.Encoding.CodePages.dll" />
-    <Content Include="bin\roslyn\System.ValueTuple.dll" />
-    <Content Include="bin\roslyn\System.Xml.ReaderWriter.dll" />
-    <Content Include="bin\roslyn\System.Xml.XmlDocument.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.dll" />
-    <Content Include="bin\roslyn\System.Xml.XPath.XDocument.dll" />
-    <Content Include="bin\roslyn\vbc.exe" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe" />
-    <Content Include="bin\ru\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\ru\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\ru\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\ru\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\ru\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\ru\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\stdole.dll" />
-    <Content Include="bin\System.Diagnostics.DiagnosticSource.dll" />
-    <Content Include="bin\System.Diagnostics.DiagnosticSource.xml" />
-    <Content Include="bin\System.Net.Http.Formatting.dll" />
-    <Content Include="bin\System.Net.Http.Formatting.xml" />
-    <Content Include="bin\System.Threading.Tasks.Dataflow.dll" />
-    <Content Include="bin\System.Web.Helpers.dll" />
-    <Content Include="bin\System.Web.Helpers.xml" />
-    <Content Include="bin\System.Web.Http.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.dll" />
-    <Content Include="bin\System.Web.Http.WebHost.xml" />
-    <Content Include="bin\System.Web.Http.xml" />
-    <Content Include="bin\System.Web.Mvc.dll" />
-    <Content Include="bin\System.Web.Mvc.xml" />
-    <Content Include="bin\System.Web.Optimization.dll" />
-    <Content Include="bin\System.Web.Optimization.xml" />
-    <Content Include="bin\System.Web.Razor.dll" />
-    <Content Include="bin\System.Web.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.Deployment.dll" />
-    <Content Include="bin\System.Web.WebPages.Deployment.xml" />
-    <Content Include="bin\System.Web.WebPages.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.dll" />
-    <Content Include="bin\System.Web.WebPages.Razor.xml" />
-    <Content Include="bin\System.Web.WebPages.xml" />
-    <Content Include="bin\VSLangProj.dll" />
-    <Content Include="bin\VSLangProj2.dll" />
-    <Content Include="bin\VSLangProj80.dll" />
-    <Content Include="bin\WebGrease.dll" />
-    <Content Include="bin\zh-CHS\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\zh-CHS\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\zh-CHS\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\zh-CHS\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\zh-CHS\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\zh-CHS\Microsoft.ReportViewer.WinForms.resources.dll" />
-    <Content Include="bin\zh-CHT\Microsoft.ReportViewer.Common.resources.dll" />
-    <Content Include="bin\zh-CHT\Microsoft.ReportViewer.DataVisualization.resources.dll" />
-    <Content Include="bin\zh-CHT\Microsoft.ReportViewer.Design.resources.dll" />
-    <Content Include="bin\zh-CHT\Microsoft.ReportViewer.WebDesign.resources.dll" />
-    <Content Include="bin\zh-CHT\Microsoft.ReportViewer.WebForms.resources.dll" />
-    <Content Include="bin\zh-CHT\Microsoft.ReportViewer.WinForms.resources.dll" />
     <Content Include="Content\bootstrap-grid.css" />
     <Content Include="Content\bootstrap-grid.min.css" />
     <Content Include="Content\bootstrap-reboot.css" />
     <Content Include="Content\bootstrap-reboot.min.css" />
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
-    <Content Include="Content\chartjs\Chart.css" />
-    <Content Include="Content\chartjs\Chart.min.css" />
+    <Content Include="Content\chartjs\Chart.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Content\chartjs\Chart.min.css">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\estilosParciales.css" />
     <Content Include="Content\fullcalendar.css" />
     <Content Include="Content\fullcalendar.min.css" />
@@ -713,101 +523,397 @@
     <Content Include="favicon.ico" />
     <Content Include="Global.asax" />
     <Content Include="Content\Site.css" />
-    <Content Include="Imagenes\archivo.png" />
-    <Content Include="Imagenes\archivom.png" />
-    <Content Include="Imagenes\backgroundLogin.png" />
-    <Content Include="Imagenes\binoculares.png" />
-    <Content Include="Imagenes\bocadillo.png" />
-    <Content Include="Imagenes\brooke-cagle-1181684-unsplash.jpg" />
-    <Content Include="Imagenes\carl-heyerdahl-181868-unsplash.jpg" />
-    <Content Include="Imagenes\database.png" />
-    <Content Include="Imagenes\Element %2810%29-8.png" />
-    <Content Include="Imagenes\Element %2811%29-8.png" />
-    <Content Include="Imagenes\Element %2812%29-8.png" />
-    <Content Include="Imagenes\Element %2813%29-8.png" />
-    <Content Include="Imagenes\Element %2814%29-8.png" />
-    <Content Include="Imagenes\Element %2815%29-8.png" />
-    <Content Include="Imagenes\Element %2816%29-8.png" />
-    <Content Include="Imagenes\Element %2817%29-8.png" />
-    <Content Include="Imagenes\Element %2818%29-8.png" />
-    <Content Include="Imagenes\Element %2819%29-8.png" />
-    <Content Include="Imagenes\Element %282%29-8.png" />
-    <Content Include="Imagenes\Element %2820%29-8.png" />
-    <Content Include="Imagenes\Element %283%29-8.png" />
-    <Content Include="Imagenes\Element %284%29-8.png" />
-    <Content Include="Imagenes\Element %285%29-8.png" />
-    <Content Include="Imagenes\Element %286%29-8.png" />
-    <Content Include="Imagenes\Element %287%29-8.png" />
-    <Content Include="Imagenes\Element %288%29-8.png" />
-    <Content Include="Imagenes\Element %289%29-8.png" />
-    <Content Include="Imagenes\Element-8.png" />
-    <Content Include="Imagenes\flecha-hacia-la-izquierda.png" />
-    <Content Include="Imagenes\forgot.png" />
-    <Content Include="Imagenes\Grey-background.jpg" />
-    <Content Include="Imagenes\icon-11.png" />
-    <Content Include="Imagenes\icon-12.png" />
-    <Content Include="Imagenes\icon-13.png" />
-    <Content Include="Imagenes\icon-14.png" />
-    <Content Include="Imagenes\icon-15.png" />
-    <Content Include="Imagenes\icon-16.png" />
-    <Content Include="Imagenes\icon-17.png" />
-    <Content Include="Imagenes\icon-18.png" />
-    <Content Include="Imagenes\icon-19.png" />
-    <Content Include="Imagenes\icon-20.png" />
-    <Content Include="Imagenes\icon-w-11.png" />
-    <Content Include="Imagenes\icon-w-12.png" />
-    <Content Include="Imagenes\icon-w-13.png" />
-    <Content Include="Imagenes\icon-w-14.png" />
-    <Content Include="Imagenes\icon-w-15.png" />
-    <Content Include="Imagenes\icon-w-16.png" />
-    <Content Include="Imagenes\icon-w-17.png" />
-    <Content Include="Imagenes\icon-w-18.png" />
-    <Content Include="Imagenes\icon-w-19.png" />
-    <Content Include="Imagenes\icon-w-20.png" />
-    <Content Include="Imagenes\lineas-de-texto.png" />
-    <Content Include="Imagenes\Logo_FB.png" />
-    <Content Include="Imagenes\Logo_INT.png" />
-    <Content Include="Imagenes\Logo_TW.png" />
-    <Content Include="Imagenes\Logo_YT.png" />
-    <Content Include="Imagenes\mano-sosteniendo-smartphone.png" />
-    <Content Include="Imagenes\marcador-de-posicion.png" />
-    <Content Include="Imagenes\Plenamente2.png" />
-    <Content Include="Imagenes\que-hacer.png" />
-    <Content Include="Imagenes\question.png" />
-    <Content Include="Imagenes\Recurso 11.png" />
-    <Content Include="Imagenes\Recurso 12.png" />
-    <Content Include="Imagenes\Recurso 14.png" />
-    <Content Include="Imagenes\Recurso 15.png" />
-    <Content Include="Imagenes\Recurso 16.png" />
-    <Content Include="Imagenes\Recurso 18.png" />
-    <Content Include="Imagenes\Recurso 19.png" />
-    <Content Include="Imagenes\Recurso 6.png" />
-    <Content Include="Imagenes\Recurso 7.png" />
-    <Content Include="Imagenes\Recurso 8.png" />
-    <Content Include="Imagenes\Recurso 9.png" />
-    <Content Include="Imagenes\Recurso17.jpg" />
-    <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg" />
-    <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg" />
-    <Content Include="ReportViewerWebForm.aspx" />
-    <Content Include="Scripts\barraprogreso.js" />
-    <Content Include="Scripts\bootstrap.bundle.js" />
-    <Content Include="Scripts\bootstrap.bundle.min.js" />
-    <Content Include="Scripts\bootstrap.js" />
-    <Content Include="Scripts\bootstrap.min.js" />
-    <Content Include="Scripts\chartjs\Chart.bundle.js" />
-    <Content Include="Scripts\chartjs\Chart.bundle.min.js" />
-    <Content Include="Scripts\chartjs\Chart.js" />
-    <Content Include="Scripts\chartjs\Chart.min.js" />
+    <Content Include="Imagenes\acompañamiento.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\archivo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\archivom.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\backgroundLogin.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\binoculares.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\bocadillo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\brooke-cagle-1181684-unsplash.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\capacitacion.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\capacitacion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\carl-heyerdahl-181868-unsplash.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\cerracuenta.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\database.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\down.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2810%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2811%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2812%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2813%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2814%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2815%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2816%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2817%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2818%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2819%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %282%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %2820%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %283%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %284%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %285%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %286%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %287%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %288%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element %289%29-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Element-8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\engranaje.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\flecha-hacia-la-izquierda.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\fondo.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\fondo.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Fondopng.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\forgot.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Format.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\grafica1.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\grafica1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\grafica2.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\grafica2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\grafica3.JPG">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\grafica3.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\graph %281%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\graph %282%29.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\graph.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Grey-background.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\home1.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-17.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-18.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-20.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-13.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-17.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-18.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\icon-w-20.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\informacion.png" />
+    <Content Include="Imagenes\INGRESA.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\lineas-de-texto.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\list.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Logoplenamenteblanco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Logo_FB.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Logo_INT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Logo_TW.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Logo_YT.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\mano-sosteniendo-smartphone.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\marcador-de-posicion.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\pie-chart.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Plenamente2.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\que-hacer.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\question.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 11.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 12.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 14.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 15.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 16.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 18.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 19.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 6.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 7.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 8.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso 9.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\Recurso17.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\security.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\seguro.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\tim-van-der-kuip-1403210-unsplash.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\tracy-adams-1169632-unsplash.jpg">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\user.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Imagenes\usuarioblanco.png">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="ReportViewerWebForm.aspx">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\barraprogreso.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\chartjs\Chart.bundle.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\chartjs\Chart.bundle.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\chartjs\Chart.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\chartjs\Chart.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\chartjs\script-custom-chart.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\esm\popper-utils.js" />
     <Content Include="Scripts\esm\popper-utils.min.js" />
     <Content Include="Scripts\esm\popper.js" />
     <Content Include="Scripts\esm\popper.min.js" />
-    <Content Include="Scripts\fullcalendar.helper.js" />
-    <Content Include="Scripts\fullcalendar.helper.min.js" />
-    <Content Include="Scripts\fullcalendar.js" />
-    <Content Include="Scripts\fullcalendar.min.js" />
-    <Content Include="Scripts\gcal.js" />
-    <Content Include="Scripts\gcal.min.js" />
+    <Content Include="Scripts\fullcalendar.helper.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fullcalendar.helper.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fullcalendar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\fullcalendar.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\gcal.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\gcal.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\esm\popper.min.js.map" />
+    <Content Include="Scripts\esm\popper.js.map" />
+    <Content Include="Scripts\esm\popper-utils.min.js.map" />
+    <Content Include="Scripts\esm\popper-utils.js.map" />
+    <Content Include="ApplicationInsights.config" />
+    <Content Include="Scripts\jquery-3.4.1.intellisense.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.slim.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.slim.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery.validate.unobtrusive.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\lib\cupertino\images\ui-bg_diagonals-thick_90_eeeeee_40x40.png" />
     <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_100_e4f1fb_1x400.png" />
     <Content Include="Scripts\lib\cupertino\images\ui-bg_glass_50_3baae3_1x400.png" />
@@ -825,7 +931,9 @@
     <Content Include="Scripts\lib\jquery-ui.min.js" />
     <Content Include="Scripts\lib\jquery.min.js" />
     <Content Include="Scripts\lib\moment.min.js" />
-    <Content Include="Scripts\locale-all.js" />
+    <Content Include="Scripts\locale-all.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\locale\af.js" />
     <Content Include="Scripts\locale\ar-dz.js" />
     <Content Include="Scripts\locale\ar-kw.js" />
@@ -897,20 +1005,50 @@
     <Content Include="Scripts\locale\vi.js" />
     <Content Include="Scripts\locale\zh-cn.js" />
     <Content Include="Scripts\locale\zh-tw.js" />
-    <Content Include="Scripts\moment-with-locales.js" />
-    <Content Include="Scripts\moment-with-locales.min.js" />
-    <Content Include="Scripts\moment.js" />
-    <Content Include="Scripts\moment.min.js" />
-    <Content Include="Scripts\popper-utils.js" />
-    <Content Include="Scripts\popper-utils.min.js" />
-    <Content Include="Scripts\popper.js" />
-    <Content Include="Scripts\popper.min.js" />
-    <Content Include="Scripts\script-custom-calendar.js" />
-    <Content Include="Scripts\chartjs\script-custom-chart.js" />
+    <Content Include="Scripts\moment-with-locales.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\moment-with-locales.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\moment.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\moment.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper-utils.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper-utils.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\script-custom-calendar.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Scripts\umd\popper-utils.js" />
     <Content Include="Scripts\umd\popper-utils.min.js" />
     <Content Include="Scripts\umd\popper.js" />
     <Content Include="Scripts\umd\popper.min.js" />
+    <Content Include="SqlServerTypes\readme.htm" />
+    <Content Include="SqlServerTypes\x64\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x64\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\msvcr120.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
+    <Content Include="SqlServerTypes\x86\SqlServerSpatial140.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\admin\Index.cshtml" />
     <Content Include="Views\CargoEmpresas\Create.cshtml" />
     <Content Include="Views\CargoEmpresas\Delete.cshtml" />
@@ -1007,14 +1145,18 @@
     <Content Include="Views\admin\EditUser.cshtml" />
     <Content Include="Views\admin\EditRoles.cshtml" />
     <Content Include="Views\CargaArchivo\Upload.cshtml" />
-    <Content Include="Scripts\esm\popper.min.js.map" />
-    <Content Include="Scripts\esm\popper.js.map" />
-    <Content Include="Scripts\esm\popper-utils.min.js.map" />
-    <Content Include="Scripts\esm\popper-utils.js.map" />
-    <Content Include="Scripts\bootstrap.min.js.map" />
-    <Content Include="Scripts\bootstrap.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.min.js.map" />
-    <Content Include="Scripts\bootstrap.bundle.js.map" />
+    <Content Include="Scripts\bootstrap.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\bootstrap.bundle.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Content\bootstrap.min.css.map" />
     <Content Include="Content\bootstrap.css.map" />
     <Content Include="Content\bootstrap-reboot.min.css.map" />
@@ -1024,18 +1166,6 @@
     <Content Include="PlenamenteDataSet.xsc">
       <DependentUpon>PlenamenteDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="obj\Release\Plenamente.csproj.CoreCompileInputs.cache" />
-    <Content Include="bin\Plenamente.dll.config" />
-    <Content Include="bin\roslyn\csc.exe.config" />
-    <Content Include="bin\roslyn\csc.rsp" />
-    <Content Include="bin\roslyn\csi.exe.config" />
-    <Content Include="bin\roslyn\csi.rsp" />
-    <Content Include="bin\roslyn\Microsoft.CSharp.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.Managed.Core.targets" />
-    <Content Include="bin\roslyn\Microsoft.VisualBasic.Core.targets" />
-    <Content Include="bin\roslyn\vbc.exe.config" />
-    <Content Include="bin\roslyn\vbc.rsp" />
-    <Content Include="bin\roslyn\VBCSCompiler.exe.config" />
     <None Include="PlenamenteDataSet.xsd">
       <Generator>MSDataSetGenerator</Generator>
       <LastGenOutput>PlenamenteDataSet.Designer.cs</LastGenOutput>
@@ -1044,23 +1174,44 @@
     <Content Include="PlenamenteDataSet.xss">
       <DependentUpon>PlenamenteDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="Reports\rptAutoEvaluacion.rdlc" />
-    <None Include="Scripts\jquery-3.3.1.intellisense.js" />
-    <Content Include="Scripts\bootstrap1.js" />
-    <Content Include="Scripts\jquery-1.10.2.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.js" />
-    <Content Include="Scripts\jquery-3.3.1.min.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.js" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.js" />
-    <None Include="Scripts\jquery.validate-vsdoc.js" />
-    <Content Include="Scripts\jquery.validate.js" />
-    <Content Include="Scripts\jquery.validate.min.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.js" />
-    <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\main.js" />
-    <Content Include="Scripts\main1.js" />
-    <Content Include="Scripts\main2.js" />
-    <Content Include="Scripts\modernizr-2.8.3.js" />
+    <Content Include="Reports\rptAutoEvaluacion.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
+    <Content Include="Scripts\bootstrap1.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-1.10.2.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.slim.min.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery-3.4.1.min.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery.validate-vsdoc.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery.validate.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\jquery.validate.min.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\main.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\main1.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\main2.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\modernizr-2.8.3.js">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Web.config">
       <SubType>Designer</SubType>
     </Content>
@@ -1131,19 +1282,9 @@
     <Content Include="Views\AutoEvaluaciones\Details.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Edit.cshtml" />
     <Content Include="Views\AutoEvaluaciones\Index.cshtml" />
-    <Content Include="Scripts\umd\popper.min.js.map" />
-    <Content Include="Scripts\umd\popper.js.map" />
-    <Content Include="Scripts\umd\popper-utils.min.js.map" />
-    <Content Include="Scripts\umd\popper-utils.js.map" />
-    <Content Include="Scripts\README.md" />
-    <Content Include="Scripts\popper.min.js.map" />
-    <Content Include="Scripts\popper.js.map" />
-    <Content Include="Scripts\popper-utils.min.js.map" />
-    <Content Include="Scripts\popper-utils.js.map" />
     <Content Include="Views\AutoEvaluacion\AutoevaluacionSST.cshtml" />
     <Content Include="Views\AutoEvaluacion\Cumplimiento.cshtml" />
     <Content Include="Views\AutoEvaluacion\CargaEvidencia.cshtml" />
-    <Content Include="Views\AutoEvaluacion\Index - Copia.cshtml" />
     <Content Include="Views\AutoEvaluacion\NumeroEmpleados.cshtml" />
     <Content Include="Views\AutoEvaluacion\ModificarNumeroEmpleados.cshtml" />
     <Content Include="Views\AutoEvaluacion\VerHistorico.cshtml" />
@@ -1160,14 +1301,79 @@
     <Content Include="Views\PlandeTrabajo\Eliminar.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Index.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Details.cshtml" />
-    <Content Include="Views\Indicadores\Index.cshtml" />
-    <Content Include="Views\ActividadCumplimiento\Edit.cshtml" />
-    <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
-    <Content Include="Views\admin\CrearPersona.cshtml" />
-    <Content Include="Views\admin\EditarUser.cshtml" />
-    <Content Include="Views\admin\TrueUserCreate.cshtml" />
+    <Content Include="Views\Account\Deslogged.cshtml" />
     <Content Include="Views\admin\Users.cshtml" />
+    <Content Include="Views\admin\EditarUser.cshtml" />
+    <Content Include="Views\admin\CrearPersona.cshtml" />
     <Content Include="Views\admin\UsersSysadmin.cshtml" />
+    <Content Include="Views\Afp\Create.cshtml" />
+    <Content Include="Views\Afp\Delete.cshtml" />
+    <Content Include="Views\Afp\Details.cshtml" />
+    <Content Include="Views\Afp\Edit.cshtml" />
+    <Content Include="Views\Afp\Index.cshtml" />
+    <Content Include="Views\Arl\Create.cshtml" />
+    <Content Include="Views\Arl\Delete.cshtml" />
+    <Content Include="Views\Arl\Details.cshtml" />
+    <Content Include="Views\Arl\Edit.cshtml" />
+    <Content Include="Views\Arl\Index.cshtml" />
+    <Content Include="Views\CateLicencia\Create.cshtml" />
+    <Content Include="Views\CateLicencia\Delete.cshtml" />
+    <Content Include="Views\CateLicencia\Details.cshtml" />
+    <Content Include="Views\CateLicencia\Edit.cshtml" />
+    <Content Include="Views\CateLicencia\Index.cshtml" />
+    <Content Include="Views\ClaseArl\Create.cshtml" />
+    <Content Include="Views\ClaseArl\Delete.cshtml" />
+    <Content Include="Views\ClaseArl\Details.cshtml" />
+    <Content Include="Views\ClaseArl\Edit.cshtml" />
+    <Content Include="Views\ClaseArl\Index.cshtml" />
+    <Content Include="Views\Eps\Create.cshtml" />
+    <Content Include="Views\Eps\Delete.cshtml" />
+    <Content Include="Views\Eps\Details.cshtml" />
+    <Content Include="Views\Eps\Edit.cshtml" />
+    <Content Include="Views\Eps\Index.cshtml" />
+    <Content Include="Views\EstadoPersona\Create.cshtml" />
+    <Content Include="Views\EstadoPersona\Delete.cshtml" />
+    <Content Include="Views\EstadoPersona\Details.cshtml" />
+    <Content Include="Views\EstadoPersona\Edit.cshtml" />
+    <Content Include="Views\EstadoPersona\Index.cshtml" />
+    <Content Include="Views\Genero\Create.cshtml" />
+    <Content Include="Views\Genero\Delete.cshtml" />
+    <Content Include="Views\Genero\Details.cshtml" />
+    <Content Include="Views\Genero\Edit.cshtml" />
+    <Content Include="Views\Genero\Index.cshtml" />
+    <Content Include="Views\Indicadores\Index.cshtml" />
+    <Content Include="Views\TDoc\Create.cshtml" />
+    <Content Include="Views\TDoc\Delete.cshtml" />
+    <Content Include="Views\TDoc\Details.cshtml" />
+    <Content Include="Views\TDoc\Edit.cshtml" />
+    <Content Include="Views\TDoc\Index.cshtml" />
+    <Content Include="Views\TVin\Create.cshtml" />
+    <Content Include="Views\TVin\Delete.cshtml" />
+    <Content Include="Views\TVin\Details.cshtml" />
+    <Content Include="Views\TVin\Edit.cshtml" />
+    <Content Include="Views\TVin\Index.cshtml" />
+    <Content Include="Views\Reportes\VerReportePlandeTrabajo.cshtml" />
+    <Content Include="Views\ActividadCumplimiento\Edit.cshtml" />
+    <Content Include="Views\TipoDocCargas\Index.cshtml" />
+    <Content Include="Scripts\umd\popper.min.js.map" />
+    <Content Include="Scripts\umd\popper.js.map" />
+    <Content Include="Scripts\umd\popper-utils.min.js.map" />
+    <Content Include="Scripts\umd\popper-utils.js.map" />
+    <Content Include="Scripts\README.md">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper-utils.min.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Scripts\popper-utils.js.map">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Empresas\Create.cshtml" />
     <Content Include="Views\Empresas\Delete.cshtml" />
     <Content Include="Views\Empresas\Details.cshtml" />
@@ -1176,18 +1382,14 @@
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Areas\Administrador\Models\" />
-    <Folder Include="Areas\Administrador\Views\AutoEvaluacion\" />
-    <Folder Include="Areas\Administrador\Views\EncuestaSociod\" />
-    <Folder Include="Areas\Administrador\Views\Shared\" />
     <Folder Include="Files\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
   <ItemGroup>
-    <None Include="packages.config" />
-    <Content Include="Scripts\jquery-3.3.1.slim.min.map" />
-    <Content Include="Scripts\jquery-3.3.1.min.map" />
+    <None Include="packages.config">
+      <SubType>Designer</SubType>
+    </None>
   </ItemGroup>
   <ItemGroup>
     <EmbeddedResource Include="Migrations\201905311910368_CampoJustificacion.resx">
@@ -1244,23 +1446,17 @@
     <EmbeddedResource Include="Migrations\201906151427494_tablaProgramacionTareas.resx">
       <DependentUpon>201906151427494_tablaProgramacionTareas.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906182109365_excepcionescategoria.resx">
-      <DependentUpon>201906182109365_excepcionescategoria.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906181956344_teeeest.resx">
+      <DependentUpon>201906181956344_teeeest.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906182128264_addcampofecha.resx">
-      <DependentUpon>201906182128264_addcampofecha.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906182325585_AgregadoColumnasRepeticionesDiasSemana.resx">
-      <DependentUpon>201906182325585_AgregadoColumnasRepeticionesDiasSemana.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906190449464_agregarColumnaNoAplica.resx">
-      <DependentUpon>201906190449464_agregarColumnaNoAplica.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906191719482_AgregadoColumnaHoraAct.resx">
-      <DependentUpon>201906191719482_AgregadoColumnaHoraAct.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906201929336_NewMig.resx">
+      <DependentUpon>201906201929336_NewMig.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906200206582_actmergeupdate.resx">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906202112569_Unique.resx">
+      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906202159057_campoasigrecursos.resx">
       <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
@@ -1268,17 +1464,39 @@
     <EmbeddedResource Include="Migrations\201906210202064_agregadocolumnafinalizada.resx">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907051833536_Update.resx">
-      <DependentUpon>201907051833536_Update.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201906211217564_Update.resx">
+      <DependentUpon>201906211217564_Update.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906211459250_EmpresaandUserCargo.resx">
+      <DependentUpon>201906211459250_EmpresaandUserCargo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907030409214_test.resx">
+      <DependentUpon>201907030409214_test.cs</DependentUpon>
+    </EmbeddedResource>
+    <Content Include="Reportes\rptPlanDeTrabajo.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <Content Include="Reportes\rptAutoEvaluacion.rdlc">
+      <SubType>Designer</SubType>
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
+    <EmbeddedResource Include="Migrations\201907032138519_graficasmi.resx">
+      <DependentUpon>201907032138519_graficasmi.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.resx">
+      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
   </ItemGroup>
   <ItemGroup>
-    <TypeScriptCompile Include="Scripts\index.d.ts" />
+    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
   </ItemGroup>
   <ItemGroup>
-    <Service Include="{4A0DDDB5-7A95-4FBF-97CC-616D07737A77}" />
+    <Content Include="Scripts\index.d.ts">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
   </ItemGroup>
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
@@ -1311,10 +1529,20 @@
   </ProjectExtensions>
   <Target Name="EnsureNuGetPackageBuildImports" BeforeTargets="PrepareForBuild">
     <PropertyGroup>
-      <ErrorText>Este proyecto hace referencia a los paquetes NuGet que faltan en este equipo. Use la restauración de paquetes NuGet para descargarlos. Para obtener más información, consulte http://go.microsoft.com/fwlink/?LinkID=322105. El archivo que falta es {0}.</ErrorText>
+      <ErrorText>This project references NuGet package(s) that are missing on this computer. Use NuGet Package Restore to download them.  For more information, see http://go.microsoft.com/fwlink/?LinkID=322105. The missing file is {0}.</ErrorText>
     </PropertyGroup>
-    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.0\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.2.0.1\build\net46\Microsoft.CodeDom.Providers.DotNetCompilerPlatform.props'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.targets'))" />
+    <Error Condition="!Exists('..\packages\Microsoft.ApplicationInsights.Web.2.10.0\build\Microsoft.ApplicationInsights.Web.targets')" Text="$([System.String]::Format('$(ErrorText)', '..\packages\Microsoft.ApplicationInsights.Web.2.10.0\build\Microsoft.ApplicationInsights.Web.targets'))" />
   </Target>
+  <Import Project="..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.DependencyCollector.2.10.0\build\Microsoft.ApplicationInsights.DependencyCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.PerfCounterCollector.2.10.0\build\Microsoft.ApplicationInsights.PerfCounterCollector.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.TelemetryChannel.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.WindowsServer.2.10.0\build\Microsoft.ApplicationInsights.WindowsServer.targets')" />
+  <Import Project="..\packages\Microsoft.ApplicationInsights.Web.2.10.0\build\Microsoft.ApplicationInsights.Web.targets" Condition="Exists('..\packages\Microsoft.ApplicationInsights.Web.2.10.0\build\Microsoft.ApplicationInsights.Web.targets')" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it.
        Other similar extension points exist, see Microsoft.Common.targets.
   <Target Name="BeforeBuild">
