@@ -389,6 +389,10 @@
     <Compile Include="Migrations\201907052023545_terminos.Designer.cs">
       <DependentUpon>201907052023545_terminos.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907081525145_update.cs" />
+    <Compile Include="Migrations\201907081525145_update.Designer.cs">
+      <DependentUpon>201907081525145_update.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1451,6 +1455,9 @@
     </Content>
     <EmbeddedResource Include="Migrations\201907052023545_terminos.resx">
       <DependentUpon>201907052023545_terminos.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907081525145_update.resx">
+      <DependentUpon>201907081525145_update.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
