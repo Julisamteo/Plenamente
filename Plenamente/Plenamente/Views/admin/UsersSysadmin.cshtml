@@ -90,7 +90,7 @@
                 <td style="width:14%">
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))
                     {
-                        @Html.ActionLink("Editar", "EditUser", new { id = item.Id })
+                        @Html.ActionLink("Editar", "EditUser", new { UserName = item.UserName })
                     }
                     |
                     @if ((item.UserName.ToLower() != this.User.Identity.Name.ToLower()))

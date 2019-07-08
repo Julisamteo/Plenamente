@@ -17,8 +17,10 @@ namespace Plenamente.Models
         //Variables que se agregar en la tabla de AspNetUsers 
         [Index(IsUnique = true)]
         public int Pers_Doc { get; set; }
+        [Required]
         public string Pers_Nom1 { get; set; }
         public string Pers_Nom2 { get; set; }
+        [Required]
         public string Pers_Apel1 { get; set; }
         public string Pers_Apel2 { get; set; }
         public int? Pers_Licencia { get; set; }
@@ -32,13 +34,17 @@ namespace Plenamente.Models
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Retiro { get; set; }
+        [Required]
         public string Pers_Dir { get; set; }
+        [Required]
         public string Pers_Cemeg { get; set; }
+        [Required]
         public int Pers_Temeg { get; set; }
         [DataType(DataType.Date)]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Registro { get; set; }
         public string Pers_Cargo { get; set; }
+        public bool Pers_Terminos { get; set; }
 
         //Variables que "instancian" las llaves foraneas del sistema y se crean como campos en la tabla AspNetUsers
         public int? Tdoc_Id { get; set; }
