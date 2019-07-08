@@ -377,10 +377,6 @@
     <Compile Include="Migrations\201906200206582_actmergeupdate.Designer.cs">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906202112569_Unique.cs" />
-    <Compile Include="Migrations\201906202112569_Unique.Designer.cs">
-      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\201906202159057_campoasigrecursos.cs" />
     <Compile Include="Migrations\201906202159057_campoasigrecursos.Designer.cs">
       <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
@@ -389,25 +385,9 @@
     <Compile Include="Migrations\201906210202064_agregadocolumnafinalizada.Designer.cs">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906211217564_Update.cs" />
-    <Compile Include="Migrations\201906211217564_Update.Designer.cs">
-      <DependentUpon>201906211217564_Update.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906211459250_EmpresaandUserCargo.cs" />
-    <Compile Include="Migrations\201906211459250_EmpresaandUserCargo.Designer.cs">
-      <DependentUpon>201906211459250_EmpresaandUserCargo.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907030409214_test.cs" />
-    <Compile Include="Migrations\201907030409214_test.Designer.cs">
-      <DependentUpon>201907030409214_test.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907032138519_graficasmi.cs" />
-    <Compile Include="Migrations\201907032138519_graficasmi.Designer.cs">
-      <DependentUpon>201907032138519_graficasmi.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.cs" />
-    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.Designer.cs">
-      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
+    <Compile Include="Migrations\201907052023545_terminos.cs" />
+    <Compile Include="Migrations\201907052023545_terminos.Designer.cs">
+      <DependentUpon>201907052023545_terminos.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -1455,23 +1435,11 @@
     <EmbeddedResource Include="Migrations\201906200206582_actmergeupdate.resx">
       <DependentUpon>201906200206582_actmergeupdate.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906202112569_Unique.resx">
-      <DependentUpon>201906202112569_Unique.cs</DependentUpon>
-    </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906202159057_campoasigrecursos.resx">
       <DependentUpon>201906202159057_campoasigrecursos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201906210202064_agregadocolumnafinalizada.resx">
       <DependentUpon>201906210202064_agregadocolumnafinalizada.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211217564_Update.resx">
-      <DependentUpon>201906211217564_Update.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906211459250_EmpresaandUserCargo.resx">
-      <DependentUpon>201906211459250_EmpresaandUserCargo.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907030409214_test.resx">
-      <DependentUpon>201907030409214_test.cs</DependentUpon>
     </EmbeddedResource>
     <Content Include="Reportes\rptPlanDeTrabajo.rdlc">
       <SubType>Designer</SubType>
@@ -1481,11 +1449,8 @@
       <SubType>Designer</SubType>
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
-    <EmbeddedResource Include="Migrations\201907032138519_graficasmi.resx">
-      <DependentUpon>201907032138519_graficasmi.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.resx">
-      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907052023545_terminos.resx">
+      <DependentUpon>201907052023545_terminos.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
