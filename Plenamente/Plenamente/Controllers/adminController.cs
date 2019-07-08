@@ -696,7 +696,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     return HttpNotFound();
                 }
 
-                return Redirect("~/Admin");
+                return RedirectToAction("UsersSysAdmin","admin");
             }
             catch (Exception ex)
             {
