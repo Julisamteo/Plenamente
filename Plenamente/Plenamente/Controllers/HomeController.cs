@@ -14,12 +14,29 @@ namespace Plenamente.Controllers
     {
         private ApplicationDbContext db = new ApplicationDbContext();
 
-  
+        public ActionResult RevisarTerminos()
+        {
+            var userId = User.Identity.GetUserId();
+            var UserCurrent = db.Users.Find(userId);
+            var username = UserCurrent.UserName;
+            var Terminos = UserCurrent.Pers_Terminos;
+
+            if (Terminos == false)
+            {
+                return RedirectToAction("Terminos", "admin", new { Username = username });
+            }
+
+            else
+            {
+                return RedirectToAction("Index");
+            }
+        }
+
+
         public ActionResult Index()
         {
-         
-            
-                List<EventViewModel> lst = new List<EventViewModel>();
+           
+            List<EventViewModel> lst = new List<EventViewModel>();
                 try
                 {
                     lst =

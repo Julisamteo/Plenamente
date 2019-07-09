@@ -20,6 +20,43 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
 
+
+
+
+        public ActionResult Terminos(string UserName)
+        {
+            if (UserName == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            ExpandedUserDTO objExpandedUserDTO = GetUser(UserName);
+            if (objExpandedUserDTO == null)
+            {
+                return HttpNotFound();
+            }
+            return View(objExpandedUserDTO);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Terminos(ExpandedUserDTO paramExpandedUserDTO)
+        {
+            if (paramExpandedUserDTO == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+
+            ExpandedUserDTO objExpandedUserDTO = UpdateDTOUser(paramExpandedUserDTO);
+
+            if (objExpandedUserDTO == null)
+            {
+                return HttpNotFound();
+            }
+
+            return RedirectToAction("Index", "Home");
+
+        }
+
         //Vista inicial de los usuarios en donde se muestran graficas, notificaciones, etc.
         // GET: Administrador/admin
         [Authorize(Roles = "Administrator,Admin")]
@@ -451,6 +488,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     objUserDTO.Pers_Direccion = item.Pers_Dir;
                     objUserDTO.Pers_ContactoEmeg = item.Pers_Cemeg;
                     objUserDTO.Pers_TelefonoEmeg = item.Pers_Temeg;
+                    objUserDTO.Terminos = item.Pers_Terminos;
                     objUserDTO.Tdoc_Id = item.Tdoc_Id;
                     objUserDTO.Sciu_Id = item.Sciu_Id;
                     //objUserDTO.Ciudad = item.Ciudad;
@@ -696,7 +734,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     return HttpNotFound();
                 }
 
-                return Redirect("~/Admin");
+                return Redirect("~/Admin/Userssysadmin");
             }
             catch (Exception ex)
             {
@@ -1112,6 +1150,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             objExpandedUserDTO.Pers_Direccion = result.Pers_Dir;
             objExpandedUserDTO.Pers_ContactoEmeg = result.Pers_Cemeg;
             objExpandedUserDTO.Pers_TelefonoEmeg = result.Pers_Temeg;
+            objExpandedUserDTO.Terminos = result.Pers_Terminos;
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();

@@ -258,17 +258,9 @@
     <Compile Include="Controllers\CargoEmpresasController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
-    <Compile Include="Migrations\201907022028154_erickyladb.cs" />
-    <Compile Include="Migrations\201907022028154_erickyladb.Designer.cs">
-      <DependentUpon>201907022028154_erickyladb.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907031926199_testeoafterchanges.cs" />
-    <Compile Include="Migrations\201907031926199_testeoafterchanges.Designer.cs">
-      <DependentUpon>201907031926199_testeoafterchanges.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201907031931196_checked.cs" />
-    <Compile Include="Migrations\201907031931196_checked.Designer.cs">
-      <DependentUpon>201907031931196_checked.cs</DependentUpon>
+    <Compile Include="Migrations\201907051950476_checkop.cs" />
+    <Compile Include="Migrations\201907051950476_checkop.Designer.cs">
+      <DependentUpon>201907051950476_checkop.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -1074,6 +1066,7 @@
     <Content Include="Views\Empresas\Details.cshtml" />
     <Content Include="Views\Empresas\Edit.cshtml" />
     <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\admin\Terminos.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1091,14 +1084,8 @@
     <Content Include="Scripts\jquery-3.3.1.min.map" />
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="Migrations\201907022028154_erickyladb.resx">
-      <DependentUpon>201907022028154_erickyladb.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907031926199_testeoafterchanges.resx">
-      <DependentUpon>201907031926199_testeoafterchanges.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907031931196_checked.resx">
-      <DependentUpon>201907031931196_checked.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907051950476_checkop.resx">
+      <DependentUpon>201907051950476_checkop.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

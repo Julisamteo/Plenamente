@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class testeoafterchanges : IMigrationMetadata
+    public sealed partial class checkop : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(testeoafterchanges));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(checkop));
         
         string IMigrationMetadata.Id
         {
-            get { return "201907031926199_testeoafterchanges"; }
+            get { return "201907051950476_checkop"; }
         }
         
         string IMigrationMetadata.Source

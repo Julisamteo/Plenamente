@@ -31,6 +31,9 @@ namespace Plenamente.Models
         public int AccessFailedCount { get; set; }
         public string PhoneNumber { get; set; }
         public IEnumerable<UserRolesDTO> Roles { get; set; }
+        [Display(Name = "I accept the above terms and conditions.")]
+     
+        public bool Terminos { get; set; }
 
         public int? Tdoc_Id { get; set; }
         public List<TipoDocumento> tipoDocumento { get; set; }
