@@ -31,7 +31,7 @@ namespace Plenamente.Controllers
                                 Start = a.FechaHora,
                                 BackgroundColor = "#7DDAFF",
                                 BorderColor = "#9FBDC9",
-                                EventRoute = "/ActividadCumplimiento/Create/" + a.Id
+                                EventRoute = "/ActividadCumplimiento/Details/" + a.ActiCumplimiento.Acum_Id
                             }).ToList();
             }
             catch (Exception ex)

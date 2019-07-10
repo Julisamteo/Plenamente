@@ -7,152 +7,157 @@
 }
 
 <div class="colorVerdeBack">
-    <p>Crear actividades</p>
+    <p>
+        Crear actividades
+        <a href="#" class="ayudaTitulos"><span>Aquí podras crear actividades y asiganarlas a un usuario previamente creado</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+
+    </p>
+
 </div>
 
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
 
-    <div class="contenidoCuerpo">
-        <input type="hidden" value="@ViewBag.ReturnUrl" id="retornar" name="retornar" />
-        <input type="hidden" value="@ViewBag.idptrab" id="retornar" name="retornar" />
+<div class="contenidoCuerpo">
+    <input type="hidden" value="@ViewBag.ReturnUrl" id="retornar" name="retornar" />
+    <input type="hidden" value="@ViewBag.idptrab" id="retornar" name="retornar" />
 
-        <hr />
-        @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-        <div class="form-group">
-            @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = " text-box single-line" } })
-                @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = " text-box single-line" } })
-                @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-
-                @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "estilosSelect" })
-                @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <br />
-        <div class="form-group">
-            @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-6" })
-            <div class="col-md-12">
-
-                @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "estilosSelect" })
-                @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
-                @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group" style="display:none;">
-            @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
-                @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
-            </div>
-
-        </div>
-        <div class="form-group">
-            @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "text-box single-line" } })
-                @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
-            </div>
-        </div>
-        <div class="form-group" style="display:none;">
-            @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
-                @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
-            </div>
-        </div>
-
-        <div class="form-group">
-            @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-12" })
-            <div class="col-md-12">
-                @*@Html.EditorFor(model => model.Frecuencia, new { htmlAttributes = new { @class = "form-control" } })
-                    @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
-
-
-                <!-- Recurrence section -->
-                <script type="text/javascript" src="@Url.Content("~/Scripts/DayPilot/recurrence.js?v=3")"></script>
-
-                <select class="browser-default custom-select control-label " id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
-                    <option value="norepeat">No repetir</option>
-                    <option value="daily">Diaria</option>
-                    <option value="weekly" style="display:none;">Semanal</option>
-                    <option value="monthly">Mensual</option>
-                </select>
-            </div>
-            @*<div class="form-group">
-                    <div class="label label-default" id="select_norepeat">
-                        No repetir
-                    </div>
-                </div>*@
-
-            <div id="select_daily" style="display:none;" class="label label-default">
-                Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
-            </div>
-
-            <div id="select_weekly" style="display:none;" class="label label-default">
-                Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana.
-                <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
-                <br />
-                <table>
-                    <tr>
-                        <td>Los dias: </td>
-                        <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" name="weekly_0" />Lunes </label></td>
-                        <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" name="weekly_1" />Martes </label></td>
-                        <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" name="weekly_2" />Miercoles </label></td>
-                        <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" name="weekly_3" />Jueves </label></td>
-                        <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" name="weekly_4" />Viernes </label></td>
-                        <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" name="weekly_5" />Sabado </label></td>
-                        <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" name="weekly_6" />Domingo </label></td>
-                    </tr>
-                </table>
-            </div>
-
-            <div id="select_monthly" style="display:none;" class="label label-default">
-                Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();" /> de cada mes.
-                <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
-                <br />
-            </div>
-            <input id="period" name="period" type="hidden" value="" />
-            <input id="Frecuencia" name="Frecuencia" type="hidden" value="1" />
-
-
-
-        </div>
-
-
-
-        <div class="form-group">
-            <div class="col-md-6">
-                <input type="submit" value="Crear" class="btn btn-default" />
-            </div>
+    <hr />
+    @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+    <div class="form-group">
+        @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = " text-box single-line" } })
+            @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
         </div>
     </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = " text-box single-line" } })
+            @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+
+            @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <br />
+    <div class="form-group">
+        @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-6" })
+        <div class="col-md-12">
+
+            @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "estilosSelect" })
+            @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
+        </div>
+
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "text-box single-line" } })
+            @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
+        </div>
+    </div>
+    <div class="form-group" style="display:none;">
+        @Html.LabelFor(model => model.hora, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @Html.EditorFor(model => model.hora, new { htmlAttributes = new { @class = "form-control", @type = "time" } })
+            @Html.ValidationMessageFor(model => model.hora, "", new { @class = "text-danger" })
+        </div>
+    </div>
+
+    <div class="form-group">
+        @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-12" })
+        <div class="col-md-12">
+            @*@Html.EditorFor(model => model.Frecuencia, new { htmlAttributes = new { @class = "form-control" } })
+            @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
+
+
+            <!-- Recurrence section -->
+            <script type="text/javascript" src="@Url.Content(" ~/Scripts/DayPilot/recurrence.js?v=3")"></script>
+
+            <select class="browser-default custom-select control-label " id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
+                <option value="norepeat">No repetir</option>
+                <option value="daily">Diaria</option>
+                <option value="weekly" style="display:none;">Semanal</option>
+                <option value="monthly">Mensual</option>
+            </select>
+        </div>
+        @*<div class="form-group">
+            <div class="label label-default" id="select_norepeat">
+                No repetir
+            </div>
+        </div>*@
+
+        <div id="select_daily" style="display:none;" class="label label-default">
+            Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
+        </div>
+
+        <div id="select_weekly" style="display:none;" class="label label-default">
+            Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana.
+            <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+            <br />
+            <table>
+                <tr>
+                    <td>Los dias: </td>
+                    <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" name="weekly_0" />Lunes </label></td>
+                    <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" name="weekly_1" />Martes </label></td>
+                    <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" name="weekly_2" />Miercoles </label></td>
+                    <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" name="weekly_3" />Jueves </label></td>
+                    <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" name="weekly_4" />Viernes </label></td>
+                    <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" name="weekly_5" />Sabado </label></td>
+                    <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" name="weekly_6" />Domingo </label></td>
+                </tr>
+            </table>
+        </div>
+
+        <div id="select_monthly" style="display:none;" class="label label-default">
+            Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();" /> de cada mes.
+            <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+            <br />
+        </div>
+        <input id="period" name="period" type="hidden" value="" />
+        <input id="Frecuencia" name="Frecuencia" type="hidden" value="1" />
+
+
+
+    </div>
+
+
+
+    <div class="form-group">
+        <div class="col-md-6">
+            <input type="submit" value="Crear" class="btn btn-default" />
+        </div>
+    </div>
+</div>
 }
 
 <div class="col-md-12">
-    <a href="@Url.Action("Index", "ActividadCumplimiento")" class="ayudaTitulos">
+    <a href="@Url.Action(" Index", "ActividadCumplimiento" )" class="ayudaTitulos">
         <span>Volver al inicio</span> <img style="width: 5%;" src="~/Imagenes/flecha-hacia-la-izquierda.png" />
     </a>
 </div>

@@ -405,9 +405,13 @@
     <Compile Include="Migrations\201907032138519_graficasmi.Designer.cs">
       <DependentUpon>201907032138519_graficasmi.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.cs" />
-    <Compile Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.Designer.cs">
-      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
+    <Compile Include="Migrations\201907051854424_ul.cs" />
+    <Compile Include="Migrations\201907051854424_ul.Designer.cs">
+      <DependentUpon>201907051854424_ul.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201907081932426_Fix.cs" />
+    <Compile Include="Migrations\201907081932426_Fix.Designer.cs">
+      <DependentUpon>201907081932426_Fix.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
@@ -1484,8 +1488,11 @@
     <EmbeddedResource Include="Migrations\201907032138519_graficasmi.resx">
       <DependentUpon>201907032138519_graficasmi.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201906261907263_agregarcolumnatipoempresaaempresa.resx">
-      <DependentUpon>201906261907263_agregarcolumnatipoempresaaempresa.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907051854424_ul.resx">
+      <DependentUpon>201907051854424_ul.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907081932426_Fix.resx">
+      <DependentUpon>201907081932426_Fix.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

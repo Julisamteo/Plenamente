@@ -35,7 +35,7 @@ namespace Plenamente.Models.ViewModel
 
         [Display(Name = "Periodicidad")]
         public string Frecuencia { get; set; }
-                
+
         public string retornar { get; set; }
 
         public string Frecuencia_desc { get; set; }
@@ -51,5 +51,6 @@ namespace Plenamente.Models.ViewModel
         public string asigrecursos { get; set; }
         [Display(Name = "Finalizar actividad")]
         public bool Finalizada { get; set; }
+        public int idPlanDeTrabajo { get; set; }
     }
 }

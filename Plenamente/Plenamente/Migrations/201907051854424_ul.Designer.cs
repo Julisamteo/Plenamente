@@ -7,13 +7,13 @@ namespace Plenamente.Migrations
     using System.Resources;
     
     [GeneratedCode("EntityFramework.Migrations", "6.2.0-61023")]
-    public sealed partial class agregarcolumnatipoempresaaempresa : IMigrationMetadata
+    public sealed partial class ul : IMigrationMetadata
     {
-        private readonly ResourceManager Resources = new ResourceManager(typeof(agregarcolumnatipoempresaaempresa));
+        private readonly ResourceManager Resources = new ResourceManager(typeof(ul));
         
         string IMigrationMetadata.Id
         {
-            get { return "201906261907263_agregarcolumnatipoempresaaempresa"; }
+            get { return "201907051854424_ul"; }
         }
         
         string IMigrationMetadata.Source

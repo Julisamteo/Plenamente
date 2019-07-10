@@ -39,6 +39,7 @@ namespace Plenamente.Models
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime Pers_Registro { get; set; }
         public string Pers_Cargo { get; set; }
+        public bool Pers_terminos { get; set; }
 
         //Variables que "instancian" las llaves foraneas del sistema y se crean como campos en la tabla AspNetUsers
         public int? Tdoc_Id { get; set; }

@@ -34,7 +34,7 @@ namespace Plenamente.Controllers
             }
             AutoEvaluacion evaluacion =
                 db.Tb_AutoEvaluacion
-                    .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0)
+                    .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0 && a.Finalizada)
                     .OrderByDescending(a => a.Auev_Inicio)
                     .FirstOrDefault();
             decimal[] lst = new decimal[0];
@@ -145,7 +145,7 @@ namespace Plenamente.Controllers
             {
                 AutoEvaluacion evaluacion =
                     db.Tb_AutoEvaluacion
-                        .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0)
+                        .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Cumplimientos.Count > 0 && a.Finalizada)
                         .OrderByDescending(a => a.Auev_Inicio)
                         .FirstOrDefault();
 
