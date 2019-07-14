@@ -5,47 +5,26 @@ using System.Web;
 namespace Plenamente.App_Tool
 {
     /// <summary>
-    /// Class that implements the properties to acces de user data.
+    /// Clase que implementa las propiedades necesarias para mantener la identidad de los usuarios.
     /// </summary>
     public static class AccountData
     {
         /// <summary>
-        /// The session
+        /// Instancia del objeto session.
         /// </summary>
         private static SessionManager Session = new SessionManager();
         /// <summary>
-        /// Gets or sets if has error return true or false in other wase.
+        /// Obtiene el valor que indica si [la session esta iniciada].
         /// </summary>
         /// <value>
-        /// If has error
-        /// </value>
-        private static bool HasError
-        {
-            get
-            {
-                try
-                {
-                    return Session.GetValue<bool>("Session.HasError");
-                }
-                catch (Exception)
-                {
-                    return false;
-                }
-            }
-            set => Session.SetValue("Session.HasError", value);
-        }
-        /// <summary>
-        /// Gets a value indicating whether [session in].
-        /// </summary>
-        /// <value>
-        ///   <c>true</c> if [session in]; otherwise, <c>false</c>.
+        ///   <c>Verdadero</c> Si [Session esta llena]; otra forma, <c>Falso</c>.
         /// </value>
         public static bool SessionOut => HttpContext.Current == null;
         /// <summary>
-        /// Gets or sets the machine ip.
+        /// Obtiene el identificador del usuario.
         /// </summary>
         /// <value>
-        /// The machine ip.
+        /// El indicador del usuario.
         /// </value>
         public static string UsuarioId
         {
@@ -61,10 +40,10 @@ namespace Plenamente.App_Tool
             }
         }
         /// <summary>
-        /// Gets or sets the nit empresa.
+        /// Obtiene o llena el nit de la empresa.
         /// </summary>
         /// <value>
-        /// The nit empresa.
+        /// El nit de la empresa.
         /// </value>
         public static int NitEmpresa
         {
@@ -72,7 +51,7 @@ namespace Plenamente.App_Tool
             set { Session.SetValue("Session.NitEmpresa", value);  }
         }
         /// <summary>
-        /// Closes the session.
+        /// Cierra la sesión.
         /// </summary>
         public static void CloseSession()
         {
@@ -80,15 +59,15 @@ namespace Plenamente.App_Tool
         }
     }
     /// <summary>
-    /// Class that implements the methods for administrate session
+    /// Clase que implementa los métodos necesarios para administrar la sesión.
     /// </summary>
     public class SessionManager
     {
         /// <summary>
-        /// Adds the value to persistense variables.
+        /// Agrega un valor a los parametros.
         /// </summary>
-        /// <param name="key">The key.</param>
-        /// <param name="value">The value.</param>
+        /// <param name="key">El nombre o llave del parametro.</param>
+        /// <param name="value">El valor del parametro.</param>
         public void SetValue(string key, object value)
         {
             if (HttpContext.Current != null)
@@ -98,11 +77,13 @@ namespace Plenamente.App_Tool
             }
         }
         /// <summary>
-        /// Gets the resource.
+        /// Obtiene el valor de un recurso especifico.
         /// </summary>
-        /// <typeparam name="T">Data type of return.</typeparam>
-        /// <param name="key">The key.</param>
-        /// <returns>Returns if it [value not equals null] the value of param otherwise default value </returns>
+        /// <typeparam name="T">
+        /// Tipo del recurso.
+        /// </typeparam>
+        /// <param name="key">Nombre o llave del recurso.</param>
+        /// <returns>Retorna el valor del parametro si no esta nulode lo contrario el valor por defecto.</returns>
         public T GetValue<T>(string key)
         {
             if (HttpContext.Current != null)
@@ -114,7 +95,7 @@ namespace Plenamente.App_Tool
             return default(T);
         }
         /// <summary>
-        /// Clears this instance.
+        /// Limpia la instancia.
         /// </summary>
         public void Clear()
         {
