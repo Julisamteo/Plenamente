@@ -144,7 +144,6 @@ namespace Plenamente.Models
         /// </value>
         [Display(Name = "Asignación de recursos")]
         public string asigrecursos { get; set; }
-
         // Permite que Acummes acceda a la data
         public ICollection<AcumMes> AcumMes { get; set; }
         /// <summary>
