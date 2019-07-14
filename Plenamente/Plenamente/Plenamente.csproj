@@ -1178,10 +1178,6 @@
     <Content Include="PlenamenteDataSet.xss">
       <DependentUpon>PlenamenteDataSet.xsd</DependentUpon>
     </Content>
-    <Content Include="Reports\rptAutoEvaluacion.rdlc">
-      <SubType>Designer</SubType>
-      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
-    </Content>
     <None Include="Properties\PublishProfiles\FolderProfile.pubxml" />
     <Content Include="Scripts\bootstrap1.js">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
@@ -1387,6 +1383,7 @@
   <ItemGroup>
     <Folder Include="App_Data\" />
     <Folder Include="Files\" />
+    <Folder Include="Reports\" />
     <Folder Include="Views\Empleado\" />
     <Folder Include="Views\Encuesta\" />
   </ItemGroup>
