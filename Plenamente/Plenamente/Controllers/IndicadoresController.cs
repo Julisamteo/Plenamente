@@ -9,15 +9,40 @@ using System.Web.Mvc;
 
 namespace Plenamente.Controllers
 {
+    /// <summary>
+    /// Controlador destinado a la administración de los indicadores o reportes presentes en la página de inicio.
+    /// </summary>
+    /// <remarks>
+    /// Utiliza la libreria de javascript chartjs toda la documentación en la url: https://www.chartjs.org
+    /// </remarks>
+    /// <include file='\Scripts\chartjs\script-custom-chart.js' path='[@name="script-custom-chart"]'/>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     [Authorize]
     public class IndicadoresController : Controller
     {
+        /// <summary>
+        /// Instancia de la base de datos.
+        /// </summary>
         private readonly ApplicationDbContext db = new ApplicationDbContext();
+        /// <summary>  
+        /// Método GET: Indicadores/Index 
+        /// Carga la vista de inicio.
+        /// </summary>
+        /// <returns>
+        /// Retorna la vista de inicio.
+        /// </returns>
         [Authorize]
         public ActionResult Index()
         {
             return View();
         }
+        /// <summary>
+        /// Método POST: Indicadores/PromedioAutoevaluaciones
+        /// Carga los datos necesarios para llenar el reporte de promedio de autoevaluaciones por ciclos.
+        /// </summary>
+        /// <returns>
+        /// Retorna los datos necesarios para llenar el reporte de promedio de autoevaluaciones por ciclos.
+        /// </returns>
         [HttpPost]
         [Authorize]
         public JsonResult PromedioAutoevaluaciones()
@@ -79,6 +104,13 @@ namespace Plenamente.Controllers
                };
             return Json(datos, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// Método POST: Indicadores/AvanceAutoevaluaciones
+        /// Carga los datos necesarios para llenar el reporte de avance planificación de tareas.
+        /// </summary>
+        /// <returns>
+        /// Retorna los datos necesarios para llenar el reporte de avance planificación de tareas.
+        /// </returns>
         [HttpPost]
         [Authorize]
         public JsonResult AvanceAutoevaluaciones()
@@ -123,6 +155,13 @@ namespace Plenamente.Controllers
                 return Json(ex, JsonRequestBehavior.AllowGet);
             }
         }
+        /// <summary>
+        /// Método POST: Indicadores/UltimaAutoevaluacion
+        /// Carga los datos necesarios para llenar el reporte porcentaje de avance última autoevaluaciones.
+        /// </summary>
+        /// <returns>
+        /// Retorna los datos necesarios para llenar el reporte porcentaje de avance última autoevaluaciones.
+        /// </returns>
         [HttpPost]
         [Authorize]
         public JsonResult UltimaAutoevaluacion()
@@ -175,19 +214,79 @@ namespace Plenamente.Controllers
               };
             return Json(datos, JsonRequestBehavior.AllowGet);
         }
+        /// <summary>
+        /// Modelo que implementa las propiedades necesarias para cargar los datos de los reportes.
+        /// </summary>
         private struct ChartDataViewModel
         {
+            /// <summary>
+            /// Obtiene o llena el título del reporte.
+            /// </summary>
+            /// <value>
+            /// El título del reporte.
+            /// </value>
             public string title { get; set; }
+            /// <summary>
+            /// Obtiene o llena la etiqueta.
+            /// </summary>
+            /// <value>
+            /// La etiqueta del reporte.
+            /// </value>
             public string[] labels { get; set; }
+            /// <summary>
+            /// Obtiene o llena los datos a mostrar en el reporte.
+            /// </summary>
+            /// <value>
+            /// Los datos a mostrar en el reporte.
+            /// </value>
             public List<ChartDatasetsViewModel> datasets { get; set; }
         };
+        /// <summary>
+        /// Modelo que implementa las propiedades necesarias para cargar los datasets de los reportes.
+        /// </summary>
         private struct ChartDatasetsViewModel
         {
+            /// <summary>
+            /// Obtiene o llena la etiqueta.
+            /// </summary>
+            /// <value>
+            /// La etiqueta del reporte.
+            /// </value>
             public string label { get; set; }
+            /// <summary>
+            /// Obtiene o llena los datos a mostrar.
+            /// </summary>
+            /// <value>
+            /// Los datos a mostrar en el reporte.
+            /// </value>
             public object data { get; set; }
+            /// <summary>
+            /// Obtiene o llena el color de fondo.
+            /// </summary>
+            /// <value>
+            /// El color de fondo del reporte.
+            /// </value>
             public string[] backgroundColor { get; set; }
+            /// <summary>
+            /// Obtiene o llena el color del borde.
+            /// </summary>
+            /// <value>
+            /// El color del borde del reporte.
+            /// </value>
             public string[] borderColor { get; set; }
+            /// <summary>
+            /// Obtiene o llena el tamaño del borde.
+            /// </summary>
+            /// <value>
+            /// El tamaño del borde del reporte.
+            /// </value>
             public short borderWidth { get; set; }
+            /// <summary>
+            /// Obtiene o llena el valor indicando si <see cref="ChartDatasetsViewModel"/> es llenado.
+            /// </summary>
+            /// <value>
+            ///   <c>Verdadero</c> es llenado; de otra forma, <c>Falso</c>.
+            /// </value>
             public bool fill { get; set; }
         };
     }

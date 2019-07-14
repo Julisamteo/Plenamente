@@ -1,7 +1,6 @@
 ﻿using Plenamente.App_Tool;
 using Plenamente.Models;
 using Plenamente.Models.ViewModel;
-using Plenamente.Scheduler;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,14 +8,28 @@ using System.Web.Mvc;
 
 namespace Plenamente.Controllers
 {
+    /// <summary>
+    /// Controlador destinado a la administración del calendario.
+    /// </summary>
+    /// <remarks>
+    /// Utiliza el paquete NUGET FullCalendar.MVC5 que implementa la libreria de javascript fullcalendar toda la documentación en la url: https://fullcalendar.io/ 
+    /// </remarks>
+    /// <include file='\Plenamente\Scripts\script-custom-calendar.js' path='[@name="script-custom-calendar"]'/>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class CalendarioController : Controller
     {
+        /// <summary>
+        /// Instancia del modelo de base de datos.
+        /// </summary>
         private ApplicationDbContext db = new ApplicationDbContext();
         #region Index method
         /// <summary>  
-        /// GET: Home/Index method.  
-        /// </summary>  
-        /// <returns>Returns - index view page</returns>   
+        /// Método GET: Home/Index 
+        /// Carga la vista de inicio que contiene el calendario.
+        /// </summary>
+        /// <returns>
+        /// Retorna la lista de empresas cargadas en la vista.
+        /// </returns>
         public ActionResult Index()
         {
             return View();
@@ -25,9 +38,12 @@ namespace Plenamente.Controllers
 
         #region Get Calendar data method
         /// <summary>  
-        /// GET: /Home/GetCalendarData  
+        /// Método GET: /Home/GetCalendarData  
+        /// Obtiene la lista de eventos y la carga en la vista a traves de un método ajax.
         /// </summary>  
-        /// <returns>Return data</returns>  
+        /// <returns>
+        /// Retorna la lista de eventos del calendario cargado en un JSON
+        /// </returns>  
         public ActionResult GetCalendarData()
         {
             JsonResult result = new JsonResult();
@@ -47,9 +63,11 @@ namespace Plenamente.Controllers
         #region Helpers  
         #region Load Data  
         /// <summary>  
-        /// Load data method.  
+        /// Obtiene la lista de eventos que se quieren mostrar en el calendario
         /// </summary>  
-        /// <returns>Returns - Data</returns>  
+        /// <returns>
+        /// Un listado de eventos
+        /// </returns>  
         private List<EventViewModel> LoadData()
         {
             List<EventViewModel> lst = new List<EventViewModel>();
@@ -106,57 +124,6 @@ namespace Plenamente.Controllers
             return lst;
         }
         #endregion
-        #endregion
-
-        #region Prueba de metodo de creacion de Eventos - Citas o reuniones periodicas 
-        public ActionResult generateAppoiment()
-        {
-            SingleSchedule single1 = new SingleSchedule
-            {
-                Name = "Programacion de un unico evento",
-                TimeOfDay = new TimeSpan(19, 30, 0),
-                Date = new DateTime(2019, 6, 13)
-            };
-
-            SingleSchedule single2 = new SingleSchedule
-            {
-                Name = "Otro ejemplo de unico evento",
-                TimeOfDay = new TimeSpan(9, 30, 0),
-                Date = new DateTime(2019, 6, 13)
-            };
-
-            SimpleRepeatingSchedule simple = new SimpleRepeatingSchedule
-            {
-                Name = "Planificacion de reunion cada 7 dias",
-                TimeOfDay = new TimeSpan(10, 0, 0),
-                SchedulingRange = new Period(new DateTime(2019, 1, 2), new DateTime(2019, 12, 31)),
-                DaysBetween = 7
-            };
-
-            WeeklySchedule weekly = new WeeklySchedule
-            {
-                Name = "Programacion semanal solo lunes,miercoles y viernes ",
-                TimeOfDay = new TimeSpan(8, 0, 0),
-                SchedulingRange = new Period(new DateTime(2019, 5, 28), new DateTime(2019, 6, 8))
-            };
-            weekly.SetDays(new DayOfWeek[] { DayOfWeek.Monday, DayOfWeek.Wednesday, DayOfWeek.Friday });
-
-            MonthlySchedule monthly = new MonthlySchedule
-            {
-                Name = "Programacion Mensual fin de mes - Puedes usar otro dia",
-                TimeOfDay = new TimeSpan(18, 0, 0),
-                DayOfMonth = 31,
-                SchedulingRange = new Period(new DateTime(2019, 1, 2), new DateTime(2100, 1, 1))
-            };
-
-            List<Schedule> schedules = new List<Schedule> { single1, single2, simple, weekly, monthly };
-
-            CalendarGenerator generator = new CalendarGenerator();
-            Period period = new Period(new DateTime(2019, 5, 1), new DateTime(2019, 8, 30));
-            IEnumerable<Appointment> appointments = generator.GenerateCalendar(period, schedules);
-
-            return View(appointments);
-        }
         #endregion
     }
 }
