@@ -12,8 +12,14 @@ using Plenamente.Models.ViewModel;
 
 namespace Plenamente.Controllers
 {
+    /// <summary>
+    /// Controlador encargado del crud de plan de trabajo 
+    /// </summary>
     public class PlandeTrabajoController : Controller
     {
+        /// <summary>
+        /// Variables estandar para la paginacion
+        /// </summary>
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<PlandeTrabajo> _PaginadorCustomers;
 		private readonly int _RegistrosPorPaginaActividades = 5;
@@ -21,6 +27,11 @@ namespace Plenamente.Controllers
 		private ApplicationDbContext db = new ApplicationDbContext();
 
         // GET: PlandeTrabajo
+        /// <summary>
+        /// Lista y pagina los planes de trabajo de una empresa 
+        /// </summary>
+        /// <param name="pagina">la pagina actual en la que esta parado el usuario</param>
+        /// <returns>retorna un objeto de tipo paginadorcustomer que contiene la paginacion y el objeto a paginar</returns>
         public ActionResult Index(int pagina = 1)
         {
             int _TotalRegistros = 0;
@@ -40,7 +51,11 @@ namespace Plenamente.Controllers
             };
             return View(_PaginadorCustomers);
         }
-
+        /// <summary>
+        /// Lista los planes de trabajos con su correspondiente actividades que tiene una empresa
+        /// </summary>
+        /// <param name="id">Recibe el id del plan de trabajo a buscar </param>			
+        /// <returns>Retorna el viewmodel PlandetrabajoActividadesViewModel </returns>
         // GET: PlandeTrabajo/Details/5
         public ActionResult Detalles(int? id)
         {
@@ -91,7 +106,10 @@ namespace Plenamente.Controllers
 			ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
 			return View(plandetrabajoActividades);			
         }
-
+        /// <summary>
+        /// Lista y selecciona la empresa a la que se esta logeada
+        /// </summary>
+        /// <returns>retorna a la vista</returns>
         // GET: PlandeTrabajo/Create
         public ActionResult Create()
         {
@@ -102,6 +120,11 @@ namespace Plenamente.Controllers
         // POST: PlandeTrabajo/Create
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Crea el plan de trabajo recibiendo un objeto de tipo de plandetrabajo validando que no se encuentro repetido el plan de tabajo
+        /// </summary>
+        /// <param name="plandeTrabajo">recibe un objeto de tipo plandetrabajo para crearlo en la bd </param>
+        /// <returns>retorna el objeto si no se crea adecuadamente o direcciona al index si logra crearlo</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Create([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id")] PlandeTrabajo plandeTrabajo)
@@ -125,6 +148,11 @@ namespace Plenamente.Controllers
         }
 
         // GET: PlandeTrabajo/Edit/5
+        /// <summary>
+        /// Lista el plan de trabajo si es encontrado mediante el id que recibe si no es nullable
+        /// </summary>
+        /// <param name="id">id del plan de trabajo si no es nullable</param>
+        /// <returns>retorna el plan de trabajo a editar</returns>
         public ActionResult Editar(int? id)
         {
             if (id == null)
@@ -142,6 +170,11 @@ namespace Plenamente.Controllers
         // POST: PlandeTrabajo/Edit/5
         // Para protegerse de ataques de publicación excesiva, habilite las propiedades específicas a las que desea enlazarse. Para obtener 
         // más información vea https://go.microsoft.com/fwlink/?LinkId=317598.
+        /// <summary>
+        /// Mediante el objeto plandetrabajo que recibe se hacen las modificaciones por el usuario si el objeto es valido
+        /// </summary>
+        /// <param name="plandeTrabajo">recibe el objeto plandetrabajo a modificar</param>
+        /// <returns>retorna el plan de trabajo si no fue modificado correctamente , si fue modificado redirecciona al index</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id,FechaCreacion")] PlandeTrabajo plandeTrabajo)
@@ -167,6 +200,11 @@ namespace Plenamente.Controllers
         }
 
         // GET: PlandeTrabajo/Delete/5
+        /// <summary>
+        /// lista el pland e trabajo y las actividades que tiene a eliminar 
+        /// </summary>
+        /// <param name="id">recibe el id del objeto a eliminar</param>
+        /// <returns>retorna el viewmodel PlandetrabajoActividadesViewModel a eliminar </returns>
         public ActionResult Eliminar(int? id)
         {
 			if (id == null)
@@ -218,6 +256,11 @@ namespace Plenamente.Controllers
 		}
 
         // POST: PlandeTrabajo/Delete/5
+        /// <summary>
+        /// Mediante el id del plan de trabajo elimina de la bd el plan de trabajo y borra la relacion con las actividades que tenia 
+        /// </summary>
+        /// <param name="id">recibe el id del plan de trabajo</param>
+        /// <returns>retorna al index despues de remover el objeto plandetrabajo</returns>
         [HttpPost, ActionName("Eliminar")]
         [ValidateAntiForgeryToken]
         public ActionResult ElimitarConfirmado(int id)
@@ -232,7 +275,12 @@ namespace Plenamente.Controllers
             db.SaveChanges();
             return RedirectToAction("Index");
         }
-
+        /// <summary>
+        /// lista y pagina las actividades que tiene un plan de trabajo dependiendo de la pagina 
+        /// </summary>
+        /// <param name="IdPlantTrabajo">recibe el id del plan de trabajo</param>
+        /// <param name="pagina">recibe la pagina actual en la que se esta paginando</param>
+        /// <returns>retorna un objeto de tipo paginadorcustomer que contiene la paginacion y el objeto a paginar</returns>
         public ActionResult ActividadesPlanTrabajo(int IdPlantTrabajo,int pagina =1)
         {
             var plantrabajo = db.Tb_PlandeTrabajo.Find(IdPlantTrabajo);
@@ -295,8 +343,13 @@ namespace Plenamente.Controllers
 			ViewBag.actividadesAsignadas = _PaginadorCustomersActividades;
             return View(plandetrabajoActividades);
         }
-
+        /// <summary>
+        /// relaciona un usuario a una actividad de un plan de trabajo
+        /// </summary>
+        /// <param name="model">recibe un objeto de tipo PlandetrabajoActividadesViewModel para lelacionarlo a un usuario</param>
+        /// <returns>redirecciona a actividadesplantrabajo con el id del plan de trabajo</returns>
         [HttpPost]
+        
         public ActionResult ActividadesPlanTrabajo([Bind(Include = "IdPlantTrabajo,IdActiCumplimiento,IdUser")]PlandetrabajoActividadesViewModel model)
         {
             if (ModelState.IsValid)
@@ -318,7 +371,11 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("ActividadesPlanTrabajo", new { model.IdPlantTrabajo });
         }     
-
+        /// <summary>
+        /// Elimina una actividad a un plan de trabajo y el usuario relacionado a esa actividad
+        /// </summary>
+        /// <param name="IdUserPlanTrabajo">recibe el id del usuario que tiene asiganada la tarea </param>
+        /// <returns>redirecciona a actividadesplandetrabajo con el id del plan de trabajo/returns>
         public ActionResult EliminarActividadPlanTrabajo(int IdUserPlanTrabajo)
         {
 

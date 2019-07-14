@@ -12,9 +12,19 @@ using System.Web.UI.WebControls;
 
 namespace Plenamente.Controllers
 {
+    /// <summary>
+    /// Controlador de reporte , encargado mediante de metodos actionresult de consultar procedimientos almacenados en la bd mediante el dataset establecido <Plenamentedataset>
+    /// y mostrarlo en la vista mediante de RDLC
+    /// </summary>
 	public class ReportesController : Controller
 	{
 		private ApplicationDbContext db = new ApplicationDbContext();      
+        /// <summary>
+        /// Metodo encargado de buscar las autoevaluaciones mediante el id en la bd , consumiento los procedimiento almacenados en sus correspondientes adaptadores y mediante un viewbag 
+        /// pintar el reporte.
+        /// </summary>
+        /// <param name="id">Recibe el id de la autoevaluacion</param>
+        /// <returns>retorna a la vista normalmente</returns>
         public ActionResult VerReporte(int id)
 		{
             try
@@ -67,7 +77,12 @@ namespace Plenamente.Controllers
 
             return View();
 		}
-
+        /// <summary>
+        /// Metodo encargado de buscar las autoevaluaciones mediante el id en la bd , consumiento los procedimiento almacenados en sus correspondientes adaptadores y mediante un viewbag 
+        /// pintar el reporte.
+        /// </summary>
+        /// <param name="id">Recibe el id del plan de trabajo</param>
+        /// <returns>retorna a la vista normalmente</returns>
         public ActionResult VerReportePlandeTrabajo(int id)
         {
             try
