@@ -10,11 +10,30 @@ using System.Web.Mvc;
 
 namespace Plenamente.Controllers
 {
+    /// <summary>
+    /// Controlador destinado a la administración del acceso a los datos de las vistas relacionadas con las autoevaluaciones.
+    /// </summary>
+    /// <seealso cref="System.Web.Mvc.Controller" />
     public class AutoevaluacionController : Controller
     {
+        /// <summary>
+        /// El número de registros por página.
+        /// </summary>
         private readonly int _RegistrosPorPagina = 10;
+        /// <summary>
+        /// El páginador
+        /// </summary>
         private PaginadorGenerico<AutoEvaluacionViewModel> _PaginadorCustomers;
+        /// <summary>
+        /// La base de datos
+        /// </summary>
         private ApplicationDbContext db = new ApplicationDbContext();
+        /// <summary>
+        /// Carga la vista de inicio con la empresa asociada al usuario actual.
+        /// </summary>
+        /// <returns>
+        /// Retorna la lista de empresas cargadas en la vista.
+        /// </returns>
         public ActionResult Index()
         {
             IList<Empresa> listempresa = new List<Empresa>();
@@ -29,22 +48,27 @@ namespace Plenamente.Controllers
                     Empr_Dir = empre.Empr_Dir,
                     Empr_Ttrabaja = empre.Empr_Ttrabaja,
                     Empr_Afiarl = empre.Empr_Afiarl,
-
                     Empr_Registro = DateTime.Now
-
-                    //Empr_
-
                 });
             }
             return View(listempresa);
         }
+        /// <summary>
+        /// Carga de la vista de autoevaluación con el listado de elementos asociados a esta.
+        /// </summary>
+        /// <param name="textError">
+        /// Texto de los errores que se quieren mostrar.
+        /// </param>
+        /// <returns>
+        /// Retorna la autoevaluacion cargada en la vista.
+        /// </returns>
         [Authorize]
         public ActionResult AutoevaluacionSST(string textError = "")
         {
             List<CicloPHVAViewModel> list = new List<CicloPHVAViewModel>();
             try
             {
-                ViewBag.TextError = textError;             
+                ViewBag.TextError = textError;
                 Empresa empresa = db.Tb_Empresa.Find(AccountData.NitEmpresa);
                 TipoEmpresa tipoEmpresa = empresa.TipoEmpresa;
                 if (empresa.Empr_Ttrabaja > 0 && (tipoEmpresa == null || tipoEmpresa.Categoria < 3))
@@ -120,6 +144,15 @@ namespace Plenamente.Controllers
             }
             return View(list);
         }
+        /// <summary>
+        /// Agrega o actualiza un cumplimiento para el elemento asociado al elemento seleccionado.
+        /// </summary>
+        /// <param name="idItem">
+        /// Identificador del elemento seleccionado.
+        /// </param>
+        /// <returns>
+        /// Retorna el cumplimiento asociado cargado en la vista.
+        /// </returns>
         [Authorize]
         public ActionResult Cumplimiento(int idItem)
         {
@@ -186,6 +219,15 @@ namespace Plenamente.Controllers
                     Registro = cumplimiento.Cump_Registro
                 });
         }
+        /// <summary>
+        /// Agrega o actualiza un cumplimiento para el elemento asociado al elemento seleccionado.
+        /// </summary>
+        /// <param name="idItem">
+        /// Cumplimiento cargado con modificaciones realizadas en la vista.
+        /// </param>
+        /// <returns>
+        /// Retorna el cumplimiento asociado cargado en la vista.
+        /// </returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         [Authorize]
@@ -258,6 +300,12 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("AutoevaluacionSST");
         }
+        /// <summary>
+        /// Guarda y termina la autoevaluación si ya estan diligenciados todos los elementos.
+        /// </summary>
+        /// <returns>
+        /// Retorna la vista de inicio del sistema o el mensaje de error en caso de que se presente.
+        /// </returns>
         [Authorize]
         public ActionResult GuardarTerminar()
         {
@@ -293,6 +341,15 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("Index", "Home");
         }
+        /// <summary>
+        /// Carga una evidencia asociada al cumplimiento seleccionado.
+        /// </summary>
+        /// <param name="idItem">
+        /// Identificador del elemento seleccionado.
+        /// </param>
+        /// <returns>
+        /// Retorna el cumplimiento asociado cargado en la vista.
+        /// </returns>
         public ActionResult CargaEvidencia(int idItem)
         {
             ViewBag.Tdca_id = new SelectList(db.Tb_TipoDocCarga, "Tdca_id", "Tdca_Nom");
@@ -306,6 +363,15 @@ namespace Plenamente.Controllers
             };
             return View(evidenciaCumplimientoViewModel);
         }
+        /// <summary>
+        /// Carga una evidencia asociada al cumplimiento seleccionado.
+        /// </summary>
+        /// <param name="idItem">
+        /// Identificador del elemento seleccionado.
+        /// </param>
+        /// <returns>
+        /// Retorna el cumplimiento asociado cargado en la vista.
+        /// </returns>
         [HttpPost]
         public ActionResult CargaEvidencia([Bind(Include = "Evidencia,Archivo,NombreDocumento,TipoDocumento,Fecha,Responsable,IdCumplimiento")]EvidenciaCumplimientoViewModel model)
         {
@@ -352,9 +418,11 @@ namespace Plenamente.Controllers
             return View(new EvidenciaCumplimientoViewModel());
         }
         /// <summary>
-        /// 
+        /// Carga la vista de número de empleados en el caso de que se quiera cambiar la cantidad de empleados
         /// </summary>
-        /// <returns></returns>
+        /// <returns>
+        /// Retorna la vista de número de empleados.
+        /// </returns>
         public ActionResult NumeroEmpleados()
         {
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
@@ -371,34 +439,23 @@ namespace Plenamente.Controllers
             }
             return View(new EmpresaViewModel { IdEmpresa = empresa.Empr_Nit, NombreEmpresa = empresa.Empr_Nom, NumeroEmpleados = empresa.Empr_Ttrabaja });
         }
-        ///// <summary>
-        ///// 
-        ///// </summary>
-        ///// <returns></returns>
-        //public ActionResult NumeroEmpleados()
-        //{
-        //    ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-        //    Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
-
-        //    //Validacion. Existe alguna autoevaluacion en proceso
-        //    if (db.Tb_AutoEvaluacion.Any(a => a.Empr_Nit == AccountData.NitEmpresa && !a.Finalizada))
-        //    {
-        //        return RedirectToAction("AutoevaluacionSST");
-        //    }
-
-        //    EmpresaViewModel model = new EmpresaViewModel
-        //    {
-        //        IdEmpresa = empresa.Empr_Nit,
-        //        NombreEmpresa = empresa.Empr_Nom,
-        //        NumeroEmpleados = empresa.Empr_Ttrabaja
-        //    };
-        //    return View(model);
-        //}
+        /// <summary>
+        /// Carga la vista de número de empleados en el caso de que se quiera cambiar la cantidad de empleados
+        /// </summary>
+        /// <returns>
+        /// Retorna la vista de número de empleados.
+        /// </returns>
         [HttpPost]
         public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
         {
             return RedirectToAction("AutoevaluacionSST");
         }
+        /// <summary>
+        /// Carga la vista de número de empleados en el caso de que se quiera cambiar la cantidad de empleados
+        /// </summary>
+        /// <returns>
+        /// Retorna la vista de número de empleados.
+        /// </returns>        
         public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
         {
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
@@ -410,22 +467,12 @@ namespace Plenamente.Controllers
             };
             return View(model);
         }
-        //[HttpPost]
-        //public ActionResult NumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
-        //{
-        //    return RedirectToAction("AutoevaluacionSST");
-        //}
-        //public ActionResult ModificarNumeroEmpleados(int numeroEmpleados)
-        //{
-        //    Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
-        //    EmpresaViewModel model = new EmpresaViewModel
-        //    {
-        //        IdEmpresa = empresa.Empr_Nit,
-        //        NombreEmpresa = empresa.Empr_Nom,
-        //        NumeroEmpleados = numeroEmpleados
-        //    };
-        //    return View(model);
-        //}
+        /// <summary>
+        /// Actualiza el número de empleados.
+        /// </summary>
+        /// <returns>
+        /// Retorna la vista de número de empleados.
+        /// </returns>
         [HttpPost]
         public ActionResult ModificarNumeroEmpleados([Bind(Include = "NumeroEmpleados")]EmpresaViewModel model)
         {
@@ -441,20 +488,15 @@ namespace Plenamente.Controllers
 
             return RedirectToAction("AutoevaluacionSST");
         }
-        //public ActionResult VerHistorico(int pagina = 1)
-        //{
-        //    int _TotalRegistros = 0;
-        //    int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
-        //    int identificadorIncremental = 1;
-        //    List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
-        //    _TotalRegistros = autoEvaluacions.Count();
-
-        //    empresa.Empr_Ttrabaja = model.NumeroEmpleados;
-        //    db.Entry(empresa).State = EntityState.Modified;
-        //    db.SaveChanges();
-
-        //    return RedirectToAction("AutoevaluacionSST");
-        //}
+        /// <summary>
+        /// Carga la vista de historico de autoevaluaciones paginado.
+        /// </summary>
+        /// <param name="pagina">
+        ///  El número de la página actual para el listado de autoevaluaciones.
+        /// </param>
+        /// <returns>
+        /// La vista de hitorico de autoevaluaciones paginada.
+        /// </returns>
         public ActionResult VerHistorico(int pagina = 1)
         {
             int _TotalRegistros = 0;
