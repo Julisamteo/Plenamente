@@ -14,12 +14,24 @@ using Plenamente.Models.ViewModel;
 
 namespace Plenamente.Controllers
 {
+
+    /// <summary>
+    /// Controlador encargado del crud de actividades 
+    /// </summary>
     public class ActividadCumplimientoController : Controller
     {
+        /// <summary>
+        /// Variables estandar para la paginacion
+        /// </summary>
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<ActiCumplimiento> _PaginadorCustomers;
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ActividadCumplimiento
+        /// <summary>
+        /// Lista y pagina las actividades perteneciente a un plan de trabajo de una empresa 
+        /// </summary>
+        /// <param name="pagina">la pagina actual en la que esta ubicado el usuario</param>
+        /// <returns>retorna un objeto de tipo paginadorcustomer que contiene la paginacion y el objeto a paginar</returns>
         public ActionResult Index(int pagina = 1)
         {
             int _TotalRegistros = 0;
@@ -47,6 +59,11 @@ namespace Plenamente.Controllers
         }
 
         // GET: ActividadCumplimiento/Details/5
+        /// <summary>
+        /// Lista la descripcion de una actividad perteneciente a un plan de trabajo asignados a una empresa
+        /// </summary>
+        /// <param name="id">Recibe el id de la actividad a buscar </param>			
+        /// <returns>Retorna el viewmodel ViewModelActividadCumplimiento </returns>
         public ActionResult Details(int id)
         {
 
@@ -60,7 +77,11 @@ namespace Plenamente.Controllers
             return View(list);
 
         }
-
+        /// <summary>
+        /// Lista y selecciona la empresa a la que se esta logeada
+        /// </summary>
+        /// <param name="idPlanDeTrabajo">Recibe el id del plan de trabajo a la cual va a pertenecer la actividad </param>	
+        /// <returns>retorna a la vista para crear la actividad</returns>
         // GET: ActividadCumplimiento/Create
         public ActionResult Create(int idPlanDeTrabajo)
         {
@@ -77,19 +98,23 @@ namespace Plenamente.Controllers
             return View(model);
 
         }
-
+        /// <summary>
+        /// Crea la actividad recibiendo un objeto de tipo actividad validando que pertenezca a un plan de trabajo
+        /// </summary>
+        /// <param name="ViewModelActividadCumplimiento">recibe un objeto de tipo actividad para crearlo en la bd </param>
+        /// <returns>retorna el objeto si no se crea adecuadamente o direcciona a la pagina inmediatamente anterior desde donde se origino la accion de creación si logra crearlo</returns>
         // POST: ActividadCumplimiento/Create
         [HttpPost]
         public ActionResult Create([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,IdUser,idPlanDeTrabajo")] ViewModelActividadCumplimiento model)
         {
 
 
-            /* try
-             {*/
+            
             // TODO: Add insert logic here
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
-
+            
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            // resolvemos el dia de la semana segun el checkbox seleccionado
             string dias = "";
             if (model.weekly_0 != null)
             {
@@ -146,6 +171,7 @@ namespace Plenamente.Controllers
             db.Tb_ActiCumplimiento.Add(actcumplimiento);
 
             db.SaveChanges();
+            /// adicionamos el usuario asignado responsable para la actividad
             UsuariosPlandetrabajo user = new UsuariosPlandetrabajo
             {
                 Acum_Id = actcumplimiento.Acum_Id,
@@ -160,11 +186,7 @@ namespace Plenamente.Controllers
 
             var link = model.retornar;
             return Redirect(link);
-            /*}
-          catch
-           {
-               return View();
-           }*/
+           
         }
 
         private void generateAppoiment(ViewModelActividadCumplimiento model, int idActcumplimiento)
@@ -286,6 +308,11 @@ namespace Plenamente.Controllers
         }
 
         // GET: ActividadCumplimiento/Edit/5
+        /// <summary>
+        /// Lista la actividad si es encontrado mediante el id que recibe si no es nullable
+        /// </summary>
+        /// <param name="id">id actividad si no es nullable</param>
+        /// <returns>retorna la actividad a editar</returns>
         public ActionResult Edit(int id)
         {
             var listfrec = db.Tb_Frecuencia.Where(f => f.Frec_Id != 3).Select(o => new { Id = o.Frec_Id, Value = o.Frec_Descripcion }).ToList();
@@ -364,6 +391,11 @@ namespace Plenamente.Controllers
         }
 
         // POST: ActividadCumplimiento/Edit/5
+        /// <summary>
+        /// Mediante el objeto actividadcumplimiento que recibe se hacen las modificaciones por el usuario si el objeto es valido
+        /// </summary>
+        /// <param name="ViewModelActividadCumplimiento">recibe el objeto actividad a modificar</param>
+        /// <returns>retorna la actividad si no fue modificado correctamente , si fue modificado redirecciona a la pagina inmediatamente anterior desde donde se realizo la accion</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit([Bind(Include = "IdEmpresa,IdActiCumplimiento,NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,Finalizada,IdUser")] ViewModelActividadCumplimiento model)
@@ -447,22 +479,10 @@ namespace Plenamente.Controllers
 
             };
 
-            //var model2 = db.Tb_ActiCumplimiento.Find(actcumplimiento.Acum_Id);
+            
             db.Entry(actcumplimiento).State = EntityState.Modified;
             db.SaveChanges();
-            /*UsuariosPlandetrabajo user = new UsuariosPlandetrabajo
-            {
-
-                Uspl_Id=uplant.Uspl_Id,
-                Acum_Id=uplant.Acum_Id,
-                Plat_Id = uplant.Plat_Id,
-                Emp_Id = AccountData.NitEmpresa,
-                Id = model.IdUser
-            };
-            db.Entry(user).State = EntityState.Modified;
-            db.SaveChanges();*/
-            /*if ((model.FechaFinal != model2.Acum_FinAct) || (model.FechaInicial != model2.Acum_IniAct) || (model.period != model2.Repeticiones) || (model2.DiasSemana != dias) || (model2.Frec_Id != Convert.ToInt32(model.Frecuencia)))
-            {*/
+            
             var prog = db.Tb_ProgamacionTareas.Where(e => e.ActiCumplimiento_Id == actcumplimiento.Acum_Id).ToList();
 
             foreach (var program in prog)
@@ -472,17 +492,20 @@ namespace Plenamente.Controllers
 
             db.SaveChanges();
             generateAppoiment(model, actcumplimiento.Acum_Id);
-            // }
+           
 
 
             //Generamos la programacion de tareas en el tiempo.
-
-            //string diassem = model.weekly_0 + "," + model.weekly_1 + "," + model.weekly_2 + "," + "," + model.weekly_3 + "," + "," + model.weekly_4 + "," + "," + model.weekly_5 + "," + "," + model.weekly_6 + ",";
 
             return RedirectToAction("Index");
         }
 
         // GET: ActividadCumplimiento/Delete/5
+        /// <summary>
+        /// lista las actividades pertenecientes a un plan de trabajo que tiene a eliminar 
+        /// </summary>
+        /// <param name="id">recibe el id del objeto Actividad a eliminar</param>
+        /// <returns>retorna el viewmodel ViewModelActividadCumplimiento a eliminar </returns>
         public ActionResult Delete(int id)
         {
             return View();
