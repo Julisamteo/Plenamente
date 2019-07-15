@@ -19,11 +19,11 @@ namespace Plenamente.Models.ViewModel
         [Display(Name = "Meta (%)")]
         public float Meta { get; set; }
 
-        [Display(Name = "Fecha de ejecución")]
+        [Display(Name = "Fecha de inicio")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaInicial { get; set; }
 
-        [Display(Name = "Fecha final")]
+        [Display(Name = "Fecha de finalización")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaFinal { get; set; }
 

@@ -23,38 +23,52 @@ namespace Plenamente.Areas.Administrador.Controllers
 
 
 
-        public ActionResult Terminos(string UserName)
+        public ActionResult Terminos(string id)
         {
-            if (UserName == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ExpandedUserDTO objExpandedUserDTO = GetUser(UserName);
-            if (objExpandedUserDTO == null)
-            {
-                return HttpNotFound();
-            }
-            return View(objExpandedUserDTO);
+                if (id == null)
+                {
+                    return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                }
+                ApplicationUser user = db.Users.Find(id);
+
+                if (user == null)
+                {
+                    return HttpNotFound();
+                }
+                return View(user);
         }
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Terminos(ExpandedUserDTO paramExpandedUserDTO)
+        public ActionResult Terminos()
         {
-            if (paramExpandedUserDTO == null)
+            var userId = User.Identity.GetUserId();
+           
+            // Query the database for the row to be updated.
+            var query =
+                from use in db.Users
+                where use.Id == userId
+                select use;
+
+            // Execute the query, and change the column values
+            // you want to change.
+            foreach ( ApplicationUser use in query)
             {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+                use.Pers_Terminos = true;
+                // Insert any additional changes to column values.
             }
 
-            ExpandedUserDTO objExpandedUserDTO = UpdateDTOUser(paramExpandedUserDTO);
-
-            if (objExpandedUserDTO == null)
+            // Submit the changes to the database.
+            try
             {
-                return HttpNotFound();
+                db.SaveChanges();
             }
-
+            catch (Exception e)
+            {
+                Console.WriteLine(e);
+                // Provide for exceptions.
+            }
             return RedirectToAction("Index", "Home");
-
         }
 
         //Vista inicial de los usuarios en donde se muestran graficas, notificaciones, etc.
@@ -592,6 +606,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                 var ContactoEme = paramExpandedUserDTO.Pers_ContactoEmeg;
                 var TelefonoEme = paramExpandedUserDTO.Pers_TelefonoEmeg;
                 var TipoDocumento = paramExpandedUserDTO.Tdoc_Id;
+                var Terminos = paramExpandedUserDTO.Terminos;
                 var Afp = paramExpandedUserDTO.Afp_Id;
                 var Eps = paramExpandedUserDTO.Eps_Id;
                 var Arl = paramExpandedUserDTO.Arl_Id;
@@ -646,6 +661,7 @@ namespace Plenamente.Areas.Administrador.Controllers
                     Jemp_Id = Jornada,
                     Tvin_Id = TipoVinculacion,
                     Empr_Nit = Empresa,
+                    Pers_Terminos = Terminos,
                     Espe_Id = EstadoPersona
                 };
                 var AdminUserCreateResult = UserManager.Create(objNewAdminUser, Password);
@@ -1150,7 +1166,7 @@ namespace Plenamente.Areas.Administrador.Controllers
             objExpandedUserDTO.Pers_Direccion = result.Pers_Dir;
             objExpandedUserDTO.Pers_ContactoEmeg = result.Pers_Cemeg;
             objExpandedUserDTO.Pers_TelefonoEmeg = result.Pers_Temeg;
-            objExpandedUserDTO.Terminos = result.Pers_Terminos;
+           
             using (ApplicationDbContext db = new ApplicationDbContext())
             {
                 objExpandedUserDTO.tipoDocumento = db.Tb_TipoDocumento.ToList<TipoDocumento>();
