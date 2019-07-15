@@ -176,10 +176,10 @@ namespace Plenamente.Controllers
                     tipoEmpresa = db.Tb_TipoEmpresa.FirstOrDefault(t => t.RangoMinimoTrabajadores <= empresa.Empr_Ttrabaja && t.RangoMaximoTrabajadores >= empresa.Empr_Ttrabaja);
                 }
             }
-            int total =
+            decimal total =
                 db.Tb_ItemEstandar
                     .Where(ie => tipoEmpresa.Categoria == 0 || (ie.Categoria <= tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria && ie.CategoriaExcepcion != tipoEmpresa.Categoria)).Count();
-            int terminadas = 0;
+            decimal terminadas = 0;
             if (AccountData.NitEmpresa > 0)
             {
                 AutoEvaluacion evaluacion =
@@ -205,7 +205,7 @@ namespace Plenamente.Controllers
                   new List<ChartDatasetsViewModel>{
                       new ChartDatasetsViewModel{
                           label = "Estado actividades",
-                          data = new int[2]{ (terminadas / total) * 100, ((total - terminadas) / total) * 100  },
+                          data = new string[2]{ String.Format("{0:0.00}", ((terminadas * 100) / total)) , String.Format("{0:0.00}", (((total - terminadas) * 100) / total)) },
                           fill = true,
                           borderWidth = 1,
                           backgroundColor = new string[2] { "#6DB52D", "#AE2429" },
