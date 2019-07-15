@@ -5,6 +5,8 @@
     var daily = "";
     var weekly = "";
     var monthly = "";
+    var fechafinal = DateTime.Today.ToString("yyyy-12-31");
+    Model.FechaFinal = Convert.ToDateTime(fechafinal);
     ViewBag.Title = "Editar actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
@@ -75,7 +77,7 @@
     <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = DateTime.Today.ToString("yyyy-12-31"), @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -130,11 +132,11 @@
         if (Model.Frecuencia == "4")
         {
         norepeat = "style=display:none;";
-        daily = "style='display:none;";
+        daily = "style=display:none;";
         weekly = "style=display:none;";
-        monthly = "style=display:none;";
+        monthly = "style=display:;";
         }
-        @*<div class="form-group">
+        <div class="form-group">
             <div class="label label-default" @norepeat id="select_norepeat">
                 No repetir
             </div>
@@ -142,10 +144,10 @@
 
         <div id="select_daily" @daily class="label label-default">
             Repetir cada <input id="daily_every" style="width: 20px;" value="@Model.period" onchange="changeday();" /> dia(s).
-        </div>*@
+        </div>
 
         <div id="select_weekly" @weekly class="label label-default">
-            Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana.
+            Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="@Model.period" onchange="changeweek();" /> semana.
             <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
             <br />
             <table>
@@ -163,7 +165,7 @@
         </div>
 
         <div id="select_monthly" @monthly class="label label-default">
-            Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();" /> de cada mes.
+            Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="1" onchange="changemonth();" /> de cada mes.
             <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
             <br />
         </div>
@@ -229,10 +231,11 @@
             period.value = weekly_every;
             frecuencia.value = 3;
         } else if (cod == "4") {
+            document.getElementById("monthly_every").display = "";
             dayly.style.display = "none";
             norepeat.style.display = "none";
             weekly.style.display = "none";
-            monthly.style.display = "none";
+            monthly.style.display = "";
             period.value = monthly_every;
             frecuencia.value = 4;
         } else {

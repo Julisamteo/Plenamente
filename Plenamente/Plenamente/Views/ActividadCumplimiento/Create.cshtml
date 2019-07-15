@@ -2,6 +2,8 @@
 
 
 @{
+    var fechafinal = DateTime.Today.ToString("yyyy-12-31");
+    Model.FechaFinal = Convert.ToDateTime(fechafinal);
     ViewBag.Title = "Crear actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
@@ -69,7 +71,7 @@
     <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = fechafinal, @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -106,11 +108,11 @@
                 <option value="monthly">Mensual</option>
             </select>
         </div>
-        @*<div class="form-group">
+        <div class="form-group">
             <div class="label label-default" id="select_norepeat">
                 No repetir
             </div>
-        </div>*@
+        </div>
 
         <div id="select_daily" style="display:none;" class="label label-default">
             Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
@@ -135,7 +137,7 @@
         </div>
 
         <div id="select_monthly" style="display:none;" class="label label-default">
-            Repetir los dias <input id="monthly_every" style="width: 20px;" value="1" onchange="changemonth();" /> de cada mes.
+            Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="1" onchange="changemonth();" /> de cada mes.
             <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
             <br />
         </div>
@@ -196,7 +198,7 @@
             dayly.style.display = "none";
             norepeat.style.display = "none";
             weekly.style.display = "none";
-            monthly.style.display = "none";
+            monthly.style.display = "";
             period.value = monthly_every;
             frecuencia.value = 4;
         } else {
