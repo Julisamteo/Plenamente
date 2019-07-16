@@ -23,7 +23,7 @@ namespace Plenamente.Controllers
 
             if (Terminos == false)
             {
-                return RedirectToAction("Terminos", "admin", new { id = userId });
+                return RedirectToAction("Terminosiii", "admin", new { id = userId });
             }
 
             else
