@@ -26,7 +26,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
+                                    <h4 class="modal-title">Gráfica</h4>
                                 </div>
                                 <canvas id="chartPromedioModal" class="chart-container marco" chart-route="../Indicadores/PromedioAutoevaluaciones" chart-type="horizontalBar"></canvas>
                                 <div class="modal-footer">
@@ -53,7 +53,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
+                                    <h4 class="modal-title">Gráfica</h4>
                                 </div>
                                 <canvas id="chartAvanceModal" class="chart-container marco" chart-route="../Indicadores/AvanceAutoevaluaciones" chart-type="line"></canvas>
                                 <div class="modal-footer">
@@ -77,7 +77,7 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
+                                    <h4 class="modal-title">Gráfica</h4>
                                 </div>
                                 <canvas id="chartUltimaModal" class="chart-container marco" chart-route="../Indicadores/UltimaAutoevaluacion" chart-type="pie"></canvas>
                                 <div class="modal-footer">
@@ -124,7 +124,7 @@
                         {
                             <li class="list-group-item">
                                 <i style="color: @item.BorderColor;"></i>
-                                <a href="@item.EventRoute" title="@item.Description">
+                                <a href="..@item.EventRoute" title="@item.Description">
                                     <span style="color:#4b4961;">@item.Title </span> -
                                     <span style="color: darkgray;">@item.StartDate</span>
                                 </a>

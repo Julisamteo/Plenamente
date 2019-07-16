@@ -30,7 +30,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 Descripción
-                @Html.EditorFor(model => model.Oemp_Descrip, new { htmlAttributes = new { @class = "" } })
+                @Html.TextAreaFor(model => model.Oemp_Descrip,  new { @class = "" , @style = "margin: 0px -146.75px 0px 0px;height: 123px;width: 547px;" } )
                 @Html.ValidationMessageFor(model => model.Oemp_Descrip, "", new { @class = "text-danger" })
             </div>
         </div>

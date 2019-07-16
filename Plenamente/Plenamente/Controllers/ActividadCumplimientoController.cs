@@ -288,7 +288,7 @@ namespace Plenamente.Controllers
         // GET: ActividadCumplimiento/Edit/5
         public ActionResult Edit(int id)
         {
-            var listfrec = db.Tb_Frecuencia.Where(f => f.Frec_Id != 3).Select(o => new { Id = o.Frec_Id, Value = o.Frec_Descripcion }).ToList();
+            var listfrec = db.Tb_Frecuencia.Where(f => f.Frec_Id != 5).Select(o => new { Id = o.Frec_Id, Value = o.Frec_Descripcion }).ToList();
             ViewBag.frecuenciaEmpresa = new SelectList(listfrec, "Id", "Value");
             var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
@@ -305,7 +305,7 @@ namespace Plenamente.Controllers
                 Meta = model2.Acum_Porcentest,
                 idObjetivo = model2.Oemp_Id,
                 FechaInicial = model2.Acum_IniAct,
-                FechaFinal = model2.Acum_IniAct,
+                FechaFinal = model2.Acum_FinAct,
                 hora = model2.HoraAct,
                 Frecuencia = Convert.ToString(model2.Frec_Id),
                 period = model2.Repeticiones,
@@ -430,7 +430,7 @@ namespace Plenamente.Controllers
                 Acum_Desc = model.NombreActividad,
                 Acum_Porcentest = model.Meta,
                 Acum_IniAct = model.FechaInicial,
-                Acum_FinAct = model.FechaInicial,
+                Acum_FinAct = model.FechaFinal,
                 Oemp_Id = model.idObjetivo,
                 Acum_Registro = DateTime.Now,
                 Id = model.IdUser,

@@ -186,12 +186,12 @@
             <br />
             <label asp-for="Username" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })  </label>
             <input type="submit" value="Guardar" class="btn btn-default" />
-            <div class="contenidoVolver">
-                <a href="@Url.Action("Users", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
-            </div>
 
 
         </div>
+    </div>
+     <div class="contenidoVolver">
+        <a href="@Url.Action("Users", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
     </div>
 }
 
