@@ -444,7 +444,7 @@ namespace Plenamente.Controllers
             {
                 return Redirect(returnUrl);
             }
-            return RedirectToAction("RevisarTerminos", "Home");
+            return RedirectToAction("Index", "Home");
         }
 
         internal class ChallengeResult : HttpUnauthorizedResult

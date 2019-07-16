@@ -20,55 +20,6 @@ namespace Plenamente.Areas.Administrador.Controllers
         private ApplicationUserManager _userManager;
         private ApplicationRoleManager _roleManager;
 
-        public ActionResult Terminos(string id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            ApplicationUser user = db.Users.Find(id);
-
-            if (user == null)
-            {
-                return HttpNotFound();
-            }
-            return View(user);
-
-        }
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Terminos()
-        {
-            var userId = User.Identity.GetUserId();
-
-            // Query the database for the row to be updated.
-            var query =
-                from use in db.Users
-                where use.Id == userId
-                select use;
-
-            // Execute the query, and change the column values
-            // you want to change.
-            foreach (ApplicationUser use in query)
-            {
-                use.Pers_terminos = true;
-                // Insert any additional changes to column values.
-            }
-            // Submit the changes to the database.
-            try
-            {
-                db.SaveChanges();
-            }
-            catch (Exception e)
-            {
-                Console.WriteLine(e);
-                // Provide for exceptions.
-            }
-
-            return RedirectToAction("Index", "Home");
-        }
-
         //Vista inicial de los usuarios en donde se muestran graficas, notificaciones, etc.
         // GET: Administrador/admin
         [Authorize(Roles = "Administrator,Admin")]

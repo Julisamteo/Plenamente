@@ -67,15 +67,15 @@
     <div class="form-group">
         @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
             @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
 
-    <div class="form-group" style="">
+    <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-MM-dd") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -187,7 +187,7 @@
     <div class="form-group">
         <div class=" col-md-12">
             <input type="submit" value="Guardar" class="btn btn-default" />
-            <a href="@Url.Action("Index", "ActividadCumplimiento" )" class="ayudaTitulos">
+            <a href="@Url.Action(" Index", "ActividadCumplimiento" )" class="ayudaTitulos">
                 <span>Volver al inicio</span> <img style="width: 5%;" src="~/Imagenes/flecha-hacia-la-izquierda.png" />
             </a>
         </div>

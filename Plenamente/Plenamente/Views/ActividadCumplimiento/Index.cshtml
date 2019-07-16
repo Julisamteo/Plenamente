@@ -32,9 +32,9 @@
                     <th>
                         Fecha Inicial
                     </th>
-                    @*<th>
+                    <th>
                         Fecha Final
-                    </th>*@
+                    </th>
                     <th>
                         Acción
                     </th>
@@ -48,20 +48,20 @@
                         @item.Acum_Desc
                     </td>
                     <td>
-                        @item.Acum_Porcentest%
+                        @item.Acum_Porcentest
                     </td>
                     <td>
                         @item.Acum_IniAct
                     </td>
-                    @*<td>
+                    <td>
                         @item.Acum_FinAct
-                    </td>*@
+                    </td>
                     <td>
 
-                        <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Editar">
-                            Gestionar
+                        <a class="btn btn-info" href="@Url.Action(" Edit", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Editar">
+                            Editar
                         </a>
-                        <a class="btn btn-info" href="@Url.Action("Details", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Detalles">
+                        <a class="btn btn-info" href="@Url.Action(" Details", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Detalles">
                             Detalles
                         </a>
 
@@ -132,7 +132,7 @@
 
     <div class="contenidoVolver">
 
-        <a href="@Url.Action("Index", "Home" )" class="ayudaTitulos">
+        <a href="@Url.Action(" Index", "Home" )" class="ayudaTitulos">
             <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
         </a>
 

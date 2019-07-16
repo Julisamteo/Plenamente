@@ -6,35 +6,12 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
-using Microsoft.AspNet.Identity;
 
 namespace Plenamente.Controllers
 {
     public class HomeController : Controller
     {
         private ApplicationDbContext db = new ApplicationDbContext();
-
-        public ActionResult RevisarTerminos()
-        {
-            var userId = User.Identity.GetUserId();
-            var UserCurrent = db.Users.Find(userId);
-            var username = UserCurrent.UserName;
-            var Terminos = UserCurrent.Pers_terminos;
-
-            if (Terminos == false)
-            {
-                return RedirectToAction("Terminos", "admin", new { id = userId });
-            }
-
-            else
-            {
-                return RedirectToAction("Index");
-            }
-        }
-
-
-
-
         public ActionResult Index()
         {
             List<EventViewModel> lst = new List<EventViewModel>();
@@ -80,12 +57,6 @@ namespace Plenamente.Controllers
 
         public ActionResult Error()
         {
-            return View();
-        }
-        public ActionResult Guía()
-        {
-            ViewBag.Message = "";
-
             return View();
         }
     }
