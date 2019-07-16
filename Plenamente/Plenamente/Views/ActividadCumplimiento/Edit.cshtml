@@ -74,7 +74,7 @@
         </div>
     </div>
 
-    <div class="form-group" style="display:none;">
+    <div class="form-group">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = DateTime.Today.ToString("yyyy-12-31"), @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
@@ -189,7 +189,7 @@
     <div class="form-group">
         <div class=" col-md-12">
             <input type="submit" value="Guardar" class="btn btn-default" />
-            <a href="@Url.Action(" Index", "ActividadCumplimiento" )" class="ayudaTitulos">
+            <a href="@Url.Action("Index", "ActividadCumplimiento" )" class="ayudaTitulos">
                 <span>Volver al inicio</span> <img style="width: 5%;" src="~/Imagenes/flecha-hacia-la-izquierda.png" />
             </a>
         </div>

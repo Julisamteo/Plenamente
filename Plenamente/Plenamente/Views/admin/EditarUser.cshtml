@@ -11,8 +11,9 @@
 {
     @Html.AntiForgeryToken()
     <div class="centrarContenido">
-        <h2 class="colorVerdeBack1">Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5%; margin-right:5%" />
-                <a href="#" class="ayudaTitulos"><span>Aquí podras editar los datos basicos de tus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png"  style="max-height:18px; max-width:18px;"/><p></p></a>
+        <h2 class="colorVerdeBack1">
+            Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5%; margin-right:5%" />
+            <a href="#" class="ayudaTitulos"><span>Aquí podras editar los datos basicos de tus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
 
         </h2>
         <div class="plegable">
@@ -186,12 +187,12 @@
             <br />
             <label asp-for="Username" class="col-md-4 control-label" hidden> @Html.EditorFor(model => model.UserName, new { htmlAttributes = new { @class = "" } })  </label>
             <input type="submit" value="Guardar" class="btn btn-default" />
-            <div class="contenidoVolver">
-                <a href="@Url.Action("Users", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
-            </div>
 
 
         </div>
+    </div>
+    <div class="contenidoVolver">
+        <a href="@Url.Action("Users", "Admin")" class="ayudaTitulos"><span>Volver a la lista</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" /><p></p></a>
     </div>
 }
 

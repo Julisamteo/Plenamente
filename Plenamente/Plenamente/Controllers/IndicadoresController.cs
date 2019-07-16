@@ -15,7 +15,7 @@ namespace Plenamente.Controllers
     /// <remarks>
     /// Utiliza la libreria de javascript chartjs toda la documentación en la url: https://www.chartjs.org
     /// </remarks>
-    /// <include file='\Scripts\chartjs\script-custom-chart.js' path='[@name="script-custom-chart"]'/>
+    /// <include file='..\Scripts\chartjs\script-custom-chart.js' path='..[@name="script-custom-chart"]'/>
     /// <seealso cref="System.Web.Mvc.Controller" />
     [Authorize]
     public class IndicadoresController : Controller
