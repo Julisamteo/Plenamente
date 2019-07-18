@@ -414,6 +414,10 @@
     <Compile Include="Migrations\201907081932426_Fix.Designer.cs">
       <DependentUpon>201907081932426_Fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907181708046_altertablePlanTrabajo.cs" />
+    <Compile Include="Migrations\201907181708046_altertablePlanTrabajo.Designer.cs">
+      <DependentUpon>201907181708046_altertablePlanTrabajo.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1491,6 +1495,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907081932426_Fix.resx">
       <DependentUpon>201907081932426_Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907181708046_altertablePlanTrabajo.resx">
+      <DependentUpon>201907181708046_altertablePlanTrabajo.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

@@ -19,5 +19,14 @@ namespace Plenamente.Models.ViewModel
 		public int IdActiCumplimiento { get; set; }
         [Display(Name = "Descripcion actividad")]
         public string DescripcionCumplimiento { get; set; }
-    }
+		[Display(Name = "Fecha de inicio")]
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+		public DateTime FechaInicio { get; set; }
+		[Display(Name = "Fecha de fin")]
+		[DataType(DataType.Date)]
+		[DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+		public DateTime FechaFin { get; set; }
+
+	}
 }
