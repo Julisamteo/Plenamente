@@ -11,13 +11,14 @@
 </div>
 
 <div class="contenidoCuerpo marco">
-    <div class="form-group justify-content-center">
-        <div class="col-md-12">
+    <div class="panel panel-default text-center justify-content-center">
+        <div class="form-group justify-content-center">
+
             @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
             @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
+
         </div>
-    </div>
-    <div class="panel panel-default text-center justify-content-center">
+
 
         <table class="table table-bordered text-center justify-content-center">
             <tr>
@@ -37,24 +38,24 @@
 
 
             @foreach (var item in ((PaginadorGenerico<ActividadesAsignadasPlanDeTrabajoViewModel>)ViewBag.actividadesAsignadas).Resultado)
-            {               
-                    <tr>
-                        <td>
-                            @item.NombrePlanTrabajo
-                        </td>
-                        <td>
-                            @item.DescripcionCumplimiento
-                        </td>
-                        <td>
-                            @item.NombreUser
-                        </td>
-                        <td>
-                            <a class="btn btn-danger" href="@Url.Action("EliminarActividadPlanTrabajo","PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
-                                Eliminar
-                            </a>
+            {
+                <tr>
+                    <td>
+                        @item.NombrePlanTrabajo
+                    </td>
+                    <td>
+                        @item.DescripcionCumplimiento
+                    </td>
+                    <td>
+                        @item.NombreUser
+                    </td>
+                    <td>
+                        <a class="btn btn-danger" href="@Url.Action("EliminarActividadPlanTrabajo","PlandeTrabajo" , new { IdUserPlanTrabajo=item.IdUserPlanDeTrabajoActividad })" title="Eliminar">
+                            Eliminar
+                        </a>
 
-                        </td>
-                    </tr>                
+                    </td>
+                </tr>
             }
 
         </table>
@@ -113,22 +114,22 @@
 
 
 
-            <div class="form-group">
-                <a class="btn btn-success" href="@Url.Action("Create","ActividadCumplimiento" , new { idPlanDeTrabajo=@Model.IdPlantTrabajo })" title="Crear Actividad">
-                    Crear Actividad
-                </a>
-                <hr />
-            </div>       
+        <div class="form-group">
+            <a class="btn btn-success" href="@Url.Action("Create","ActividadCumplimiento" , new { idPlanDeTrabajo=@Model.IdPlantTrabajo })" title="Crear Actividad">
+                Crear Actividad
+            </a>
+            <hr />
+        </div>
         @using (Html.BeginForm())
         {
             <input type="hidden" name="IdPlantTrabajo" id="IdPlantTrabajo" value=@Model.IdPlantTrabajo />
             @Html.AntiForgeryToken()
 
             <div class="form-horizontal">
-                @Html.ValidationSummary(true, "", new { @class = "text-danger" })            
-               
+                @Html.ValidationSummary(true, "", new { @class = "text-danger" })
+
                 <label class="text-danger">@ViewBag.TextError</label>
-             
+
             </div>
         }
 

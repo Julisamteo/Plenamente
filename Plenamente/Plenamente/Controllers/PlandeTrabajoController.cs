@@ -101,7 +101,9 @@ namespace Plenamente.Controllers
 			PlandetrabajoActividadesViewModel plandetrabajoActividades = new PlandetrabajoActividadesViewModel
 			{
 				NombrePlanTrabajo = plantrabajo.Plat_Nom,
-				IdPlantTrabajo = plantrabajo.Plat_Id
+				IdPlantTrabajo = plantrabajo.Plat_Id,
+				FechaInicio=plantrabajo.FechaInicio,
+				FechaFin=plantrabajo.FechaFin				
 			};
 			ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
 			return View(plandetrabajoActividades);			
@@ -127,18 +129,29 @@ namespace Plenamente.Controllers
         /// <returns>retorna el objeto si no se crea adecuadamente o direcciona al index si logra crearlo</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id")] PlandeTrabajo plandeTrabajo)
+        public ActionResult Create([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id,FechaInicio,FechaFin")] PlandeTrabajo plandeTrabajo)
         {
             if (ModelState.IsValid)
             {
-                plandeTrabajo.FechaCreacion = DateTime.Now;
+				var a = plandeTrabajo.FechaInicio.Date;
+				plandeTrabajo.FechaCreacion = DateTime.Now;
                 plandeTrabajo.FechaActualizacion = DateTime.Now;
-                var nombreplan = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Nom == plandeTrabajo.Plat_Nom).ToList();
+				var planesTrabajo = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id).ToList();
+				var nombreplan = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Nom == plandeTrabajo.Plat_Nom).ToList();
                 if (nombreplan.Count > 0)
                 {
                     ViewBag.TextError = "Nombre del plan de trabajo repetido";
                     return View(plandeTrabajo);
                 }
+				
+				foreach (var item in planesTrabajo)
+				{					
+					 if (Valrangofecha(item.FechaInicio.Date,item.FechaFin.Date,plandeTrabajo.FechaInicio.Date,plandeTrabajo.FechaFin.Date))
+					{
+						ViewBag.TextError = "Esta fecha ya esta siendo usada para el plan de trabajo = " + item.Plat_Nom;
+						return View(plandeTrabajo);
+					}				
+				}
                 db.Tb_PlandeTrabajo.Add(plandeTrabajo);
                 db.SaveChanges();
                 return RedirectToAction("Index");
@@ -146,14 +159,38 @@ namespace Plenamente.Controllers
 
             return View(plandeTrabajo);
         }
+		/// <summary>
+		/// Metodo encargado de verificar que una fecha no este en un rango de fechas 
+		/// </summary>
+		/// <param name="FechaInicialRango"> fecha de inicio de rango </param>
+		/// <param name="FechaFinalRango">fecha de fin de rango</param>
+		/// <param name="FechaIncioPlan">fecha inicio a verificar</param>
+		/// <param name="FechaFinalPlan">fecha fin a verficiar</param>
+		/// <returns></returns>
+		private bool Valrangofecha(DateTime FechaInicialRango, DateTime FechaFinalRango, DateTime FechaIncioPlan, DateTime FechaFinalPlan)
+		{
+			while (FechaInicialRango <= FechaFinalRango) //Asumiendo un ámbito inclusivo de ambos valores.
+			{
+				if (FechaInicialRango == FechaIncioPlan)
+				{					
+					return true;
+				}
+				else if (FechaInicialRango == FechaFinalPlan)
+				{					
+					return true;
+				}
+				FechaInicialRango+= new TimeSpan(1, 0, 0, 0);
+			}
+			return false;
+		}
 
-        // GET: PlandeTrabajo/Edit/5
-        /// <summary>
-        /// Lista el plan de trabajo si es encontrado mediante el id que recibe si no es nullable
-        /// </summary>
-        /// <param name="id">id del plan de trabajo si no es nullable</param>
-        /// <returns>retorna el plan de trabajo a editar</returns>
-        public ActionResult Editar(int? id)
+		// GET: PlandeTrabajo/Edit/5
+		/// <summary>
+		/// Lista el plan de trabajo si es encontrado mediante el id que recibe si no es nullable
+		/// </summary>
+		/// <param name="id">id del plan de trabajo si no es nullable</param>
+		/// <returns>retorna el plan de trabajo a editar</returns>
+		public ActionResult Editar(int? id)
         {
             if (id == null)
             {
@@ -177,20 +214,31 @@ namespace Plenamente.Controllers
         /// <returns>retorna el plan de trabajo si no fue modificado correctamente , si fue modificado redirecciona al index</returns>
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id,FechaCreacion")] PlandeTrabajo plandeTrabajo)
+        public ActionResult Editar([Bind(Include = "Plat_Id,Plat_Nom,Emp_Id,FechaCreacion,FechaInicio,FechaFin")] PlandeTrabajo plandeTrabajo)
         {
             if (ModelState.IsValid)
             {
+				
                 plandeTrabajo.FechaActualizacion = DateTime.Now;
-                var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa).ToList();
+                var Planesdetrabajo=db.Tb_PlandeTrabajo.Where(c=> c.Plat_Nom==plandeTrabajo.Plat_Nom && c.Emp_Id==AccountData.NitEmpresa && c.Plat_Id!=plandeTrabajo.Plat_Id).ToList();
+				var planesTrabajo = db.Tb_PlandeTrabajo.Where(c => c.Emp_Id == plandeTrabajo.Emp_Id && c.Plat_Id!=plandeTrabajo.Plat_Id).ToList();
 				if (Planesdetrabajo.Count<=0)
 				{
+					foreach (var item in planesTrabajo)
+					{
+						if (Valrangofecha(item.FechaInicio.Date, item.FechaFin.Date, plandeTrabajo.FechaInicio.Date, plandeTrabajo.FechaFin.Date))
+						{
+							ViewBag.TextError = "Esta fecha ya esta siendo usada para el plan de trabajo = " + item.Plat_Nom;
+							return View(plandeTrabajo);
+						}
+					}
 					db.Entry(plandeTrabajo).State = EntityState.Modified;
 					db.SaveChanges();
 					return RedirectToAction("Index");
 				}
 				else
 				{
+					ViewBag.TextError = "Nombre del plan de trabajo repetido";
 					return View(plandeTrabajo);
 				}
                 
@@ -249,7 +297,9 @@ namespace Plenamente.Controllers
 			PlandetrabajoActividadesViewModel plandetrabajoActividades = new PlandetrabajoActividadesViewModel
 			{
 				NombrePlanTrabajo = plantrabajo.Plat_Nom,
-				IdPlantTrabajo = plantrabajo.Plat_Id
+				IdPlantTrabajo = plantrabajo.Plat_Id,
+				FechaInicio = plantrabajo.FechaInicio,
+				FechaFin = plantrabajo.FechaFin
 			};
 			ViewBag.actividadesAsignadas = actiCumplimientoAsignados;
 			return View(plandetrabajoActividades);
@@ -388,7 +438,7 @@ namespace Plenamente.Controllers
             return RedirectToAction("ActividadesPlanTrabajo", new { IdPlantTrabajo=usuariosPlandetrabajo.Plat_Id });
             
         }
-
+	
         protected override void Dispose(bool disposing)
         {
             if (disposing)

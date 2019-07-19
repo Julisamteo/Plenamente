@@ -19,16 +19,24 @@
 
             <div class="form-horizontal">
                 @Html.ValidationSummary(true, "", new { @class = "text-danger" })
-                <div class="form-group justify-content-center">
+                <div class="form-group">
                     @Html.LabelFor(model => model.NombrePlanTrabajo, htmlAttributes: new { @class = "control-label" })
-                    <div class="col-md-10">
-                        @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
-                        @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
-                    </div>
+                    @Html.EditorFor(model => model.NombrePlanTrabajo, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.NombrePlanTrabajo, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaInicio, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FechaInicio, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.FechaInicio, "", new { @class = "text-danger" })
+                </div>
+                <div class="form-group">
+                    @Html.LabelFor(model => model.FechaFin, htmlAttributes: new { @class = "control-label" })
+                    @Html.EditorFor(model => model.FechaFin, new { htmlAttributes = new { @class = "form-control", @readonly = "readonly" } })
+                    @Html.ValidationMessageFor(model => model.FechaFin, "", new { @class = "text-danger" })
                 </div>
             </div>
         }
-        <table class="table table-bordered text-center justify-content-center">
+        <table class="table table-bordered text-center">
             <tr>
                 <th>
                     Nombre Plan
@@ -38,7 +46,7 @@
                 </th>
                 <th>
                     Responsable
-                </th>               
+                </th>
             </tr>
 
 
@@ -53,11 +61,11 @@
                     </td>
                     <td>
                         @item.NombreUser
-                    </td>                   
+                    </td>
                 </tr>
             }
 
-        </table>      
+        </table>
     </div>
 
 </div>
