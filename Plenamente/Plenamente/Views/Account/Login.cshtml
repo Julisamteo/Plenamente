@@ -4,7 +4,7 @@
     ViewBag.Title = "Iniciar sesión";
 }
 <style>
-body { background: url("/Imagenes/Fondopng.png"); background-size: 100%; }
+body { background: url("https://www.aprendeyavanza2.com.co/plenamenteT/recursos/fondopng.jpg "); background-size: 100%; }
 </style>
 <div class="">
     <div class="col-xs-12 col-md-3 col-sm-3">
@@ -14,7 +14,7 @@ body { background: url("/Imagenes/Fondopng.png"); background-size: 100%; }
         <div class="">
             <div class="col-xs-4 col-xs-4"></div>
             <div class="col-xs-4 col-xs-4">
-                <img src="../Imagenes/Logoplenamenteblanco.png" width="100%" />
+                <img src="~/Imagenes/Logoplenamenteblanco.png" width="100%" />
             </div>
             <div class="col-xs-4"></div>
         </div>
@@ -23,7 +23,7 @@ body { background: url("/Imagenes/Fondopng.png"); background-size: 100%; }
             <div class="col-xs-12 col-xs-12" style="padding-top: 30px;">
                 <div class="col-xs-3 col-xs-3"></div>
                 <div class="col-xs-6 col-xs-6">
-                    <img src="../Imagenes/INGRESA.png" width="100%" />
+                    <img src="~/Imagenes/INGRESA.png" width="100%" />
                 </div>
             </div>
             <section id="loginForm fondoColumnaPrincipal">
@@ -45,7 +45,7 @@ body { background: url("/Imagenes/Fondopng.png"); background-size: 100%; }
 
                         <div class="col-xs-12 fondoColumnaPrincipal">
                             <div class="hidden-sm  hidden-xs col-md-2">
-                                <img src="../Imagenes/security.png" width="90%" />
+                                <img src="~/Imagenes/security.png" width="90%" />
                             </div>
                             <div class="col-sm-12 col-md-10">
                                 @Html.PasswordFor(m => m.Password, new { @class = "", placeholder = "Contraseña", style = "width:100%" })

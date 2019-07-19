@@ -414,6 +414,10 @@
     <Compile Include="Migrations\201907081932426_Fix.Designer.cs">
       <DependentUpon>201907081932426_Fix.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201907191846442_inges.cs" />
+    <Compile Include="Migrations\201907191846442_inges.Designer.cs">
+      <DependentUpon>201907191846442_inges.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1493,6 +1497,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907081932426_Fix.resx">
       <DependentUpon>201907081932426_Fix.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201907191846442_inges.resx">
+      <DependentUpon>201907191846442_inges.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />
