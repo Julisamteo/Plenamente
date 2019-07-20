@@ -1386,7 +1386,6 @@
     <Content Include="Views\Empresas\Index.cshtml" />
     <Content Include="Views\admin\Terminos.cshtml" />
     <Content Include="Views\Home\Guía.cshtml" />
-    <Content Include="SqlServerTypes.rar" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
