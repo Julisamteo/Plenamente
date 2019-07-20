@@ -91,7 +91,9 @@ namespace Plenamente.Controllers
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var listusers = db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
             ViewBag.users = new SelectList(listusers, "Id", "Value");
-
+            PlandeTrabajo planT = db.Tb_PlandeTrabajo.Find(idPlanDeTrabajo);
+            ViewBag.datestart = planT.FechaInicio;
+            ViewBag.dateend = planT.FechaFin;
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
             ViewBag.ReturnUrl = Request.UrlReferrer;
             ViewBag.idptrab = idPlanDeTrabajo;
