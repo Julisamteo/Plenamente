@@ -285,6 +285,42 @@ namespace Plenamente.Controllers
                 };
                 schedules.Add(monthly);
             }
+            else if (model.Frecuencia_desc == "bimestral")
+            {
+                EveryXMonthsSchedule everyxMonths = new EveryXMonthsSchedule
+                {
+                    Name = model.NombreActividad,
+                    MonthsBetween = 2, //Cada dos meses
+                    TimeOfDay = model.hora,
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(everyxMonths);
+            }
+            else if (model.Frecuencia_desc == "trimestral")
+            {
+                EveryXMonthsSchedule everyxMonths = new EveryXMonthsSchedule
+                {
+                    Name = model.NombreActividad,
+                    MonthsBetween = 3, //Cada tres meses
+                    TimeOfDay = model.hora,
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(everyxMonths);
+            }
+            else if (model.Frecuencia_desc == "semestral")
+            {
+                EveryXMonthsSchedule everyxMonths = new EveryXMonthsSchedule
+                {
+                    Name = model.NombreActividad,
+                    MonthsBetween = 6, //Cada Seis meses
+                    TimeOfDay = model.hora,
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(everyxMonths);
+            }
 
             CalendarGenerator generator = new CalendarGenerator();
             Period period = new Period(model.FechaInicial.Date, model.FechaFinal.Date);
