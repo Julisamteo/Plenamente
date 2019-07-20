@@ -5,8 +5,8 @@
     var daily = "";
     var weekly = "";
     var monthly = "";
-    var fechafinal = DateTime.Today.ToString("yyyy-12-31");
-    Model.FechaFinal = Convert.ToDateTime(fechafinal);
+    var fechafinal = Convert.ToDateTime(ViewBag.dateend);
+    var fechainicial = Convert.ToDateTime(ViewBag.datestart);
     ViewBag.Title = "Editar actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
@@ -69,7 +69,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @min = fechainicial.ToString("yyyy-MM-dd"), @max =fechafinal.ToString("yyyy-MM-dd") } })
             @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -77,7 +77,7 @@
     <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = DateTime.Today.ToString("yyyy-12-31"), @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = fechafinal.ToString("yyyy-MM-dd"), @min = fechainicial.ToString("yyyy-MM-dd"), @max =fechafinal.ToString("yyyy-MM-dd") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -107,34 +107,58 @@
         </div>
         @if (Model.Frecuencia == "1")
         {
-        norepeat = "style=display:;";
-        daily = "style=display:none;";
-        weekly = "style=display:none;";
-        monthly = "style=display:none;";
+            norepeat = "style=display:;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
         }
         else
         if (Model.Frecuencia == "2")
         {
-        norepeat = "style=display:none;";
-        daily = "style=display:none; ";
-        weekly = "style=display:none;";
-        monthly = "style=display:none;";
+            norepeat = "style=display:none;";
+            daily = "style=display:none; ";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
         }
         else
         if (Model.Frecuencia == "3")
         {
-        norepeat = "style=display:none;";
-        daily = "style=display:none;";
-        weekly = "style=display:none;";
-        monthly = "style=display:none;";
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
         }
         else
         if (Model.Frecuencia == "4")
         {
-        norepeat = "style=display:none;";
-        daily = "style=display:none;";
-        weekly = "style=display:none;";
-        monthly = "style=display:;";
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:;";
+        }
+        else
+        if (Model.Frecuencia == "8")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+        }
+        else
+        if (Model.Frecuencia == "9")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
+        }
+        else
+        if (Model.Frecuencia == "10")
+        {
+            norepeat = "style=display:none;";
+            daily = "style=display:none;";
+            weekly = "style=display:none;";
+            monthly = "style=display:none;";
         }
         <div class="form-group">
             <div class="label label-default" @norepeat id="select_norepeat">
@@ -189,7 +213,7 @@
     <div class="form-group">
         <div class=" col-md-12">
             <input type="submit" value="Guardar" class="btn btn-default" />
-            <a href="@Url.Action(" Index", "ActividadCumplimiento" )" class="ayudaTitulos">
+            <a href="@Url.Action("Index", "ActividadCumplimiento" )" class="ayudaTitulos">
                 <span>Volver al inicio</span> <img style="width: 5%;" src="~/Imagenes/flecha-hacia-la-izquierda.png" />
             </a>
         </div>
@@ -238,6 +262,28 @@
             monthly.style.display = "";
             period.value = monthly_every;
             frecuencia.value = 4;
+        } else if (cod == "8") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 8;
+        } else if (cod == "9") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 9;
+        } else if (cod == "10") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 10;
+        
         } else {
             dayly.style.display = "none";
             norepeat.style.display = "";
