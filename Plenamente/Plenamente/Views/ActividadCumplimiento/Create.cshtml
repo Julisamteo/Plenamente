@@ -2,8 +2,11 @@
 
 
 @{
-    var fechafinal = DateTime.Today.ToString("yyyy-12-31");
-    Model.FechaFinal = Convert.ToDateTime(fechafinal);
+    var fechafinal = Convert.ToDateTime(ViewBag.dateend);
+    var fechainicial = Convert.ToDateTime(ViewBag.datestart) ;
+    Model.FechaInicial = fechainicial;
+    Model.FechaFinal = fechafinal;
+
     ViewBag.Title = "Crear actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
@@ -63,7 +66,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = DateTime.Today.ToString("yyyy-MM-dd"), @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = Model.FechaInicial.ToString("yyyy-MM-dd"), @type = "date", @min = Model.FechaInicial.ToString("yyyy-MM-dd"), @max = Model.FechaFinal.ToString("yyyy-MM-dd") } })
             @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -71,7 +74,7 @@
     <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = fechafinal, @type = "date", @min = DateTime.Today.ToString("yyyy-MM-dd"), @max = DateTime.Today.ToString("yyyy-12-31") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value =Model.FechaFinal.ToString("yyyy-MM-dd"), @type = "date", @min = Model.FechaInicial.ToString("yyyy-MM-dd"), @max = Model.FechaFinal.ToString("yyyy-MM-dd") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -104,8 +107,11 @@
             <select class="browser-default custom-select control-label " id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
                 <option value="norepeat">No repetir</option>
                 <option value="daily">Diaria</option>
-                <option value="weekly" style="display:none;">Semanal</option>
+                <option value="weekly">Semanal</option>
                 <option value="monthly">Mensual</option>
+                <option value="bimestral">Bimestral</option>
+                <option value="trimestral">Trimestral</option>
+                <option value="semestral">Semestral</option>
             </select>
        
         <div class="form-group">
@@ -202,7 +208,29 @@
             monthly.style.display = "";
             period.value = monthly_every;
             frecuencia.value = 4;
-        } else {
+        } else if (cod == "bimestral") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 8;
+        } else if (cod == "trimestral") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 9;
+        } else if (cod == "semestral") {
+            dayly.style.display = "none";
+            norepeat.style.display = "none";
+            weekly.style.display = "none";
+            monthly.style.display = "none";
+            period.value = 0;
+            frecuencia.value = 10;
+        }
+        else {
             dayly.style.display = "none";
             norepeat.style.display = "";
             weekly.style.display = "none";

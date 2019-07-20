@@ -91,7 +91,9 @@ namespace Plenamente.Controllers
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var listusers = db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
             ViewBag.users = new SelectList(listusers, "Id", "Value");
-
+            PlandeTrabajo planT = db.Tb_PlandeTrabajo.Find(idPlanDeTrabajo);
+            ViewBag.datestart = planT.FechaInicio;
+            ViewBag.dateend = planT.FechaFin;
             ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
             ViewBag.ReturnUrl = Request.UrlReferrer;
             ViewBag.idptrab = idPlanDeTrabajo;
@@ -285,6 +287,42 @@ namespace Plenamente.Controllers
                 };
                 schedules.Add(monthly);
             }
+            else if (model.Frecuencia_desc == "bimestral")
+            {
+                EveryXMonthsSchedule everyxMonths = new EveryXMonthsSchedule
+                {
+                    Name = model.NombreActividad,
+                    MonthsBetween = 2, //Cada dos meses
+                    TimeOfDay = model.hora,
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(everyxMonths);
+            }
+            else if (model.Frecuencia_desc == "trimestral")
+            {
+                EveryXMonthsSchedule everyxMonths = new EveryXMonthsSchedule
+                {
+                    Name = model.NombreActividad,
+                    MonthsBetween = 3, //Cada tres meses
+                    TimeOfDay = model.hora,
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(everyxMonths);
+            }
+            else if (model.Frecuencia_desc == "semestral")
+            {
+                EveryXMonthsSchedule everyxMonths = new EveryXMonthsSchedule
+                {
+                    Name = model.NombreActividad,
+                    MonthsBetween = 6, //Cada Seis meses
+                    TimeOfDay = model.hora,
+                    DayOfMonth = model.period,
+                    SchedulingRange = new Period(model.FechaInicial.Date, model.FechaFinal.Date),
+                };
+                schedules.Add(everyxMonths);
+            }
 
             CalendarGenerator generator = new CalendarGenerator();
             Period period = new Period(model.FechaInicial.Date, model.FechaFinal.Date);
@@ -315,11 +353,15 @@ namespace Plenamente.Controllers
         /// <returns>retorna la actividad a editar</returns>
         public ActionResult Edit(int id)
         {
-            var listfrec = db.Tb_Frecuencia.Where(f => f.Frec_Id != 3).Select(o => new { Id = o.Frec_Id, Value = o.Frec_Descripcion }).ToList();
+            var listfrec = db.Tb_Frecuencia.Select(o => new { Id = o.Frec_Id, Value = o.Frec_Descripcion }).ToList();
             ViewBag.frecuenciaEmpresa = new SelectList(listfrec, "Id", "Value");
             var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
             ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            UsuariosPlandetrabajo upt = db.Tb_UsersPlandeTrabajo.Where(e => e.Acum_Id == id).FirstOrDefault();
+            PlandeTrabajo planT = db.Tb_PlandeTrabajo.Find(upt.Plat_Id);
+            ViewBag.datestart = planT.FechaInicio;
+            ViewBag.dateend = planT.FechaFin;
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
             var listusers = db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
             ViewBag.users = new SelectList(listusers, "Id", "Value");
@@ -451,6 +493,18 @@ namespace Plenamente.Controllers
             else if (periodo == "4")
             {
                 frecuenciadesc = "monthly";
+            }
+            else if (periodo == "8")
+            {
+                frecuenciadesc = "bimestral";
+            }
+            else if (periodo == "9")
+            {
+                frecuenciadesc = "trimestral";
+            }
+            else if (periodo == "10")
+            {
+                frecuenciadesc = "semestral";
             }
             model.Frecuencia_desc = frecuenciadesc;
 
