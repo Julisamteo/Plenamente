@@ -251,7 +251,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Estandar Nombre</Value>
+                                  <Value>Estándar Nombre</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -289,7 +289,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Descripcion Item</Value>
+                                  <Value>Descripción Item</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -474,7 +474,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Cump Observaciones</Value>
+                                  <Value>Cump. Observaciones</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -1176,7 +1176,7 @@
                   <Width>3.4447cm</Width>
                 </TablixColumn>
                 <TablixColumn>
-                  <Width>3.5082cm</Width>
+                  <Width>3.50816cm</Width>
                 </TablixColumn>
               </TablixColumns>
               <TablixRows>
@@ -1297,7 +1297,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Criterio NoCumple</Value>
+                                  <Value>Criterio No Cumple</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -1606,7 +1606,7 @@
             <Top>4.24065cm</Top>
             <Left>0.11648cm</Left>
             <Height>1.2cm</Height>
-            <Width>28.99607cm</Width>
+            <Width>28.99603cm</Width>
             <ZIndex>1</ZIndex>
             <Style>
               <Border>
@@ -1720,7 +1720,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Direccion :</Value>
+                    <Value>Dirección :</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
@@ -1755,7 +1755,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>No trabajadores    :</Value>
+                    <Value>No. trabajadores    :</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
@@ -2023,7 +2023,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Telefono:</Value>
+                    <Value>Teléfono:</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
@@ -2090,7 +2090,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Fecha de evaluacion:</Value>
+                    <Value>Fecha de evaluación:</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
@@ -2157,7 +2157,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>No de centros de trabajo  :</Value>
+                    <Value>No. de centros de trabajo  :</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
@@ -2456,7 +2456,7 @@
         <Height>7.125in</Height>
         <Style />
       </Body>
-      <Width>11.48442in</Width>
+      <Width>11.79692in</Width>
       <Page>
         <PageHeader>
           <Height>4.04812cm</Height>

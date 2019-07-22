@@ -334,7 +334,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>No</Value>
+                                  <Value>No.</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -404,7 +404,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Descripcion Actividad</Value>
+                                  <Value>Descripción actividad</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -579,7 +579,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Fecha Inicio</Value>
+                                  <Value>Fecha programado</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -614,7 +614,7 @@
                             <Paragraph>
                               <TextRuns>
                                 <TextRun>
-                                  <Value>Fecha Fin</Value>
+                                  <Value>Fecha ejecutado</Value>
                                   <Style>
                                     <FontFamily />
                                     <FontSize>11pt</FontSize>
@@ -1076,7 +1076,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Fecha de Creacion   :</Value>
+                    <Value>Fecha de creación   :</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
@@ -1089,6 +1089,7 @@
               </Paragraph>
             </Paragraphs>
             <rd:DefaultName>Textbox32</rd:DefaultName>
+            <Top>0.02999cm</Top>
             <Left>2.40724cm</Left>
             <Height>0.6cm</Height>
             <Width>4.25374cm</Width>
@@ -1142,7 +1143,7 @@
               <Paragraph>
                 <TextRuns>
                   <TextRun>
-                    <Value>Fecha de Modificacion:</Value>
+                    <Value>Fecha de modificacion:</Value>
                     <Style>
                       <FontFamily />
                       <FontSize>11pt</FontSize>
