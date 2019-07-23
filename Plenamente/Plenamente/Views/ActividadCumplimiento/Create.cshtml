@@ -14,7 +14,8 @@
 <div class="colorVerdeBack">
     <p>
         Crear actividades
-        <a href="#" class="ayudaTitulos"><span>Aquí podras crear actividades y asiganarlas a un usuario previamente creado</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá crear las actividades de su plan de trabajo y asiganarlas a un usuario previamente creado. </span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+    </p>
 
     </p>
 
@@ -34,6 +35,7 @@
         @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = " text-box single-line" } })
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignarle un nombre a la actividad que desea crear. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -42,6 +44,7 @@
         @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = " text-box single-line" } })
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí asignará el porcentaje que espera cumplir con la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -49,8 +52,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.idObjetivo, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-
             @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "estilosSelect" })
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí seleccionará el objetivo al que corresponde la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -58,8 +61,8 @@
     <div class="form-group">
         @Html.LabelFor(model => model.IdUser, htmlAttributes: new { @class = "control-label col-md-6" })
         <div class="col-md-12">
-
             @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "estilosSelect" })
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignar un responsable a la actividad, que debe ser creado previamente en "Información de sus trabajadores". </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -67,6 +70,7 @@
         @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = Model.FechaInicial.ToString("yyyy-MM-dd"), @type = "date", @min = Model.FechaInicial.ToString("yyyy-MM-dd"), @max = Model.FechaFinal.ToString("yyyy-MM-dd") } })
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí asignará la fecha de programación de la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -74,7 +78,7 @@
     <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value =Model.FechaFinal.ToString("yyyy-MM-dd"), @type = "date", @min = Model.FechaInicial.ToString("yyyy-MM-dd"), @max = Model.FechaFinal.ToString("yyyy-MM-dd") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = Model.FechaFinal.ToString("yyyy-MM-dd"), @type = "date", @min = Model.FechaInicial.ToString("yyyy-MM-dd"), @max = Model.FechaFinal.ToString("yyyy-MM-dd") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -83,6 +87,7 @@
         @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "text-box single-line" } })
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignar los recursos que aplican a la actividad (ej. físicos, económicos, etc.). </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -98,13 +103,13 @@
         @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @*@Html.EditorFor(model => model.Frecuencia, new { htmlAttributes = new { @class = "form-control" } })
-            @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
+        @Html.ValidationMessageFor(model => model.Frecuencia, "", new { @class = "text-danger" })*@
 
 
             <!-- Recurrence section -->
             <script type="text/javascript" src="@Url.Content(" ~/Scripts/DayPilot/recurrence.js?v=3")"></script>
 
-            <select class="browser-default custom-select control-label " id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
+            <select class="estilosSelect"  id="Frecuencia_desc" name="Frecuencia_desc" onchange="ShowSelected();">
                 <option value="norepeat">No repetir</option>
                 <option value="daily">Diaria</option>
                 <option value="weekly">Semanal</option>
@@ -113,40 +118,42 @@
                 <option value="trimestral">Trimestral</option>
                 <option value="semestral">Semestral</option>
             </select>
-       
-        <div class="form-group">
-            <div class="label label-default" id="select_norepeat">
-                No repetir
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí seleccionará la frecuenia a la cúal se ejecutará la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+
+
+            @*<div class="form-group">
+                <div class="label label-default" id="select_norepeat">
+                    No repetir
+                </div>
+            </div>*@
+
+            <div id="select_daily" style="display:none;" class="label label-default">
+                Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
             </div>
-        </div>
 
-        <div id="select_daily" style="display:none;" class="label label-default">
-            Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
-        </div>
+            <div id="select_weekly" style="display:none;" class="label label-default">
+                Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana.
+                <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+                <br />
+                <table>
+                    <tr>
+                        <td>Los dias: </td>
+                        <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" name="weekly_0" />Lunes </label></td>
+                        <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" name="weekly_1" />Martes </label></td>
+                        <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" name="weekly_2" />Miercoles </label></td>
+                        <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" name="weekly_3" />Jueves </label></td>
+                        <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" name="weekly_4" />Viernes </label></td>
+                        <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" name="weekly_5" />Sabado </label></td>
+                        <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" name="weekly_6" />Domingo </label></td>
+                    </tr>
+                </table>
+            </div>
 
-        <div id="select_weekly" style="display:none;" class="label label-default">
-            Repetir cada <input type="hidden" id="weekly_every" style="width: 20px;" value="1" onchange="changeweek();" /> semana.
-            <div id="select_weekly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
-            <br />
-            <table>
-                <tr>
-                    <td>Los dias: </td>
-                    <td><label for="weekly_0" class="checkbox-inline"><input type="checkbox" id="weekly_0" name="weekly_0" />Lunes </label></td>
-                    <td><label for="weekly_1" class="checkbox-inline"><input type="checkbox" id="weekly_1" name="weekly_1" />Martes </label></td>
-                    <td><label for="weekly_2" class="checkbox-inline"><input type="checkbox" id="weekly_2" name="weekly_2" />Miercoles </label></td>
-                    <td><label for="weekly_3" class="checkbox-inline"><input type="checkbox" id="weekly_3" name="weekly_3" />Jueves </label></td>
-                    <td><label for="weekly_4" class="checkbox-inline"><input type="checkbox" id="weekly_4" name="weekly_4" />Viernes </label></td>
-                    <td><label for="weekly_5" class="checkbox-inline"><input type="checkbox" id="weekly_5" name="weekly_5" />Sabado </label></td>
-                    <td><label for="weekly_6" class="checkbox-inline"><input type="checkbox" id="weekly_6" name="weekly_6" />Domingo </label></td>
-                </tr>
-            </table>
-        </div>
-
-        <div id="select_monthly" style="display:none;" class="label label-default">
-            Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="1" onchange="changemonth();" /> de cada mes.
-            <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
-            <br />
-        </div>
+            <div id="select_monthly" style="display:none;" class="label label-default">
+                Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="1" onchange="changemonth();" /> de cada mes.
+                <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+                <br />
+            </div>
         </div>
         <input id="period" name="period" type="hidden" value="" />
         <input id="Frecuencia" name="Frecuencia" type="hidden" value="1" />

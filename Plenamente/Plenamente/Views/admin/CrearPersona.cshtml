@@ -15,7 +15,7 @@
 
     <h2 class="colorVerdeBack1">
         Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5% ; margin-right:5%" />
-        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar los datos básicos de tus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar los datos básicos de sus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
 
     </h2>
 
@@ -27,13 +27,13 @@
         Nombres:
         <br />
         <br />
-        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "" } })
+        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "", @placeholder = "Nombres del usuario" } })
         <br />
         <br />
         Apellidos:
         <br />
         <br />
-        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "" } })
+        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "", @placeholder = "Apellidos del usuario" } })
         <br />
         <br />
         Tipo de documento:
@@ -74,11 +74,11 @@
         </div>
 
         @*Estado Del Trabajador:
-            <br />
-            <br />
-            @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
-            <br />
-            <br />*@
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
+        <br />
+        <br />*@
     </div>
     <br />
     <br />

@@ -25,6 +25,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 Nombre
+                <a href="#" class="ayudaTitulos"><span style="width: 300px;">Aquí editará el nombre del objetivo (ej. objetivo 1, Cumplimiento Planear, etc.). </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
                 @Html.EditorFor(model => model.Oemp_Nombre, new { htmlAttributes = new { @class = "" } })
                 @Html.ValidationMessageFor(model => model.Oemp_Nombre, "", new { @class = "text-danger" })
             </div>
@@ -33,6 +34,7 @@
         <div class="form-group">
             <div class="col-md-10">
                 Descripción
+                <a href="#" class="ayudaTitulos"><span style="width: 300px;">Aquí podrá actualizar de manera detallada el objetivo planeteado. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
                 @Html.TextAreaFor(model => model.Oemp_Descrip, new { @class = "", @style = "margin: 0px -146.75px 0px 0px;height: 123px;width: 547px;" })
                 @Html.ValidationMessageFor(model => model.Oemp_Descrip, "", new { @class = "text-danger" })
             </div>
