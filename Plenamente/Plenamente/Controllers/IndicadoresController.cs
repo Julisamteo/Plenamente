@@ -205,7 +205,7 @@ namespace Plenamente.Controllers
                   new List<ChartDatasetsViewModel>{
                       new ChartDatasetsViewModel{
                           label = "Estado actividades %",
-                          data = new string[2]{ String.Format("{0:0.00}", ((terminadas * 100) / total)) , String.Format("{0:0.00}", (((total - terminadas) * 100) / total)) },
+                          data = new string[2]{ String.Format("{0:0}", Convert.ToInt32((terminadas * 100) / total)) , String.Format("{0:0}", Convert.ToInt32(((total - terminadas) * 100) / total)) },
                           fill = true,
                           borderWidth = 1,
                           backgroundColor = new string[2] { "#6DB52D", "#AE2429" },
