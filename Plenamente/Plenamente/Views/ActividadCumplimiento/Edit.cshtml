@@ -5,8 +5,10 @@
     var daily = "";
     var weekly = "";
     var monthly = "";
+    var mestre = "";
     var fechafinal = Convert.ToDateTime(ViewBag.dateend);
     var fechainicial = Convert.ToDateTime(ViewBag.datestart);
+    var hoy = DateTime.Now;
     ViewBag.Title = "Editar actividad";
     Layout = "~/Views/Shared/_LayoutAdministrador.cshtml";
 }
@@ -113,7 +115,7 @@
             monthly = "style=display:none;";
         }
         else
-        if (Model.Frecuencia == "2")
+    if (Model.Frecuencia == "2")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none; ";
@@ -121,7 +123,7 @@
             monthly = "style=display:none;";
         }
         else
-        if (Model.Frecuencia == "3")
+    if (Model.Frecuencia == "3")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none;";
@@ -129,7 +131,7 @@
             monthly = "style=display:none;";
         }
         else
-        if (Model.Frecuencia == "4")
+    if (Model.Frecuencia == "4")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none;";
@@ -137,28 +139,31 @@
             monthly = "style=display:;";
         }
         else
-        if (Model.Frecuencia == "8")
+    if (Model.Frecuencia == "8")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none;";
             weekly = "style=display:none;";
             monthly = "style=display:none;";
+            mestre = "style=display:;";
         }
         else
-        if (Model.Frecuencia == "9")
+    if (Model.Frecuencia == "9")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none;";
             weekly = "style=display:none;";
             monthly = "style=display:none;";
+            mestre = "style=display:;";
         }
         else
-        if (Model.Frecuencia == "10")
+    if (Model.Frecuencia == "10")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none;";
             weekly = "style=display:none;";
             monthly = "style=display:none;";
+            mestre = "style=display:;";
         }
         <div class="form-group">
             <div class="label label-default" @norepeat id="select_norepeat">
@@ -189,8 +194,13 @@
         </div>
 
         <div id="select_monthly" @monthly class="label label-default">
-            Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="1" onchange="changemonth();" /> de cada mes.
+            Repetir los dias <input id="monthly_every" style="width: 50px;color: black;" value="@Model.period" onchange="changemonth();" /> de cada mes.
             <div id="select_monthly_error" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">Please select at least one day:</div>
+            <br />
+        </div>
+        <div id="select_mestre" @mestre class="label label-default">
+            Repetir los dias <input id="mestre_every" style="width: 50px;color: black;" value="@Model.period" onchange="changemestre();" /> del mes.
+            <div id="select_mestre" style="display:none; margin-top: 5px; padding: 2px; background-color: #FFF1A8;">POr favor selecciones un dia</div>
             <br />
         </div>
         <input id="period" name="period" type="hidden" value="" />
@@ -200,7 +210,8 @@
 
     </div>
 
-
+    @if (hoy >= fechafinal)
+    {
     <div class="form-group">
         @Html.LabelFor(model => model.Finalizada, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
@@ -208,6 +219,7 @@
             @Html.ValidationMessageFor(model => model.Finalizada, "", new { @class = "text-danger" })
         </div>
     </div>
+    }
 
 
     <div class="form-group">
@@ -232,11 +244,12 @@
         var daily_every = document.getElementById("daily_every").value;
         var weekly_every = document.getElementById("weekly_every").value;
         var monthly_every = document.getElementById("monthly_every").value;
+        var mestre_every = document.getElementById("mestre_every").value;
         var dayly = document.getElementById("select_daily");
         var weekly = document.getElementById("select_weekly");
         var monthly = document.getElementById("select_monthly");
+        var smestre = document.getElementById("select_mestre");
         var norepeat = document.getElementById("select_norepeat");
-        var period = document.getElementById("period");
         var frecuencia = document.getElementById("Frecuencia");
 
         if (cod == "2") {
@@ -244,14 +257,16 @@
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "none";
+            smestre.style.display = "none";
             period.value = daily_every;
             frecuencia.value = 2;
 
         } else if (cod == "3") {
             dayly.style.display = "none";
             norepeat.style.display = "none";
-            weekly.style.display = "none";
+            weekly.style.display = "";
             monthly.style.display = "none";
+            smestre.style.display = "none";
             period.value = weekly_every;
             frecuencia.value = 3;
         } else if (cod == "4") {
@@ -259,6 +274,7 @@
             dayly.style.display = "none";
             norepeat.style.display = "none";
             weekly.style.display = "none";
+            smestre.style.display = "none";
             monthly.style.display = "";
             period.value = monthly_every;
             frecuencia.value = 4;
@@ -267,21 +283,24 @@
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "none";
-            period.value = 0;
+            smestre.style.display = "";
+            period.value = mestre_every;
             frecuencia.value = 8;
         } else if (cod == "9") {
             dayly.style.display = "none";
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "none";
-            period.value = 0;
+            smestre.style.display = "";
+            period.value = mestre_every;
             frecuencia.value = 9;
         } else if (cod == "10") {
             dayly.style.display = "none";
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "none";
-            period.value = 0;
+            smestre.style.display = "";
+            period.value = mestre_every;
             frecuencia.value = 10;
         
         } else {
@@ -289,6 +308,7 @@
             norepeat.style.display = "";
             weekly.style.display = "none";
             monthly.style.display = "none";
+            smestre.style.display = "none";
             period.value = 0;
             frecuencia.value = 1;
         }
@@ -338,6 +358,12 @@
         var period = document.getElementById("period");
         var monthly_every = document.getElementById("monthly_every").value;
         period.value = monthly_every;
+
+    }
+    function changemestre() {
+        var period = document.getElementById("period");
+        var mestre_every = document.getElementById("mestre_every").value;
+        period.value = mestre_every;
 
     }
 </script>
