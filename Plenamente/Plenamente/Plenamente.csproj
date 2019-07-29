@@ -500,6 +500,7 @@
     <Compile Include="Scheduler\Appointment.cs" />
     <Compile Include="Scheduler\CalendarGenerator.cs" />
     <Compile Include="Scheduler\Class1.cs" />
+    <Compile Include="Scheduler\EveryXMonthsSchedule.cs" />
     <Compile Include="Scheduler\MonthlySchedule.cs" />
     <Compile Include="Scheduler\Period.cs" />
     <Compile Include="Scheduler\RepeatingSchedule.cs" />
@@ -1386,6 +1387,7 @@
     <Content Include="Views\Empresas\Index.cshtml" />
     <Content Include="Views\admin\Terminos.cshtml" />
     <Content Include="Views\Home\Guía.cshtml" />
+    <Content Include="SqlServerTypes.rar" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

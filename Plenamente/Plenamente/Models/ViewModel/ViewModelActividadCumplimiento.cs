@@ -112,7 +112,7 @@ namespace Plenamente.Models.ViewModel
         /// variable auxiliar que obtiene o llena la periodicidad de la actividad.
         /// </summary>
         /// <value>
-        /// periodicidad de la actividad(semanal, diaria, mensual, nunca) 
+        /// periodicidad de la actividad(semanal, diaria, mensual, nunca, bimestral, trimestral, semestral) 
         /// </value>
         public int period { get; set; }
         /// <summary>
