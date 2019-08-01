@@ -113,22 +113,25 @@
             daily = "style=display:none;";
             weekly = "style=display:none;";
             monthly = "style=display:none;";
+            mestre = "style=display:none;";
         }
         else
     if (Model.Frecuencia == "2")
         {
             norepeat = "style=display:none;";
-            daily = "style=display:none; ";
+            daily = "style=display:; ";
             weekly = "style=display:none;";
             monthly = "style=display:none;";
+            mestre = "style=display:none;";
         }
         else
     if (Model.Frecuencia == "3")
         {
             norepeat = "style=display:none;";
             daily = "style=display:none;";
-            weekly = "style=display:none;";
+            weekly = "style=display:;";
             monthly = "style=display:none;";
+            mestre = "style=display:none;";
         }
         else
     if (Model.Frecuencia == "4")
@@ -137,6 +140,7 @@
             daily = "style=display:none;";
             weekly = "style=display:none;";
             monthly = "style=display:;";
+            mestre = "style=display:none;";
         }
         else
     if (Model.Frecuencia == "8")
@@ -172,7 +176,7 @@
         </div>
 
         <div id="select_daily" @daily class="label label-default">
-            Repetir cada <input id="daily_every" style="width: 20px;" value="@Model.period" onchange="changeday();" /> dia(s).
+            Repetir cada <input id="daily_every" style="width: 50px;color: black;" value="@Model.period" onchange="changeday();" /> dia(s).
         </div>
 
         <div id="select_weekly" @weekly class="label label-default">
@@ -253,7 +257,7 @@
         var frecuencia = document.getElementById("Frecuencia");
 
         if (cod == "2") {
-            dayly.style.display = "none";
+            dayly.style.display = "";
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "none";

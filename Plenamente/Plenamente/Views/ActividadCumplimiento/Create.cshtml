@@ -121,7 +121,7 @@
         </div>
 
         <div id="select_daily" style="display:none;" class="label label-default">
-            Repetir cada <input id="daily_every" style="width: 20px;" value="1" onchange="changeday();" /> dia(s).
+            Repetir cada <input id="daily_every" style="width: 50px;color: black;" value="1" onchange="changeday();" /> dia(s).
         </div>
 
         <div id="select_weekly" style="display:none;" class="label label-default">
@@ -192,7 +192,7 @@
         var frecuencia = document.getElementById("Frecuencia");
 
         if (cod == "daily") {
-            dayly.style.display = "none";
+            dayly.style.display = "";
             norepeat.style.display = "none";
             weekly.style.display = "none";
             monthly.style.display = "none";
