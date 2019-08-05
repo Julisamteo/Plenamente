@@ -73,6 +73,7 @@ namespace Plenamente.Controllers
             List<EventViewModel> lst = new List<EventViewModel>();
             try
             {
+                /*
                 List<EventViewModel> cumplimientos =
                  db.Tb_ActiCumplimiento
                     .Where(a => a.Empr_Nit == AccountData.NitEmpresa && a.Usersplandetrabajo.Any(u => u.PlandeTrabajo != null))
@@ -93,7 +94,8 @@ namespace Plenamente.Controllers
                 {
                     lst.AddRange(cumplimientos);
                 }
-
+                */
+                var now = DateTime.Now;
                 List<EventViewModel> planes =
                     db.Tb_ProgamacionTareas
                         .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
@@ -106,10 +108,9 @@ namespace Plenamente.Controllers
                                 Description = "Tarea programada",
                                 Title = a.Descripcion,
                                 Start = a.FechaHora,
-                                BackgroundColor = "#478064",
-                                BorderColor = "#218052",
-                                EventRoute = ""
-                                //EventRoute = "/ActividadCumplimiento/Create/" + a.Id
+                                BackgroundColor = a.ActiCumplimiento.Acum_FinAct > now ? "#FF1F17" /*Verde*/: "#6CB52D" /*Rojo*/ ,
+                                BorderColor = a.ActiCumplimiento.Acum_FinAct > now ? "#FF6963" /*Verde*/: "#65ac1e" /*Rojo*/,
+                                EventRoute = "/ActividadCumplimiento/Details/" + a.ActiCumplimiento_Id
                             }).ToList();
 
                 if (planes != null && planes.Count > 0)
