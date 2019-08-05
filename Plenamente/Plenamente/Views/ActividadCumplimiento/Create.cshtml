@@ -14,7 +14,7 @@
 <div class="colorVerdeBack">
     <p>
         Crear actividades
-        <a href="#" class="ayudaTitulos"><span>Aquí podras crear actividades y asiganarlas a un usuario previamente creado</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
+        <a href="#" class="ayudaTitulos"><span>Aquí podras crear actividades y asiganarlas a un usuario previamente creado</span> <img src="../Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
 
     </p>
 
@@ -34,7 +34,7 @@
         @Html.LabelFor(model => model.NombreActividad, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.NombreActividad, new { htmlAttributes = new { @class = " text-box single-line" } })
-            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignarle un nombre a la actividad que desea crear. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignarle un nombre a la actividad que desea crear. </span> <img src="../Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.NombreActividad, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -43,7 +43,7 @@
         @Html.LabelFor(model => model.Meta, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.Meta, new { htmlAttributes = new { @class = " text-box single-line" } })
-            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí asignará el porcentaje que espera cumplir con la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí asignará el porcentaje que espera cumplir con la actividad. </span> <img src="../Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.Meta, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -53,7 +53,7 @@
         <div class="col-md-12">
 
             @Html.DropDownListFor(x => x.idObjetivo, (SelectList)ViewBag.objetivosEmpresa, new { @class = "estilosSelect" })
-            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí seleccionará el objetivo al que corresponde la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí seleccionará el objetivo al que corresponde la actividad. </span> <img src="../Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.idObjetivo, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -63,7 +63,7 @@
         <div class="col-md-12">
 
             @Html.DropDownListFor(x => x.IdUser, (SelectList)ViewBag.users, new { @class = "estilosSelect" })
-            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignar un responsable a la actividad, que debe ser creado previamente en "Información de sus trabajadores". </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignar un responsable a la actividad, que debe ser creado previamente en "Información de sus trabajadores". </span> <img src="../Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.IdUser, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -71,7 +71,7 @@
         @Html.LabelFor(model => model.FechaInicial, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.FechaInicial, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @Value = Model.FechaInicial.ToString("yyyy-MM-dd"), @type = "date", @min = Model.FechaInicial.ToString("yyyy-MM-dd"), @max = Model.FechaFinal.ToString("yyyy-MM-dd") } })
-            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí asignará la fecha de programación de la actividad. </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí asignará la fecha de programación de la actividad. </span> <img src="../Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.FechaInicial, "", new { @class = "text-danger" })
         </div>
     </div>
@@ -89,7 +89,7 @@
         @Html.LabelFor(model => model.asigrecursos, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
             @Html.EditorFor(model => model.asigrecursos, new { htmlAttributes = new { @class = "text-box single-line" } })
-            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignar los recursos que aplican a la actividad (ej. físicos, económicos, etc.). </span> <img src="~/Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
+            <a href="#" class="ayudaTitulos"><span style="width: 180px;">Aquí deberá asignar los recursos que aplican a la actividad (ej. físicos, económicos, etc.). </span> <img src="../Imagenes/informacionfndo.png" style="max-height:18px; max-width:18px;" /></a>
             @Html.ValidationMessageFor(model => model.asigrecursos, "", new { @class = "text-danger" })
         </div>
     </div>
