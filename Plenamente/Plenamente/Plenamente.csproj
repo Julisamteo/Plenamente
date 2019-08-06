@@ -747,6 +747,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagenes\informacion.png" />
+    <Content Include="Imagenes\informacionfndo.png" />
     <Content Include="Imagenes\INGRESA.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
