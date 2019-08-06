@@ -79,7 +79,7 @@
     <div class="form-group">
         @Html.LabelFor(model => model.FechaFinal, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
-            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = fechafinal.ToString("yyyy-MM-dd"), @min = fechainicial.ToString("yyyy-MM-dd"), @max =fechafinal.ToString("yyyy-MM-dd") } })
+            @Html.EditorFor(model => model.FechaFinal, new { htmlAttributes = new { @class = "estilosSelect text-box single-line", @type = "date", @value = fechafinal.ToString("yyyy-MM-dd"), @min = fechainicial.ToString("yyyy-MM-dd"), @max =hoy.ToString("yyyy-MM-dd") } })
             @Html.ValidationMessageFor(model => model.FechaFinal, "", new { @class = "text-danger" })
         </div>
 
@@ -99,7 +99,7 @@
         </div>
     </div>
 
-    <div class="form-group">
+    <div class="form-group" style="display:none;">
         @Html.LabelFor(model => model.Frecuencia, htmlAttributes: new { @class = "control-label col-md-12" })
         <div class="col-md-12">
 
@@ -214,7 +214,7 @@
 
     </div>
 
-    @if (hoy >= fechafinal)
+    @if (hoy >= Model.FechaInicial)
     {
     <div class="form-group">
         @Html.LabelFor(model => model.Finalizada, htmlAttributes: new { @class = "control-label col-md-12" })
