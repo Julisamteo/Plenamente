@@ -418,6 +418,10 @@
     <Compile Include="Migrations\201907181708046_altertablePlanTrabajo.Designer.cs">
       <DependentUpon>201907181708046_altertablePlanTrabajo.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201908081458351_ProgramacionTareasColumnaFinalizada.cs" />
+    <Compile Include="Migrations\201908081458351_ProgramacionTareasColumnaFinalizada.Designer.cs">
+      <DependentUpon>201908081458351_ProgramacionTareasColumnaFinalizada.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\ActiCumplimiento.cs" />
     <Compile Include="Models\AcumMes.cs" />
@@ -1499,6 +1503,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201907181708046_altertablePlanTrabajo.resx">
       <DependentUpon>201907181708046_altertablePlanTrabajo.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908081458351_ProgramacionTareasColumnaFinalizada.resx">
+      <DependentUpon>201908081458351_ProgramacionTareasColumnaFinalizada.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Reportes\rptPlanDeTrabajo.rdlc" />
     <EmbeddedResource Include="Reportes\rptAutoEvaluacion.rdlc" />

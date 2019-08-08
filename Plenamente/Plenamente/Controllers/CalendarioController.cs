@@ -99,6 +99,7 @@ namespace Plenamente.Controllers
                 List<EventViewModel> planes =
                     db.Tb_ProgamacionTareas
                         .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
+                                && !a.Finalizada
                                 && a.Estado
                                 && a.ActiCumplimiento.Usersplandetrabajo.Count > 0)
                         .Select(a =>
