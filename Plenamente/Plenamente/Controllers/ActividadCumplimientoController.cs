@@ -64,7 +64,7 @@ namespace Plenamente.Controllers
         /// </summary>
         /// <param name="id">Recibe el id de la actividad a buscar </param>			
         /// <returns>Retorna el viewmodel ViewModelActividadCumplimiento </returns>
-        public ActionResult Details(int id)
+        public ActionResult Details(int id,int? idpt)
         {
 
             ActiCumplimiento list = db.Tb_ActiCumplimiento.Find(id);
@@ -74,6 +74,10 @@ namespace Plenamente.Controllers
             ViewData["obj_name"] = objetivo.Oemp_Nombre;
             ViewData["username"] = usuario.Pers_Nom1 + "" + usuario.Pers_Nom2 + "" + usuario.Pers_Apel1 + "" + usuario.Pers_Apel2;
             ViewData["frec_name"] = frec.Frec_Descripcion;
+           
+                ViewData["idpt"] = idpt;
+            
+            
             return View(list);
 
         }
@@ -551,6 +555,15 @@ namespace Plenamente.Controllers
 
 
             //Generamos la programacion de tareas en el tiempo.
+
+            return RedirectToAction("Index");
+        }
+        public ActionResult Updatetask(int id)
+        {
+            ProgamacionTareas progt= db.Tb_ProgamacionTareas.Where(e => e.Id == id).FirstOrDefault();
+            progt.Finalizada = true;
+            db.Entry(progt).State = EntityState.Modified;
+            db.SaveChanges();
 
             return RedirectToAction("Index");
         }
