@@ -343,6 +343,7 @@ namespace Plenamente.Controllers
                     //FechaHora = new DateTime(model.FechaInicial.Year, model.FechaInicial.Month, model.FechaInicial.Day, model.hora.Hours, model.hora.Minutes, model.hora.Seconds),
                     FechaHora = app.Time,
                     Estado = true,
+                    Finalizada=false,
                 }
                 );
             }
