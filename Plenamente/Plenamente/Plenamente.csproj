@@ -1399,6 +1399,7 @@
     <Content Include="SqlServerTypes.rar" />
     <Content Include="Views\PlandeTrabajo\IndexM.cshtml" />
     <Content Include="Views\PlandeTrabajo\Actividadesplantra.cshtml" />
+    <Content Include="Views\ActividadCumplimiento\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

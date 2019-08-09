@@ -76,24 +76,24 @@
 
         @if (ViewBag.actividadesAsignadas.PaginaActual > 1)
         {
-            @Html.ActionLink("<<", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = 1 },
+            @Html.ActionLink("<<", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = 1 },
                             new { @class = "btn btn-sm btn-default" })
             <span></span>
-            @Html.ActionLink("Anterior", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.PaginaActual - 1 },
+            @Html.ActionLink("Anterior", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.PaginaActual - 1 },
                             new { @class = "btn btn-sm btn-default" })
         }
         else
         {
-            @Html.ActionLink("<<", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
+            @Html.ActionLink("<<", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
                             new { @class = "btn btn-sm btn-default disabled" })
             <span></span>
-            @Html.ActionLink("Anterior", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
+            @Html.ActionLink("Anterior", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = 1 },
                             new { @class = "btn btn-sm btn-default disabled" })
         }
         <span></span>
         @if (ViewBag.actividadesAsignadas.PaginaActual < ViewBag.actividadesAsignadas.TotalPaginas)
         {
-            @Html.ActionLink("Siguiente", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.PaginaActual + 1 },
+            @Html.ActionLink("Siguiente", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.PaginaActual + 1 },
                             new { @class = "btn btn-sm btn-default" })
             <span></span>
             @Html.ActionLink(">>", "Index", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas },
@@ -101,7 +101,7 @@
         }
         else
         {
-            @Html.ActionLink("Siguiente", "ActividadesPlanTrabajo", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas - 1 },
+            @Html.ActionLink("Siguiente", "ActividadesplanTra", new { IdPlantTrabajo = Model.IdPlantTrabajo,pagina = ViewBag.actividadesAsignadas.TotalPaginas - 1 },
                             new { @class = "btn btn-sm btn-default disabled" })
             <span></span>
             @Html.ActionLink(">>", "Index", new { IdPlantTrabajo = Model.IdPlantTrabajo, pagina = ViewBag.actividadesAsignadas.TotalPaginas },
@@ -111,7 +111,7 @@
 
 
         <div class="form-group">
-            <a class="btn btn-success" href="@Url.Action("Create","ActividadCumplimiento" , new { idPlanDeTrabajo=@Model.IdPlantTrabajo })" title="Crear Actividad">
+            <a class="btn btn-success" href="@Url.Action("Crear","ActividadCumplimiento" , new { idPlanDeTrabajo=@Model.IdPlantTrabajo })" title="Crear Actividad">
                 Crear Actividad
             </a>
             <hr />
@@ -133,7 +133,7 @@
 
 </div>
 <div class="contenidoVolver">
-    <a href="@Url.Action("Index", "PlandeTrabajo")" class="ayudaTitulos">
+    <a href="@Url.Action("IndexM", "PlandeTrabajo")" class="ayudaTitulos">
         <span>Volver a los planes de trabajo</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
     </a>
 </div>

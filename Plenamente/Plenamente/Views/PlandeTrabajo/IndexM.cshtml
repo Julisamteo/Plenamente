@@ -58,41 +58,37 @@
 
     @if (Model.PaginaActual > 1)
     {
-        @Html.ActionLink("<<", "Index", new { pagina = 1 },
+        @Html.ActionLink("<<", "IndexM", new { pagina = 1 },
                         new { @class = "btn btn-sm btn-default" })
         <span></span>
-        @Html.ActionLink("Anterior", "Index", new { pagina = Model.PaginaActual - 1 },
+        @Html.ActionLink("Anterior", "IndexM", new { pagina = Model.PaginaActual - 1 },
                         new { @class = "btn btn-sm btn-default" })
     }
     else
     {
-        @Html.ActionLink("<<", "Index", new { pagina = 1 },
+        @Html.ActionLink("<<", "IndexM", new { pagina = 1 },
                         new { @class = "btn btn-sm btn-default disabled" })
         <span></span>
-        @Html.ActionLink("Anterior", "Index", new { pagina = 1 },
+        @Html.ActionLink("Anterior", "IndexM", new { pagina = 1 },
                         new { @class = "btn btn-sm btn-default disabled" })
     }
     <span></span>
     @if (Model.PaginaActual < Model.TotalPaginas)
     {
-        @Html.ActionLink("Siguiente", "Index", new { pagina = Model.PaginaActual + 1 },
+        @Html.ActionLink("Siguiente", "IndexM", new { pagina = Model.PaginaActual + 1 },
                         new { @class = "btn btn-sm btn-default" })
         <span></span>
-        @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
+        @Html.ActionLink(">>", "IndexM", new { pagina = Model.TotalPaginas },
                         new { @class = "btn btn-sm btn-default" })
     }
     else
     {
-        @Html.ActionLink("Siguiente", "Index", new { pagina = Model.TotalPaginas - 1 },
+        @Html.ActionLink("Siguiente", "IndexM", new { pagina = Model.TotalPaginas - 1 },
                         new { @class = "btn btn-sm btn-default disabled" })
         <span></span>
-        @Html.ActionLink(">>", "Index", new { pagina = Model.TotalPaginas },
+        @Html.ActionLink(">>", "IndexM", new { pagina = Model.TotalPaginas },
                         new { @class = "btn btn-sm btn-default disabled" })
     }
 </div>
-<div class="contenidoVolver">
-    <a href="@Url.Action("Index", "Home")" class="ayudaTitulos">
-        <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
-    </a>
-</div>
+
 

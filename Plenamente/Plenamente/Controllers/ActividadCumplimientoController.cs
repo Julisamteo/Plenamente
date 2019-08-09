@@ -595,5 +595,114 @@ namespace Plenamente.Controllers
                 return View();
             }
         }
+
+        // GET: ActividadCumplimiento/Create
+        public ActionResult Crear(int idPlanDeTrabajo)
+        {
+            var list = db.Tb_ObjEmpresa.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Oemp_Id, Value = o.Oemp_Nombre }).ToList();
+            ViewBag.objetivosEmpresa = new SelectList(list, "Id", "Value");
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            var listusers = db.Users.Where(c => c.Empr_Nit == AccountData.NitEmpresa).Select(o => new { Id = o.Id, Value = o.Pers_Nom1 }).ToList();
+            ViewBag.users = new SelectList(listusers, "Id", "Value");
+            PlandeTrabajo planT = db.Tb_PlandeTrabajo.Find(idPlanDeTrabajo);
+            ViewBag.datestart = planT.FechaInicio;
+            ViewBag.dateend = planT.FechaFin;
+            ViewModelActividadCumplimiento model = new ViewModelActividadCumplimiento();
+            ViewBag.ReturnUrl = Request.UrlReferrer;
+            ViewBag.idptrab = idPlanDeTrabajo;
+            return View(model);
+
+        }
+        /// <summary>
+        /// Crea la actividad recibiendo un objeto de tipo actividad validando que pertenezca a un plan de trabajo
+        /// </summary>
+        /// <param name="ViewModelActividadCumplimiento">recibe un objeto de tipo actividad para crearlo en la bd </param>
+        /// <returns>retorna el objeto si no se crea adecuadamente o direcciona a la pagina inmediatamente anterior desde donde se origino la accion de creación si logra crearlo</returns>
+        // POST: ActividadCumplimiento/Create
+        [HttpPost]
+        public ActionResult Crear([Bind(Include = "NombreActividad,Meta,FechaInicial,FechaFinal,hora,Frecuencia,idObjetivo,Frecuencia_desc,period,weekly_0,weekly_1,weekly_2,weekly_3,weekly_4,weekly_5,weekly_6,retornar,asigrecursos,IdUser,idPlanDeTrabajo")] ViewModelActividadCumplimiento model)
+        {
+
+
+
+            // TODO: Add insert logic here
+            Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
+
+            ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
+            // resolvemos el dia de la semana segun el checkbox seleccionado
+            string dias = "";
+            if (model.weekly_0 != null)
+            {
+                dias += "lunes,";
+            }
+            if (model.weekly_1 != null)
+            {
+                dias += "martes,";
+            }
+            if (model.weekly_2 != null)
+            {
+                dias += "miercoles,";
+            }
+            if (model.weekly_3 != null)
+            {
+                dias += "jueves,";
+            }
+            if (model.weekly_4 != null)
+            {
+                dias += "viernes,";
+            }
+            if (model.weekly_5 != null)
+            {
+                dias += "sabado,";
+            }
+            if (model.weekly_6 != null)
+            {
+                dias += "domingo,";
+            }
+
+            // TODO: Add insert logic here
+            ActiCumplimiento actcumplimiento = new ActiCumplimiento
+            {
+                Acum_Desc = model.NombreActividad,
+                Acum_Porcentest = model.Meta,
+                Acum_IniAct = model.FechaInicial,
+                Acum_FinAct = model.FechaFinal,
+                Oemp_Id = model.idObjetivo,
+                Acum_Registro = DateTime.Now,
+                Id = model.IdUser,
+                Frec_Id = Convert.ToInt32(model.Frecuencia),
+                Peri_Id = 6,
+                Empr_Nit = empresa.Empr_Nit,
+                Repeticiones = model.period,
+                DiasSemana = dias,
+                HoraAct = model.hora,
+                Finalizada = false,
+                asigrecursos = model.asigrecursos
+
+
+
+            };
+
+            db.Tb_ActiCumplimiento.Add(actcumplimiento);
+
+            db.SaveChanges();
+            /// adicionamos el usuario asignado responsable para la actividad
+            UsuariosPlandetrabajo user = new UsuariosPlandetrabajo
+            {
+                Acum_Id = actcumplimiento.Acum_Id,
+                Plat_Id = model.idPlanDeTrabajo,
+                Emp_Id = AccountData.NitEmpresa,
+                Id = model.IdUser
+            };
+            db.Tb_UsersPlandeTrabajo.Add(user);
+            db.SaveChanges();
+            //Generamos la programacion de tareas en el tiempo.
+            generateAppoiment(model, actcumplimiento.Acum_Id);
+
+            var link = model.retornar;
+            return Redirect(link);
+
+        }
     }
 }
