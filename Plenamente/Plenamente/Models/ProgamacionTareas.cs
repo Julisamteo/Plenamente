@@ -6,10 +6,6 @@ namespace Plenamente.Models
 {
     public class ProgamacionTareas
     {
-        public ProgamacionTareas()
-        {
-            Finalizada = true;
-        }
         [Key]
         public int Id { get; set; }
         public string Descripcion { get; set; }
