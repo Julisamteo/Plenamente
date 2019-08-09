@@ -99,6 +99,7 @@ namespace Plenamente.Controllers
                 List<EventViewModel> planes =
                     db.Tb_ProgamacionTareas
                         .Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
+                                && !a.Finalizada
                                 && a.Estado
                                 && a.ActiCumplimiento.Usersplandetrabajo.Count > 0)
                         .Select(a =>
@@ -110,7 +111,7 @@ namespace Plenamente.Controllers
                                 Start = a.FechaHora,
                                 BackgroundColor = a.ActiCumplimiento.Acum_FinAct > now ? "#FF1F17" /*Verde*/: "#6CB52D" /*Rojo*/ ,
                                 BorderColor = a.ActiCumplimiento.Acum_FinAct > now ? "#FF6963" /*Verde*/: "#65ac1e" /*Rojo*/,
-                                EventRoute = "../ActividadCumplimiento/Details/" + a.ActiCumplimiento_Id
+                                EventRoute = "/ActividadCumplimiento/Details?id=" + a.ActiCumplimiento_Id + "&idpt=" + a.Id
                             }).ToList();
 
                 if (planes != null && planes.Count > 0)

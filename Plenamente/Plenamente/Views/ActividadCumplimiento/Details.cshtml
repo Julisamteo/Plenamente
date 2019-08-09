@@ -125,5 +125,12 @@
             <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento" , new { id=Model.Acum_Id })" title="Editar">
                 Gestionar
             </a>
+            @if (ViewData["idpt"] != null)
+            {
+            <a class="btn btn-info" href="@Url.Action("Updatetask", "ActividadCumplimiento", new { id = ViewData["idpt"] })" title="Finalizar">
+                Finalizar
+            </a>
+            }
         </div>
+           
     </p>
