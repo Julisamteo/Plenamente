@@ -15,7 +15,7 @@ namespace Plenamente.Controllers
     /// <remarks>
     /// Utiliza la libreria de javascript chartjs toda la documentación en la url: https://www.chartjs.org
     /// </remarks>
-    /// <include file='\Scripts\chartjs\script-custom-chart.js' path='[@name="script-custom-chart"]'/>
+    /// <include file='..\Scripts\chartjs\script-custom-chart.js' path='..[@name="script-custom-chart"]'/>
     /// <seealso cref="System.Web.Mvc.Controller" />
     [Authorize]
     public class IndicadoresController : Controller
@@ -96,7 +96,7 @@ namespace Plenamente.Controllers
                        new List<ChartDatasetsViewModel>{
                             new ChartDatasetsViewModel
                             {
-                                label = "Avance",
+                                label = "Avance porcentual %",
                                 data = lst,
                                 fill = false,
                                 borderWidth = 1
@@ -204,8 +204,8 @@ namespace Plenamente.Controllers
                   datasets =
                   new List<ChartDatasetsViewModel>{
                       new ChartDatasetsViewModel{
-                          label = "Estado actividades",
-                          data = new string[2]{ String.Format("{0:0.00}", ((terminadas * 100) / total)) , String.Format("{0:0.00}", (((total - terminadas) * 100) / total)) },
+                          label = "Estado actividades %",
+                          data = new string[2]{ String.Format("{0:0}", Convert.ToInt32((terminadas * 100) / total)) , String.Format("{0:0}", Convert.ToInt32(((total - terminadas) * 100) / total)) },
                           fill = true,
                           borderWidth = 1,
                           backgroundColor = new string[2] { "#6DB52D", "#AE2429" },

@@ -30,8 +30,8 @@
                     <hr />
                 </div>
             </div>
-           
-                <hr />
+
+            <hr />
             @Html.HiddenFor(model => model.Id)
             @Html.HiddenFor(model => model.ItemEstandarId)
             @Html.HiddenFor(model => model.Nit)
@@ -87,10 +87,14 @@
             </div>
             <div class="row">
                 <div class="col-lg-12 col-md-12 col-sm-12 col-xs-12">
-                 
-                    <input data-toggle="modal" data-target="#myModal" id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Recursos de apoyo" style="visibility: visible; " />
+
+                    <input data-toggle="modal" data-target="#myModal" id="btnMasInfo" type="button" onclick="document.getElementById('divMasInfo').style.visibility = 'visible';" class="btn btn-primary" value="Recursos de apoyo" style="visibility: visible;" />
                     <input type="submit" value="Aceptar" class="btn btn-default" />
-                    <input id="btnPlanTrabajo" type="button" onclick="location.href = '@Url.Action("Index", "Plandetrabajo")';" class="btn btn-default" value="Plan de trabajo" style="visibility: hidden;" />
+                    @*<input id="btnPlanTrabajo" type="button" onclick="location.href = '@Url.Action("Index", "Plandetrabajo")';" class="btn btn-default" value="Plan de trabajo" style="visibility: hidden;" />*@
+                    <a href='@Url.Action("IndexM", "Plandetrabajo")' onclick="window.open(this.href, 'mywin',
+                     'left=20,top=20,width=580,height=500,toolbar=1,resizable=0'); return false;"> <input id="btnPlanTrabajo" type="button" value="Crear actividad" class="btn btn-default" style="visibility: hidden;"  /></a>
+                    @*@Html.ActionLink("Nombreee ", "Index", "Plantra", null, new { target = "_blank", @class = "btn btn-primary fa fa-list" })*@
+
                 </div>
             </div>
             <div class="row">
@@ -135,7 +139,7 @@
                             <div class="col-lg-6 col-md-6 col-sm-6 col-xs-6">
                                 <p class="text-justify">
                                     <a href="@Model.ItemEstandar.Recurso" target="_blank" style="color: black;">
-                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file" >
+                                        <img src="~/Imagenes/format.png" style="max-width:50px; min-height:50px;" class="fa fa-file">
                                         <label class="text-center text-black-50 text-dark">
                                             @(Model.ItemEstandar.Recurso.Split('/').Last() ?? "Ver ayuda")
                                         </label>
@@ -220,6 +224,8 @@
     </div>
 </div>
 
+
+
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     <script>
@@ -291,4 +297,9 @@
             }
         });
     </script>
+
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    @*<script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>*@
+
 }

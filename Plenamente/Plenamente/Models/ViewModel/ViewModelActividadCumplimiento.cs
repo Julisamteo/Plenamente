@@ -57,7 +57,7 @@ namespace Plenamente.Models.ViewModel
         /// <value>
         /// fecha inicial de la actividad 
         /// </value>
-        [Display(Name = "Fecha de ejecución")]
+        [Display(Name = "Fecha Programada")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaInicial { get; set; }
         /// <summary>
@@ -66,7 +66,7 @@ namespace Plenamente.Models.ViewModel
         /// <value>
         /// fecha final de la actividad 
         /// </value>
-        [Display(Name = "Fecha final")]
+        [Display(Name = "Fecha de finalización")]
         [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
         public DateTime FechaFinal { get; set; }
         /// <summary>

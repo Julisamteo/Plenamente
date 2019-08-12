@@ -55,9 +55,9 @@ namespace Plenamente.Models
         /// <value>
         /// fecha inicial de la actividad 
         /// </value>
-        [Display(Name = "Fecha de Ejecucion")]
+        [Display(Name = "Fecha Programada")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Acum_IniAct { get; set; }
         /// <summary>
         /// Obtiene o llena la fecha de finalizacion de la actividad.
@@ -65,9 +65,9 @@ namespace Plenamente.Models
         /// <value>
         /// fecha final de la actividad 
         /// </value>
-        [Display(Name = "Finalización de Actividad")]
+        [Display(Name = "Finalización de Ejecución")]
         [DataType(DataType.Date)]
-        [DisplayFormat(DataFormatString = "{0:yyyy-MM-dd}", ApplyFormatInEditMode = true)]
+        [DisplayFormat(DataFormatString = "{0:dd/MM/yyyy}", ApplyFormatInEditMode = true)]
         public DateTime Acum_FinAct { get; set; }
         /// <summary>
         /// Obtiene o llena el objetivo de la empresa al cual va dirijida la actividad.

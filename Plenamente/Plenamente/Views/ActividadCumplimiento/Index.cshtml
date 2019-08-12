@@ -10,8 +10,7 @@
     <div class="colorVerdeBack">
         <p>
             Actividades
-            <a href="#" class="ayudaTitulos"><span>Aquí podras ver tus actividades creadas, desde tu plan de trabajo</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>
-        </p>
+            <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ver las actividades creadas desde su plan de trabajo</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /></a>        </p>
     </div>
     <div class="form-group" style="display:none;">
         <div class="col-md-offset-2 col-md-10">
@@ -32,9 +31,9 @@
                     <th>
                         Fecha Inicial
                     </th>
-                    <th>
+                    @*<th>
                         Fecha Final
-                    </th>
+                    </th>*@
                     <th>
                         Acción
                     </th>
@@ -53,15 +52,15 @@
                     <td>
                         @item.Acum_IniAct
                     </td>
-                    <td>
+                    @*<td>
                         @item.Acum_FinAct
-                    </td>
+                    </td>*@
                     <td>
 
-                        <a class="btn btn-info" href="@Url.Action(" Edit", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Editar">
-                            Editar
+                        <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Editar">
+                            Gestionar
                         </a>
-                        <a class="btn btn-info" href="@Url.Action(" Details", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Detalles">
+                        <a class="btn btn-info" href="@Url.Action("Details", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Detalles">
                             Detalles
                         </a>
 
@@ -132,7 +131,7 @@
 
     <div class="contenidoVolver">
 
-        <a href="@Url.Action(" Index", "Home" )" class="ayudaTitulos">
+        <a href="@Url.Action("Index", "Home" )" class="ayudaTitulos">
             <span>Volver al inicio</span> <img src="~/Imagenes/flecha-hacia-la-izquierda.png" />
         </a>
 
