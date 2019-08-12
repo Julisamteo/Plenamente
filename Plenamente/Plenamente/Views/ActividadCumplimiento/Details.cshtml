@@ -36,19 +36,19 @@
         </div>
 
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
-            @Html.DisplayNameFor(model => model.Acum_IniAct)
+            Fecha Programación
         </div>
 
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
-            @Html.DisplayFor(model => model.Acum_IniAct)
+            @ViewData["fprog"]
         </div>
 
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
-            @Html.DisplayNameFor(model => model.Acum_FinAct)
+            Fecha Ejecución
         </div>
 
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
-            @Html.DisplayFor(model => model.Acum_FinAct)
+            @ViewData["fejec"]
         </div>
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.asigrecursos)
@@ -61,11 +61,18 @@
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Finalizada)
         </div>
-
+        @if ((ViewData["statetask"] != null))
+        {
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
-            @Html.DisplayFor(model => model.Finalizada)
+            <input class="check-box" disabled="disabled" type="checkbox" checked>
         </div>
-
+        }
+        else
+        {
+        <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
+            <input class="check-box" disabled="disabled" type="checkbox" >
+        </div>
+        }
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Oemp_Id)
         </div>
@@ -81,7 +88,7 @@
             @ViewData["frec_name"]
         </div>
         @if (Model.Frec_Id == 2 || Model.Frec_Id == 4)
-        {
+    {
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Repeticiones)
         </div>
@@ -89,9 +96,9 @@
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.Repeticiones)
         </div>
-        }
+}
         @if (Model.Frec_Id == 3)
-        {
+    {
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.DiasSemana)
         </div>
@@ -99,7 +106,7 @@
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayFor(model => model.DiasSemana)
         </div>
-        }
+}
         <div class="col-md-6 " style="padding: 10px;background: white;border: 1px gray solid;">
             @Html.DisplayNameFor(model => model.Id)
         </div>
@@ -125,7 +132,7 @@
             <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento" , new { id=Model.Acum_Id })" title="Editar">
                 Editar
             </a>
-            @if (ViewData["idpt"] != null)
+            @if ((ViewData["idpt"] != null) && (ViewData["statetask"] == null))
             {
             <a class="btn btn-info" href="@Url.Action("Updatetask", "ActividadCumplimiento", new { id = ViewData["idpt"] })" title="Finalizar">
                 Finalizar

@@ -71,13 +71,31 @@ namespace Plenamente.Controllers
             ObjEmpresa objetivo = db.Tb_ObjEmpresa.Where(obj => obj.Oemp_Id == list.Oemp_Id).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(list.Id);
             Frecuencia frec = db.Tb_Frecuencia.Find(list.Frec_Id);
+            ProgamacionTareas statetask = db.Tb_ProgamacionTareas.Where(est => est.Id == idpt).FirstOrDefault();
             ViewData["obj_name"] = objetivo.Oemp_Nombre;
             ViewData["username"] = usuario.Pers_Nom1 + "" + usuario.Pers_Nom2 + "" + usuario.Pers_Apel1 + "" + usuario.Pers_Apel2;
             ViewData["frec_name"] = frec.Frec_Descripcion;
-           
-                ViewData["idpt"] = idpt;
-            
-            
+            ViewData["idpt"] = idpt;
+            string fechaeje = Convert.ToString(statetask.Fechaeje);
+            ViewData["fprog"] = statetask.FechaHora;
+            if (fechaeje == "01/01/1900 0:00:00")
+            {
+                ViewData["fejec"] = "No se ha ejecutado";
+            }
+            else
+            {
+
+                ViewData["fejec"] = statetask.Fechaeje;
+            }
+            var estado = statetask.Finalizada;
+            if (estado == true)
+            {
+                ViewData["statetask"] = 1;
+            }
+            else
+            {
+                ViewData["statetask"] = null;
+            }
             return View(list);
 
         }
@@ -563,10 +581,12 @@ namespace Plenamente.Controllers
         {
             ProgamacionTareas progt= db.Tb_ProgamacionTareas.Where(e => e.Id == id).FirstOrDefault();
             progt.Finalizada = true;
+            progt.Fechaeje = DateTime.Now;
             db.Entry(progt).State = EntityState.Modified;
+
             db.SaveChanges();
 
-            return RedirectToAction("Index");
+            return RedirectToAction("../Calendario/Index");
         }
 
         // GET: ActividadCumplimiento/Delete/5
