@@ -26,11 +26,11 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
+                                    <h4 class="modal-title">Medición del ciclo PHVA</h4>
                                 </div>
                                 <canvas id="chartPromedioModal" class="chart-container marco" chart-route="../Indicadores/PromedioAutoevaluaciones" chart-type="horizontalBar"></canvas>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
 
@@ -53,11 +53,11 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
+                                    <h4 class="modal-title">Alcance del plan de trabajo anual</h4>
                                 </div>
                                 <canvas id="chartAvanceModal" class="chart-container marco" chart-route="../Indicadores/AvanceAutoevaluaciones" chart-type="line"></canvas>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
 
@@ -77,11 +77,11 @@
                             <div class="modal-content">
                                 <div class="modal-header">
                                     <button type="button" class="close" data-dismiss="modal">&times;</button>
-                                    <h4 class="modal-title">Modal Header</h4>
+                                    <h4 class="modal-title">Cumplimiento SG-SST</h4>
                                 </div>
                                 <canvas id="chartUltimaModal" class="chart-container marco" chart-route="../Indicadores/UltimaAutoevaluacion" chart-type="pie"></canvas>
                                 <div class="modal-footer">
-                                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                                    <button type="button" class="btn btn-default" data-dismiss="modal">Cerrar</button>
                                 </div>
                             </div>
 
@@ -124,7 +124,7 @@
                         {
                             <li class="list-group-item">
                                 <i style="color: @item.BorderColor;"></i>
-                                <a href="@item.EventRoute" title="@item.Description">
+                                <a href="..@item.EventRoute" title="@item.Description">
                                     <span style="color:#4b4961;">@item.Title </span> -
                                     <span style="color: darkgray;">@item.StartDate</span>
                                 </a>
@@ -163,7 +163,7 @@
                 <p class="fadeIn two">Sistema de acompañamiento</p>
                 <br />
                 <img class="fadeIn three" src="~/Imagenes/acompañamiento.jpg" />
-                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap">Ir al Sistema</a>
+                <a class="linkPrincipal" href="http://aprendeyavanza2.com.co/plenamentecap" target="_blank">Ir al Sistema</a>
             </div>
 
         </section>
@@ -172,4 +172,7 @@
 @section Scripts {
     @Scripts.Render("~/bundles/jqueryval")
     @Scripts.Render("~/bundles/chartjs")
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+    
+  
 }

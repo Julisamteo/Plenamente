@@ -15,7 +15,7 @@
 
     <h2 class="colorVerdeBack1">
         Información básica del trabajador<img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:5% ; margin-right:5%" />
-        <a href="#" class="ayudaTitulos"><span>Aquí podras colocar los datos basicos de tus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png"  style="max-height:18px; max-width:18px;"/><p></p></a>
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar los datos básicos de sus trabajadores como el nombre, apellido, correo entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
 
     </h2>
 
@@ -27,13 +27,13 @@
         Nombres:
         <br />
         <br />
-        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "" } })
+        @Html.EditorFor(model => model.Nombres, new { htmlAttributes = new { @class = "", @placeholder = "Nombres del usuario" } })
         <br />
         <br />
         Apellidos:
         <br />
         <br />
-        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "" } })
+        @Html.EditorFor(model => model.Apellidos, new { htmlAttributes = new { @class = "", @placeholder = "Apellidos del usuario" } })
         <br />
         <br />
         Tipo de documento:
@@ -74,17 +74,17 @@
         </div>
 
         @*Estado Del Trabajador:
-            <br />
-            <br />
-            @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
-            <br />
-            <br />*@
+        <br />
+        <br />
+        @Html.DropDownListFor(model => model.Espe_Id, new SelectList(Model.estadoPersona, "Espe_Id", "Espe_Nom", "Estado persona"))
+        <br />
+        <br />*@
     </div>
     <br />
     <br />
     <h2 class="colorVerdeBack1">
         Información personal del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:2%; margin-right:4%" />
-        <a href="#" class="ayudaTitulos"><span>Aquí podras colocar los datos basicos de tus trabajadores como el numero de contacto, la licencia entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar los datos específicos de sus trabajadores como el número de contacto, la licencia entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
     </h2>
     <div class="plegable">
         <br />
@@ -129,8 +129,7 @@
     <br />
     <br />
     <h2 class="colorVerdeBack1">Otra información del trabajador <img src="~/Imagenes/down.png" style="max-height:18px; max-width:18px; margin-left:7%; margin-right:5%" />
-            <a href="#" class="ayudaTitulos"><span>Aquí podras colocar los datos de tus trabajadores como el fondo de pensión, Arl, Eps, entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
-
+        <a href="#" class="ayudaTitulos"><span style="width: 300px">Aquí podrá ingresar la información de ley de sus trabajadores como el fondo de pensiones, aseguradora de riesgos laborales, empresa promotora de salud, entre otros</span> <img src="~/Imagenes/informacion.png" style="max-height:18px; max-width:18px;" /><p></p></a>
     </h2>
     <div class="plegable">
         <br />

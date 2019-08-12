@@ -414,9 +414,13 @@
     <Compile Include="Migrations\201907081932426_Fix.Designer.cs">
       <DependentUpon>201907081932426_Fix.cs</DependentUpon>
     </Compile>
-    <Compile Include="Migrations\201907181708046_altertablePlanTrabajo.cs" />
-    <Compile Include="Migrations\201907181708046_altertablePlanTrabajo.Designer.cs">
-      <DependentUpon>201907181708046_altertablePlanTrabajo.cs</DependentUpon>
+    <Compile Include="Migrations\201907191846442_inges.cs" />
+    <Compile Include="Migrations\201907191846442_inges.Designer.cs">
+      <DependentUpon>201907191846442_inges.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\201908091520396_checked.cs" />
+    <Compile Include="Migrations\201908091520396_checked.Designer.cs">
+      <DependentUpon>201908091520396_checked.cs</DependentUpon>
     </Compile>
     <Compile Include="Migrations\201908081458351_ProgramacionTareasColumnaFinalizada.cs" />
     <Compile Include="Migrations\201908081458351_ProgramacionTareasColumnaFinalizada.Designer.cs">
@@ -755,6 +759,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagenes\informacion.png" />
+    <Content Include="Imagenes\informacionfndo.png" />
     <Content Include="Imagenes\INGRESA.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -1393,6 +1398,12 @@
     <Content Include="Views\Empresas\Details.cshtml" />
     <Content Include="Views\Empresas\Edit.cshtml" />
     <Content Include="Views\Empresas\Index.cshtml" />
+    <Content Include="Views\admin\Terminos.cshtml" />
+    <Content Include="Views\Home\Guía.cshtml" />
+    <Content Include="SqlServerTypes.rar" />
+    <Content Include="Views\PlandeTrabajo\IndexM.cshtml" />
+    <Content Include="Views\PlandeTrabajo\Actividadesplantra.cshtml" />
+    <Content Include="Views\ActividadCumplimiento\Crear.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
@@ -1505,8 +1516,11 @@
     <EmbeddedResource Include="Migrations\201907081932426_Fix.resx">
       <DependentUpon>201907081932426_Fix.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201907181708046_altertablePlanTrabajo.resx">
-      <DependentUpon>201907181708046_altertablePlanTrabajo.cs</DependentUpon>
+    <EmbeddedResource Include="Migrations\201907191846442_inges.resx">
+      <DependentUpon>201907191846442_inges.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201908091520396_checked.resx">
+      <DependentUpon>201908091520396_checked.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201908081458351_ProgramacionTareasColumnaFinalizada.resx">
       <DependentUpon>201908081458351_ProgramacionTareasColumnaFinalizada.cs</DependentUpon>

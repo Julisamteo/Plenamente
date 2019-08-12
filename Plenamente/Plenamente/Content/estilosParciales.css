@@ -1969,3 +1969,29 @@ MenuCabezera {
 .contenidoCuerpo {
     margin: 10px 50px 10px 50px;
 }
+
+.show {
+    position: inherit;
+    padding-top: 2px;
+    margin-bottom: 1px;
+}
+
+.showcb {
+    position: inherit;
+    padding-top: 8px;
+    margin-bottom: 1px;
+}
+
+.label-show {
+    display: inline;
+    padding: .2em .0em .3em;
+    font-size: 75%;
+    font-weight: 700;
+    line-height: 1;
+    color: #fff;
+    text-align: center;
+    white-space: nowrap;
+    vertical-align: baseline;
+    border-radius: .25em;
+    background-color: darkgrey;
+}
