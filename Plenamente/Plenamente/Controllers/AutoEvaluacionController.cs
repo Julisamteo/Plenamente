@@ -500,7 +500,9 @@ namespace Plenamente.Controllers
         public ActionResult VerHistorico(int pagina = 1)
         {
             int _TotalRegistros = 0;
-            int? EmpNit = db.Users.Find(AccountData.UsuarioId).Empr_Nit;
+            string user = User.Identity.Name;
+            int? EmpNit = db.Users.Where(c => c.Email == user).FirstOrDefault().Empr_Nit;
+
             int identificadorIncremental = 1;
             List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
             _TotalRegistros = autoEvaluacions.Count();
