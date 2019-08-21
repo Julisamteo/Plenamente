@@ -83,7 +83,7 @@ namespace Plenamente.Controllers
                     var val = temp.FirstOrDefault(v => v.key == values[i].key);
                     if (val != null)
                     {
-                        lst[i] = (val.value * 100 / values[i].value);
+                        lst[i] = Decimal.Round((val.value * 100 / values[i].value),1);
                     }
                 }
             }
