@@ -1,4 +1,4 @@
-﻿@model Plenamente.App_Tool.PaginadorGenerico<Plenamente.Models.ActiCumplimiento>
+﻿@model Plenamente.App_Tool.PaginadorGenerico<Plenamente.Models.ProgamacionTareas>
     @using Plenamente.App_Tool;
     @using Plenamente.Models.ViewModel;
     @using Plenamente.Models;
@@ -26,16 +26,13 @@
                         Actividad
                     </th>
                     <th>
-                        Meta
+                        Estado
                     </th>
                     <th>
-                        Fecha Inicial
+                        Fecha Ejecución
                     </th>
-                    @*<th>
-                        Fecha Final
-                    </th>*@
                     <th>
-                        Acción
+                        Actividades
                     </th>
                 </tr>
 
@@ -44,27 +41,22 @@
                 {
                 <tr>
                     <td>
-                        @item.Acum_Desc
+                        @item.Descripcion
                     </td>
                     <td>
-                        @item.Acum_Porcentest
+                        <input type="checkbox" checked="@item.Finalizada" disabled />
                     </td>
                     <td>
-                        @item.Acum_IniAct
+                        @item.FechaFinal.Day /
+                        @item.FechaFinal.Month /
+                        @item.FechaFinal.Year
+
                     </td>
-                    @*<td>
-                        @item.Acum_FinAct
-                    </td>*@
                     <td>
 
-                        <a class="btn btn-info" href="@Url.Action("Edit", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Editar">
+                        <a class="btn btn-info" href="~/ActividadCumplimiento/Details?id=@item.ActiCumplimiento_Id&idpt=@item.Id" title="Editar">
                             Gestionar
                         </a>
-                        <a class="btn btn-info" href="@Url.Action("Details", "ActividadCumplimiento" , new { id=item.Acum_Id })" title="Detalles">
-                            Detalles
-                        </a>
-
-
                     </td>
                 </tr>
                 }

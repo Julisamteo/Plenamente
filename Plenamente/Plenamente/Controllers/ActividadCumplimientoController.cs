@@ -25,6 +25,7 @@ namespace Plenamente.Controllers
         /// </summary>
         private readonly int _RegistrosPorPagina = 10;
         private PaginadorGenerico<ActiCumplimiento> _PaginadorCustomers;
+        private PaginadorGenerico<ProgamacionTareas> _PaginadorCustomers1;
         private ApplicationDbContext db = new ApplicationDbContext();
         // GET: ActividadCumplimiento
         /// <summary>
@@ -38,13 +39,15 @@ namespace Plenamente.Controllers
             Empresa empresa = db.Tb_Empresa.Where(e => e.Empr_Nit == AccountData.NitEmpresa).FirstOrDefault();
             PlandeTrabajo PT = db.Tb_PlandeTrabajo.Where(e => e.Emp_Id == AccountData.NitEmpresa).FirstOrDefault();
             ApplicationUser usuario = db.Users.Find(AccountData.UsuarioId);
-            var list = db.Tb_ActiCumplimiento.Where(c => c.Empr_Nit == AccountData.NitEmpresa).ToList();
+            var list = db.Tb_ProgamacionTareas.Where(a => a.ActiCumplimiento.Empr_Nit == AccountData.NitEmpresa
+                               && a.Estado
+                               && a.ActiCumplimiento.Usersplandetrabajo.Count > 0).OrderBy(x=>x.FechaHora).ToList();
             _TotalRegistros = list.Count();
             list = list.Skip((pagina - 1) * _RegistrosPorPagina)
                                                .Take(_RegistrosPorPagina)
                                                .ToList();
             int _TotalPaginas = (int)Math.Ceiling((double)_TotalRegistros / _RegistrosPorPagina);
-            _PaginadorCustomers = new PaginadorGenerico<ActiCumplimiento>()
+            _PaginadorCustomers1 = new PaginadorGenerico<ProgamacionTareas>()
             {
                 RegistrosPorPagina = _RegistrosPorPagina,
                 TotalRegistros = _TotalRegistros,
@@ -55,7 +58,7 @@ namespace Plenamente.Controllers
             //ActiCumplimiento actiEmpresas =  db.Tb_ActiCumplimiento.Find(AccountData.NitEmpresa);
             ViewBag.ReturnUrl = Request.UrlReferrer;
             //ViewBag.idptrab = PT.Plat_Id;
-            return View(_PaginadorCustomers);
+            return View(_PaginadorCustomers1);
         }
 
         // GET: ActividadCumplimiento/Details/5

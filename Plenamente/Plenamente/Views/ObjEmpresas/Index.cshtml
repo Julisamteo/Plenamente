@@ -13,7 +13,7 @@
         <input type="text" id="buscarDato" name="searchString" value="@ViewData["CurrentFilter"]" />
         <input type="submit" value="Buscar" class="btn btn-success tamañoBoton" />
         @*<a href="@Url.Action("Index", "objempresas")" class="ayudaTitulos"><span>Ver todos</span><img src="~/Imagenes/binoculares.png" /><p>Ver</p></a>
-        <a href="@Url.Action("Create", "objempresas")" class="ayudaTitulos"><span>Crear un nuevo objetivo </span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>*@
+            <a href="@Url.Action("Create", "objempresas")" class="ayudaTitulos"><span>Crear un nuevo objetivo </span><img src="~/Imagenes/archivo.png" /><p>Crear</p></a>*@
         <a class="btn btn-primary" href="@Url.Action("Index","objempresas")" title="Listar">Ver todos</a>
         <a class="btn btn-success" href="@Url.Action("Create","objempresas")" title="Crear">Crear objetivo</a>
     </form>
@@ -33,7 +33,7 @@
 
             </th>
         </tr>
-        </thead>
+    </thead>
     <tbody class="cuerpoTabla">
 
         @foreach (var item in Model)
@@ -55,3 +55,7 @@
     </tbody>
 
 </table>
+<div class="col-xs-9"></div><div class="col-xs-1" style="margin-top:20px;">
+    <a class="btn btn-success" href="http://aprendeyavanza2.com.co/PlenamenteTra/Home/Gu%C3%ADa"title="Listar">¿Como crear objetivos?</a>
+</div>
+

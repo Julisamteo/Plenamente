@@ -112,7 +112,7 @@ namespace Plenamente.Controllers
                                 BackgroundColor =  a.Finalizada ? "#FF1F17" /*Verde*/: "#6CB52D" /*Rojo*/ ,
                                // BorderColor = a.ActiCumplimiento.Acum_FinAct > now || a.Finalizada ? "#FF6963" /*Verde*/: "#65ac1e" /*Rojo*/,
                                 BorderColor =  a.Finalizada ? "#FF6963" /*Verde*/: "#65ac1e" /*Rojo*/,
-                                EventRoute = "/ActividadCumplimiento/Details?id=" + a.ActiCumplimiento_Id + "&idpt=" + a.Id
+                                EventRoute = "../ActividadCumplimiento/Details?id=" + a.ActiCumplimiento_Id + "&idpt=" + a.Id
                             }).ToList();
 
                 if (planes != null && planes.Count > 0)

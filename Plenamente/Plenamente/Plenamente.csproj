@@ -790,6 +790,7 @@
     <Content Include="Imagenes\marcador-de-posicion.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagenes\mesadeayuda.png" />
     <Content Include="Imagenes\pie-chart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

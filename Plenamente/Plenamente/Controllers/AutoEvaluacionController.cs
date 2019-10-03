@@ -502,7 +502,7 @@ namespace Plenamente.Controllers
             int _TotalRegistros = 0;
             string user = User.Identity.Name;
             int? EmpNit = db.Users.Where(c => c.Email == user).FirstOrDefault().Empr_Nit;
-
+            int identificadorIncremental = 1;
             List<AutoEvaluacion> autoEvaluacions = db.Tb_AutoEvaluacion.Where(c => c.Empr_Nit == EmpNit && c.Finalizada).OrderBy(c => c.Auev_Fin).ToList();
             _TotalRegistros = autoEvaluacions.Count();
             List<AutoEvaluacionViewModel> autoEvaluacionViewModel = new List<AutoEvaluacionViewModel>();
