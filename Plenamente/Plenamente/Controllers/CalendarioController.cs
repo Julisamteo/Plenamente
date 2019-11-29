@@ -109,9 +109,10 @@ namespace Plenamente.Controllers
                                 Title = a.Descripcion,
                                 Start = a.FechaHora,
                                 // BackgroundColor = a.ActiCumplimiento.Acum_FinAct > now || a.Finalizada ? "#FF1F17" /*Verde*/: "#6CB52D" /*Rojo*/ ,
-                                BackgroundColor =  a.Finalizada ? "#FF1F17" /*Verde*/: "#6CB52D" /*Rojo*/ ,
+                                BackgroundColor =  a.Finalizada ? "#6CB52D" /*Rojo*/: "#FF1F17" /*Verde*/ ,
                                // BorderColor = a.ActiCumplimiento.Acum_FinAct > now || a.Finalizada ? "#FF6963" /*Verde*/: "#65ac1e" /*Rojo*/,
-                                BorderColor =  a.Finalizada ? "#FF6963" /*Verde*/: "#65ac1e" /*Rojo*/,
+                                BorderColor =  a.Finalizada ? "#65ac1e" /*Rojo*/: "#FF6963" /*Verde*/,
+                                
                                 EventRoute = "../ActividadCumplimiento/Details?id=" + a.ActiCumplimiento_Id + "&idpt=" + a.Id
                             }).ToList();
 
