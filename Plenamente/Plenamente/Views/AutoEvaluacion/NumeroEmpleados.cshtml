@@ -30,7 +30,7 @@
 
                 <div class="row">
                     <div class="col-md-12">
-                        @Html.Label(string.Format("El tamaño de su empresa es de {0} trabajadores", Model.NumeroEmpleados), htmlAttributes: new { @class = "control-label col-md-12" })
+                        @Html.Label(string.Format("El tamaño de su empresa es de {0} trabajadores y se generara una autoevaluacion que contiene unicamente los estandares de sst que debe cumplir", Model.NumeroEmpleados), htmlAttributes: new { @class = "control-label col-md-12" })
                     </div>
                 </div>
             </div>
@@ -40,11 +40,11 @@
 
             <div class="col-md-offset-2 col-md-10">
                 <input type="submit" value="Si, es correcto" class="btn btn-default" />
-                @Html.ActionLink("No, quiero corregir", "ModificarNumeroEmpleados", "Autoevaluacion", new { numeroEmpleados = Model.NumeroEmpleados }, new { @class = "btn btn-primary" })
+                @*@Html.ActionLink("No, quiero corregir", "ModificarNumeroEmpleados", "Autoevaluacion", new { numeroEmpleados = Model.NumeroEmpleados }, new { @class = "btn btn-primary" })*@
                 @Html.ActionLink("Ver histórico", "VerHistorico", "Autoevaluacion", new { @class = "btn btn-primary" })
             </div>
             <div class="row">
-                @Html.Label("¿Es correcta esta informacion?", htmlAttributes: new { @class = "control-label", style = "padding-left: 40px;"})
+                @Html.Label("Recuerde que si el tamaño de su empresa cambia debe notificarnos para hacer los cambios adecuados", htmlAttributes: new { @class = "control-label", style = "padding-left: 40px;"})
             </div>
         </div>
 
