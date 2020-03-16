@@ -15,7 +15,7 @@ namespace Plenamente.Controllers
     {
         private ApplicationSignInManager _signInManager;
         private ApplicationUserManager _userManager;
-
+        private ApplicationDbContext db = new ApplicationDbContext();
         public ManageController()
         {
         }
@@ -63,15 +63,25 @@ namespace Plenamente.Controllers
                 : message == ManageMessageId.RemovePhoneSuccess ? "Se ha quitado su número de teléfono."
                 : "";
 
+
             var userId = User.Identity.GetUserId();
             var model = new IndexViewModel
             {
+               
                 HasPassword = HasPassword(),
                 PhoneNumber = await UserManager.GetPhoneNumberAsync(userId),
                 TwoFactor = await UserManager.GetTwoFactorEnabledAsync(userId),
                 Logins = await UserManager.GetLoginsAsync(userId),
                 BrowserRemembered = await AuthenticationManager.TwoFactorBrowserRememberedAsync(userId)
             };
+            var consulta = (from m in db.Users where m.Id == userId select m).FirstOrDefault();
+
+            Session["User"] = consulta.UserName;
+            Session["Documento"] = consulta.Pers_Doc;
+            Session["Cargo"] = consulta.Pers_Cargo;
+            Session["Genero"] = consulta.Genero;
+
+
             return View(model);
         }
 

@@ -2,6 +2,14 @@
     return false
 }
 
+function miFuncion() {
+
+    alert("hola");
+    var disabled = getElementByClassName("DisabledButton");
+
+    disabled.document.hidden;
+}
+
 
 
 function right(e) {
