@@ -656,6 +656,7 @@
     <Content Include="Imagenes\fondo.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagenes\fondoo.png" />
     <Content Include="Imagenes\Fondopng.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -769,6 +770,9 @@
     <Content Include="Imagenes\list.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagenes\lock.png" />
+    <Content Include="Imagenes\logo1.png" />
+    <Content Include="Imagenes\logo2.png" />
     <Content Include="Imagenes\Logoplenamenteblanco.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -791,6 +795,7 @@
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
     <Content Include="Imagenes\mesadeayuda.png" />
+    <Content Include="Imagenes\ngresa.png" />
     <Content Include="Imagenes\pie-chart.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
@@ -854,6 +859,8 @@
     <Content Include="Imagenes\user.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>
+    <Content Include="Imagenes\usero.png" />
+    <Content Include="Imagenes\usuario.png" />
     <Content Include="Imagenes\usuarioblanco.png">
       <CopyToOutputDirectory>Always</CopyToOutputDirectory>
     </Content>

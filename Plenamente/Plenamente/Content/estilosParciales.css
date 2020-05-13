@@ -4,7 +4,7 @@
     -webkit-box-sizing: border-box;
     -moz-box-sizing: border-box;
     box-sizing: border-box;
-    background: url("/Imagenes/Fondo.png");
+    background: url("/Imagenes/fondoo.png");
     background-size: 100%;
 }
 
@@ -33,8 +33,8 @@
     z-index: 3;
     color: #fff;
     cursor: default;
-    background-color: #6CB52D;
-    border-color: #6CB52D;
+    background-color: #26B2A3;
+    border-color: #0092B6;
 }
 
 .colorVerdeBack1 {
@@ -54,7 +54,7 @@
     padding: 20px;
     margin: 15px 15px 15px 15px;
     justify-content: center;
-    background-color: #6CB52D;
+    background-color: #26B2A3;
 }
 
 .contenidoMenu {
@@ -124,7 +124,7 @@
 }
 
 .fondoColumnaPrincipal {
-    background: rgba(110,178,19,0.8);
+    background: rgba(28, 127, 113, 1);
 }
 
 @media screen and (max-width: 1024px) {
@@ -411,7 +411,7 @@ a {
 
 .contenedor-menu {
     position: relative;
-    background-color: #8CC63F;
+    background-color: #0092B6;
     min-width: 280px;
     display: inline-block;
     font-family: 'Roboto', sans-serif;
@@ -438,15 +438,15 @@ a {
         display: block;
         font-size: 18px;
         padding: 15px 20px;
-        background: #65ac1e;
+        background: #26B2A3;
         border-bottom-style: solid;
-        border-bottom-color: #6CB52D;
+        border-bottom-color: #fff;
         border-width: 1px;
         border-top: 1px solid white;
     }
 
         .contenedor-menu .menu li a:hover {
-            background: #65ac1e;
+            background: #26B2A3;
             color: #000;
         }
 
@@ -471,13 +471,13 @@ a {
 
         .contenedor-menu .menu ul li a {
             padding-left: 35px;
-            background: #69BE15;
+            background: #0092B6;
             color: #fff;
         }
 
         .contenedor-menu .menu ul li ul li a {
             padding-left: 45px;
-            background: #69be15;
+            background: #26B2A3;
             color: #fff;
         }
 
@@ -489,12 +489,12 @@ a {
 
             .contenedor-menu .menu ul li ul li ul li a:hover {
                 padding-left: 65px;
-                background: #65ac1e;
+                background: #26B2A3;
                 color: #000;
             }
 
     .contenedor-menu .menu .activado > a {
-        background: #65ac1e;
+        background: #0092B6;
         color: #000;
     }
 
@@ -563,7 +563,7 @@ a {
 }
 
     .tablaVista a {
-        color: #6CB52D;
+        color: #1C7F71;
     }
 
     .tablaVista caption {
@@ -573,7 +573,7 @@ a {
 
     .tablaVista tr {
         background-color: #f8f8f8;
-        border: 1px solid #6CB52D;
+        border: 1px solid #1C7F71;
         padding: .35em;
     }
 
@@ -591,19 +591,19 @@ a {
 
 .colorVerde {
     color: #fff;
-    background-color: #6CB52D;
+    background-color: #1C7F71;
 }
 
 .titulosBanner {
     color: #fff;
     width: 100%;
-    background-color: #65ac1e;
+    background-color: #0092B6;
 }
 
 .titulosBannerP {
     color: #fff;
     width: 100%;
-    background-color: #65ac1e;
+    background-color: #0092B6;
     padding-top: 12px;
 }
 
@@ -612,7 +612,7 @@ a {
     justify-content: center;
     width: 100%;
     height: auto;
-    background-color: #65ac1e;
+    background-color: #1C7F71;
     border-top: 1px solid white;
     border-left: 1px solid white;
 }
@@ -1044,7 +1044,7 @@ select {
 /*Reset de los elementos BootsTrap No tocar*/
 body {
     margin: 0px;
-    background: url(../imagenes/fondo.jpg);
+    background: url(../imagenes/fondoo.png);
     padding: 0px;
     background-size: 100%;
     -webkit-box-sizing: border-box;
@@ -1071,11 +1071,11 @@ a:link {
 
 .bannerPrincipal {
     display: flex;
-    background-color: #65ac1e;
+    background-color: #0092B6;
     width: 100%;
     height: 50px;
     border-bottom-style: solid;
-    border-bottom-color: #8CC63F;
+    border-bottom-color: #fff;
     border-bottom-width: 2px;
     position: relative;
     top: 0;
@@ -1246,7 +1246,7 @@ a:link {
     border: 2px solid #fff;
     height: 2px;
     border-radius: 5px;
-    background-color: #6CB52D;
+    background-color: #26B2A3;
 }
 
 .tareasDiv {
@@ -1574,7 +1574,7 @@ h2.active {
 /* FORM TYPOGRAPHY*/
 
 input[type=button], input[type=submit], input[type=reset], input[type=file] {
-    background-color: #6CB52D;
+    background-color: #0092B6;
     border: none;
     color: white;
     padding: 15px 80px;
@@ -1597,7 +1597,7 @@ input[type=button], input[type=submit], input[type=reset], input[type=file] {
 
 
     input[type=button]:hover, input[type=submit]:hover, input[type=reset], input[type=file]:hover {
-        background-color: #5AB60B;
+        background-color: #3eb1c0;
     }
 
 a[class='btn*'] {
@@ -1622,7 +1622,7 @@ a[class='btn*'] {
 }
 
 input[type=button]:hover, input[type=submit]:hover, input[type=reset], input[type=file]:hover {
-    background-color: #5AB60B;
+    background-color: #3eb1c0;
 }
 
 
@@ -1658,7 +1658,7 @@ input[type=text], input[type=password], input[type=email], input[type=number], .
 
     input[type=text], input[type=email], input[type=file]:focus, input[type=number]:focus, .estilosSelect:focus {
         background-color: #fff;
-        border-bottom: 2px solid #6CB52D;
+        border-bottom: 2px solid #3eb1c0;
     }
 
 input[type=text], input[type=email], input[type=number], input[type=file]:placeholder {
@@ -1946,7 +1946,7 @@ MenuCabezera {
 }
 
 .btn-primary {
-    background-color: dodgerblue !important;
+    background-color: #047487 !important;
 }
 
 .qtip {
