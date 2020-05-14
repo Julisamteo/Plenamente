@@ -243,6 +243,7 @@
     <Compile Include="Controllers\ActiCumplimientoesController.cs" />
     <Compile Include="Controllers\ActividadCumplimientoController.cs" />
     <Compile Include="Controllers\adminController.cs" />
+    <Compile Include="Controllers\AeapbController.cs" />
     <Compile Include="Controllers\AfpController.cs" />
     <Compile Include="Controllers\ApplicationBaseController.cs" />
     <Compile Include="Controllers\AreaEmpresasController.cs" />
@@ -1412,6 +1413,12 @@
     <Content Include="Views\PlandeTrabajo\IndexM.cshtml" />
     <Content Include="Views\PlandeTrabajo\Actividadesplantra.cshtml" />
     <Content Include="Views\ActividadCumplimiento\Crear.cshtml" />
+    <Content Include="Views\Aeapb\Index.cshtml" />
+    <Content Include="Views\Aeapb\AutoevaluacionApb.cshtml" />
+    <Content Include="Views\Aeapb\CumplimientoApb.cshtml" />
+    <Content Include="Views\Aeapb\CargaEvidenciaApb.cshtml" />
+    <Content Include="Views\Aeapb\VerHistoricoApb.cshtml" />
+    <Content Include="Views\Aeapb\NumeroEmpleadosApb.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
